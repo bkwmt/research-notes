@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gu 2024_LLM 當評審綜述</title>
+<meta name="description" content="Gu 2024_LLM 當評審綜述">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Gu 2024_LLM 當評審綜述</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/gu2024_llm-as-judge-survey.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Gu, J., Jiang, X., Shi, Z., Tan, H., Zhai, X., Xu, C., Li, W., Shen, Y., Ma, S., Liu, H., Wang, S., Zhang, K., Lin, Z., Zhang, B., Ni, L., Gao, W., Wang, Y., &amp; Guo, J. (2024). <em>A Survey on LLM-as-a-Judge</em>. arXiv:2411.15594（v6, 2025-10-19）。預印本，未經同儕審查。</li>
+<li><strong>對應待查問題</strong>：⑤無 gold standard 評估（並旁及 ③harness／agent 評估）</li>
+<li><strong>一句話定位</strong>：這是「用大型語言模型（LLM）當評審」（LLM-as-a-Judge）這個做法的第一份系統性綜述，把散落的文獻整理成統一框架，重點回答「怎麼建立可信賴的 LLM 評審系統」；對本專案的意義在於它把 LLM 當評審會犯的各種偏誤、以及對付這些偏誤的手段，一次盤點清楚，正好用來檢驗本專案紅線 2（「絕不叫 LLM 自評信心分數」）站不站得住。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>這篇文章不提出新模型，而是做四件整理工作。</p>
+<p>第一，給「LLM 當評審」下定義。它區分兩層：基本定義是「把待評對象 x 連同脈絡 C 餵給模型，得到一個評價 E（分數、選項、標籤或一句話）」；進階定義則加上「可靠性」（reliability）這個概念，強調光是叫模型評分不等於評得準，必須另外做驗證、校準、標準化。作者把可靠性寫成三個變數的函數：模型本身的機率特性、被評的輸入、以及脈絡。這個定義本身就是一個判斷：可靠性不是模型的固有屬性，而是要靠額外工程去爭取的東西。</p>
+<p>第二，把文獻按四個問題重新組織：什麼是 LLM 評審、怎麼用、怎麼改進、怎麼評估這個評審本身（即「後設評估」meta-evaluation）。</p>
+<p>第三，提出一個專門用來檢驗 LLM 評審可不可靠的後設評估基準（benchmark），並用它跑了一輪實驗，比較不同模型與不同改進策略的效果。</p>
+<p>第四，盤點應用領域（機器學習、金融、法律、科學）與未來方向。</p>
+<p>對人文學者來說，真正有用的是第二與第三件事：它把「LLM 評審會怎麼出錯」講得夠細，也把「有哪些補救辦法、哪些有效哪些沒效」用實驗檢過一遍。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>這篇不是抽取知識的論文，而是評估的論文，所以「流程」指的是「怎麼讓 LLM 產出一個評價」。它把這條流水線拆成四步（對照本文 Figure 2）：</p>
+<ol>
+<li><strong>脈絡學習（In-Context Learning）設計</strong>：決定要評什麼、怎麼把輸入交給模型。輸入可以是單筆、成對、或一批；提示（prompt）的形式有四種——打分數、回答是／否、兩兩比較（pairwise）、多選。作者特別指出：兩兩比較比直接打絕對分數更穩、更貼近人類判斷，因為比較只需要模型分辨相對高下，不必給出一個容易受措辭與隨機性影響的絕對數字。</li>
+<li><strong>選模型</strong>：用閉源強模型（GPT-4、Claude）或自行微調的小模型。閉源強模型準但貴、且不可重現；微調模型專門但容易過度擬合、難以泛化。</li>
+<li><strong>後處理（post-processing）</strong>：從模型輸出裡把評價抽出來。三種做法——用規則抽特定 token、把輸出的機率（logits）正規化成 0 到 1 的連續分數、或挑出關鍵句子。</li>
+<li><strong>評估流水線</strong>：組合上述三步得到最終評價，套用在四種場景——評模型、評資料、評 agent、評推理過程。</li>
+</ol>
+<p>值得替本專案記下的一點：作者把「自我評估」（self-evaluation）明確歸在後處理這一步。做法是讓模型回答「這個推理步驟對嗎？」，然後把「Yes」這個 token 的生成機率當成分數（本文 §2.3.2）。這正是本專案紅線 2 要拒絕的東西，下面第 8 節細談。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>不適用於典型的知識結構問題。這篇組織的是「改進策略」的分類，不是抽取出來的實體或關係。它把所有讓 LLM 評審變可靠的手段，按流水線的三個階段歸類（本文 §3、Figure 9），這套分類本身對本專案有參考價值，因為它就是「緩解手段」的總目錄：</p>
+<ul>
+<li><strong>提示設計階段</strong>：用少樣本範例（few-shot）教模型；把評估任務拆成小步驟（如 G-Eval 用思考鏈 Chain-of-Thought 逐步引導）；把粗的評估準則拆成細的子準則分開評再合併（criteria decomposition）；用結構化輸出格式（如強制輸出 JSON）減少抽取錯誤；針對位置偏誤，隨機對調兩個待評內容的位置再評、把分數平均，或把衝突標成「平手」。</li>
+<li><strong>模型能力階段</strong>：用專門構造的後設評估資料集微調出評審模型；用回饋做迭代精修（拿更強模型或人類的更正回來持續更新）。</li>
+<li><strong>最終輸出階段</strong>：整合多來源結果（多輪投票、多個模型投票、加權平均）以壓低隨機性與單一模型偏誤；或直接優化單一模型的輸出（分數平滑、自我驗證過濾）。</li>
+</ul>
+<p>這裡有一個對本專案直接相關的判斷：作者把「多輪多模型投票」和「對調位置」列為經實驗證實有效的兩招，而把「自我驗證」列為效果有限（見第 6 節）。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>不適用。這篇的產出是「評價」，不是知識三元組。評價的表示形式有四類：離散或連續的<strong>分數</strong>、<strong>是／否</strong>、<strong>兩兩比較的勝負</strong>、<strong>多選</strong>。沒有出處欄位、沒有時間資訊。</p>
+<p>倒是有一個和本專案的信心分數設計正面相關的東西：它整理了「信心／分數怎麼從模型得到」的幾種技術路徑。一是直接叫模型輸出分數（不可靠，受措辭與隨機性影響）；二是取 token 生成機率當分數（如自我一致性分數、自我反思分數、自我評估分數，見本文 §2.3.2 的公式，把「Yes」token 的條件機率連乘起來）；三是分數平滑（把各數字 token 的機率當權重去平滑離散分數）。這幾種都屬於「讓模型自己給信心」的路子。本專案紅線 2 的立場，等於是把這一整類全部排除，改用程式化的外部訊號。這篇綜述沒有討論「用模型以外的程式訊號推信心」這條路，這是它的視野盲點，也反過來凸顯本專案設計的獨立性。</p>
+<h2 id="5">5. 資料集</h2>
+<p>這篇整理了一批專門用來「後設評估」LLM 評審的基準（本文 Table 1），全部是英文、以模型回應成對比較為主，都不是歷史文本或口述訪談語料。列幾個關鍵的：</p>
+<ul>
+<li><strong>MTBench</strong>（2023, 80 題）、<strong>Chatbot Arena</strong>（2023, 約 3 萬筆眾包偏好）——附人類標註偏好，是「與人類判斷一致性」的主力基準。</li>
+<li><strong>LLMEval²</strong>（2553 筆）——本文實驗採用的最大、最多樣的一致性基準。</li>
+<li><strong>EVALBIASBENCH / EvalBiasBench</strong>（80 筆）——專測六類偏誤（長度、具體性、空參照、內容接續、巢狀指令、熟悉知識偏誤）。</li>
+<li><strong>CALM</strong>（2024, 4356 筆）——用自動擾動機制生成偏誤測試資料，涵蓋 12 類偏誤，是目前偏誤類型最全的框架。</li>
+<li><strong>KUDGE</strong>（2024）——非英語（韓語）任務基準；<strong>CodeJudge</strong>——程式碼評估。</li>
+</ul>
+<p>作者的自評坦白：現有後設評估以「評模型」為主，缺乏對「LLM 大規模自動標註資料」這個場景的充分後設評估；也還沒有一個統一、涵蓋一致性＋偏誤＋對抗穩健性三面向的基準。中文語料方面，除了韓語 KUDGE 與提到的中文多模態對齊工作（Wu et al.），著墨很少。</p>
+<h2 id="6">6. 評估</h2>
+<p>這是全篇對本專案最重要的部分。作者把「怎麼評 LLM 評審」拆成三個面向（本文 Figure 12）：</p>
+<p><strong>（一）與人類判斷的一致性</strong>。用一致性比例（agreement）、Cohen's Kappa、Spearman 相關係數；也有把它當分類問題、用人類標註當標籤算 P/R 的。</p>
+<p><strong>（二）偏誤（bias）</strong>。作者分兩大類。<strong>任務無關偏誤</strong>（task-agnostic，源於模型本身，難根治）：
+- <strong>多樣性／人口偏誤</strong>（diversity bias）：對特定性別、種族、性向的刻板印象給分偏高。
+- <strong>文化偏誤</strong>（cultural bias）：對不熟悉文化、地方語言變體的表達給分偏低。
+- <strong>自我增強偏誤</strong>（self-enhancement bias，又稱來源偏誤 source bias）：模型偏好自己生成的答案，同一份內容若標明是自己產的就給更高分。作者引 CALM 的建議：<strong>不要用被評對象的同一個模型當評審</strong>——但這只是權宜之計，因為評最強模型時就找不到更強的評審。</p>
+<p><strong>判斷特定偏誤</strong>（judgment-specific，源於任務格式，可用設計對付）：
+- <strong>位置偏誤</strong>（position bias）：偏好排在特定位置的回應（Vicuna-13B 只要換到第二位，就能贏過 ChatGPT）。度量指標有位置一致性（position consistency，對調位置後仍選同一個的比例）、偏好公平性、衝突率。作者的實驗顯示偏好的位置因模型而異：GPT-4 偏好第一位，ChatGPT 偏好第二位。
+- <strong>名稱淡出偏誤</strong>（compassion-fade bias）：明講模型名稱時，看到「gpt-4」就給高分——所以要匿名評估。
+- <strong>風格偏誤</strong>（style bias）：偏好有 emoji、視覺討喜、或帶特定情緒語氣的文字（後者稱情緒偏誤 sentiment bias）。
+- <strong>長度偏誤</strong>（length bias，又稱冗長偏誤 verbosity bias）：偏好較長的回應，即使把原答案改寫得更囉嗦、沒加任何新資訊，分數也會升高。
+- <strong>具體性偏誤</strong>（concreteness bias）：偏好含權威來源引用、數字、複雜術語的回應（含權威偏誤 authority bias、引用偏誤 citation bias）——這一條最危險，因為它會鼓勵模型腦補、捏造細節去換高分。</p>
+<p><strong>（三）對抗穩健性</strong>（adversarial robustness）。有人專門訓練「對抗攻擊短語」，只要塞進去就能大幅灌水分數而不真的改善內容；有「空模型攻擊」（null model，輸出一個與輸入無關的固定回應也能拿高勝率）；有「多數意見攻擊」（加一句「90% 的人認為這個更好」）；有「系統提示攻擊」與無意義語句（如「Assistant A loves eating pasta」）。作者的結論是現有 LLM 評審對這些干擾都還不夠穩健，防禦手段（如用困惑度 perplexity 偵測）只能擋掉有限的攻擊。</p>
+<p><strong>實驗發現（§4.4）</strong>，用六個模型（GPT-4、GPT-3.5、Qwen2.5-7B、LLaMA3-8B、Mistral-7B、Mixtral-8×7B）加幾個推理模型跑後設評估：
+- GPT-4 全面領先、偏誤最少，但連 GPT-4 都在「空參照偏誤」與「巢狀指令偏誤」上大幅退步。
+- 改進策略經檢驗，<strong>有效的</strong>是「多輪多數投票」（majority@5）與「對調位置」；<strong>幾乎無效或反效果的</strong>是「附解釋一起評」（w/ explanation，反而更差，作者推測解釋引入了更深的自我合理化偏誤）與「自我驗證」（w/ self-validation，因為模型過度自信，重評時不太願意推翻自己）。
+- 取平均分（mean@5）與取最高分（best-of-5）都不如多數投票，因為平均會把帶偏誤的分數算進去、取最高會系統性選中被偏誤灌高的分。
+- 推理增強模型（o1-mini、o3-mini、gemini-thinking、DeepSeek-R1）比基線有進步，但在「與人類對齊」這件事上沒有預期的明顯優勢，仍輸給 GPT-4-turbo。</p>
+<p><strong>評估設計本身的問題</strong>（§4.5，作者自陳）：想單獨測某一種偏誤很難，因為變因會纏在一起（把回應改長會同時改變風格、流暢度，甚至引入自我增強偏誤）；GPT-4 偏好自己的答案，到底算自我增強偏誤還是「它真的比較好」，難以切乾淨。這是典型的「用 LLM 驗 LLM」的循環風險，作者有意識到但未能完全解開。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>作者自承的限制（第 6、7 節）：</p>
+<ul>
+<li><strong>可靠性</strong>：模型是機率性的，同一輸入會給不同分數（inter-rater 不一致）；過度自信（overconfidence，尤其 RLHF 訓練過的模型）直接導致自我增強偏誤。</li>
+<li><strong>穩健性</strong>：對抗攻擊研究還很少，防禦薄弱。</li>
+<li><strong>打分機制脆</strong>（brittleness）：一旦提示要求「用 1-5 打分」，稍微複雜的輸入就可能讓模型吐出文字而非數字，整條自動化流水線斷掉。</li>
+<li><strong>不透明</strong>：判斷過程是黑箱，無法像人類法官那樣交代「引用了哪條先例、哪條法規」。這對法律、醫療這種高風險領域是硬傷。</li>
+<li><strong>後設評估與時間一致性</strong>：模型會隨版本更新而「評估漂移」（evaluation drift）——三月版本給過的分，六月版本因為新的安全微調可能就翻盤。缺乏對評審本身的長期穩定性檢驗。</li>
+<li><strong>倫理</strong>：偏誤放大（把訓練資料裡的社會偏見透過評分擴散出去）、缺乏問責、以及「評估驅動的趨同」（evaluation-driven convergence，模型當評審會反過來讓被評內容風格同質化，扼殺多樣性）。</li>
+</ul>
+<p>我讀出的、它沒明講的弱點：</p>
+<ol>
+<li>全篇的可靠性想像仍鎖在「模型內部」——不是換更強模型、就是多跑幾輪投票、就是微調。它幾乎沒有認真討論「用模型以外的、程式化的、可外部查核的訊號來判斷一筆評價可不可信」這條路。這恰恰是本專案的核心設計，這篇綜述的框架裡沒有它的位置。</li>
+<li>「附解釋反而更差」這個實驗結果雖被報告，但作者只當成一個策略取捨，沒追問它對「可追溯性」訴求的深刻矛盾：我們想要解釋是為了讓人能查核，但模型一旦要自圓其說就更會硬拗。這對任何強調「推理可追溯」的系統都是警訊。</li>
+<li>出處（provenance）與時間碼完全不在它的視野。它評的是「回應好不好」，不是「這筆知識從哪來、對不對」。所以它對「強制附出處」這種需求毫無著墨。</li>
+</ol>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p>先講結論：<strong>這篇綜述同時支持了本專案紅線 2，也劃出了 LLM 評審可以進場的那條界線。</strong></p>
+<p><strong>它怎麼支持「LLM 自評信心不可信」（紅線 2）</strong>。這篇把「叫模型自己給信心／分數」的整條技術路線都攤開來，包括直接輸出分數、取「Yes」token 機率當自我評估分數（§2.3.2）、自我驗證過濾（TrueTeacher 那類）。然後用它自己的後設評估實驗給出兩個關鍵證據：</p>
+<ul>
+<li><strong>自我驗證（self-validation）幾乎無效</strong>，原因是模型過度自信，重評時不肯推翻自己（§4.4.2、§6.1）。</li>
+<li><strong>過度自信直接綁著自我增強偏誤</strong>（§6.1）：RLHF 訓練過的模型傾向給自己生成的東西打高分。</li>
+</ul>
+<p>換句話說，本專案「絕不叫 LLM 自評信心分數，信心改用程式化訊號推導」不是保守的潔癖，而是這篇綜述用實驗背書的判斷——模型自報的信心會被它自己的過度自信與自我偏好污染，拿來當信心分數等於把偏誤寫進資料裡。本專案用「出處有效性、格式合規、穩定性、數值合理性、跨人佐證」這五個外部訊號，正好避開了這篇指認出的每一個坑：出處有效性對治具體性／權威偏誤（不讓模型靠捏造引用換高分），跨人佐證用多來源交叉印證取代單一模型的自我背書，穩定性其實就是這篇推崇的「多輪一致性」的程式化版本。</p>
+<p><strong>它怎麼劃出「LLM 評審仍可當輔助訊號」的界線</strong>。這篇並不主張全盤棄用 LLM 評審，而是說：在<strong>處理好偏誤、並明確標註它只是輔助</strong>的前提下，LLM 評審可以用。對本專案，這條界線落在「外部查核可以用 LLM，但信心分數仍須程式化推導」。具體可借用的做法：</p>
+<ul>
+<li><strong>本專案的 <code>extract-qa</code>（抽取查核）skill 正是這篇說的「LLM 評審當輔助」的合法用法</strong>——它是外部查核者，判斷出處存不存在、年份合不合理、有沒有腦補，而不是給被抽取的知識打一個信心分數。這條用法與這篇相容，但要記住這篇的警告：查核用的 LLM 不要跟抽取用的是同一輪、同一個自我背書的來源（自我增強偏誤），查核判準要外部化、可追溯。</li>
+<li><strong>多輪多數投票、對調位置</strong>是這篇實驗證實有效的兩招。本專案若要在 QA 或消歧環節引入 LLM 判斷，應採「多次跑取多數」而非「單次信任」，這也正好對應紅線 2 裡的「穩定性」訊號。</li>
+<li><strong>避免「附解釋一起評」的陷阱</strong>：這篇實驗顯示要模型邊評邊解釋反而更不準。本專案要「推理可追溯」（紅線 4），但可追溯應該來自「中間產物落檔」（程式層面留痕），不是靠模型自我解釋——後者會誘發硬拗。這是一個重要的區分：可追溯 ≠ 叫模型自我說明。</li>
+</ul>
+<p><strong>與四條紅線的相容性總評</strong>：
+- 紅線 1（不做配對式 gold standard）：相容且被印證。這篇也坦承缺乏對「大規模自動標註」場景的後設評估、且用 LLM 驗 LLM 有循環風險——本專案不建人工配對標準、改用實體層人工名冊當對照，是對這個循環風險的合理迴避。
+- 紅線 2（不叫 LLM 自評信心）：<strong>強力支持</strong>，如上。
+- 紅線 3（強制附出處）：這篇完全沒有出處概念，無法提供正面借鑑，但它的「具體性偏誤／權威偏誤／引用偏誤會鼓勵腦補捏造」的發現，反過來論證了為什麼本專案必須把「出處有效性」當硬訊號——不驗出處，就是替模型的捏造背書。
+- 紅線 4（推理可追溯、中間產物落檔）：相容，且這篇的「附解釋反而更差」與「黑箱不透明」兩點，提醒本專案的可追溯必須靠程式化落檔，不能寄望模型自陳。</p>
+<p><strong>對「口述歷史、非三元組、強制出處」這個需求的參考價值</strong>：這篇在表示法與出處設計上幾乎給不出直接參考（它評的是回應品質，不碰知識結構，也沒有出處與時間欄位）。它的價值不在此，而在於它是一份「反面教材與界線圖」：它把 LLM 當評審會犯的每一種偏誤與每一種無效補救都標了出來，讓本專案能精確地說明——為什麼信心分數要走程式化訊號、LLM 只能待在外部查核的位置、以及查核本身該怎麼設計才不會掉回這篇指認的那些坑裡。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

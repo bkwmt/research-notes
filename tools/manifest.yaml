@@ -1,0 +1,64 @@
+# research-notes 的來源清單。build.py 讀這份檔，從 ~/Developer 底下的原專案複製快照或轉檔。
+# 原專案不動；每次建置把每個產出的來源路徑、sha256、來源修改時間寫進 manifest.lock.json。
+# 路徑一律相對於 sources_root。
+
+sources_root: ~/Developer
+site_title: Research Notes
+site_subtitle: 程明（Ming Cheng）的文獻筆記、團隊側寫與導讀投影片
+license_notice: 筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。
+
+# 一、團隊與機構側寫：已是單檔 HTML，直接複製
+profiles:
+  - src: extract_ohistory/refs/idohl_lab-profile_2026-10-05.html
+    out: profiles/idohl-lab-profile-2026-10-05.html
+    title: International Digital Oral History Lab（IDOHL）團隊側寫
+    blurb: UCL 與 TU Darmstadt 合辦的數位口述歷史實驗室：團隊、年表、三個計畫、開源釋出、與 extract_ohistory 的對照、閱讀建議。
+    date: 2026-10-05
+
+# 二、文獻筆記（markdown → HTML）
+notes:
+  src_dir: extract_ohistory/refs
+  out_dir: notes
+  # 八節深讀筆記：notes/*.md 裡不以底線開頭者，檔名維持原 stem
+  eight_section_glob: notes/*.md
+  # 索引、回顧、模板、調查報告：指定輸出檔名（ASCII）
+  renames:
+    refs.md: refs.html
+    文獻回顧_2026-07.md: review-2026-07.html
+    notes/_對照矩陣.md: matrix.html
+    notes/_卡點對照表.md: blockers.html
+    notes/_筆記模板與說明.md: template.html
+    notes/idohl/01_團隊與歷史.md: idohl/01-team-history.html
+    notes/idohl/02_三個計畫.md: idohl/02-three-projects.html
+    notes/idohl/03_開源釋出與程式碼.md: idohl/03-open-source-code.html
+    notes/idohl/04_出版與相關工作.md: idohl/04-publications-related-work.html
+  exclude:
+    - path: notes/語料言據標記盤點_2026-08-22.md
+      reason: 語料衍生（含受訪者原句的 KWIC），不屬筆記類
+    - path: notes/講述者標記盤點_2026-09-04.txt
+      reason: 語料盤點（受訪者名單），不屬筆記類
+  categories:
+    索引與回顧: [refs.html, review-2026-07.html, matrix.html, blockers.html, template.html]
+    IDOHL 調查報告（2026-10-05）: [idohl/01-team-history.html, idohl/02-three-projects.html, idohl/03-open-source-code.html, idohl/04-publications-related-work.html]
+    # 其餘都歸「文獻深讀筆記（八節）」
+
+# 三、導讀投影片（Marp markdown → 公開版 HTML）
+slides:
+  - src_md: SLIDES/crossley2008_punk/crossley2008.md
+    src_img_dir: SLIDES/crossley2008_punk/img
+    out_dir: slides/crossley2008-pretty-connected
+    title: Pretty Connected：早期英國 punk 的社會網絡（Crossley 2008 導讀）
+    blurb: 實驗室週會的論文導讀投影片。公開版移除了出版社圖表與未授權照片，保留三張公眾領域或 CC 授權的照片。
+    date: 2026-07-30
+    # 公開版可保留的圖（公眾領域或 CC 授權），其餘 img/ 一律不複製、不引用
+    keep_images:
+      pistols_matlock_1976.jpg: "Koen Suyk／Anefo，荷蘭國家檔案館，CC0（Wikimedia Commons: Sex_Pistols_in_Paradiso.jpg）"
+      vicious_1977.jpg: "Billedbladet NÅ／Arne S. Nielsen，挪威國家檔案館，no known copyright restrictions（Wikimedia Commons）"
+      lesser_free_trade_hall_poster.jpg: "Manchester Digital Music Archive，上傳者 David Gerrard，CC BY-NC-SA 4.0"
+    # 論文圖表：以文字框代替，標明原文頁碼
+    figure_placeholders:
+      fig1_bands.png: "Figure 1（Crossley 2008, p. 97）：樂團之間的人事流動。原圖屬出版社著作權，公開版未附上。"
+      fig2_network.png: "Figure 2（Crossley 2008, p. 101）：46 人的網絡圖，全文關鍵圖。原圖屬出版社著作權，公開版未附上。"
+      fig3_degree.png: "Figure 3（Crossley 2008, p. 106）：度數分布直方圖。原圖屬出版社著作權，公開版未附上。"
+    # 投影片註解裡的講稿（<!-- 講稿：… -->）不進公開版；Marp 指令註解（<!-- _class: … -->）保留
+    strip_note_comments: true

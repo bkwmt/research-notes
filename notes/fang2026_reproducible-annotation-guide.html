@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fang 2026_用 LLM 做可重現文本標註的方法指南（人文社科）</title>
+<meta name="description" content="Fang 2026_用 LLM 做可重現文本標註的方法指南（人文社科）">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Fang 2026_用 LLM 做可重現文本標註的方法指南（人文社科）</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/fang2026_reproducible-annotation-guide.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Fang, Q., Garcia Bernardo, J., &amp; van Kesteren, E.-J. (2026). <em>A Methodological Guide on Using Large Language Models for Reproducible Text Annotation in the Social Sciences and Humanities with Python and R</em>. arXiv:2604.09638 (v2, 2026-05-27). 預印本，未經同儕審查。</li>
+<li><strong>對應待查問題</strong>：⑤無 gold standard 評估（兼及 ③harness／評估、④數位人文）</li>
+<li><strong>一句話定位</strong>：這不是實驗論文，而是一份寫給人文社科學者（social sciences and humanities，SSH）的「用 LLM 做文本標註」操作指南；它的核心主張是把 LLM 當成一種會出錯的<strong>測量儀器</strong>（measurement instrument），因此整套流程的重點不在模型多強，而在如何讓標註結果<strong>可驗證、可重現、可追溯</strong>，這一點正對上本專案的紅線 3（強制出處）與紅線 4（推理可追溯、中間產物落檔）。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>這篇自我定位很清楚：市面上已有不少「LLM 在 SSH 怎麼用」的綜述，但它們多半停在概念層次。這份指南要補的是<strong>方法驅動、以程式碼與工作流程為中心</strong>的空缺，讓研究者能真的動手把一條可重現的標註流水線建起來、評估它、再改進它。它附了兩份 Python 與兩份 R 的對照 codebook（notebook），正文每一步都有對應程式碼。</p>
+<p>它反覆強調的一個核心觀念，是把 LLM 標註視為<strong>測量</strong>問題而非單純的分類問題。由此帶出這篇真正的貢獻點：把「標註實務」跟「統計推論、測量理論」接起來。它明白指出一件容易被忽略的事——<strong>標註表面準確率再高，只要標籤裡的誤差沒有被處理，就會偏誤下游的統計分析</strong>（迴歸係數、p 值、實質結論都會受影響）。這是全篇最有分量、也最不「工程」的貢獻：它逼研究者去想「我標出來的東西，拿去做分析時會不會騙了我自己」。</p>
+<p>它同時劃清界線，明說<strong>不做</strong>的事：不談 LLM 的架構細節、不做模型排名或 benchmark、不談微調（fine-tuning）、也<strong>不主張用 LLM 完全取代人工黃金標準</strong>。LLM 是「擴增（augment）」人類專業，不是取代。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>要先說清楚：這篇處理的「標註」，主要是<strong>分類與評分</strong>型任務（把一段文字打上一個類別或一個 0–2 的分數），而不是本專案那種「從逐字稿抽出實體／事件／關係」的資訊抽取。它全篇用一個貫穿範例：給學生與聊天機器人的對話打「目標具體性」分數（0=不具體、1=部分、2=完全具體）。所以它的「抽取流程」其實是一條<strong>標註流水線</strong>，步驟大致如下（對應論文第 3–7 節）：</p>
+<ol>
+<li><strong>先問對問題、確認資料裡真的有訊號</strong>（第 3 節）。有些構念（例如人格特質）在資料裡根本編碼得很弱，模型再強也救不了。它明講：LLM 不會神奇地化解概念含糊或訊號不足，反而會把資料與任務設計裡本來就有的限制放大。</li>
+<li><strong>先定好「多好才算夠好」</strong>。動手前就要設一個<strong>事前（a priori）目標一致度</strong>（LLM 與黃金標準要達到的一致程度），而且這門檻要有理論或實質理由（例如夠支撐分組比較、夠做顯著性檢定），不能事後看跑出來的數字再補justification。這一步同時是防止過度擬合的「停手準則」。</li>
+<li><strong>把研究問題翻成清楚的標註說明（codebook／rubric／評分手冊）</strong>。它反覆強調：LLM 標註與人工標註在概念上是同一件事，<strong>兩者都極度依賴精確、結構清楚、不含糊的指示</strong>。codebook 就是連接理論構念與 prompt 設計的橋樑，是整條流程最關鍵的一步。</li>
+<li><strong>設計 prompt</strong>（第 4 節）。區分 system prompt（設定整體行為：任務脈絡、具體任務、期望輸出格式）與 user prompt（放實際要標的文字）。四個「快速見效」技巧：把話講清楚（用「classify／assign one label」這種明確動詞，避免「analyse／interpret」）、給角色（role-based）、要求逐步推理（step-by-step，即 chain-of-thought）、給少量範例（few-shot）。它示範了一份很細的 system prompt，含 <code>##INSTRUCTIONS##</code>、<code>##EDGE CASE HANDLING##</code>、<code>##WHAT NOT TO DO##</code> 分區。</li>
+<li><strong>設定運算環境與執行</strong>（第 5–6 節）。建議用程式化 API 呼叫（而非聊天介面），因為只有這樣才能系統化處理大量文字、控制參數、確保可重現。示範用 Hugging Face Inference（Python）與 Groq（R），透過 langchain／ellmer 讓流程與供應商無關。單筆先跑通，再用迴圈批次跑。</li>
+<li><strong>結構化輸出</strong>（第 7 節，見下節）。</li>
+</ol>
+<p>值得注意：這是<strong>單一 prompt、單次呼叫</strong>的流程，<strong>不是多 agent 分工</strong>，也沒有 agentic 的規劃／檢索環節。它的「多步」體現在流程管理（環境→prompt→執行→評估→改進的迭代），不在單筆標註內部的多階段推理交棒。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>因為任務是「一段文字 → 一個分數」，它的輸出結構很簡單，沒有本專案意義下的 schema／本體（ontology），也沒有跨文件的實體去重、實體合併、衝突解決這類需求（因為根本不抽實體）。</p>
+<p>它真正談「怎麼安排結構」的地方是<strong>結構化輸出（structured output）</strong>（第 7 節）：與其讓模型吐自由文字（「two」「this scores a 2」各種變體）再費力 parsing，不如強制模型每次都回一個固定格式。它用 pydantic 的 <code>BaseModel</code>／<code>Field</code> 定義：</p>
+<ul>
+<li><code>specificity_score</code>: int（0/1/2，欄位描述寫明「只回 0 到 2 的整數」）</li>
+<li><code>reasoning</code>: str（模型自己給的評分理由）</li>
+</ul>
+<p>這個「<strong>分數＋理由</strong>」的雙欄設計，是這篇對本專案最有參考價值的結構安排（詳見第 8 節）。它讓每一筆標註都自帶一段可讀的判斷依據，後續診斷錯誤時可以直接看模型「為什麼這樣打分」。</p>
+<p>至於「重新安排既有結構」的步驟，這篇沒有融合／精煉那一套，但它有一個對等物：<strong>迭代改進 prompt 與資料</strong>（第 8.3 節）——修 codebook、加反例、改輸出格式，再重跑。這是在「規則層」而非「資料層」做精煉。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>不是三元組，也不是圖。</strong> 它的表示法就是<strong>帶屬性的標註紀錄</strong>：每一筆是 <code>(id, 文字, 分數, 理由)</code> 這樣的一列，最終落在一個扁平的表格（<code>.csv</code>／DataFrame）裡。它明確建議用 <code>.csv</code> 存資料，每一列對應一個文字單位（一句、一段、一則貼文），並帶<strong>唯一識別碼</strong>與任何脈絡性 metadata（受試者 ID、日期、來源）。</p>
+<p>關於本專案最在意的三個欄位：</p>
+<ul>
+<li><strong>出處／provenance</strong>：沒有本專案那種「時間碼＋口述者＋段落」的細粒度出處，但它有<strong>列級識別碼 + 來源 metadata</strong>（participant ID、date、source），概念上是同一件事的粗版——每一筆標註都能回溯到它標的是哪一段原文。</li>
+<li><strong>時間資訊</strong>：資料層可帶 date；更重要的是它在<strong>流程層</strong>強調時間戳——每次 API 呼叫要記 timestamp（見第 11 節 metadata 那段）。</li>
+<li><strong>信心分數</strong>：<strong>它沒有要模型自評信心分數</strong>，這點與本專案紅線 2 一致（見第 8 節）。它用的是 <code>reasoning</code> 文字理由，加上程式化的一致度指標（Krippendorff's α 等）來間接反映品質，而不是叫模型吐一個 0–1 的 confidence。</li>
+</ul>
+<p>它為什麼選扁平表格而非圖？因為任務本質是測量（一段文字得一個值），輸出要直接餵進迴歸等統計分析當變數，扁平表格最順手。這也是它跟本專案的根本差異：本專案要建的是<strong>有向網絡</strong>，需要實體／事件／關係的混合結構，扁平評分表撐不起來。</p>
+<h2 id="5">5. 資料集</h2>
+<ul>
+<li><strong>語料</strong>：一份玩具資料集（toy dataset），學生與規則式聊天機器人的週對話，由 Gabrielle Martins van Jaarsveld 從她的自我調節學習（self-regulated learning）研究提供。任務是評對話中學生「設定學習目標」的具體性。</li>
+<li><strong>語言</strong>：英文。<strong>沒有中文</strong>。</li>
+<li><strong>規模</strong>：極小，正文示範只用了前 10–15 筆對話（純為教學演示）。這不是要證明方法在大規模上的效能，只是走一遍流程。</li>
+<li><strong>領域</strong>：教育研究的對話文本。<strong>沒有歷史文本、沒有口述訪談</strong>（雖然是「對話」，但那是結構化問卷式的人機對話，不是人對人的口述歷史）。</li>
+<li><strong>公開性</strong>：程式碼與範例資料都公開（GitHub: sodascience/workshop_llm_data_collection；Zenodo: 20073016）。<strong>沒有提出新 benchmark 或新資料集</strong>——這是方法指南，不是資料集論文。</li>
+</ul>
+<p>對本專案的直接可用性：語料本身無關（無中文、無歷史、無口述訪談），但流程與評估框架可借。</p>
+<h2 id="6">6. 評估</h2>
+<p>這是這篇的重頭戲，也是對應待查問題⑤的核心。</p>
+<ul>
+<li><strong>有沒有 gold standard？</strong> 有，而且它把黃金標準當成整套評估的地基（第 3.2 節「Secure a Gold-Labelled Subset」）。它要求：黃金標籤由領域專家依明確 codebook 標註；類別／分數要<strong>平衡</strong>（避免評估被少數類別主宰）；若要做子群分析要<strong>分層抽樣</strong>；最關鍵——<strong>黃金子集要嚴格保留（strictly held out）</strong>，不能拿去當 few-shot 範例、微調或訓練，否則會資料洩漏（leakage）、灌水一致度。</li>
+<li><strong>指標</strong>：依標籤性質分三類。類別型用 accuracy／Cohen's κ／Krippendorff's α；<strong>有序型（本專案 0–2 這種）用加權版 κ 或 α</strong>（線性或二次權重，懲罰差距大的分歧）；連續型用 Pearson r／ICC／MAE／RMSE。它明講<strong>沒有單一指標能完整反映品質</strong>，建議同時報一致度指標＋各類別的 precision/recall，並且<strong>一定要配合對分歧案例的質性檢視</strong>。</li>
+<li><strong>有沒有 LLM 自評／LLM 當評審（LLM-as-a-judge）？</strong> <strong>沒有。</strong> 它的評估錨定在人工黃金標準與程式化統計指標上，完全沒有走「用 LLM 驗證 LLM」的循環。這點乾淨，也與本專案紅線 2 相容。</li>
+<li><strong>人工介入到什麼程度</strong>：很深。人工要建 codebook、產黃金標籤、<strong>逐案檢視分歧</strong>（判斷分歧來自 (a) 黃金標籤本身錯了、(b) LLM 違反任務規格、還是 (c) LLM 沒抓到某些細節或脈絡）、再據此改 prompt 或改資料。這是實打實的 human-in-the-loop，不是橡皮圖章。</li>
+</ul>
+<p><strong>最值得抄的一個設計——防過度擬合的 Explore → Select → Evaluate 三段框架（第 9 節）</strong>：如果反覆拿<strong>同一份</strong>黃金資料去調 prompt 又拿它報成績，prompt 會愈調愈貼合這份資料的怪癖，跑出來的分數會虛高（它稱之為 model-selection 的 winner's curse）。解法是把黃金資料切三份：</p>
+<ol>
+<li><strong>Explore</strong>（10–20%）：自由檢視錯誤、隨便改 prompt，容許過度擬合，目的是生出一組候選 prompt。</li>
+<li><strong>Select</strong>（40–60%）：所有候選 prompt 在<strong>同一批</strong>資料上比，選一致度最高的；<strong>選完就凍結，不准再改</strong>。</li>
+<li><strong>Evaluate</strong>（20–30%）：在完全沒碰過的保留測試集上跑最終 prompt，這個分數才是能寫進論文的、無偏的品質估計。</li>
+</ol>
+<p>它也誠實指出：因為 LLM 參數不重訓，傳統的 nested cross-validation 在這裡的意義不同（同一 prompt 在不同 fold 上、若確定性解碼，會給一樣的預測）；分開開發集與評估集的目的<strong>不是防模型學到訓練資料，而是防最終成績被 prompt 挑選過程偏誤</strong>。</p>
+<p><strong>評估設計本身的問題</strong>：這篇的評估邏輯很紮實，我讀不出明顯的循環論證。要挑的話：整套評估的天花板完全押在<strong>黃金標準的品質</strong>上，而它自己在範例最後也承認「本例並沒有評估黃金標籤本身的品質」（第 8.4 節末），這是它把難題留給了讀者。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自己承認或點到的：</p>
+<ul>
+<li><strong>不是所有任務都適合 LLM</strong>。構念在文本裡編碼太弱、定義不清、或高度依賴資料裡沒有的脈絡知識時，再強的模型也會卡。效能天花板往往由構念清晰度、標註說明、標註者間分歧、文本資訊密度決定，而不是模型容量。若連人類標註者都只有中度一致，卻期待 LLM 近乎完美，既不現實也沒有方法論根據。</li>
+<li><strong>可重現性是硬傷</strong>。專有雲端模型會<strong>無聲改版</strong>、舊版可能撤下；prompt、參數、甚至運算環境的細微差異都會改變輸出；商用 API 常不完整揭露後端更新。它坦言長期複製很難。</li>
+<li><strong>黃金標準本身可能有錯</strong>，會製造 LLM 與黃金標籤之間的「假分歧」。</li>
+<li><strong>標註誤差會傳進下游</strong>（第 10 節整節）：隨機誤差降低信度、衰減關聯（attenuation bias）、削弱統計檢定力；系統誤差威脅效度、產生偏誤結論。即使一致度很高也擋不住。它介紹了 postpi/ppi_py/pspa/dsl/psps/ipd 等統計校正套件，但這些校正主要針對「分數當變數餵進迴歸」的情境。</li>
+</ul>
+<p>我讀出來、它沒明講或偏弱的地方：</p>
+<ul>
+<li><strong>它的整個示範是分類／評分任務</strong>，對「開放式資訊抽取」（抽實體、事件、關係，這正是本專案在做的）幾乎沒著墨。它的評估機器（Krippendorff's α、held-out gold subset）預設「每筆輸入對應一個可比對的標籤」，一旦輸出是「一段訪談抽出 N 筆長度不定的關係」，這套一致度指標<strong>直接套不上</strong>——本專案沒有、也刻意不建配對式 gold standard（紅線 1），正好落在它的方法射程之外。</li>
+<li><strong>它對 human-in-the-loop 的定位偏「改 prompt 的燃料」</strong>，人主要在調規則與判分歧；它沒談「人審每一筆輸出」這種更重的介入形態，也沒談當標籤根本無法窮舉、無法配對時該怎麼評估。</li>
+<li>它推 few-shot，但同時警告 few-shot 範例必須只取自開發集、不能洩漏測試集；這個張力它點到了，但在小資料情境下如何兼顾其實很尷尬。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p>先講結論：<strong>這篇的語料與任務類型跟本專案不合（無中文、無口述、做評分不做資訊抽取、評估靠配對式 gold standard 而本專案紅線 1 明確拒絕它），但它的「流程紀律」與「透明度／可重現」這一整套做法，跟本專案紅線 3、4 高度相容，值得直接借。</strong></p>
+<p><strong>與四條紅線的對照：</strong></p>
+<ul>
+<li><strong>紅線 1（不做配對式 gold standard）</strong>：這篇<strong>幾乎全靠</strong>held-out 黃金子集 + 一致度指標來評估。這套在本專案的事件與關係層<strong>用不上</strong>（沒有一對一可比的標準答案），在實體層則對得上——本專案的 <code>entity_stage1_final.csv</code>（人工名冊）正好扮演它說的「專家依明確準則標的黃金子集」角色。所以：<strong>實體層可借它的評估邏輯，事件／關係層不能照搬</strong>。這是最大的一條「不可照抄」。</li>
+<li><strong>紅線 2（絕不叫 LLM 自評信心）</strong>：<strong>完全相容</strong>。這篇沒有任何 LLM 自評信心的設計，它用 <code>reasoning</code> 文字理由 + 程式化統計指標，跟本專案「信心由程式化訊號推導」的立場一致。可以拿它當外部佐證：一份給人文社科的正式指南也不走 LLM 自評這條路。</li>
+<li><strong>紅線 3（每筆強制附出處）</strong>：<strong>相容且可強化</strong>。它要求每筆標註帶列級 ID + 來源 metadata（participant/date/source），是本專案細粒度出處（檔名＋時間碼＋口述者＋段落）的粗版。本專案已經做得比它細，可放心。</li>
+<li><strong>紅線 4（推理可追溯、中間產物落檔）</strong>：<strong>這是最大宗、最該抄的一段。</strong> 見下。</li>
+</ul>
+<p><strong>具體可借用的做法：</strong></p>
+<ol>
+<li>
+<p><strong>「分數＋理由」雙欄 → 本專案的「知識＋判準理由」雙欄。</strong> 它每筆標註都存一個 <code>reasoning</code> 欄，記模型為何這樣判。本專案可以在每筆抽取（實體／事件／關係／goût）旁邊，比照存一個簡短的「抽取依據」欄（模型為何從這段話抽出這筆、對到原文哪句）。這既服務紅線 4（推理可追溯），也讓 extract-qa 的查核有東西可看，比只留最終結果強得多。</p>
+</li>
+<li>
+<p><strong>自動生成結構化日誌（紅線 4 的直接實作範本）。</strong> 第 11.3 節示範把每一次呼叫都寫成 CSV + JSONL 日誌，欄位包含：<code>chat_id</code>、<code>provider</code>、<code>model</code>（含版本）、<code>temperature</code>、<code>max_tokens</code>、<code>seed</code>、完整 <code>prompt_text</code>、輸出 <code>score</code>、輸出 <code>reasoning</code>、timestamp。這正是本專案「中間產物全部落檔進 git」要的東西的可操作清單。<strong>建議 srt-extract 的 headless 批次（Stage 3）比照落一份 run-level 日誌</strong>：每位受訪者、每次抽取，記模型 ID＋版本、溫度／seed、完整 prompt、時間戳、輸出。它還提醒：日誌可能含敏感／個資，公開前要審查、去識別——這對含敏感田野素材的口述歷史尤其該注意。</p>
+</li>
+<li>
+<p><strong>版本控制 + 封存（紅線 4 的長期版）。</strong> 它建議腳本／prompt／日誌／metadata 都進版控（Git），長期保存再打 tag 上 Zenodo/OSF。本專案已在 git 落檔，這條印證了現行做法的方向對。</p>
+</li>
+<li>
+<p><strong>Explore → Select → Evaluate 的防過擬思路，可轉化到校準流程。</strong> 本專案 Stage 2 是「先跑 3–5 位互動式校準，穩定後批次跑」。這裡有個隱患它幫忙點破：<strong>如果一直拿同一批校準受訪者來調 criteria.md 與 skill，然後又拿同一批的表現當「穩定了」的證據，就會過擬合到那幾位</strong>。可借的紀律是：<strong>調 criteria／prompt 用的受訪者，跟用來宣稱「流程穩定、可以放大」的受訪者，應該分開</strong>。校準子集調規則，另留一批沒碰過的受訪者做「真的穩不穩」的最終檢查。這對事件／關係層尤其重要，因為那裡沒有 gold standard，唯一能防自我欺騙的就是這種資料切分紀律。</p>
+</li>
+<li>
+<p><strong>prompt 分區寫法可借。</strong> 它的 system prompt 用 <code>##INSTRUCTIONS##</code>／<code>##EDGE CASE HANDLING##</code>／<code>##WHAT NOT TO DO##</code>／<code>##EXAMPLE##</code> 明確分區，還特別列「never modify or assume intent；score exactly as written」這類反腦補戒律——這跟本專案 criteria.md 要防的「腦補」是同一個問題，值得對照補強。</p>
+</li>
+</ol>
+<p><strong>該避免／不適用的：</strong></p>
+<ul>
+<li>不要被它「held-out gold subset + Krippendorff's α」的評估框架牽著走去替事件／關係層硬造配對式標準答案——那會直接違反紅線 1。它的評估機器預設「一輸入一標籤」，本專案的抽取是「一段訪談多筆不定長輸出」，套不上。</li>
+<li>它的下游統計校正套件（ppi_py/dsl 等）是給「把標註當數值變數餵迴歸」用的，跟本專案「建網絡」的下游任務無關，可略。</li>
+</ul>
+<p><strong>對「口述歷史、非三元組、強制出處」需求的參考價值總評</strong>：表示法上參考價值低（它是扁平評分表，本專案是實體／事件／關係混合結構 + 有向網絡，兩者不同物種）；但<strong>出處與可重現／可追溯</strong>上參考價值高——它把「每筆標註帶來源 ID」「每次呼叫自動記完整日誌」「版控 + 封存」講成一份可照著做的清單，正好是紅線 3、4 的現成落地範本。一句話：<strong>表示法別學它，流程紀律該學它。</strong></p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>stankovic2026_tei-ner-interview-corpus：把訪談語料編成 TEI、接上 Wikidata、再用文本計量讀它</title>
+<meta name="description" content="stankovic2026_tei-ner-interview-corpus：把訪談語料編成 TEI、接上 Wikidata、再用文本計量讀它">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>stankovic2026_tei-ner-interview-corpus：把訪談語料編成 TEI、接上 Wikidata、再用文本計量讀它</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/stankovic2026_tei-ner-interview-corpus.md</code>　來源最後修改 2026-10-06　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Stanković, R., Vučenović, T., Rujević, B., Ikonić Nešić, M., &amp; Škorić, M. (2026). Integrating TEI, NER/NEL, Textometry, and Linked Data for a Semantically Enriched Interview Corpus. <em>Proceedings of the Fifteenth Language Resources and Evaluation Conference (LREC 2026)</em>, pp. 1474–1484. 11–16 May 2026. ELRA Language Resources Association. ACL Anthology 編號 2026.lrec2026-1.114（PDF 未標示 DOI）。<strong>同儕審查的會議論文</strong>（LREC 主會議）。</li>
+<li><strong>對應待查問題</strong>：④口述歷史／數位人文（主）；⑨跨來源實體對齊（NEL 到 Wikidata、NIF 連結資料）；⑤無 gold standard 評估（部分：文本計量那一節提供免標準答案的語料訊號，但論文本身的評估是有 gold standard 的一方）；⑥時間記法（只到「訪談年份」這個粒度，附帶）。</li>
+<li><strong>一句話定位</strong>：一組塞爾維亞團隊把 57 場廣播訪談（已編輯成書的逐字稿）編成 TEI XML、用微調的 encoder 模型做命名實體辨識、把實體連到 Wikidata 的 QID、輸出成 NIF 連結資料、再用 TXM 做文本計量，最後試著用 LLM 做問答摘要。它是目前為止最貼近本專案「訪談語料 → 帶講述者與出處的實體層 → 跨來源接外部庫」這條路徑的完整示範，但它<strong>沒有做關係抽取</strong>、沒有時間碼、評估很薄，所以它的價值在「工程骨架可對照」，不在「方法可搬」。</li>
+</ul>
+<p>先講清楚三個術語。<strong>TEI</strong>（Text Encoding Initiative，文本編碼倡議）是人文學界用 XML 標籤把文獻結構標出來的社群標準，訪談這種口語材料有專章（P5 第 8 章「Transcriptions of Speech」）規範怎麼標「誰在說話」（<code>&lt;u who=""&gt;</code>）、停頓、重疊與時間軸。<strong>NEL</strong>（Named Entity Linking，命名實體連結）是在 NER 認出「這串字是人名」之後，再進一步判斷「是哪一個人」，把它接到一個外部知識庫的唯一編號上，這篇用的是 Wikidata 的 QID（例如塞爾維亞是 Q403）。<strong>Textometry</strong>（文本計量，法語傳統稱 textométrie）是把語料切成分區（例如按年份、按講述者），再算某個詞在某分區出現得比預期多還是少，代表工具是 TXM。</p>
+<h2 id="1">1. 貢獻</h2>
+<p>論文自己列了兩項：（i）一條「標準導向」的管線，把訪談逐字稿轉成語意連結、可按結構查詢的資源；（ii）在這個語料（DigIko）上做有證據依據的問答與摘要。它想解決的問題是：訪談與廣播逐字稿在 NLP 裡長期沒被好好用，因為它們非結構、異質、難以可靠查詢，在低資源語言（塞爾維亞語）尤其如此。</p>
+<p>讀完後我認為它真正可算貢獻的，比自述的窄也比自述的具體：</p>
+<ol>
+<li><strong>示範了「TEI 結構層 → 內嵌 NER → NEL 到 Wikidata → NIF 連結資料 → SPARQL 端點」這一整條相容標準的串接</strong>，而且是在訪談語料上、有講述者面向（speaker facet）的。這比單做 NER 或單做 TEI 的論文完整。</li>
+<li><strong>把講述者當成檢索與分析的第一級維度</strong>：每個發言（<code>&lt;u&gt;</code>）帶 <code>@who</code>，索引與 SPARQL 都能按講述者切。第 5 節末的圖 7「誰提到誰／什麼」（Who was mentioning who/what?）是一張講述者 → 被提及實體的有向圖，這與本專案有向網絡的「層一敘事」（講述者→被講述）是同一種東西。</li>
+<li><strong>公開資源</strong>：DigIko 語料（TEI＋NER＋NEL，Hugging Face）、TeslaXLM 模型、NIF 版與 Fuseki 端點、INCEpTION 與 NoSketch Engine 實例。</li>
+</ol>
+<p>它<strong>沒有</strong>做到、但摘要與結論語氣容易讓人以為做到的：關係抽取（它自己在限制節承認「relations better explored」）、事件抽取、時間錨定、以及 RAG（第 7 節寫明「Future activities will go towards RAG implementation」，本文實作的只是問答對的摘要）。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>輸入不是錄音、也不是原始逐字稿，而是<strong>一本書</strong>。廣播節目《Digitalne Ikone 20+》（Radio Belgrade 2，2002 年起播，逾千集）的訪談被主持人 Vučenović 挑選、編輯、集結成書（2024），書在 Microsoft Word 裡用自訂樣式標好了「訪談詮釋資料、開場介紹、主持人提問、來賓回答」。這一點對本專案很關鍵，後面會回來談：<strong>它的「逐字稿」是經過編輯的出版文本，不是口語原貌，而且沒有任何時間碼</strong>。</p>
+<p>流程是單線、順序式，沒有 agent、沒有多模型分工：</p>
+<ol>
+<li><strong>Word → TEI</strong>：自寫 Python 腳本讀 Word 樣式，產生 TEI XML：<code>&lt;div type="interview"&gt;</code> 標訪談邊界（帶 <code>@gender</code>、<code>@interviewid</code>、<code>@iyear</code>），<code>&lt;DATE&gt;</code> 塊放月與年，<code>&lt;title&gt;</code>、<code>&lt;interviewee&gt;</code>，內部再分 <code>&lt;div type="introduction"&gt;</code> 與 <code>&lt;div type="conversation"&gt;</code>。發言用 <code>&lt;u who="#TaVu" toWhom="#VoAn"&gt;</code>，裡面包 <code>&lt;p&gt;</code>，再切 <code>&lt;seg&gt;</code>（句層）。問與答另用專案自訂的 <code>&lt;iquestion&gt;</code>／<code>&lt;ianswer&gt;</code> 包住（論文自承這不合標準，合標準的寫法應是 <code>&lt;seg type="question"&gt;</code>）。作者說這一步「需要好幾輪修正才達到一致結構」，用 XMLSpy 產 schema 與驗證。</li>
+<li><strong>TXM 加詞性與詞元層</strong>：用 JeRTeh 的塞爾維亞語資源做斷句、詞性標記與詞元化（lemmatization），供文本計量使用。</li>
+<li><strong>NER</strong>：用 TeslaXLM（以 xlm-roberta-large 為底的塞爾維亞語模型）上訓練的分類器，訓練資料是 73K 句人工校訂的標注（「持續建置中」）。八類：PERS（人）、LOC（地）、ORG（組織）、EVENT（事件）、ROLE（角色／職業）、WORK（作品）、DEMO（族群稱謂）、PRODUCT（產品）。辨識出的跨距<strong>直接以標籤內嵌進 TEI 文本</strong>。</li>
+<li><strong>NEL</strong>：另一個 TESLA 模型把辨識出的實體對到 Wikidata 項目，「用脈絡消歧」；Wikidata 找不到的就<strong>把新項目加進 Wikidata</strong>。之後在 INCEpTION 平台<strong>人工校正</strong> NER 與 NEL 兩層（圖 4）。</li>
+<li><strong>NIF 序列化</strong>：把帶標注的語料轉成 NIF（NLP Interchange Format）的 RDF，部署到本地 Apache Jena Fuseki 端點，可用 SPARQL 查。</li>
+<li><strong>摘要</strong>（唯一用到生成式 LLM 的地方）：用 DSPy 框架寫一個 signature，輸入 <code>question_in</code>／<code>answer_in</code>，輸出兩段簡潔的塞爾維亞語摘要，指令塊要求中性語氣、不冗餘、嚴格忠實。試了 GPT-4.1、GPT-5 與自家 800M 參數的 Qwen3 架構模型 SM1（用 3 萬對文本／摘要訓練）。</li>
+</ol>
+<p>值得注意：<strong>這篇的抽取端完全沒有用 LLM</strong>。實體辨識與連結是微調的 encoder 模型，屬於「傳統」監督式 NLP；LLM 只負責最後把問答對縮短。這與本專案「LLM 能否承擔人工標注」的問題意識是錯開的，它問的其實是「有了 73K 句訓練資料的低資源語言，怎麼把訪談語料變成可查資源」。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>結構有三層，彼此疊在同一份文本上：</p>
+<ul>
+<li><strong>文件結構層（TEI）</strong>：訪談 → 介紹／對話 → 發言 → 段落 → 句段。Schema 強制三件事：<code>&lt;div&gt;</code> 的 <code>@type</code> 限定值、<code>&lt;u&gt;</code> 必填 <code>@who</code>、內容模型 <code>u → (p+)</code>、<code>p → (seg*)</code>。作者說這三條保證了「NER／NEL 的字元偏移量、講述者層級的出處、連結資料序列化」有穩定的掛載位置。講述者以四字母代號（<code>#TaVu</code>、<code>#VoAn</code>）指向參與者名冊。</li>
+<li><strong>實體層（內嵌 NER 標籤）</strong>：八類標籤直接套在字串上，如 <code>&lt;PERS&gt;Voja Antonić&lt;/PERS&gt;</code>、<code>&lt;PRODUCT&gt;Galaksiju&lt;/PRODUCT&gt;</code>。注意塞爾維亞語有格變化，同一實體會以不同詞形出現（Galaksija／Galaksiju），這是他們做 NEL 的第一個理由：<strong>「正規化」，把不同詞形連到同一個 QID</strong>。</li>
+<li><strong>連結層（NIF RDF）</strong>：每個實體提及是一個 <code>nif:String</code>，以 RFC 5147 的字元範圍當 URI（<code>digiko.txt#char=5107,5119</code>），帶 <code>nif:anchorOf</code>（原字串）、<code>nif:beginIndex</code>／<code>endIndex</code>、<code>itsrdf:taClassRef</code>（類別，人用 <code>wd:Q5</code> 與 <code>dbo:Person</code>）、<code>itsrdf:taIdentRef</code>（具體 QID，如 <code>wd:Q1252236</code>）。另加講述者層級的詮釋資料。</li>
+</ul>
+<p><strong>沒有跨文件去重、沒有衝突解決、沒有實體間關係</strong>。同一個人在不同訪談被提到，靠的是連到同一個 QID 這一件事，而不是另有一份合併過的登錄簿；沒連上 Wikidata 的提及就各自散落。這也是為什麼它在限制節說「知識圖譜應該補完」。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>不是關係三元組。</strong> 知識以兩種形式存在：（a）內嵌在原文裡的 TEI／NER 標記樹；（b）NIF 的 RDF，那的確是 RDF 三元組，但主詞是「一段字元範圍」，述詞是「它的字串是什麼、從哪到哪、屬於哪類、指向哪個 QID」。換句話說，<strong>它的三元組描述的是「提及」（mention），不是「兩個實體之間的關係」</strong>。全篇唯一接近關係的東西是圖 7 的「講述者 → 被提及實體」有向邊，那是從 <code>@who</code> 與 NER 跨距的共現直接推出來的，不是抽取結果。</p>
+<p>四個欄位逐一看：</p>
+<ul>
+<li><strong>出處</strong>：有，而且是字元層。NIF 的 <code>#char=begin,end</code> 加上 TEI 的 <code>xml:id</code>／XPath，等於「哪一份文本、第幾個字元到第幾個字元」。講述者出處靠 <code>&lt;u who&gt;</code>。<strong>但沒有時間碼</strong>，因為來源是書；論文在相關研究引 Davis（2015）與 Fisseni &amp; Schmidt（2019）談 TEI 的 <code>&lt;timeline&gt;</code> 與音訊對齊，自己並沒有做。</li>
+<li><strong>時間資訊</strong>：只有訪談層級的年與月（<code>@iyear</code>、<code>&lt;DATE&gt;</code>）。句子裡講的「1983 年」是文字，沒被抽成時間欄位。</li>
+<li><strong>信心分數</strong>：無。NER／NEL 模型內部的分數沒輸出；NEL 錯誤分析裡提到「保守的信心門檻」（conservative confidence thresholds）造成召回偏低，說明模型分數只用在內部過濾，沒有寫進資源。</li>
+<li><strong>來歷</strong>（誰說的）：以 <code>@who</code> 表達到發言層，沒有再細到「這句話是講述者自述還是轉述別人」。</li>
+</ul>
+<p>為什麼選這種表示法？因為它的下游是<strong>檢索與查詢</strong>（按講述者、按 QID 撈段落，餵給摘要模型），不是網絡分析。提及層的 RDF 足以支撐「找出所有提到 Q403 的段落」這種需求，而不需要關係邊。這也提醒本專案：表示法要跟下游對齊，我們的下游是有向網絡與生命過程序列，所以停在提及層是不夠的。</p>
+<h2 id="5">5. 資料集</h2>
+<ul>
+<li><strong>DigIko</strong>（Digital Icons 20+ Interview Corpus）：塞爾維亞語，源自同名書；書收 57 集節目、67 位來賓。語料 57 場訪談、1,334 個發言（665 問、669 答）、8,887 句、142,490 詞。年份分布 2002–2023（圖 1 為逐年詞數直方圖）。</li>
+<li><strong>語言</strong>：塞爾維亞語（含少量克羅埃西亞語相關詞），<strong>沒有中文</strong>。</li>
+<li><strong>領域</strong>：數位科技與資訊社會的專家訪談（政府官員、研究者、IT 業者、公民團體、媒體）。<strong>是訪談，但不是本專案意義下的口述歷史</strong>：來賓談的是專業議題與科技史，不是自己的生命歷程；文本經過主持人編輯出版，口語現象（口誤、跳接、重述）已被清掉。</li>
+<li><strong>NER 訓練資料</strong>：73K 句人工標注（SrpELTeC-gold 等 TESLA 計畫資源），非本語料。</li>
+<li><strong>摘要訓練資料</strong>：SD1 三萬對文本／摘要。</li>
+<li><strong>公開性</strong>：語料在 Hugging Face（Stanković &amp; Vučenović 2026），NIF 版有公開端點，模型 CC-BY-SA。論文說「程式與樣本資料將免費取用，全語料可供檢索」，是承諾式語氣。</li>
+</ul>
+<p>實體分布（圖 5、第 4.2 節）：以 ROLE 與 ORG 最多，EVENT 最少。最常見地名 Srbija 127 次、Beograd 79；人名 Steve Jobs 29、Nikola Tesla 27；組織 Facebook 72、Google 25；職業 umetnik（藝術家）81、profesor 65、novinar（記者）48。</p>
+<h2 id="6">6. 評估</h2>
+<p>三塊各自為政，都有人工參考答案，沒有 LLM 自評也沒有 LLM 當評審。</p>
+<p><strong>NER</strong>：在 1,000 句子集上算。整體 P 0.84／R 0.82／F1 0.83。分類：PERS 0.97、ROLE 0.90、LOC 0.88、ORG 0.66、WORK 0.65、PRODUCT 0.39（召回只有 0.25，45 個漏掉）。表 1 只列六類，<strong>EVENT 與 DEMO 不見了</strong>，論文沒解釋。</p>
+<p><strong>NEL</strong>：<strong>只評地名</strong>。P 0.83／R 0.72／F1 0.77，基數是 52 TP、11 FP、20 FN，也就是<strong>總共 83 個標準答案</strong>。人名、組織、作品的連結品質完全沒有數字。錯誤來源作者歸為「有歧義或有格變化的地名、不完整的地名詞典、保守的信心門檻」。</p>
+<p><strong>摘要</strong>：對 661 組問答（問平均 189 字元、答 892 字元），三個模型的壓縮率：GPT-4.1 答縮到 68 字元、問到 214（分別減 24% 與 66%；這裡「問」比「答」還長，原文數字如此，疑為問答對調的排版錯誤）；GPT-5 減到 76／309；SM1 減到 61／94。品質用 ROUGE-L 與 BERTScore-F1 對「參考摘要」算：GPT-5 0.23／0.72、GPT-4.1 0.16／0.69、SM1 0.07／0.63。<strong>參考摘要從哪來、誰寫的、幾份，論文完全沒說</strong>。最後一句「這也與我們閱讀生成摘要的印象一致」是唯一的質性佐證。</p>
+<p><strong>評估設計上的問題</strong>：</p>
+<ol>
+<li>NER／NEL 的 gold standard 是在 INCEpTION 裡「人工校正自動標注」得到的，等於標注者是在看著模型輸出改，不是獨立標注。這種「校正式 gold」會系統性偏向模型（模型沒標的地方，人也容易看漏），召回會被高估；論文沒有報告標注者間一致性，也沒說幾位標注者。</li>
+<li>NEL 樣本 83 個、只一類，卻在結論寫成「NEL for locations achieves strong precision」，範圍被寫得比證據大。</li>
+<li>圖 7 那張「誰提到誰／什麼」的有向圖沒有任何評估，也沒有統計描述（幾個節點、幾條邊）。</li>
+<li>「在可詮釋性上的質性增益」（qualitative gains in interpretability）在摘要裡當成結果報告，內文沒有使用者研究或案例分析支撐。</li>
+<li>摘要評估用商用模型 GPT-5 為最佳，但 GPT-5 是黑箱且會改版；對一個以「可重現」（reproducible）為訴求的語料資源論文，這點沒有討論。</li>
+</ol>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p><strong>作者自承</strong>：NEL 需要領域適配，「許多被辨識的實體沒有連到 Wikidata 項目」；知識圖譜要補完、關係要探索；語料不大；摘要模型 SM1 要重訓；RAG 是未來工作。</p>
+<p><strong>我讀出來的</strong>：</p>
+<ol>
+<li><strong>「訪談逐字稿」其實是編輯過的書</strong>。這使它的成功條件比本專案好很多：講述者切換由 Word 樣式保證、沒有 ASR 錯字、沒有口語破碎句、沒有「一卷只標切入不標切回」這種問題。它的 TEI 轉換「需要幾輪修正」還是在這麼乾淨的來源上。<strong>它沒有面對過本專案的講述者判定問題</strong>（洪一峰卷整卷被算給鄭日清那種），所以在講述者這一層它能給的只是「格式怎麼放」，不是「怎麼判」。</li>
+<li><strong>連結覆蓋率被隱藏了</strong>。第 4.2 節說 Srbija 提及 127 次，但圖 6 說 Q403（塞爾維亞）只出現 67 次；Beograd 79 次對 Q3711 25 次；Facebook 72 次對 Q355 17 次。若兩組數字算的是同一份語料，<strong>連最高頻、最不可能歧義的實體，連結率也只有三成到五成</strong>。論文沒有把這個對照講出來，只在限制節輕輕帶過「許多實體沒連上」。這比 F1 0.77 那個數字重要得多。</li>
+<li><strong>NER 標籤內嵌進文本之後才做文本計量</strong>。TXM 的頻率與特定性分析是在帶標籤的 TEI 上跑的。這對他們是功能（可以按 NER 層做頻率表），但也意味著任何拿這份語料做「零標注能力」測試的人，都得先把標籤剝掉，這正是本專案紅線第 5 條 2026-09-07 補充的那個發現。</li>
+<li><strong>把新項目加進 Wikidata</strong> 是個值得注意的決定。它把「我們的名冊」變成「公共知識庫的一部分」，可查證性提高；但也把研究團隊的實體判斷寫進了一個公共資源，論文對此沒有任何倫理或品質把關的討論。</li>
+<li><strong>多個系統堆疊，但沒有一個環節有錯誤傳播分析</strong>。Word 樣式錯 → TEI 結構錯 → NER 上下文錯 → NEL 錯，每一層都可能把上一層的錯放大；論文只報各層獨立的數字。</li>
+<li><strong>表 1 的數字內部不一致</strong>：LOC 一列 TP 67／FP 13／FN 5，但 NEL 節說地名 gold 有 72 個（52＋20）；兩處子集可能不同，但論文沒說。EVENT、DEMO 兩類在評估中消失。</li>
+<li><strong>「低資源語言」的框架與「用 GPT-5」的實作互相拉扯</strong>。它一邊說要給塞爾維亞語一條可重現的路，一邊最好的結果來自封閉商用模型，自家開源模型 SM1 差很多（ROUGE-L 0.07）。</li>
+</ol>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p>這篇跟本專案在<strong>問題形狀</strong>上最像（訪談、講述者、實體、外部庫、字元層出處），但在<strong>方法選擇</strong>上幾乎每一步都走了我們沒走或不能走的路（微調 encoder、人工校正連結、商用 LLM、無時間碼）。所以要分開談：骨架可對照，血肉不能搬。先回應指派的三個具體問題，再談紅線相容性與跟兩篇既有筆記的差別。</p>
+<h3 id="81-tei-srtsid-tei">8.1 訪談的 TEI 編碼：講述者、時間碼、段落，要不要從 SRT＋sid 改走 TEI？</h3>
+<p><strong>結論：工作格式不改，但值得寫一支匯出腳本，在對外分享時把 sid 座標系映射成 TEI／ISO 24624。理由如下。</strong></p>
+<p>先把兩邊的對應攤開。這篇用 <code>&lt;u who="#VoAn"&gt;</code> 標講述者、<code>&lt;seg&gt;</code> 標句、<code>xml:id</code> 給每個節點穩定指標、NIF 的 <code>#char=5107,5119</code> 給字元範圍。本專案對應的是：<code>trunks/</code> 裡每個 trunk 的 <code>speaker</code> 與 <code>speaker_source</code>、<code>sentences.json</code> 的 <code>sid</code>、原文側的 <code>char_span</code>，以及每句的時間碼。<strong>概念上一一對應，我們甚至多了兩樣它沒有的東西</strong>：時間碼（它的來源是書，根本沒有），以及 <code>speaker_source</code>（標記／人工補正／反推／預設／不確定）這個「講述者判定是怎麼來的」欄位。TEI 的 <code>@who</code> 是一個必填的、非對即錯的屬性，沒有地方放「這個講述者是用什麼方法判定的、有多可信」；要放得用 <code>@cert</code> 或 <code>&lt;certainty&gt;</code>，實務上少有人這麼做。所以<strong>如果現在改走 TEI 當工作格式，我們會丟掉 <code>speaker_source</code> 這層資訊，或者得自己客製，反而失去用標準的好處</strong>。</p>
+<p>第二個理由是這篇自己示範的反面教材：它為了問／答結構發明了 <code>&lt;iquestion&gt;</code>／<code>&lt;ianswer&gt;</code> 兩個非標準標籤，然後在論文裡補一句「合標準的話應該用 <code>&lt;seg type&gt;</code>」。<strong>一旦開始用 TEI 又需要專案特有的欄位，最後就會長出這種半標準的東西</strong>。本專案要放的專案特有欄位很多（證據等級、切點支持度、來歷、年代可信層），全塞進 TEI 屬性會很難看，也沒有現成工具會讀。</p>
+<p>第三個理由是內嵌標記與字元座標的關係。這篇把 NER 標籤直接插進 TEI 文本，然後 NIF 的字元偏移量是對<strong>純文字版</strong>算的（<code>digiko.txt</code>），也就是說他們其實維護了兩個座標系（帶標籤的 XML 與剝掉標籤的純文字），論文沒說兩者怎麼同步。本專案已經在 <code>nlp_exp.strip_marks()</code> 遇過同一個問題（剝除人工標注後座標要靠 <code>meta["_map"]</code> 對回去）。<strong>TEI 內嵌標記會讓這個問題變成常態</strong>，而我們現在的做法（文本不動、標注以座標另存）反而乾淨。</p>
+<p>那 TEI 有什麼是我們該要的？兩件事。（a）<strong>互通</strong>：TXM、NoSketch Engine、INCEpTION 這些數位人文界的現成工具都吃 TEI，特別是下面 8.3 要談的 TXM 文本計量，有 TEI 就能直接用它的分區與特定性分析，不必自己重寫。（b）<strong>交換與典藏</strong>：ICCCM 的聽眾與未來可能合作的數位人文團隊會問「有沒有 TEI」，Fisseni &amp; Schmidt（2019）的 <code>text2iso</code> 服務正是把純文字逐字稿轉成帶 <code>&lt;u&gt;</code>、<code>&lt;timeline&gt;</code> 的 ISO/TEI，SRT 的時間碼可以進 <code>&lt;timeline&gt;</code> 的 <code>&lt;when&gt;</code>，講述者進 <code>@who</code>（值用 <code>P#####</code>），sid 進 <code>xml:id</code>。<strong>這是一支映射腳本的工作量，落在 <code>sentences.json</code> 之後、不動任何上游</strong>；<code>speaker_source</code> 與證據等級可以放進 <code>&lt;standOff&gt;</code> 或 <code>&lt;note&gt;</code>，不強求塞進標準屬性。</p>
+<p>一個要避免的地方：這篇 TEI 的講述者是<strong>由出版樣式保證的</strong>，所以它從沒討論過「講述者判定會錯」。本專案的 <code>speaker_corrections.json</code> 與 <code>speaker_source</code> 是在解決它沒碰過的問題，別因為它的 TEI 看起來整潔就以為講述者層可以省。</p>
+<h3 id="82-nel-wikidata-p">8.2 NEL 到 Wikidata：做法與對齊率，對「別名合併只做字串層、跨來源接 P#####」的參照</h3>
+<p>這篇的 NEL 三步：模型用脈絡消歧 → Wikidata 缺項就新建 → INCEpTION 人工校正。<strong>評估只在 83 個地名上，F1 0.77；人名的連結品質不明；而從頻率對照推算，最高頻實體的連結覆蓋率只有三到五成</strong>（第 7 節第 2 點）。它自己列的改進方向是「擴充別名表、為格變化形生成候選、利用共現地區與時間線索」。</p>
+<p>對本專案的參照，分四點：</p>
+<ol>
+<li><strong>我們的對齊率報法比它誠實，維持住。</strong> <code>link_sna.py</code> 的純字串對齊 65.5%–79.2%，並且把未對上的分成「疑似寫法差異」與「只在口述」兩堆、不自動合併。這篇沒有報任何一類的連結覆蓋率，只報一個子集的 P/R。<strong>該學的反面教訓是：報 NEL 時一定要同時報「多少提及根本沒被連結」（coverage），不能只報「連了的裡面幾成對」（precision）</strong>；它把這兩個數字分開放在不同節，讀者要自己拼才看得出來。</li>
+<li><strong>它的「人工校正連結」對本專案是紅線 1 的地雷。</strong> 在 INCEpTION 裡逐筆校正 NER 與 NEL，就是對抽取與消歧結果做人工標注。本專案的登錄簿刻意只做字串層可定案的別名（敬稱、短稱、同句同姓），共指另立一支，含名冊那個變因標「含人工標注」，正是為了不踩這條線。<strong>這篇的做法不能借，但它的錯誤分析可以</strong>：它說 NEL 漏的主要是「格變化形」與「不完整的別名詞典」，對應到我們就是「口語裡的稱呼變體」與「名冊 Alias 欄只有 325 對」，而我們已經量出人工別名買到的是音譯與綽號那 161 個人（披頭四←Beatles），字面無線索。<strong>兩邊都證實了同一件事：字串層的天花板是「字面無線索的別名」，這一層之上只能靠脈絡（共指）或外部知識，沒有第三條路。</strong></li>
+<li><strong>雙鍵設計值得確認我們已經有。</strong> NIF 每個提及同時保留 <code>nif:anchorOf</code>（原字串）與 <code>itsrdf:taIdentRef</code>（規範 ID），加一個 <code>taClassRef</code>（類別）。本專案的 <code>persons.jsonl</code> 每個 variant 帶規則、詞次、卷與字元層出處，對到 canonical，已經是同一個結構；<code>entity_stage2_typed.csv</code> 的 <code>Type</code> 欄對應 <code>taClassRef</code>。<strong>不必改，但寫報告時可以借 NIF 的詞彙來描述我們的登錄簿</strong>，數位人文讀者一看就懂。</li>
+<li><strong>Wikidata 當第三把鍵的可能性（推測性，標明）。</strong> 本專案目前的主鍵是 ghouse 的 <code>P#####</code>，外部獨立庫是 Discogs。Wikidata 有「Discogs artist ID」屬性（P1953），也就是說只要一位音樂人在 Wikidata 上有項目且填了 Discogs ID，Wikidata 就能當 <code>P#####</code> ↔ Discogs ↔ 其他權威檔（如國家圖書館名稱權威）的樞紐。<strong>但要先量覆蓋率再決定</strong>：戰後台灣幕後音樂人（錄音師、編曲、樂手）在 Wikidata 上的覆蓋率極可能遠低於這篇的塞爾維亞 IT 界名人，如果像它那樣「缺項就新建」，等於把研究團隊的實體判斷寫進公共知識庫，需要另一套品質與倫理把關，不是這個階段該做的事。合理的第一步是純程式查詢：拿 <code>對齊.jsonl</code> 裡已有 Discogs 對應的那批人，用 P1953 反查 Wikidata 有幾位，落檔當一個覆蓋率數字，不做任何寫入。</li>
+</ol>
+<h3 id="83">8.3 文本計量：能否提供免標準答案的語料訊號？</h3>
+<p><strong>可以，而且是這篇對本專案最有用的一節，雖然它在論文裡只是配角。</strong></p>
+<p>TXM 的核心是<strong>特定性分析</strong>（specificity，Lafon 的超幾何模型）：把語料按某個變數切成分區（partition，如五年一期、或按講述者），算某個詞在某分區的實際次數相對於「若均勻分布應有的次數」是顯著多還是少，以正負分數表示，論文用 ±2 當「平庸門檻」（banality threshold）。圖 2 是六個科技詞彙跨五年期的特定性（AI 在 2021–2023 暴增），圖 3 是 Facebook／Google／Twitter 三個組織的特定性隨年份的變化（Twitter 在 2012 有最高峰）。此外有共現詞（collocation）、對應分析（factorial correspondence analysis）、分群、進程圖（progression plot）。<strong>這些全部只需要斷詞結果與分區變數，不需要任何標準答案，也不呼叫任何模型。</strong></p>
+<p>對應到本專案的卡點，有三個可以直接做的用法：</p>
+<ol>
+<li><strong>「被講述」排序的正規化</strong>（對應 <code>corpus_bias.py</code> 的「講述量」維度與 <code>told_baseline.py</code>）。目前的被講述排序是原始次數，講得多的口述者會把他常提的人推上去。若把語料按講述者分區、對每個被提及人名算特定性，得到的是「這個人被這位講述者提到的程度，相對於整個語料的預期，是高還是低」，等於一個內建了講述量校正的版本。<strong>這是免標準答案的訊號，而且可以落檔成第三個預先登記的對照數字</strong>，與 ρ=0.2286（舊）、ρ=0.435（新）並列。</li>
+<li><strong>動詞表的資料端檢核</strong>（對應卡點一「動詞表該不該手寫」）。把人名的共現詞算出來、按世代或角色分區看特定性，「找」「教」「請」這些述詞在哪些分區顯著偏高，就是 <code>life_nodes.py</code> 六類動詞的一個由語料自己說話的對照，可以看出手寫表漏了哪些高特定性的動詞，或哪些動詞其實只在某一代人口中出現。</li>
+<li><strong>時間軸的第二種畫法</strong>（對應 <code>time_anchor.py</code> 與圖三）。這篇的圖 2、圖 3 是「詞彙 × 時期」的特定性，本專案有兩個可用的時間變數可分區：訪談年份（若 SRT 詮釋資料有）與 <code>time_anchor.py</code> 推算的句層年代（27.7% 可定年）。用後者分區算實體與述詞的特定性，就能畫「哪些人、哪些行為在哪個年代被特別多地講到」，而且<strong>分母是口述語料自己，不是 credits 發行年</strong>，正好補上現行圖三「沒有一個數字來自口述語料本身」那個缺口。</li>
+</ol>
+<p>三個要注意的限制，寫報告時得說清楚：（a）特定性量的是<strong>分布的異常，不是抽取的正確</strong>；它能說「這個人在這位講述者口中出現得異常多」，不能說「這條關係邊是對的」。所以它是語料層訊號，屬於「可信度分層」那一側，不是 ground truth 的替代品。（b）±2 的門檻是慣例不是真理，落檔時把門檻當變因寫出來。（c）分區太細（例如 98 位講述者各一區）時每區詞數少，特定性分數會不穩，這篇的分區是五年一期、57 場訪談，比我們粗；我們若按講述者分區，得先報每區的詞數。實作上，TXM 是桌面應用且吃 TEI，若不想走 8.1 的匯出路徑，特定性的超幾何檢定用 <code>scipy.stats.hypergeom</code> 幾十行就能重寫，純程式、落檔、不呼叫模型，與現行原則一致。</p>
+<h3 id="84">8.4 與四條紅線的相容性</h3>
+<ul>
+<li><strong>紅線 1（不對抽取／消歧結果做人工標注）</strong>：<strong>衝突</strong>。它的 gold standard 是校正式標注，NEL 也人工校正。不能借做法，只能借它的錯誤分類。</li>
+<li><strong>紅線 2（不叫 LLM 自評）</strong>：<strong>相容</strong>。它沒有 LLM-as-judge，摘要用 ROUGE／BERTScore 對參考。但參考摘要來源不明，這一點本身是評估上的漏洞。</li>
+<li><strong>紅線 3（每筆強制附出處）</strong>：<strong>相容且可對話</strong>。NIF 的字元範圍 URI 與 <code>&lt;u who&gt;</code> 是提及層的出處，等於我們的 <code>char_span</code>＋<code>speaker</code>；它缺時間碼，我們有。可以在報告裡用 NIF 的詞彙描述我們的出處設計，讓數位人文讀者接得上。</li>
+<li><strong>紅線 4（可追溯、落檔）</strong>：<strong>部分相容</strong>。語料、模型、端點都公開，但中間產物（Word → TEI 的修正過程、NEL 的候選與門檻）沒有落檔或沒有描述。</li>
+<li><strong>紅線 5（抽取端零標注）</strong>：<strong>它是反例</strong>。NER 靠 73K 句人工標注訓練，NER 標籤內嵌進文本後再做文本計量。若本專案要在「含人工標注」那條線引用它的數字當參照（PERS F1 0.97），要說明那是監督式模型在乾淨出版文本上的結果，不是零標注在口語逐字稿上的天花板。</li>
+<li><strong>on-device 承諾</strong>：它最好的摘要結果來自 GPT-5，與本專案「所有實驗一律本機模型」相反；它自家的 800M 模型表現差很多，這個落差是誠實的，也提醒我們本機模型的摘要與改寫能力不能高估。</li>
+</ul>
+<h3 id="85-strutz2026-hiltmann2025">8.5 與 strutz2026 和 hiltmann2025 的差別</h3>
+<p>三篇擺在一起，剛好是三個互補的角：</p>
+<ul>
+<li><strong>Strutz（2026）評的是「LLM 產出的 TEI 標記對不對」</strong>，八維度裡明說跳過 D5（連權威檔、解消指涉），也不碰訪談語料。<strong>這篇正好補上 Strutz 缺的 D5</strong>：它實際做了 NEL 到 Wikidata，還給了地名的 P/R，是「連權威檔」這個維度在訪談語料上長什麼樣的一個實例。但它在評估方法論上遠不如 Strutz：沒有多維度、沒有部分給分、沒有標注者間一致性、gold 是校正式的。<strong>若要談「連權威檔怎麼評」，用 Strutz 的框架去評這篇的做法，會比照它的數字有用。</strong></li>
+<li><strong>Hiltmann（2025）用 prompt 裡的歷史脈絡讓 GPT-4o 做 NER</strong>，只到辨識、明確排除消歧與連結，語料是印刷體旅遊指南。這篇走完全相反的技術路線（微調 encoder、73K 訓練句、無 LLM），卻做到了 Hiltmann 排除的連結那一步。兩篇合起來說明：<strong>辨識這一層有兩條路（脈絡 prompt 或監督式微調），連結這一層目前文獻裡只有監督式加人工校正一條路</strong>，這正是本專案「零標注別名合併」要填的空白，也解釋了為什麼我們的字串層天花板會落在 CKIP 的 NER 召回上。</li>
+<li><strong>這篇獨有的兩樣東西</strong>是講述者面向（<code>@who</code> 貫穿檢索、SPARQL 與圖 7）與文本計量。前兩篇都是單一文件內的標記任務，沒有「誰在說」這個維度；本專案的層一敘事網絡與來歷標記，在文獻裡最近的親戚就是這篇的圖 7。<strong>但它的圖 7 沒有任何評估或統計</strong>，我們的層一有 1,844 節點／4,126 邊與六張不變量檢查，已經走得比它遠，引用時要說清楚是「同一種圖的先例」，不是「方法來源」。</li>
+</ul>
+<h3 id="_1">一句話收束</h3>
+<p>這篇最該被本專案吸收的是<strong>文本計量那一節</strong>：特定性分析是現成的、免標準答案、不呼叫模型的語料訊號，能一次回應「被講述排序沒校正講述量」「動詞表全靠手寫」「時間軸沒有口述語料自己的數字」三個卡點。最該避免的是<strong>它的連結層做法</strong>：校正式 gold 加人工校正 NEL，直接踩紅線 1，而且它自己的頻率數字透露連結覆蓋率只有三到五成，卻沒有把這個數字報出來。TEI 不必改成工作格式，但值得在 <code>sentences.json</code> 之後加一支匯出腳本，把 sid、時間碼、<code>P#####</code> 映射成 ISO/TEI，換取 TXM 與數位人文界的互通。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

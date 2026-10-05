@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Edge 2024_GraphRAG：先建圖再做社群摘要的全域問答</title>
+<meta name="description" content="Edge 2024_GraphRAG：先建圖再做社群摘要的全域問答">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Edge 2024_GraphRAG：先建圖再做社群摘要的全域問答</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/edge2024_graphrag.md</code>　來源最後修改 2026-10-06　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Edge, D., Trinh, H., Cheng, N., Bradley, J., Chao, A., Mody, A., Truitt, S., Metropolitansky, D., Ness, R. O., &amp; Larson, J. (2024). <em>From Local to Global: A Graph RAG Approach to Query-Focused Summarization</em>. arXiv:2404.16130（v2, 2025-02-19）. 預印本，未經同儕審查（Microsoft Research）。</li>
+<li><strong>對應待查問題</strong>：①LLM 抽取／KG 建構現況（主）；旁及 ⑤無 gold standard 評估。</li>
+<li><strong>一句話定位</strong>：這是 GraphRAG 的原始論文，示範「先用大型語言模型從文本抽出實體與關係建成知識圖、再對圖做社群偵測、對每個社群產生一段文字摘要，用這些摘要回答關於整份語料的全域問題」。它跟本專案高度相關的兩點：一是它把抽取結果組織成<strong>屬性圖加上一層文字摘要節點</strong>（不是純三元組），二是它整套評估靠<strong>大型語言模型當評審（LLM-as-a-judge）</strong>，恰好是本專案方法論紅線要對照的地方。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>這篇要解決的是傳統檢索增強生成（RAG，retrieval-augmented generation，指讓語言模型先去外部資料找相關片段、再據以回答的做法）處理不了的一類問題：<strong>全域理解式提問（global sensemaking）</strong>。例如「這整個資料集的主要主題是什麼？」這種問題的答案不落在某幾段文字裡，而要對整份語料有通盤掌握。傳統做法（作者統稱 vector RAG，向量檢索式 RAG）只會撈出跟問題語意最接近的少數幾段，對這種問題無能為力；而既有的「查詢導向摘要」（query-focused summarization, QFS）方法又擴充不到上百萬字這種規模。</p>
+<p>GraphRAG 的主張是把兩者的長處合起來：用圖索引把整份語料先組織成可分層摘要的結構，讓答題成本不隨語料變大而爆炸，同時又能覆蓋全局。作者宣稱在兩個約百萬到一百七十萬 token 的真實語料上，GraphRAG 在答案的「全面性」（comprehensiveness）與「多樣性」（diversity）上明顯勝過傳統向量 RAG。附帶貢獻是提出一套「自動生題來評估全域問答」的流程（下詳）。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>輸入是一批來源文件。抽取分成清楚的幾步，全部發生在「索引階段」（indexing time，離線先做好），跟後續「查詢階段」分開：</p>
+<ol>
+<li>
+<p><strong>切塊（chunking）</strong>：把文件切成固定大小的文字塊。作者特別討論塊大小的取捨：塊越大，需要呼叫語言模型的次數越少（省錢），但塊裡越靠後的內容越容易被漏抽（recall 下降）。他們實驗用 600 token 一塊、塊間重疊 100 token。</p>
+</li>
+<li>
+<p><strong>抽實體與關係</strong>：對每一塊，用一段提示詞叫語言模型抽出「重要實體」和「實體之間的關係」，並為每個實體與每段關係生成一句簡短描述。論文用一個半導體公司 NeoChip 的例子示範：抽出實體 <code>NeoChip</code>（附描述）、實體 <code>Quantum Systems</code>（附描述），以及兩者之間一段帶描述的關係。這一步的提示詞可以換上特定領域的少量範例（few-shot exemplars）來適配專業語料。</p>
+</li>
+<li>
+<p><strong>（可選）抽主張 claims</strong>：同一段提示流程還可以叫模型抽「關於實體的可查證事實陳述」，作者稱為 claims（例如日期、事件、與其他實體的互動）。在圖裡這類東西被當成 covariates（附屬資訊），掛在節點與邊上。</p>
+</li>
+</ol>
+<p>這是<strong>單一模型、多次呼叫</strong>的流程，不是多 agent 分工。它靠「同一段提示詞被丟給每一塊反覆執行」達到覆蓋，而不是靠不同角色的 agent 交棒。值得注意的是，作者把這整個抽取行為定性為一種「抽象式摘要」（abstractive summarization）：關係與主張常常不是文本明講的，而是模型讀出來、概括出來的。這對本專案是個警訊，等於作者自己承認抽取結果帶有模型的概括與推斷成分。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>抽完之後有三層組織動作：</p>
+<p><strong>第一層，去重與聚合成圖。</strong> 同一個實體會在很多塊裡被抽到多次，形成重複實例。系統把指向同一實體的實例合併成圖上的單一節點，並把該實體的多段描述聚合、摘要成一段；關係合併成邊，某段關係被抽到的次數變成邊的權重；主張也同樣聚合。這裡的「同一實體判定」（entity matching / 實體消歧）作者用的是<strong>精確字串比對</strong>（exact string matching），也就是名字一模一樣才算同一個。他們坦言可以換更寬鬆的比對，但主張 GraphRAG 對重複實體「本來就相對耐受」，因為重複的實體通常會在後續社群偵測時被分到同一群、一起摘要掉。這點對中文人名、別名、諢名眾多的口述歷史語料是明顯不足的。</p>
+<p><strong>第二層，社群偵測（community detection）。</strong> 對建好的圖跑 Leiden 演算法（一種把網絡切成「群內連結緊密、群間稀疏」社群的方法），而且是<strong>階層式</strong>的：先切出大社群，再在每個社群內遞迴往下切子社群，直到切不動的葉節點社群。結果是一組層層嵌套、每一層都完整覆蓋全圖的社群劃分（論文標為 C0 最粗、C3 最細）。作者強調他們看重的正是圖的一個「先前沒被 RAG 好好利用的性質」：模組性（modularity），也就是圖天生會分成一群一群主題相關的節點。</p>
+<p><strong>第三層，社群摘要（community summaries）。</strong> 這是重新安排既有結構的關鍵步驟，也是第 4 節要細看的地方。對每個社群，把該社群內各元素的描述（節點描述、邊描述、相關主張）填進一個「社群報告」模板，產出一段報告式的文字摘要。葉層社群直接把元素描述按「邊的端點總度數」由大到小排序、塞進脈絡窗直到 token 上限；上層社群若元素太多塞不下，就用下層子社群的（較短的）摘要替換掉（較長的）原始元素描述，直到塞得下。於是形成一個由下而上、上層摘要遞迴涵蓋下層摘要的階層。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>核心判斷：不是純三元組，而且它最有代表性的表示法恰恰不是三元組。</strong> 這篇的知識表示至少有三種形態疊在一起：</p>
+<ol>
+<li>
+<p><strong>屬性圖（property graph）</strong>：節點是實體、邊是關係，但節點與邊都掛有「描述」這種自由文字屬性，邊還有權重，另有 claims 當 covariates 掛在上面。所以就算看圖這一層，它也不是乾淨的 (主詞, 謂語, 受詞) 三元組，而是帶屬性、帶自然語言描述的圖。</p>
+</li>
+<li>
+<p><strong>主張 claims</strong>：獨立的「可查證事實陳述」，本身是一句自然語言，掛在實體上。</p>
+</li>
+<li>
+<p><strong>社群摘要節點（community summaries）</strong>：這才是 GraphRAG 真正拿去答題的東西，而它是<strong>一段一段的自然語言報告，不是三元組、也不是結構化欄位</strong>。整個查詢階段，語言模型讀的不是圖、不是三元組，而是這些文字摘要。可以說 GraphRAG 把結構化的圖，最後又「翻譯回」自然語言摘要來用。這正是模板特別要問的那件事：它的社群摘要節點確實是三元組以外的表示法，而且是一種「文字摘要節點」。</p>
+</li>
+</ol>
+<p><strong>為什麼選文字摘要而非三元組？</strong> 因為它的目標任務是全域理解式問答，需要的是能餵給語言模型、涵蓋一整群主題的敘述性脈絡，而不是精確的符號查詢。三元組適合精確檢索與推理，但要回答「這個語料的主要張力是什麼」這種問題，一段有脈絡的摘要比一堆三元組好用。作者也把「不同階層的社群摘要提供不同詳略」當成一個可調的旋鈕（C0–C3）。</p>
+<p><strong>出處、時間、信心分數呢？</strong> 這是這篇相對於本專案需求最弱的一環：</p>
+<ul>
+<li><strong>出處（provenance）</strong>：<strong>幾乎沒有可追溯到原文位置的機制。</strong> 抽取是逐塊做的，理論上知道某實體來自哪一塊，但論文沒有把「檔名、段落、時間碼」這種細粒度出處當成一級公民保留到最終答案。答案裡雖然作者提到會有「引用、引文」（quotes, citations）幫助讀者理解，但那是靠提示詞要求模型在答題時附上，而不是資料結構強制保證的可回溯連結。經過「實例聚合成節點描述、再摘要成社群報告、再 map-reduce 成全域答案」這一連串摘要，原始出處基本上被稀釋掉了。</li>
+<li><strong>時間資訊</strong>：只在 claims 裡以自然語言形式出現（例如「2016 年被收購」），沒有結構化的時間欄位。</li>
+<li><strong>信心分數</strong>：圖層面沒有給知識本身打信心分。唯一出現的「分數」是在<strong>查詢階段</strong>：map 步驟裡叫語言模型為每個中間答案自評一個 0–100 的「對回答此問題有多大幫助」的分數，用來排序、過濾（分數 0 的丟掉）。這是不折不扣的<strong>叫語言模型自評分數</strong>，正是本專案第二條紅線要避開的。要區分清楚：這個分數評的是「答案有沒有用」，不是「知識可不可信」，但手法上就是 LLM 自評。</li>
+</ul>
+<h2 id="5">5. 資料集</h2>
+<p>兩個約百萬 token 級的英文真實語料，都不是為這篇新造的 benchmark，而是拿現成語料來用：</p>
+<ul>
+<li><strong>Podcast transcripts</strong>：微軟 CTO Kevin Scott 的訪談節目《Behind the Tech》公開逐字稿，切成 1669 塊、約 100 萬 token。</li>
+<li><strong>News articles</strong>：2013 年 9 月至 2023 年 12 月的新聞語料（娛樂、商業、體育、科技、健康、科學等），切成 3197 塊、約 170 萬 token。</li>
+</ul>
+<p><strong>語言全是英文，沒有中文；領域是訪談逐字稿與新聞，沒有歷史文本。</strong> 對本專案來說，Podcast 逐字稿這一點有參考價值：它也是口語、對談形式的轉錄文本，跟口述歷史逐字稿性質接近，說明 GraphRAG 的抽取流程至少能吃這類口語語料。但注意它處理的是「當代科技名人訪談」，不是需要跨數十年、大量別名與模糊指涉的歷史口述。</p>
+<p>作者沒有釋出新的標註資料集，但提出了一套<strong>自動生成評估題目</strong>的流程（見下節）當作 benchmark 的替代品。</p>
+<h2 id="6">6. 評估</h2>
+<p>評估設計是這篇對本專案最該警惕、也最該學一件事的地方。</p>
+<p><strong>沒有 gold standard。</strong> 作者直說全域理解式問題「沒有標準答案」，所以不用 P/R/F1，改用兩個 LLM 驅動的做法：</p>
+<ol>
+<li>
+<p><strong>自動生題（adaptive benchmarking）</strong>：因為沒有現成題庫，就叫語言模型讀語料的高層描述，先想像出 K 個「會用這套系統的假想使用者（persona）」，每個使用者想 N 個任務，每個任務再生 M 個「需要通盤理解、不靠查某個細節就能答」的問題（實驗設 K=M=N=5，共 125 題）。刻意不從語料正文直接生題，以免評估偏頗。</p>
+</li>
+<li>
+<p><strong>LLM 當評審做兩兩對比（LLM-as-a-judge, head-to-head）</strong>：把同一題丟給兩個系統各自作答，再叫另一個語言模型按預先定義的準則比較兩份答案、判哪個贏或平手。準則有三個正向的加一個對照的：
+   - <strong>Comprehensiveness（全面性）</strong>：答案涵蓋問題各面向的細節有多完整。
+   - <strong>Diversity（多樣性）</strong>：答案提供的觀點與洞見有多豐富多元。
+   - <strong>Empowerment（賦能）</strong>：答案幫讀者理解、做出判斷的程度。
+   - <strong>Directness（直接性，對照組）</strong>：答得多精簡切題。作者刻意用它當「反向參照」，預期它會跟全面性、多樣性打對台，用來檢查結果是否合理（不預期任何方法四項全勝）。
+   每組對比跑多次取平均，以吸收語言模型輸出的隨機性。</p>
+</li>
+</ol>
+<p><strong>這是典型「用語言模型驗證語言模型」的循環。</strong> 作者自己也意識到這問題，於是加了<strong>實驗二</strong>當交叉驗證：用一個叫 Claimify 的工具（也是語言模型驅動）從每份答案抽出「可查證事實主張」，然後把「全面性」重新定義成「答案平均含幾個主張」、把「多樣性」重新定義成「這些主張聚成幾群」（用 ROUGE-L 距離做階層式分群）。他們發現這個以主張計數為基礎的指標，跟實驗一的 LLM 評審結論在 78%（全面性）、69–70%（多樣性）的對比中一致，宣稱「中等偏強的吻合」。</p>
+<p>要點出的是：<strong>這個交叉驗證仍然是語言模型驗語言模型</strong>（Claimify 本身是 LLM 抽取，分群用的 ROUGE-L 只是把 LLM 產出的文字再比對）。它降低了單一評審的偶然性，但沒有跳出循環，也沒有任何人工標準答案介入。全文的人工介入其實極少：使用者主要體現在「調提示詞、選領域範例」，評估環節幾乎沒有人工判分。指標本身也偏「軟」：全面、多樣、賦能都是靠語言模型主觀判斷的品質維度，缺乏事實正確性（是否腦補、是否與原文相符）的硬檢查。作者在限制一節才提到，未來或可引入 SelfCheckGPT 這類方法比對「編造率」。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>作者自己承認的：</p>
+<ul>
+<li>只在兩個約百萬 token 的語料上驗證，能不能推廣到別的領域、別的規模未知。</li>
+<li>沒有跟「編造率（fabrication）」相關的比較，答案的事實正確性沒被正面評估。</li>
+<li>評估題目與判分都繞著這兩個語料轉，外部效度有限。</li>
+</ul>
+<p>我讀出來、它沒明講或輕描淡寫的：</p>
+<ul>
+<li><strong>出處可追溯性是結構性缺陷，不是實作細節。</strong> 整條管線層層摘要，最終答案要回指到「哪一位受訪者、哪一段、什麼時間碼」在架構上就沒設計。對只求「掌握主題」的商業場景無所謂，對要當史料證據用的口述歷史是硬傷。</li>
+<li><strong>實體消歧太弱。</strong> 精確字串比對對英文專有名詞或許堪用，對中文（同一人多名、簡稱、尊稱、綽號）會嚴重碎裂。作者用「反正社群偵測會把它們聚在一起」來搪塞，但這只在「最後只要摘要、不追個體」時成立；本專案要建個體對個體的有向網絡，這個假設不成立。</li>
+<li><strong>評估指標迴避了正確性。</strong> 全面、多樣、賦能都不管答案是不是真的。一個編得漂亮、包山包海、其實部分捏造的答案，在這套評估裡可能贏。</li>
+<li><strong>抽取被定性為「抽象式摘要」</strong>，等於承認關係與主張含模型推斷成分，但論文沒有量化這部分的可靠度。</li>
+<li><strong>成本與非決定性</strong>：索引 Podcast 語料花了 281 分鐘、用 gpt-4-turbo，且每步都靠語言模型，重跑結果會漂移，這對「中間產物落檔可追溯」的需求是負擔。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>可借用的：</strong></p>
+<ol>
+<li><strong>「先抽實體關係建圖、再分群、再對群做摘要」這個分層骨架</strong>本身很有啟發，尤其是它把「抽取（局部）」和「組織成可全局檢視的結構」分成兩層，跟本專案「逐篇 local 抽取 → 跨訪談 global fusion」的兩層 harness 思路一致。社群偵測（Leiden）可以當作本專案有了跨訪談網絡之後，做主題分群、找子社群的現成工具。</li>
+<li><strong>「社群摘要」作為三元組以外的表示法，值得參考但要改造。</strong> 本專案的知識表示本來就不是純三元組，而是實體／事件／關係／goût 敘述的混合，這跟 GraphRAG「圖＋文字摘要節點」的多形態表示在精神上相通。可以借鑑的是：在保留可追溯結構化知識的同時，另外生成一層「敘事性摘要」供人閱讀與全局提問。<strong>但關鍵差異是</strong>：GraphRAG 的摘要犧牲了出處，本專案若要做這層摘要，必須讓摘要裡的每個陳述都能回指到底層帶時間碼的知識條目，不能像它那樣摘掉就斷。</li>
+<li><strong>自動生題（persona → task → question）</strong>這套產生「全域理解式問題」的做法，將來若要展示這個口述歷史網絡能回答什麼樣的宏觀問題（例如「戰後某十年錄音室分工怎麼變化」），可以借來生成測試問句，但只當探索工具，不當評估金標準。</li>
+</ol>
+<p><strong>該避免的（與紅線的對照）：</strong></p>
+<ul>
+<li><strong>與紅線 2（絕不叫 LLM 自評信心分數）直接衝突。</strong> GraphRAG 在 map 步驟叫語言模型自評 0–100 分來排序答案，本專案明確禁止這種做法，應繼續走 <code>confidence_scorer.py</code> 的五訊號程式化推導路線。</li>
+<li><strong>與紅線 3（每筆知識強制附出處）直接衝突。</strong> 這是 GraphRAG 最不能照抄的地方。它的整條摘要管線把細粒度出處稀釋掉了，本專案恰恰相反，出處（檔名、時間碼、口述者、段落）是一級公民、不可協商。若引入社群摘要層，必須反其道而行，強制每個摘要句掛可回溯連結。</li>
+<li><strong>實體消歧不能學它。</strong> 精確字串比對對中文口述歷史遠遠不夠，本專案已有人工實體名冊（<code>entity_stage1_final.csv</code>）＋三層比對的 <code>entity-resolve</code>，遠比它嚴謹，應維持。</li>
+<li><strong>評估不能照它做。</strong> GraphRAG 全靠 LLM 評審＋LLM 抽主張交叉驗證，是「用 LLM 驗 LLM」的閉環，且迴避事實正確性。本專案的紅線 1 是「不做配對式人工 gold standard，但實體層有人工名冊當對照」，方向不同：本專案至少在實體層有非 LLM 的外部基準。GraphRAG 那套 comprehensiveness/diversity 之類的「軟」品質指標，不適合用來判斷抽取是否腦補；本專案的 <code>extract-qa</code>（出處存在性、年份合理性、腦補檢查）在事實正確性上比它扎實，應繼續強化，而不是被它的評估風格帶偏。</li>
+</ul>
+<p><strong>一句總結對照</strong>：GraphRAG 證明了「圖＋文字摘要節點」能把大語料變得可全局提問，這個表示法思路對本專案的「非三元組」需求有正面參考價值；但它在出處、消歧、信心、評估四件事上的做法，剛好全部踩在本專案的四條紅線上，屬於「架構可借、實作要反著做」的典型案例。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

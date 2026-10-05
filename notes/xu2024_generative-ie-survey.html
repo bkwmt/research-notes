@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>xu2024_生成式資訊抽取綜述</title>
+<meta name="description" content="xu2024_生成式資訊抽取綜述">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>xu2024_生成式資訊抽取綜述</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/xu2024_generative-ie-survey.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Xu, D., Chen, W., Peng, W., Zhang, C., Xu, T., Zhao, X., Wu, X., Zheng, Y., Wang, Y., &amp; Chen, E. (2024). <em>Large Language Models for Generative Information Extraction: A Survey</em>. Frontiers of Computer Science（DOI: 10.1007/s11704-024-40555-y）. arXiv:2312.17617v3. 同儕審查（已被 FCS 接受）。</li>
+<li><strong>對應待查問題</strong>：①LLM 抽取／KG 建構現況（主）。附帶觸及 ③harness／agent 評估、⑤無 gold standard 評估（多為反面對照）。</li>
+<li><strong>一句話定位</strong>：這是第一篇專門盤點「用大型語言模型（Large Language Models, LLM）做生成式資訊抽取」的綜述，替本專案畫出整個技術地圖：主流怎麼定義任務、用什麼表示法、拿什麼資料與指標評估。它同時也反襯出本專案幾條方法論紅線（強制出處、不叫 LLM 自評、無 gold standard 的層級）在主流文獻裡幾乎是空白。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>這篇宣稱三件事。第一，它是第一篇專門梳理「生成式資訊抽取（generative Information Extraction）＋LLM」的綜述。所謂資訊抽取（IE），就是把一段自然語言文字轉成結構化知識（實體、關係、事件）；傳統做法是「判別式」，把每個字詞貼標籤或從既有候選裡挑答案，而「生成式」則是直接讓模型「寫出」結構化結果（例如生成一串三元組），這是近兩年因 LLM 而興起的路線。</p>
+<p>第二，它提出兩套分類法（taxonomy）把散亂的文獻收攏：一套按<strong>IE 子任務</strong>分（命名實體辨識、關係抽取、事件抽取，以及把三者統一處理的通用 IE），一套按<strong>技術手段</strong>分（資料增強、提示設計、零樣本、約束解碼、少樣本、監督式微調）。</p>
+<p>第三，它不只轉述，還做了跨方法的實證比較（整理出多張 F1 對照表），並歸納出未來方向。附帶維護一個公開 GitHub 倉庫（LLM4IE）持續更新。</p>
+<p>對本專案來說，真正的貢獻是它把「主流認為 IE 該長什麼樣」講清楚了，方便我們對照自己哪裡走得不一樣。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>輸入是純文字（一個句子或一份文件），加上一段提示（prompt），輸出是一串結構化文字。它用一個很簡單的公式描述：模型逐字（自迴歸，autoregressive）生成目標序列，也就是把抽取當成「續寫」。這裡沒有多 agent 分工，整篇綜述涵蓋的絕大多數方法都是<strong>單一模型、單次（或最多多輪對話式）生成</strong>，不是本專案那種「逐篇抽取 → 跨訪談融合」的兩層 harness。</p>
+<p>它把技術面拆成六類，可以理解成六種「讓 LLM 更會抽取」的手段：</p>
+<ol>
+<li><strong>資料增強（data augmentation）</strong>：讓 LLM 自己生成訓練資料。四種玩法——直接當標註員產生結構化標籤（data annotation）、當知識庫檢索補充背景（knowledge retrieval，做法上接近檢索增強生成 RAG）、反向由結構生成文字（inverse generation）、以及蒸餾出合成資料拿去微調小模型。</li>
+<li><strong>提示設計（prompt design）</strong>：把 IE 改寫成問答（QA）形式、加上思路鏈（Chain-of-Thought, CoT，要模型分步推理再作答）、或自我改進（self-improvement）。</li>
+<li><strong>零樣本（zero-shot）</strong>：不給訓練例，靠指令或跨領域／跨類型泛化。</li>
+<li><strong>約束解碼（constrained decoding）</strong>：生成時用文法規則強制輸出合法結構，避免模型「自由發揮」寫出格式不合的東西。</li>
+<li><strong>少樣本（few-shot）</strong>：給少量範例，靠脈絡學習（in-context learning）或微調。</li>
+<li><strong>監督式微調（supervised fine-tuning, SFT）</strong>：拿全部標註資料把模型練過一遍，是目前最常見也最強的做法。</li>
+</ol>
+<p>值得本專案注意的兩點：其一，「自我改進／自我驗證」是一條明確的技術支線（例如 GPT-NER 的 self-verification、Xie et al. 的 self-improving、用 self-consistency 挑可靠標註）——這正是我們紅線裡要避開的「LLM 自評」，主流卻拿它當常規手段。其二，多輪 QA（如 ChatIE 把抽取拆成多輪對話）在形式上有點像 agentic，但本質仍是同一個模型自問自答，不是分工交棒。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>抽出來的東西按任務有固定形狀：</p>
+<ul>
+<li><strong>命名實體辨識（NER）</strong>＝實體辨識＋類型標定，產物是「(實體字串, 類型)」的成對結構，實體本身是文字裡的一段跨距（span）。</li>
+<li><strong>關係抽取（RE）</strong>＝分三種嚴格度：關係分類（給定兩實體判關係）、關係三元組（relation triplet，抽出 (頭實體, 關係, 尾實體)）、關係嚴格（relation strict，連頭尾實體的類型都要對）。核心產物是三元組。</li>
+<li><strong>事件抽取（EE）</strong>＝事件偵測（找觸發詞 trigger 與事件類型）＋論元抽取（找出扮演特定角色 role 的參與者）。產物是一個<strong>事件框架</strong>：一個事件類型底下掛觸發詞和若干「角色: 實體」欄位。</li>
+</ul>
+<p><strong>schema／本體（ontology）</strong>：多數方法依賴預先給定的類型集合（實體類型、關係類型、事件類型與論元角色），也就是抽取受 schema 約束。通用 IE（universal IE）這條線更進一步，想用單一 schema 涵蓋三種任務——分兩派：自然語言派（NL-LLMs，如 UIE、InstructUIE，用文字描述抽取結構）與程式碼派（Code-LLMs，如 Code4Struct、CodeIE、GoLLIE，把 schema 寫成 Python 類別，用生成程式碼的方式輸出結構）。程式碼派的理由是：程式語言本來就是為了精確表達結構而設計的，拿來表示 schema 比自然語言穩。</p>
+<p><strong>跨文件去重、實體合併、衝突解決</strong>：這是本專案的重頭戲（entity-resolve），但這篇綜述<strong>幾乎不談</strong>。它整理的方法絕大多數是句子層或單文件層的抽取，沒有把「同一個人在不同文件裡出現要不要合併」當成核心問題。文件級關係抽取（DocRE）有被提到，但仍侷限在單一長文件內，而非跨越多份訪談的實體登錄簿。這一塊主流是空的，也就是本專案的施力點。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>不是單一表示法，而是「按任務各有形狀」的混合</strong>，但其中沒有一種內建出處或時間。具體說：</p>
+<ul>
+<li>關係 → <strong>三元組</strong>（subject, relation, object）。</li>
+<li>實體 → <strong>跨距＋類型</strong>的成對結構（本質是二元的 attribute，不是三元組）。</li>
+<li>事件 → <strong>事件框架 / n-ary 結構</strong>（一個觸發詞帶多個「角色: 論元」，是多元關係，硬塞成三元組會失真）。</li>
+</ul>
+<p>所以嚴格講，這篇涵蓋的表示法<strong>不是純三元組</strong>：事件抽取明顯是 n-ary 的框架式表示，實體是屬性對。程式碼派（Code-LLMs）甚至用 Python 類別與繼承來表示 schema，接近屬性圖（property graph）的味道，但它仍是為了輸出上述那幾種結構，不是另立一種帶屬性的圖模型。</p>
+<p>關鍵缺口，對本專案特別重要：</p>
+<ul>
+<li><strong>出處（provenance）</strong>：整篇綜述的表示法裡<strong>沒有出處欄位</strong>。抽取結果就是 (實體, 類型) 或 (頭, 關係, 尾)，不記「這是從哪份文件、哪個時間碼、誰說的」。唯一沾邊的是有方法要求輸出「grounding 在原文」（如 Zaratiana 等把輸出對回原文跨距），但那是為了對齊字面位置，不是我們要的「檔名＋時間碼＋口述者＋段落」四件式出處。</li>
+<li><strong>時間資訊</strong>：只有在「時序關係抽取（temporal RE）」這種特定任務裡才出現，不是通用欄位。</li>
+<li><strong>信心分數（confidence）</strong>：不是表示法的一部分。少數工作（如 Linkner 用不確定性、Li et al. 評估 ChatGPT 的 calibration）碰到信心校準，但沒有把「每筆知識帶一個程式化推導的信心」寫進結構。</li>
+</ul>
+<p>一句話：主流的表示法是「乾淨的結構化知識」，刻意把知識和它的來源、可信度切開。本專案「每筆強制附出處、信心由程式化訊號推導」的設計，在這篇綜述的視野裡是<strong>沒有對應物</strong>的。</p>
+<h2 id="5">5. 資料集</h2>
+<p>清一色是既有的英文 benchmark，領域高度集中：</p>
+<ul>
+<li><strong>新聞</strong>：CoNLL03（NER，英＋德，路透社新聞，4 種實體）、CoNLL04（RE）、ACE05（NER＋RE＋EE，含新聞、報告、訪談等文類，33 種事件型 22 種論元角色）、NYT、TACRED。</li>
+<li><strong>生醫</strong>：GENIA、BC5CDR、NCBI、ADE 等一大批。</li>
+<li><strong>社群媒體</strong>：Twitter 系列、WNUT2017。</li>
+<li><strong>科學／其他</strong>：SciERC、FabNER、Few-NERD、OntoNotes 5.0。</li>
+</ul>
+<p><strong>語言</strong>：以英文為主，CoNLL03 含德文，另有獨立的「多語言（multilingual）」小節（如 Meoni 等做多語臨床 NER、GIELLM 做日文），但<strong>中文資源在主表裡很少</strong>，只在特定領域零星出現（CHisIEC 是中文歷史 IE、Cre-llm 是中文領域 RE、若干中文醫療）。</p>
+<p><strong>歷史文本／口語／訪談</strong>：有一點但很邊緣。第 5 節「特定領域」列了「historical」一類，只有兩篇（González-Gallardo 等評估 ChatGPT 在歷史文本 NER、CHisIEC 中文歷史 IE），而且明確指出歷史文本的難點——實體複雜、語碼轉換（code-switching）、標註準則難定。訪談（interview）僅作為 ACE05 的文類之一被順帶提及。<strong>沒有任何口述歷史（oral history）語料，也沒有以逐字稿為對象的抽取</strong>。</p>
+<p><strong>是否自建 / 新 benchmark</strong>：這篇是綜述，不自建資料集，但整理了兩張大表（Table 6、7）當作資料集索引，並在 GitHub 倉庫附下載連結。</p>
+<h2 id="6">6. 評估</h2>
+<p><strong>指標</strong>：幾乎全用 P/R/F1，主表用 Micro-F1（見 Table 1–4，分別是 NER、關係嚴格、關係分類、ACE05 事件抽取的方法對照）。判斷「好不好」的方式就是拿模型輸出去比對<strong>人工標註的 gold standard</strong>（CoNLL03、ACE05 這些 benchmark 本身就是人工標好的標準答案）。這是本專案刻意不採的路線——我們拒絕對抽取／消歧結果做配對式 gold standard，事件與關係層根本沒有標準答案可比。</p>
+<p><strong>有沒有 LLM 自評 / LLM 當評審（LLM-as-a-judge）</strong>：作為<strong>評估手段</strong>，這篇基本上<strong>沒有</strong>用 LLM-as-a-judge——評估靠的是固定 benchmark 上的 F1。但作為<strong>抽取技術</strong>，「LLM 自我驗證／自我改進」被當成一條正當支線收錄（GPT-NER 自驗、Xie et al. 自我改進、self-consistency 選標註）。此外 Li et al.[195] 特別評估了 ChatGPT 的 explainability、calibration、faithfulness，Han et al.[193] 提出「軟匹配（soft-matching）」評估法並指出「未標註跨距（unannotated spans）」是主要錯誤型，等於承認 gold standard 本身標得不夠全。</p>
+<p><strong>評估設計的循環問題</strong>：這篇沒有明顯掉進「用 LLM 驗證 LLM」的循環，因為它評估時仍以人工 benchmark 為錨。反而是它收錄的那些「自我改進」抽取方法，內部藏著 LLM 自我背書的風險，但綜述沒有把這當成方法論問題去質疑——它只當技術中性地並列。</p>
+<p><strong>人工介入程度</strong>：評估端高度依賴既有人工標註（benchmark 已標好）；抽取端則有「LLM 當標註員（LLMaAA 放進主動學習迴圈）」這類半自動標註，目的正是省人工。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自己承認的（第 6、7 節）：</p>
+<ol>
+<li>LLM 在標準 IE 設定下<strong>常輸給 BERT 這類判別式小模型</strong>，只有在開放式抽取（OpenIE）才明顯佔優。</li>
+<li>通用 IE 框架仍受長脈絡輸入、結構化輸出對不齊（misalignment）所苦。</li>
+<li>低資源（少樣本）場景仍弱，脈絡學習的範例挑選很敏感。</li>
+<li>幻覺（hallucination）、更新內部知識困難、算力需求高。</li>
+<li>評估本身不可靠：gold standard 有「未標註跨距」問題，需要更精準的匹配策略。</li>
+</ol>
+<p>我讀出來、它沒明講的弱點：</p>
+<ul>
+<li><strong>出處與可追溯性缺席</strong>：整篇沒把「知識要能追回原文出處」當成需求。對歷史學、口述歷史這種<strong>出處即命根</strong>的應用，這是根本性的盲點，而非小疏漏。</li>
+<li><strong>把自我驗證當中性技術</strong>：對「LLM 自評／自我改進」缺乏批判，沒討論它可能是自我背書、把模型的系統性偏誤鎖進結果。</li>
+<li><strong>跨文件實體消歧幾乎不談</strong>：知識圖譜建構的關鍵一步（entity resolution across documents）在這份「生成式 IE」地圖上是空白。</li>
+<li><strong>句子層偏見</strong>：多數 benchmark 是句子級短文本，與長篇、口語、離題、反覆的訪談逐字稿差距很大；歷史文本那一小節其實已透露這個落差，但沒展開。</li>
+<li><strong>重英文、輕中文與歷史語體</strong>：資源分布嚴重偏向英文新聞與生醫。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>可借用</strong>：</p>
+<ul>
+<li><strong>任務三分法（NER／RE／EE）與事件框架</strong>可直接映射到本專案的「實體／關係／事件」三層。特別是<strong>事件抽取的 n-ary 框架</strong>（觸發詞＋角色化論元）證明主流早已接受「非三元組」的結構，這替本專案「不用純三元組、用實體／事件／關係／goût 混合結構」提供了背書——我們不是在標新立異，而是選了更貼近事件語意的表示。</li>
+<li><strong>關係嚴格（relation strict）</strong>的觀念（連頭尾實體類型都要對）可以借來當我們關係抽取的品質層級定義。</li>
+<li><strong>schema 受控 vs. 開放</strong>的權衡值得參考：受控 schema 抽得準但綁死類型，開放式（OpenIE）靈活但難評估。口述歷史偏向開放，這也解釋了為何我們難有 gold standard。</li>
+<li><strong>通用 IE 的程式碼派（Code-LLMs，用類別定義 schema）</strong>是一個技術選項，但它「要寫很多程式碼才能定義一個類別、吃掉脈絡長度」的缺點，對逐字稿這種長輸入不划算，先不採。</li>
+</ul>
+<p><strong>該避免 / 與紅線的關係</strong>：</p>
+<ul>
+<li><strong>紅線 3（強制出處）</strong>：這篇的表示法<strong>沒有出處欄位</strong>，正好反證本專案設計的必要與稀有。它的「grounding 回原文跨距」只是對齊字面位置，遠不及我們「檔名＋時間碼＋口述者＋段落」四件式出處。啟示是——出處設計不能指望沿用主流方法，得自己造；這也是本專案相對文獻真正的貢獻點。</li>
+<li><strong>紅線 2（絕不叫 LLM 自評信心）</strong>：這篇把 LLM 自我驗證／自我改進當常規技術收錄，與我們的紅線<strong>直接衝突</strong>。我們維持「信心由程式化訊號（出處有效性、格式合規、穩定性、數值合理性、跨人佐證）推導」的立場，正是對這條主流做法的刻意反動。</li>
+<li><strong>紅線 1（不做配對式 gold standard）</strong>：主流評估幾乎全靠人工 gold standard 的 F1。本專案事件與關係層沒有 gold standard，代表<strong>不能直接套用這篇的評估範式</strong>；Han et al. 的「軟匹配」與「未標註跨距是主要錯誤」反而支持我們的懷疑——就算做了 gold standard 也標不全、不可靠。</li>
+<li><strong>紅線 4（推理過程落檔）</strong>：綜述層級不涉及，但本專案「中間產物全落 git」與它收錄的 self-consistency／多輪 QA 精神不衝突，差別在我們把過程留給人查核，而非交給 LLM 自我確認。</li>
+</ul>
+<p><strong>對「口述歷史、非三元組、強制出處」需求的整體判斷</strong>：這篇在「非三元組」上有正面參考價值（事件框架、屬性對、程式碼類別都不是純三元組），但在「口述歷史」與「強制出處」上幾乎交白卷——沒有口述語料、沒有出處欄位、沒有跨訪談消歧。換句話說，它把本專案要解的三個難題裡最難的兩個標成了主流的空白區。這既確認了本專案的定位價值，也提醒我們：這些環節的方法得自己設計，文獻能提供的多半只是任務骨架與反面教材。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

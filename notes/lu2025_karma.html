@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>lu2025_karma — KARMA：用多智能體 LLM 自動擴充知識圖譜</title>
+<meta name="description" content="lu2025_karma — KARMA：用多智能體 LLM 自動擴充知識圖譜">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>lu2025_karma — KARMA：用多智能體 LLM 自動擴充知識圖譜</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/lu2025_karma.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Lu, Y., Wu, W., Zhao, X., Peng, R., &amp; Wang, J. (2025). <em>KARMA: Leveraging Multi-Agent LLMs for Automated Knowledge Graph Enrichment</em>. NeurIPS 2025（poster）. arXiv:2502.06472（v2, 2026-01-11）. 同儕審查（已錄取為 NeurIPS 2025 poster）。</li>
+<li><strong>對應待查問題</strong>：②agentic 建構（主）；旁及 ③harness／agent 評估、⑤無 gold standard 評估。</li>
+<li><strong>一句話定位</strong>：這是一篇「多智能體（multi-agent）LLM 流水線」的系統論文，把「從論文文字抽出知識、併進既有知識圖譜」的工作拆成九個各司其職的 LLM agent；對本專案的參考價值在它的 agent 分工方式與衝突解決設計，警示價值則在它整套評估幾乎全靠「用 LLM 檢驗 LLM」，正好撞上本專案紅線 2。</li>
+</ul>
+<hr>
+<h2 id="1">1. 貢獻</h2>
+<p>論文要解決的問題是：科學文獻每年新增七百多萬篇，人工維護知識圖譜（knowledge graph, KG，把實體與其關係寫成機器可讀結構的資料庫，如 Wikidata、DBpedia）跟不上這個速度；傳統自然語言處理方法又受限於預先寫死的 schema（綱要，規定允許哪些實體型別與關係型別），碰到新領域、新術語就抽不出來。</p>
+<p>它宣稱的三項創新：
+1. <strong>模組化的多智能體架構</strong>：把 KG 擴充拆成一串專門化的 LLM agent，彼此可交叉驗證（例如關係抽取 agent 會拿候選實體去對 schema 對齊 agent 的輸出）。
+2. <strong>領域自適應的提示策略</strong>（domain-adaptive prompting）：同一套流程換不同提示詞，就能適應基因體學、蛋白質體學、代謝體學等不同領域。
+3. <strong>以 LLM 為基礎的驗證機制</strong>（LLM-based verification）：宣稱可緩解幻覺（hallucination）與 schema 不一致。</p>
+<p>宣稱的成果：在三個領域共 1,200 篇 PubMed 論文上，最多辨識出 38,230 個新實體、達到「83.1% 的 LLM 驗證正確率」、並靠多層評估把「衝突邊」減少 18.6%。這裡要先標記一個關鍵詞：那個 83.1% 是「LLM-verified correctness」，不是人工核實的正確率（見第 6、7 節）。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>輸入是 PDF 格式的科學論文；輸出是併入既有 KG 後的擴充圖 G_new。整條流水線由一個中央控制器（Central Controller）調度，分成三大段、九個 agent。這是典型的<strong>多步、多 agent 分工</strong>，不是單次大提示抽取。</p>
+<p>三段對應 Figure 2：<strong>解析（Parsing）→ 抽取（Extraction）→ 整合（Integration）</strong>。九個 agent 各自的職責：</p>
+<ol>
+<li><strong>文件攝入 agent（Ingestion, IA）</strong>：把原始 PDF/HTML 讀進來、做格式正規化（處理 OCR 錯誤、表格等）、抽出中介資料（metadata：期刊、日期、作者）。輸出一份標準化文字加中介資料，放進佇列給下一棒。</li>
+<li><strong>閱讀 agent（Reader, RA）</strong>：把正規化文字切成段落（摘要、方法、結果等），對每段用 LLM 打一個「與當前 KG 的相關性分數」R(s_j)；低於一個領域校準門檻 δ 的段落直接丟掉（例如致謝）。留下的段落往下傳。</li>
+<li><strong>摘要 agent（Summarizer, SA）</strong>：把每個存活段落壓縮成精簡摘要 u_j，提示詞要求保留關鍵實體、關係與領域術語。目的是讓後面的抽取 agent 收到「高訊號、低雜訊」的短文字，省算力。</li>
+<li><strong>實體抽取 agent（Entity Extraction, EEA）</strong>：對摘要做 LLM 版的命名實體辨識（NER），再用字典／本體（ontology）過濾誤判，並把提及正規化成標準名（例如把 "acetylsalicylic acid" 對到 "Aspirin"）。正規化的做法是把文字提及與已知 KG 實體都投到同一個嵌入空間（embedding space），取距離最近者；若最近距離仍大於門檻 ρ，就標記為「新實體」，加進候選點集合 V+。</li>
+<li><strong>關係抽取 agent（Relationship Extraction, REA）</strong>：對摘要內每一對已正規化實體 (ê_i, ê_j)，用 LLM 分類器估各種關係的機率，超過門檻 θ_r 的就組成一個三元組 (ê_i, r, ê_j)。允許多標籤，一對實體可同時有多個關係（例如「藥物 A 同時 inhibits 蛋白 B 且 triggers 副作用 C」）。</li>
+<li><strong>schema 對齊 agent（Schema Alignment, SAA）</strong>：若新實體或新關係對不上既有 KG 的型別，就做一次領域內分類，把實體塞進最合適的型別 τ（Disease、Drug、Gene…），或把新關係映到已知關係型別；真的對不上就標記為「候選新增、待審查」。</li>
+<li><strong>衝突解決 agent（Conflict Resolution, CRA）</strong>：見下節與第 6 節，用「LLM 辯論」判斷新三元組是否與既有圖矛盾。</li>
+<li><strong>評估 agent（Evaluator, EA）</strong>：見第 3、6 節，彙整多個驗證訊號算出信心／清晰度／相關性，決定是否併入。</li>
+<li><strong>（KG 儲存）</strong>：Figure 2 另畫出一個 KG Storage 模組，把通過的三元組寫進圖。論文正文與附錄都說「九個 agent」，實際上真正做判斷的是前八類，KG Storage 比較像儲存端點。</li>
+</ol>
+<p>交棒方式：每個 agent 都是獨立的 LLM 模組，前一棒的輸出（正規化文字、段落、摘要、實體、三元組、對齊結果）依序餵給下一棒，由中央控制器串接。這種「一件工作拆成小步、每步一個專職 agent」的做法，論文引 AutoGen、Magentic-One 等多智能體框架為背景。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>核心資料模型是<strong>受 schema 約束的有向三元組</strong>。形式定義很直白：既有 KG 記為 G=(V, E)，V 是實體集合，E 是有向邊集合；每條關係是一個三元組 t=(e_h, r, e_t)，e_h 是頭實體、e_t 是尾實體、r 是關係型別（如 treats、causes）。目標就是從每篇論文抽出不在 E 裡的新三元組，併進 G。</p>
+<ul>
+<li><strong>實體型別</strong>由一個固定型別集合 T 約束（Disease、Drug、Gene 等），由 schema 對齊 agent 指派。</li>
+<li><strong>跨文件去重與實體合併</strong>：靠實體正規化那一步（第 2 節第 4 點）在共同嵌入空間裡對齊，把不同文字寫法收斂到同一個 KG 實體；對不上的才當新實體。</li>
+<li><strong>衝突解決</strong>：新三元組可能與圖裡既有三元組邏輯矛盾（例如新的說「藥 D treats 病 E」，舊的說「藥 D exacerbates 病 E」），由衝突解決 agent 處理。</li>
+<li><strong>「重新安排既有結構」</strong>：這篇的融合是「把新三元組併進舊圖並解決矛盾」，屬於<strong>擴充（enrichment）</strong>，不像某些方法會回頭重寫既有社群或既有摘要。它不動舊節點的內容，只做新增與衝突裁決。</li>
+</ul>
+<p>值得注意的是，schema 對齊、去重、衝突解決全部由 LLM 執行，沒有外部符號規則或本體推理引擎兜底（論文在限制一節才提到未來或可加入 neuro-symbolic 混合法）。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>是純三元組</strong>，而且是受本體／schema 約束的有向三元組 (head, relation, tail)。這跟本專案刻意不採純三元組、改用「實體／事件／關係／goût 敘述」混合結構的路線正好相反。</p>
+<ul>
+<li><strong>n-ary 或事件框架</strong>：沒有。多個關係的情況是用「多標籤、拆成多個二元三元組」處理（一對實體給多條邊），而不是建一個帶多個角色的事件節點。所以像「某人在某年於某錄音室為某張唱片擔任某職務」這種本專案關心的多元事件，在 KARMA 的表示法裡只能被硬拆成若干條二元邊，會流失事件的整體性與時間、地點等角色欄位。</li>
+<li><strong>出處（provenance）</strong>：<strong>沒有三元組層級的出處欄位</strong>。這是對本專案最關鍵的落差。KARMA 的三元組結構 (e_h, r, e_t) 本身不帶「這條邊來自哪篇論文、哪一段、哪一句」的欄位。攝入 agent 會抽論文層級的中介資料（期刊、日期、作者），但那是文件層級，不是綁在每一條三元組上的細粒度出處。本專案要求「每一筆知識強制附檔名、時間碼、口述者、段落」，KARMA 沒有這一層。</li>
+<li><strong>時間資訊</strong>：三元組裡沒有時間欄位；時間只出現在文件中介資料。</li>
+<li><strong>信心分數</strong>：<strong>有，而且是 LLM 自評式的</strong>。評估 agent 對每個三元組算三個分數——信心 C(t)、清晰度 Cl(t)、相關性 R(t)，各自是一組驗證訊號的加權和再過 sigmoid；三者平均超過門檻 Θ 才併入。這些訊號主要來自 LLM 的判斷，正是本專案紅線 2 要避免的「叫 LLM 自評信心」。</li>
+</ul>
+<p>為什麼選三元組：因為它的目標場景是擴充 Wikidata／DBpedia 這類本來就是三元組的 KG，融合對象決定了表示法。它沒有處理口述、敘事、評價這類本專案要處理的素材，所以不需要更豐富的表示。</p>
+<h2 id="5">5. 資料集</h2>
+<ul>
+<li><strong>語料</strong>：從 PubMed 蒐集的科學論文，共 1,200 篇，分三個領域——基因體學（Genomics）720 篇、蛋白質體學（Proteomics）360 篇、代謝體學（Metabolomics）120 篇。全部 PDF，由攝入 agent 處理。</li>
+<li><strong>語言</strong>：全英文。<strong>沒有中文</strong>。</li>
+<li><strong>領域</strong>：生醫科學文獻，屬於正式書面、術語密集的文本。<strong>沒有歷史文本、沒有口語、沒有訪談</strong>，與本專案的口述歷史逐字稿型態完全不同。</li>
+<li><strong>公開性與 benchmark</strong>：語料是作者自行從 PubMed 挑選整理（curate），論文沒有釋出這 1,200 篇的清單或標註，也<strong>沒有提出可重用的新 benchmark／資料集</strong>。既有 KG（被擴充的那個 G）論文正文沒有明說是哪一個（提到 Wikidata、DBpedia 為背景，實驗細節不清）。所以這是一個<strong>不可完全重現</strong>的概念驗證（proof-of-concept）設定。</li>
+</ul>
+<h2 id="6">6. 評估</h2>
+<p>論文開宗明義說：與傳統 NLP 任務不同，它的評估<strong>不依賴生醫實體與關係的 gold standard（人工標準答案）資料集</strong>，改採「多面向」評估。這句話要拆開看——它不是找到了繞過 gold standard 的嚴謹辦法，而是用 LLM 產出的分數取代了人工標準。指標分三類（Table 1）：</p>
+<p><strong>核心指標（Core Metrics）</strong>：新增三元組的平均信心、平均清晰度、平均相關性——全部由評估 agent（LLM）算出。</p>
+<p><strong>圖統計（Graph Statistics）</strong>：覆蓋增益 Δ_Cov（新增了多少原本不在圖裡的實體）、連結增益 Δ_Con（節點度數淨增加）。這兩個是<strong>結構性、可程式計算的量</strong>，不靠 LLM 判斷，但它們只衡量「加了多少」，不衡量「加得對不對」。加越多分數越高，本身無法區分「真知識」與「幻覺」。
+基因體學上 DeepSeek-v3 的 Δ_Cov=38,230，就是摘要那個「最多 38,230 個新實體」的來源——這是「抽出的量」，不是「正確的量」。</p>
+<p><strong>品質指標（Quality Indicators）</strong>：
+- 衝突比例 R_CR：衝突解決 agent 移除的邊佔新邊的比例。
+- <strong>LLM 正確率 R_LC</strong>：由一個<strong>保留（hold-out）的 LLM</strong> 去判每個新三元組「可能正確／不確定／可能錯誤」，R_LC = 可能正確數 ÷ 全部新三元組數。摘要宣稱的 <strong>83.1% 就是這個數</strong>（基因體學、DeepSeek-v3，R_LC=0.831）。
+- QA 連貫性 C_QA：能被 KG 走訪回答的領域問題佔比，也是 LLM 判定。
+- <strong>人工評估分數 R_HE</strong>：由兩位人類專家評估三元組抽取品質，0–1 分。這是全篇<strong>唯一</strong>的人工指標，數值明顯低於 LLM 正確率（基因體學 DeepSeek-v3 為 0.625，對照 R_LC=0.831），且論文沒有交代標註量、抽樣方式、標註者一致性（inter-annotator agreement）。</p>
+<p><strong>LLM 辯論式的衝突解決（重點段落）</strong>：衝突解決 agent 的做法是——先定義一個新三元組 t 與圖中某條既有三元組 t′「邏輯不相容」時記 conflict=1；然後丟給一個 LLM 辯論提示（debate prompt）LLM_CRA(t, t′) → {Agree, Contradict}。若 LLM 判 Contradict，這條新三元組就被丟棄，或視系統信心「排入人工專家審查」。所謂「辯論」在正文其實只是一次 LLM 二元判斷（同意／矛盾），不是多輪、多角色互相攻防的辯論流程；論文引了 Liang 等人「多智能體辯論」與 Irving 等人「AI 安全辯論」當理論靠山，但方法段落沒有展開成真正的多輪辯論。</p>
+<p><strong>評估設計的循環問題（本專案最該記住的一點）</strong>：這套評估最要害的問題是<strong>用 LLM 驗證 LLM</strong>。抽取用 LLM、正規化用 LLM、關係判定用 LLM、衝突裁決用 LLM，最後連「這條知識對不對」也用 LLM（R_LC、C_QA）來打分。裁判和選手是同一種模型、同一批訓練資料、同一組偏誤。LLM 特別容易把「自己生得出來、讀起來通順」的內容判為正確，於是幻覺出來的三元組很可能同時騙過抽取端與驗證端，被算進那 83.1%。因此 83.1% 不能讀成「這批知識有 83.1% 是真的」，只能讀成「有 83.1% 被另一個 LLM 認為看起來像真的」。真正能當人工地基的 R_HE 只有 0.58–0.625，且細節不足以檢驗。這正是本專案紅線 2（絕不叫 LLM 自評信心、信心要由程式化訊號推導）要防的東西。</p>
+<p><strong>消融實驗（Ablation, Table 2）</strong>：拿掉摘要、衝突解決、評估三個 agent 各跑一次，用 DeepSeek-v3。結論是三者都有用（拿掉都會讓 R_LC、C_QA 下降）。但要注意，這裡「有用」的判準又是 LLM 分數本身，所以消融只證明了「加上這些 agent 會讓 LLM 給的分數更高」，不等於「知識更正確」。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自己承認的（第 7 節 Limitations）：
+1. 評估<strong>主要靠 LLM 指標而非直接的人類專家驗證</strong>；作者承認關鍵生醫主張在臨床應用前終究要領域專家把關。這等於自己點出了循環問題，卻沒有在方法上補救。
+2. 各領域表現不均，代謝體學（資料最少，120 篇）的 QA 連貫性明顯較低，顯示對稀疏、罕見關係建模仍弱。
+3. 提到未來或可引入混合的 neuro-symbolic（神經加符號）方法、優化 agent 協調協定。</p>
+<p>我讀出來、它沒明講的疑點：
+- <strong>沒有三元組層級出處</strong>，卻要用於生醫這種高風險領域，一旦出錯無法回溯到來源句，這與它自己說「臨床前要專家核實」是矛盾的——沒有出處，專家要核實什麼都難。
+- <strong>83.1% 這個招牌數字被摘要與導論反覆使用，卻始終是 LLM 自評</strong>；人工分數 R_HE 低了 20 個百分點，論文淡化處理，沒有討論兩者落差代表什麼。
+- <strong>「辯論」名不副實</strong>：方法段只有一次二元判斷，卻援引多輪辯論文獻，有誇大之嫌。
+- <strong>資料與既有 KG 都不可重現</strong>：沒釋出語料清單、沒說清被擴充的 KG 是哪個版本，Θ、δ、ρ、θ_r 等一串門檻也沒給值，概念驗證的成分遠大於可複製的系統。
+- <strong>Δ_Cov 這類「越多越好」的指標有反誘因</strong>：它會獎勵「多抽」，而多抽正是幻覺與雜訊的溫床，與 R_CR（移除衝突邊）之間存在張力，論文沒有正面處理。
+- 排版與細節粗糙（附錄標題把 prompts 拼成 "propmts"、正文 "ect." 等），對一篇強調嚴謹驗證的系統論文是個小警訊。</p>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>可借用的</strong>：
+- <strong>把大工作拆成專職小 agent、由控制器串接</strong>的骨架，和本專案「逐篇 local 抽取 → 跨訪談 global fusion」兩層 harness 思路一致。特別是 KARMA 把「抽取」與「驗證／整合」在架構上分開（extraction 段 vs. integration 段），與本專案 srt-extract 和 extract-qa 分工的做法同構，值得對照。
+- <strong>相關性過濾當前置步驟</strong>：閱讀 agent 先給段落打相關性分數、丟掉無關段落（如致謝），對本專案處理冗長逐字稿、先篩掉閒聊寒暄段落有參考價值——但門檻要保守，口述歷史的離題閒聊有時正藏著關係線索，本專案的「寧多勿漏」原則此處要壓過 KARMA 的積極過濾。
+- <strong>實體正規化用共同嵌入空間對齊、對不上才標記為新實體</strong>：與本專案 entity-resolve 三層比對的精神相容，可作為「向量比對」那一層的參照；但本專案已有人工實體名冊當權威基準，比 KARMA 純靠嵌入距離更可靠。
+- <strong>schema 對齊 agent「對不上就標記為候選、待審查」</strong>這個保守出口，與本專案「拿不準就落檔待議、不硬塞」的做法一致，值得保留。</p>
+<p><strong>該避免的（與紅線直接衝突）</strong>：
+- <strong>紅線 2（絕不叫 LLM 自評信心）</strong>：KARMA 的評估 agent 三個分數（信心／清晰度／相關性）、R_LC、C_QA 全是 LLM 自評或 LLM 當評審，是本專案明令禁止的做法。本專案的信心必須由程式化訊號推導（出處有效性、格式合規、穩定性、數值合理性、跨人佐證），這一點與 KARMA 徹底分道。KARMA 反而是最好的反面教材：它把 83.1% 這個 LLM 自評數字當招牌，正好示範了「用 LLM 驗證 LLM」會讓正確率被系統性高估。
+- <strong>紅線 3（每筆強制附出處）</strong>：KARMA 沒有三元組層級出處，只有文件層級中介資料，與本專案「檔名＋時間碼＋口述者＋段落」的硬要求正面衝突。本專案不可退回到只記文件來源。
+- <strong>紅線 1（不做配對式 gold standard）</strong>：KARMA 宣稱「不用 gold standard」，聽起來與紅線 1 呼應，但性質完全不同——本專案是拒絕人工標註「消歧配對答案」，但保留人工實體名冊當對照、並要求推理可追溯；KARMA 是連人工核實都幾乎省掉、改用 LLM 分數頂替。<strong>兩者不可混為一談</strong>：本專案拒絕的是某一種昂貴且方法上有問題的標註，不是拒絕人工地基。</p>
+<p><strong>關於「口述歷史、非三元組、強制出處」這個需求的參考價值</strong>：
+- <strong>表示法：反面參照。</strong> KARMA 用純二元三元組、把多重關係硬拆成多條邊，正說明了為什麼本專案要走事件框架／混合結構——口述歷史裡「誰在何時何地為哪張唱片做了什麼」是帶多個角色與時間的事件，硬塞進 (head, r, tail) 會流失角色與時序。KARMA 印證了「三元組不夠用」這個設計判斷。
+- <strong>出處：反面參照。</strong> KARMA 缺三元組層級出處，恰好凸顯本專案強制出處設計的價值。可以把 KARMA 當成「省略細粒度出處會付出什麼代價」的案例：在高風險領域它自己都承認需要專家核實，卻因為沒有出處而無從核實。
+- <strong>評估：警示。</strong> 若本專案事件與關係層沒有 gold standard，最容易被誘惑的捷徑就是學 KARMA 找個 LLM 來打「正確率」。這篇論文示範了這條捷徑會產出一個好看但不可信的數字。本專案的替代路線應是程式化訊號加跨人佐證加人工抽查，並且如實揭露人工核實只覆蓋多少比例，不拿 LLM 分數當正確率招牌。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

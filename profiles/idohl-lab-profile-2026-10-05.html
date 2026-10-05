@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IDOHL 團隊側寫</title>
+<meta name="description" content="International Digital Oral History Lab（UCL × TU Darmstadt）的團隊、歷史、三個計畫、開源釋出、研究方向與相關工作；附與 extract_ohistory 的對照與閱讀建議。查證日期 2026-10-05。">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:32px 16px 80px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:48px;padding-bottom:36px}
+h1{font-size:1.9rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.05rem;margin:0 0 1em}
+.meta{font-size:.9rem;color:var(--grey)}
+h2{font-size:1.4rem;margin:2.6em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h2 .no{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:.5em}
+h3{font-size:1.12rem;margin:1.8em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.4em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+nav.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:16px 20px;margin:24px 0 8px}
+nav.toc ol{margin:.3em 0 0;padding-left:1.4em;columns:2;column-gap:28px}
+nav.toc li{break-inside:avoid;margin:.2em 0}
+@media (max-width:640px){nav.toc ol{columns:1}}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.93rem}
+th,td{border:1px solid var(--rule);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:14px 18px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.card h4{margin-top:0}
+.kv{display:grid;grid-template-columns:9em 1fr;gap:.3em 1em;margin:.6em 0}
+.kv dt{color:var(--grey);font-weight:600}
+.kv dd{margin:0}
+@media (max-width:560px){.kv{grid-template-columns:1fr}.kv dt{margin-top:.5em}}
+.tl{list-style:none;padding:0;margin:1em 0;border-left:2px solid var(--rule)}
+.tl li{position:relative;padding:0 0 1em 22px}
+.tl li::before{content:"";position:absolute;left:-7px;top:.55em;width:12px;height:12px;border-radius:50%;background:var(--bg);border:3px solid var(--line)}
+.tl li.key::before{border-color:var(--accent);background:var(--accent)}
+.tl .yr{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;margin-right:.6em}
+.src{font-size:.82rem;color:var(--grey)}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card);color:var(--ink)}
+blockquote .who{display:block;font-size:.85rem;color:var(--grey);margin-top:.3em}
+ul.refs{padding-left:1.3em}
+ul.refs li{margin:.35em 0;word-break:break-word}
+.tag{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+.tag.acc{background:var(--accent);color:#fff;border-color:var(--accent)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:720px){.two{grid-template-columns:1fr}}
+.small{font-size:.9rem}
+footer{margin-top:4em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px}
+.lead{font-size:1.08rem}
+ol.read li{margin:.8em 0}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="wrap">
+<h1>International Digital Oral History Lab（IDOHL）團隊側寫</h1>
+<p class="sub">國際數位口述歷史實驗室：UCL 與 TU Darmstadt 合辦。團隊、歷史、三個計畫、開源釋出、研究方向、相關工作，以及與 extract_ohistory 的對照。</p>
+<p class="meta">查證日期 2026-10-05。連結已逐一檢查：115 個不重複網址中 107 個可達；7 個 DOI 網址對程式請求回 403（出版社擋機器人，瀏覽器可開）；1 個標註 404。起點為 <a href="https://idohl.org/OpenSource-Release">idohl.org/OpenSource-Release</a>。本頁由四份調查報告整合而成（團隊與歷史、三個計畫、開源程式碼、出版與相關工作），四份原始報告落在 <code>refs/notes/idohl/</code>。凡網站未寫、也查不到旁證的事項，一律標「網站未載明」或「無法查證」，集中列於第 10 節。所有來源網址集中列於第 11 節。</p>
+</div>
+</header>
+
+<main class="wrap">
+
+<nav class="toc" aria-label="目錄">
+<strong>目錄</strong>
+<ol>
+<li><a href="#s1">一句話定位與導讀</a></li>
+<li><a href="#s2">團隊</a></li>
+<li><a href="#s3">歷史年表</a></li>
+<li><a href="#s4">三個計畫</a></li>
+<li><a href="#s5">開源釋出</a></li>
+<li><a href="#s6">研究方向與方法論立場</a></li>
+<li><a href="#s7">出版與相關工作</a></li>
+<li><a href="#s8">與 extract_ohistory 的對照</a></li>
+<li><a href="#s9">建議親自閱讀的順序</a></li>
+<li><a href="#s10">未能查證的事項</a></li>
+<li><a href="#s11">資料來源</a></li>
+</ol>
+</nav>
+
+<!-- ============================================================ -->
+<h2 id="s1"><span class="no">1</span>一句話定位與導讀</h2>
+
+<p class="lead">IDOHL 是一個以「口述歷史訪談如何被演算法處理、又如何因此改變我們對記憶與歷史的理解」為核心問題的小型跨國實驗室，由倫敦大學學院（University College London, UCL）資訊研究系與達姆施塔特工業大學（Technische Universität Darmstadt）歷史研究所的「人文資料科學與方法論」講座（Humanities Data Science and Methodology, HDSM）合辦，三位主持人，九名成員，網站以 Omeka S 架設。</p>
+
+<p>它之所以值得本專案細看，有三個理由。第一，它的 MeDoraH 計畫是目前查到<strong>與 extract_ohistory 任務最接近的同類計畫</strong>：同樣從口述歷史逐字稿抽三元組、同樣要畫「回憶的網絡」，而且同樣走過「傳統 NLP 管線在口述語言上失效」這一段。第二，它的方法論立場有一句可以直接引用的話：「我們聚焦於<strong>從口述歷史敘述中浮現的網絡</strong>，而非重建一個先在的『真實』社群網絡」，與本專案「既有 SNA 是對照組不是篩子」同源。第三，它把資源押在<strong>本體（ontology）與 LLM 的人機精修循環</strong>上，而本專案把資源押在<strong>出處、來歷與時間錨的程式化驗證</strong>上，兩者是對同一個問題（沒有標準答案時怎麼讓抽取結果可信）的兩種回答。</p>
+
+<div class="card">
+<h4>先給結論：它做到哪裡、沒做到哪裡</h4>
+<ul>
+<li><strong>語料</strong>：三個計畫共用同一批 Hidden Histories 英語訪談。入口網公開 19 篇英語訪談的 mp3（CC BY-NC-ND 4.0），逐字稿連到 Springer 開放取用專書；另有 3 筆 2014 年義大利語訪談。網站稱新增十篇德語訪談，但入口網沒有任何德語項目。</li>
+<li><strong>抽取</strong>：NKOS 2026 論文稱已處理 19 篇、176 個敘事單位、1,647 條宣稱（claims）。LLM 抽取封在桌面程式 NarraGraph 的二進位檔裡，原始碼與提示詞未公開；投影片列出的模型是 Gemini 2.5 Pro、Gemma 3、Qwen 3，範例驗證欄出現 claude-opus-4-8。</li>
+<li><strong>本體</strong>：已釋出 OWL／Turtle 原型 V0.2，43 個具名類別、51 個物件屬性、11 種關係模式。與 CIDOC-CRM 的對齊只以 <code>skos:scopeNote</code> 註記「可能可對齊」，沒有任何正式等價宣告。沒有 Claim、Speaker、Evidence 類別。</li>
+<li><strong>評估</strong>：沒有 gold standard、沒有 P／R／F1 程式。唯一的數字是 1,429 條宣稱逐筆人工回讀：91.3% 有證據支持、8.5% 比證據更具體、2 筆無支持。只有 precision 性質，沒有 recall。</li>
+<li><strong>開源</strong>：五個 GitHub 儲存庫都沒有 LICENSE 檔；兩個只有 README；README 連到的五個子儲存庫全部 404。結論是「可以檢視結果，不能重跑抽取」。</li>
+</ul>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s2"><span class="no">2</span>團隊</h2>
+
+<p>團隊頁分四組：主持人（Principal Investigators）3 人、研究人員 3 人、附屬研究員 1 人、研究助理 2 人。下表的「推斷角色」是從計畫頁、經費新聞與出版品推斷的，不是網站明文。職稱以團隊頁為準，與其他頁面不一致處以括號註明。</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>#</th><th>姓名</th><th>職稱與機構</th><th>專長</th><th>推斷角色</th><th>個人頁</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>Andrew Flinn</strong></td><td>Professor of Archival Studies and Oral History，UCL 資訊研究系（2025-07 存檔頁仍寫 Reader）</td><td>獨立檔案與社群檔案、口述歷史、參與式遺產行動、檔案與社會正義</td><td>口述歷史方法論與檔案學端；三個計畫全部掛名；MDOH 共同推動者；MeDoraH 的 UCL Co-I</td><td><a href="https://profiles.ucl.ac.uk/9621-andrew-flinn/about">UCL</a></td></tr>
+<tr><td>2</td><td><strong>Julianne Nyhan</strong></td><td>Chair of Humanities Data Science and Methodology，TU Darmstadt 歷史研究所；UCL Professor Emerita of Digital Humanities</td><td>數位人文、計算史、對 AI 與資料的批判取徑、隱而不顯的勞動史</td><td>實驗室的智識源頭與德方主持人；Hidden Histories 主持人與主要訪談者（14 篇訪談中 13 篇由她執行）；MeDoraH 德方申請人</td><td><a href="https://profiles.ucl.ac.uk/29443-julianne-nyhan">UCL</a>、<a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_53504.en.jsp">TU Darmstadt</a>、<a href="https://juliannenyhan.com/">個人站</a></td></tr>
+<tr><td>3</td><td><strong>Andreas Vlachidis</strong></td><td>Associate Professor of Information Science，UCL 資訊研究系（2023-10 起）</td><td>自然語言處理、資訊抽取、語意資料建模、CIDOC-CRM、FAIR 資料；博士論文做考古灰色文獻的語意索引</td><td>技術端：NLP、知識圖譜、本體；MeDoraH 的 UCL 主持人（PI）；只掛 MDOH 與 MeDoraH</td><td><a href="https://profiles.ucl.ac.uk/57279-andreas-vlachidis/about">UCL</a></td></tr>
+<tr><td>4</td><td><strong>Frieda Schmidt</strong>（Friederike Schmidt）</td><td>Postdoctoral Researcher，TU Darmstadt HDSM（2024-05 起）</td><td>混合方法的歷史研究、殖民脈絡下的博物館藏品資料</td><td>MeDoraH 德方博後：詮釋學與歷史分析；手工編碼網絡資料出自她</td><td><a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_67520.en.jsp">TU Darmstadt</a></td></tr>
+<tr><td>5</td><td><strong>Aleksey Varfolomeyev</strong></td><td>Postdoctoral Researcher（TU 官方頁與 ORCID 寫技術人員），TU Darmstadt HDSM（2024-10 起）</td><td>計算語言學、數位人文基礎建設、語意網表述歷史文獻</td><td>MDOH 與 MeDoraH 的技術支援：自動語音辨識與笑聲偵測工作流程</td><td><a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_69504.en.jsp">TU Darmstadt</a></td></tr>
+<tr><td>6</td><td><strong>Jiajie Zhang</strong></td><td>Research Associate（UCL 職位欄寫 Research Fellow in Semantic Web Technologies and Information Extraction），UCL 資訊研究系（2024-07 起）</td><td>知識圖譜、知識表徵、NLP、LLM、GraphRAG</td><td>MeDoraH 的 UCL 博後；NLP 管線、本體與 NarraGraph 的主要開發者（GitHub 帳號 articoder 即他本人）</td><td><a href="https://profiles.ucl.ac.uk/99799-jiajie-zhang/about">UCL</a>、<a href="https://github.com/articoder">GitHub</a></td></tr>
+<tr><td>7</td><td><strong>Marco Humbel</strong></td><td>Honorary Research Fellow，UCL；本職為英國國家檔案館（The National Archives）Archival Data Analyst</td><td>藏品即資料、OCR／HTR、命名實體辨識、社會運動檔案</td><td>MeDoraH 的文字探勘（Humanist 郵件論壇語料）、FAIR 詮釋資料、研究倫理；Voices Unbound 共同召集人；2025 年曾以 TU Darmstadt 博後身分出現</td><td><a href="https://profiles.ucl.ac.uk/67801-marco-humbel">UCL</a>、<a href="https://www.nationalarchives.gov.uk/people/marco-humbel/">TNA</a></td></tr>
+<tr><td>8</td><td>Valentina Prishchepova</td><td>Research Assistant，TU Darmstadt HDSM</td><td>網站未載明</td><td>MeDoraH 研究助理；2025-07 UCL Festival 報告共同作者</td><td>無</td></tr>
+<tr><td>9</td><td>Florian Elleringmann</td><td>Research Assistant，TU Darmstadt HDSM</td><td>網站未載明</td><td>MDOH 與 MeDoraH 研究助理；DH2026 報告共同作者</td><td><a href="https://orcid.org/0009-0008-5998-3175">ORCID</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>三位主持人的分工</h3>
+<p>從經費文件看，MeDoraH 的正式分工是 Vlachidis（UCL PI）、Flinn（UCL Co-I）、Nyhan（TU Darmstadt 申請人）。從實驗室網站看，Nyhan 與 Flinn 貫穿三個計畫，Vlachidis 自 MDOH 起加入。以調查報告的判斷：Nyhan 提供研究議題（數位人文學科史、口述歷史作為資料），Flinn 提供口述歷史與檔案學的方法立場（多模態、共享權威、參與式），Vlachidis 提供語意技術與 NLP 工程；博後與助理分別掛在這三條線下。</p>
+
+<p>雙軸結構的由來：Nyhan 2011 年起任職 UCL，2022-01-01 就任 TU Darmstadt 的 W3 講座（該職缺 2019-10-21 公告），同時保有 UCL 教授職到 2024-09。這段重疊期正是 2022 年多模態講座系列與 2023 年 MeDoraH 申請的時期。2025 年 6 月 UCLDH 與 HDSM 簽署合作備忘錄。</p>
+
+<p class="small">團隊頁之外，HDSM 講座另有成員 Nadezhda Povroznik，不在 IDOHL 名單上。Hidden Histories 的早期合作者 Anne Welsh（co-PI 2011–2012）、Marc Theobald、Jessica Salmon，以及 2022 年講座協辦者 Hannah Smyth、Daniele Metilli，都未列入現行團隊頁。</p>
+
+<!-- ============================================================ -->
+<h2 id="s3"><span class="no">3</span>歷史年表</h2>
+
+<p>實驗室正式成立的日期與「International Digital Oral History Lab」這個名稱何時開始使用，網站未載明。能找到最早帶日期的證據依序是：GitHub 帳號建立（2024-11-12）、Omeka S「Lab」站建立（2025-05-14）、Wayback Machine 首次存檔以全名呈現的首頁（2025-07-09，當時掛在舊網域 hiddenhistories.net）。網域 idohl.org 於 2026-04-28 註冊。紅點為對本專案特別重要的時間點。</p>
+
+<ul class="tl">
+<li><span class="yr">2011-09-17</span>「Hidden Histories: Symposium on Methodologies for the History of Computing in the Humanities, c.1949–1980」於 UCL 舉行，特里爾大學 HKFZ 提供 5,000 歐元種子經費。先導研究完成 5 篇口述訪談（Willard McCarty、Geoffrey Rockwell、Harold Short、Ray Siemens、John Unsworth）。<a href="https://idohl.org/item/112" class="src">研討會頁</a></li>
+<li><span class="yr">2012</span>5 篇先導訪談刊於 <em>Digital Humanities Quarterly</em>。同年起至 2015 年完成專書的 14 篇訪談（多數以 Skype 或在 DH 年會現場進行）。</li>
+<li><span class="yr">2013／2015</span>Nyhan, Flinn &amp; Welsh 方法論文〈Oral History and the Hidden Histories project〉線上刊出（<em>DSH</em> 30(1)）。<a href="https://doi.org/10.1093/llc/fqt044" class="src">DOI</a></li>
+<li class="key"><span class="yr">2016</span>Nyhan &amp; Flinn《Computation and the Humanities: Towards an Oral History of Digital Humanities》（Springer，CC BY-NC 2.5），18 章含 14 篇訪談逐字稿。REF 2021 送審說明：至 2020-11 下載約 177,205 次。<a href="https://doi.org/10.1007/978-3-319-20170-2" class="src">DOI</a></li>
+<li><span class="yr">2017</span>訪談音檔以 CC BY-NC-ND 發布於舊 Omeka 站。</li>
+<li><span class="yr">2019</span>Nyhan &amp; Passarotti 編《One Origin of Digital Humanities: Fr Roberto Busa in His Own Words》（Springer）。2019-10-21 TU Darmstadt 公告 W3 講座「Humanities Data Science and Methodology」職缺。</li>
+<li><span class="yr">2021</span>Nyhan 任 UCLDH 主任、升 Professor of Digital Humanities；Sloane Lab（AHRC，2021–2024）啟動，Vlachidis 為技術負責人、Humbel 為研究員。</li>
+<li class="key"><span class="yr">2022-01-01</span>Nyhan 就任 TU Darmstadt HDSM 講座。UCL 與 Darmstadt 的雙軸結構由此而來。</li>
+<li><span class="yr">2022-06-08 至 07-20</span>線上講座系列「Multimodal Digital Oral History: The Forward-View Seminar」五場，召集人 Flinn 與 Nyhan。同年 Nyhan 出版《Hidden and Devalued Feminized Labour in the Digital Humanities》（Routledge）。<a href="https://openlearnware.tu-darmstadt.de/collection/hdsm-multimodal-digital-humanities-ringvorlesung-417/" class="src">錄影</a></li>
+<li class="key"><span class="yr">2023-01-02</span>Smyth, Nyhan &amp; Flinn〈Exploring the possibilities of Thomson's fourth paradigm transformation〉線上刊出（<em>DSH</em> 38(2)），MDOH 一詞的奠基文章。<a href="https://doi.org/10.1093/llc/fqac094" class="src">DOI</a></li>
+<li><span class="yr">2023</span>MDOH 成為計畫（計畫頁標「since 2023」）。Nyhan 兼任 TU Darmstadt 歷史研究所所長（至 2025）。2023-10-01 Vlachidis 升 Associate Professor。</li>
+<li class="key"><span class="yr">2023-12-13</span>UCL 宣布 MeDoraH 獲 AHRC–DFG 英德合作計畫第 5 輪補助（18 件之一）：UCL £441,798、TU Darmstadt €632,736，34 個月，2024-02-01 起。<a href="http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research" class="src">新聞稿存檔</a></li>
+<li><span class="yr">2024-01-23</span>Vlachidis 在 Humanist 刊登 MeDoraH 博後職缺「Research Associate in Semantic Web and Information Extraction」。<a href="https://www.dhhumanist.org/volume/37/408/" class="src">Humanist 37.408</a></li>
+<li class="key"><span class="yr">2024-02-01</span>MeDoraH 開始。2024-05 Schmidt 到職；2024-07-06 Zhang 到職；2024-07-28 建 MeDoraH_NLP 儲存庫；2024-08-30 建 MeDoraH_Ontology 儲存庫。</li>
+<li><span class="yr">2024-10</span>Omeka S「MeDoraH」站（10-10）與「Hidden Histories」站（10-31）建立，掛在 hiddenhistories.net。Varfolomeyev 到職。</li>
+<li><span class="yr">2024-10-14 至 2025-02-03</span>講座系列「Voices Unbound: Lecture Series on Digital Oral History」，TU Darmstadt、UCL、C²DH（盧森堡）、MPIWG（柏林）合辦，十場。<a href="https://www.gugw.tu-darmstadt.de/termine_details_fb2_121984.en.jsp" class="src">公告</a></li>
+<li class="key"><span class="yr">2024-11-12</span>GitHub 帳號「International-Digital-Oral-History-Lab」建立，同日建 MeDoraH_Project 儲存庫。這是查到最早帶日期的實驗室名稱。</li>
+<li><span class="yr">2025-02-26</span>MeDoraH 站新增「Interviews (FAIR Archive)」頁。</li>
+<li><span class="yr">2025-05-14</span>Omeka S「Lab」站建立（即今日 IDOHL 首頁）。2025-05-22 Nyhan 發表 Susan Hockey Lecture「Oral History as Data?」。2025-06 UCLDH 與 HDSM 簽署合作備忘錄。</li>
+<li><span class="yr">2025-07-09</span>Wayback Machine 首次存檔實驗室首頁，已標「International Digital Oral History Lab, A collaboration between UCL and TU Darmstadt」。同日 Nyhan 公開演講「Mixed-methods Digital Oral History: Reflections on Limits, Horizons and Emerging Findings」。<a href="https://www.youtube.com/watch?v=xtdz6MQP6fI" class="src">錄影</a></li>
+<li><span class="yr">2025-07-15</span>Humbel 等人在 UCL Festival 報告 Humanist 郵件論壇（1987 年起、4 萬餘則）的文本探勘，口述歷史之外的第二個史料源。</li>
+<li><span class="yr">2025-09-18</span>Zhang 等人在 The Connected Past 2025（Coimbra）發表「Towards a Network of Recollection in Oral Histories」。</li>
+<li><span class="yr">2025-11-21</span>MeDoraH 海報於 DFG「慶祝第 100 個獲補助計畫」活動展出。2025-12 FAIR 詮釋資料論文發表於 MTSR 2025（Thessaloniki）。</li>
+<li class="key"><span class="yr">2026-02-02</span>NarraGraph v0.1.2 beta 釋出（「尚不適合正式使用」）。2026-03-02 建 MDOH_Project 儲存庫；03-03 網站新增「Open Source &amp; Release」頁。</li>
+<li class="key"><span class="yr">2026-03-23 至 04-02</span>Vlachidis, Zhang &amp; Nyhan「Designing an Ontology of Memory and Recollection」發表於 iConference 2026（Edinburgh）。<a href="https://discovery.ucl.ac.uk/id/eprint/10224816/" class="src">UCL Discovery</a></li>
+<li><span class="yr">2026-04-28</span>網域 idohl.org 註冊；2026-05-12 首次 Wayback 快照；舊網域 301 轉向。</li>
+<li><span class="yr">2026-05-27</span>NarraGraph v0.4.0 釋出。同日 Vlachidis 在 ISKO UK 線上講座講「Ontology Development with Large Language Models for Oral History Network Construction」。<a href="https://iskouk.org/event-6689850" class="src">活動頁</a></li>
+<li><span class="yr">2026-07-27 至 31</span>DH2026（Daejeon）報告「Modelling the memory of Digital Humanities through an LLM-driven hermeneutic framework」。<a href="https://zenodo.org/records/22115456" class="src">Zenodo</a></li>
+<li class="key"><span class="yr">2026-08-03</span>Zhang, Vlachidis &amp; Nyhan「Hermeneutic Ontology Engineering: LLM-Assisted Schema Induction for Oral History Knowledge Organisation」發表於 NKOS Workshop @ DCMI 2026（首爾國立中央圖書館）。<a href="https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf" class="src">投影片 PDF</a></li>
+<li><span class="yr">2026-09-16</span>Lab 站最後修改；2026-10-01 消息快取最後更新。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="s4"><span class="no">4</span>三個計畫</h2>
+
+<p>計畫總覽頁把三者描述為「三個相連的計畫，每一個建立在前一個之上，合起來構成實驗室的方法論脊椎」。實際的承接關係是：<strong>語料單一來源</strong>（三者共用 Hidden Histories 英語訪談，訪談正本統一掛在 MeDoraH 站的 FAIR Archive 頁，Hidden Histories 站的「Interviews」選單反而連到那裡）；<strong>MDOH 是方法論綱領而非獨立經費計畫</strong>（其笑聲研究成果與實習都登錄在 MeDoraH 的 AHRC 補助之下）；<strong>MeDoraH 在語料上加德語訪談、在方法上加語意網層與 LLM 抽取</strong>，MDOH 則加聲音層，兩者在 NarraGraph v0.3.3 的「前處理頁含語音轉錄」處開始交會。</p>
+
+<div class="card">
+<h4>4.1 Hidden Histories（2011 起）<span class="tag">基礎語料</span></h4>
+<dl class="kv">
+<dt>問題意識</dt><dd>以口述歷史補寫 1949 年以來電腦方法在人文學應用的社會史與思想史。起點是 Roberto Busa 對阿奎那著作做索引的構想。2013 年 DH 會議長文把計畫定位為「口述人物誌」（oral prosopography），要糾正只剩編年與「英雄式首創」的既有史述。網站明言「此類資訊無法從現存文獻取得，只能透過親歷者的證詞觸及」。</dd>
+<dt>語料</dt><dd>英語為主。入口網公開 19 篇英語訪談（專書 14 篇＋DHQ 5 篇），受訪者是數位人文先驅（Judy Malloy、Susan Hockey、Wilhelm Ott、Manfred Thaller、John Bradley、Geoffrey Rockwell 等）。音檔 mp3 可直接下載，CC BY-NC-ND 4.0；逐字稿不在站上，連到 Springer 專書章節或 DHQ。另有 3 筆 2014 年義大利語訪談（Busa 計畫相關，米蘭），5 筆標「Forthcoming 2018」的佔位紀錄，以及九位女性打孔卡作業員只有人物紀錄沒有訪談。</dd>
+<dt>方法</dt><dd>半結構式訪談，六個核心問題固定（最早接觸電腦的記憶、是否受過正式程式訓練、如何進入 DH、受誰影響、不用電腦的學者怎麼看、何時接觸會議社群）；錄音、轉寫、輕度編修後連同音檔公開。</dd>
+<dt>經費</dt><dd>2011 先導：HKFZ 5,000 歐元＋UCLDH 協助。2012 至 2016 年訪談與專書：網站未載明。</dd>
+<dt>產出</dt><dd>2015 DSH 方法論文；2016 Springer 專書；2019 Busa 文集；2022 Routledge 專書（女性打孔卡作業員）；2011 研討會七段 podcast。</dd>
+<dt>進度</dt><dd>定位為「基礎語料」，現行工作由 MeDoraH 承接。入口網仍有未完成處（佔位紀錄、Orlandi 項目摘要誤植為 Ott 的）。</dd>
+<dt>連結</dt><dd><a href="https://idohl.org/hiddenhistories/">計畫頁</a>、<a href="https://idohl.org/medorah/Oral_History_Interviews">FAIR Archive 訪談清單</a>、<a href="https://dh-abstracts.library.virginia.edu/works/1718">DH2013 長文</a></dd>
+</dl>
+</div>
+
+<div class="card">
+<h4>4.2 MDOH：Multimodal Digital Oral History（多模態數位口述歷史，2023 起）<span class="tag">方法論綱領</span></h4>
+<dl class="kv">
+<dt>問題意識</dt><dd>「sound-as-data」轉向：把逐字稿、聲音、波形、影像與詮釋資料「一起作為分析範疇來讀，而不是以文字為優先的巢狀層級」；「語速、遲疑、笑聲與沉默，也就是言說本身的質地，與字詞一同進入分析框架」。計畫頁引言：「口述歷史是意義的建構，不是訊號萃取。」奠基論文以 Alistair Thomson 2007 年「口述歷史四次典範轉移」的第四次（數位革命）為起點，主張校正文字逐字稿的主導地位。</dd>
+<dt>數位詮釋學</dt><dd>網站沒有給定義。從實驗室用法可歸納三層：2022 年講座把 digital hermeneutics 當「反思數位研究對口述歷史之意涵」的次領域；Nyhan 2023 年在 Hagen 的主題演講把多模態口述歷史當成數位詮釋學的「試驗場」；到了 MeDoraH 具體化為「詮釋學本體工程」，把本體建構視為詮釋行為，工作台的設計目標是「促成古典詮釋循環：從整體（語料）到部分（單一發言）再回來」。</dd>
+<dt>語料</dt><dd>專頁未指明。計畫總覽頁說它建立在 Hidden Histories 之上；MDOH Omeka 站的 16 筆項目全是 2014 年義大利語 Busa 相關紀錄，無媒體檔。</dd>
+<dt>方法與工具</dt><dd>管線：WAV 音檔 → WhisperX（自動語音辨識）→ 波形分析與笑聲偵測 → TransVisEd（逐字稿視覺化編輯器，「開發中」）。笑聲偵測用什麼模型，網站與儲存庫均未載明。2025 年兩位 TU Darmstadt 實習生用專案自建的視覺編輯器逐一校正字詞邊界、笑聲位置與說話者，並記錄 ASR 的幻覺。ESSHC 2025 論文處理 ASR 帶來的「共享權威」問題（Whisper large-v3、幻覺插字、對缺乏同意的歷史錄音做 LLM 轉錄的倫理）。</dd>
+<dt>經費</dt><dd>專頁無經費資訊，狀態「Active R&amp;D」。成果全登錄在 MeDoraH 的 AHRC 計畫之下；調查報告判斷 MDOH 是在 MeDoraH 經費下進行的研究線。</dd>
+<dt>產出</dt><dd>Smyth, Nyhan &amp; Flinn 2023（DSH）；Nyhan &amp; Flinn 2024 IFPH「Exploring uncertainty and laughter in oral histories」；Flinn &amp; Nyhan 2025 ESSHC；Nyhan 2025 IOHA；Flinn, Nyhan &amp; Smyth 2026《Bloomsbury Handbook of Oral History》章節（編者之一正是 Thomson）。GitHub MDOH_Project 只有 README，README 列的六個資料夾都不存在。</dd>
+<dt>連結</dt><dd><a href="https://idohl.org/MDOH/">計畫頁</a>、<a href="https://doi.org/10.1093/llc/fqac094">奠基論文</a>、<a href="https://discovery.ucl.ac.uk/id/eprint/10212788/">IFPH 2024 摘要</a>、<a href="https://discovery.ucl.ac.uk/id/eprint/10201115/">ESSHC 2025 摘要</a></dd>
+</dl>
+</div>
+
+<div class="card">
+<h4>4.3 MeDoraH：Mixed-methods Digital Oral History（混合方法數位口述歷史，2024 起）<span class="tag acc">與本專案最接近</span></h4>
+<dl class="kv">
+<dt>正式標題</dt><dd>Mixed-methods Digital Oral History: Enfolding Semantic Web Technologies and Historical-Interpretative Analysis to Better Understand Narratives of Formation, Disruption and Change in the History of Computing in the Humanities。德方縮寫 MMDOH。</dd>
+<dt>問題意識</dt><dd>口述歷史對人文學數位轉向的參與「偏重錄製與近用而非分析」，口述歷史學者很少接觸語意網技術（RDF、RDFS、OWL）。計畫問「語意網技術、歷史詮釋分析與數位研究方法如何交織，以催生口述歷史研究的『數位方法論暨詮釋學轉向』」，以數位人文學科史為範例個案。核心區辨「回憶網絡」（Network of Recollection）：聚焦從口述敘述中浮現的網絡，不重建先在的「真實」社群網絡。三個研究問題：網絡結構如何表徵口述歷史的敘事與時間向度；被回憶的關係裡浮現哪些知識創造、流動與影響的模式；知識圖譜如何在質性敘事與量化網絡分析之間建立可辯護且透明的橋樑。</dd>
+<dt>經費（核實）</dt><dd>UKRI Gateway to Research AH/Y007557/1：£349,619，2024-02 至 2027-04，PI Vlachidis，Co-I Nyhan 與 Flinn。UCL 新聞稿：£441,798（UCL）＋€632,736（TU Darmstadt），34 個月自 2024-02-01。兩個英鎊數字比值 79%，與英國補助支付全經濟成本 80% 的慣例相符，應是同一筆經費的兩種計法；34 個月與 2027-04 的期程不一致，後者可能含展延。DFG GEPRIS 528052031，申請人 Nyhan，不顯示金額。</dd>
+<dt>語料</dt><dd>Hidden Histories 英語訪談全部；網站稱新增十篇德語訪談（計畫總覽頁改寫為「德語與義大利語」），但入口網沒有任何德語項目，執行者未載明。另一條語料線是 Humanist 郵件論壇（spaCy NER＋Mallet LDA），結果與口述歷史的回憶網絡比對。已處理規模：19 篇訪談、176 個敘事單位、1,647 條宣稱（NKOS 2026）；ISKO UK 頁稱 25 篇，差 6 篇未解釋。</dd>
+<dt>方法三階段</dt><dd>（一）傳統管線：textacy 依存句法抽 SVO 三元組、OpenIE6、spaCy NER 多步流程；結論是對複雜句「精確率與覆蓋率低」，關係詞多被壓成 be／have。（二）零樣本關係抽取：text2graph-llama-3.2-3b、rebel-large、mrebel、knowgl-large；失敗歸因於訓練資料（Wikipedia 摘要）與口述語言不匹配、模型過小而過度概化，典型錯誤是從「我可以使用加州大學的圖書館」推出「educated at」。（三）LLM 抽取工作流程：三趟抽取（無綱要、綱要引導、研究問題驅動），輸入切塊而非整卷（理由是「context rot」），三趟結果交由整合器與人工審查，「收斂→信心，分歧→綱要缺口」；再以「詮釋學本體填充」把三元組映射到本體。聚類用 HDBSCAN＋SpanBERT 嵌入加 WordNet。</dd>
+<dt>本體與 FAIR</dt><dd>四層架構：Discourse（訪談作為對話事件）、Narrative（敘事單元）、Claims（具化的斷言，帶講者歸屬與知態立場）、Reference（經策展的實體，掛 Wikidata Q 編號）。已釋出本體原型 V0.2（詳見第 5 節）。FAIR 的落實是以美國口述歷史學會（OHA）2022 年詮釋資料元素清單為基礎，對映到 Dublin Core（MTSR 2025 論文）。各文件對 CIDOC-CRM 對齊的說法強弱不一（GtR「嚴格對映」、海報「對齊」、NKOS 摘要「非正式對齊」），已釋出的 TTL 檔沒有任何 CRM 參照。</dd>
+<dt>工具</dt><dd>詮釋工作台（Hermeneutic Workbench）與 NarraGraph 是同一條工具線的前後名稱：跨平台桌面程式（Tauri 2、React 19、Rust），功能含多供應商 LLM 抽取或本機模型、本體填充、網絡分析（社群偵測、八種中心性、時序社群追蹤、虛無模型）、SPARQL 匯出、Research Copilot、多語逐字稿平行閱讀。介面分「巨觀」（側欄彙總高頻實體與結構模式）與「微觀」（主面板把每筆抽取錨回原敘事脈絡、顯示說話者）。</dd>
+<dt>人員</dt><dd>Nyhan（PI，TU Darmstadt）、Vlachidis（PI，UCL）、Flinn（Co-I）；博後 Zhang（UCL）、Schmidt（TU Darmstadt）、Humbel（2025 年海報標 TU Darmstadt 博後）；另 Varfolomeyev、Prishchepova、Elleringmann。合作：C²DH、MPIWG（Voices Unbound）；International Hellenic University MetaDATA Lab 與 TELL 計畫（2026 起）。學生實習五件（LLM 關鍵詞抽取、Omeka S 改版、ASR 與笑聲校正、HTR、OHMS 整合）。</dd>
+<dt>進度</dt><dd>GtR 2026 年敘述：本體「已釋出穩定版」；LLM 抽取與本體填充已整合進 NarraGraph；JSON 前處理已套用全部訪談；Metadata Structure 2026 年完成。NarraGraph 自 2026-02 起四個月內從 beta 推進到 v0.4.0。德語訪談尚未出現在入口網。</dd>
+<dt>連結</dt><dd><a href="https://idohl.org/medorah/">計畫頁</a>、<a href="https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1">UKRI GtR</a>、<a href="https://gepris.dfg.de/project/528052031">DFG GEPRIS</a>、<a href="https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf">DFG 海報 PDF</a>、<a href="https://www.dublincore.org/conferences/2026/sessions/nkos-workshop/">NKOS 2026 摘要</a></dd>
+</dl>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s5"><span class="no">5</span>開源釋出</h2>
+
+<p>開源頁稱釋出「五個儲存庫」，並說「所有儲存庫遵循 FAIR 原則」。實際狀況：GitHub 帳號「International-Digital-Oral-History-Lab」是 User 不是 Organization，名下 3 個儲存庫；另外 2 個掛在 articoder（Jiajie Zhang）名下。<strong>四個內容儲存庫都沒有 LICENSE 檔</strong>，依 GitHub 服務條款，無授權的公開儲存庫預設保留所有權利，第三方只能檢視與 fork。FAIR 的 R（可重用）在法律層面沒有被滿足。</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>儲存庫</th><th>用途</th><th>內容</th><th>授權</th><th>建立／最後 commit</th><th>commit</th></tr></thead>
+<tbody>
+<tr><td><a href="https://github.com/International-Digital-Oral-History-Lab">帳號頁</a></td><td>實驗室門面</td><td>User 帳號；另有 IDOHL-updator（網站消息聚合器）</td><td>不適用</td><td>2024-11-12</td><td></td></tr>
+<tr><td><a href="https://github.com/International-Digital-Oral-History-Lab/MDOH_Project">MDOH_Project</a></td><td>MDOH 說明</td><td>只有 README（3 KB）；README 列的六個資料夾全不存在，還留著樣板句</td><td>無</td><td>2026-03-02／2026-03-02</td><td>2</td></tr>
+<tr><td><a href="https://github.com/International-Digital-Oral-History-Lab/MeDoraH_Project">MeDoraH_Project</a></td><td>MeDoraH 入口</td><td>只有 README（14 KB）；連到的 5 個 medorah/* 儲存庫與 medorah 帳號全部 404；「Researchfish 成果清單」是預定清單不是已釋出清單</td><td>無</td><td>2024-11-12／2026-03-02</td><td>8</td></tr>
+<tr><td><a href="https://github.com/articoder/MeDoraH_NLP">MeDoraH_NLP</a></td><td>NLP 工具、儀表板、NarraGraph 釋出點</td><td>11 支 Python、Jinja 模板、19 卷切分逐字稿 JSON、1,647 筆抽取結果、9 個 NarraGraph release（只有二進位檔）</td><td>無</td><td>2024-07-28／2026-02-23（release 至 2026-05-27）</td><td>44</td></tr>
+<tr><td><a href="https://github.com/articoder/MeDoraH_Ontology">MeDoraH_Ontology</a></td><td>本體與詮釋資料詞彙</td><td>3 個 Turtle 檔、設計文件、OmniGraffle 圖、手工編碼網絡資料（366 實體／598 關係）</td><td>無</td><td>2024-08-30／2026-05-11</td><td>17</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>5.1 MeDoraH_NLP：程式裡沒有模型，模型在二進位檔裡</h3>
+<p>11 支 Python 腳本的 import 彙總只有 pandas、numpy、hdbscan、umap、plotly、scikit-learn、scipy、nltk（WordNet）、networkx、pyvis、jinja2。<strong>沒有任何一支匯入 spaCy、fastcoref、transformers、REBEL、T5 或任何 LLM SDK</strong>；沒有 requirements 或 pyproject。能從公開檔案執行到底的只有「抽取 JSON → HTML 儀表板／networkx 網絡圖」這一段，而這段不涉及任何模型。分群腳本的輸入 parquet 寫死在作者本機路徑，產生嵌入的 <code>embedding_analyzer</code> 套件不在儲存庫。</p>
+
+<p>真正做 LLM 抽取的是 <strong>NarraGraph</strong>（Tauri 2、React 19、Rust），儲存庫裡沒有任何 Rust、TypeScript 或 React 原始碼；九個 release tag 全指向同一個 commit，表示二進位檔是在這個儲存庫之外建置的。開源頁「原始碼 via MeDoraH_NLP repository」的說法與事實不符。Release 說明透露程式支援多個 LLM 供應商、本機 LLM 面板與反向代理端點；NKOS 2026 投影片列模型為「model-agnostic：Gemini 2.5 Pro、Gemma 3、Qwen 3」，範例宣稱的驗證欄記為「extractor: claude-opus-4-8」。哪一趟、哪批正式數字採用哪個模型，投影片未說明。</p>
+
+<p><strong>資料</strong>：19 卷英語訪談的話輪 JSON（欄位 speaker_name、role、utterance、order；<strong>沒有時間碼</strong>，原始逐字稿本身沒有）。示範抽取 Judy Malloy 一卷 28 個話輪、655 筆，全部帶句 id 與證據句；實體型別由模型自由命名，<strong>單卷就有 160 個不同型別與 436 個不同關係標籤</strong>；主詞沒有任何代名詞，表示模型已把「我」改寫成「Judy Malloy」。本體映射層示範 304 筆，每筆帶知態立場四欄（claim_type、certainty_level、temporal_grounding、attribution_type）加 is_negated；其中 hearsay 8 筆、indirect_report 11 筆。合併檔 Combined.json 891 個話輪、1,647 筆，與 NKOS 摘要的數字完全相符，但<strong>合併檔的出處退回只剩證據句、沒有句 id</strong>。</p>
+
+<p><strong>評估</strong>：儲存庫沒有評估程式。投影片的「Quality census」：1,429 筆宣稱逐筆人工回讀，91.3% warranted、8.5% over-specified（例：Egan 說的是「having a Sinclair Spectrum」卻被寫成 usesTechnology，「擁有不等於使用，動詞高了一階」）、2 筆 unsupported；投影片自稱「Selective by design」。回讀者人數與一致性未載明。綱要歸納：schema-free 那趟產生 160 個原始型別，收斂成 22 個類別。與手工編碼對照（2025 手工 vs 2026 LLM）：被憶及的人 124 vs 209；記憶的交會點從「人—人—人」變成「機構—人—人」。</p>
+
+<h3>5.2 MeDoraH_Ontology：三個 Turtle 檔</h3>
+<p><strong>內容層</strong> <code>Ontology Prototype V0.2.ttl</code>（命名空間 example.org，佔位用）：43 個具名類別，根 Entity，7 個頂層（Actor、Event、Artefact、ConceptualItem、SpatialEntity、TemporalEntity、Property）；51 個物件屬性組織成 11 種關係模式，每種一個上位屬性加子屬性（例如 Actor→Actor 的 hasSocioInstitutionalRelationWith 下有 hasEmploymentAt、studiedAt、founded、collaboratedWith、mentorsOrSupervises、influences 等 12 個）。<strong>CIDOC-CRM 對齊只有 skos:scopeNote</strong>：Person↔E21、Organisation↔E74、Event↔E5、SpatialEntity↔E53、TemporalEntity↔E52，並明寫「no formal equivalence is asserted in this prototype」；沒有任何 P 屬性對映。<strong>沒有 Statement、Claim、Evidence、Speaker 類別</strong>；本體註解明說這是「entity-centric Fabula／Reference layer」，宣稱、出處、信心與證據跨距應在 Claim 層、RDF-star 或 PROV-O 建模，但那一層不在已釋出的檔案裡。時間只有 TemporalEntity 實體類別掛在事件上，沒有 xsd:date、沒有區間、沒有相對時間表徵。投影片稱「22 classes」，TTL 有 43 個，差異原因未載明。</p>
+
+<p><strong>檔案層</strong> <code>MeDoraH Ontology - File.ttl</code>（另一個命名空間）：Interview、Interviewer、Interviewee、AudioFile、TranscriptFile、SpeechSegment 等 8 類，接 foaf、dcterms、prov。<strong>時間碼在這一層</strong>（SpeechSegment 有 startTime／endTime、speaker、audioFileReference），但抽取 JSON 完全沒有用到這一層，兩層之間沒有連結屬性。</p>
+
+<p><strong>詮釋資料詞彙</strong> <code>OH_metadata_vocab_V3.ttl</code>：基於 OHA「Metadata Elements for Oral History 1.1」，口述歷史生命週期四階段（Plan、Interview、Processing、Publication），27 個資料屬性對映到 dc／dcterms；對應 MTSR 2025 論文。搜尋結果稱該綱要「對齊 CIDOC-CRM、Dublin Core 與 PBCore」，TTL 裡只有 dc／dcterms。</p>
+
+<p>設計文件 v0.2 的兩段值得記：§2.1 知識圖譜儲存的是「來源中被憶及與表述的連結」，矛盾說法並存，「真值維護是研究活動，不是本體要求」；§9.1 規定每筆抽取關係應附來源、證據跨距、抽取器中繼資料（方法／模型／提示版本）、信心與驗證狀態，但<strong>釋出的資料只有前兩項</strong>。</p>
+
+<div class="card warn">
+<h4>橫向判斷：可以檢視結果，不能重跑抽取</h4>
+<ol>
+<li>有資料、無核心程式：19 卷逐字稿、1,647 筆抽取、304 筆本體映射示範、手工編碼網絡都在，但從逐字稿到抽取結果那一段（三趟 LLM 抽取、整合器、投票驗證、本體映射）全封在 NarraGraph 二進位檔裡。</li>
+<li>有程式的部分缺輸入：分群腳本的 parquet 在作者本機；話輪切分程式只在 issue #6 有文字描述。</li>
+<li>無依賴宣告、無授權。</li>
+<li>評估不可重現：91.3% 來自人工回讀，規程、人數、一致性未公開。</li>
+<li>文件與實體不符處多：三個 README 列出的資料夾或子儲存庫不存在；投影片 22 類 vs TTL 43 類。</li>
+<li>對本專案的意義：這套釋出的價值在<strong>資料與表徵設計</strong>（知態立場詞表、Claim／Reference 分層、Divergence 物件、兩層關係模式），不在可執行的管線。要引用他們的方法，引 NKOS 2026 投影片與 DH2026 摘要；要陳述「他們的程式碼如何處理 X」，除了後處理與分群之外都說不出來。</li>
+</ol>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s6"><span class="no">6</span>研究方向與方法論立場</h2>
+
+<h3>6.1 從出版品歸納的五條主軸</h3>
+<ol>
+<li><strong>口述歷史作為學科史的方法（數位人文的社會史）</strong>。從 2011 年先導研究到 2016 專書與 2022 Routledge 專書，一貫以口述訪談補寫人文計算史，並處理「被隱藏的勞動」（女性打孔卡作業員）與「弱者／革命者母題」。</li>
+<li><strong>多模態數位口述歷史（MDOH）</strong>。逐字稿只是一層，要主動處理聲音、頻譜、波形與詮釋資料，以笑聲與遲疑為案例；2025 年起延伸到原生數位材料與 AI 轉寫的權威問題。</li>
+<li><strong>口述歷史到知識圖譜與本體（MeDoraH，2024–27）</strong>。承認傳統 NLP 在口述語言上失效，轉向 LLM 加人工精修循環的「詮釋學本體工程」，同步處理口述典藏的 FAIR 詮釋資料。2025 年起的重心。</li>
+<li><strong>資訊抽取與典藏基礎建設的批判</strong>。NER 無法基準化、權威檔具情境性、典藏中的「缺席」要被研究、數位基礎建設有社會文化阻力（Humbel et al. 2021、2024；Metilli et al. 2024）。</li>
+<li><strong>近用、共享權威與倫理</strong>。從 2014 年「這是誰的計畫？」的參與式口述歷史，到 2024 年典藏生命史的近用民主化座談，再到 2025 年對「共享權威在數位典範下是否可能」的追問。</li>
+</ol>
+<p>以調查報告的判斷：第 3 條是現在的重心，第 2 條是其方法論前提，第 1 條提供語料。與本專案最可比的是第 3 條，最值得借用的論證在第 4 條。</p>
+
+<h3>6.2 可以直接引用的立場</h3>
+<blockquote>網絡科學追求客觀可驗證的連結，口述歷史提供的是主觀、被演出的回憶。我們聚焦於從口述歷史敘述中浮現的網絡，而非重建一個先在的「真實」社群網絡；我們描繪的是被說出的內容與它如何被詮釋，不必然是事實。<span class="who">MeDoraH 投影片「Networks for Oral History Hermeneutics」第 5 頁（中譯；原文見 UCL Discovery 10220832 附檔）</span></blockquote>
+<blockquote>口述歷史是意義的建構，不是訊號萃取。sound-as-data 轉向把語速、遲疑與沉默當成證據，從不當作要濾掉的雜訊，也不當作可忽略的裝飾。<span class="who">idohl.org 計畫總覽頁 MDOH 段（中譯）</span></blockquote>
+<blockquote>知識圖譜儲存的是來源中被憶及與表述的連結，不是客觀史實。矛盾說法並存；真值維護是研究活動，不是本體要求。<span class="who">MeDoraH Ontology Prototype v0.2 設計文件 §2.1（中譯）</span></blockquote>
+
+<h3>6.3 他們對 LLM 失效模式的三項診斷（NKOS 2026 投影片第 7 頁）</h3>
+<ul>
+<li><strong>參數知識覆寫</strong>：模型把 Malloy 從未說過的「educatedAt University of California」產生出來。</li>
+<li><strong>把遲疑壓平</strong>：Nitti 的「if I remember correctly, for $242,000」被丟掉保留語，NKOS 摘要稱之為「推論式幻覺」（inferential hallucination），即 LLM 把帶保留語氣的證詞轉成確定的關係陳述。</li>
+<li><strong>context rot</strong>：整卷輸入時講者歸屬失敗，所以改成切塊輸入。</li>
+</ul>
+<p>他們的對策是「三趟抽取、設計成會分歧」加人工審查，並把分歧當成本體該修的證據。</p>
+
+<!-- ============================================================ -->
+<h2 id="s7"><span class="no">7</span>出版與相關工作</h2>
+
+<p>出版頁各類筆數：專書 4、期刊論文 3、專書章節 4、工作坊 1、講座系列 2、會議論文 16、演講 17、相關研究 7。Zotero 群組（3 位成員）共 70 筆，比網頁多出 2024 年以後的新筆。完整書目在 <code>refs/notes/idohl/04_出版與相關工作.md</code>，此處只列與本專案相關者。</p>
+
+<h3>7.1 實驗室自己的核心文獻</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th>書目</th><th>一句話定位</th><th>取得</th></tr></thead>
+<tbody>
+<tr><td>Nyhan, J., &amp; Flinn, A. (2016). <em>Computation and the Humanities: Towards an Oral History of Digital Humanities</em>. Springer. <a href="https://doi.org/10.1007/978-3-319-20170-2">DOI</a></td><td>以口述歷史補寫數位人文的社會史；14 篇訪談逐字稿作為一手史料出版。第 2 章「Why Oral History?」談哪些生命被選來講故事、哪些缺席；第 17 章從多位受訪者歸納「弱者母題」。</td><td>開放取用（CC BY-NC 2.5）</td></tr>
+<tr><td>Nyhan, J., Flinn, A., &amp; Welsh, A. (2015). Oral History and the Hidden Histories project. <em>DSH</em>, 30(1), 71–85. <a href="https://doi.org/10.1093/llc/fqt044">DOI</a></td><td>先導計畫的方法論報告：半結構式訪談、輕度編修的逐字稿與原始音檔一起公開；指出口述內容同時含事實與「神話建構」。</td><td>開放取用</td></tr>
+<tr><td>Smyth, H. K., Nyhan, J., &amp; Flinn, A. (2023). Exploring the possibilities of Thomson's fourth paradigm transformation. <em>DSH</em>, 38(2), 720–736. <a href="https://doi.org/10.1093/llc/fqac094">DOI</a></td><td>MDOH 的奠基文章：逐字稿只是多個分析層之一，與頻譜圖、波形、詮釋資料並列互構；引 Portelli 指出音高、語調、節奏帶著意義，轉寫即流失。</td><td>開放取用（CC BY）</td></tr>
+<tr><td>Flinn, A., Boyd, D., Morgan, C., &amp; Nyhan, J. (2024). Democratising Access? <em>Oral History</em>, 52(3), 102–109. <a href="https://discovery.ucl.ac.uk/id/eprint/10194919/">UCL Discovery</a></td><td>圓桌紀錄：自動轉寫與 AI 讓典藏訪談可被全文搜尋與大規模分析，同時牽動同意、敏感性審查與資料保護。與談人 Boyd 是 OHMS 的開發者。</td><td>開放取用</td></tr>
+<tr><td>Humbel, M., Nyhan, J., Vlachidis, A., Sloan, K., &amp; Ortolja-Baird, A. (2021). Named Entity Recognition for early-modern textual sources. <em>Journal of Documentation</em>, 77(6), 1223–1247. <a href="https://doi.org/10.1108/JD-02-2021-0032">DOI</a></td><td>「目前無法為 NER 應用於近代早期文獻的能力建立基準」；權威檔具情境性；NER 是演算法介入，輸出不中立；建議建立社群層級的評估論壇與穩健報告。</td><td>付費牆；作者接受稿在 <a href="https://discovery.ucl.ac.uk/id/eprint/10127463/">UCL Discovery</a></td></tr>
+<tr><td>Nyhan, J. (2022). <em>Hidden and Devalued Feminized Labour in the Digital Humanities: On the Index Thomisticus Project 1954-67</em>. Routledge. <a href="https://doi.org/10.4324/9781003138235">DOI</a></td><td>以義大利語訪談重建 Busa 計畫裡女性打孔卡作業員的勞動史。</td><td>付費牆</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>7.2 2025 至 2026 年的新產出（全繞著 MeDoraH）</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th>日期</th><th>書目</th><th>重點</th></tr></thead>
+<tbody>
+<tr><td>2025-03</td><td>Flinn &amp; Nyhan. Possibilities / impossibilities for shared authority in the digital oral history paradigm? ESSHC 2025, Leiden. <a href="https://discovery.ucl.ac.uk/id/eprint/10201115/">摘要</a></td><td>ASR 帶來的作者性、權威、幻覺與同意問題。</td></tr>
+<tr><td>2025-04</td><td>Nyhan &amp; Flinn. On the born-digital turn in oral history. DigiCAM25, London. <a href="https://discovery.ucl.ac.uk/id/eprint/10207146/">摘要</a></td><td>把 MDOH 架構延伸到原生數位材料。</td></tr>
+<tr><td>2025-05-22</td><td>Nyhan. Oral History as Data? Susan Hockey Lecture 2025, UCLDH. <a href="https://www.youtube.com/watch?v=jXfFOXyViKs">錄影</a></td><td>年度講座。</td></tr>
+<tr><td>2025-07-09</td><td>Nyhan. Mixed-methods Digital Oral History: Limits, Horizons and Emerging Findings. TU Darmstadt 公開演講. <a href="https://www.youtube.com/watch?v=xtdz6MQP6fI">錄影</a></td><td>涵蓋 MeDoraH 與 MDOH 兩條線的中期反思。</td></tr>
+<tr><td>2025-07-15</td><td>Humbel, Zhang, Prishchepova, Varfolomeyev, Nyhan &amp; Vlachidis. Leveraging mailing list archives for digital history research. UCL Festival. <a href="https://discovery.ucl.ac.uk/id/eprint/10211319/1/Humbel_etal_mailing_list_archives_abstract.pdf">摘要 PDF</a></td><td>Humanist 郵件論壇作為第二史料源，與口述回憶網絡比對。</td></tr>
+<tr><td>2025-09-18</td><td>Zhang, Schmidt, Vlachidis, Humbel, Nyhan, Flinn et al. Towards a Network of Recollection in Oral Histories. The Connected Past 2025, Coimbra. <a href="https://discovery.ucl.ac.uk/id/eprint/10209234/">紀錄</a></td><td>題名即核心概念；議程與典藏紀錄皆無摘要。</td></tr>
+<tr><td>2025-11-21</td><td>Nyhan, Vlachidis, Flinn, Humbel, Schmidt &amp; Zhang. MeDoraH 海報，DFG 活動. <a href="https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf">PDF</a></td><td>四項目標、三個研究問題、人員分工。</td></tr>
+<tr><td>2025-12</td><td>Humbel, Vlachidis, Zhang, Schmidt, Prishchepova, Nyhan &amp; Flinn. Implementing FAIR principles for interoperable oral history collections through mappings to Dublin Core. MTSR 2025, Thessaloniki; Springer CCIS, in press. <a href="https://discovery.ucl.ac.uk/id/eprint/10220831/">紀錄</a></td><td>OHA 元素子集對映 Dublin Core。</td></tr>
+<tr><td>2026-02</td><td>Flinn, Nyhan &amp; Smyth. Oral History as Data: Multimodal Approaches. In <em>The Bloomsbury Handbook of Oral History</em>, in press. <a href="https://discovery.ucl.ac.uk/id/eprint/10215997/">紀錄</a></td><td>MDOH 的手冊版。</td></tr>
+<tr><td>2026-03／04</td><td>Vlachidis, Zhang &amp; Nyhan. Designing an Ontology of Memory and Recollection: Experiences from the MeDoraH project. iConference 2026, Edinburgh. <a href="https://discovery.ucl.ac.uk/id/eprint/10224816/">紀錄</a></td><td>摘要承認傳統 NLP、依存剖析、共指與零樣本關係抽取「持續失效」，轉向 LLM 加人工精修。<strong>這就是 refs 裡那份 Vlachidis 簡報的發表場合。</strong></td></tr>
+<tr><td>2026-05-27</td><td>Vlachidis. Ontology Development with LLMs for Oral History Network Construction and Hermeneutical Analysis. ISKO UK Research Observatory. <a href="https://iskouk.org/event-6689850">活動頁</a></td><td>介紹 Hermeneutic Ontology Engineering。</td></tr>
+<tr><td>2026-07</td><td>Zhang, Vlachidis, Nyhan &amp; Elleringmann. Modelling the memory of Digital Humanities through an LLM-driven hermeneutic framework. DH2026, Daejeon. <a href="https://zenodo.org/records/22115456">Zenodo</a></td><td>四層架構與多代理工作流程。</td></tr>
+<tr><td>2026-08-03</td><td>Zhang, Vlachidis &amp; Nyhan. Hermeneutic Ontology Engineering: LLM-Assisted Schema Induction for Oral History Knowledge Organisation. NKOS Workshop @ DCMI 2026, Seoul. <a href="https://www.dublincore.org/conferences/2026/sessions/nkos-workshop/">摘要</a>、<a href="https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf">投影片 PDF</a></td><td>把本體類別當「可被經驗修正的詮釋假設」，用抽取結果的結構分析診斷本體是否不足；三趟抽取；1,429 筆人工回讀；以簡單示意加一個範例當提示時，LLM 對照基準抽到 90% 相關三元組（基準來源未說明）。<strong>目前與本專案管線最接近的一份文件。</strong></td></tr>
+</tbody>
+</table>
+</div>
+<p class="small">沒查到的：NarraGraph 在任何學術或公開資料庫都沒有結果；DHd 2025／2026、DH2025 沒有 IDOHL 的口述歷史投稿；Schmidt 與 Elleringmann 沒有獨立產出。</p>
+
+<h3>7.3 實驗室之外的相關工作（定位用）</h3>
+<p>手上已有的四筆不重列（Chen et al. 2024 Densho；Sun, Yang &amp; Liu 2024 ICISDM；Cherukuri et al. 2025；Stanković et al. 2026）。以下是這次新找到、與本專案位置相關的，完整 17 項在 04 報告。</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th>類</th><th>團隊／計畫</th><th>做什麼</th><th>與本專案的關係</th></tr></thead>
+<tbody>
+<tr><td>CIDOC-CRM</td><td>Vrachliotou, M., &amp; Papatheodorou, C. (2024). Interoperability of Oral History Metadata: An Ontological Model. <em>Oral History Review</em>, 51(2). <a href="https://doi.org/10.1080/00940798.2024.2379367">DOI</a></td><td>結合 CIDOC CRM 與 EBUCore 描述口述訪談裡的實體與關係。作者曾在 Voices Unbound 演講。</td><td><strong>「以 CIDOC-CRM 表示口述訪談」最直接的一筆</strong>；層級在訪談物件與參與者，不到證詞內容的事件層。對 NTU-Bonn 的 CRM 銜接比 MeDoraH 本體有用。</td></tr>
+<tr><td>CIDOC-CRM</td><td>Kakouti, G., Dritsou, V., &amp; Benardou, A. (2022). Modeling Historical Storytelling. DARIAH Annual Event. <a href="https://doi.org/10.5281/zenodo.6589728">Zenodo</a></td><td>擴充 CRM 類別與屬性表示「困難遺產」敘事（囚犯、占領者、刑求活動）。</td><td>把證詞中的事件與角色放進 CRM，接近我們「宣稱、事件、參與者」三層的事件層。</td></tr>
+<tr><td>東亞</td><td>이혜경、이용구 (2025). 《정보관리학회지》42(3), 237–255. <a href="https://www.accesson.kr/kosim/v.42/3/237/57367?lang=en">期刊頁</a></td><td>用生成式 AI 從七位派德韓國護士的口述生命史產生 RDF 三元組；發現述詞一致性與實體辨識受口語與方言影響。</td><td>與我們最像的小規模個案；未見出處與驗證機制。</td></tr>
+<tr><td>華語</td><td>Zhou, J. (2025). An ensemble framework for sentiment-embedded event evolution in diaspora oral archives. <em>Information Research</em>, 30(iConf). <a href="https://doi.org/10.47989/ir30iConf47338">DOI</a></td><td>抽實體、事件、關係與情感，建「嵌入情感的事件演化圖」。</td><td>事件層與時序是共同點；他們把情感放進事件節點，我們把來歷與可信層放在邊上。</td></tr>
+<tr><td>多模態</td><td>Pessanha, F. et al. (2025). Listening to Oral History: Emotion Annotation and Recognition in the ACT UP Oral History Project. SUMAC '25. <a href="https://doi.org/10.1145/3746273.3760204">DOI</a></td><td>比較文字與音訊的情緒預測；結論「副語言特徵比語言特徵更有資訊量」。</td><td>直接驗證 Smyth 等 2023 的核心宣稱；我們的 SRT 有時間碼，音訊層是可擴充的方向。</td></tr>
+<tr><td>語音到 NER</td><td>USC Shoah Foundation／MALACH 系譜：Brückner et al. (2026). From Oral History to Structured Data: The MalachNER Dataset. HTRes 2026. <a href="https://aclanthology.org/events/htres-2026/">議程</a></td><td>二十年語音到文本到主題的積累，近年出現口述歷史 NER 資料集與訪談結構比較。</td><td>同樣面對「口述語言的 NLP 限制」，以浩劫證詞為單一領域。</td></tr>
+<tr><td>基礎建設</td><td>OHMS（Boyd 2013, <a href="https://doi.org/10.1093/ohr/oht031">DOI</a>）；CLARIN／CLARIAH Media Suite（Draxler et al. 2024, <a href="https://aclanthology.org/2024.htres-1.6/">ACL</a>）；C²DH 烏克蘭證詞；Fortunoff「Let Them Speak」；Columbia INCITE</td><td>取用、索引、轉寫服務、典藏組織。</td><td>這一層不做知識抽取；IDOHL 自己把 OHMS 整合列為 2026 學生專題。</td></tr>
+<tr><td>臺灣</td><td>沒有查到以口述歷史逐字稿為對象的計算處理研究。相近者：臺灣歷史人物資料庫對人物傳記做 NER；DADH 2024 論文集。</td><td></td><td>顯示本專案在本地脈絡沒有直接可比對象。</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s8"><span class="no">8</span>與 extract_ohistory 的對照</h2>
+
+<p>本節承接 <code>refs/notes/vlachidis_medorah-ontology-memory-recollection.md</code> 第 8 節，把對照從「一份簡報」升級到「整個計畫、程式碼與資料」的層級。兩邊起點相同（口述歷史逐字稿、三元組、網絡），兩邊也都量到「標準 NLP 管線在口述語言上失效」；差別在資源放在哪裡。</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>面向</th><th>MeDoraH</th><th>extract_ohistory</th></tr></thead>
+<tbody>
+<tr><td>語料</td><td>19 篇英語訪談（數位人文先驅），文字逐字稿無時間碼；受訪者即主角</td><td>102 位、314 個 SRT 帶時間碼；主題人物不一定是說話者（許石卷全是他述）</td></tr>
+<tr><td>出處層</td><td>話輪序＋句 id＋證據句；合併檔退回只剩證據句；<strong>無時間碼</strong>；§9.1 規定的模型與提示版本沒有落檔</td><td>檔名＋時間碼＋講述者＋段落，句層出處 100%，字元座標可回溯到原文</td></tr>
+<tr><td>共指</td><td>模型直接把「I」改寫成 canonical_name（主詞代名詞 0 筆）；是改寫不是對映</td><td>不改寫原文，只做對映；剝除映射表只刪不增；主角線分開 person 與 speaker</td></tr>
+<tr><td>他述</td><td>保留（合併檔 42.8% 的 PERSON 主詞不是講述者），但沒有獨立欄位，也未當主要分析對象</td><td>他述是主要材料；邊上有「來歷」欄（他述／自述）由程式判定</td></tr>
+<tr><td>轉述</td><td>早期簡報說排除；現行資料以 attribution_type: indirect_report 與 claim_type: hearsay 標記（各 11、8 筆），由模型判定</td><td>來歷由程式掃描線索詞，轉述句保留並標記</td></tr>
+<tr><td>型別</td><td>第一趟模型自由命名（單卷 160 型別、436 關係標籤），第二趟映射到人設計的本體，unmapped 由模型自創角括號屬性</td><td>程式查表分類（life_nodes.py 六類動詞表），模型不命名</td></tr>
+<tr><td>信心</td><td>certainty_level 由模型判定（是講述者的確定度，不是抽取信心）；抽取信心以三組態投票推導；Reference 層「0.97」來源未明</td><td>紅線 2：絕不叫模型自評；五訊號程式化推導；斷句線的「共識／減票共識／單次支持」證據等級</td></tr>
+<tr><td>時間</td><td>temporal_grounding 四值是記憶距離（distant_memory 等）不是年代；TemporalEntity 掛在事件節點上；無年代推算</td><td>time_anchor.py 句層年代推算，可信層 A–F，年代掛在關係邊上</td></tr>
+<tr><td>事件物化</td><td>時間只能掛在有名字的事件（會議、計畫）上</td><td>大部分關係沒有事件名稱，只有「退伍之後」；2026-09-10 架構審查提出的 Speaker→Claim→Event→participants 三層與他們的四層同向</td></tr>
+<tr><td>中間產物</td><td>三趟原始輸出、提示詞、整合器判定、投票紀錄均未公開；只有示範 JSON</td><td>紅線 4：每次呼叫的 calls.jsonl 正本落檔進 git</td></tr>
+<tr><td>抽取端標注</td><td>schema-guided 那趟注入人設計的本體；手工編碼只當對照</td><td>零標注線與含人工標注線並行，差值即標注買到的效能</td></tr>
+<tr><td>模型</td><td>雲端為主（Gemini 2.5 Pro、claude-opus-4-8）加本機（Gemma 3、Qwen 3），model-agnostic</td><td>一律本機模型（LM Studio；對外承諾 on-device）</td></tr>
+<tr><td>評估</td><td>1,429 筆人工回讀 precision 性質（91.3%），無 recall、無 gold standard</td><td>實體層對人工名冊比對；關係層免標準答案訊號；異源查核是可信度分層不是 ground truth</td></tr>
+<tr><td>開源</td><td>無 LICENSE；核心抽取封在二進位檔</td><td>全部程式與中間產物在同一專案進 git（尚未對外釋出）</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>8.1 可以借的</h3>
+<ol>
+<li><strong>知態立場四欄位的受控詞表</strong>（claim_type／certainty_level／temporal_grounding／attribution_type＋is_negated）。特別是 attribution_type 把 direct_quote、indirect_report、general_attribution 分開，對應我們的六種來歷。借詞表、不借做法：他們由模型判定，我們由程式掃線索詞。</li>
+<li><strong>「三趟抽取、設計成會分歧」與「收斂→信心、分歧→綱要缺口」</strong>。把多組態一致性當信心訊號與我們斷句線的證據等級同構，可引為文獻支持；他們多了一層：把分歧當成本體該修的證據，不只當雜訊。</li>
+<li><strong>medorah:Divergence</strong>（投影片第 11 頁）：兩位講述者對同一事實的不同說法（TEI 在 MLA 還是 Vassar College 開始）建成一級物件，兩筆都保留、由歷史學者標記 divergenceType 而不裁決。這是我們跨訪談合併人物時遇到矛盾證詞的現成表徵方案。</li>
+<li><strong>「over-specified」這個錯誤類別</strong>（8.5%）：證據說「擁有」而模型寫「使用」。我們的 ORSE 線可以多一個「跨距動詞與邊標籤強度是否一致」的檢查。</li>
+<li><strong>11 種關係模式、每種一個上位屬性、子屬性逐步特化</strong>：先抽到 hasSocioInstitutionalRelationWith，證據累積後再細化成 studiedAt。粗層保證召回、細層依靠動詞表，與 life_nodes.py 六類可以對上。</li>
+<li><strong>Fabula／Reference 層與 Claim 層分開</strong>的架構決定，可直接引為我們三層表徵的設計先例。</li>
+<li>檔案層的 <strong>SpeechSegment</strong>（startTime／endTime／speaker／audioFileReference）是 SRT 時間碼最自然的 RDF 落點，若日後要輸出 RDF 可沿用詞彙，但要補上與內容層的連結屬性（他們沒有）。</li>
+<li><strong>單卷 160 型別、436 關係標籤</strong>這組數字，是「讓模型自由命名會發生什麼」的量化證據，可用來支持「分類交給演算法、模型只圈字」的設計。</li>
+<li>詮釋工作台的「巨觀側欄↔微觀回原文」設計。我們的週會報告三張圖有側欄，但沒有「點一條邊就看到那句原文與講者」。我們有時間碼，能做得比他們更到位。</li>
+</ol>
+
+<h3>8.2 該避免的</h3>
+<ul>
+<li><strong>共指用改寫原文的方式做</strong>。下游拿到的已不是受訪者的字，出處回溯要對到改寫前的原句。守住剝除映射表與原文字元座標。</li>
+<li><strong>讓模型自由命名型別</strong>。160 種型別的下場已經看到。</li>
+<li><strong>把否定聚成獨立關係型別</strong>（早期簡報的述詞聚類有「did not」群）。「沒有找他」與「找他」應是同一條邊的極性屬性，否則 PageRank 與 reciprocity 會把否定關係算成連結。他們現行資料改用 is_negated 欄，方向對了。</li>
+<li><strong>在沒有評估數字的情況下宣稱「口述歷史知識圖譜可行」</strong>。他們目前只有 precision 性質的人工回讀，沒有 recall；我們至少有免標準答案訊號、人工名冊的實體層比對、credits 的異源查核。寫作時要把差異說清楚，不能反過來拿 MeDoraH 當支持證據。</li>
+<li><strong>把預定成果寫得像已釋出</strong>（MeDoraH_Project README 的 Researchfish 清單、「所有儲存庫遵循 FAIR 原則」卻無 LICENSE）。我們對外釋出時要分清「已落檔」與「規劃中」。</li>
+</ul>
+
+<h3>8.3 與 NTU-Bonn 的交集</h3>
+<p>MeDoraH 與 NTU-Bonn 計畫同樣是英國或臺灣與德國 DFG 的雙邊人文計畫，同樣由德方承擔 CIDOC-CRM 資料庫這一側。但 MeDoraH 已釋出的本體對 CRM 的對齊只到 scopeNote 的「可能可對齊」，沒有 P 屬性，所以<strong>若要與 NTU-Bonn 德方的 CRM 資料庫銜接，MeDoraH 本體幫不上忙</strong>；直接參照 Vrachliotou &amp; Papatheodorou 2024（CRM＋EBUCore 表示口述訪談）與 Kakouti et al. 2022（CRM 擴充表示證詞中的事件與角色）更有用。另一個交集是人：Nyhan 的 HDSM 講座在 TU Darmstadt 歷史研究所，Voices Unbound 的合辦者 C²DH（盧森堡）與 MPIWG（柏林）都是德語區數位史學的節點。</p>
+
+<h3>8.4 寫作時的定位句（草稿）</h3>
+<p>兩個計畫從同一個觀察出發：傳統 NLP 管線與預訓練關係抽取模型在口述歷史語言上失效（MeDoraH 三輪實驗；本專案零標注線的作品名辨識從 32.0% 掉到 1.1%）。MeDoraH 的回答是把人設計的本體注入 LLM 的三趟抽取，再以人工回讀建立可信度；本專案的回答是讓模型只圈原文跨距或選編號、由程式做分類、來歷、時間錨與逐字驗證，並堅持本機模型與零標注對照。前者買到的是本體覆蓋與可解讀性，後者買到的是出處鏈條與可重現性。兩者都還沒有 recall。</p>
+
+<!-- ============================================================ -->
+<h2 id="s9"><span class="no">9</span>建議親自閱讀的順序</h2>
+
+<p>依你的三個用途排序：extract_ohistory 的方法對照、ICCCM 之後的 related work 寫作、NTU-Bonn 的 CIDOC-CRM 交集。每項說明為什麼值得你自己讀、agent 讀不出來的是什麼。</p>
+
+<ol class="read">
+<li><strong>NKOS 2026 投影片</strong>（Zhang, Vlachidis &amp; Nyhan，約 20 頁）。<a href="https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf">PDF</a>。重點頁：第 4 頁（傳統管線回顧）、第 7 頁（三種失效）、第 8 至 12 頁（三趟抽取與多代理工作流程、模型名單）、第 10 頁（宣稱範例與驗證欄）、第 11 頁（Divergence）、第 13 頁（quality census 91.3%）、第 19 至 20 頁（手工 vs LLM 網絡對照）。<em>為什麼自己讀</em>：這是目前最接近本專案管線的文件，而且是投影片，很多判斷藏在圖與排版裡，agent 只能轉述文字。你要自己判斷「收斂→信心」這條在我們的紅線 2 下站不站得住，以及 Divergence 物件要不要進我們的三層表徵。約 40 分鐘。</li>
+<li><strong>本體原型 V0.2 的 Turtle 檔與設計文件</strong>。<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">TTL</a>、<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md">設計文件</a>。重點：11 種關係模式的子屬性清單（對 life_nodes.py 六類）、§2.1 回憶網絡、§9.1 出處規範、§10.3 開放問題。<em>為什麼自己讀</em>：你要決定我們的述詞歸納要不要採「上位屬性＋特化」兩層結構，這是結構決定，不是事實查證。約 30 分鐘。</li>
+<li><strong>本體映射示範資料</strong> <code>Test_OntologyPopulation.json</code>（304 筆）。<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_OntologyPopulation.json">JSON</a>。<em>為什麼自己讀</em>：直接看 epistemic_stance 四欄在真實資料裡長什麼樣、hearsay 與 indirect_report 那 19 筆是怎麼判的、reasons 欄的模型理由說了什麼。這是判斷「借詞表不借做法」是否可行的唯一一手材料。翻 20 分鐘就夠。</li>
+<li><strong>Smyth, Nyhan &amp; Flinn 2023</strong>（DSH，開放取用，17 頁）。<a href="https://doi.org/10.1093/llc/fqac094">DOI</a>。<em>為什麼自己讀</em>：這是 related work 裡「逐字稿只是一層」的理論出處，而我們的 SRT 有時間碼、他們的語料沒有，寫作時可以把這點變成我們的優勢。你讀過 Portelli，會比 agent 更能判斷它引 Portelli 引得準不準。約 1 小時。</li>
+<li><strong>Nyhan &amp; Flinn 2016 專書的第 2 章與第 17 章</strong>（開放取用）。<a href="https://doi.org/10.1007/978-3-319-20170-2_2">第 2 章 Why Oral History?</a>、<a href="https://doi.org/10.1007/978-3-319-20170-2_17">第 17 章 Revolutionaries and Underdogs</a>。<em>為什麼自己讀</em>：第 17 章從多位受訪者歸納共同母題，正是「單位是人物不是訪談」的人文版本；第 2 章談「哪些生命被選來講故事」，對應 corpus_bias.py。這兩章與博論第一章的研究者位置段是同一類文字，你會讀出 agent 讀不出的語氣。約 1.5 小時。</li>
+<li><strong>Humbel et al. 2021 NER review</strong>（作者接受稿，開放取用）。<a href="https://discovery.ucl.ac.uk/id/eprint/10127463/">UCL Discovery</a>。<em>為什麼自己讀</em>：「目前無法為 NER 建立基準、需穩健報告」是我們分層評估最好的引據，但要確認它的論證脈絡（近代早期手寫目錄 OCR）能不能平移到語音逐字稿。約 1 小時。</li>
+<li><strong>Vrachliotou &amp; Papatheodorou 2024</strong>（<em>Oral History Review</em>，付費牆，中研院應有訂閱）。<a href="https://doi.org/10.1080/00940798.2024.2379367">DOI</a>。<em>為什麼自己讀</em>：這是 NTU-Bonn 那條線真正需要的 CRM 參照，agent 只讀到搜尋摘要。要看它的 CRM 類別到哪一層、能不能延伸到證詞內容。約 1 小時。</li>
+<li><strong>iConference 2026 論文</strong>（Vlachidis, Zhang &amp; Nyhan）。<a href="https://discovery.ucl.ac.uk/id/eprint/10224816/">UCL Discovery</a>（agent 被 Cloudflare 擋下，瀏覽器應可開）。<em>為什麼自己讀</em>：這是你手上那份簡報的正式版，讀完可以更新 <code>vlachidis_medorah-ontology-memory-recollection.md</code> 的書目與年份。約 30 分鐘。</li>
+<li><strong>Nyhan 2025-07-09 演講錄影</strong>「Mixed-methods Digital Oral History: Reflections on Limits, Horizons and Emerging Findings」。<a href="https://www.youtube.com/watch?v=xtdz6MQP6fI">YouTube</a>。<em>為什麼自己看</em>：聽主持人自己怎麼講失敗與限制，比論文坦白；也是你 12 月訪日前暖身德語區數位史學圈子的入口。約 1 小時。</li>
+<li><strong>一卷原始語料</strong>：Judy Malloy 訪談的 <a href="https://idohl.org/files/original/611663ca07559704c34230df4036b68757260faa.mp3">mp3</a> 與 <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/Segmented_Transcript_JSON/Julianne%20Nyhan_Judy%20Malloy.json">切分 JSON</a>（56 個話輪）。<em>為什麼自己看</em>：感受英語學者訪談與臺灣音樂人口述的差異（句長、自述比例、受訪者即主角），這決定了兩邊數字能比到什麼程度。15 分鐘。</li>
+</ol>
+
+<p class="small">暫時不需要讀的：MDOH_Project 與 MeDoraH_Project 兩個儲存庫（只有 README）；Flinn et al. 2024 座談紀錄（議題清單已夠）；Sloane Lab 那條線的論文（與口述歷史無關）。</p>
+
+<!-- ============================================================ -->
+<h2 id="s10"><span class="no">10</span>未能查證的事項</h2>
+
+<div class="two">
+<div class="card warn">
+<h4>實驗室與團隊</h4>
+<ul class="small">
+<li>實驗室正式成立日期與命名時間：網站未載明，無新聞稿。</li>
+<li>idohl.org 啟用日：只有旁證（whois 2026-04-28、首次快照 2026-05-12）。</li>
+<li>HDSM 講座是否新設；HDSM 部落格啟用月份（原頁 404）。</li>
+<li>Flinn 升等教授日期（落在 2025-07 至 2026-10 之間）。</li>
+<li>Varfolomeyev 職稱：團隊頁博後、TU 官方頁與 ORCID 技術人員。</li>
+<li>Prishchepova 的背景；Schmidt 與 Humbel 的博士論文題目。</li>
+<li>Hicks 2024-11-11 演講是否屬 Voices Unbound 系列。</li>
+<li>兩個講座系列的 Panopto 錄影清單（皆 403）。</li>
+</ul>
+</div>
+<div class="card warn">
+<h4>計畫與經費</h4>
+<ul class="small">
+<li>MeDoraH 十篇德語訪談的執行者、受訪者、完成狀態；入口網無德語項目。</li>
+<li>是否有「新的」義大利語訪談；可見的三筆都是 2014 年。</li>
+<li>MDOH 是否有獨立經費；其語料是否即 Hidden Histories。</li>
+<li>34 個月（新聞稿）與 2024-02 至 2027-04（GtR）何者為現行期程。</li>
+<li>DFG 端金額（GEPRIS 不顯示；只有新聞稿的 €632,736）。</li>
+<li>Hidden Histories 2012 至 2016 年的經費來源。</li>
+<li>「19 篇」與「25 篇」訪談數之差。</li>
+<li>GtR 合作機構欄「Max-Planck-Institut für Zellbiologie」疑為 MPIWG 誤植。</li>
+</ul>
+</div>
+<div class="card warn">
+<h4>程式與資料</h4>
+<ul class="small">
+<li>NarraGraph 原始碼的位置、授權、建置方式；介紹頁 404。</li>
+<li>三趟抽取的提示詞、每趟採用的模型、參數。</li>
+<li>共指消解採用什麼工具（投影片稱其「crucial」）。</li>
+<li>嵌入模型（SpanBERT 哪個 checkpoint）；embedding_analyzer 不在儲存庫。</li>
+<li>Reference 層「confidence: 0.97」的計算方式。</li>
+<li>1,429 筆人工回讀的回讀者、人數、一致性。</li>
+<li>MDOH 笑聲偵測的模型；TransVisEd 是否已釋出。</li>
+<li>Palladio relationship.csv 的 RelationType 1–16 編號的意義。</li>
+<li>投影片「22 classes」與 TTL 43 個類別的差異原因。</li>
+</ul>
+</div>
+<div class="card warn">
+<h4>出版品</h4>
+<ul class="small">
+<li>UCL 網域全面 401／403，書目與摘要改由 UCL Discovery 的 OAI-PMH 取得；Springer 全文回 JavaScript 驗證頁。</li>
+<li>UCL Discovery 10220832：題名（LLM 與本體工程）、摘要（與 FAIR 論文相同）、附檔名三者不一致。</li>
+<li>Nyhan 2025-07 討論會日期：Zotero 7 月 14 日、TU 新聞 7 月 9 日。</li>
+<li>Connected Past 2025 論文無摘要。</li>
+<li>Vrachliotou &amp; Papatheodorou 2024 只讀到搜尋摘要；鄧君、王阮 2022 未讀摘要。</li>
+<li>NarraGraph 在任何學術資料庫無結果；DHd、DH2025 無 IDOHL 口述歷史投稿。</li>
+</ul>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s11"><span class="no">11</span>資料來源</h2>
+
+<h3>idohl.org</h3>
+<ul class="refs">
+<li><a href="https://idohl.org/">https://idohl.org/</a></li>
+<li><a href="https://idohl.org/team">https://idohl.org/team</a></li>
+<li><a href="https://idohl.org/Projects">https://idohl.org/Projects</a></li>
+<li><a href="https://idohl.org/hiddenhistories/">https://idohl.org/hiddenhistories/</a></li>
+<li><a href="https://idohl.org/hiddenhistories/about-hidden-histories">https://idohl.org/hiddenhistories/about-hidden-histories</a></li>
+<li><a href="https://idohl.org/MDOH/">https://idohl.org/MDOH/</a></li>
+<li><a href="https://idohl.org/medorah/">https://idohl.org/medorah/</a></li>
+<li><a href="https://idohl.org/medorah/Oral_History_Interviews">https://idohl.org/medorah/Oral_History_Interviews</a></li>
+<li><a href="https://idohl.org/medorah/metadata">https://idohl.org/medorah/metadata</a></li>
+<li><a href="https://idohl.org/resources-publications">https://idohl.org/resources-publications</a></li>
+<li><a href="https://idohl.org/OpenSource-Release">https://idohl.org/OpenSource-Release</a></li>
+<li><a href="https://idohl.org/updates">https://idohl.org/updates</a></li>
+<li><a href="https://idohl.org/Study-Supervision">https://idohl.org/Study-Supervision</a></li>
+<li><a href="https://idohl.org/item/112">https://idohl.org/item/112</a>（2011 研討會）</li>
+<li><a href="https://idohl.org/api/sites">https://idohl.org/api/sites</a>、<a href="https://idohl.org/api/item_sets?per_page=50">/api/item_sets</a>、<a href="https://idohl.org/api/items?per_page=100&amp;site_id=1">/api/items</a>（Omeka S API）</li>
+<li><a href="https://www.zotero.org/groups/6026315/digital_oral_history_lab">Zotero 群組 6026315</a></li>
+</ul>
+
+<h3>團隊個人頁與機構頁</h3>
+<ul class="refs">
+<li><a href="https://profiles.ucl.ac.uk/9621-andrew-flinn/about">Andrew Flinn（UCL）</a></li>
+<li><a href="https://profiles.ucl.ac.uk/29443-julianne-nyhan">Julianne Nyhan（UCL）</a>、<a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_53504.en.jsp">（TU Darmstadt）</a>、<a href="https://juliannenyhan.com/about/">個人網站</a></li>
+<li><a href="https://profiles.ucl.ac.uk/57279-andreas-vlachidis/about">Andreas Vlachidis（UCL）</a></li>
+<li><a href="https://profiles.ucl.ac.uk/99799-jiajie-zhang/about">Jiajie Zhang（UCL）</a>、<a href="https://github.com/articoder">GitHub articoder</a></li>
+<li><a href="https://profiles.ucl.ac.uk/67801-marco-humbel">Marco Humbel（UCL）</a>、<a href="https://www.nationalarchives.gov.uk/people/marco-humbel/">（TNA）</a></li>
+<li><a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_67520.en.jsp">Frieda Schmidt（TU Darmstadt）</a>、<a href="https://orcid.org/0009-0000-3129-7722">ORCID</a></li>
+<li><a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_69504.en.jsp">Aleksey Varfolomeyev（TU Darmstadt）</a>、<a href="https://orcid.org/0000-0002-5532-6185">ORCID</a></li>
+<li><a href="https://orcid.org/0009-0008-5998-3175">Florian Elleringmann（ORCID）</a></li>
+<li><a href="https://hdsm.hypotheses.org/category/digital_oral_history_lab">HDSM 部落格「Digital Oral History Lab」分類</a></li>
+<li><a href="https://blogs.ucl.ac.uk/dh/2025/09/30/ucldh-at-15-highlights-milestones-whats-next">UCLDH 15 週年回顧（含與 HDSM 的合作備忘錄）</a></li>
+<li><a href="https://dhlab.philhist.unibas.ch/en/news/details/job-the-institute-of-history-at-technische-universitaet-darmstadt-seeks-to-appoint-a-professor-w3/">2019 年 HDSM W3 職缺公告</a></li>
+</ul>
+
+<h3>經費與計畫登錄</h3>
+<ul class="refs">
+<li><a href="https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1">UKRI Gateway to Research AH/Y007557/1</a></li>
+<li><a href="https://gepris.dfg.de/project/528052031">DFG GEPRIS 528052031</a></li>
+<li><a href="https://www.dfg.de/de/aktuelles/neuigkeiten-themen/info-wissenschaft/2023/uk-german-research-collaboration-announced-in-the-arts-and-humanities">DFG 2023-11-27 公告（AHRC–DFG 第 5 輪）</a></li>
+<li><a href="https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf">DFG MeDoraH 海報 PDF</a></li>
+<li><a href="http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research">UCL 2023-12-13 新聞稿（Wayback 存檔）</a></li>
+<li><a href="https://www.dhhumanist.org/volume/37/408/">Humanist 37.408 博後職缺</a></li>
+<li><a href="https://results2021.ref.ac.uk/outputs/b9d39a71-b22a-4a71-b9a0-c8733e315eb6?page=1">REF 2021 送審說明（2016 專書）</a></li>
+</ul>
+
+<h3>GitHub</h3>
+<ul class="refs">
+<li><a href="https://github.com/International-Digital-Oral-History-Lab">https://github.com/International-Digital-Oral-History-Lab</a></li>
+<li><a href="https://github.com/International-Digital-Oral-History-Lab/MDOH_Project">MDOH_Project</a></li>
+<li><a href="https://github.com/International-Digital-Oral-History-Lab/MeDoraH_Project">MeDoraH_Project</a></li>
+<li><a href="https://github.com/articoder/MeDoraH_NLP">articoder/MeDoraH_NLP</a>、<a href="https://github.com/articoder/MeDoraH_NLP/releases">releases</a></li>
+<li><a href="https://github.com/articoder/MeDoraH_Ontology">articoder/MeDoraH_Ontology</a></li>
+<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">Ontology Prototype V0.2.ttl</a></li>
+<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/MeDoraH%20Ontology%20-%20File.ttl">MeDoraH Ontology - File.ttl</a></li>
+<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V3.ttl">OH_metadata_vocab_V3.ttl</a></li>
+<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md">本體設計文件 v0.2</a></li>
+<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_ButtomUp_Extraction.json">Test_ButtomUp_Extraction.json</a></li>
+<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_OntologyPopulation.json">Test_OntologyPopulation.json</a></li>
+<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined.json">Combined.json</a></li>
+<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/Segmented_Transcript_JSON/Julianne%20Nyhan_Judy%20Malloy.json">Judy Malloy 切分逐字稿 JSON</a></li>
+<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Text%20Mining%20-%201st%20round%20with%20Comments.md">Text Mining 第一輪筆記</a></li>
+<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv">手工編碼 relationship.csv</a></li>
+</ul>
+
+<h3>論文、投影片與演講</h3>
+<ul class="refs">
+<li>Nyhan &amp; Flinn (2016). <a href="https://doi.org/10.1007/978-3-319-20170-2">https://doi.org/10.1007/978-3-319-20170-2</a></li>
+<li>Nyhan, Flinn &amp; Welsh (2015). <a href="https://doi.org/10.1093/llc/fqt044">https://doi.org/10.1093/llc/fqt044</a></li>
+<li>Smyth, Nyhan &amp; Flinn (2023). <a href="https://doi.org/10.1093/llc/fqac094">https://doi.org/10.1093/llc/fqac094</a></li>
+<li>Flinn, Boyd, Morgan &amp; Nyhan (2024). <a href="https://discovery.ucl.ac.uk/id/eprint/10194919/">https://discovery.ucl.ac.uk/id/eprint/10194919/</a></li>
+<li>Humbel et al. (2021). <a href="https://doi.org/10.1108/JD-02-2021-0032">https://doi.org/10.1108/JD-02-2021-0032</a>；接受稿 <a href="https://discovery.ucl.ac.uk/id/eprint/10127463/">UCL Discovery</a></li>
+<li>Nyhan (2022). <a href="https://doi.org/10.4324/9781003138235">https://doi.org/10.4324/9781003138235</a></li>
+<li>Nyhan &amp; Flinn (2024) IFPH. <a href="https://discovery.ucl.ac.uk/id/eprint/10212788/">https://discovery.ucl.ac.uk/id/eprint/10212788/</a></li>
+<li>Flinn &amp; Nyhan (2025) ESSHC. <a href="https://discovery.ucl.ac.uk/id/eprint/10201115/">https://discovery.ucl.ac.uk/id/eprint/10201115/</a></li>
+<li>Nyhan &amp; Flinn (2025) DigiCAM25. <a href="https://discovery.ucl.ac.uk/id/eprint/10207146/">https://discovery.ucl.ac.uk/id/eprint/10207146/</a></li>
+<li>Nyhan (2025) Susan Hockey Lecture. <a href="https://www.youtube.com/watch?v=jXfFOXyViKs">https://www.youtube.com/watch?v=jXfFOXyViKs</a></li>
+<li>Nyhan (2025-07) TU Darmstadt 演講. <a href="https://www.youtube.com/watch?v=xtdz6MQP6fI">https://www.youtube.com/watch?v=xtdz6MQP6fI</a>；<a href="https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/news_archiv_ifg_details_141248.en.jsp">新聞</a></li>
+<li>Humbel et al. (2025) UCL Festival. <a href="https://discovery.ucl.ac.uk/id/eprint/10211319/1/Humbel_etal_mailing_list_archives_abstract.pdf">摘要 PDF</a></li>
+<li>Zhang et al. (2025) Connected Past. <a href="https://discovery.ucl.ac.uk/id/eprint/10209234/">https://discovery.ucl.ac.uk/id/eprint/10209234/</a>；<a href="https://connectedpast.net/other-events/coimbra-2025/program/">議程</a></li>
+<li>Nyhan et al. (2025) 海報. <a href="https://discovery.ucl.ac.uk/id/eprint/10222596/">https://discovery.ucl.ac.uk/id/eprint/10222596/</a></li>
+<li>Humbel et al. (2026) FAIR／Dublin Core. <a href="https://discovery.ucl.ac.uk/id/eprint/10220831/">https://discovery.ucl.ac.uk/id/eprint/10220831/</a></li>
+<li>Vlachidis, Zhang, Nyhan &amp; Flinn (2026) 投影片「Networks for Oral History Hermeneutics」. <a href="https://discovery.ucl.ac.uk/id/eprint/10220832/">https://discovery.ucl.ac.uk/id/eprint/10220832/</a></li>
+<li>Flinn, Nyhan &amp; Smyth (2026) Bloomsbury Handbook. <a href="https://discovery.ucl.ac.uk/id/eprint/10215997/">https://discovery.ucl.ac.uk/id/eprint/10215997/</a></li>
+<li>Vlachidis, Zhang &amp; Nyhan (2026) iConference. <a href="https://discovery.ucl.ac.uk/id/eprint/10224816/">https://discovery.ucl.ac.uk/id/eprint/10224816/</a>；<a href="https://www.ischools.org/post/iconference-2026-concluded-successfully">會議日期</a></li>
+<li>Vlachidis (2026-05-27) ISKO UK. <a href="https://iskouk.org/event-6689850">https://iskouk.org/event-6689850</a></li>
+<li>Zhang et al. (2026) DH2026. <a href="https://zenodo.org/records/22115456">https://zenodo.org/records/22115456</a></li>
+<li>Zhang, Vlachidis &amp; Nyhan (2026) NKOS. <a href="https://www.dublincore.org/conferences/2026/sessions/nkos-workshop/">摘要</a>；<a href="https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf">投影片 PDF</a></li>
+<li>Nyhan (2013) DH2013 長文. <a href="https://dh-abstracts.library.virginia.edu/works/1718">https://dh-abstracts.library.virginia.edu/works/1718</a></li>
+<li>Nyhan &amp; Terras (2017) DH2017. <a href="https://dh2017.adho.org/abstracts/358/358.pdf">https://dh2017.adho.org/abstracts/358/358.pdf</a></li>
+</ul>
+
+<h3>講座系列與活動</h3>
+<ul class="refs">
+<li><a href="https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/">2022 Multimodal Digital Oral History 系列公告（EADH）</a></li>
+<li><a href="https://openlearnware.tu-darmstadt.de/collection/hdsm-multimodal-digital-humanities-ringvorlesung-417/">2022 系列錄影（OpenLearnWare）</a></li>
+<li><a href="https://www.gugw.tu-darmstadt.de/termine_details_fb2_121984.en.jsp">Voices Unbound 公告（TU Darmstadt）</a></li>
+<li><a href="http://web.archive.org/web/20260617192308/https://www.ucl.ac.uk/digital-humanities/ucldh-events/ucldh-seminar-series/seminar-series-2024-25">Voices Unbound 節目表（UCLDH，Wayback 存檔）</a></li>
+<li><a href="https://www.incite.columbia.edu/works/redesigning-oral-history-archives-with-artificial">Pandza 2025-01 場次（Columbia INCITE）</a></li>
+<li><a href="https://www.fernuni-hagen.de/forschung/schwerpunkte/digitale-kultur/jahrestagungen/jahrestagung2023.shtml">Digital Hermeneutics II（Hagen 2023）</a>（2026-10-05 查時回 404）</li>
+</ul>
+
+<h3>實驗室之外的相關工作</h3>
+<ul class="refs">
+<li>Vrachliotou &amp; Papatheodorou (2024). <a href="https://doi.org/10.1080/00940798.2024.2379367">https://doi.org/10.1080/00940798.2024.2379367</a></li>
+<li>Kakouti, Dritsou &amp; Benardou (2022). <a href="https://doi.org/10.5281/zenodo.6589728">https://doi.org/10.5281/zenodo.6589728</a></li>
+<li>Fafalios et al. (2021) Synthesis. <a href="https://arxiv.org/abs/2107.13957">https://arxiv.org/abs/2107.13957</a></li>
+<li>Lee &amp; Lee (2025). <a href="https://www.accesson.kr/kosim/v.42/3/237/57367?lang=en">期刊頁</a></li>
+<li>Zhou (2025). <a href="https://doi.org/10.47989/ir30iConf47338">https://doi.org/10.47989/ir30iConf47338</a></li>
+<li>Pessanha et al. (2025). <a href="https://doi.org/10.1145/3746273.3760204">https://doi.org/10.1145/3746273.3760204</a></li>
+<li>Gref et al. (2022). <a href="https://aclanthology.org/2022.lrec-1.217/">https://aclanthology.org/2022.lrec-1.217/</a>；Viswanath et al. (2024). <a href="https://doi.org/10.1109/acii63134.2024.00038">DOI</a></li>
+<li>Boyd (2013) OHMS. <a href="https://doi.org/10.1093/ohr/oht031">https://doi.org/10.1093/ohr/oht031</a></li>
+<li>Draxler et al. (2024) CLARIN. <a href="https://aclanthology.org/2024.htres-1.6/">https://aclanthology.org/2024.htres-1.6/</a></li>
+<li>HTRes 2024／2026（MALACH 系譜、MalachNER）. <a href="https://aclanthology.org/events/htres-2024/">2024</a>、<a href="https://aclanthology.org/events/htres-2026/">2026</a></li>
+<li>Gustman et al. (2002) MALACH. <a href="https://doi.org/10.1145/544220.544224">https://doi.org/10.1145/544220.544224</a></li>
+<li>Fortunoff Let Them Speak. <a href="https://lts.fortunoff.library.yale.edu/">https://lts.fortunoff.library.yale.edu/</a></li>
+<li>C²DH 烏克蘭證詞. <a href="https://www.lvivcenter.org/en/researches/oral-testimonies-from-the-war-2/">Lviv Center</a></li>
+<li>Bulín et al. (2025). <a href="https://doi.org/10.18267/j.aip.268">https://doi.org/10.18267/j.aip.268</a></li>
+<li>Cherukuri et al. (2025). <a href="https://arxiv.org/abs/2508.06729">https://arxiv.org/abs/2508.06729</a></li>
+<li>Thomson (2007) 四次典範轉移（原文未讀）. <a href="https://sussex.figshare.com/articles/journal_contribution/Four_paradigm_transformations_in_oral_history_a_review_essay/23332454">Sussex 典藏</a></li>
+<li>DADH 2024 論文集. <a href="https://gis.rchss.sinica.edu.tw/documents/DADH2024__Proceedings_1.pdf">PDF</a></li>
+</ul>
+
+<footer>
+<p>本頁為 extract_ohistory 專案的文獻側寫，整合自 <code>refs/notes/idohl/01_團隊與歷史.md</code>、<code>02_三個計畫.md</code>、<code>03_開源釋出與程式碼.md</code>、<code>04_出版與相關工作.md</code>（2026-10-05）。單檔離線，不引用外部資源；色盤沿用 mct-lab-logo-plotter 的霧藍紙 token。承接 <code>refs/notes/vlachidis_medorah-ontology-memory-recollection.md</code>。</p>
+</footer>
+
+</main>
+</body>
+</html>

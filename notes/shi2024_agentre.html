@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>shi2024_agentre：AgentRE，一個給關係抽取用的 agent 框架</title>
+<meta name="description" content="shi2024_agentre：AgentRE，一個給關係抽取用的 agent 框架">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>shi2024_agentre：AgentRE，一個給關係抽取用的 agent 框架</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/shi2024_agentre.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Shi, Y., Jiang, G., Qiu, T., &amp; Yang, D. (2024). <em>AgentRE: An Agent-Based Framework for Navigating Complex Information Landscapes in Relation Extraction</em>. CIKM '24（第 33 屆 ACM 資訊與知識管理國際會議）. DOI: 10.1145/3627673.3679791. arXiv:2409.01854. 同儕審查（已收錄於 CIKM 正式論文集）。</li>
+<li><strong>對應待查問題</strong>：②agentic 建構（主）；旁及 ①LLM 抽取／KG 建構現況、③harness／agent 評估。</li>
+<li><strong>一句話定位</strong>：這篇把關係抽取（relation extraction, RE，從一句話裡找出「誰－什麼關係－誰」的三元組）從「一句進、一句出」的單次呼叫，改造成一個大型語言模型（LLM）當 agent、外掛「檢索／記憶／抽取」三個模組、跑多輪推理的框架。它是本批文獻裡少數同時測過中文資料集、又把「標註指引（annotation guidelines）直接餵進脈絡」的作品，這兩點正對應本專案把領域判準寫成 skill 檔（criteria.md）的做法。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>論文針對「純 text-in / text-out 語言模型做關係抽取」的三個痛點提出對策：關係型別多樣、實體間關係曖昧，加上 LLM 脈絡視窗有限，塞不進所有有用資訊。它宣稱的三項貢獻是：</p>
+<ol>
+<li>提出 <strong>AgentRE</strong>，讓 LLM 當 agent，搭配檢索（retrieval）、記憶（memory）、抽取（extraction）三個模組，主動去蒐集並處理各種有用資訊，藉此在多輪互動中做出比單次抽取更準的判斷。</li>
+<li>在英文與中文兩個資料集上做了大量實驗，顯示 AgentRE 達到當時最佳（state-of-the-art, SOTA）水準，尤其在<strong>低資源</strong>（標註樣本很少）情境下優勢明顯，並用消融實驗驗證每個模組各自有用。</li>
+<li>把 agent 跑出來的<strong>推理軌跡</strong>（reasoning trajectory，也就是每一步「想什麼、做什麼、看到什麼」的紀錄）整理成一份高品質訓練資料，透過蒸餾（distillation，用大模型的產出去教小模型）把推理能力轉移到較小的模型上，讓便宜的小模型也能有不錯的抽取表現。</li>
+</ol>
+<p>真正的新意在於「把 RE 當成一個需要主動找資料、會累積經驗的過程」，而不是把整段文本硬塞進一次 prompt。這點跟本專案從單次大 prompt 基線（方案 C）轉向多步 harness 的方向一致。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>輸入是<strong>一個句子</strong>（sentence-level RE，句子層級），要輸出的是這句話裡的關係三元組。核心是一個 LLM agent，把檢索與記憶模組當成「外部工具（API）」來呼叫，抽取模組則是它實際產生三元組的地方。流程是<strong>多輪、多模組分工</strong>，不是單次抽取：</p>
+<ul>
+<li><strong>檢索模組（Retrieval）當「查資料的工具」</strong>：agent 先把當前句子丟給檢索模組，換回兩類東西。第一類是「標註樣本」，也就是訓練資料裡輸入輸出關係清楚的例子（few-shot 範例，少量示範）；第二類是「其他相關資訊」，包括關係型別的描述、<strong>標註指引</strong>，甚至知識圖譜（knowledge graph, KG）裡跟句中實體有關的既有三元組。這些被拼進 prompt 幫模型理解任務。</li>
+<li><strong>記憶模組（Memory）當「累積經驗的工具」</strong>：agent 把過去抽取的結果、反思（reflection）與摘要寫進記憶，之後遇到類似句子時再讀出來參考。</li>
+<li><strong>抽取模組（Extraction）產出三元組</strong>：這是 agent 拿到前兩者提供的資訊後、實際生成三元組的地方，且可以採不同的推理策略（見下）。</li>
+</ul>
+<p>抽取骨幹採用類似 <strong>ReAct</strong>（Reason + Act，推理與行動交錯）的流程：agent 反覆做「Thought（想）→ Action（呼叫某個工具，例如 <code>SearchAnnotation</code> 查標註指引、<code>SearchKG</code> 查知識圖譜）→ Observation（看回傳結果）」，湊足資訊後才執行 <code>Finish</code> 回傳答案。論文特別強調 agent 會<strong>依句子複雜度動態選抽取方式</strong>，不一定跑完整的多輪 ReAct：簡單句子直接抽（Direct）；關係多的句子先過濾候選關係型別再抽（Staged，分階段）；關係複雜的句子用逐步推理（Chain-of-Thought, CoT，思維鏈）一步步逼近答案。這種「讓 agent 自己決定要不要叫工具、叫哪個、怎麼抽」的設計，是它跟固定管線最大的差別。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>抽出來的最終產物就是<strong>關係三元組</strong>（head, relation, tail），組織方式相對單純，論文沒有為最終知識另立本體（ontology）或屬性圖結構。真正值得注意的是它在「記憶」這一層對中間知識的整理，分兩種：</p>
+<ul>
+<li><strong>淺記憶（shallow memory）</strong>：把每次抽取結果依驗證後的對錯，分別存進「正確記憶」與「錯誤記憶」兩堆。錯誤的也留著，當成後續抽取時可借鏡的教訓。舉例：句子「博物館位於東北高密鄉，莫言的家鄉」抽出兩個三元組，<code>(莫言, 出生地, 東北高密鄉)</code> 正確、<code>(博物館, 位於, 東北高密鄉)</code> 因為「博物館」指涉不清被判錯，兩者分開存放。</li>
+<li><strong>深記憶（deep memory）</strong>：對歷史經驗做<strong>更新與反思</strong>的長期記憶。針對正確結果，它會把同一實體的既有摘要取出、合併新資訊再寫回（例如把「莫言，作家，1955 年生」更新成「⋯⋯生於東北高密鄉，本名管謨業」），這其實是一種<strong>跨句子的實體資訊合併與精煉</strong>。針對錯誤結果，它產生一條反思紀錄存進「反思記憶」，例如「不完整的實體（如『博物館』）依標註指引不應被抽出」，下次遇到類似句子就能避開同類錯誤。</li>
+</ul>
+<p>所以它確實有「重新安排既有結構」的步驟，但作用在記憶層（幫助後續抽取），不是對外輸出一個去重、合併過的知識庫。衝突解決僅止於「對／錯兩堆」與反思，沒有跨文件實體消歧的正式機制。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>是純三元組</strong>。最終輸出就是 <code>(head, relation, tail)</code> 關係三元組，這是它整篇的目標形式，沒有用 n-ary（多元）關係、事件框架或社群摘要那類替代表示法。</p>
+<p>關鍵落差在於：<strong>它的三元組不帶出處欄位（provenance）、不帶時間資訊、也不帶信心分數</strong>。輸入本來就是單句、句子層級的任務，所以不存在「這筆知識來自哪個檔案、哪個時間碼」的需求；驗證只分對／錯進兩個記憶堆，沒有連續的信心數值。它選擇純三元組，是因為對標的比較對象（ChatIE、GPT-RE、CodeKGC、UIE 等）與評測資料集（DuIE、SciERC）本來就用三元組定義任務，這是 RE 領域的共識格式，不是它刻意的設計取捨。</p>
+<p>對本專案來說，這是一個明確的<strong>反面對照</strong>：AgentRE 的表示法正好缺了本專案視為紅線的兩樣東西（每筆附出處、非純三元組的混合結構）。它值得借的不在表示法本身，而在「把標註指引與既有知識當可檢索資源餵進脈絡」的機制（見第 8 節）。</p>
+<h2 id="5">5. 資料集</h2>
+<p>用兩個公開資料集，一中一英，這是它在本批文獻裡的特殊價值：</p>
+<ul>
+<li><strong>DuIE（中文）</strong>：目前最大的中文 RE 資料集，48 種預定義關係型別，語料來自百度百科、百度資訊流、百度貼吧，約 21 萬句、45 萬筆關係；除了單純的二元關係，還包含牽涉多個實體的複雜關係型別。這是本專案最該注意的一點：<strong>這批文獻裡少數直接在中文語料上驗證過的 agentic RE 框架</strong>。中文分詞用 Jieba，中文語意檢索另用了 BGE、SimCSE 等中文可用的嵌入模型。</li>
+<li><strong>SciERC（英文）</strong>：科學文獻領域的 NER 與 RE 資料集，取自 500 篇論文摘要，8,089 個實體、4,716 筆關係，平均每篇約 9.4 筆關係。</li>
+</ul>
+<p>兩個都是<strong>既有公開資料集</strong>，論文沒有提出新的 benchmark 或新資料集。語料性質都是書面文本（百科、資訊流、論文摘要），<strong>沒有口語、訪談或歷史口述</strong>這類語料，這跟本專案的 SRT 逐字稿差距很大。</p>
+<h2 id="6">6. 評估</h2>
+<ul>
+<li><strong>有 gold standard</strong>：兩個資料集本身都是人工標註的標準答案，評估就是拿模型抽出的三元組去比對標準答案。</li>
+<li><strong>指標</strong>：主要用 <strong>F1 分數</strong>（精確率 Precision 與召回率 Recall 的調和平均），消融實驗另外拆出 P、R、F1 三者。分成零樣本（ZSL）、少樣本（FSL）、監督微調（SFT）三種設定跟一票基線比。AgentRE 在三種設定都拿到最好或接近最好；蒸餾出來的 AgentRE-SFT 用 Llama-2-7b 這種小模型，在 DuIE 上 F1 衝到 82.43，勝過參數量大得多的對手。</li>
+<li><strong>驗證機制</strong>：抽取後有一個「verify」步驟判定每筆三元組對錯，再據此分進正確／錯誤記憶。論文沒有明講這個 verify 具體怎麼做，在標準資料集上最直接的做法是拿 gold standard 比對，但在沒有標準答案的真實情境下這個環節怎麼運作，論文交代不清。</li>
+<li><strong>沒有明顯的 LLM 自評信心分數</strong>，也<strong>沒有把 LLM 當評審（LLM-as-a-judge）來打最終分數</strong>：評分靠 F1 對標準答案，不是靠另一個 LLM 判好壞。這點與本專案「絕不叫 LLM 自評信心」的紅線相容。不過要留意，它的「反思」與「記憶更新」本質上是 LLM 在評自己先前的產出，只是這些判斷用來改善後續抽取，不直接充當評測分數。</li>
+</ul>
+<p>評估設計本身沒有「用 LLM 驗證 LLM」的循環風險，因為最終分數錨定在人工標準答案上。真正的弱點是 verify 步驟依賴標準答案，脫離 benchmark 就未必成立。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自己承認的：只在<strong>兩個資料集</strong>上驗證（受限於時間與成本），未來要擴到更多資料集與其他資訊抽取任務；為了公平比較，實驗刻意不用外部網路知識（如百科網站），但這也意味著它沒測「開放世界檢索」的效果。</p>
+<p>我讀出來、它沒明講的疑點：</p>
+<ol>
+<li><strong>只做句子層級</strong>。輸入是單句，天生迴避了跨句、跨文件的長距離關係與實體消歧問題，而這恰恰是口述歷史（一個人的故事散在整篇逐字稿裡）最難的部分。它的「記憶模組」看似能跨句累積，但驗證仍在句子級的 benchmark 上，跨文件抽取能力沒有被真正測試。</li>
+<li><strong>verify／反思環節像個黑盒</strong>。系統的核心優勢（用對錯記憶與反思改善後續抽取）高度依賴「能判斷一筆抽取對不對」，論文在 benchmark 上靠標準答案迴避了這個難題，但沒說明真實場景下這個判斷從哪來。</li>
+<li><strong>記憶會不會累積錯誤或漂移</strong>沒有討論。如果早期反思本身有偏，它會被寫進深記憶影響後續所有抽取，論文沒有評估這種風險。</li>
+<li><strong>成本與延遲</strong>。多輪 ReAct、多次檢索、記憶讀寫，比單次呼叫貴很多，論文用蒸餾到小模型來回應成本問題，但 agent 本身在推論時的實際開銷（呼叫次數、token 量）沒有給數字。</li>
+</ol>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p>這篇的整體形態跟本專案高度呼應：都是「LLM 當 agent、外掛工具、多步推理」取代單次大 prompt。但要分清楚哪些能借、哪些是反例。</p>
+<p><strong>最該借用的一點：標註指引進脈絡，正是 criteria.md 的原型。</strong> AgentRE 把「annotation guidelines（標註指引）」當成一種可被檢索、可被 <code>SearchAnnotation</code> 呼叫的資源，在抽取時餵進 LLM 的脈絡，讓模型照著人訂的判準做抽取（例如「不完整的實體不該被抽出」）。這跟本專案把領域判準寫成 <code>references/criteria.md</code>、交給 <code>srt-extract</code> skill 在抽取時參照，是同一個設計思想的兩種實作。差別在：AgentRE 把指引當「檢索回來的一段文字」動態拼進 prompt；本專案把它當「skill 內建的常駐判準」。它的做法提示了一個可能的強化方向：當判準很長時，未必要整份塞進脈絡，可以做成「依當前句子檢索最相關的判準片段」再餵入，省脈絡空間。這對本專案 criteria.md 逐漸變長後的擴充有直接參考價值。</p>
+<p><strong>中文可行性的佐證。</strong> 它在 DuIE（中文，45 萬筆關係）上跑出 SOTA，且中文分詞（Jieba）、中文嵌入（BGE、SimCSE）這套組件都經過驗證。對本專案「處理中文口述歷史」是一個正面訊號：agentic RE 在中文上是行得通的，檢索用的中文嵌入模型也有現成選擇。</p>
+<p><strong>跟四條方法論紅線的對照：</strong></p>
+<ul>
+<li>紅線 2（絕不叫 LLM 自評信心分數）：<strong>相容</strong>。AgentRE 沒有讓 LLM 吐信心分數，最終評分錨定人工標準答案。但它的「反思／記憶更新」是 LLM 在評自己的產出，本專案若要借記憶機制，得小心別讓這種自評悄悄變成信心來源，仍要維持「信心由程式化訊號推導」。</li>
+<li>紅線 1（不做配對式 gold standard）：<strong>部分衝突，需切割</strong>。AgentRE 的整套優勢建立在「有標準答案可 verify 每筆抽取」之上，這正是本專案在事件與關係層拒絕的東西。它的記憶／反思機制若要移植，必須先解決「沒有 gold standard 時，對錯記憶的『對錯』從哪來」，否則機制會空轉。這是移植前最大的障礙。</li>
+<li>紅線 3（每筆強制附出處）：<strong>它完全沒做</strong>，因為是句子層級任務。這是明確反例。本專案的表示法（實體／事件／關係／goût 敘述＋強制出處）比它豐富，不能退回純三元組。</li>
+<li>紅線 4（推理過程可追溯、中間產物落檔）：<strong>高度相容且是它的強項</strong>。AgentRE 主動保存每一步的推理軌跡（Thought/Action/Observation），還拿來當蒸餾訓練資料。本專案要求中間產物全部落檔進 git，方向完全一致；它甚至示範了這些軌跡除了追溯，還能拿來訓練小模型，這是本專案目前沒用到的附加價值。</li>
+</ul>
+<p><strong>該避免的：</strong> 不要因為它是 SOTA 就把「純三元組＋無出處＋句子層級」整套照搬。本專案的難點恰好在它迴避掉的地方——跨整篇逐字稿的實體消歧、每筆附時間碼出處、口語文本的曖昧指涉。它的貢獻對本專案是「工具編排與判準注入」層面的參考，不是「知識表示」層面的範本。</p>
+<p><strong>一句話總結借用策略：</strong> 借它的 agent 編排骨架（ReAct 多步、依複雜度選策略）與「判準／既有知識可檢索地餵進脈絡」的機制；避開它的純三元組表示與依賴 gold standard 的 verify；記憶機制想移植，先過「無標準答案下對錯從哪來」這一關。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

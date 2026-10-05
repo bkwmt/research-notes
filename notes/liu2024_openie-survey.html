@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Liu 2024_開放式資訊抽取綜述：從規則式模型到大型語言模型</title>
+<meta name="description" content="Liu 2024_開放式資訊抽取綜述：從規則式模型到大型語言模型">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Liu 2024_開放式資訊抽取綜述：從規則式模型到大型語言模型</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/liu2024_openie-survey.md</code>　來源最後修改 2026-09-08　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Liu, P., Gao, W., Dong, W., Ai, L., Gong, Z., Huang, S., Li, Z., Hoque, E., Hirschberg, J., &amp; Zhang, Y. (2024). <em>A Survey on Open Information Extraction from Rule-based Model to Large Language Model</em>. Findings of the Association for Computational Linguistics: EMNLP 2024, 9586–9608. ACL Anthology 2024.findings-emnlp.560。<strong>同儕審查（EMNLP Findings）</strong>。西湖大學、羅徹斯特大學、浙江大學、哥倫比亞大學、阿里達摩院、東北大學。</li>
+<li><strong>對應待查問題</strong>：⑧本體學習與 schema 歸納、①LLM 抽取現況、⑤評估</li>
+<li><strong>一句話定位</strong>：把開放式資訊抽取（OpenIE）二十年的發展整理成一條線，最有用的是兩組分類——<strong>三種任務設定</strong>（ORTE／ORSE／ORC）與<strong>兩類評分器</strong>（token-level／fact-level），前者可以用來替我們兩條並行的抽取線命名，後者直接回答「該用哪種指標」。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>一份綜述。三件事：（一）把 OpenIE 的任務設定分成三類並說明各自的優缺；（二）按時間整理主流方法，分成前神經時代、神經時代、大型語言模型時代；（三）討論 LLM 對這個領域的衝擊，並提出未來方向。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>它整理的是「別人怎麼抽」。<strong>三種任務設定</strong>是全篇對我們最有用的分類：</p>
+<ul>
+<li><strong>ORTE（Open Relation Triplet Extraction，開放關係三元組抽取）</strong>：從文字直接抽出三元組。這是 Banko 等人 2007 年定下的經典設定——從大量非結構化網頁文字自動抽出 (實體1, 關係, 實體2)，其中三個成分都是輸入句裡選出來的詞。論文特別指出：<strong>雖然大家慣用「三元組」這個詞，實際抽取任務並不總是限於三元組，也可以涉及更多元的 n-ary 關係，例如條件、時間資訊等。</strong></li>
+<li><strong>ORSE（Open Relation Span Extraction，開放關係跨距抽取）</strong>：<strong>先有主詞與受詞，再去找表達關係的那段文字跨距</strong>。優點是把個別模型簡化，能處理巢狀關係；缺點是錯誤會逐步傳遞，而且計算成本高。</li>
+<li><strong>ORC（Open relation clustering，開放關係分群）</strong>：把句子與句中不同的主詞受詞配成關係實例，反覆最佳化其表示，收斂後做分群，把各種不同的關係表述聚成同一類。優點是有助泛化；缺點是相似度計算量大、可能失去具體性。</li>
+</ul>
+<p>「開放」的意思在三種設定裡都一樣：<strong>不限制關係型別。</strong></p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>綜述本身不提出結構。但它整理的資料集建立方式分四類，對我們有參考價值：</p>
+<ul>
+<li><strong>問答衍生</strong>：把眾包問答資料集轉換而來（OIE2016、CaRB、LSOIE 等）。</li>
+<li><strong>眾包標注</strong>：直接人工標注（WiRe57、SAOKE、BenchIE）。</li>
+<li><strong>知識庫衍生</strong>：把知識庫的三元組與語料文字對齊——<strong>這就是 Mintz 那條遠距監督的路</strong>（NYT-FB、TACRED、FewRel、T-REx）。論文指出<strong>知識庫衍生的資料集多半用於 ORC 設定</strong>。</li>
+<li><strong>指令式</strong>：把抽取任務改寫成指令跟隨任務，以利用 LLM 的能力。</li>
+</ul>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>綜述涵蓋的主流是三元組，但它明確承認 n-ary 關係（含條件、時間）也在範圍內。它沒有討論出處、時間欄位或信心分數——這再次說明出處在這個研究社群裡不是議題。</p>
+<h2 id="5">5. 資料集</h2>
+<p>表 1 列出主要資料集。<strong>中文的有三個</strong>（用上標標示非英文）：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>資料集</th>
+<th>條數</th>
+<th>領域</th>
+<th>任務設定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SAOKE (zh, 2018)</td>
+<td>未報</td>
+<td>百度百科</td>
+<td>ORC</td>
+</tr>
+<tr>
+<td>BenchIE (zh, 2021)</td>
+<td>5,318</td>
+<td>維基、新聞稿</td>
+<td>ORTE／ORSE</td>
+</tr>
+<tr>
+<td><strong>COER (zh, 2018)</strong></td>
+<td><strong>100 萬</strong></td>
+<td>百度百科、中文新聞</td>
+<td>ORC</td>
+</tr>
+</tbody>
+</table></div>
+<p>COER 值得記：<strong>大規模中文，而且是由一個非監督的開放抽取器自動建立的</strong>——不是人工標注。</p>
+<p>對照組（英文）：LSOIE-sci 97,550 條、BenchIE 英文 136,357 條、T-REx 1,100 萬條、InstructOpenWiki 1,900 萬條。</p>
+<h2 id="6">6. 評估</h2>
+<p><strong>這是本篇對我們最直接有用的一節。</strong> 評分器分兩類：</p>
+<ul>
+<li><strong>token-level scorers（詞元層評分器）</strong>：關注個別詞元，確保精確度與語意準確，容許語言上的變異、提升簡潔性、能適應 LLM 那類複雜輸出。</li>
+<li><strong>fact-level scorers（事實層評分器）</strong>：評估抽取對資訊的<strong>忠實度</strong>，驗證語意與資訊的完整性，目的是確保知識抽取可靠。BenchIE 屬於這一類。</li>
+</ul>
+<p>論文給出的配對原則寫得很清楚：</p>
+<blockquote>
+<p>從任務形式的角度看，<strong>token-level 評分器較適合 ORSE</strong>（輸出簡潔）<strong>與 ORTE 裡的標記式模型</strong>（輸出是從輸入衍生的精確詞元）；反之，<strong>fact-level 評分器較適合 ORTE 裡的生成式模型，特別是 LLM，因為它們的輸出多樣、需要語意層的評估</strong>。</p>
+</blockquote>
+<p>在 ORC 設定下用的是分群指標：B³、V-measure、ARI。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自己的判斷（6.2 節）：LLM 在經典指標（尤其 token-level）上常常拿到最好的成績，甚至零樣本就達到當時最佳；但它們在<strong>長尾與更困難的任務上表現不佳</strong>，而且<strong>幻覺是相對於序列標記那類前 LLM 方法的主要劣勢</strong>，使得忠實度與可靠性成為重要疑慮。</p>
+<p>它提出一個值得思考的判斷：<strong>LLM 讓標準 IE 與 OpenIE 的界線變模糊</strong>。兩者現在都在同一個任務設定下處理，差別只在 schema 設計——標準 IE 的 schema 對關係與實體的限制更多。他們謹慎地說 OpenIE 未來可能被視為 IE 裡一個更複雜困難的情境，而不是獨立的分支。</p>
+<p>未來方向裡有三點與我們相關：</p>
+<ol>
+<li><strong>資料集仍然小而窄</strong>，需要更多語言、領域與來源。</li>
+<li><strong>需要能評估 LLM 式輸出的新指標</strong>——「忠實度這類面向仍然嚴重依賴人工評估，缺乏公認的指標」。</li>
+<li><strong>多語言是明顯的缺口</strong>：「多語言至關重要，但多語言能力有明顯落差⋯⋯尤其缺乏用 LLM 處理這些挑戰的努力」。他們自己也只涵蓋中文，多語言模型放在附錄簡述。</li>
+</ol>
+<p>我讀出來的：綜述對「零樣本 LLM 達到最佳成績」的說法，與 Papaluca 2024 實測的「零樣本 F1 近乎 0」看似矛盾。兩者其實不衝突——差別在評分器：綜述講的是 token-level 指標下的成績，Papaluca 用的是要求對應封閉關係集的嚴格比對。這正好印證綜述自己的分類：<strong>評分器選錯，結論就會反過來。</strong></p>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>（一）我們兩條抽取線各有現成的名字，而且第三種設定我們還沒試。</strong></p>
+<ul>
+<li><code>triple_free_exp.py</code>（不限動詞、模型自判、結構化輸出）＝ <strong>ORTE 的生成式版本</strong>。</li>
+<li><code>triple_exp.py</code>（程式用 <code>life_nodes.py</code> 界定述詞、模型只圈原文的字）＝ 介於 ORTE 的標記式版本與 ORSE 之間；因為模型輸出的是輸入裡的精確詞元，性質上是標記式的。</li>
+<li><strong>ORSE 我們沒試過</strong>：先確定主詞與受詞（例如先用主角線定人物），再讓模型只找「表達關係的那段字」。這其實跟 DialogRE 的觸發詞標注是同一件事。<strong>值得當一個具名變因加進來</strong>，因為口述歷史的人名相對好認（人名 NER 有 65.9%，作品名只有 1.1%），先定人物再找關係可能比一次抽三個成分穩。它的已知缺點是錯誤傳遞——人物定錯，關係就跟著錯，這要在報告裡說明。</li>
+<li><strong>ORC 就是動詞表歸納</strong>：把各種關係表述聚成同一類。AutoSchemaKG 的概念化屬於這一類，我們若要從語料長出動詞表，做的就是 ORC。</li>
+</ul>
+<p>用這三個名字替我們的變因命名，好處是報告寫出來能對上這個社群的詞彙，不必自創說法。</p>
+<p><strong>（二）評分器怎麼選，有現成的答案。</strong></p>
+<p>論文的配對原則直接回答了我在讀 BenchIE 時提出的問題：</p>
+<ul>
+<li><code>triple_exp.py</code> 的輸出是<strong>輸入裡的精確詞元</strong>（模型只圈字、程式逐字驗證），所以<strong>可以用 token-level 評分器</strong>。</li>
+<li><code>triple_free_exp.py</code> 是<strong>生成式</strong>輸出，<strong>必須用 fact-level 評分器</strong>（BenchIE 那一路）。</li>
+</ul>
+<p>這比我先前在 <code>_卡點對照表.md</code> 寫的「絕不能用字詞重疊計分」更準確。正確的說法是：<strong>兩條線要用不同的評分器，而且不能拿它們的分數直接互比</strong>。這一點如果搞錯，會得到「程式界定動詞那條線表現比較好」的假結論——那只是因為它被用寬鬆的指標評。</p>
+<p><strong>（三）中文的可用參照點只有三個，而且都不是口語。</strong></p>
+<p>SAOKE、BenchIE-zh、COER。BenchIE-zh 是翻譯來的（見 <code>gashteovski2022_benchie.md</code>），SAOKE 與 COER 是百度百科與中文新聞。<strong>沒有一個是口語，也沒有一個是繁體。</strong> 這替本專案的定位再加一筆證據：繁中口語逐字稿在 OpenIE 這條線上是空白。</p>
+<p>COER 有一點值得留意：100 萬條、由非監督抽取器自動建立。若我們要找一個「中文的、大規模的、不靠人工標注的」參照點，它是目前唯一的候選——但它的領域（百科與新聞）與我們差太遠，只能當方法上的先例，不能當效能對照。</p>
+<p><strong>（四）三元組不是唯一選項，這是社群自己說的。</strong></p>
+<p>論文在定義 ORTE 時明講「實際抽取任務並不總是限於三元組，也可以涉及更多元的 n-ary 關係，例如條件、時間資訊」。這句可以直接引用來支持我們不走純三元組——不是標新立異，是這個領域自己承認的範圍。</p>
+<p><strong>（五）忠實度沒有公認指標，這是空地也是麻煩。</strong></p>
+<p>「忠實度這類面向仍然嚴重依賴人工評估，缺乏公認的指標」——這既說明我們沒有現成的尺可以用，也說明若我們設計出一套程式化的忠實度檢查（出處落地、逐字驗證、跨人佐證），那本身就是可以報告的方法貢獻。</p>
+<p><strong>該避免的</strong></p>
+<ul>
+<li><strong>不要引用「零樣本 LLM 達到最佳成績」而不註明評分器。</strong> 那是 token-level 下的結論，換成 fact-level 就反過來（Papaluca 的表 4）。</li>
+<li><strong>不要把 LLM 時代的樂觀敘事照搬。</strong> 綜述自己也說 LLM 在長尾任務上不行、幻覺是主要劣勢，而口述歷史裡的人物與事件恰恰全是長尾。</li>
+</ul>
+<p><strong>與四條紅線的相容性</strong>：綜述不做實驗，沒有直接的相容性問題。但它整理的主流方法裡，出處、時間、信心欄位全部缺席，這再次支持「出處設計沒有現成模板」的判斷。</p>
+<p><strong>與 <code>_卡點對照表.md</code> 的對應</strong>：第一節（動詞表／任務設定的命名）、第五節（評分器的選擇）。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

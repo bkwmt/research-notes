@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>su2025_transformer-temporal-ie-review</title>
+<meta name="description" content="su2025_transformer-temporal-ie-review">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>su2025_transformer-temporal-ie-review</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/su2025_transformer-temporal-ie-review.md</code>　來源最後修改 2026-09-09　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Su, Xin, Phillip Howard, and Steven Bethard. 2025. "Transformer-Based Temporal Information Extraction and Application: A Review." In <em>Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP 2025)</em>, pages 28822–28841. Suzhou, China, November 4–9, 2025. Association for Computational Linguistics. ACL Anthology ID <code>2025.emnlp-main.1467</code>（DOI 依 Anthology 慣例應為 <code>10.18653/v1/2025.emnlp-main.1467</code>，未上網核對）。<strong>同儕審查：EMNLP 2025 主會議論文（main），已通過審查。</strong> 第三作者 Bethard 是 TimeML 系譜的核心人物（Clinical TempEval、SCATE、TimeBank-Dense 的共同作者），所以這篇既是綜述也是「圈內人的自我盤點」，讀它對這個領域的批評時要記得這一點。</li>
+<li><strong>對應待查問題</strong>：⑥來歷標記／極性／時間記法（主要）、⑤無 gold standard 評估（它把這個領域為什麼沒有新標注語料的原因講得很清楚）、④口述歷史／數位人文（它明說歷史文本與非新聞領域是空白）、⑦零標注三元組抽取的參照點（它給出「時間關係抽取」這條線的規則型與模型型方法的效能對比）。</li>
+<li><strong>一句話定位</strong>：這是目前唯一一篇涵蓋 Transformer 時代的時間資訊抽取（temporal information extraction, temporal IE）綜述，整理了 32 個資料集、三個子任務、約 40 個方法與四個應用方向；本專案的 <code>time_anchor.py</code>（句層年代推算 27.7%、可信層 A–F）在它的分類法裡剛好卡在「時間表述正規化已做、時間關係抽取未做」的中間，它列出的資料集清單則直接回答了「有沒有中文、有沒有口語語料可借」（答案：中文有三個、口語一個都沒有）。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>論文自稱兩項貢獻：(1) 系統性整理 Transformer 時代的時間資訊抽取資料集、方法與應用，並分類；(2) 指出研究空缺、提出未來方向。它填補的位置很明確：之前的綜述（Lim 2019、Leeuwenberg &amp; Moens 2019、Alfattni 2020、Olex &amp; McInnes 2021）不是停在規則與傳統機器學習，就是只顧臨床領域。</p>
+<p>真正有用的貢獻其實是三個「量化的壞消息」，而不是方法整理本身：</p>
+<ol>
+<li><strong>領域偏誤有數字</strong>：32 個資料集裡 20 個（63%）是新聞，臨床領域的跨領域測試掉大約 20 個 F 分點。歷史文本、非新聞領域被點名為空白。</li>
+<li><strong>標注框架停滯有理由</strong>：自 TimeML（Pustejovsky 2003）以來沒有新的端對端標注框架；資料集開發近年明顯減少，原因是標注太難，標注者一致性低（Cassidy 2014），連相關領域的博士生都難以在短時間內讀懂指引並標出好資料（Su 2021）。</li>
+<li><strong>生成式模型輸給判別式模型</strong>：所有以 ChatGPT／提示工程做時間關係抽取的嘗試（Yuan 2023、Huang 2023、Hu 2025、Niu 2024）都沒追上微調過的 BERT／RoBERTa。這是它自己在 5.3 節與附錄 G 反覆強調的結論。</li>
+</ol>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>這篇是綜述，沒有自己的系統，但它把整個領域的流程固定成四個子任務，值得逐一對照本專案：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>子任務</th>
+<th>論文的定義</th>
+<th>白話</th>
+<th>本專案對應</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>時間表述辨識</strong>（time expression identification）</td>
+<td>在文本中找出時間點、期間、時段，含「三天前」這種含糊表述</td>
+<td>把文中所有講時間的字圈出來</td>
+<td><code>time_anchor.py</code> 第 3 區的九種正規式（民國、西元、漢字年、年次、年生、年代、歲數、多年、裸民國）；相對詞（那時候、後來、退伍）另記不推算</td>
+</tr>
+<tr>
+<td><strong>時間表述正規化</strong>（time expression normalization）</td>
+<td>轉成標準格式，如 ISO-TimeML 的 TIMEX3 值 <code>2024-02-25</code></td>
+<td>把「民國六十二年」變成 1973</td>
+<td>民國→西元、年次→出生年、「我 N 歲」＋錨點→年份、年代→區間；這就是 27.7% 那個數字量的東西</td>
+</tr>
+<tr>
+<td><strong>事件觸發詞抽取</strong>（event trigger extraction）</td>
+<td>只標出代表動作的那個詞（「事故」），不抽論元</td>
+<td>找出「發生了什麼事」的那個字</td>
+<td>六類動詞表（<code>life_nodes.py</code>）查 CKIP 動詞，即論文所謂 trigger；論文明說<strong>不回顧</strong>這一塊，因為時間抽取研究幾乎都假設事件已給定</td>
+</tr>
+<tr>
+<td><strong>時間關係抽取</strong>（temporal relation extraction）</td>
+<td>在已知的事件與時間表述之間判 before／after／simultaneous／included by 等關係</td>
+<td>判斷「A 在 B 之前還是之後」</td>
+<td><strong>未做</strong>。<code>繼承_向前</code>／<code>繼承_向後</code> 是一種未命名的關係假設（同 trunk 內視為同一時段），相對詞則只落 <code>_相對詞_未定年.jsonl</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>四個子任務的終點是一張<strong>時間圖</strong>（temporal graph）：有向無環圖，節點是時間表述與事件，邊是時間關係。應用層（第 6 節）再從時間圖產生時間線抽取（timeline extraction）、時間線摘要、時間問答。</p>
+<p>方法上的兩大流派（第 4、5 節）：<strong>判別式</strong>（BERT／RoBERTa 編碼後接分類層，把時間關係當多類分類）與<strong>生成式</strong>（T5／BART 微調，或 LLM 提示）。判別式這條線的花樣主要是往編碼表示裡塞外部知識（常識知識圖、句法依存樹、修辭結構、詞性 one-hot）、用時間關係本身的對稱與傳遞規則約束訓練與推論（box embedding、雙曲嵌入、損失正則化、整數線性規劃、結構化預測）、以及改善穩健性（多任務、資料擴增、持續預訓練、對抗訓練、自訓練）。生成式那條線目前最值得注意的是 Eirew 2025：不再逐對分類，而是一次生成整篇文件的時間圖，再用整數線性規劃（Integer Linear Programming）強制全域一致，並釋出 OmniTemp（所有事件對都標齊的資料集）。</p>
+<p>論文自己的判斷：判別式方法「演算法上高度相似」，一個模型比一個模型多零點幾分「可能只是超參數調得更多，不是對時間關係有更多理解」。這是很不客氣的話，也是可信的話。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>綜述整理出四種標注框架，彼此的差別正是本專案要選邊的地方：</p>
+<ol>
+<li><strong>TimeML／ISO-TimeML</strong>（主流，32 個資料集裡 25 個）：三種標記，TIMEX3（時間表述，帶正規化後的值與類型）、EVENT（事件觸發詞）、TLINK（兩兩之間的時間關係）。缺點是論文第 3.3 節說的：時間圖只剩觸發詞、時間值與幾條關係，<strong>脫離原文脈絡後幾乎無法單獨理解</strong>，這解釋了為什麼沒有任何下游工作直接拿抽出來的時間圖做推理，都只當輔助訊號。</li>
+<li><strong>SCATE</strong>（Bethard &amp; Parker 2016；Laparra 2018）：針對 TimeML 表達不了的三件事設計：多重日曆單位、<strong>相對於事件的時間</strong>、組合式時間表述。做法是把時間表述表示成<strong>時間運算子的組合</strong>（例如「事故後兩週」＝ After(事件, 2 週)），輸出是可直接放上時間軸的區間。論文在附錄 F.1 建議把它從「時間表述」擴到「事件與句子」的正規化。</li>
+<li><strong>時間依存樹／圖</strong>（Zhang &amp; Xue 2018、2019；Yao 2020）：假設<strong>每個時間表述與事件都有一個參照時間</strong>（reference time），整篇文件的時間關係因此可以畫成一棵依存樹；依存圖版本放寬成「參照事件、參照時間、或兩者皆有」。這條線<strong>有中文資料</strong>（新聞與敘事）。</li>
+<li><strong>CaTeRS</strong>（Mostafazadeh 2016）：常識故事的事件時序，事件定義來自本體而非詞性，關係集精簡、標注是整篇故事範圍。</li>
+<li>附錄 D 另提兩個「時間線導向」的框架：NarrativeTIME（Rogers 2019，密集全覆蓋、支援時間線分支與未定）、ETimeline（Liu &amp; Zhang 2025，英中雙語、600 多條時間線、13,878 個事件、LLM 輔助標注）。</li>
+</ol>
+<p><strong>跨文件合併、實體去重、衝突解決</strong>：綜述幾乎沒談。時間 IE 領域的單位是「一篇文件」，唯一接近「跨文件、以人為單位」的例子是第 6 節提到的 Chemotherapy Timeline Extraction 共享任務（Yao 2024b）：從多份電子病歷建<strong>病人層級</strong>的治療時間線。這是本專案「以人物為單位、跨訪談併起來」在該領域裡最近的類比。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>不是實體三元組，是<strong>時間圖</strong>：節點是時間表述與事件觸發詞，邊是有限類型的時間關係（TimeML 的 TLINK 關係約十餘種，常用 before／after／simultaneous／included by／vague）。生成式研究裡 Dligach 2022 特別報告：<strong>每對時間實體分開輸出，比「實體、關係、實體」的三元組格式效果好</strong>。這條與本專案「不採用純三元組」的立場一致，理由也一樣：三元組格式在生成時容易錯位。</p>
+<p><strong>出處</strong>：框架層次上有。TimeML 是 inline 標注，每個 TIMEX3／EVENT 帶字元位置，TLINK 指向兩個 id，所以每條關係都能回到原文位置。但這是標注格式的性質，論文回顧的方法多數是分類器，輸出是關係標籤，<strong>出處只是輸入自帶的，不是方法產生的</strong>。</p>
+<p><strong>時間資訊</strong>：這整篇就是在講時間，但要注意它處理的「時間」是<strong>文本內部的相對順序與正規化值</strong>，沒有 Zep 那種「知識何時被抽出、何時被推翻」的第二條時間軸（見 <a href="rasmussen2025_zep-temporal-kg.html">rasmussen2025_zep-temporal-kg.md</a>）。</p>
+<p><strong>信心分數</strong>：框架層次沒有。TimeML 沒有「這個年份可信到什麼程度」的欄位；只有 TLINK 的 <code>vague</code> 類別間接承認不確定，以及 German VTEs（May 2021）處理模糊時間表述。<strong>本專案的可信層 A–F（依推算路徑分層）在這個領域裡沒有對應物</strong>，是我們自己加的東西，寫作時要說清楚它不是借來的。</p>
+<h2 id="5">5. 資料集</h2>
+<p>32 個資料集、15 種語言，全部是<strong>書面語</strong>。對本專案的三個問題逐一回答：</p>
+<p><strong>有沒有中文</strong>：三處。(a) TempEval-2（Verhagen 2010）含中文，新聞；(b) 時間依存樹（Zhang &amp; Xue 2018、2019）含中文，新聞與敘事，這是唯一有中文且處理「參照時間」的資料；(c) ETimeline（附錄 D）英中雙語新聞時間線，LLM 輔助標注。<strong>沒有任何一個處理民國紀年、歲數表述或漢字年</strong>，這三類在本語料佔多數，所以現成的中文正規化器（HeidelTime 的中文規則、TempEval-2 中文部分）對本專案只有規則型別上的參考價值，數字不能移用。</p>
+<p><strong>有沒有口語、訪談、對話</strong>：<strong>零</strong>。最接近的四個：Richer Event Description（O'Gorman 2016，新聞加論壇討論）、PATE（Zarcone 2020，語音助理指令，短句）、CaTeRS（常識故事）、Kim 2020（小說裡的一天內時刻）。沒有任何一個是逐字稿、沒有任何一個處理「講話的人回憶幾十年前的事」。論文自己在 3.3 節舉的難例是維基百科的「1798，那之後一年，他辭去總統職位」，說這需要「更細緻的詮釋」；本語料裡這種句子不是難例，是常態（絕對：相對 ≈ 1：28）。</p>
+<p><strong>有沒有歷史文本</strong>：有兩個，但都不是口述。Spanish TimeBank 標的是史學著作（historiography），AncientTimes（Strötgen 2014）是多語言古代史文本，只做時間表述辨識與正規化。Korean TimeBank 用維基百科且「含相對時間資訊」（書目標題如此，內文沒展開）。</p>
+<p><strong>規模</strong>：時間關係抽取最常用的三個資料集加起來只有 344 篇文件（MATRES 274、TimeBank-Dense 36、TDDiscourse 34），論文說這比相近的 IE 資料集小一到兩個數量級，單一文件在 TimeBank-Dense 佔近 3%，效能數字對個別標注極為敏感。這個尺度與本專案 98 卷 13,142 句差不多，所以我們的統計也會有同樣的敏感性問題。</p>
+<h2 id="6">6. 評估</h2>
+<p>全部以 gold standard 為前提。標準做法是 TempEval-3（UzZaman 2013）：時間表述辨識與正規化算 P／R／F；時間關係抽取算「時間感知分數」（temporal awareness），做法是先對 gold 時間圖做<strong>傳遞閉包</strong>（把所有可推得的關係補上），對系統輸出做<strong>約簡</strong>（去掉可由其他關係推出的冗餘），然後才算 P／R／F。這個設計有個可借的思想：<strong>時間關係是一個帶邏輯結構的集合，不是彼此獨立的標籤</strong>，評估前要先用規則整理。</p>
+<p>沒有 LLM 自評，沒有 LLM 當評審。但有一處與紅線第 2 條直接衝突：自訓練那一支（Cao 2021、Ballesteros 2020）用<strong>模型自己的不確定分數與信心分數</strong>（對特定關係的預測機率）挑偽標注樣本。論文只是轉述，沒批評。</p>
+<p>評估設計的問題論文自己指出來了：(1) 三個資料集高度重疊，反覆在上面調參等於過擬合；(2) 各家「F1」的實作不一致，Kanashiro Pereira 2022 只評 before／after，Zhang 2022 評除 vague 外的所有關係，數字不可直接比；(3) 大多數模型不公開，無法在新語料上重測。<strong>時間表述正規化的評估</strong>還有一個論文沒點出的問題：TIMEX3 值的比對是字串精確匹配，「1973」對「1972」算全錯，這對口述語料（口誤差一年是常態）完全不合用。本專案 <code>CONFLICT_TOLERANCE = 1</code> 的設計在這個領域沒有先例。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自承：只看 Transformer 方法、不含規則系統；只看三個經典子任務。</p>
+<p>我讀出來的弱點：</p>
+<ol>
+<li><strong>把規則方法排除是它最大的盲點</strong>，因為它自己的第 6 節顯示真正被下游應用拿去用的時間表述工具全是規則型（HeidelTime、SUTime），Lange 2023 的多語言資料也是用 HeidelTime 標 87 種語言後蒸餾出來的。也就是說，在「時間表述辨識與正規化」這一格，Transformer 沒有取代規則，而是靠規則餵養。這與本專案「時間全歸程式」的作法反而互相支持。</li>
+<li><strong>把「事件抽取」排除，等於排除了時間圖最需要的內容</strong>。它自己在 3.3 節與 F.1 承認時間圖太貧瘠是因為只有觸發詞、沒有論元，然後說「整合實體關係抽取與完整事件抽取」是未來方向。這意思是：這個領域三十年來把「什麼時候」和「誰對誰做了什麼」切成兩個社群，各做各的。本專案剛好要把兩者接起來（ORSE 跨距＋年代掛邊），沒有現成的整合框架可抄。</li>
+<li><strong>對 LLM 的評價建立在 2023–2025 初的提示實驗上</strong>，測的是通用大模型在新聞語料上的零樣本或少樣本表現。它沒有討論本機小模型、沒有討論「模型只做一件判斷、其他歸程式」這種分工，所以「生成式輸給判別式」這個結論對本專案的設計只能當警訊，不能當否決。</li>
+<li><strong>沒有討論文件建立時間（document creation time）在回憶類文本裡的失效</strong>。新聞的 DCT 是解析「昨天」的錨；訪談的 DCT（訪談日期）只錨得住「說話的時間」，錨不住「講的事情的時間」。這一點 Zep 筆記已寫過，這篇綜述完全沒碰。</li>
+<li><strong>附錄 G／H 有重複與排版問題</strong>（H.1 標題空白、Table 2 的 Avl 欄在文字抽取後對不齊），表列資料要引用時得回 PDF 核對。</li>
+<li>「沒有任何工作直接用抽出的時間圖做推理」這句話成立與否取決於怎麼定義「直接」；它自己隨後就列了 Su 2023、Yang 2023、Xiong 2024 把時間圖以文字形式餵給模型。這是綜述的框架用語，不是嚴格的實證主張。</li>
+</ol>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<h3 id="81">8.1 它把時間資訊抽取分成哪幾格，本專案的年代推算落在哪一格</h3>
+<p>四格：時間表述辨識、時間表述正規化、事件觸發詞抽取、時間關係抽取；四格的產出合成時間圖，再往下是時間線抽取。</p>
+<p><code>time_anchor.py</code> 完整做了<strong>前兩格</strong>（辨識九類表述、正規化成西元年或區間），用動詞表做了<strong>第三格</strong>的一部分（六類事件類別），<strong>第四格沒做</strong>。27.7% 這個數字用它的語言說，是「句子能掛上 TIMEX3 絕對值的比例」，其中 620 句（4.7%）是自有時間表述，3,015 句是繼承。<strong>繼承本身就是一種未命名的時間關係假設</strong>：「同 trunk 內沒講年份的句子，其事件 included by 最近前一句的時間」。這與時間依存樹「每個事件都有一個參照時間」的假設同型，只是我們沒有把「參照句是誰、關係是什麼類型」寫成邊，只寫了年份與距離。<strong>建議</strong>：把 <code>繼承_向前</code>／<code>繼承_向後</code> 改寫成顯式的參照關係（<code>參照句 sid</code>、<code>關係類型＝included by／after／before／vague</code>），年份照舊由程式算。這樣 27.7% 就從一個平面的年份表變成一棵依存結構，之後相對詞解析出來的關係可以直接接上去，出處鏈條也不斷（每條邊指向兩個 sid）。</p>
+<p>剩下的 72.3% 在它的分類裡不是「沒有時間資訊」，而是<strong>只有 TLINK、沒有 TIMEX3 的句子</strong>。這個區分對報告很重要：現在的寫法「定年 27.7%」會讓人以為其餘七成沒時間；正確的說法是七成的時間資訊以相對關係存在，等第四格做完才能排序。</p>
+<h3 id="82">8.2 相對時間表述的正規化：現成做法與可借的資料</h3>
+<p>論文給的選項，按對本語料的適用性排：</p>
+<ol>
+<li><strong>SCATE 的運算子表示</strong>：把「退伍之後」寫成 After(事件＝退伍)，「那時候」寫成 Simultaneous(參照＝前一事件)，<strong>先不換成數字，等錨點事件有年份再解算</strong>。這是最貼合本語料的做法，因為它容許「表述已正規化、值仍未知」這個中間狀態，而 TIMEX3 的 value 欄位不容許。搭配 EDTF（<a href="loc2019_edtf-spec.html">loc2019_edtf-spec.md</a>）表達解算後的模糊區間即可。實作上不必採 SCATE 的完整形式語法，只要邊上多帶「運算子、參照節點、時距（若有）」三欄。<strong>這與「加不改」原則相容</strong>：<code>_相對詞_未定年.jsonl</code> 裡的每一筆本來就是（詞、字元位置），補上運算子與參照 sid 即成。</li>
+<li><strong>時間依存樹的「參照時間」假設</strong>（有中文語料）：每個事件找一個參照，形成樹。這剛好是繼承機制的形式化。Zhang &amp; Xue 的中文標注指引會給我們「敘事文本裡參照時間怎麼判」的既有判準，可當程式規則的依據來源（<strong>未讀，只記預期</strong>）。</li>
+<li><strong>TORDER 的反向思路</strong>（Cheng &amp; Miyao 2018）：先把事件與時間錨到絕對時間點，再自動導出兩兩關係，減少標注負擔。本專案的情況正好相反：<strong>有一部分絕對錨點，可以先導出這部分的關係當骨架，再用相對詞把沒錨點的事件掛上去</strong>。骨架上的關係是程式導出的、不是模型判的，符合紅線第 2 條。</li>
+<li><strong>對稱與傳遞規則</strong>（Ning 2019 有完整傳遞表）：程式化推論。A 在 B 前、B 在 C 前，則 A 在 C 前；一旦出現循環，就是矛盾訊號。<strong>這是一個免標準答案的一致性訊號</strong>：對每卷的時間關係做傳遞閉包，數矛盾對的數量，當作該卷時間鏈的品質分層依據，正好補 <code>confidence_scorer.py</code> 五訊號裡「數值合理性」那一項。</li>
+<li><strong>規則型正規化器</strong>（HeidelTime、SUTime）：有中文規則但沒有民國年、沒有歲數表述。只能借它們的<strong>規則型別分類</strong>（DATE／DURATION／SET／TIME，加上 HeidelTime 對「模糊時間」的處理）來檢查我們九類正規式有沒有漏掉整類；不建議直接跑。</li>
+</ol>
+<p><strong>可借的資料集</strong>：中文只有時間依存樹（新聞＋敘事）與 TempEval-2 中文（新聞）。前者對本專案的價值是判準與關係型別，不是訓練資料（領域差太遠，論文自己的數字說跨領域掉 20 分）。</p>
+<h3 id="83">8.3 有沒有中文或口語語料</h3>
+<p>中文有三個（TempEval-2、時間依存樹、ETimeline），<strong>全是新聞或書面敘事</strong>；口語、訪談、對話<strong>一個都沒有</strong>。這對報告的意義是雙面的：一方面<strong>沒有任何基準數字可以移用</strong>，Jing 2007 那種 F 0.28–0.30 在時間層連可比對象都沒有；另一方面，論文自己把「歷史文本與非新聞領域」列為明確的空白，本語料（口語、回憶、民國紀年、歲數表述、相對表述壓倒性多數）是一個在這個領域裡<strong>沒有人碰過的組合</strong>，寫 related work 時可以直接引它的 63% 與「歷史文本表述更隱晦」那段話定位本研究。</p>
+<h3 id="84">8.4 它列出的開放問題，哪些正是本專案卡住的</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>論文的開放問題</th>
+<th>本專案的卡點</th>
+<th>對應</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>時間圖太貧瘠，脫離脈絡無法解讀；建議整合實體關係與完整事件抽取（F.1）</td>
+<td>生命過程要的是「誰、跟誰、做什麼、何時」，時間只是其中一欄</td>
+<td><strong>完全對上</strong>。本專案 ORSE 跨距＋年代掛邊，就是它說的「尚無框架」的那件事</td>
+</tr>
+<tr>
+<td>標注太難、一致性低、資料集開發停滯（3.3）</td>
+<td>紅線第 1 條、09-09 裁決「語料端事實標注不做」</td>
+<td>給我們不做時間標注<strong>一個領域內部的理由</strong>：連該領域的專家都標不好，人文學者自建時間 gold 只會更差</td>
+</tr>
+<tr>
+<td>領域偏誤，歷史文本表述隱晦（3.3）</td>
+<td>絕對：相對 ≈ 1：28</td>
+<td>本語料是極端案例，正好是它要的「多領域」</td>
+</tr>
+<tr>
+<td>生成式 LLM 輸給判別式（5.3、G）</td>
+<td>本機小模型做時間判斷可行嗎</td>
+<td><strong>警訊</strong>：時間關係判斷交給模型的效益在文獻上是負的，維持「時間全歸程式」是對的</td>
+</tr>
+<tr>
+<td>時間圖的視覺化難以理解，需要使用者研究（F.4）</td>
+<td>週會報告的時間軸（2.7 MB）、圖太密</td>
+<td>論文引 Di Bartolomeo 2020 的時間線形式研究；本專案「散點不畫 min–max 橫條」是同類問題的一個決定</td>
+</tr>
+<tr>
+<td>模型與工具不公開、無法重測（5.3、F.3）</td>
+<td>紅線第 4 條、中間產物落檔</td>
+<td>相容</td>
+</tr>
+</tbody>
+</table></div>
+<p>它<strong>沒有</strong>列、但本專案卡住的：(a) 跨文件、以人為單位的時間線合併（只有臨床的病人時間線共享任務類比）；(b) 回憶類文本的 DCT 失效；(c) 「時間值可信到什麼程度」的表示（它的框架裡只有 vague 一個逃生口）。這三項在報告裡要標成「文獻沒有現成答案」，不要硬引。</p>
+<h3 id="85">8.5 該借的與該避免的</h3>
+<p><strong>借</strong>：
+- 用它的四格分類重述 <code>time_anchor.py</code> 的位置與 27.7% 的意義（8.1）。
+- 相對詞的 SCATE 式運算子表示，先記結構、後解算（8.2 第 1 點）。
+- 傳遞閉包當一致性訊號（8.2 第 4 點），落在紅線第 2 條允許的「程式化訊號」內。
+- 病人層級時間線（Yao 2024b）當「人物層級生命過程」的跨領域類比。
+- Dligach 2022「逐對輸出優於三元組格式」，支持本專案不採純三元組。</p>
+<p><strong>避免</strong>：
+- <strong>自訓練用模型信心分數挑樣本</strong>（Cao 2021、Ballesteros 2020）。這正是紅線第 2 條禁止的事，論文轉述時沒有批評，讀者容易當成標準做法。
+- 拿任何時間關係基準數字（MATRES、TimeBank-Dense 上的 F）當本專案的參照，領域、語言、文類全不同，論文自己說跨領域掉 20 分。
+- 把 TIMEX3 的字串精確匹配當正規化評估標準，對口述語料的「差一年」不合用。
+- 把繼承出來的年份與自有年份混報。論文的 P／R 是分開算辨識與正規化的，本專案也應該分報「自有 620」與「繼承 3,015」，不要只報 27.7%。</p>
+<p><strong>與四條紅線的相容性</strong>：紅線 1（不做人工標注）在這篇裡得到領域內部的支持；紅線 2（不叫模型自評信心）與它轉述的自訓練做法衝突，但與它的傳遞規則、ILP 一致性約束相容；紅線 3（強制出處）在 TimeML 的 inline 標注格式裡是內建的，但方法層不保證；紅線 4（可追溯）與它 F.3 呼籲的公開工具與基準同向。</p>
+<p><strong>對「口述歷史、非三元組、強制出處」的參考價值</strong>：中等。它給的是<strong>分類法與問題清單</strong>，不是可用的表示法。表示法要從 SCATE（運算子）、時間依存樹（參照關係）、EDTF（模糊值）三處各拿一塊自己拼，這篇的價值是告訴我們這三塊在文獻上各在哪裡、以及為什麼沒有人拼過。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

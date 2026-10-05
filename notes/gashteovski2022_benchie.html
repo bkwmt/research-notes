@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gashteovski 2022_BenchIE：以事實為單位的開放式抽取評估</title>
+<meta name="description" content="Gashteovski 2022_BenchIE：以事實為單位的開放式抽取評估">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Gashteovski 2022_BenchIE：以事實為單位的開放式抽取評估</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/gashteovski2022_benchie.md</code>　來源最後修改 2026-09-08　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Gashteovski, K., Yu, M., Kotnis, B., Lawrence, C., Niepert, M., &amp; Glavaš, G. (2022). <em>BenchIE: A Framework for Multi-Faceted Fact-Based Open Information Extraction Evaluation</em>. Proceedings of the 60th Annual Meeting of the ACL, Volume 1: Long Papers, 4472–4490. DOI 10.18653/v1/2022.acl-long.307。<strong>同儕審查（ACL 主會長論文）</strong>。作者來自 NEC 歐洲實驗室、曼海姆大學、慕尼黑大學、斯圖加特大學。</li>
+<li><strong>對應待查問題</strong>：⑤無 gold standard 評估（兼涉①抽取現況）</li>
+<li><strong>一句話定位</strong>：它證明既有的開放式資訊抽取（OpenIE）評測<strong>系統性地高估</strong>系統效能——因為評分靠字詞重疊，而標準答案只列一種寫法。它的解法是「事實同義集」：把同一個事實的所有可接受寫法窮舉成一個集合，系統只要完全符合其中任一條就算對。<strong>而且它有中文版</strong>。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>四項。第一，第一個以「事實」而非「三元組字串」為單位的 OpenIE 評測框架：窮舉列出同一事實的所有正確抽取寫法，組成事實同義集（fact synset），改用完全比對，避開字詞重疊評分的誤差。第二，第一個多面向（multi-faceted）的 OpenIE 評測——不同下游任務在意的面向不同，因此提供三個變體。第三，第一個在英文、中文、德文三種語言都有人工標注標準答案的 OpenIE 評測集。第四，用它重測六個當時最強的 OpenIE 系統，顯示這些系統的實際能力比既有評測所顯示的<strong>差得多</strong>。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>這篇不做抽取，做評估。但它評的那些系統值得記：ClausIE、Stanford OIE、MinIE、ROIE、OpenIE 6、M2OIE，另外自己實作了一個<strong>天真基線（Naive OIE）</strong>——用詞性標注器找出每個動詞當述詞，動詞前面的整段句子當主詞、後面的當受詞。這個天真基線是全篇最有力的論證工具，見第 6 節。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>核心概念是<strong>事實同義集</strong>：給定一個事實，把它所有可能的表面形式（surface form）列成一個集合。論文的例句是「Sen. Mitchell is confident he has sufficient votes to block such a measure with procedural actions.」，同一句被拆成四個事實同義集 f1–f4，其中 f2 包含：</p>
+<pre><code>(&quot;Sen. Mitchell&quot; | &quot;he&quot;; &quot;is confident he has&quot;; &quot;sufficient votes&quot;)
+(&quot;Sen. Mitchell&quot; | &quot;he&quot;; &quot;is confident he has&quot;; &quot;suff. votes to block [such] [a] measure&quot;)
+</code></pre>
+<p>兩個記號值得注意：<strong><code>|</code> 表示共指</strong>——同義集同時接受本名「Sen. Mitchell」與代名詞「he」當主詞；<strong>方括號表示可選詞</strong>——帶與不帶都算對。這一句在 CaRB 裡只有 1 條標準答案，在 BenchIE 裡有 46 條。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>評的對象是純三元組（動詞片語當述詞）。但論文明說這套「以事實為單位」的想法可以套到其他表示法上，並舉了 Friedrich 等人 2022 把它用在以具名實體為中心的抽取上為例。</p>
+<p>沒有出處欄位、沒有時間、沒有信心分數——它評的是「抽出的事實對不對」，不是「知識怎麼組織」。</p>
+<h2 id="5">5. 資料集</h2>
+<p>從 CaRB 的 1,200 句裡隨機抽 300 句做窮舉標注。三種語言：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>抽取條數</th>
+<th>同義集數</th>
+<th>每個同義集的平均條數</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CaRB（對照）</td>
+<td>783</td>
+<td>/</td>
+<td>/</td>
+</tr>
+<tr>
+<td>BenchIE 英文</td>
+<td>136,357</td>
+<td>1,350</td>
+<td>101.0</td>
+</tr>
+<tr>
+<td>BenchIE 德文</td>
+<td>82,260</td>
+<td>1,086</td>
+<td>75.7</td>
+</tr>
+<tr>
+<td><strong>BenchIE 中文</strong></td>
+<td><strong>5,318</strong></td>
+<td><strong>994</strong></td>
+<td><strong>5.4</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>中文與德文版由雙語專家<strong>人工翻譯</strong>那 300 句（他們特地批評 Ro 等人用機器翻譯的做法，指出 Kotnis 等人 2022 量到高達 70% 的句子或抽取翻譯有誤）。</p>
+<p><strong>中文那一欄對本專案很重要</strong>：中文的同義集數量跟英文差不多（994 對 1,350），但每個同義集的抽取條數只有 5.4，英文是 101.0，差了近二十倍。論文給的原因是<strong>中文沒有冠詞與限定詞</strong>——英文裡 the、a 這類詞在句中頻繁出現又不影響抽取正確性，於是製造出大量彼此不同卻等價的寫法。</p>
+<h2 id="6">6. 評估</h2>
+<p>判定規則簡單而嚴格：<strong>一條系統抽取只有在與某個事實同義集裡的某條標準答案完全相符時才算正確。</strong></p>
+<ul>
+<li>真陽性（TP）＝被系統抽取覆蓋到的<strong>同義集</strong>數量。注意單位是同義集不是三元組——<strong>一個系統若抽出同一事實的 N 種寫法，只計一次</strong>，不會因為重複抽取同一事實而被獎勵。</li>
+<li>假陰性（FN）＝沒被任何系統抽取覆蓋到的同義集。</li>
+<li>假陽性（FP）＝沒對上任何標準答案的系統抽取。</li>
+</ul>
+<p>標注成本：英文兩位專家各 80 小時。標注者間一致性用「事實層召回率」互算（每位標注者的抽取覆蓋了對方多少比例的同義集），平均後得 0.79。他們檢查後發現分歧多半不在同義集層，而在單條抽取層（主要是可選詞的標記方式）。</p>
+<p><strong>三個面向（facet）</strong>，對應不同下游任務：</p>
+<ul>
+<li><strong>BenchIE-E（實體完整性）</strong>：主詞與受詞必須是完整的概念，不能把不屬於實體的詞放進去。<strong>為知識圖譜建構與實體連結設計</strong>。</li>
+<li><strong>BenchIE-C（串接）</strong>：把三個欄位的內容串成一句話比對，不管詞落在哪個欄位。為摘要與句子簡化設計。</li>
+<li><strong>BenchIE-M（最小性）</strong>：只保留非可選詞，衡量抽取是否精簡。</li>
+</ul>
+<p><strong>結果（表 5）</strong>：BenchIE 給的分數全面低於 CaRB。平均而言 CaRB 高估精確率 14 個百分點、召回率 38 個百分點、F1 26 個百分點。</p>
+<p>最有說服力的是那個天真基線：<strong>CaRB 給 Naive OIE 的精確率 0.24，甚至高過 Stanford OIE 的 0.17；BenchIE 只給 0.03，是 CaRB 的八分之一。</strong> 換句話說，一個「每個動詞當述詞、前後文當論元」的無腦程式，在字詞重疊評分下看起來比一個真正的系統還好。</p>
+<p>沒有 LLM 自評、沒有 LLM 評審，全部是人工標注加完全字串比對。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自承的：窮舉標注極貴（每位標注者 80 小時只標 300 句），所以規模小；假設同義集是完備（列出了所有正確寫法）且健全（沒有錯的），但這個假設無法完全驗證。中文與德文版是從英文句子翻譯來的，不是原生語料。</p>
+<p>我讀出來的：</p>
+<ul>
+<li><strong>完全比對的代價是對新的合法寫法零容忍。</strong> 只要標注者沒想到的正確寫法，系統抽出來就算假陽性。他們用「把各系統的輸出拿回來檢查、正確的補進同義集」來緩解，但這意味著<strong>同義集的完備性依賴於當時評測的那批系統</strong>，換一個行為模式不同的新系統（例如大型語言模型），完備性就要重新檢查。</li>
+<li><strong>翻譯來的中文句子不是自然中文。</strong> 300 句英文新聞句翻成中文，句法會帶英文的影子。中文那 5.4 的低數字有多少來自「中文本來就沒冠詞」、有多少來自「翻譯體句子結構單純」，論文沒有拆開。</li>
+<li><strong>只處理動詞片語當述詞的事實。</strong> 名詞性關係（「錄音師平田義一」這種同位結構）不在範圍內。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>這篇對本專案有一個直接的警告與一個意外的好消息。</strong></p>
+<p><strong>警告：我們的 <code>triple_exp.py</code> 在結構上很接近那個天真基線。</strong></p>
+<p>Naive OIE 的做法是「用詞性標注器找動詞當述詞、前文當主詞、後文當受詞」。<code>triple_exp.py</code> 是「程式用 <code>life_nodes.py</code> 的動詞表界定述詞、模型圈字、程式定位論元」——比天真基線多了動詞表的篩選與模型的判斷，但骨架相同。BenchIE 的實驗顯示，這類做法在字詞重疊評分下會拿到虛高的分數（0.24），在事實層評分下真實水準是 0.03。</p>
+<p><strong>所以：評估我們的三元組時，絕對不能用主詞／述詞／受詞各自的字詞重疊來計分。</strong> 這條要寫進評估設計。目前 <code>triples/</code> 的驗證是「逐字出現在句中」，那是<strong>幻覺檢查</strong>（模型有沒有捏造字），不是<strong>正確性檢查</strong>（抽出的關係對不對）。兩者不能互相取代，這個區分要講清楚。</p>
+<p><strong>好消息：中文做事實同義集的成本遠低於英文。</strong></p>
+<p>每個同義集英文平均要列 101 條，中文只要 5.4 條，因為中文沒有冠詞與限定詞。這改變了可行性判斷：<strong>在中文語料上做窮舉式的事實同義集標注，工作量大約是英文的二十分之一。</strong></p>
+<p>這對紅線第 1 條是一個需要仔細分辨的機會。紅線拒絕的是「對抽取／消歧結果做配對式的人工標註」——也就是拿模型的輸出去人工判對錯、建 cluster_id 對照。BenchIE 的標注<strong>不是這種東西</strong>：它是在<strong>看模型輸出之前</strong>，先窮舉列出「這句話裡有哪些事實、每個事實有哪些合法寫法」。這是對<strong>語料</strong>的標注，不是對<strong>輸出</strong>的標注。順序不同，性質也不同——前者不會讓標注者的判斷被模型的輸出帶著走。</p>
+<p>我的判斷是這值得提出來讓使用者裁決，因為它可能是唯一一條「既守住紅線、又能得到關係層真實數字」的路。若採用，規模建議極小：從已斷句的 13,142 句裡抽 100–150 句，只做人物相關的事實。若不採用，理由也要寫清楚（例如：即使順序不同，一旦有了標準答案，後續設計就會不自覺地朝它最佳化）。</p>
+<p><strong>可直接借用的三件事</strong></p>
+<ol>
+<li><strong>一個事實只計一次。</strong> TP 的單位是同義集不是三元組，所以重複抽出同一事實不加分。我們的 <code>triples/</code> 與 <code>triples_free/</code> 兩條線都會產生同一事實的多種說法（尤其後者不限動詞），統計產出量時應該先合併等價事實，否則數字虛胖。</li>
+<li><strong>選 BenchIE-E 這個面向。</strong> 我們的下游是知識圖譜與網絡，正是論文說「詞的歸屬很關鍵、主詞受詞必須是完整概念」的那一類。所以我們的驗證應該要求論元是完整的人名或機構名，不接受「陳志遠的」這種帶了多餘詞的主詞。</li>
+<li><strong>共指要寫進標準答案，不是抽取後才處理。</strong> 他們的同義集用 <code>|</code> 同時接受「Sen. Mitchell」與「he」。對我們的意義是：一條關係若主詞是「他」而該「他」確實指陳志遠，應該算對，不該因為沒解析代稱就判錯。這替代稱解析與抽取正確性之間畫了一條界線——<strong>代稱未解不是抽取錯誤，是解析工作尚未完成</strong>。</li>
+</ol>
+<p><strong>該避免的</strong></p>
+<ul>
+<li><strong>不要照抄「完全比對」的嚴格程度而不做同義集。</strong> 完全比對只有在同義集夠完備時才公平。若我們只列一種寫法就要求完全相符，會比 CaRB 更不可信，而不是更可信。</li>
+<li><strong>不要直接引用它的中文數字當我們的參照。</strong> 那 994 個同義集是從英文新聞句翻譯來的，不是自然中文，更不是口語。</li>
+</ul>
+<p><strong>與四條紅線的相容性</strong>：紅線 2 完全相容（無任何模型自評或評審，純人工標注加程式比對）；紅線 4 相容（資料與評估程式公開）；紅線 3 未涉及（無出處設計）；紅線 1 需要判斷——見上文對「對語料標注」與「對輸出標注」的區分。</p>
+<p><strong>與 <code>_卡點對照表.md</code> 的對應</strong>：第五節（沒有標準答案怎麼評）。這篇是那一節最重要的依據，也是唯一一篇正面處理「標準答案不完備會讓評估失真」這個問題的。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

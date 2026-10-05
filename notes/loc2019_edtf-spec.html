@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>loc2019_edtf-spec</title>
+<meta name="description" content="loc2019_edtf-spec">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>loc2019_edtf-spec</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/loc2019_edtf-spec.md</code>　來源最後修改 2026-08-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<h2 id="_1">這份文獻說了什麼</h2>
+<p>EDTF（Extended Date/Time Format）是美國國會圖書館帶著書目社群制定的日期表示
+標準，解決 ISO 8601 原版說不出口的三類話：「大約某年」「不確定是不是某年」
+「某年代的某時」。它分三個層級：Level 0 就是 ISO 8601-1 的基本日期與區間；
+Level 1 加上三個修飾符（<code>?</code> 不確定、<code>~</code> 約略、<code>%</code> 兩者兼具，一律放字串尾端、
+及於整個日期）、未指明數字 <code>X</code>（限最右側，如 <code>196X</code>＝1960 年代）、開放或未知
+端點的區間（<code>1985/..</code>、<code>/1985</code>）；Level 2 允許 <code>X</code> 在任何位置、修飾符只管個別
+成分，並新增集合表示（<code>[1964..1966]</code>＝這幾年中的某一年）。</p>
+<p>三個查證點的答案：
+1. 「1960 年代」＝ <code>196X</code>（Level 1）；「約 1955」＝ <code>1955~</code>（Level 1）；
+   「1964 到 1966 之間」＝ <code>1964/1966</code>（Level 0 區間）。但注意 <code>1964/1966</code>
+   的語意是「一段期間」，若要說「單一事件發生在其中某一年」，Level 2 的
+   <code>[1964..1966]</code> 才是準確寫法——這個語意差在抽取口述時間時會真的遇到。
+2. EDTF 確實已併入 ISO 8601 的 2019 年改版：LOC 背景頁明言 "EDTF functionality
+   has now been integrated into ISO 8601-2019"；規格本文說 Level 1、2 對應
+   ISO 8601-2 的特徵。ISO 8601-2:2019 出版於 2019 年 2 月（付費標準，未取得）。
+3. <code>?</code> 與 <code>~</code> 的區分：<code>?</code> 是「不確定是不是這個值」（epistemic 的猶疑），
+   <code>~</code> 是「值是約略的」（精度問題），同時成立用 <code>%</code>。2012 草案的 <code>u</code>（未指明）
+   與 <code>?~</code> 連用已廢，讀舊文獻或舊程式庫要留意。</p>
+<h2 id="_2">與本專案設計的對照</h2>
+<ul>
+<li><strong>「加不改」原則完全可行</strong>：EDTF 欄位可由程式從現行記法轉出，原記法保留。
+  同實驗室 NTU-Bonn 計畫的 <code>mecad_sandbox/src/dates.py</code> 已示範這條路：
+  <code>ParsedDate</code> 同時保留 <code>raw</code>（原字串）與 <code>edtf</code>（轉出值）。</li>
+<li><strong>dates.py 實作了哪個子集</strong>（搬用前的盤點）：</li>
+<li>Level 0 全部用上：單一日期三種精度、<code>起/訖</code> 區間（含 <code>1987/88</code> 展開為
+    <code>1987/1988</code>）。</li>
+<li>Level 1 只用了一項：<code>~</code>（<code>c. 1920</code> → <code>1920~</code>）。</li>
+<li>年代（<code>1930s</code>）<strong>沒有</strong>用 EDTF 的 <code>193X</code>，而是轉成 Level 0 區間
+    <code>1930/1939</code>，再用自己的 <code>precision="decade"</code> 欄位補記精度。這對它的
+    時間軸繪圖夠用，但「十年精度」這個資訊被移出了 EDTF 字串本身。</li>
+<li>完全沒碰：<code>?</code>、<code>%</code>、未指明數字 <code>X</code>、開放／未知端點區間（<code>..</code>）、季節、
+    Level 2 全部（成分修飾、集合表示、有效位數）。</li>
+<li>另有兩個非 EDTF 的實用設計值得一併搬：精度排序（確切日期永遠勝過裸年份）
+    與「緊接左括號的年份跳過」（避開生卒年誤抓）。</li>
+<li><strong>本專案的建議映射</strong>（口述語料的常見樣貌 → EDTF）：</li>
+<li>「六〇年代」→ <code>196X</code>（直接用 Level 1 寫法，不必學 dates.py 轉區間；
+    本專案只加一個 EDTF 欄位，讓字串自足比較乾淨）。</li>
+<li>「大概民國五十幾年」→ 年代約略，<code>195X</code> 已表達「不知哪一年」；若口述者
+    連年代都拿不準可再加 <code>~</code>（Level 2 才允許 <code>195X~</code> 這種組合，採用前要決定
+    支援層級）。</li>
+<li>「好像是 1964 還是 65」→ <code>[1964,1965]</code>（Level 2 擇一集合）或退而求其次
+    <code>1964/1965</code> 區間加註。</li>
+<li>「明白承認不知道時間」→ 區間開放端點（<code>../1970</code>、<code>1955/..</code>）或乾脆
+    不填 EDTF、只留來歷標記，避免假精度。</li>
+<li><strong>層次不要混</strong>：EDTF 的 <code>?</code>／<code>~</code> 只管「時間值本身」的不確定；ICCCM 摘要
+  承諾的 epistemic-status marker 管的是「這筆知識怎麼來」（親歷／轉述／
+  承認不知）。兩者互補、不可互相替代：口述者親歷但記不清年份（來歷可靠＋
+  時間 <code>~</code>）與轉述者講了一個精確年份（來歷存疑＋時間無修飾）是完全不同的
+  證據樣貌，正好需要兩個欄位各自編碼。</li>
+<li>與紅線相容：EDTF 轉換是純程式規則（正則＋映射），不涉 LLM 自評，轉換
+  規則與原字串都落檔即可追溯。</li>
+</ul>
+<h2 id="_3">完整書目與取得方式</h2>
+<ul>
+<li>Library of Congress. 2019. <em>Extended Date/Time Format (EDTF) Specification</em>.
+  February 4, 2019（頁面最後更新 2022-02-02）. Network Development and MARC
+  Standards Office. https://www.loc.gov/standards/datetime/</li>
+<li>背景頁：Library of Congress. <em>EDTF — Background</em>.
+  https://www.loc.gov/standards/datetime/background.html</li>
+<li>ISO. 2019. <em>ISO 8601-2:2019, Date and time — Representations for information
+  interchange — Part 2: Extensions</em>. Geneva: International Organization for
+  Standardization. 出版於 2019 年 2 月；2025 年有 Amd 1:2025 修訂。
+  https://www.iso.org/standard/70908.html （<strong>付費標準，未取得</strong>，依查證規則
+  只記書目；EDTF 語法內容以 LOC 免費規格頁為準即足）</li>
+<li>取得方式：規格頁為公開網頁（伺服器擋一般爬蟲，需瀏覽器 user-agent），
+  關鍵內容已整理存為 <code>refs/loc2019_edtf-spec.md</code>，擷取日期 2026-08-22。</li>
+<li>參照實作：<code>/Users/hugowski/Developer/NTU-Bonn/mecad_sandbox/src/dates.py</code>
+  （同實驗室 NTU-Bonn 計畫，2026；Level 0 全部＋Level 1 的 <code>~</code>）。</li>
+</ul>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

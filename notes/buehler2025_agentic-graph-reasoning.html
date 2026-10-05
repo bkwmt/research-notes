@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>buehler2025_agentic-graph-reasoning</title>
+<meta name="description" content="buehler2025_agentic-graph-reasoning">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>buehler2025_agentic-graph-reasoning</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/buehler2025_agentic-graph-reasoning.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Buehler, M. J. (2025). <em>Agentic Deep Graph Reasoning Yields Self-Organizing Knowledge Networks</em>. Journal of Materials Research 40(15), 2204–2242. DOI:10.1557/s43578-025-01652-1. arXiv:2502.13025. 同儕審查（已刊於 JMR）。</li>
+<li><strong>對應待查問題</strong>：②agentic 建構（兼及 ③harness 評估、⑤無 gold standard 評估）</li>
+<li><strong>一句話定位</strong>：作者讓一個會「用圖來思考」的語言模型自己不斷提問、自己回答、把答案接成一張知識圖，跑上千輪後圖會長成有樞紐、有橋接點的「自我組織」網絡。它示範的是一個<strong>迭代建圖迴圈</strong>，這正是本專案 global fusion 階段可以參照的骨架；但它的知識<strong>不來自任何文本語料</strong>，而是從模型腦中長出來的，這一點跟本專案「每筆附出處」的紅線正面衝突。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>作者主張的核心貢獻是：把「推理」本身變成一個會持續改寫知識結構的動作，而不是一次抽完就結束。傳統的知識圖建構（他點名 NELL、Knowledge Vault 這類系統）多半是「從文本抽事實、塞進既有本體、頂多做連結預測」；而這篇讓一個推理型語言模型（reasoning-native LLM）在推理的當下就地（in situ）擴充與重整一張圖。</p>
+<p>具體宣稱有三點：（1）只靠「遞迴地反覆推理」這一個機制，不給預先定義的本體（ontology）、不給外部監督、也沒有中央控制，就能讓一張知識圖持續長大且不飽和，跑超過一千輪仍在冒出新節點新邊；（2）長出來的圖具有「無尺度網絡」（scale-free，少數節點是超高連結的樞紐、多數節點連結很少）與階層式模組結構，作者把這解讀成「類似人類知識組織、甚至類似智能」的自我組織現象；（3）示範這張圖可以拿來做「組合式推理」（compositional reasoning），把材料科學的概念一層層組起來，生出新的設計構想。</p>
+<p>需要保持距離地看：貢獻主要在「現象展示」與「規模」——它證明這個迴圈跑得起來、跑很久、圖的結構統計很漂亮，但它並沒有證明長出來的知識是<strong>對的</strong>。這一點在第 6、7 節會回頭談。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>先講一個容易被標題誤導的關鍵事實：<strong>這個系統沒有輸入語料</strong>。它不是拿一批論文或訪談去抽取，而是給模型一個起始問題（例如「談一個仿生材料科學的有趣想法」或「描述一種設計抗衝擊材料的方法」），然後讓模型自問自答、把每次回答裡的關係接進圖裡。輸入其實只是那一句起始提問，知識全部來自模型自己的參數記憶。</p>
+<p>用的模型是作者先前自訓的 Graph-PReFLexOR（Graph-based Preference-based Recursive Language modeling，一個在約一千篇生物與仿生材料論文上訓練、被教會「用圖的方式思考」的模型）。它會把推理過程包在特殊標記 <code>&lt;|thinking|&gt; ... &lt;/|thinking|&gt;</code> 裡輸出。</p>
+<p>迭代迴圈（論文 Figure 1、第 4.2 節）每一輪做這幾件事：</p>
+<ol>
+<li><strong>產生圖式推理</strong>：模型針對當前問題，在 <code>&lt;|thinking|&gt;</code> 區塊裡生出一段帶有關係結構的推理文字。</li>
+<li><strong>解析出局部圖 G_local</strong>：因為上一步是自由文字，這裡再對模型下一道<strong>格式化指令</strong>——「把下面這段結構化文字輸出成 NetworkX 相容的 Python 字典，只准輸出字典」——拿到字典字串後用 <code>ast.literal_eval()</code> 解析，建成一張<strong>有向的</strong>局部圖。（等於用第二次 LLM 呼叫，把散文翻成可機讀的節點—邊清單。）</li>
+<li><strong>併入全域圖</strong>：<code>G ← G ∪ G_local</code>，把新節點新邊接到不斷長大的大圖上，重複的關係不再重加。</li>
+<li><strong>存檔與視覺化</strong>：每一輪存成 GraphML（供分析）與 PNG（供看圖），檔名帶輪次編號，之後靠檔名的正則就能按時間序重建演化過程。</li>
+<li><strong>生成下一個問題</strong>：這是「agentic」的關鍵一步。不是讓使用者出下一題，而是把「這一輪 G_local 剛冒出來的實體與關係」丟回給模型，要它「根據這些關鍵詞，想一個關於全新概念的有創意的追問，且至少沿用其中一個關鍵詞」。模型自己出的這個新問題，就是下一輪的起始問題。</li>
+<li>回到第 1 步，直到輪次 i 達到預設上限 N。</li>
+</ol>
+<p>所以這不是「多個 agent 分工交棒」那種多角色系統，而是<strong>單一模型扮演三種功能反覆循環</strong>：推理者（生知識）、抽取者（把知識轉成圖）、提問者（決定下一步往哪走）。真正讓它「自主」的是第 5 步——問題是系統自己滾出來的，方向由圖當下長成什麼樣子牽引，沒有人在旁邊出題。</p>
+<p>（另外還有兩套下游用法，不屬於建圖迴圈本身：一是沿圖裡「最長的最短路徑」逐節點做推理再合成新發現；二是「組合式推理」，把路徑上的概念當積木，兩兩融合、再融合成橋接綜合、最後整合成一個新框架 EcoCycle。這些是拿建好的圖去「用」，不是建圖。）</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p><strong>沒有預先定義的本體，也沒有 schema。</strong> 這是作者刻意的設計主張：節點與邊的類型不預先規定，任由模型在生成時自己決定。實際跑出來，節點是材料、性質、科學概念之類的實體；邊帶少數幾種關係標籤，論文舉的例子有 <code>HAS</code>、<code>INFLUENCES</code>、<code>SIMILAR-TO</code>、<code>IS-A</code>、<code>RELATES-TO</code>。圖是有向的。</p>
+<p>去重只做最表淺的一層：併圖時「相同的關係不重複加」。<strong>沒有跨輪次的實體消歧或合併</strong>。作者自己在第 2.12 節就抓到一個活生生的例子：<code>Pollution Mitigation</code> 這個概念在圖裡出現了兩次（拼法略有不同），因為系統沒有把它們併成同一個節點，於是同一個概念被當成兩個節點在推理——他明說這是「缺少節點合併」造成的、會影響圖式推理品質。也就是說，本專案最在意的「跨訪談把同一個人/同一件事對起來」這件事，這篇根本沒做。</p>
+<p>所謂「重新安排既有結構」，這篇不是靠顯式的融合或精煉步驟去改寫圖，而是主張結構會在反覆增長中<strong>自己浮現</strong>：新概念偏好接到已經很紅的樞紐上（優先連結 preferential attachment），於是自然長出無尺度的階層。作者用一整批網絡科學指標追蹤這個「自我組織」：節點/邊數近乎線性成長不飽和、模組度（modularity）先衝到約 0.75 再穩定在約 0.70、平均最短路徑穩定在約 4.5–5.0、直徑階梯式增到約 16–18、最大 k-core 逐步爬到 11、度相關性（assortativity）從 −0.25 往 −0.05 移動、橋接點（articulation points）持續增加到八百多個、樞紐節點的度呈「間斷平衡」式跳增（作者比作科學革命裡的典範轉移）。這些都是<strong>對圖的事後結構描述</strong>，不是組織知識的規則。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>基本上就是三元組</strong>（subject–predicate–object）：節點是概念，邊帶一個關係標籤，形成「概念—關係—概念」。它比純三元組多的東西只有兩點：邊是<strong>有向</strong>的，而且整張圖被當成 property graph 存進 NetworkX（節點可掛結構屬性，但那些屬性是<strong>分析階段算出來的</strong>中心性、度數等，不是抽取時附上的語意屬性）。它比受本體約束的三元組<strong>少</strong>的東西則很關鍵：關係類型不受任何 schema 約束，模型愛生什麼標籤就什麼標籤。</p>
+<p><strong>沒有出處欄位（provenance）。</strong> 這是對本專案最致命的一點。因為知識是模型自己生的、不對應任何來源文件，所以每一筆關係沒有、也無從附上「出自哪份文件、哪個時間碼、誰說的」。唯一勉強算「時間資訊」的，是每輪存檔的<strong>輪次編號</strong>（第幾輪長出這條邊），那是建構過程的時間，不是史料裡的時間。</p>
+<p><strong>沒有信心分數</strong>，模型也沒被要求自評某條邊有多可信——這點反而跟本專案第 2 條紅線一致（見第 8 節）。</p>
+<p>它為什麼用（近乎）三元組而不用更複雜的表示？因為它的目的不是忠實記錄某段文本說了什麼，而是要一個「可以被網絡科學工具直接分析、可以被路徑遍歷拿來做組合推理」的乾淨結構。對它的目標而言，帶標籤的有向三元組剛好夠用；出處與消歧不是它的問題。</p>
+<h2 id="5">5. 資料集</h2>
+<ul>
+<li><strong>沒有評估用的外部語料，也沒有任何 benchmark 或標準答案集。</strong> 全部產出是模型自生的兩張圖：</li>
+<li><strong>G1</strong>：起始提問「談一個仿生材料科學的有趣想法」，開放式自我探索，跑約 1000 輪，最後 3835 節點、11910 邊，平均度 6.21，power-law 指數 α=3.0055。</li>
+<li><strong>G2</strong>：起始提問鎖定主題「抗衝擊材料」，跑約 500 輪，2180 節點、6290 邊，平均度 5.77，α=2.6455。</li>
+<li>兩張都被判定為無尺度網絡（對數概度比 LR&gt;0 且 p&lt;0.05）。</li>
+<li>領域全在<strong>材料科學／仿生材料</strong>。<strong>沒有中文、沒有歷史文本、沒有口語、沒有訪談。</strong> 也沒有任何真實世界的實驗數據進到迴圈裡（作者在未來工作才提到想接實驗數據）。</li>
+<li>資料與程式碼有公開（Hugging Face <code>lamm-mit</code>、GitHub <code>lamm-mit/PReFLexOR</code>），但公開的是產出的圖與模型權重，不是一個可重用的標註資料集。</li>
+</ul>
+<p>一句話：對本專案而言，這篇<strong>沒有可直接借用的語料或評測資源</strong>，它的價值全在方法骨架。</p>
+<h2 id="6">6. 評估</h2>
+<p>這是全篇最弱、也最需要人文讀者警覺的部分。</p>
+<p><strong>沒有 gold standard，沒有 P/R/F1，沒有任何「答對了沒」的正確性評估。</strong> 整個「評估」幾乎等同於<strong>對圖做網絡科學描述統計</strong>：無尺度性（用 <code>powerlaw</code> 套件擬合、算 LR 與 p 值）、模組度、聚類係數、最短路徑、直徑、各種中心性、k-core、橋接點壽命等。這些指標回答的是「這張圖長得像不像一個健康的、類似人類知識的網絡」，<strong>完全沒有回答「圖裡的知識是不是真的、是不是幻覺」</strong>。一張由 LLM 憑空生成的圖完全可以既是漂亮的無尺度網絡、又充滿事實錯誤——結構指標對此無能為力。</p>
+<p>涉及「品質好壞」判斷的地方只有一處：Figure 19，比較「用了圖資訊 vs. 沒用圖資訊」兩份回答，打在四個維度上（Graph Utilization、Depth of Reasoning、Scientific Rigor、Innovativeness），用圖的那份總分 18 勝過 10。但論文<strong>沒有說這些分數是誰打的</strong>——沒有評分準則、沒有評分者說明。以行文脈絡與分數形態判斷，極可能是 LLM 自己打的（LLM-as-a-judge），而且被評的回答也是同一套系統生的。若真如此，這就是典型的<strong>用 LLM 評 LLM 的循環</strong>：系統自己生知識、自己組圖、（很可能）自己判自己的產出比對照組好。作者對此完全沒有交代或防範。</p>
+<p>人工介入近乎為零：提問可以人工設計也可以讓 AI 自己滾（作者明說 prompt 可「human-tailored 或 agentically developed」），評估則沒有任何人工校核正確性的環節。</p>
+<p>下游那些「新發現」（BAMES、EcoCycle 材料框架、抗衝擊複合材料提案裡的「衝擊能吸收提升 50%」「力學性能恢復 80%」等數字）也<strong>沒有任何實驗或文獻驗證</strong>，都是模型生成的說法，作者以「hypothesis / proposal」的語氣呈現，但未加驗證。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>作者自己承認的：計算可擴展性（跑上千輪很耗時，用 A6000 要好幾天）；產出對參數選擇敏感；自動生成的洞見可能偏離人類的知識標準、有散播錯誤資訊與推理偏誤的風險；需要更好的可解釋性與錯誤修正機制；若用於商業或公共場域需要倫理規範。他也誠實記下 <code>Pollution Mitigation</code> 重複節點這個消歧失敗案例。</p>
+<p>我讀出來、它沒明講或輕輕帶過的：</p>
+<ol>
+<li><strong>無來源、無驗證，等於無法分辨知識與幻覺。</strong> 這是根本問題。整套系統沒有任何一步把產出接回可查證的事實，所有「發現」都停在未驗證的假設。標題說「知識網絡」，但更精確的說法是「一個 LLM 對某領域的聯想網絡」。</li>
+<li><strong>「自我組織」與「類智能」是過度詮釋。</strong> 無尺度、階層模組這些結構，本來就是「新東西偏好接到熱門舊東西」（優先連結）這條簡單機制的已知後果，跟引用網絡、隨機成長模型都會長出類似結構。把它讀成「智能自發湧現」是很大的跳躍，缺乏對照組（例如：換一個沒被教「用圖思考」的普通模型跑同樣迴圈，圖會不會一樣無尺度？作者沒做這個消融）。</li>
+<li><strong>停止條件是「跑滿 N 輪」，不是收斂。</strong> 系統不會自己判斷「知識已經夠完整/已飽和」而停手；N 是外部設定的（實驗設約 500 與 1000）。作者反而把「不飽和」當成優點宣傳，但這也意味著它<strong>沒有終止判準</strong>，你要它跑多久就多久，圖會一直長，而長出來的新東西品質如何無從得知。</li>
+<li><strong>評估的循環性</strong>（見第 6 節）未被正視。</li>
+</ol>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p>先給結論：<strong>這篇的「迭代建圖迴圈」骨架值得借用，但它的「無來源、自生成、不消歧、不驗證」整套取向與本專案的紅線正面對撞，絕不能照搬。</strong></p>
+<p>可以借用的：</p>
+<ul>
+<li><strong>自問自答驅動探索的迴圈</strong>（第 5 步）作為 global fusion 階段的一種結構參考。可以把它改造成：不是讓模型憑空出題，而是「根據登錄簿當前狀態，找出還沒對起來/證據薄弱的實體或關係，生成下一步該去哪幾份逐字稿補查」的<strong>任務生成器</strong>。也就是保留「系統自己決定下一步查什麼」的自主性，但把方向從「憑空聯想」換成「回語料補證」。</li>
+<li><strong>每輪產物落檔、檔名帶輪次編號、GraphML+PNG 雙存</strong>這套做法，跟本專案第 4 條紅線（推理過程可追溯、中間產物全落檔）完全一致，可直接沿用。它示範了怎麼讓整個演化過程事後可重建。</li>
+<li><strong>不叫 LLM 自評信心分數</strong>——這點它做對了，跟本專案第 2 條紅線相容。本專案的信心該繼續由程式化訊號（出處有效性、跨人佐證等）推導，這篇正好是個「連信心分數都不生、純靠結構統計」的反面極端，提醒我們信心必須另尋錨點。</li>
+<li><strong>兩階段分工的技巧</strong>：它用「第一次呼叫自由生成、第二次呼叫專門把文字轉成機讀字典」來降低格式出錯，這個「生成與結構化拆成兩次呼叫」的小技巧，對本專案 srt-extract 把逐字稿轉成結構化 JSON 也有參考價值。</li>
+</ul>
+<p>必須避免、與紅線衝突的：</p>
+<ul>
+<li><strong>無出處是致命傷。</strong> 本專案第 3 條紅線要求每筆知識強制附出處（檔名、時間碼、口述者、段落）；這篇的知識沒有來源、無從附出處。它的表示法對「口述歷史、強制出處」這個需求<strong>沒有正面參考價值</strong>，反而是最鮮明的反例——它示範了「拿掉出處之後，你就再也分不清哪些是史料、哪些是模型腦補」，正好反證了本專案堅持出處的必要。</li>
+<li><strong>不做實體消歧是本專案不能接受的。</strong> 它連 <code>Pollution Mitigation</code> 都併不起來；本專案的核心任務之一恰恰是跨 314 篇逐字稿把同一個人、同一個團體對起來，這是 entity-resolve 的職責，不能像這篇一樣放任重複節點。</li>
+<li><strong>純結構統計不能當評估。</strong> 本專案就算沒有事件/關係層的 gold standard，也不能退回到「圖長得像無尺度網絡所以很好」這種評估；無尺度、模組度漂亮跟內容正確完全是兩回事。實體層仍應以人工名冊為對照，事件/關係層要另找程式化的合理性檢查（如 extract-qa 的出處存在性、年份合理性、腦補檢查），而不是看網絡指標。</li>
+<li><strong>警惕 LLM 評 LLM 的循環。</strong> 這篇（很可能）的 Figure 19 自評是本專案要主動迴避的設計，QA 環節不應讓生成方自己判自己好壞。</li>
+</ul>
+<p>關於「非三元組表示法」這個待查點的直接回應：這篇<strong>是</strong>（近乎）三元組，且無出處、無時間、無信心——它落在本專案光譜的<strong>對立端</strong>。它的用處不是提供表示法範本，而是當一個清楚的界標：如果把出處、消歧、驗證全部拿掉，知識圖可以長得很大很漂亮，但就不再是「有史料根據的口述歷史網絡」，只是一張聯想圖。本專案要的混合結構（實體／事件／關係／goût 敘述＋強制出處）之所以比三元組複雜，理由就在這裡。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

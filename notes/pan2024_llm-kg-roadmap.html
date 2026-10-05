@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>pan2024_LLM 與知識圖譜統一路線圖</title>
+<meta name="description" content="pan2024_LLM 與知識圖譜統一路線圖">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>pan2024_LLM 與知識圖譜統一路線圖</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/pan2024_llm-kg-roadmap.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Pan, S., Luo, L., Wang, Y., Chen, C., Wang, J., &amp; Wu, X. (2024). <em>Unifying Large Language Models and Knowledge Graphs: A Roadmap</em>. IEEE Transactions on Knowledge and Data Engineering（TKDE）. arXiv:2306.08302（v3）. 同儕審查（IEEE 期刊正式收錄）。</li>
+<li><strong>對應待查問題</strong>：①LLM 抽取／KG 建構現況（主）；旁及 ②agentic 建構、③harness／agent 評估。</li>
+<li><strong>一句話定位</strong>：這是一篇把「大型語言模型（LLM）」和「知識圖譜（KG）」如何結合的整個研究領域畫成地圖的綜述（roadmap／survey），本專案「用 LLM 從口述歷史抽取結構化知識」正好落在它其中一條支線（LLM-augmented KG construction，用 LLM 來蓋知識圖譜），所以它的分類、術語和它整理出的問題清單，可以當作本專案在學術版圖上的定位座標。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>這篇不提出新系統，而是替一個當時（2023–2024）爆炸成長的領域立骨架。它的核心主張是：LLM 與 KG 是互補的兩種技術，各有長短，不該只把 KG 當成「餵給 LLM 的外部知識」而已。LLM 擅長語言、通則化，但知識藏在參數裡、會胡謅（hallucination）、是黑盒；KG 把事實明白地存成結構、可解釋、可查證，但難以自動建構、也難跟上世界的變動。</p>
+<p>它的實際貢獻是提出一套三分法（roadmap），把所有相關研究歸進三個框架：</p>
+<ol>
+<li><strong>KG-enhanced LLMs（用 KG 強化 LLM）</strong>：把 KG 塞進 LLM 的預訓練或推論階段，改善事實正確性與可解釋性。</li>
+<li><strong>LLM-augmented KGs（用 LLM 強化 KG）</strong>：反過來，拿 LLM 去做 KG 相關的任務（嵌入、補全、<strong>建構</strong>、圖轉文字、問答）。<strong>本專案在這一條的「建構」子項。</strong></li>
+<li><strong>Synergized LLMs + KGs（雙向協同）</strong>：兩者互為循環、共同推理。</li>
+</ol>
+<p>它另外把每一框架再細分（見論文 Fig. 8 的樹狀圖），並整理出六到七個未來方向（第 7 節）。對人文學者而言，最有用的是它把「用 LLM 抽知識」這件事，明確歸類成 KG 建構的一環，並列出這條線底下真正的技術子任務。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>這篇是綜述，沒有單一抽取流程，而是把「用 LLM 蓋 KG」拆成一條標準的工序（論文 5.3 節、Fig. 19）。這條工序值得本專案對照，因為它就是主流做法的骨架：</p>
+<ol>
+<li><strong>實體發現（entity discovery）</strong>：先找出文本裡有哪些實體。底下再分三塊：
+   - <strong>命名實體辨識（NER, named entity recognition）</strong>：標出「人、地、組織」等。論文特別點出三種難題——扁平（flat）、巢狀（nested，一個 token 同屬多個實體）、不連續（discontinuous，實體字詞在句中不相鄰）。
+   - <strong>實體分類（entity typing）</strong>：給實體更細的型別。
+   - <strong>實體連結（entity linking, 又稱實體消歧）</strong>：把文本裡的提及對到 KG 裡已有的實體。</li>
+<li><strong>共指消解（coreference resolution, CR）</strong>：把「他／她／這位」等指涉，接回同一個實體；再分文件內與跨文件兩種。</li>
+<li><strong>關係抽取（relation extraction, RE）</strong>：抽出實體間的語意關係，分句子層與跨句（文件層，DocRE）。</li>
+<li><strong>端到端建構（end-to-end KG construction）</strong>：不分步，一次把原始文本變成整張圖（例如 Kumar 等人用兩個 LLM，一個做 NER、一個做 RE）。</li>
+<li><strong>從 LLM 蒸餾知識（distilling KGs from LLMs）</strong>：不從外部文本抽，而是把 LLM 自己記住的知識「榨」出來變成 KG（COMET、BertNet、West 等人的 symbolic knowledge distillation）。</li>
+</ol>
+<p>關鍵觀察：主流做法是<strong>分步、任務切分</strong>（NER → CR → RE），不是單次大 prompt 一步到位。本專案的兩層 harness（逐篇 local 抽取 → 跨訪談 global fusion）在精神上與此一致，但它把「消歧、共指」放到跨訪談那層處理，跟這裡的 pipeline 順序不完全一樣。</p>
+<p>值得注意的是這篇談的「多 agent」很淺：它所謂的端到端多模型（如「兩個 LLM」「2-model BERT」）指的是<strong>任務分工的模型串接</strong>，不是本專案意義下能自主判斷、交棒、可追溯的 agentic 流程。真正接近 agent 的內容只出現在第 6 章的 Synergized 那邊（LLMs as Agents Reasoning，如 Think-on-Graph、StructGPT），而且是用在「推理」而非「抽取建構」。所以本專案的「agentic 抽取」在這張地圖上其實沒有現成格子，算是它涵蓋不足之處。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>整篇論文對 KG 的定義從頭到尾是固定的：<strong>KG = 三元組的集合</strong>，寫成 KG = {(h, r, t) ⊆ E × R × E}，即（頭實體, 關係, 尾實體）。它把 KG 分成四類語料型態：百科型（Wikidata、YAGO）、常識型（ConceptNet、ATOMIC、ASER）、領域型（醫療 UMLS 等）、多模態型（含影像聲音）。</p>
+<p>關於「重新安排既有結構」：
+- <strong>跨文件去重／實體合併</strong>：對應到 5.3.1 的實體連結與 5.3.2 的跨文件共指消解。它承認這是難題，但綜述層次只列方法名，沒有給出一套可操作的合併規則或衝突解決策略。
+- <strong>衝突解決</strong>：幾乎沒談。它假設抽出的三元組就是對的，把「正確性查核」推給少數幾個系統（見下）。</p>
+<p>這對本專案是個缺口提醒：這張地圖幫得上「抽取階段的分類」，但幫不上「跨訪談融合時，同一件事被多位受訪者講出不同版本，怎麼調和」——而那正是本專案 global fusion 層與 goût 敘述（受訪者主觀評價）要處理的核心，這篇完全沒有對應概念。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>基本上就是三元組。</strong> 全篇以 (h, r, t) 為 KG 的唯一定義，所有子任務（嵌入、補全、建構、問答）都繞著三元組打轉。</p>
+<p>有沒有跳出純三元組的表示法？只有零星幾處，值得記下來，因為它們最接近本專案「非三元組」的需求：</p>
+<ul>
+<li><strong>四元組／條件擴充</strong>：KG-S2S 把三元組加一個條件元素 m，變成 (h, r, t, m)，用來統一處理靜態、<strong>時序（temporal）</strong>、少樣本的 KG 補全。這是全篇唯一明確把「時間」寫進表示法的地方，但它是加在補全任務上，不是通用結構。</li>
+<li><strong>事件與因果框架</strong>：常識 KG 裡的 ASER、ATOMIC（COMET）處理「事件之間的因果」，形式上仍是三元組，但關係端是事件而非名詞實體。這比純「實體—關係—實體」更接近本專案要記的「事件」。</li>
+<li><strong>屬性圖 / n-ary / 社群摘要</strong>：完全沒有。像 GraphRAG 那種「用文字摘要當節點」的做法，這篇（2023 定稿）還沒收進來。</li>
+</ul>
+<p><strong>出處（provenance）、時間、信心分數三個欄位：這篇幾乎不談。</strong> 它整個框架裡沒有「每筆知識要附來源」的概念，時間只在 KG-S2S 那一處以條件形式出現，信心分數則完全沒有進入表示法討論。這恰恰反襯出本專案的設計取向（每筆強制附時間碼出處、混合實體／事件／關係／goût）是這張主流地圖上的空白區——不是本專案做錯，而是這篇代表的主流把 KG 窄化成「乾淨的三元組事實庫」，把出處和主觀性都抽掉了。</p>
+<p>它為什麼不選別的表示法？因為它服務的下游是嵌入、補全、問答這類「事實查詢」任務，三元組夠用且好算；而口述歷史要保留「誰在什麼時間點怎麼說、帶什麼評價」，這種需求不在它的視野裡。</p>
+<h2 id="5">5. 資料集</h2>
+<p>這是綜述，<strong>不自己跑實驗、不提出新 benchmark、沒有自建語料</strong>。它只是清點別人用過的資源：KG 方面有 Wikidata、YAGO、NELL、Freebase、DBpedia、ConceptNet、ATOMIC、ASER、UMLS 等；它也點名少數非英語 KG（中文的 CN-DBpedia、烏克蘭的 Vikidia，以及中英雙語、號稱最大的 Knowledge Occean / KO）。</p>
+<p>對本專案關心的三件事：
+- <strong>中文</strong>：只在列舉 KG 名稱時順帶提到中文 KG 存在，沒有任何中文抽取的方法或評估細節。
+- <strong>歷史文本／口語／訪談</strong>：完全沒有。它的語料想像是百科、網頁、通用文本，沒有口述史、逐字稿、田野訪談這類體裁。它引到的一個「古典中文」建構工作（Guo 等人以 BERT 從古典歷史文獻建圖）是最接近歷史文本的，但也只是一句話帶過。
+- <strong>公開性</strong>：討論的都是公開資源，不涉及本專案這種自建、含敏感田野素材的私有語料。</p>
+<p>結論：這篇在資料層面對本專案幾乎沒有直接可用的素材，只能當領域地標。</p>
+<h2 id="6">6. 評估</h2>
+<p>因為是綜述，它<strong>沒有自己的 gold standard、沒有自己的 P/R/F1 數字</strong>。它轉述各子任務慣用的評估方式（NER 用序列標註指標、KG 補全用排序指標等），但不做統一比較。</p>
+<p>跟本專案方法論紅線直接相關的兩點：</p>
+<ul>
+<li><strong>LLM 自評信心分數</strong>：這篇沒有把「叫 LLM 自評信心」當成方法推薦，也沒有把它問題化——它根本沒進入這個議題。所以它跟本專案「絕不叫 LLM 自評信心」這條紅線不衝突，但也給不了正面支持。</li>
+<li><strong>LLM 驗證 LLM（LLM-as-a-judge 的近親）</strong>：出現一次，值得警覺。<strong>PiVe</strong> 這個系統用一個較小的 LLM（如 T5）去<strong>迭代驗證並修正</strong>另一個較大 LLM（如 ChatGPT）生成的 KG（論文 5.3.3 末、Fig. 中的 iterative verification）。這正是本專案要避免的「用 LLM 驗證 LLM 的循環」的一個實例。此外 KGs for Hallucination Detection（7.1）整條未來方向，是主張反過來用 KG（外部結構化事實）去查核 LLM，而不是用 LLM 查 LLM——這個方向反而跟本專案「信心由程式化訊號、跨人佐證推導」的精神一致：拿可查證的外部結構當裁判，而非再叫一個模型自我打分。</li>
+</ul>
+<p>評估設計的隱憂：這篇作為地圖，把大量「LLM 生成 KG」的工作並列展示、以「competitive quality / high quality / novel」等字眼轉述原作者自評，卻沒有追問這些品質宣稱是怎麼驗的。它不對抽取正確性的評估方法做批判性整理，這對想找「無 gold standard 怎麼評估」答案的本專案，等於沒有解答。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自己承認（第 7 節未來方向，等於變相的限制清單）：
+- LLM 幻覺仍未解，需要用 KG 來偵測（7.1）。
+- LLM 內知識難以編輯／更新，改一個事實會有連鎖漣漪效應（7.2）。
+- 大型閉源 LLM（如 ChatGPT）只給 API、拿不到內部結構，傳統把 KG 塞進模型的做法失效，只能靠 prompt，但 prompt 受輸入長度限制、也未必能通用到新模型（7.3）。
+- LLM 讀不懂 KG 的圖結構，把整張圖線性化成文字又會遺失資訊、且圖太大塞不下（7.5）。
+- 雙向協同（bidirectional reasoning）仍是最少人做、最開放的一塊（7.6）。</p>
+<p>我讀出來、它沒明講的弱點：
+1. <strong>把 KG 等同於乾淨三元組</strong>，因此整篇對「出處、時間、主觀評價、衝突版本」這些人文史料的核心屬性視而不見。這不是疏漏，而是它所繼承的資料庫式知識觀的內在限制。
+2. <strong>抽取品質的評估被架空</strong>：它熱情展示「LLM 能生成 KG」，卻迴避「生成得對不對、怎麼查」，還收錄了 PiVe 這種 LLM 查 LLM 的做法而不加批判。
+3. <strong>agent 概念只用在推理、沒用在建構</strong>：本專案的 agentic 抽取在它的分類裡無處安放，顯示這張 2023 定稿的地圖已略微落後於「用 agent 做結構化抽取」的近期實踐。
+4. <strong>非英語、口語、歷史體裁幾乎缺席</strong>：它的世界是英文百科與網頁。</p>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>可借用：</strong>
+- <strong>術語與定位座標</strong>：本專案在學術版圖上就是 LLM-augmented KG construction。寫論文或方法章時，可直接沿用它的 entity discovery（NER / typing / linking）、coreference resolution、relation extraction 這套子任務切分，讓工程流程對得上主流詞彙。
+- <strong>分步優於一步到位</strong>的整體判斷，支持本專案兩層 harness 的架構選擇；也提醒可把「共指消解」明確列為一個獨立關卡（本專案目前把消歧放跨訪談層，共指則較隱性）。
+- <strong>用外部結構化事實查核 LLM（7.1 的方向）</strong>，與本專案「跨人佐證、程式化訊號」的信心推導同一精神，可作為文獻支撐：裁判應是可查證的外部證據，不是另一個模型的自評。</p>
+<p><strong>該避免 / 要小心：</strong>
+- <strong>PiVe 式的「LLM 驗證 LLM」</strong>是本專案紅線 2（不叫 LLM 自評／不落入模型互評循環）明確要拒絕的做法，這篇正好提供一個反面案例可引用。
+- 不要被它「KG = 三元組」的框架綁住。本專案刻意採混合結構（實體／事件／關係／goût 敘述）且每筆附出處，是對這種主流窄化的自覺修正，不是不懂主流。</p>
+<p><strong>與四條方法論紅線的相容性：</strong>
+- 紅線 1（不做配對式 gold standard）：這篇沒逼你走那條路，相容；但它也沒給無 gold standard 的評估方案，幫不上忙。
+- 紅線 2（不叫 LLM 自評信心）：相容，且它收錄的 PiVe、以及 7.1「用 KG 查 LLM」方向，剛好一反一正地印證本專案立場。
+- 紅線 3（每筆強制附出處）：<strong>明顯衝突於它的表示法</strong>——它的三元組不帶 provenance。這反而突顯本專案的出處設計是有意識地補主流之不足，值得在寫作中正面主張。
+- 紅線 4（推理過程可追溯、中間產物落檔）：這篇沒有對應概念，屬於它盲區；本專案的可追溯設計在此領域算是超前一步的工程主張。</p>
+<p><strong>對「口述歷史、非三元組、強制出處」需求的參考價值：低到中等。</strong> 它給的是版圖與詞彙，不是可直接搬用的表示法。它最接近的元素是 KG-S2S 的時間條件四元組、以及 ASER／ATOMIC 的事件因果三元組，可作為「如何把時間與事件塞進圖」的兩個參考起點。但它整體代表的正是本專案要刻意偏離的「無出處、無主觀、乾淨三元組」範式，因此它更大的用處是當<strong>對照組與反面座標</strong>：清楚說明本專案偏離主流的每一處，都是為了承接口述史料的出處性與主觀性。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

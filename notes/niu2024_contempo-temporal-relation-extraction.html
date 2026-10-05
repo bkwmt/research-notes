@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Niu 2024_ConTempo：用對比學習教模型分清「之前」與「之後」的時間關係抽取</title>
+<meta name="description" content="Niu 2024_ConTempo：用對比學習教模型分清「之前」與「之後」的時間關係抽取">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Niu 2024_ConTempo：用對比學習教模型分清「之前」與「之後」的時間關係抽取</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/niu2024_contempo-temporal-relation-extraction.md</code>　來源最後修改 2026-09-09　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Niu, J., Liao, S., Ng, V., De Montigny, S., &amp; Penn, G. (2024). ConTempo: A Unified Temporally Contrastive Framework for Temporal Relation Extraction. <em>Findings of the Association for Computational Linguistics: ACL 2024</em>, pp. 1521–1533. DOI: 10.18653/v1/2024.findings-acl.89。<strong>同儕審查</strong>（ACL 2024 Findings 軌）。程式與 CleanMATRES 公開於 github.com/frankniujc/contempo。</li>
+<li><strong>對應待查問題</strong>：⑥來歷標記／極性／時間記法（主）；⑤無 gold standard 評估（它反面示範：連公認的標準答案集都有三成到八成的錯）；⑦零標注三元組抽取的參照點（它給的是「有標注時的天花板」與「LLM 零樣本的地板」兩個數字）。</li>
+<li><strong>一句話定位</strong>：這篇處理的是<strong>事件對之間的時間關係分類</strong>（temporal relation extraction, TRE）——給定一段話與其中兩個事件，判斷是「之前／之後／同時／包含／說不清」哪一種。它與本專案相關的地方不是方法本身（要監督式微調，我們用不了），而是三件事：它把「事件對的相對時序」當成一種獨立於絕對年份的知識表示；它明說 LLM 在這件事上遠輸給小模型；它示範了時間演算（symmetry、transitivity）可以當程式化約束，而這正好是我們缺的可信度訊號。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>論文宣稱三項貢獻，外加一個副產品：</p>
+<ol>
+<li><strong>ConTempo 對比學習損失</strong>。作者診斷出既有 TRE 系統的病根：把「之前」「之後」「同時」當成互不相干的類別標籤丟給分類器，模型於是學不到「A 在 B 之前」與「B 在 A 之後」其實是同一件事的兩個說法。他們量出一個證據（圖 1）：基線模型對一個事件對 (e1, e2) 與它顛倒順序的 (e2, e1) 產生的內部表示<strong>高度相似</strong>，而且相似度愈高、分類錯得愈多（BEFORE 的相關係數 r = −0.33，AFTER 為 −0.49）。解法是利用時間關係的<strong>反對稱</strong>（antisymmetric，BEFORE／AFTER、INCLUDES／IS_INCLUDED）與<strong>對稱</strong>（symmetric，EQUAL）性質：反對稱關係把顛倒版當「困難負樣本」推開，對稱關係把顛倒版當正樣本拉近。</li>
+<li><strong>統一框架</strong>。他們指出 TRE 領域的創新彼此不相容、無法疊加（例如 Wen &amp; Ji 2021 的相對時間預測從沒被接到新模型上）。ConTempo 被證明可與三條既有路線並用：GNN 編碼篇章結構（MulCo）、外加常識（用 GPT-3 生成事件的「典型持續時間」描述）、輸出層的軟邏輯約束（Wang et al. 2020 的對稱與傳遞性損失）。合體在 MATRES 上 F1 83.17、TBD 68.56，各勝過前一最佳 0.57 與 0.46 個百分點；消融實驗顯示四個元件裡 ConTempo 貢獻最大（拿掉後掉 1.36）。</li>
+<li><strong>CleanMATRES</strong>。開發過程中發現公認基準 MATRES 測試集錯誤極多，兩位作者重新標注後發表修正版；在修正版上 ConTempo 的增益「更明顯」（92.66 對 91.30）。</li>
+<li><strong>副產品的一句話</strong>：TRE 是「小型微調模型顯著勝過 LLM」的罕見案例。ChatGPT-4 加思維鏈在 MATRES 只有 56.70，微調的 GPT-3.5 也只有 55.27，而 RoBERTa-large 微調基線就有 82.01。</li>
+</ol>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>這裡要先講清楚一件事，否則會誤讀它的適用範圍：<strong>這篇不抽事件，也不找事件對</strong>。輸入是一段文字 S 加上<strong>已經標好</strong>的兩個事件觸發詞 e1、e2（語料標注者選的語意核心詞，通常是一個動詞），模型只做最後一步——把 (e1, e2) 分到 R 裡的一類。事件辨識與配對都是語料的前置人工工作。</p>
+<p>流程（式 3）：</p>
+<ol>
+<li>RoBERTa-large 把整段編成向量序列。</li>
+<li>取 e1、e2 兩個位置的向量串接，過一個兩層 MLP，得到這個事件對的「關係表示」h(e1,e2)。</li>
+<li>再過一層線性層加 softmax，輸出四類（MATRES）或六類（TBD）的機率。</li>
+</ol>
+<p>ConTempo 加在第 2 步的表示上：同一輸入送兩次（dropout 不同）得到兩個略異的正樣本，把 (e2, e1) 的表示當負樣本，用 NT-Xent 損失把它推開（式 4）。EQUAL 因為對稱，改把 (e2, e1) 當正樣本、同批次其他事件對當負樣本（式 5）。作者刻意<strong>不把同標籤的不同事件對當正樣本</strong>，理由值得記：「Turing 在劍橋唸大學、後來到普林斯頓唸博士」與「我微積分被當、然後在麥當勞哭了一夜」雖然都是 BEFORE，但前者靠常識（先大學後博士）、間隔數年；後者靠連接詞「and then」與因果、同一天內。他們要保留這些差異，不要把兩者的表示拉近。<strong>這個區分對我們很重要</strong>，第 8 節會回來談。</p>
+<p>統一框架另外接三樣東西：MulCo 的兩張圖（句子結構圖、時間結構圖）產生的 GNN 向量串到事件向量上；GPT-3 對每個事件生成一句「這種事通常持續多久」（圖 3：「ducking typically lasts only a few seconds」），再用同一個 RoBERTa 編碼串進去；Wang et al. 2020 的對稱損失 ℓS 與傳遞性（他們叫 conjunction）損失 ℓC 加到目標函數（式 9–11）。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>沒有知識圖譜、沒有 schema，<strong>產出就是每個事件對一個標籤</strong>。組織層面值得記的是三點：</p>
+<ul>
+<li><strong>關係集是 Allen 區間演算（Allen 1983 的 13 種區間關係）的粗化版</strong>。作者明說：試圖用全部 13 種來標注的語料都因標注者一致性太低而失敗，所以 MATRES 只留 4 種（BEFORE、AFTER、EQUAL、VAGUE），TBD 留 6 種（多 INCLUDES、IS_INCLUDED）。粗化之後完整的區間演算不再成立，但對稱與反對稱性仍成立（式 1），這正是 ConTempo 能利用的部分。</li>
+<li><strong>MATRES 只比較事件的起始時間</strong>，因為持續性事件的結束點常常說不清。這個設計選擇讓「同時」與「包含」變得模糊：一個十年的任職與其中一年的錄音，在 MATRES 的口徑下要比開始時間，答案會是 BEFORE，不是 INCLUDES。</li>
+<li><strong>結構性約束放在訓練損失裡，不放在資料結構裡</strong>。對稱與傳遞性都是「軟」約束——違反只會被扣分，不會被禁止，推論時也不做全域一致性求解。換句話說，模型輸出的一堆事件對標籤<strong>不保證彼此不矛盾</strong>。</li>
+</ul>
+<p>VAGUE 的處理分開講（附錄 D.3）：作者認為它更該叫「未充分指明」（underspecified），是「脈絡不足以判斷」而不是「兩事件真的沒有先後」。TBD 用「八成確定」的規則讓標注者主觀判斷，MATRES 用兩個啟發式問題（e1 開始有沒有可能在 e2 之前？反過來呢？）的組合決定。作者最後在 CleanMATRES 裡<strong>整個把 VAGUE 排除掉</strong>。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>形式上是一種極簡的三元組：（事件 e1，時間關係 r，事件 e2）。但它與本專案要的東西差在三處：</p>
+<ul>
+<li><strong>沒有出處欄位</strong>。事件對的位置就是它在語料裡的位置，論文層面完全不談 provenance；這在基準測試裡不是問題，在口述歷史裡是核心。</li>
+<li><strong>沒有時間值</strong>。它記的是相對序，不是年份或日期；時間表述（time expressions）在 TBD 的時間結構圖裡出現過，但只當 GNN 的節點，不進最終表示。這反而是它對我們有用的地方：<strong>它證明了「不知道哪一年、但知道誰先誰後」是一種可以獨立成立、獨立評估的知識層</strong>。</li>
+<li><strong>信心＝softmax 機率</strong>，屬於模型自報的分數，本專案紅線第 2 條不採用。不過它的邏輯約束損失（式 7、10）讀出來是另一種訊號：一組預測<strong>彼此是否一致</strong>，可以純程式計算，不問模型。</li>
+</ul>
+<p>作者為什麼不用「絕對時間軸」表示？2.6 節批評 Wen &amp; Ji 2021 的相對時間預測（給每個事件一個實數位置）：單一事件的絕對位置「根本算不出來」、它分不清相隔幾秒與相隔幾天、而且要在整個資料集上把一串事件 e1 &lt; e2 &lt; … &lt; e5 排好位置極難。他們主張<strong>只在事件對上處理相對資訊</strong>，方向反過來距離不變。這段論證直接對應我們的處境：<code>time_anchor.py</code> 用絕對年份只錨得住 27.7% 的句子，剩下七成多正是「只能講相對」的部分。</p>
+<h2 id="5">5. 資料集</h2>
+<ul>
+<li><strong>MATRES</strong>（Ning et al. 2018b）：由 TimeBank 新聞語料重新標注，4 類關係，只比起始時間，標注者一致性 κ = 0.84。附錄 C 揭露一個不小的問題：<strong>流通中有兩個版本的 MATRES 測試集</strong>（837 與 818 條關係，差 2.32%），不同實驗室拿不同版本比數字。</li>
+<li><strong>TimeBank-Dense</strong>（Cassidy et al. 2014）：39 篇文章、12,715 條關係，「密集標注」——視窗內每一對事件強制標一種關係，κ 只有 0.56–0.64。</li>
+<li><strong>CleanMATRES</strong>：本文新增，只重標 MATRES 測試集，兩位作者獨立標注後協商，排除全部 VAGUE。</li>
+<li>常識元件用 GPT-3（text-davinci-003）生成，該模型現已停止服務。</li>
+</ul>
+<p>語言全是<strong>英文</strong>，體裁全是<strong>書面新聞</strong>。沒有中文、沒有口語、沒有訪談、沒有歷史文本。這不是缺點，是要記住的邊界：新聞有明確的文件建立時間（DCT）可以錨定，口述歷史沒有——訪談日期錨得住「說話的時間」，錨不住幾十年前「事件的時間」（這點 Zep 筆記已談過）。</p>
+<h2 id="6">6. 評估</h2>
+<p>標準的監督式評估：對人工標準答案算 F1（VAGUE 算進分母但視為負類），三個隨機種子取平均，並自己重跑了 SCS-EERE、Relative Time、MulCo 三個基線以統一口徑。沒有 LLM 當評審；LLM 只出現在被評的一方（ChatGPT 3.5／4 零樣本與思維鏈、微調 GPT-3.5）。</p>
+<p>真正該讀細的是附錄 D 的重標結果（表 5）。原 MATRES 測試集裡，<strong>EQUAL 只有 32.26% 標對、VAGUE 只有 21.24% 標對</strong>；BEFORE 與 AFTER 分別有 95.52% 與 95.17% 正確。三個錯例（例 3–5）都是「同一個事件的兩個面向被標成兩件事」（贏了馬拉松／以 3:07:35 完賽）、「顯然相隔數十年卻標 VAGUE」（1953 年登頂／在療養院去世）、「被發現／漂在河裡」被標 EQUAL 而非 AFTER。作者的診斷是標注指南沒教清楚<strong>時間粒度</strong>與<strong>事件共指</strong>。</p>
+<p>評估設計上有兩個要指出的問題：</p>
+<ul>
+<li><strong>循環</strong>：提出方法的作者自己重標測試集，然後報告「修正後我們的增益更明顯」。即便重標是誠實的，這個順序也讓人無法區分「修掉了真錯誤」與「修成了對自己方法有利的答案」。CleanMATRES 的兩位標注者也沒有報一致性數字。</li>
+<li><strong>排除 VAGUE 讓任務變簡單</strong>：CleanMATRES 上所有系統的分數都跳到 89–93，比原版高約 10 個百分點，一部分來自修錯、一部分純粹來自把最難的類別拿掉。作者沒有拆開這兩個效應。</li>
+</ul>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自承：只試了 RoBERTa 一種編碼器；只在兩個 TimeML 系語料上評估；EQUAL 樣本太少（MATRES 3.8%、TBD 1.7%），對比學習對它反而起了反效果——圖 2 顯示 EQUAL 的對稱相似度也跟著掉了，與設計意圖相反。</p>
+<p>讀出來、它沒明講的：</p>
+<ul>
+<li><strong>整條管線站在人工標好的事件與事件對上</strong>。它的 F1 是「給定完美的事件辨識與配對」之下的數字，端到端會低很多。對本專案而言，難的正是它跳過的那兩步（哪些句子算事件、哪兩個事件該比）。</li>
+<li><strong>只比起始時間</strong>讓表示法對「持續」無能為力。生命過程裡多數重要事件是持續的（在某公司任職、跟某人學琴、某段合作關係），起始點比較會系統性地把「包含」壓成「之前」。</li>
+<li><strong>軟約束不保證一致</strong>。訓練時扣分，推論時各事件對獨立輸出，一組預測可能形成 A 前 B、B 前 C、C 前 A 的環，論文沒報這種違規率。</li>
+<li><strong>常識元件依賴已下線的商業模型</strong>，且那些「典型持續時間」是模型的猜測，沒有來源。這一段在方法論上與本專案的出處紅線正面衝突，即便技術上可行也不該借。</li>
+<li><strong>兩個測試集版本並存、標準答案錯三成到八成</strong>：這篇反過來提醒我們，即便人工標注，「同時」與「說不清」這兩類本來就沒有穩定答案。TBD κ 0.56–0.64 的意思是，兩個受過訓練的人對「這兩件事有沒有時間關係」的看法只比隨機好一半。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p>先回應指派的三個問題，再列可借與該避的。</p>
+<h3 id="1-beforeafteroverlap">(1) 事件對的 before／after／overlap 表示法，對把口述句接成「生命過程」有沒有用？</h3>
+<p><strong>有用，而且它填的正是 <code>time_anchor.py</code> 留下的洞。</strong> 目前 13,142 句只有 27.7% 掛得上年份，其中還有 3,015 句是靠段落內向前繼承；語料裡相對時間表述與絕對表述的比例約 28：1。也就是說，生命過程的骨架絕大多數不是靠「哪一年」撐起來的，而是靠「退伍之後」「那時候」「後來」這些接續詞。這篇論文（以及它批評的 Wen &amp; Ji 2021）給了一個清楚的論證：<strong>不要逼每個事件落到絕對時間軸上，改記事件對之間的相對序</strong>；相對序可以獨立成立、獨立驗證，而絕對年份只是其中一部分事件額外多出來的資訊。</p>
+<p>具體對應：在提及層與 ORSE 之上加一個<strong>事件—事件層</strong>，每筆記三樣東西——關係型別、觸發它的原文詞（「之後」「之前」「那時候」「同時」「一直到」）、出處與可信層。這與 <code>_卡點對照表.md</code> 第六節從 AutoSchemaKG 借來的五型（before／after／同時／因為／結果）可以合併，但這篇補了兩個修正：</p>
+<ul>
+<li><strong>要保留 INCLUDES／IS_INCLUDED</strong>（TBD 的六型，不是 MATRES 的四型）。生命過程裡「我在麗歌那十年裡錄了這張」是包含關係，用「只比起始時間」的口徑會被錯記成 BEFORE。</li>
+<li><strong>VAGUE 要當一個正式的值，不要當缺漏</strong>。作者把它重新定義為「脈絡不足以判斷」，這在口述歷史裡是常態不是例外，而且是<strong>該報告的資料性質</strong>（哪些事件的先後連講述者自己都沒交代）。CleanMATRES 為了把分數做漂亮而把 VAGUE 全砍掉，我們不能學。</li>
+</ul>
+<p>一個要注意的邊界：Allen 演算假設事件是有明確端點的區間。口述裡的「事件」常是「那段時間跟他們混」這種沒有端點的狀態，塞進區間關係會失真。做法上可以沿用 <code>time_anchor.py</code> 已有的區分——CKIP 的狀態動詞（VH、VHC）不算事件——把狀態排除在事件—事件層外，或另立一類只記「同期」不記先後。</p>
+<h3 id="2_1">(2) 它需要多少標注？能不能在零標注或只用預訓練模型的條件下落到中文口語？</h3>
+<p><strong>它的做法在本專案條件下完全不可行，但它的數字非常有用。</strong></p>
+<p>需要的標注：微調 RoBERTa-large 用的是上萬條人工標好的事件對（TBD 12,715 條；MATRES 規模同量級），而且事件觸發詞、事件配對都是人工先做好的。這與紅線第 1、第 5 條（抽取端零標注、不做事件與關係層的 gold standard）直接衝突。中文方面，這篇沒有任何中文資料，把它遷到中文口語需要中文的 TRE 標注語料——即便存在（是否有可用的中文口語時間關係語料，<strong>待查，未讀不引</strong>），也依紅線不能進抽取端。</p>
+<p>它給的兩個參照數字才是重點：</p>
+<ul>
+<li><strong>地板</strong>：LLM 零樣本做這件事很差。ChatGPT-3.5 在 MATRES 只有 25.94、加思維鏈 35.54；ChatGPT-4 加思維鏈 56.70；微調 GPT-3.5 也只到 55.27。我們用的是本機小模型，只會更低。這個數字直接支持一個設計決定：<strong>不要叫本機模型去判斷兩個事件誰先誰後</strong>，這是它最不會的事之一。</li>
+<li><strong>天花板</strong>：即便上萬條人工標注加微調，EQUAL 與 VAGUE 這兩類在原標注裡也只有兩三成標對，κ 最好 0.84、密集標注只有 0.56–0.64。「同時」在任何條件下都是最不可靠的時間關係。</li>
+</ul>
+<p>那零標注下能做什麼？回到論文自己在 2.4 節舉的例子：BEFORE 的判斷有兩種來源，一種靠<strong>明示的連接詞</strong>（「and then」），一種靠<strong>常識</strong>（先大學後博士）。連接詞那一種不需要模型——「A 之後 B」「B 之前 A」的方向由連接詞的句法位置決定，CKIP 已經給了斷詞與詞性（時間詞 Nd、連接詞 Cbb），<code>time_anchor.py</code> 第四趟已經在記相對詞、只是「只記錄、不推算」。把這一趟從記錄升級成推算，就是零標注的事件—事件層。常識那一種（入行早於得獎、學藝早於出道）是生命過程的<strong>領域 schema</strong>，可以由程式規則表達，但要標明它是假設而不是文本證據；北流人物頁的經歷年份可以在評估時對照，依既有裁決 held-out。</p>
+<p>這樣做的代價要明說：只抓連接詞的召回會很低（沒有連接詞的相鄰句子什麼都不記），而且會漏掉論文例 4 那種「顯然相隔數十年」但沒有連接詞的關係。<strong>但這正是零標注線該報告的下界</strong>，與名冊那條線對照後，差值就是「人工時間標注買到了什麼」——與 ORSE 那條線的報告邏輯一致。</p>
+<h3 id="3-transitivity">(3) 程式化的時間一致性（transitivity）約束能不能當本專案的可信度訊號？</h3>
+<p><strong>可以，而且它是少數與紅線第 2 條完全相容的訊號來源。</strong> 論文從 Wang et al. 2020 借的兩條約束（式 9、10）本質上是純邏輯：</p>
+<ul>
+<li><strong>對稱檢查</strong>：r(e1, e2) 與 r̄(e2, e1) 必須是彼此的對偶。對我們來說，這變成<strong>跨講述者的佐證</strong>——甲說「我退伍之後才進麗歌」、乙說「他進麗歌之前當過兵」，兩條獨立證詞方向相反、內容一致，程式直接判「互相佐證」；若兩人都說對方在先，判「衝突」。這是既有五訊號裡「跨人佐證」在時間層的具體化。</li>
+<li><strong>傳遞性檢查</strong>：r1(e1, e2) ∧ r2(e2, e3) ⇒ r3(e1, e3)。把同一人物跨訪談的所有事件對建成有向圖，做傳遞閉包；一條關係若能由另外幾條獨立來源的關係推出來，就是<strong>多路徑佐證</strong>；閉包裡出現環（A 前 B、B 前 C、C 前 A）就是<strong>衝突</strong>，落檔標記、不消滅。</li>
+</ul>
+<p>比論文多做得到的一件事：我們有一部分事件帶絕對年份（可信層 A、B 的 620 句自有年代）。<strong>兩個都有年份的事件，先後關係可以由程式直接算出</strong>，這批「由年份推得的關係」與「由連接詞推得的關係」是兩個獨立來源，兩者的一致率就是一個<strong>不需要任何人工標注的評估數字</strong>——相當於 2026-09-09 裁決要的「免標準答案訊號」。不一致的那些不是雜訊，是要拿出來看的：可能是年份推算錯（繼承過遠）、可能是講述者記錯、也可能是連接詞被程式讀反。</p>
+<p>要守住的邊界，論文自己也踩到了：</p>
+<ul>
+<li><strong>VAGUE 不能參與傳遞</strong>。「說不清」與「之前」推不出任何東西，作者為此把 VAGUE 整個排除；我們改成：傳遞只在明確關係之間跑，VAGUE 保留但不入閉包。</li>
+<li><strong>軟約束在論文裡是訓練時扣分，不保證輸出一致</strong>；我們沒有訓練，所以一致性檢查應當是<strong>事後的診斷與分層</strong>，不是把矛盾的邊修掉。Zep 筆記已經談過：口述歷史的矛盾是證據，不是要消滅的錯誤。</li>
+</ul>
+<h3 id="_1">可借用</h3>
+<ul>
+<li>把「相對時序」立為獨立於絕對年份的知識層，事件對加關係型別加觸發詞加出處，六型（含 INCLUDES）而不是四型，VAGUE 是正式值。</li>
+<li>對稱與傳遞性當程式化可信度訊號：跨講述者對偶檢查、傳遞閉包多路徑佐證、環＝衝突標記。</li>
+<li>年份推得的關係 vs 連接詞推得的關係，兩者一致率當免標注評估數字。</li>
+<li>「連接詞來源」與「常識來源」分開記（論文 2.4 節的區分），前者是文本證據、後者是 schema 假設，可信層不同。</li>
+<li>引用它的 LLM 數字（ChatGPT-4 CoT 56.70 vs 微調小模型 83.17）作為「不叫本機模型判先後」的文獻依據。</li>
+</ul>
+<h3 id="_2">該避免</h3>
+<ul>
+<li><strong>不要微調、不要建時間關係的標注集</strong>，違反紅線第 1、5 條，而且論文顯示即便標了，「同時」與「說不清」也標不準。</li>
+<li><strong>不要像 CleanMATRES 那樣由方法提出者自己修正評估集後宣稱增益更明顯</strong>——這正是紅線第 1 條防的循環。</li>
+<li><strong>不要用外部模型生成「典型持續時間」之類的常識並塞進表示</strong>：那是無來源的猜測，違反紅線第 3 條；口述歷史裡「錄一張唱片要多久」在不同年代差一個量級，通用常識還會出錯。</li>
+<li><strong>不要拿 softmax 機率當信心</strong>（紅線第 2 條）；一致性檢查是替代品，不是補充品。</li>
+<li><strong>不要只比起始時間</strong>，那會把生命過程裡最重要的持續性關係（任職、師徒、長期合作）壓扁。</li>
+</ul>
+<h3 id="_3">對「口述歷史、非三元組、強制出處」的參考價值</h3>
+<p>表示法本身參考價值有限（它就是最簡的事件對標籤，沒出處沒時間值），真正的價值在<strong>論證</strong>：它替「相對序是一種可以獨立成立的知識」與「時間演算可以當純邏輯約束」提供了同儕審查過的依據，並用數字證明了 LLM 在這件事上不可靠。落到我們的結構上，事件—事件層的每一筆仍然要帶檔名、時間碼、講述者與觸發詞的字元座標，逐字驗證觸發詞確實在該句出現——與 epistemic-status marker 掛在原文詞上的做法同一套。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

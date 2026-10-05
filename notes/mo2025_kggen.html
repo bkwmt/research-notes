@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mo 等人 2025_KGGen：用語言模型從純文字抽取知識圖譜</title>
+<meta name="description" content="Mo 等人 2025_KGGen：用語言模型從純文字抽取知識圖譜">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Mo 等人 2025_KGGen：用語言模型從純文字抽取知識圖譜</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/mo2025_kggen.md</code>　來源最後修改 2026-10-06　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Mo, B., Yu, K., Kazdan, J., Cabezas, J., Mpala, P., Yu, L., Cundy, C., Kanatsoulis, C., &amp; Koyejo, S. (2025). <em>KGGen: Extracting Knowledge Graphs from Plain Text with Language Models</em>. 39th Conference on Neural Information Processing Systems (NeurIPS 2025), poster. arXiv:2502.09956v2. 同儕審查（NeurIPS 主會議 poster，已通過審查）。</li>
+<li><strong>對應待查問題</strong>：①LLM 抽取／KG 建構現況、⑤無 gold standard 評估。</li>
+<li><strong>一句話定位</strong>：這篇提出一套「LLM 單次抽取三元組，再用嵌入分群加 LLM 去重」的知識圖譜生成器，並附帶一個叫 MINE 的新評測，用「生成的圖能不能還原原文的事實」來衡量抽取品質，這種不必人工標註整份語料的評估思路，正好對得上本專案「無 gold standard」的立場。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>這篇要解決的核心痛點是「知識圖譜（knowledge graph，KG，把知識寫成一堆節點與連線的資料結構）資料稀缺」。作者的觀察是：現有能用的大型知識圖譜（如 Wikidata、DBpedia、YAGO）多半靠人工標註或早年的規則式自然語言處理拼出來，數量少、覆蓋不全；而自動抽取出來的圖品質又常有問題。更具體的技術毛病是：像 OpenIE、微軟的 GraphRAG 這類工具直接從文字抽實體與關係，卻沒有一套有效的機制去把「講的是同一個東西」的實體合併起來（作者稱為 entity resolution，實體消歧與正規化）。結果是圖裡幾乎每一種關係都成了獨一無二的邊，圖變得又稀疏又斷裂，難以拿去做下游任務。</p>
+<p>作者宣稱的三項貢獻：</p>
+<ol>
+<li>提出 KGGen，一個開源 Python 套件，用語言模型從純文字抽出高品質、稠密的知識圖譜，核心創新是那套「嵌入分群加 LLM 去重」的實體與邊消解流程。</li>
+<li>提出兩個新評測（合稱 MINE，Measure of Information in Nodes and Edges，節點與邊的資訊量測度）來推動這個任務的進展，並用它們量出 KGGen 的表現。</li>
+<li>證明 KGGen 隨著文本規模變大，關係類型的重複使用率明顯優於過去方法（即產出的圖更會「舉一反三」，不會每句話都生出新的關係類型）。</li>
+</ol>
+<p>跟本專案最相關的其實是第 2 點：這個領域「缺乏能直接衡量抽取忠實度的基準」，而 MINE 就是為了補這個洞。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>輸入是純文字（一段或多段來源文本）。整個流程是<strong>多步驟、但不是多 agent 分工</strong>，比較像同一套程式裡串起來的幾道加工，其中幾道會呼叫 LLM。作者用 Google 的 Gemini 2.0 Flash 當預設模型，並用 DSPy（一個把 prompt 寫成「函式簽名＋說明文件字串」的框架，讓 LLM 依指示產出結構化輸出）來下指令。流程分三個大階段（論文第 4 節，圖 1）：</p>
+<p><strong>階段一：實體與關係抽取（Entity and Relation Extraction）。</strong> 這一階段本身又拆成兩個小步，作者說分兩步比一步到位更能保持實體一致：
+- 第一步：把來源文字丟給 LLM，先只抽出一份實體清單。
+- 第二步：把「來源文字＋剛抽好的實體清單」一起餵回去，要 LLM 輸出一串 subject-predicate-object（主詞-謂語-受詞）的三元組關係。</p>
+<p><strong>階段二：聚合（Aggregation）。</strong> 把每一份來源文本各自抽出的三元組收攏，把所有出現過的實體與邊蒐集起來合成一張大圖，並全部轉成小寫做基本正規化。這一步<strong>不需要 LLM</strong>，純粹是程式化的去重與合併，屬於很淺的正規化。</p>
+<p><strong>階段三：實體與邊消解（Entity and Edge Resolution）。</strong> 這是作者自稱的關鍵創新，詳見第 3 節。它把「同一個真實實體」的節點、以及「意思等價」的邊合併起來。</p>
+<p>值得注意的一個防呆設計：作者在 prompt 裡下了「強約束」，明確禁止 LLM 把「意思相近但其實不同」的東西亂併，例子是不可把「第一型糖尿病」和「第二型糖尿病」、「高血壓」和「壓力」、「MRI」和「CT scan」當成同一個。這說明作者知道 LLM 傾向過度合併，並試圖用指令壓制。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>抽出來的東西被安排成一張由 subject-predicate-object 三元組構成的有向圖：節點是實體，邊是關係（謂語）。<strong>這篇沒有預先定義的 schema 或本體（ontology）</strong>，關係類型完全由 LLM 從文本自由生成，不受既定詞彙表約束（作者在限制一節反而把「導入領域本體」當成未來工作）。</p>
+<p>跨文件的去重、實體合併、衝突解決，全都集中在階段三這套「兩段式」流程，同時套用在節點與邊上：</p>
+<p>先把圖裡所有項目（實體或邊）用 S-BERT（Sentence-BERT，把一段文字轉成語意向量的模型）取得語意嵌入，再用 k-means 分成每群 128 個項目的群集。然後對每一群反覆做以下四步，直到群裡沒有項目為止：</p>
+<ol>
+<li>對群裡每個項目，用一種融合 BM25（傳統關鍵詞相關度）與語意嵌入的方式，取出最相似的前 k 個（k=16）項目。</li>
+<li>把這一小組丟給 LLM，要它找出「真正重複」的項目，考慮時態、單複數、大小寫、縮寫、簡稱等變體差異。</li>
+<li>對每一組重複項，讓 LLM 選一個最能代表共同語意的「典範代表」（canonical representative），做法類似 Wikidata 的別名機制，並記錄哪些實體對應到哪個別名（cluster map）。</li>
+<li>把處理完的項目和它的重複項移出群集，回到第 1 步，直到清空。</li>
+</ol>
+<p>作者強調這種按語意群集分批處理的做法可以平行化、能吃很大的圖。舉的例子是在 2000 萬 token 的資料集上，成功把「Olympic Winter Games」「Winter Olympics」「winter Olympic games」併成同一個典範表示。</p>
+<p>一個重要的評語：<strong>這是一種「重新安排既有結構」的精煉步驟，但它的合併判準是語意相近，沒有出處佐證、也沒有衝突偵測的實質機制</strong>。所謂衝突解決其實只是「選一個代表名」，並不處理「兩份來源對同一實體講了互相矛盾的事實」這種語意衝突。對照本專案要處理不同受訪者說法不一致的情況，KGGen 這一層是不夠的。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>是純三元組（subject-predicate-object）</strong>，而且是不受本體約束的自由三元組。節點是實體、邊是關係，整體是一張有向的屬性稀薄的圖。作者從頭到尾把「知識圖譜」等同於「三元組集合」，這也是他們在定性評估（第 6.4 節）拿來評 GraphRAG 的標準：他們批評 GraphRAG 產出的結構「不像傳統知識圖譜」，因為它夾帶社群摘要（community summary，把一群相連節點濃縮成一段文字）這種非三元組的節點。</p>
+<p>出處與時間資訊方面，情況要分清楚：</p>
+<ul>
+<li><strong>沒有把出處當成圖的一級欄位。</strong>三元組本身不帶 provenance 欄位、不帶時間戳、不帶信心分數。這和 OpenIE 不同，OpenIE 每個三元組還會附一個信心分數，KGGen 連這個都沒有。</li>
+<li><strong>但在生成階段，每條關係有被記到它來自哪一段來源文字塊（source text chunk）。</strong>這一點只出現在 MINE-2 的 RAG 評估描述裡：作者說「因為 KGGen 和 GraphRAG 在生成時每條關係都連著一個來源文字塊」，所以能把三元組連同原文段落一起餵給下游模型。換句話說，出處是流程裡存在的附帶資訊，但沒有被寫進知識圖譜的正式表示，也沒有時間碼這種細粒度定位。</li>
+</ul>
+<p>作者選三元組而不選別的表示法，理由是實用主義的：他們要的圖是要能餵給 TransE、TransR 這類知識圖譜嵌入演算法的，而這些演算法吃的就是乾淨、稠密、關係會重複使用的三元組；GraphRAG 那種夾社群摘要的結構在他們眼中反而是缺點。這個立場和本專案刻意採用「實體／事件／關係／goût 敘述混合結構」正好相反，值得在第 8 節對照。</p>
+<h2 id="5">5. 資料集</h2>
+<p>這篇用到多套語料，混合公開與自建：</p>
+<ul>
+<li><strong>MINE-1（自建，新 benchmark）</strong>：100 篇文章，每篇平均 592 字（標準差 85，範圍 440 到 976 字），主題涵蓋藝術文化與社會（24 篇）、科學（27 篇）、科技（19 篇）、心理與人類經驗（18 篇）、歷史與文明（17 篇）。文章由 LLM 生成，每篇另附 15 條「已知存在於文中」的事實，這些事實也是 LLM 抽的、再由人工核對確認正確且確實在文中。<strong>全英文，非訪談、非口語、非真實史料，是刻意造出來的短文。</strong></li>
+<li><strong>MINE-2（基於 WikiQA）</strong>：Yang 等人 2015 的 WikiQA 資料集，20,400 個問題、1,995 篇維基百科文章，用來測百萬 token 級大語料下的下游 RAG（檢索增強生成）表現。公開資料，英文。</li>
+<li><strong>SemEval-2010 Task 8（公開、人工標註）</strong>：第 6.3 節用它來對照人工標準答案。作者隨機取 100 句，每句有兩個人工標好的目標實體。這是全篇唯一真正用到人工標註 gold standard 的地方，但只用來評「實體有沒有被抓到」，因為該資料集的關係標籤只有 5 個粗類，不適合評細緻關係。</li>
+<li><strong>規模化與成本測試</strong>：用不同長度的文本（1 萬、10 萬、100 萬字元）測關係重用率；另用小說《The Name of the Wind》（Patrick Rothfuss）從 100 字元一路測到 100 萬字元，看實體與關係的去重比率和成本。</li>
+</ul>
+<p><strong>沒有任何中文語料，沒有口述歷史、沒有真實訪談逐字稿。</strong>主要評測語料還是 LLM 自己生成的合成短文。這對本專案是明顯的落差：KGGen 從沒在「口語、離題、記憶模糊、多位受訪者交叉印證」這種文本上驗證過。</p>
+<h2 id="6">6. 評估</h2>
+<p>這是本篇對本專案最有參考價值的一節，要寫透。作者用三種方式評估，核心是自創的 MINE。</p>
+<p><strong>MINE-1：知識保留（Knowledge Retention）。</strong> 這是關鍵設計。它問的問題是：「一個抽取器把文章變成圖之後，原文的資訊還留下多少？」而且刻意<strong>不靠下游任務</strong>來問，因為下游任務會混淆「是抽取器好」還是「是後面檢索流程好」。做法是：</p>
+<ol>
+<li>每篇文章事先備好 15 條「確實在文中」的事實（如前述，LLM 抽、人工核對）。</li>
+<li>用待評的抽取器把文章轉成一張圖。</li>
+<li>逐條檢查這 15 條事實能不能從圖裡「還原」出來。還原的方式是一套語意查詢：把 15 條事實和圖裡所有節點都用 all-MiniLM-L6-v2（一個輕量語意嵌入模型）轉成向量，對每條事實檢索語意最近的前 k 個節點，再把這些節點兩跳（two hops）之內的鄰居全部拉進來（模擬知識圖譜常用的多跳推理），形成一個子圖。</li>
+<li>把這個子圖交給一個 LLM，要它輸出 0 或 1：這條事實能不能單靠子圖裡的節點與關係推得出來。</li>
+<li>一篇文章的 MINE-1 分數就是 15 條裡被判 1 的比例，再對 100 篇取平均。</li>
+</ol>
+<p>這裡有兩個要點對本專案直接相關：</p>
+<ul>
+<li><strong>這是一種「無需人工標註整份語料」的評估。</strong>它不要求你事先把文章標成一張標準圖來逐三元組比對（那正是本專案方法論紅線第 1 條拒絕的東西）。它改成問一批「原子事實」能否被還原，只需要準備少量事實而非標註全圖。這個轉向和本專案「不做配對式 gold standard」的立場高度一致，是可以借鏡的評估哲學。</li>
+<li><strong>但它用了 LLM 當評審（LLM-as-a-Judge）。</strong>第 4 步那個判 0/1 的裁決是 LLM 做的。作者自己承認「以 LLM 為基礎的評估會引入潛在偏誤」，並做了一次信度驗證：人工評分 60 組隨機抽出的「事實-圖」配對，和 LLM 判斷比對，得到 90.2% 的一致率與 0.80 的相關係數。也就是說，MINE 本質上有「用 LLM 驗證 LLM 產出」的循環風險，作者是用一小批人工抽樣去背書 LLM 裁判可信，而不是消除這個循環。</li>
+</ul>
+<p><strong>MINE-2：KG 輔助的 RAG。</strong> 用 WikiQA 建一張大圖，對每個問題用 BM25 加語意相似度取前 10 個三元組、再擴充兩跳鄰居補到 20 個，連同原文段落餵給語言模型合成答案，最後<strong>再用一個 LLM 當評審</strong>判斷答案有沒有答對。這一層是雙重的 LLM 循環（LLM 生成、LLM 評判），偏誤風險比 MINE-1 更高。</p>
+<p><strong>SemEval-2010（人工標註對照）。</strong> 唯一有人工 gold standard 的評估，但只評實體召回：KGGen 在 96%（96/100）的句子裡抓到了人工標的目標實體。作者還順帶說 KGGen 常抽出比人工標註更細的實體描述（例如抽到「Eurasia exhibition」而非只有「exhibition」），把這說成優點，但這其實也模糊了「對不對」的判準。</p>
+<p><strong>指標與人工介入程度總結：</strong>MINE 用的是「事實被還原的百分比」，不是傳統的精確率／召回率／F1。人工只介入在兩處小規模抽查（MINE-1 的 15 條事實核對、60 組裁判信度驗證、SemEval 的既有標註），從不對整份語料做逐三元組標註。定性評估（第 6.4 節，圖 6）則是人工肉眼看圖，並隨機抽 100 個三元組人工判斷是否合乎「主謂賓」的基本定義（表 1b：KGGen 有效三元組 98%，GraphRAG 0%、OpenIE 55%，這個「GraphRAG 0%」的數字要謹慎看，因為它其實是在懲罰 GraphRAG 用了非三元組的社群摘要結構，是定義之爭而非品質之爭）。</p>
+<p><strong>跨模型驗證：</strong>表 1a 顯示 MINE-1 分數會隨底層 LLM 變化：Claude Sonnet 3.5 得 73%、GPT-4o 得 66%、Gemini 2.0 Flash 只有 44%。這點提醒本專案，抽取品質對模型選擇非常敏感。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>作者自己承認的：</p>
+<ul>
+<li>圖仍有實體與邊「過度或不足去重」的老問題，消解還不完美。</li>
+<li>評測只到 500 萬 token，還不到訓練 KG 基礎模型所需的網頁級規模。</li>
+<li>醫學、金融等領域需要專業知識，通用 LLM 可能不足；未來想引入領域本體來提升精確度。</li>
+</ul>
+<p>我讀出來、它沒明講或帶過的疑點：</p>
+<ul>
+<li><strong>MINE 的循環風險被淡化。</strong>核心指標靠 LLM 裁判，90.2% 一致率是拿 LLM 去對「另一批也可能有偏誤的人工快評」，而且只有 60 組。當抽取模型和裁判模型是同源（例如都偏好某種措辭）時，這個循環會系統性高估保留率，作者沒有討論這種同源偏誤。</li>
+<li><strong>合成評測語料的外部效度存疑。</strong>MINE-1 的文章和 15 條事實都由 LLM 生成，等於「LLM 出題、LLM 抽取、LLM 改考卷」。在乾淨、資訊明確的短文上表現好，不能推論到真實、離題、口語的文本。</li>
+<li><strong>沒有出處與衝突處理。</strong>三元組不帶來源、不帶時間、不帶信心；所謂衝突解決只是選代表名，完全不碰「不同來源講了矛盾事實」的情況。</li>
+<li><strong>表示法的偏狹。</strong>把知識圖譜等同於三元組，並以此判 GraphRAG「有效三元組 0%」，這是預設立場，不是中立評估。任何非三元組的結構（社群摘要、事件框架）在這套評分裡都會被判失格。</li>
+<li><strong>實體「抽得更細算優點」的雙面性。</strong>抽出比人工更細的描述被講成好事，但這同時讓「正確與否」變得難以界定，也可能是變相的過度抽取。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>可以借用的：</strong></p>
+<ol>
+<li><strong>MINE-1 的評估哲學（最有價值）。</strong>它示範了一條「不必人工標註整份語料」的評估路線：不比對整張標準圖，而是準備一批「原子事實」，再測抽取結果能不能還原這些事實。這和本專案方法論紅線第 1 條（拒絕配對式 gold standard）完全相容，甚至是它的正面範例。本專案事件與關係層沒有 gold standard，正可借這個思路：從少數幾位受訪者的逐字稿，人工挑出若干條「明確講過的事實」（附時間碼），再測抽取出的知識能不能覆蓋這些事實，當成召回率的代理指標，而不必標註整份語料。</li>
+<li><strong>兩步抽取（先抽實體、再抽關係）比一步到位更穩定</strong>的經驗，和本專案 srt-extract 的分工可互相印證。</li>
+<li><strong>「強約束禁止過度合併」的 prompt 設計</strong>（不可把第一型與第二型糖尿病併在一起），對本專案 entity-resolve 的消歧判準有直接參考價值，尤其是同名不同人、或名稱相近的實體。</li>
+<li><strong>去重比率隨規模上升</strong>（表 2）這種程式化、可量化的指標，符合本專案「信心由程式化訊號推導」的精神，是不叫 LLM 自評也能衡量圖品質的做法之一。</li>
+</ol>
+<p><strong>該避免、或必須警惕的：</strong></p>
+<ol>
+<li><strong>不要照抄 MINE 的 LLM 裁判當唯一判準。</strong>MINE-1、MINE-2 都用 LLM-as-a-Judge 做最終裁決，MINE-2 更是 LLM 生成加 LLM 評判的雙重循環。這直接踩到本專案的顧慮（方法論紅線第 2 條反對 LLM 自評信心）。若要借用 MINE 的「事實還原」框架，還原判定應盡量改成程式化比對（例如檢查抽取結果的實體與關係字串是否命中事實裡的關鍵詞與時間），把 LLM 裁判降級為輔助或完全拿掉。</li>
+<li><strong>不要接受它「知識圖譜就是三元組」的預設。</strong>本專案刻意用實體／事件／關係／goût 敘述的混合結構，正是因為口述歷史裡有大量「某人對某事的評價與品味」這種無法塞進主謂賓的內容。KGGen 的純三元組會把這些訊息壓扁或丟掉。它把非三元組結構判為「無效」的作法，對本專案完全不適用，反而反證了本專案採混合結構的必要。</li>
+<li><strong>出處設計遠不夠用。</strong>KGGen 的三元組不帶 provenance、時間、信心，出處只在生成時記到「來源文字塊」層級，沒有進入圖的正式表示，更沒有時間碼。這和本專案「每筆知識強制附出處（檔名、時間碼、口述者、段落）」的紅線第 3 條差距很大。本專案在這點上比 KGGen 嚴格得多，不能向它看齊，反而應把出處當一級欄位。</li>
+<li><strong>合成語料的教訓。</strong>KGGen 從沒在中文、口語、訪談文本上驗證。它在乾淨短文上的漂亮數字，不能拿來預期本專案在真實逐字稿上的表現，尤其是離題、記憶錯置、多人交叉印證這些口述歷史特有的難處。</li>
+</ol>
+<p><strong>與四條紅線的相容性總結：</strong>MINE-1 的評估哲學與紅線 1（無配對式 gold standard）相容，可正面借用；去重比率等程式化指標與紅線 2（不叫 LLM 自評）相容。但 MINE 的 LLM 裁判與紅線 2 有張力，需改造；純三元組表示與本專案混合結構衝突；出處設計遠不及紅線 3 的要求。整體上，KGGen 值得學的是它「怎麼在沒有整份標準答案的情況下評抽取忠實度」，該避開的是它「把最終判斷交給 LLM」與「把知識窄化成三元組」這兩點。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

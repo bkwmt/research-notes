@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mihindukulasooriya 等人 2023_Text2KGBench：本體約束下從文本生成知識圖譜的評測基準</title>
+<meta name="description" content="Mihindukulasooriya 等人 2023_Text2KGBench：本體約束下從文本生成知識圖譜的評測基準">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Mihindukulasooriya 等人 2023_Text2KGBench：本體約束下從文本生成知識圖譜的評測基準</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/mihindukulasooriya2023_text2kgbench.md</code>　來源最後修改 2026-10-06　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Mihindukulasooriya, N., Tiwari, S., Enguix, C. F., &amp; Lata, K. (2023). <em>Text2KGBench: A Benchmark for Ontology-Driven Knowledge Graph Generation from Text</em>. The Semantic Web – ISWC 2023（第 22 屆國際語意網會議，Resources Track）。arXiv:2308.02357v1。DOI: 10.5281/zenodo.7916716（資料集）。同儕審查（ISWC 2023 資源論文，已通過審查；arXiv 版標為 A Preprint）。</li>
+<li><strong>對應待查問題</strong>：⑤無 gold standard 評估（兼及 ①LLM 抽取／KG 建構現況）。</li>
+<li><strong>一句話定位</strong>：這篇提出一套評測，量「給定一份本體（ontology，描述某領域有哪些概念、哪些關係、關係兩端該接什麼類型的正式規格）與若干句子，語言模型能不能只用本體允許的關係把句子裡的事實抽成三元組」。它的關鍵貢獻是把評估拆成三個可各自量化的面向——抽對了沒、有沒有守本體、有沒有幻覺——其中「本體符合度」與「幻覺」兩項只靠比對本體與句子本身即可算出，不必替整份語料備妥人工標準答案。這正好對得上本專案「無 gold standard」的立場。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>這篇要補的洞是：大家開始拿大型語言模型（large language model，LLM）從文字生知識圖譜（knowledge graph，KG，把知識寫成節點與連線的資料結構），但缺一個公開、可比較的基準去衡量「生得好不好」。作者主張，真正該測的不只是「關係抽對了嗎」，還有「模型有沒有乖乖用本體規定的那些關係」，以及「模型有沒有無中生有」。</p>
+<p>作者宣稱的兩項主要貢獻：</p>
+<ol>
+<li>提出 Text2KGBench 這個新基準，把「關係抽取」這件老任務加上本體與指令的約束來重新定義。附帶兩份資料集：(a) Wikidata-TekGen，10 份本體、13,474 句對齊三元組；(b) DBpedia-WebNLG，19 份本體、4,860 句對齊三元組。並定義七個指標，分別量事實抽取準確度、本體符合度、幻覺，附上評測腳本。</li>
+<li>提供兩個開源 LLM 的基線結果（Vicuna-13B、Alpaca-LoRA-13B），用脈絡內學習（in-context learning，即在提示裡塞幾個示範例讓模型現學）跑。還做了一個自動提示產生器：用句向量相似度（SBERT，把句子轉成向量以比對語意相近程度）替每個測試句從訓練資料挑最像的示範例塞進提示。全部提示、相似度、模型回應都公開。</li>
+</ol>
+<p>值得注意的是，作者刻意把任務範圍縮小：這一版<strong>不評</strong> LLM 處理 RDF/OWL 語法或深究 OWL 語意的能力，只評「用對關係把事實抽出來」。本體是用白話「口語化」（verbalization，把正式的本體改寫成一串人看得懂的概念清單與關係清單）後塞進提示，不要求模型讀正式的本體檔。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p><strong>輸入有三樣</strong>（論文第 2 節、圖 1、圖 2）：</p>
+<ol>
+<li><strong>本體</strong>：定義該領域關心哪些概念、有哪些關係，每個關係附上正式名稱與定義域／值域約束（domain/range，指這個關係的主詞該是什麼類型、受詞該是什麼類型）。可再加其他本體公理。</li>
+<li><strong>文本語料</strong>：一批自然語言句子，其中的事實可以用上述本體表達。</li>
+<li><strong>示範例</strong>：訓練資料裡「句子＋依本體抽好的事實」的成對範例，用來給模型看格式。</li>
+</ol>
+<p><strong>抽取本身是單次、單一模型、脈絡內學習</strong>，沒有多 agent 分工。作者把上面三樣拼成一段提示（圖 2 有完整範例）：一句固定指令（「依本體裡的關係，把句子的三元組抽出來，只輸出指定格式」）＋口語化的本體（概念清單＋<code>關係(主詞類型, 受詞類型)</code> 清單）＋一到數個示範例＋待抽的測試句，結尾以「Test Output:」收束，讓模型接著吐三元組。模型輸出一串 <code>關係(主詞, 受詞)</code> 形式的文字，事後再解析成三元組。</p>
+<p>作者把完整流程畫成四段（圖 1）：自動提示產生 → 用基礎模型做資訊抽取 → 後處理／驗證 → 知識圖譜。但論文正文的實驗只跑到抽取為止；後處理與驗證（用正則式清掉不合理三元組、用推理去查三元組合不合本體）被明講為「開放的研究方向」，留給用這個基準的後續系統做。換句話說，這篇提供的是<strong>評測台</strong>，不是一套完整的抽取系統。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p><strong>有本體，而且本體是這篇的主角。</strong> 每份資料集都先造出一批小型本體：</p>
+<ul>
+<li>Wikidata-TekGen 的 10 份本體，是作者挑一個領域（如電影、音樂、運動），從 Wikidata 找出該領域常用的概念與關係，人工查 Wikidata 屬性頁確認定義域／值域約束，反覆增補概念而成。由一位具語意網專業的作者編寫、另兩位專家覆核。全部以 Turtle 序列化的 OWL 本體、外加一份精簡 JSON 格式公開。</li>
+<li>DBpedia-WebNLG 的 19 份本體，對應 WebNLG 語料的 19 個類別，各造一份。</li>
+</ul>
+<p><strong>本體規模刻意小</strong>（見表 1，每份約 8–20 個類型、7–44 個關係），作者說是為了遷就 LLM 的 token 上限——本體要整份塞進提示，太大就爆了。這一點在第 7 節被列為明確限制。</p>
+<p>至於跨文件去重、實體合併、衝突解決：<strong>這篇沒有</strong>。它的評估單位是「單句」，每句獨立抽、獨立比對，不做跨句或跨文件的實體消歧與融合。這跟本專案要做的跨訪談實體消歧是兩回事，得留意。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>是三元組，而且是受本體約束的三元組（ontology-constrained triples）。</strong> 表示成 <code>關係(主詞, 受詞)</code>，例如 <code>director(Lion King, Roger Allers)</code>。「受本體約束」指：模型只被允許用本體關係清單裡列出的那些關係名，用了清單外的關係就算違規。這是它跟一般開放式關係抽取最大的差別。</p>
+<p><strong>出處（provenance）／時間資訊／信心分數：都沒有。</strong> 三元組本身不帶來源欄位、不帶時間碼、不帶信心分數。之所以能追溯，是因為評估以「單句」為單位——每個三元組天生對應它被抽出來的那一句，句子即出處，但這是評測設計的副產品，不是三元組結構裡的欄位。時間若出現（如 <code>publication_date(Birds Anonymous, 1957)</code>），只是某個關係的受詞值，不是獨立的時間維度。</p>
+<p>為什麼選純三元組而不用更複雜的表示：因為這篇的目標就是評「關係抽取」這件事，本體本身用 <code>關係(定義域類型, 值域類型)</code> 的二元關係描述，配二元三元組最省事，也刻意避開 n-ary（多元）關係與複雜 OWL 語意，以壓低模型負擔。</p>
+<h2 id="5">5. 資料集</h2>
+<p>兩份，都是<strong>改造既有語料而成、公開釋出的新基準</strong>：</p>
+<ul>
+<li><strong>Wikidata-TekGen</strong>：重用 TekGen 語料（用遠距監督把 Wikidata 三元組對齊到維基百科句子，原始 1600 萬對、涵蓋 663 個 Wikidata 關係）。作者先用參數化 SPARQL 查詢，依 10 份本體的關係各撈 K 個三元組，再回 TekGen 找對齊句子，湊成 13,474 組「句子—三元組」對齊，切成訓練／驗證／測試。</li>
+<li><strong>DBpedia-WebNLG</strong>：重用 WebNLG 3.0 語料（其對齊本身經眾包驗證過），造 4,860 組對齊。</li>
+</ul>
+<p><strong>語言：只有英文，沒有中文。</strong> 領域是電影、音樂、運動、書、軍事、天文、政治、大學、機場、建築、運動員、政治人物、公司、藝術家等百科式條目，<strong>沒有口語、沒有訪談、沒有歷史口述</strong>——全是維基百科／DBpedia 那種寫好的敘述句。</p>
+<p>兩個值得學的資料設計細節：</p>
+<ol>
+<li><strong>人工清洗出一個高品質小測試集。</strong> 因為 TekGen 是遠距監督、有雜訊與錯配，作者請標註者逐句檢查，只留「人一眼就能從句子裡抽出該三元組、事實明講在字面上」的句子，得 939 句的乾淨測試集（表格裡叫 Selected）。他們舉的反例很清楚：句子「The film was also nominated for...」裡的「the film」需要跨句共指才知道指誰，這種就剔除；又如兩個實體剛好共現、就被遠距監督錯配上關係的，也剔除。</li>
+<li><strong>另造 174 句「沒見過的句子」（Unseen）。</strong> 擔心受測模型預訓練時早就看過維基百科、把答案背起來了，作者手寫一批全新句子（如「John Doe starred in the movie The Fake Movie released in 2025」），專門測模型是不是真的照著眼前這句話抽、而非靠記憶。</li>
+</ol>
+<h2 id="6">6. 評估</h2>
+<p>有 gold standard，但只在其中一個指標用到，而且是「局部封閉」的用法。七個指標分三組：</p>
+<p><strong>(一) 事實抽取準確度（Fact Extraction Accuracy）</strong>：把模型輸出的三元組跟真值三元組（ground truth）比，算精確率（Precision）、召回率（Recall）、F1。這一組<strong>需要人工／半自動備好的真值</strong>，是唯一用到 gold standard 的地方。作者採「局部封閉（locally closed）」策略——只就真值裡出現過的那些關係去算對錯，不把「真值沒列但模型也抽了」的三元組一律當錯，以免因為真值本來就不窮盡而狂扣分。模型沒輸出就 P/R/F1 記 0。</p>
+<p><strong>(二) 本體符合度（Ontology Conformance，OC）</strong>：模型輸出的三元組裡，有多少比例的關係名確實落在該本體的關係清單內，除以總輸出三元組數。這一版只查「關係名是不是本體裡列的正規關係」，作者說可再擴充去查定義域／值域等公理。<strong>這個指標不需要真值三元組</strong>，只要有本體清單就能算——這是本篇對本專案最有參考價值的一點。</p>
+<p><strong>(三) 幻覺（Hallucinations）</strong>，分三個子指標：
+- 主詞幻覺（Subject Hallucination，SH）：主詞有沒有出現在句子或本體概念裡。
+- 受詞幻覺（Object Hallucination，OH）：受詞有沒有出現在句子或本體概念裡。
+- 關係幻覺（Relation Hallucination，RH）：關係有沒有出現在本體關係清單裡。</p>
+<p>做法很直白：主詞／受詞用詞幹比對（stemming，把 America／American／Americans 這類變形歸到同一詞根），檢查該詞是不是句子或本體概念的子字串；關係則用完全比對。作者點明 RH 與 OC 這一版互為表裡：<code>RH = 1 − OC</code>。<strong>這三個幻覺指標也都不需要真值三元組</strong>，只靠句子字面＋本體清單即可算。</p>
+<p><strong>有沒有用 LLM 當評審（LLM-as-a-judge）？沒有。</strong> 全部指標都是程式化、規則式的比對（子字串比對、詞幹比對、清單查表），沒有拿另一個 LLM 去評判輸出好壞。這點跟本專案「絕不叫 LLM 自評、也不用 LLM 循環驗證 LLM」的紅線完全相容，值得記一筆。</p>
+<p><strong>人工介入到什麼程度？</strong> 集中在建資料集那端：造本體、覆核本體、清洗出 939 句乾淨測試集、手寫 174 句 Unseen。到了跑評估這端，指標計算全自動，不再需要人逐筆判。</p>
+<p><strong>評估設計的可疑處</strong>：幻覺用「子字串比對」判太粗。作者自己在第 5.4 節就承認：模型把縮寫展開（如把句子裡的「NATO」寫成「North Atlantic Treaty Organization」）會被誤判成幻覺，因為展開後的字串不在原句裡。反過來，子字串比對也可能放過真正的錯配——只要某個詞碰巧是句子的子字串就算過關，未必真的語意對應。所以這套幻覺指標是廉價、可規模化的近似，不是精準判定。</p>
+<p><strong>基線結果</strong>（表 2、表 3）：兩個 13B 模型的 P/R/F1 都偏低（約 0.22–0.42），但本體符合度普遍高（OC 約 0.83–0.93）。意思是模型大致守得住「只用本體給的關係」，但把事實抽準、抽全還差得遠。乾淨測試集（Selected）比全集（All）稍好，Unseen 的幻覺沒有明顯更糟。作者強調模型是「不微調、不調提示、不做語意驗證」直接跑，還有很大改進空間。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自己承認的：</p>
+<ol>
+<li><strong>只用小本體</strong>，為了遷就 token 上限；真實領域（如醫學）的本體大得多。未來想支援自動挑本體片段、或用長脈絡模型（如 Unlimiformer）。</li>
+<li><strong>這版不碰 OWL/RDF 語法</strong>，靠口語化繞過；未來想直接測模型讀寫正式表示的能力。</li>
+<li><strong>幻覺用子字串／詞幹比對，會被縮寫、別名坑</strong>（NATO 例），已列入未來工作。</li>
+<li><strong>偏見與公平性未測</strong>：未來想加性別、族裔、地域等對照測試，看模型抽取會不會對某些群體系統性偏差。</li>
+</ol>
+<p>我讀出來、它沒明講的：</p>
+<ol>
+<li><strong>只評到單句、不評跨文件融合</strong>。真實的知識圖譜建構最難的一段——把散在多處講同一實體的資訊消歧、合併、解衝突——完全不在這個基準裡。對要做跨訪談消歧的專案，這篇幫不上那一塊。</li>
+<li><strong>本體符合度只查「關係名在不在清單」，門檻低。</strong> 定義域／值域約束、更深的公理都還沒查，所以一個模型可能 OC 很高（關係都用對名字），卻把該接人的位置接了地名。表 4 就有這種例子（<code>directed(The Gallopin Gaucho, Walt Disney)</code> 被判成本體符合度錯誤，因為正規關係應是 director）。真正嚴格的本體符合度應該連類型約束一起查。</li>
+<li><strong>語料是乾淨的百科敘述句</strong>，句法規整、事實明講。口述歷史那種口語、離題、指代含糊、時間跳躍的文本，這套指標（尤其子字串比對的幻覺判定）能不能撐得住，完全沒被驗證。</li>
+<li><strong>F1 偏低到底是模型爛還是真值不窮盡</strong>，論文用「局部封閉」擋了一部分，但沒進一步拆解錯誤來源，只給了初步錯誤分析（表 4 四個例子）。</li>
+</ol>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>最核心的可借用點：一條「不必替整份語料備人工標準答案」的評估路線。</strong> 這篇把評估拆成三塊，其中兩塊——本體符合度與幻覺——<strong>完全不需要 gold standard 三元組</strong>，只要有一份「合法關係清單／概念清單」加上「來源句子本身」，就能程式化地算出：模型用的關係是不是清單裡的（符合度）、模型講的主詞受詞是不是句子裡真有的（幻覺）。這跟本專案第 1 條紅線（不對抽取結果做配對式人工標註）高度契合。</p>
+<p>具體怎麼搬到本專案：</p>
+<ol>
+<li><strong>把「本體符合度」改造成「schema 符合度」。</strong> 本專案的抽取有既定的實體類型、關係類型、事件欄位規格（criteria.md）。可以照這篇的思路，抽樣核對「抽出來的關係類型是不是都落在我們定義的關係清單裡」，算一個符合度百分比。這只需一份 schema 清單，不需要逐筆人工標答案，適合當抽取穩定度的常態監控。而本專案已有一份 5335 筆的人工實體名冊，等於現成的「合法概念清單」，可以直接拿來當主詞／受詞幻覺判定的比對基準，比這篇單靠句子子字串更可靠。</li>
+<li><strong>幻覺判定可借形式、但要換更嚴的比對。</strong> 這篇的子字串／詞幹比對太粗，且它自己承認會被縮寫、別名坑。本專案是中文口述、又有大量別名（person_id_map.json 有 12955 筆含別名），若照搬子字串比對會災難。但「主詞／受詞必須能在來源出處裡找到依據、關係必須在允許清單裡」這個判定框架是對的——本專案本來就強制附出處（第 3 條紅線），等於把「主詞受詞出自哪一句」這件事從評測近似升級成資料裡的硬欄位，比這篇更扎實。可以據此定義一個更嚴的「出處落地檢查」：抽出的實體若在其標註時間碼的段落裡找不到任何字面或別名對應，就標為疑似幻覺送人工抽查。extract-qa skill 的「腦補檢查」正是這個位置，這篇給了它一個可量化的指標形式。</li>
+<li><strong>「Unseen 句子」的設計值得學。</strong> 為了防模型靠預訓練記憶蒙混，作者手寫全新句子來測。本專案雖不做微調，但同理可造少量「刻意改寫過人名、年份的假段落」丟進抽取，看模型會不會照著眼前文字抽、還是自作主張補上它「知道」的真實資訊——這能直接驗證第 3 條紅線（只抽句子裡有的、不補外部知識）落實得如何。</li>
+</ol>
+<p><strong>與紅線的相容性</strong>：全相容。這篇不叫 LLM 自評信心（相容第 2 條），指標全是程式化規則比對（相容第 2、4 條），評估以句為單位天然帶出處（呼應第 3 條）。它唯一用到 gold standard 的地方（P/R/F1）本專案可以不採用，改只留符合度與幻覺這兩塊無需標答的指標。</p>
+<p><strong>該避免／不適用的</strong>：</p>
+<ol>
+<li><strong>表示法不能照搬。</strong> 這篇是純二元三元組、無出處欄位、無時間欄位、無信心欄位。本專案要的是實體／事件／關係／goût 敘述的混合結構、每筆帶時間碼出處。這篇的三元組表示對本專案的知識表示沒有參考價值，真正有價值的是它的<strong>評估方法</strong>，不是它的<strong>資料結構</strong>。</li>
+<li><strong>它不做跨文件消歧與融合</strong>，本專案最吃重的跨訪談實體消歧在這篇完全缺席，別指望從這裡找方法。</li>
+<li><strong>語料性質差太遠</strong>：乾淨英文百科句 vs. 中文口述訪談。這篇的幻覺子字串比對在本專案語境幾乎必然失效，只能借「三面向拆解」的架構思想，比對演算法要重做。</li>
+</ol>
+<p><strong>一句話總結對本專案的價值</strong>：Text2KGBench 證明了「本體／schema 符合度」與「以來源為準的幻覺檢查」這兩個指標可以純程式化計算、只需抽樣核對、無需替整份語料標答案。這正是本專案在事件層與關係層「沒有 gold standard」時，仍能給出可量化品質訊號的一條現成路子；而本專案因為強制附出處、又有人工實體名冊，其實比這篇更有本錢把這條路走得更嚴謹。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

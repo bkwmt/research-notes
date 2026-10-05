@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sauri2008_factbank-annotation-guidelines</title>
+<meta name="description" content="sauri2008_factbank-annotation-guidelines">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>sauri2008_factbank-annotation-guidelines</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/sauri2008_factbank-annotation-guidelines.md</code>　來源最後修改 2026-08-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<h2 id="_1">這份文獻說了什麼</h2>
+<p>這是 FactBank 語料庫的標注指南正本（作者自存版，Brandeis 大學），教標注者如何判定
+「文本中的每個事件，是被誰、以多確定的態度、說成有發生還是沒發生」。它把這件事拆成
+三個依序進行的任務，每個任務都有明確的操作判準：</p>
+<p><strong>任務一：找出「引入來源的述語」（Source-Introducing Predicates, SIPs）。</strong>
+像「說」「認為」「知道」「後悔」這類動詞（也含名詞、形容詞），會把一個新的評估者帶進
+論述。指南列出五項判準（是事件、詞性、詞彙語意上表達某人對嵌入事件的立場、帶事件補語、
+選一個認知主體當論元），並分類為報導、知識、信念、懷疑、感知、證明、推論、心理反應等
+述語類別。</p>
+<p><strong>任務二：辨識來源。</strong>
+每篇文本預設有一個隱含來源：作者（標記為 s0）。SIP 再引入新來源（通常是它的文法主詞）。
+關鍵設計是<strong>巢狀來源（nested source）</strong>：讀者其實接觸不到「Milosevic 的兒子」本人的判斷，
+只接觸得到「作者轉述的 Milosevic 的兒子」，所以來源記成鏈：s1_s0（兒子_作者）。
+鏈可以一直疊，例如「Intel 說某客戶發現了兩個瑕疵」中，「瑕疵存在」這個事件的相關來源鏈
+有四條：author、intel_author、customer_author、customer_intel_author。另外設計了
+GEN（泛指來源，「大家都清楚⋯」）與 DUM（引號內找不到說話者的虛設來源）。</p>
+<p><strong>任務三：指派事實性值。</strong>
+每筆標注形式化為 f(事件, 來源) = 值。值由兩個參數組合：
+- <strong>認識情態（epistemic modality）</strong>：CT（確定）、PR（很可能）、PS（有可能）、U（未定）。
+- <strong>極性（polarity）</strong>：+（發生）、−（未發生）、u（不明）。
+組合成 CT+、PR+、PS+、CT−、PR−、PS−、CTu、Uu 等值。指南並提供一套「共述測試」
+（copredication tests，用矛盾律與排中律檢查一個句子後面能不能接相反陳述）來區分
+CT／PR／PS／U，讓確定程度的判定有形式判準、不靠標注者直覺。</p>
+<p>兩個值得記住的評估假設：(1) <strong>等信度假設</strong>：標注時假定所有來源同樣可信，不因「專家說的」
+就標得更確定；(2) <strong>句內知識假設</strong>：只根據當句的語言訊息判斷，不用世界知識、也不用
+前後文的知識。指南明言（第 3 頁注 2）：本工作不評估事件依我們自己的信念是否為真，
+只評估文本呈現了什麼。</p>
+<h2 id="_2">與本專案設計的對照</h2>
+<p>任務指定要驗證的三點，這份指南全數證實：</p>
+<p>(a) <strong>事實性是否相對於來源標注</strong>——是。第 2.3 節開宗明義：「指派給文本中事件的事實性值，
+永遠相對於一個或多個在特定時間點對該值作出承諾的參與者」，形式化為 f(event, source) = value。</p>
+<p>(b) <strong>來源可否巢狀</strong>——可以，而且是核心設計。s1_s0 鏈式記法、四條來源鏈的 Intel 例子、
+主來源（main source）與巢套來源（nesting sources）的區分都在指南裡。</p>
+<p>(c) <strong>是否同時標確定程度</strong>——是。CT／PR／PS 三級（certain／probable／possible）
+就是確定程度分級，與極性正交組合。</p>
+<p>本專案的立場因此可以寫成：<strong>知道 FactBank 的完整設計，取其「來源」維度，
+刻意不取其「確定程度」維度</strong>。理由有三層：</p>
+<ol>
+<li>FactBank 的確定程度是<strong>人類標注者</strong>用形式化共述測試判定的，判定對象是
+   「文本裡有沒有 probably、may 這類語言標記」，不是標注者自己對內容的信心。
+   換到 LLM 抽取的情境，讓模型輸出 certain／probable／possible 就變質成模型自報信心，
+   直接踩到本專案紅線第 2 條（信心必須由程式化訊號推導）。</li>
+<li>即使在人類標注上，確定程度也是整套設計中最難的部分：指南得動用矛盾律測試才能把
+   PR 與 PS 分開，而姊妹論文（見 sauri2008_double-layered-factuality 筆記）引述
+   Rubin (2007) 的五級確定度標注只得到 kappa=0.15–0.41，遠低於 FactBank 靠形式測試
+   達到的 0.81。這是「不採確定程度分級」的實證理由。</li>
+<li>本專案的替代方案（極性兩值＋出處強制＋程式化信心訊號）保留了 FactBank 真正的
+   方法論核心：事實性相對於來源、承諾與未承諾要分開記。口述歷史中「受訪者說某製作人
+   告訴他⋯⋯」正是 FactBank 的巢狀來源結構；我們的 SourceCitation（檔名、時間碼、
+   口述者、段落）等於把「主來源＝受訪者、錨定來源＝逐字稿」固定下來，
+   而受訪者轉述他人時的那一層，就是關係層 epistemic-status marker 該接手的位置
+   （ICCCM 摘要已承諾此欄位，這份指南是它最直接的先例文獻）。</li>
+</ol>
+<p>另外兩個假設也直接可用：等信度假設對應本專案「不對口述者可信度做先驗排序、
+跨人佐證交給程式化訊號」；句內知識假設對應「抽取時不腦補、只記文本呈現的樣貌」
+（extract-qa 的腦補檢查即同一精神）。</p>
+<h2 id="_3">完整書目與取得方式</h2>
+<p>Saurí, Roser. 2008. <em>FactBank 1.0 Annotation Guidelines</em>. Brandeis University, May 18, 2008. 34 頁。</p>
+<ul>
+<li>性質：語料庫標注指南（技術文件），非同儕審查出版品；但它是 LDC 正式發行語料
+  FactBank 1.0（LDC2009T23）隨附文件，且被同儕審查論文 Saurí &amp; Pustejovsky (2009, LREV)
+  引為權威來源（LDC 語料文件的參考書目列為 Saurí 2008a）。</li>
+<li>取得：作者自存於 Brandeis 大學個人學術頁，合法公開下載。
+  https://www.cs.brandeis.edu/~roser/pubs/fb_annotGuidelines.pdf</li>
+<li>本機檔案：<code>refs/sauri2008_factbank-annotation-guidelines.pdf</code></li>
+</ul>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

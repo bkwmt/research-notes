@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Research Notes</title>
+<meta name="description" content="程明（Ming Cheng）的文獻筆記、團隊側寫與導讀投影片">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="index.html">Research Notes</a> › 首頁</p>
+<h1>Research Notes</h1>
+<p class="sub">程明（Ming Cheng）的文獻筆記、團隊側寫與導讀投影片</p>
+<p class="meta">共 65 頁　建置 2026-10-06</p>
+</div></header>
+<main class="wrap">
+<div class="notebox"><b>這是什麼</b>：研究過程中寫下的文獻筆記、團隊側寫與論文導讀，從各研究專案複製快照而來；
+正本仍在原專案，日期欄是來源檔的最後修改日。筆記採「八節模板」（貢獻、抽取流程、組織、表示法、資料集、評估、問題、對本專案的啟示），
+讀者設定為人文學者。每篇都標明來源檔路徑；寫作時的專案內部檔案連結改成灰字註記、不對外連。</div>
+<div class="toc"><ul><li><a href="#團隊與機構側寫">團隊與機構側寫</a>（1）</li><li><a href="#導讀投影片">導讀投影片</a>（1）</li><li><a href="#索引與回顧">索引與回顧</a>（5）</li><li><a href="#IDOHL 調查報告（2026-10-05）">IDOHL 調查報告（2026-10-05）</a>（4）</li><li><a href="#文獻深讀筆記（八節）">文獻深讀筆記（八節）</a>（54）</li></ul></div>
+<h2 id="團隊與機構側寫">團隊與機構側寫 <span class="tag">1</span></h2>
+<ul class="list">
+<li><a class="t" href="profiles/idohl-lab-profile-2026-10-05.html">International Digital Oral History Lab（IDOHL）團隊側寫</a><span class="d">2026-10-05</span><span class="b">UCL 與 TU Darmstadt 合辦的數位口述歷史實驗室：團隊、年表、三個計畫、開源釋出、與 extract_ohistory 的對照、閱讀建議。</span></li>
+</ul><h2 id="導讀投影片">導讀投影片 <span class="tag">1</span></h2>
+<ul class="list">
+<li><a class="t" href="slides/crossley2008-pretty-connected/index.html">Pretty Connected：早期英國 punk 的社會網絡（Crossley 2008 導讀）</a><span class="d">2026-07-30</span><span class="b">實驗室週會的論文導讀投影片。公開版移除了出版社圖表與未授權照片，保留三張公眾領域或 CC 授權的照片。</span></li>
+</ul><h2 id="索引與回顧">索引與回顧 <span class="tag">5</span></h2>
+<ul class="list">
+<li><a class="t" href="notes/blockers.html">卡點對照表：實驗撞到的問題 → 前人已有的方法</a><span class="d">2026-09-08</span></li>
+<li><a class="t" href="notes/matrix.html">跨文獻對照矩陣（20 份深讀筆記彙整）</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/refs.html">refs 總表（extract_ohistory 文獻庫）</a><span class="d">2026-10-05</span></li>
+<li><a class="t" href="notes/review-2026-07.html">文獻回顧：LLM 知識抽取與 agentic harness（extract_ohistory 轉向依據）</a><span class="d">2026-07-20</span></li>
+<li><a class="t" href="notes/template.html">深讀筆記：模板與撰寫說明（給閱讀 agent）</a><span class="d">2026-07-22</span></li>
+</ul><h2 id="IDOHL 調查報告（2026-10-05）">IDOHL 調查報告（2026-10-05） <span class="tag">4</span></h2>
+<ul class="list">
+<li><a class="t" href="notes/idohl/01-team-history.html">IDOHL 團隊與歷史：International Digital Oral History Lab（UCL × TU Darmstadt）</a><span class="d">2026-10-05</span></li>
+<li><a class="t" href="notes/idohl/02-three-projects.html">IDOHL 三個研究計畫調查報告：Hidden Histories、MDOH、MeDoraH</a><span class="d">2026-10-05</span></li>
+<li><a class="t" href="notes/idohl/03-open-source-code.html">IDOHL 開源釋出與程式碼調查</a><span class="d">2026-10-06</span></li>
+<li><a class="t" href="notes/idohl/04-publications-related-work.html">IDOHL 出版品與相關工作</a><span class="d">2026-10-05</span></li>
+</ul><h2 id="文獻深讀筆記（八節）">文獻深讀筆記（八節） <span class="tag">54</span></h2>
+<ul class="list">
+<li><a class="t" href="notes/aikhenvald2007_information-source.html">Aikhenvald 2007 — 訊息來源與言據性：我們能下什麼結論？</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/airoldi2024_nested-relationality-taste-hierarchies.html">Airoldi 2024_用數位痕跡繪製品味階序的巢狀關係性</a><span class="d">2026-09-09</span></li>
+<li><a class="t" href="notes/bai2025_autoschemakg.html">Bai 2025_AutoSchemaKG：從語料自動長出 schema 的知識圖譜建構</a><span class="d">2026-09-08</span></li>
+<li><a class="t" href="notes/baumann2026_graded-conceptualization-taste.html">baumann2026_graded-conceptualization-taste</a><span class="d">2026-09-09</span></li>
+<li><a class="t" href="notes/bian2025_llm-kgc-survey.html">bian2025_LLM 賦能的知識圖譜建構綜述</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/blouin2024_chinese-newspapers-ner.html">Blouin 2024_中文歷史報刊的 NER 與實體連結資料集</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/buehler2025_agentic-graph-reasoning.html">buehler2025_agentic-graph-reasoning</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/chang2025_evidential-hierarchy-certainty.html">Chang 2025 — 從讀者確定度檢測中文言據類別的階層</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/chappell2001_sinitic-evidential.html">Chappell 2001 — 漢語系語言言據標記的類型學（經驗體「過」作為言據詞）</a><span class="d">2026-10-06</span></li>
+<li><a class="t" href="notes/cherukuri2025_oral-history-llm.html">Cherukuri 2025_LLM 做口述歷史的文本分類與情感分析</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/chiang2021_hakka-say-verb.html">江敏華 2021 — 臺灣客語言說動詞「話」的語法化與詞彙化</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/edge2024_graphrag.html">Edge 2024_GraphRAG：先建圖再做社群摘要的全域問答</a><span class="d">2026-10-06</span></li>
+<li><a class="t" href="notes/faller2002_cuzco-quechua-evidentials.html">Faller 2002 — 庫斯科蓋丘亞語言據詞的語意與語用</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/fan2025_discourse-temporal-relation-llm.html">Fan 2025_篇章層時間關係抽取：讓 LLM 抽出一致的時間結構</a><span class="d">2026-09-09</span></li>
+<li><a class="t" href="notes/fang2025_historical-chinese-nlp.html">Fang 2025_歷史中文 NLP：LLM vs 傳統工具在斷詞／詞性／NER 的比較</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/fang2026_reproducible-annotation-guide.html">Fang 2026_用 LLM 做可重現文本標註的方法指南（人文社科）</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/gao2026_fluid-user-preferences.html">Gao 2026_流動的使用者偏好：穩定偏好與情境偏好的二分，以及 S2Pref 資料集</a><span class="d">2026-09-09</span></li>
+<li><a class="t" href="notes/gashteovski2022_benchie.html">Gashteovski 2022_BenchIE：以事實為單位的開放式抽取評估</a><span class="d">2026-09-08</span></li>
+<li><a class="t" href="notes/gu2024_llm-as-judge-survey.html">Gu 2024_LLM 當評審綜述</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/hiltmann2025_ner4all.html">Hiltmann 2025_NER4all：把歷史脈絡寫進 prompt 就能做好 NER</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/huang2003_doubts-complementation.html">Huang 2003 — 對補語結構的懷疑：功能學派的分析（台灣華語口語的覺得、記得、知道）</a><span class="d">2026-10-06</span></li>
+<li><a class="t" href="notes/jing2007_conversational-social-networks.html">Jing 2007_從口述訪談轉寫抽社會網絡與傳記事實</a><span class="d">2026-09-08</span></li>
+<li><a class="t" href="notes/ldc2005_ace-english-events-guidelines.html">ldc2005_ace-english-events-guidelines</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/li2025_agentic-kgr.html">li2025_agentic-kgr</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/liu2024_openie-survey.html">Liu 2024_開放式資訊抽取綜述：從規則式模型到大型語言模型</a><span class="d">2026-09-08</span></li>
+<li><a class="t" href="notes/liu2026_odl-templlm-temporal-reasoning.html">Liu 2026_ODL-TempLLM：本體引導＋描述邏輯推理的時間推論</a><span class="d">2026-09-09</span></li>
+<li><a class="t" href="notes/loc2019_edtf-spec.html">loc2019_edtf-spec</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/lu2025_karma.html">lu2025_karma — KARMA：用多智能體 LLM 自動擴充知識圖譜</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/mbakwe2009_review-vansina-oral-tradition.html">mbakwe2009_review-vansina-oral-tradition</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/mihindukulasooriya2023_text2kgbench.html">Mihindukulasooriya 等人 2023_Text2KGBench：本體約束下從文本生成知識圖譜的評測基準</a><span class="d">2026-10-06</span></li>
+<li><a class="t" href="notes/mintz2009_distant-supervision.html">Mintz 2009_遠距監督：不用標注資料的關係抽取</a><span class="d">2026-09-08</span></li>
+<li><a class="t" href="notes/mo2025_kggen.html">Mo 等人 2025_KGGen：用語言模型從純文字抽取知識圖譜</a><span class="d">2026-10-06</span></li>
+<li><a class="t" href="notes/niu2024_contempo-temporal-relation-extraction.html">Niu 2024_ConTempo：用對比學習教模型分清「之前」與「之後」的時間關係抽取</a><span class="d">2026-09-09</span></li>
+<li><a class="t" href="notes/pan2024_llm-kg-roadmap.html">pan2024_LLM 與知識圖譜統一路線圖</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/papaluca2024_zero-few-shot-kg-triplets.html">Papaluca 2024_零／少樣本的知識圖譜三元組抽取</a><span class="d">2026-09-08</span></li>
+<li><a class="t" href="notes/peper2024_shoes-acosi-implicit-opinion.html">Peper 2024_Shoes-ACOSI：把「沒有評價詞的評價」圈成一段原文</a><span class="d">2026-09-09</span></li>
+<li><a class="t" href="notes/portelli2018_what-makes-oral-history-different.html">portelli2018_what-makes-oral-history-different</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/rasmussen2025_zep-temporal-kg.html">Rasmussen 2025_Zep：時序知識圖譜當 agent 的記憶層</a><span class="d">2026-09-08</span></li>
+<li><a class="t" href="notes/sauri2008_double-layered-factuality.html">sauri2008_double-layered-factuality</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/sauri2008_factbank-annotation-guidelines.html">sauri2008_factbank-annotation-guidelines</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/sauri2008_factuality-profiler-phd.html">sauri2008_factuality-profiler-phd</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/sauri2009_factbank-corpus-documentation.html">sauri2009_factbank-corpus-documentation</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/shi2024_agentre.html">shi2024_agentre：AgentRE，一個給關係抽取用的 agent 框架</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/stankovic2026_tei-ner-interview-corpus.html">stankovic2026_tei-ner-interview-corpus：把訪談語料編成 TEI、接上 Wikidata、再用文本計量讀它</a><span class="d">2026-10-06</span></li>
+<li><a class="t" href="notes/strutz2026_tei-eval.html">strutz2026_tei-eval：LLM 做 TEI 編碼的多維度評估框架</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/su2025_transformer-temporal-ie-review.html">su2025_transformer-temporal-ie-review</a><span class="d">2026-09-09</span></li>
+<li><a class="t" href="notes/usumi2026_prepper-preference-profiling.html">usumi2026_PrePPER 偏好模式人物側寫</a><span class="d">2026-09-09</span></li>
+<li><a class="t" href="notes/vansina1985_oral-tradition-as-history.html">vansina1985_oral-tradition-as-history</a><span class="d">2026-08-22</span></li>
+<li><a class="t" href="notes/vlachidis_medorah-ontology-memory-recollection.html">vlachidis_medorah-ontology-memory-recollection</a><span class="d">2026-10-05</span></li>
+<li><a class="t" href="notes/xu2024_generative-ie-survey.html">xu2024_生成式資訊抽取綜述</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/yang2025_graphusion.html">yang2025_graphusion（Graphusion：帶全局視角的知識圖譜建構 RAG 框架）</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/yehudai2025_agent-eval-survey.html">Yehudai 2025_LLM agent 評估綜述</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/yu2020_dialogre.html">Yu 2020_DialogRE：對話關係抽取</a><span class="d">2026-09-08</span></li>
+<li><a class="t" href="notes/zhu2024_autokg.html">zhu2024_autokg — LLM 於知識圖譜建構與推理的能力評測，兼提 AutoKG 多代理構想</a><span class="d">2026-07-22</span></li>
+</ul>
+
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

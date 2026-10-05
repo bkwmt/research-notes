@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fang 2025_歷史中文 NLP：LLM vs 傳統工具在斷詞／詞性／NER 的比較</title>
+<meta name="description" content="Fang 2025_歷史中文 NLP：LLM vs 傳統工具在斷詞／詞性／NER 的比較">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Fang 2025_歷史中文 NLP：LLM vs 傳統工具在斷詞／詞性／NER 的比較</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/fang2025_historical-chinese-nlp.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Fang, Z., Wu, L.-C., Kong, X., &amp; Stewart, S. D. 2025. <em>A Comparative Analysis of Word Segmentation, Part-of-Speech Tagging, and Named Entity Recognition for Historical Chinese Sources, 1900–1950</em>. arXiv:2503.19844（v1, 2025-03-25）。預印本，未經同儕審查。</li>
+<li><strong>對應待查問題</strong>：④口述歷史／數位人文（兼涉 ①LLM 抽取現況、⑤無 gold standard 評估的反面對照）</li>
+<li><strong>一句話定位</strong>：這篇拿 1900–1950 年上海圖書館「民國期刊語料」的繁體中文史料，把六種傳統中文 NLP 工具和七款 LLM 放在斷詞、詞性標註、命名實體辨識三個任務上正面對打，結論是 LLM 全面勝出但成本高得多。它直接回答了本專案最關心的問題：拿現成 LLM 處理年代久遠、用語變動的中文文本，到底靠不靠得住。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>這是一篇「短論文」（short paper），沒有提出新模型，貢獻在於一份<strong>針對過渡期（transitional-era）中文的 out-of-the-box 工具對照實驗</strong>。過去大家知道神經網路做 NER 比舊方法好，但對「歷史中文」這種低資源、用字與斷詞習慣都跟現代不同的材料，效果如何一直沒有系統性比較。作者建了一份人工標註的小型 ground truth，把 jieba、spaCy 系列這類傳統工具，跟 GPT、Claude、GLM 三家 LLM，在同一批史料上用相同的評估指標比出高下，並額外拆解了兩個變因：詩歌 vs 非詩歌、1920 年前 vs 1920 年後。核心結論：<strong>LLM 在三個任務全部指標上都贏傳統工具（僅一個例外），代價是運算成本與時間大幅增加</strong>；且 LLM 對文體差異（如詩歌）和跨年代的用語變化更有韌性，暗示它的脈絡學習能力可以「減少對特定領域訓練資料的依賴」。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>這篇不是「抽取結構化知識」，而是做<strong>語言學層次的逐字標註</strong>：把一段古早中文切成詞（斷詞）、給每個詞標詞性、標出是不是命名實體。流程單純，是單次呼叫、沒有多步或多 agent 分工：</p>
+<ol>
+<li>給每個工具／模型餵同一段原文。</li>
+<li>傳統工具（jieba、spaCy）直接跑出斷詞與標註。</li>
+<li>LLM 則靠一則統一的 prompt。prompt 內容值得記：它要 LLM 扮演「處理 1900–1950 繁體中文的 spaCy 風格標註器」，明確要求<strong>不得刪改任何文字（含標點與括號）、空格不算 token</strong>，三個子任務（切 token、標 coarse POS、標 entity）一次做完，並規定輸出成 JSON 物件陣列，還附了一個 input/output 範例（few-shot 示範格式，但非 few-shot 教學）。這對本專案是有用的 prompt 工程參考：把「忠於原文、不腦補、輸出結構固定」寫死在指令裡。</li>
+</ol>
+<p>值得注意的是他們刻意用 <strong>out-of-the-box</strong>（開箱即用），不做微調（fine-tuning）也不做 few-shot 示例教學，就是要測「現成能力」。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>組織方式極簡：每個 token 一個物件，欄位只有三個──<code>text</code>（原字串）、<code>pos</code>（粗粒度詞性標籤）、<code>ent</code>（若屬於某命名實體則標其類型，否則空字串）。沒有 schema／本體（ontology）意義上的實體型別階層，也<strong>沒有跨文件去重、實體合併、衝突解決</strong>。因為任務停在「單篇、單句、逐 token」的層次，根本不進到跨文本的實體整併。所以這篇對本專案「跨訪談消歧、合併決策」那一層沒有直接可借的做法——它處理的是比抽取更前端的問題（先把字切對、標對）。</p>
+<p>一個對本專案有啟發的討論點在第 4 節與結論：作者坦承歷史中文<strong>沒有唯一正確的斷詞方式</strong>。舉例「上海圖書館」該當一個 token 還是切成「上海／圖書館」，取決於研究問題；「教授」在 1920 年代已是「professor」的單一詞彙，但在古典中文裡是「傳授知識」兩個動作，切法隨語意與時代而變。這說明實體邊界本身帶有詮釋性、隨研究目的浮動——正呼應本專案「實體是人工判斷、非機械對齊」的立場。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>不是三元組</strong>。用的是<strong>逐 token 的屬性標註</strong>（token-level tagging），輸出為 JSON 物件陣列，每個物件是 <code>{text, pos, ent}</code> 的扁平結構。沒有主謂賓關係、沒有事件框架、沒有屬性圖。</p>
+<p>關鍵缺口（對本專案而言）：<strong>沒有出處（provenance）欄位、沒有時間資訊欄位、沒有信心分數</strong>。這很合理，因為它的評估對象是「切得對不對、標得準不準」，出處就是那一篇 passage 本身，不需要在資料結構裡再帶。信心分數方面，這篇<strong>完全沒有叫 LLM 自評信心</strong>，好壞全靠對照人工答案算出來——這一點與本專案紅線 2（絕不叫 LLM 自評信心）方向一致，可當正面案例引用。</p>
+<h2 id="5">5. 資料集</h2>
+<ul>
+<li><strong>語料</strong>：上海圖書館「民國期刊語料庫」（Shanghai Library Republican Journal corpus），晚清與民國時期的期刊。公開資料集（來源網址見論文註腳，芝加哥大學 Textual Optics Lab 託管）。</li>
+<li><strong>語言</strong>：<strong>繁體中文</strong>（LLM prompt 明寫 Traditional Chinese），正是本專案語料的同一書寫系統，這是這篇對我們特別相關的原因。</li>
+<li><strong>規模</strong>：小。從語料中抽 208 段（passages），涵蓋 1900–1950；其中 41 段為詩歌，其餘 167 段非詩歌，分佈於五個十年：1900(23)、1910(32)、1920(40)、1930(34)、1940(38)。每段 6–170 字，平均 41.3 字，總計 8,610 字。（Limitations 另述：初版 100 段，後補 100 段以測穩健性，數量與正文 208 略有出入。）</li>
+<li><strong>領域</strong>：多文體的<strong>書面史料</strong>（政府報告、學術寫作、社會政治評論、短篇小說、詩歌）。<strong>沒有口語、沒有訪談、沒有語音辨識文本</strong>——這是它與本專案的最大落差：我們的材料是口述歷史 SRT 逐字稿，含口語、停頓、ASR 錯字。</li>
+<li><strong>新 benchmark？</strong>：算是提出了一份新的人工標註評估集（斷詞／POS／NER 三層），但規模很小、且似乎未見公開釋出標註檔，主要作內部對照用。</li>
+</ul>
+<h2 id="6">6. 評估</h2>
+<ul>
+<li><strong>有人工 gold standard</strong>：作者群集體斷詞與標註，<strong>每段由兩位作者交叉核對</strong>，歧異經討論後解決。這是紮實但成本高的小規模人工標準答案。</li>
+<li><strong>指標</strong>：斷詞用 <strong>F1</strong>（平衡過度切分與切分不足，論文採「F1 ≥ 90% 視為高準確」的慣例門檻）；詞性與 NER 用<strong>準確率（accuracy %）</strong>；另記錄處理時間（秒）、送出／接收 token 數、以及 LLM 回傳失敗次數。</li>
+<li><strong>一個評估設計的隱藏前提要留意</strong>：POS 與 NER 的準確率是<strong>只在「已正確斷詞的 token」上計算</strong>。也就是說 NER 分數是條件於斷詞正確的，斷詞先錯的部分不進 NER 分母。這會讓斷詞差的工具在 NER 上的數字看起來不那麼難看，跨工具比較時要小心解讀。</li>
+<li><strong>有沒有用 LLM 自評／LLM 當評審（LLM-as-a-judge）？沒有。</strong> 全部對照人工答案計分，沒有循環自證的問題。這點乾淨。</li>
+<li><strong>人工介入程度</strong>：集中在前端建 ground truth（雙人標註＋討論），評估本身是程式化比對，無事後人工調分。</li>
+</ul>
+<p>主要數字（節錄 Table 1，全語料）：傳統工具中 spacy_bert 最好（斷詞 F1 82.50、NER 93.78）；LLM 中 o3-mini 最強（F1 94.50、POS 88.83、NER 97.00）但耗時 5295 秒、接收 token 逾 70 萬，成本高到不切實際；gpt-4o（F1 91.97、NER 96.40，797 秒）與 claude-3-5-sonnet（F1 93.41、NER 94.24，1486 秒）在準確與速度間最平衡；claude-3-5-haiku 有 13 次未依格式回傳（失敗最多）；GLM-4 系列墊底，GLM-4-Long 的 NER 甚至輸給傳統工具。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自己承認的：
+- ground truth 樣本小（百餘至兩百段），雖加倍後結論未變，仍需更大資料集驗證。
+- 只測 out-of-the-box，未試微調或 few-shot，未必是各工具的上限表現。
+- 未來想做開源模型以兼顧可擴充性、效率與可近用性。</p>
+<p>我讀出來、它沒明講或值得存疑的：
+- <strong>POS 準確率對傳統工具可能不公平</strong>。jieba 全語料 POS 只有 42%，低得異常，很可能是傳統工具的詞性標籤集與作者採用的 coarse 標籤集對應不上（標籤 mapping 損失），而非真的「標錯」。這種標籤體系落差會系統性壓低傳統工具的分數，論文沒有交代標籤對齊怎麼處理。
+- <strong>NER「準確率」的定義偏窄</strong>：如上所述只算已正確斷詞的 token，且用的是 accuracy 而非 NER 慣用的實體級 P/R/F1，跨研究可比性打折。
+- <strong>成本結論被 o3-mini 一個極端點放大</strong>：把「LLM 成本高」寫得很重，但 gpt-4o-mini 之類便宜模型其實表現也不差，成本／效益的細緻取捨談得不夠。
+- 樣本每段平均僅 41 字，偏短；長文本的斷詞錯誤累積效應未測。
+- 繁體、書面、期刊——與口語、ASR 文本的落差完全沒觸及，卻在結論做了頗大的一般化（「推進中文 NLP」）。</p>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>最直接的佐證</strong>：這是目前少見、專門在<strong>繁體中文＋年代久遠（1900–1950）＋用語劇烈變動</strong>的材料上，實測現成 LLM 的研究。它的核心發現對本專案是強支持——現成 LLM（gpt-4o、claude-3-5-sonnet 這一級）在歷史中文的斷詞與 NER 上穩定勝過 jieba／spaCy，而且<strong>對跨年代用語變化與文體差異更有韌性</strong>（Table 3：傳統工具 1920 年前後 F1 差距大，約 77 → 90；LLM 差距小很多）。這正好回應本專案要處理跨越數十年、受訪者口中夾雜舊稱謂與時代用語的擔憂：LLM 的脈絡學習讓我們比較不必為「時代用語」另建詞典或做領域微調。claude-3-5-sonnet「跨所有類別結果一致且優異」的評語，也支持本專案以 Claude 為抽取主力的選型。</p>
+<p><strong>同時是警告</strong>：
+1. 這篇證明的是「切詞、標詞性、辨識實體型別」這種<strong>前端語言處理</strong>，不是本專案要的「事件、關係、goût 敘述＋出處」那種結構化知識抽取。它的成功不能直接外推到我們更複雜的 schema。
+2. 它的材料是<strong>乾淨的書面期刊</strong>，我們的是<strong>口述 SRT、含 ASR 錯字與口語</strong>。論文完全沒碰語音辨識錯字這一層；換句話說，關於「錯字容忍度」我們得自己驗，不能拿這篇背書。可預期的風險是：ASR 把人名、專有名詞打錯時，NER 會連帶失準，而這篇的高 NER 分數是在無錯字前提下取得的。
+3. 連 claude-3-5-haiku 都會出現 13 次不依 JSON 格式回傳、GLM 系列大量失敗——提醒本專案在 headless 批次階段必須有<strong>格式驗證與重試機制</strong>（本專案 extract-qa 的出處存在性、格式合規檢查正對應這點）。</p>
+<p><strong>與四條方法論紅線的相容性</strong>：
+- 紅線 2（不叫 LLM 自評信心）：<strong>相容且是正面示範</strong>。這篇全程用人工答案計分，未用 LLM 自評。
+- 紅線 1（不做配對式 gold standard）：<strong>部分張力，但性質不同</strong>。這篇有人工 gold（雙人標註），但那是 token 級的語言學標註，成本可控、學界慣例明確；本專案拒絕的是「抽取／消歧結果的 cluster 配對式 gold」，兩者不是同一件事。可借鑑之處：本專案實體層本就有人工名冊當對照，與這篇的 token 級 gold 精神一致——<strong>在「客觀有標準答案」的層次上用人工 gold 是可接受的，紅線針對的是主觀、配對式的消歧標註</strong>。
+- 紅線 3（強制附出處）：這篇<strong>沒有</strong>出處欄位設計可借，因為它任務層次不到跨文本。本專案的出處需求仍要自己扛。
+- 紅線 4（可追溯）：這篇是單次呼叫、無中間產物，也無可借鑑的落檔設計。</p>
+<p><strong>表示法層面的參考價值</strong>：有限。它的 <code>{text, pos, ent}</code> 扁平 token 結構與本專案「實體／事件／關係／goût＋出處」的混合結構差距很大，不是三元組也不是我們要的框架。但它的 <strong>prompt 設計哲學</strong>（明令不刪改原文、不腦補、輸出固定 JSON、附範例）值得直接沿用到 srt-extract 的指令裡，尤其「Do not remove any text」這種對抗 LLM 自作主張的護欄，與本專案「寧多勿漏、忠於原文」的詳細抽取原則同向。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

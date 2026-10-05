@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>refs 總表（extract_ohistory 文獻庫）</title>
+<meta name="description" content="refs 總表（extract_ohistory 文獻庫）">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 索引與回顧</p>
+<h1>refs 總表（extract_ohistory 文獻庫）</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/refs.md</code>　來源最後修改 2026-10-05　分類 索引與回顧</p>
+</div></header>
+<main class="wrap">
+<p>建立：2026-07-20。<strong>九類待查問題</strong>：①LLM 抽取／KG 建構現況 ②agentic 建構
+③Agent Skills／harness 出處 ④口述歷史／數位人文 ⑤無 gold standard 評估
+⑥來歷標記／極性／時間記法 ⑦零標注三元組抽取的參照點 ⑧本體學習與 schema 歸納
+⑨跨來源實體對齊。書目均經二次核實。綜合論述見 <code>文獻回顧_2026-07.md</code>。</p>
+<p><strong>兩份索引，用途不同</strong>：</p>
+<ul>
+<li><code>notes/_對照矩陣.md</code>（2026-07-22）按<strong>主題</strong>索引，三張表加五個橫向發現，
+  適合寫 related work。</li>
+<li><code>notes/_卡點對照表.md</code>（2026-09-08）按<strong>實驗卡點</strong>反向索引——從手上的問題查文獻。
+  建立的理由是：文獻按主題歸檔、實驗按卡點推進，兩種索引對不上，庫存就用不出來。</li>
+</ul>
+<p><strong>逐篇深讀筆記</strong>：<code>notes/</code> 下每篇 PDF 一份八節筆記（2026-07-22 首批 20 篇，
+2026-09-08 補 Jing 2007、BenchIE、DialogRE、AutoSchemaKG 四篇，2026-09-09 補時間關係、品味與訪談語料 11 篇，共 35 篇）。
+撰寫規格見 <code>notes/_筆記模板與說明.md</code>。<strong>尚無筆記者於各節標明</strong>，
+未讀文獻只記書目與預期，不得當作結論引用。</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>檔名（refs/ 內）</th>
+<th>作者</th>
+<th>年</th>
+<th>標題（短）</th>
+<th>場域</th>
+<th>同儕審查</th>
+<th>DOI / arXiv</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xu2024_generative-ie-survey.pdf</td>
+<td>Xu et al.</td>
+<td>2024</td>
+<td>Generative IE Survey</td>
+<td><em>Frontiers of CS</em></td>
+<td>✅</td>
+<td>arXiv:2312.17617</td>
+<td>①</td>
+</tr>
+<tr>
+<td>pan2024_llm-kg-roadmap.pdf</td>
+<td>Pan et al.</td>
+<td>2024</td>
+<td>LLMs &amp; KGs Roadmap</td>
+<td><em>IEEE TKDE</em></td>
+<td>✅</td>
+<td>arXiv:2306.08302</td>
+<td>①</td>
+</tr>
+<tr>
+<td>edge2024_graphrag.pdf</td>
+<td>Edge et al.</td>
+<td>2024</td>
+<td>GraphRAG</td>
+<td>MS Research</td>
+<td>❌ 預印本</td>
+<td>arXiv:2404.16130</td>
+<td>①</td>
+</tr>
+<tr>
+<td>mo2025_kggen.pdf</td>
+<td>Mo et al.</td>
+<td>2025</td>
+<td>KGGen ＋ MINE benchmark</td>
+<td>NeurIPS 2025</td>
+<td>✅</td>
+<td>arXiv:2502.09956</td>
+<td>①⑤</td>
+</tr>
+<tr>
+<td>bian2025_llm-kgc-survey.pdf</td>
+<td>Bian</td>
+<td>2025</td>
+<td>LLM KGC Survey</td>
+<td>—</td>
+<td>❌ 預印本</td>
+<td>arXiv:2510.20345</td>
+<td>①</td>
+</tr>
+<tr>
+<td>shi2024_agentre.pdf</td>
+<td>Shi et al.</td>
+<td>2024</td>
+<td>AgentRE（含中文實驗）</td>
+<td>CIKM '24</td>
+<td>✅</td>
+<td>10.1145/3627673.3679791</td>
+<td>②</td>
+</tr>
+<tr>
+<td>lu2025_karma.pdf</td>
+<td>Lu et al.</td>
+<td>2025</td>
+<td>KARMA 九 agent 建構</td>
+<td>NeurIPS 2025</td>
+<td>✅</td>
+<td>arXiv:2502.06472</td>
+<td>②</td>
+</tr>
+<tr>
+<td>yang2025_graphusion.pdf</td>
+<td>Yang et al.</td>
+<td>2025</td>
+<td>Graphusion（global fusion）</td>
+<td>WWW '25 Comp.</td>
+<td>✅</td>
+<td>10.1145/3701716.3717821</td>
+<td>②</td>
+</tr>
+<tr>
+<td>zhu2024_autokg.pdf</td>
+<td>Zhu et al.</td>
+<td>2024</td>
+<td>AutoKG</td>
+<td><em>WWWJ</em></td>
+<td>✅</td>
+<td>arXiv:2305.13168</td>
+<td>②</td>
+</tr>
+<tr>
+<td>buehler2025_agentic-graph-reasoning.pdf</td>
+<td>Buehler</td>
+<td>2025</td>
+<td>Agentic 迭代建圖</td>
+<td><em>J. Mater. Res.</em> 40(15)</td>
+<td>✅</td>
+<td>10.1557/s43578-025-01652-1</td>
+<td>②</td>
+</tr>
+<tr>
+<td>li2025_agentic-kgr.pdf</td>
+<td>Li et al.</td>
+<td>2025</td>
+<td>Agentic-KGR（RL 共演化）</td>
+<td>—</td>
+<td>❌ 預印本</td>
+<td>arXiv:2510.09156</td>
+<td>②</td>
+</tr>
+<tr>
+<td>（網頁）</td>
+<td>Anthropic</td>
+<td>2025</td>
+<td>Agent Skills 官方定義</td>
+<td>eng. blog</td>
+<td>❌ 業界文件</td>
+<td>/equipping-agents-for-the-real-world-with-agent-skills</td>
+<td>③</td>
+</tr>
+<tr>
+<td>（網頁）</td>
+<td>Anthropic</td>
+<td>2025</td>
+<td>Long-running harnesses</td>
+<td>eng. blog</td>
+<td>❌ 業界文件</td>
+<td>/effective-harnesses-for-long-running-agents</td>
+<td>③</td>
+</tr>
+<tr>
+<td>（網頁）</td>
+<td>Anthropic</td>
+<td>2025</td>
+<td>Context engineering</td>
+<td>eng. blog</td>
+<td>❌ 業界文件</td>
+<td>/effective-context-engineering-for-ai-agents</td>
+<td>③</td>
+</tr>
+<tr>
+<td>（網頁）</td>
+<td>Anthropic</td>
+<td>2024</td>
+<td>Building Effective Agents</td>
+<td>eng. blog</td>
+<td>❌ 業界文件</td>
+<td>/building-effective-agents</td>
+<td>③</td>
+</tr>
+<tr>
+<td>yehudai2025_agent-eval-survey.pdf</td>
+<td>Yehudai et al.</td>
+<td>2025</td>
+<td>Agent 評估綜述</td>
+<td>—</td>
+<td>❌ 預印本</td>
+<td>arXiv:2503.16416</td>
+<td>③⑤</td>
+</tr>
+<tr>
+<td>（付費牆，未下載）</td>
+<td>Sun, Yang &amp; Liu</td>
+<td>2024</td>
+<td>口述歷史檔案＋LLM-RAG＋KG</td>
+<td>ICISDM '24 (ACM)</td>
+<td>✅</td>
+<td>10.1145/3686397.3686420</td>
+<td>④</td>
+</tr>
+<tr>
+<td>cherukuri2025_oral-history-llm.pdf</td>
+<td>Cherukuri et al.</td>
+<td>2025</td>
+<td>口述歷史 LLM 分類／情感</td>
+<td>—</td>
+<td>❌ 預印本</td>
+<td>arXiv:2508.06729</td>
+<td>④</td>
+</tr>
+<tr>
+<td>（付費牆，未下載）</td>
+<td>Chen et al.</td>
+<td>2024</td>
+<td>Densho 訪談 NLP 個案</td>
+<td><em>Electronic Library</em> 42(4)</td>
+<td>✅</td>
+<td>10.1108/EL-12-2023-0303</td>
+<td>④</td>
+</tr>
+<tr>
+<td>hiltmann2025_ner4all.pdf</td>
+<td>Hiltmann et al.</td>
+<td>2025</td>
+<td>NER4all（歷史文本 NER）</td>
+<td>—</td>
+<td>❌ 預印本</td>
+<td>arXiv:2502.04351</td>
+<td>④</td>
+</tr>
+<tr>
+<td>fang2025_historical-chinese-nlp.pdf</td>
+<td>Fang, Z. et al.</td>
+<td>2025</td>
+<td>民國中文 NLP 工具比較</td>
+<td>—</td>
+<td>❌ 預印本</td>
+<td>arXiv:2503.19844</td>
+<td>④</td>
+</tr>
+<tr>
+<td>blouin2024_chinese-newspapers-ner.pdf</td>
+<td>Blouin et al.</td>
+<td>2024</td>
+<td>中文歷史報刊 NER 資料集</td>
+<td>LREC-COLING 2024</td>
+<td>✅</td>
+<td>aclanthology.org/2024.lrec-main.35</td>
+<td>④</td>
+</tr>
+<tr>
+<td>gu2024_llm-as-judge-survey.pdf</td>
+<td>Gu et al.</td>
+<td>2024</td>
+<td>LLM-as-a-Judge 綜述</td>
+<td>—</td>
+<td>❌ 預印本</td>
+<td>arXiv:2411.15594</td>
+<td>⑤</td>
+</tr>
+<tr>
+<td>strutz2026_tei-eval.pdf</td>
+<td>Strutz</td>
+<td>2026</td>
+<td>TEI 編碼多維度評估</td>
+<td><em>JOHD</em> 12(39)</td>
+<td>✅</td>
+<td>10.5334/johd.484</td>
+<td>⑤</td>
+</tr>
+<tr>
+<td>mihindukulasooriya2023_text2kgbench.pdf</td>
+<td>Mihindukulasooriya et al.</td>
+<td>2023</td>
+<td>Text2KGBench</td>
+<td>ISWC 2023</td>
+<td>✅</td>
+<td>arXiv:2308.02357</td>
+<td>⑤</td>
+</tr>
+<tr>
+<td>fang2026_reproducible-annotation-guide.pdf</td>
+<td>Fang, Q. et al.</td>
+<td>2026</td>
+<td>人文社科 LLM 標註方法指南</td>
+<td>—</td>
+<td>❌ 預印本</td>
+<td>arXiv:2604.09638</td>
+<td>⑤</td>
+</tr>
+</tbody>
+</table></div>
+<p>備註：
+- KGGen 的 arXiv 版（9 位作者）與 NeurIPS poster 頁（7 位）名單不一致，正式引用依 proceedings。
+- ICISDM 2024 與 Chen et al. 2024 在付費牆內，只記書目不下載（不繞過付費牆）。
+- Cherukuri et al. 2025 與 Chen et al. 2024 出自同一批北德州大學團隊（研究線連續）。</p>
+<h2 id="2026-08-22">方法學基礎文獻（2026-08-22 新增）</h2>
+<p>對應問題編號 <strong>⑥ 來歷標記／極性／時間記法的設計依據</strong>（來歷標記的語料證據
+另見 <code>notes/語料言據標記盤點_2026-08-22.md</code>）。三路查證均守「不繞付費牆」；
+筆記在 <code>notes/</code> 同名 .md，含「與本專案設計的對照」一節。</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>檔名（refs/ 內）</th>
+<th>作者</th>
+<th>年</th>
+<th>標題（短）</th>
+<th>場域</th>
+<th>同儕審查</th>
+<th>主題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aikhenvald2007_information-source.pdf</td>
+<td>Aikhenvald</td>
+<td>2007</td>
+<td>Information source and evidentiality</td>
+<td><em>Italian J. of Linguistics</em> 19(1)</td>
+<td>✅</td>
+<td>來歷（類型學：quotative／reported 之分）</td>
+</tr>
+<tr>
+<td>faller2002_cuzco-quechua-evidentials.pdf</td>
+<td>Faller</td>
+<td>2002</td>
+<td>Cuzco Quechua evidentials</td>
+<td>Stanford 博士論文</td>
+<td>委員會審查</td>
+<td>來歷（無標記＝預設直接經驗，可取消的語用隱涵）</td>
+</tr>
+<tr>
+<td>chappell2001_sinitic-evidential.pdf</td>
+<td>Chappell</td>
+<td>2001</td>
+<td>漢語系言據策略</td>
+<td>OUP 專書章節</td>
+<td>✅</td>
+<td>來歷（漢語無專職言據語法，詞彙性表達）</td>
+</tr>
+<tr>
+<td>huang2003_doubts-complementation.pdf</td>
+<td>Huang</td>
+<td>2003</td>
+<td>台灣華語會話的記得／覺得</td>
+<td><em>Language and Linguistics</em>（中研院）</td>
+<td>✅</td>
+<td>來歷（「我記得」框架詞、「我覺得」評價立場）</td>
+</tr>
+<tr>
+<td>chiang2021_hakka-say-verb.pdf</td>
+<td>江敏華</td>
+<td>2021</td>
+<td>台灣客語「話」的語法化</td>
+<td>論文集</td>
+<td>✅ 匿名審查</td>
+<td>來歷（言說動詞→聽聞標記路徑）</td>
+</tr>
+<tr>
+<td>chang2025_evidential-hierarchy-certainty.pdf</td>
+<td>Chang</td>
+<td>2025</td>
+<td>言據階層與讀者確定度</td>
+<td><em>Concentric</em></td>
+<td>✅ 開放取用</td>
+<td>來歷（引述＞傳聞；確定度非類別的穩定函數）</td>
+</tr>
+<tr>
+<td>sauri2008_factbank-annotation-guidelines.pdf</td>
+<td>Saurí</td>
+<td>2008</td>
+<td>FactBank 標注指南</td>
+<td>Brandeis 技術文件</td>
+<td>❌</td>
+<td>來歷（相對於來源、巢狀來源）</td>
+</tr>
+<tr>
+<td>sauri2008_factuality-profiler-phd.pdf</td>
+<td>Saurí</td>
+<td>2008</td>
+<td>事實性側寫（博士論文）</td>
+<td>Brandeis</td>
+<td>委員會審查</td>
+<td>來歷（LREV 2009 論文的完整前身）</td>
+</tr>
+<tr>
+<td>sauri2008_double-layered-factuality.pdf</td>
+<td>Saurí &amp; Pustejovsky</td>
+<td>2008</td>
+<td>雙層事實性標注</td>
+<td>LAW 2008 (LREC)</td>
+<td>✅</td>
+<td>來歷</td>
+</tr>
+<tr>
+<td>sauri2009_factbank-corpus-documentation.pdf</td>
+<td>Saurí &amp; Pustejovsky</td>
+<td>2009</td>
+<td>FactBank 1.0 語料文件</td>
+<td>LDC2009T23</td>
+<td>官方文件</td>
+<td>來歷</td>
+</tr>
+<tr>
+<td>ldc2005_ace-english-events-guidelines.pdf</td>
+<td>LDC</td>
+<td>2005</td>
+<td>ACE 事件標注規範 v5.4.3</td>
+<td>LDC</td>
+<td>官方規範</td>
+<td>極性（「明確否定才標 NEGATIVE、其餘一律 POSITIVE」）</td>
+</tr>
+<tr>
+<td>loc2019_edtf-spec.md</td>
+<td>Library of Congress</td>
+<td>2019</td>
+<td>EDTF 規格摘錄（含擷取日期）</td>
+<td>LOC 標準頁</td>
+<td>官方標準</td>
+<td>時間（196X／1955~／區間與集合之別）</td>
+</tr>
+<tr>
+<td>portelli2018_what-makes-oral-history-different.pdf</td>
+<td>Portelli</td>
+<td>2018 譯本</td>
+<td>What Makes Oral History Different</td>
+<td><em>Wrocławski Rocznik Historii Mówionej</em>（CC BY-SA）</td>
+<td>✅</td>
+<td>口述史觀（主觀性是史料價值）</td>
+</tr>
+<tr>
+<td>mbakwe2009_review-vansina-oral-tradition.pdf</td>
+<td>Mbakwe</td>
+<td>2009</td>
+<td>Vansina 書評（交叉驗證用）</td>
+<td>期刊書評</td>
+<td>✅</td>
+<td>口述史觀</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>只記書目、未取得</strong>（付費牆或防爬蟲，不繞過）：
+Aikhenvald 2004《Evidentiality》(OUP)；Aikhenvald 2018（Oxford Handbook 框架章）；
+San Roque 2019（<em>Annual Review of Anthropology</em> 48）；Willett 1988（<em>Studies in
+Language</em> 12(1)）；Ma 2011（IEEE 會議，漢語五類階層原始出處，場域非語言學）；
+Hsieh 2008（<em>Discourse Studies</em> 10(2)）；Wang 2022（<em>IJCHL</em> 9(2)，好像）；
+Wang, Katz &amp; Chen 2003（<em>Language Sciences</em> 25(5)，台灣華語 shuo）；
+张成福、余光武 2003（《语言科学》2(3)）；潘先军 2020（《北京第二外国语学院
+学报》2020(5)，官網 504 待重試）；Saurí &amp; Pustejovsky 2009（<em>LREV</em> 43(3)，
+doi:10.1007/s10579-009-9089-9）；Vansina 1985《Oral Tradition as History》
+(U of Wisconsin Press，<strong>關鍵定義頁碼待借書補核</strong>)；Portelli 1991 英文原版
+（SUNY Press）；ISO 8601-2:2019。</p>
+<p>⑥ 組備註：San Roque 2019 曾誤存一個防爬蟲攔截頁（HTML 偽裝 .pdf），
+已於 2026-08-22 刪除；該篇維持只記書目。</p>
+<hr>
+<h2 id="7-2026-09-06">⑦ 零標注三元組抽取的參照點（2026-09-06 新增）</h2>
+<p><strong>待查問題</strong>：抽取端完全不用本語料的人工標注時，主詞—動詞—受詞的三元組
+能做到什麼程度？前人在<strong>口語轉寫</strong>與<strong>無標注</strong>這兩個條件下拿到什麼數字？
+（起因：使用者 2026-09-06 指示「人工標注是最後一步，我想知道沒有人工標注
+可以做到什麼程度」。名冊與括號標注因此全程 held-out。）</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>檔名（refs/ 內）</th>
+<th>作者</th>
+<th>年</th>
+<th>標題（短）</th>
+<th>場域</th>
+<th>同儕審查</th>
+<th>ID</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jing2007_conversational-social-networks.pdf</td>
+<td>Jing, Kambhatla &amp; Roukos</td>
+<td>2007</td>
+<td>從對話語音轉寫抽社會網絡與傳記事實</td>
+<td>ACL 2007, 1040–1047</td>
+<td>✅</td>
+<td>ACL P07-1131</td>
+<td>⑦</td>
+</tr>
+<tr>
+<td>yu2020_dialogre.pdf</td>
+<td>Yu, Sun, Cardie &amp; Yu</td>
+<td>2020</td>
+<td>DialogRE：對話關係抽取資料集</td>
+<td>ACL 2020, 4927–4940</td>
+<td>✅</td>
+<td>2020.acl-main.444</td>
+<td>⑦</td>
+</tr>
+<tr>
+<td>mintz2009_distant-supervision.pdf</td>
+<td>Mintz, Bills, Snow &amp; Jurafsky</td>
+<td>2009</td>
+<td>遠距監督：無標注的關係抽取</td>
+<td>ACL-IJCNLP 2009, 1003–1011</td>
+<td>✅</td>
+<td>ACL P09-1113</td>
+<td>⑦</td>
+</tr>
+<tr>
+<td>gashteovski2022_benchie.pdf</td>
+<td>Gashteovski et al.</td>
+<td>2022</td>
+<td>BenchIE：事實導向的 OIE 評估（含中文）</td>
+<td>ACL 2022, 4472–4490</td>
+<td>✅</td>
+<td>10.18653/v1/2022.acl-long.307</td>
+<td>⑦</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>只記書目、未下載</strong>：CKIP Transformers（Mu Yang、Wei-Yun Ma，中研院 CKIP Lab，
+GPL-3.0，無正式論文，引用 github.com/ckiplab/ckip-transformers 與
+ckip-transformers.readthedocs.io）。官方揭露的訓練資料與效能是本輪的關鍵事實，
+見下。</p>
+<h3 id="_1">這一組給出的效能階梯（本研究的定位用）</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>設定</th>
+<th>數字</th>
+<th>出處</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中文 NER，新聞語料，同領域</td>
+<td>F1 <strong>81.18%</strong>（BERT base；斷詞 F1 97.60%、詞性 95.67%）</td>
+<td>CKIP 官方 README</td>
+</tr>
+<tr>
+<td>中文歷史報刊 NER，90% 標注資料微調</td>
+<td>F1 <strong>61.27%</strong>（MacBert）</td>
+<td>Blouin 2024（庫中已有）</td>
+</tr>
+<tr>
+<td>對話關係抽取，完整人工標注（1,073 段對話、10,168 筆、36 種關係）</td>
+<td>F1 <strong>60.2%</strong></td>
+<td>Yu et al. 2020</td>
+</tr>
+<tr>
+<td>對話語音轉寫抽社會網絡連結</td>
+<td>F ≈ <strong>0.28–0.30</strong>（dev 0.30／test 0.28，自 0.06 起步）</td>
+<td>Jing et al. 2007</td>
+</tr>
+<tr>
+<td>遠距監督（不用人工標注，但要外部知識庫）</td>
+<td>precision <strong>67.6%</strong>（102 種關係、10,000 筆；recall 未報）</td>
+<td>Mintz et al. 2009</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>關鍵事實（解釋我們自己的低分）</strong>：CKIP 的斷詞與詞性訓練於 <strong>ASBC</strong>
+（中研院平衡語料庫 4.0，原生繁體），NER 卻訓練於 <strong>OntoNotes 5.0 中文部分、
+用 OpenCC 機械轉成繁體</strong>。所以同一套工具在我們語料上表現分裂——斷詞逐字還原
+44,599 個單位零錯誤，NER 卻只有 52.9% 的人名召回、作品 span 相符 10%。
+落差來自兩層：<strong>領域</strong>（新聞廣播書面 → 口述訪談轉寫）與<strong>字體</strong>
+（簡體語料機械轉繁，不是原生繁體標注）。</p>
+<p><strong>評估方法上的兩點</strong>：Mintz 等人的遠距監督需要一個<strong>外部</strong>知識庫，而不是
+本語料的標注——這對我們是合法的路（例如 ghouse／PASMA 資料庫），與紅線
+第 1 條不衝突。BenchIE 則指出既有 OIE 評測高估系統效能，主張用「事實同義集」
+（fact synsets）而非單一 gold triple 比對，這對我們「沒有配對式標注」的處境
+是可借的評估思路。</p>
+<hr>
+<h2 id="8-schema-2026-09-08">⑧ 本體學習與 schema 歸納（2026-09-08 新增）</h2>
+<p><strong>待查問題</strong>：述詞的類別體系（我們的 <code>life_nodes.py</code> 動詞表）非得手寫不可嗎？
+能不能從語料自己長出來？長出來的跟手寫的差多少？
+（起因：<code>triples/</code> 用程式的動詞表界定述詞、<code>triples_free/</code> 不限動詞由模型自判，
+兩條並存是刻意的，但「手寫動詞表算不算偷渡人工知識」這個疑問懸著沒解。）</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>檔名（refs/ 內）</th>
+<th>作者</th>
+<th>年</th>
+<th>標題（短）</th>
+<th>場域</th>
+<th>同儕審查</th>
+<th>DOI / arXiv</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bai2025_autoschemakg.pdf</td>
+<td>Bai et al.</td>
+<td>2025</td>
+<td>AutoSchemaKG（動態 schema 歸納）</td>
+<td>—</td>
+<td>❌ 預印本</td>
+<td>arXiv:2505.23628v3</td>
+<td>⑧</td>
+</tr>
+<tr>
+<td>liu2024_openie-survey.pdf</td>
+<td>Liu, P. et al.</td>
+<td>2024</td>
+<td>OpenIE 綜述：規則式到 LLM</td>
+<td>Findings of EMNLP 2024, 9586–9608</td>
+<td>✅</td>
+<td>2024.findings-emnlp.560</td>
+<td>⑧①</td>
+</tr>
+<tr>
+<td>papaluca2024_zero-few-shot-kg-triplets.pdf</td>
+<td>Papaluca et al.</td>
+<td>2024</td>
+<td>零／少樣本 KG 三元組抽取</td>
+<td>KaLLM 2024 (ACL workshop), 12–23</td>
+<td>✅</td>
+<td>2024.kallm-1.2</td>
+<td>⑧⑦</td>
+</tr>
+<tr>
+<td>khorshidi2025_odke-plus.pdf</td>
+<td>Khorshidi et al.</td>
+<td>2025</td>
+<td>ODKE+（本體導引開放域抽取）</td>
+<td>Apple</td>
+<td>❌ 預印本</td>
+<td>arXiv:2509.04696v1</td>
+<td>⑧</td>
+</tr>
+<tr>
+<td>babaeigiglou2023_llms4ol.pdf</td>
+<td>Babaei Giglou, D'Souza &amp; Auer</td>
+<td>2023</td>
+<td>LLMs4OL：LLM 做本體學習</td>
+<td>TIB Leibniz</td>
+<td>❌ 預印本</td>
+<td>arXiv:2307.16648v2</td>
+<td>⑧</td>
+</tr>
+<tr>
+<td>mateiu2023_ontology-engineering-llm.pdf</td>
+<td>Mateiu &amp; Groza</td>
+<td>2023</td>
+<td>用 LLM 做本體工程（NL→OWL）</td>
+<td>Cluj-Napoca 理工大學</td>
+<td>❌ 預印本</td>
+<td>arXiv:2307.16699v1</td>
+<td>⑧</td>
+</tr>
+<tr>
+<td>fathallah2024_llms4life.pdf</td>
+<td>Fathallah, Staab &amp; Algergawy</td>
+<td>2024</td>
+<td>LLMs4Life：生命科學本體學習</td>
+<td>斯圖加特大學等</td>
+<td>❌ 預印本</td>
+<td>arXiv:2412.02035v1</td>
+<td>⑧</td>
+</tr>
+<tr>
+<td>lippolis2025_ontology-generation-llm.pdf</td>
+<td>Lippolis et al.</td>
+<td>2025</td>
+<td>用 LLM 生成本體</td>
+<td>波隆那大學／CNR／林雪平大學</td>
+<td>❌ 預印本</td>
+<td>arXiv:2503.05388v1</td>
+<td>⑧</td>
+</tr>
+<tr>
+<td>rasmussen2025_zep-temporal-kg.pdf</td>
+<td>Rasmussen et al.</td>
+<td>2025</td>
+<td>Zep：時序知識圖譜（agent 記憶）</td>
+<td>Zep AI</td>
+<td>❌ 預印本</td>
+<td>arXiv:2501.13956v1</td>
+<td>⑧⑥</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>閱讀建議</strong>：後四篇（LLMs4OL、Mateiu &amp; Groza、LLMs4Life、Lippolis）主題重疊高，
+建議合成一份對照筆記，不必逐篇寫。Zep 歸此類是因為它的時序結構與生命過程的
+事件序列相關，也可視為獨立的一支。</p>
+<h2 id="9-2026-09-08">⑨ 跨來源實體對齊（2026-09-08 新增）</h2>
+<p><strong>待查問題</strong>：跨 314 份逐字稿把同一個人併起來，前人怎麼做？
+（起因：<code>output/registry/</code> 至今不存在、別名未合併，所以 <code>build_network.py</code> 的
+三層網絡每個數字都是下界。）</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>檔名（refs/ 內）</th>
+<th>作者</th>
+<th>年</th>
+<th>標題（短）</th>
+<th>場域</th>
+<th>同儕審查</th>
+<th>DOI / arXiv</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chen2024_llm-align.pdf</td>
+<td>Chen, Lu &amp; Wang</td>
+<td>2024</td>
+<td>LLM-Align：用 LLM 做實體對齊</td>
+<td>北京師範大學</td>
+<td>❌ 預印本</td>
+<td>arXiv:2412.04690v1</td>
+<td>⑨</td>
+</tr>
+<tr>
+<td>liu2022_kg-alignment-strong-fusion.pdf</td>
+<td>Liu, S. et al.</td>
+<td>2022</td>
+<td>SFEA：節點層強融合對齊網絡</td>
+<td><em>Appl. Sci.</em> 12(19), 9434</td>
+<td>✅</td>
+<td>10.3390/app12199434</td>
+<td>⑨</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>注意</strong>：這兩篇都是嵌入式（embedding-based）對齊，前提是兩個知識圖譜都已存在。
+我們的處境不同——同一個人散落在多份逐字稿的證詞裡，還沒有「兩個圖」可對齊。
+所以它們可能只在「相似度怎麼算」這一層有用，架構層要看 Graphusion 的 global fusion
+與 Jing 2007 的關係約束共指。</p>
+<h2 id="2026-09-08">這批文獻的來源與去重（2026-09-08）</h2>
+<p>使用者於 2026-09-08 新增 <code>refs/new found ref/</code> 共 15 個檔，經比對後：</p>
+<ul>
+<li><strong>重複 4 個，已刪</strong>：<code>2306.08302v3</code>（＝ <code>pan2024_llm-kg-roadmap.pdf</code>，位元相同）、
+  <code>2502.06472v2</code> 與 <code>2502.06472v2-2</code>（＝ <code>lu2025_karma.pdf</code>，三份雜湊一致）、
+  <code>JAIOH_Semantic_2025-4</code>（＝ <code>cherukuri2025_oral-history-llm.pdf</code>；雜湊不同因為一份是
+  arXiv 版、一份是 ACM 樣板佔位版，章節結構與全部關鍵數字比對後正文無差異，
+  保留 arXiv 版，因為現有筆記引的是 arXiv:2508.06729v1 而 ACM 版 DOI 仍是佔位）。</li>
+<li><strong>新增 11 篇，已改名並移入 <code>refs/</code></strong>，登記於上方 ⑧ ⑨ 兩節。原檔名為 arXiv ID 或
+  會議檔名，不利辨識，一律改為 <code>年份_作者_標題</code>。</li>
+</ul>
+<h2 id="6-2026-09-09">⑥ 時間關係、品味敘述與訪談語料（2026-09-09 新增）</h2>
+<p>使用者於 2026-09-09 新增 <code>refs/newest/</code> 共 11 個檔，MD5 與標題比對後<strong>彼此不重複、
+也不與既有 24 篇重複</strong>；已照 <code>年份_作者_標題</code> 改名移入 <code>refs/</code>，每篇都有八節筆記。
+三組主題各對一個實驗卡點：<strong>時間關係</strong>（<code>time_anchor.py</code> 只錨到 27.7%，其餘七成是
+只有相對關係的句子）、<strong>品味敘述</strong>（goût 欄位怎麼編碼）、<strong>訪談語料的編碼與連結</strong>。
+注意 <code>vlachidis_medorah…</code> 是 17 頁<strong>簡報</strong>不是論文，年份不確定，只能當「同路人卡在同樣地方」的證據。</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>檔名（refs/ 內）</th>
+<th>作者</th>
+<th>年</th>
+<th>標題（短）</th>
+<th>場域</th>
+<th>同儕審查</th>
+<th>DOI / Anthology</th>
+<th>問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>su2025_transformer-temporal-ie-review.pdf</td>
+<td>Su, Howard &amp; Bethard</td>
+<td>2025</td>
+<td>Transformer 時間資訊抽取綜述（四格分類、32 資料集全是書面語）</td>
+<td>EMNLP 2025 main</td>
+<td>✅</td>
+<td>2025.emnlp-main.1467</td>
+<td>⑥⑤</td>
+</tr>
+<tr>
+<td>niu2024_contempo-temporal-relation-extraction.pdf</td>
+<td>Niu et al.</td>
+<td>2024</td>
+<td>ConTempo：對比學習的事件時間關係分類；CleanMATRES</td>
+<td>Findings of ACL 2024</td>
+<td>✅</td>
+<td>10.18653/v1/2024.findings-acl.89</td>
+<td>⑥</td>
+</tr>
+<tr>
+<td>fan2025_discourse-temporal-relation-llm.pdf</td>
+<td>Fan &amp; Strube</td>
+<td>2025</td>
+<td>篇章層時間關係＋轉移性一致性檢查；8B 微調≈70B</td>
+<td>Findings of EMNLP 2025</td>
+<td>✅</td>
+<td>2025.findings-emnlp.1010</td>
+<td>⑥⑤</td>
+</tr>
+<tr>
+<td>liu2026_odl-templlm-temporal-reasoning.pdf</td>
+<td>Liu et al.</td>
+<td>2026</td>
+<td>ODL-TempLLM：LLM 只抽、OWL-Time＋推理器排序</td>
+<td>ACL 2026 long</td>
+<td>✅</td>
+<td>2026.acl-long.873</td>
+<td>⑥⑧</td>
+</tr>
+<tr>
+<td>airoldi2024_nested-relationality-taste-hierarchies.pdf</td>
+<td>Airoldi</td>
+<td>2024</td>
+<td>巢狀關係性的品味階序；「類比邊」＝拿誰當比較對象</td>
+<td><em>Poetics</em> 102</td>
+<td>✅</td>
+<td>10.1016/j.poetic.2024.101864</td>
+<td>④⑥⑤</td>
+</tr>
+<tr>
+<td>baumann2026_graded-conceptualization-taste.pdf</td>
+<td>Baumann &amp; Price</td>
+<td>2026</td>
+<td>品味的分級概念（純理論；三軸五列）</td>
+<td><em>Poetics</em> 115–116</td>
+<td>✅</td>
+<td>10.1016/j.poetic.2026.102092</td>
+<td>④⑥</td>
+</tr>
+<tr>
+<td>peper2024_shoes-acosi-implicit-opinion.pdf</td>
+<td>Peper et al.</td>
+<td>2024</td>
+<td>Shoes-ACOSI：隱含意見也圈成跨距的五元組 ABSA</td>
+<td>Findings of EMNLP 2024</td>
+<td>✅</td>
+<td>10.18653/v1/2024.findings-emnlp.907</td>
+<td>⑥⑤</td>
+</tr>
+<tr>
+<td>gao2026_fluid-user-preferences.pdf</td>
+<td>Gao et al.</td>
+<td>2026</td>
+<td>跨情境流動偏好（合成資料、五環節全 LLM 評估）</td>
+<td>Findings of ACL 2026</td>
+<td>✅</td>
+<td>2026.findings-acl.1033</td>
+<td>⑥⑤</td>
+</tr>
+<tr>
+<td>usumi2026_prepper-preference-profiling.pdf</td>
+<td>Usumi et al. (NTT)</td>
+<td>2026</td>
+<td>PrePPER：偏好模式分節的自然語言側寫</td>
+<td>LREC 2026</td>
+<td>✅</td>
+<td>2026.lrec2026-1.52</td>
+<td>⑥⑤</td>
+</tr>
+<tr>
+<td>stankovic2026_tei-ner-interview-corpus.pdf</td>
+<td>Stanković et al.</td>
+<td>2026</td>
+<td>訪談語料 TEI＋NER/NEL＋文本計量＋Linked Data</td>
+<td>LREC 2026</td>
+<td>✅</td>
+<td>2026.lrec2026-1.114</td>
+<td>④⑨⑤</td>
+</tr>
+<tr>
+<td>vlachidis_medorah-ontology-memory-recollection.pdf</td>
+<td>Vlachidis (UCL)</td>
+<td>不確定（≤2026）</td>
+<td>MeDoraH：口述歷史→記憶本體；三輪傳統管線失敗</td>
+<td>簡報</td>
+<td>❌ 未審</td>
+<td>github.com/articoder/MeDoraH_Ontology</td>
+<td>④⑧</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>這批合起來給的三個判斷</strong>（細節見各筆記第 8 節）：</p>
+<ol>
+<li><strong>時間排序不要讓模型做。</strong> 四篇時間文獻的數字一致：零樣本 LLM 判「誰先誰後」接近亂猜
+   （Fan：Llama 8B F1 16.8；Niu：ChatGPT-4 CoT 56.7 vs 小模型微調 83），拆掉符號推理器
+   關係準確率從 80% 掉到 40% 以下（Liu）。可做的是：相對詞由程式建候選時序邊、
+   <strong>轉移性一致性</strong>當免標準答案的可信度訊號（只能降信不能升信）、矛盾落檔標在邊上不自動覆蓋。</li>
+<li><strong>goût 欄位要拆成正交的幾件事</strong>（對象型別、表述形態、極性、顯隱、時期、來歷），
+   每件都有原文跨距可圈；不要做「這筆有多像真品味」的序數分級（近信心分數，紅線 2）。
+   Airoldi 的「類比邊」（評價時拿誰當參照）是最可操作的新邊型別；隱含評價偏負
+   （Peper），只抓明講評價會低估「拒斥」那一端。三篇社會學／推薦文獻都不是 Hennion 框架
+   （Airoldi 是 Bourdieu、Baumann 把反思性品味打成邊陲、Gao 把偏好當先於行為的隱藏屬性），借操作不借前提。</li>
+<li><strong>同類計畫卡在同樣地方。</strong> MeDoraH 三輪管線失敗模式與本專案逐條對得上，且它為了共指乾淨
+   在前處理排除轉述他人的話，與「他述是主要材料」正面衝突；Stanković 的連結層靠人工校正
+   （紅線 1），但其<strong>文本計量（特定性分析）</strong>是純程式的免標準答案訊號，可用 <code>scipy.stats.hypergeom</code> 重寫。</li>
+</ol>
+<h2 id="idohl2026-10-05">網站側寫：IDOHL（2026-10-05 新增）</h2>
+<p><code>idohl_lab-profile_2026-10-05.html</code> 是 International Digital Oral History Lab（UCL × TU Darmstadt）的團隊側寫：
+團隊、年表、三個計畫（Hidden Histories／MDOH／MeDoraH）、五個 GitHub 儲存庫、出版品、與本專案的對照、閱讀建議。
+四份原始調查報告在 <code>notes/idohl/01–04</code>。對應問題 ④⑧⑤。<strong>補充 <code>vlachidis_medorah…</code> 那份筆記</strong>：
+該簡報的發表場合查到了，是 iConference 2026（Edinburgh，2026-03／04），作者 Vlachidis、Zhang、Nyhan，
+UCL Discovery 10224816；MeDoraH 經費核實為 AHRC AH/Y007557/1（GtR £349,619，2024-02 至 2027-04）＋DFG 528052031。
+關鍵事實：五個儲存庫皆無 LICENSE；LLM 抽取封在 NarraGraph 二進位檔；本體 43 類、CIDOC-CRM 只到 scopeNote；
+評估只有 1,429 筆人工回讀 91.3%（無 recall）。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

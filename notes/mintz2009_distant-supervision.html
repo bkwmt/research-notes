@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mintz 2009_遠距監督：不用標注資料的關係抽取</title>
+<meta name="description" content="Mintz 2009_遠距監督：不用標注資料的關係抽取">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Mintz 2009_遠距監督：不用標注資料的關係抽取</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/mintz2009_distant-supervision.md</code>　來源最後修改 2026-09-08　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Mintz, M., Bills, S., Snow, R., &amp; Jurafsky, D. (2009). <em>Distant supervision for relation extraction without labeled data</em>. Proceedings of the 47th Annual Meeting of the ACL and the 4th IJCNLP of the AFNLP, 1003–1011. ACL Anthology P09-1113。<strong>同儕審查（ACL 主會論文）</strong>。史丹佛大學。</li>
+<li><strong>對應待查問題</strong>：⑦零標注三元組抽取的參照點（兼涉⑤無 gold standard 評估、⑨跨來源實體對齊）</li>
+<li><strong>一句話定位</strong>：不對語料做任何人工標注，改拿一個<strong>外部</strong>結構化資料庫當監督訊號——凡是同時出現某兩個實體的句子，就假設它在表達那兩個實體在資料庫裡已知的關係。102 種關係、10,000 個實例，精確率 67.6%。這是「零標注但仍有監督」這條路的原始論文，而我們手上正好有可以當外部資料庫的東西。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>提出「遠距監督」（distant supervision）這個範式，取兩者之長：監督式抽取能把大量特徵放進機率分類器，非監督式抽取能處理任何領域的大量語料。做法是拿 Freebase（1.16 億個實例、7,300 種關係、900 萬個實體）當監督來源，在 120 萬篇維基百科文章上訓練關係分類器。</p>
+<p>另外一項貢獻是回答了一個當時沒人測過的問題：<strong>句法特徵在遠距監督下有沒有用</strong>。既有的自助式（bootstrapping）與非監督抽取多半只用詞彙特徵以避開句法剖析的計算成本。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p><strong>遠距監督假設</strong>：若兩個實體參與某個已知關係，那麼<strong>任何</strong>同時含這兩個實體的句子都<strong>可能</strong>在表達那個關係。</p>
+<p>訓練階段：用命名實體標注器找出句中的人、機構、地點。若一句話含有兩個實體、而這對實體恰好是 Freebase 某個關係的實例，就從這句抽特徵，加進該關係的特徵向量。</p>
+<p>測試階段：同樣先標實體。這次<strong>每一對同時出現的實體都視為潛在的關係實例</strong>，抽特徵。分類器（多類邏輯迴歸，L-BFGS 加高斯正則化）吃實體對與特徵向量，吐出關係名稱與一個信心分數。</p>
+<p><strong>整篇最關鍵的機制在這裡</strong>：因為語料夠大，同一對實體會在很多句子裡出現，<strong>系統把這些句子的特徵全部合併成單一特徵向量</strong>。論文的例子講得很清楚——對於〈Steven Spielberg, Saving Private Ryan〉這一對：</p>
+<blockquote>
+<p>[Steven Spielberg] 的電影 [Saving Private Ryan] 鬆散地改編自兄弟們的故事。</p>
+<p>Allison 共同製作了奧斯卡得獎的 [Saving Private Ryan]，由 [Steven Spielberg] 執導⋯⋯</p>
+</blockquote>
+<p>第一句可能是導演關係，也可能是編劇或製片。第二句沒提 Saving Private Ryan 是電影，所以也可能是「執掌某機構」（他們的對照例子是「Robert Mueller directed the FBI」）。<strong>單獨看都不足以定論，合起來就可以。</strong></p>
+<p>負例的做法：隨機挑不在任何 Freebase 關係裡的實體對，抽特徵當成「無關係」類。他們承認有些其實有關係只是 Freebase 漏了，但預期這種假陰性平均而言影響小。實際測試資料裡 98.7% 的實體對不具備那 102 種關係中的任何一種。</p>
+<p>還有一條規則：<strong>只輸出訓練資料裡沒有的關係實例</strong>，也就是只報「新發現」的。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>特徵分三類，全部是<strong>合取特徵</strong>（conjunctive features）——所有成分都要完全相符才算兩個特徵匹配，因此低召回、高精確。他們說這在小資料上會有問題（多數特徵只出現一次就沒用了），但資料量大時複雜特徵也會重複出現，這個設計才成立。</p>
+<ul>
+<li><strong>詞彙特徵</strong>：兩實體之間的詞序列、這些詞的詞性、哪個實體在前、實體 1 左邊 k 個詞與其詞性、實體 2 右邊 k 個詞與其詞性（k ∈ {0,1,2}）。詞性簡化成七類。</li>
+<li><strong>句法特徵</strong>：用 MINIPAR 做依存剖析，取兩實體之間的<strong>依存路徑</strong>，加上每個實體的一個不在路徑上的「窗節點」。</li>
+<li><strong>命名實體標記</strong>：每個特徵都附兩個實體的類型（人、地點、機構、其他、無）。</li>
+</ul>
+<p>沒有出處欄位、沒有時間、沒有事件層。信心分數來自分類器的機率輸出，<strong>不是模型自評</strong>——這點與紅線第 2 條相容。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>純二元三元組（有序的實體對加關係名）。它相對於非監督抽取的一個優勢是<strong>關係名稱是正規化的</strong>（來自 Freebase 的關係型別），不是從句子裡撈出來的字串——不會出現「導演了／執導／由⋯⋯執導」這種同義關係各自成邊的情形。</p>
+<h2 id="5">5. 資料集</h2>
+<ul>
+<li><strong>監督來源</strong>：Freebase 2008 年 7 月版。原始 1.16 億實例、7,300 關係、900 萬實體；過濾掉無名與無趣的實體（使用者檔案、音軌），合併互為反向的關係（書—作者對作者—書），只留最大的那些，剩 180 萬實例、102 關係、94 萬實體。</li>
+<li><strong>文字語料</strong>：Freebase 的維基百科抽取，約 180 萬篇文章，平均每篇 14.3 句，共 6.016 億個詞。實驗用其中一半：80 萬篇訓練、40 萬篇測試。</li>
+</ul>
+<p>選維基百科的理由值得記：<strong>它比較新，而且它的句子傾向把新聞稿會省略的事實講明</strong>；再者 Freebase 有很多資料本來就來自維基百科的表格，所以 Freebase 的關係更可能出現在維基百科的句子裡。</p>
+<p>全部英文。</p>
+<h2 id="6">6. 評估</h2>
+<p>兩種，都不需要對語料做人工標注。</p>
+<p><strong>（一）held-out 評估</strong>：把 Freebase 關係實例的一半留著不用於訓練，之後拿新發現的實例跟它比對。論文誠實指出這會有假陰性（Freebase 本來就不完整），但它便宜，適合調參數。</p>
+<p>結果（圖 2）：在多數召回水準上，<strong>句法加詞彙特徵的組合明顯優於單獨任一組</strong>。在召回 100,000 的水準，多數實例被分到三種關係（60% location-contains、13% person-place-of-birth、10% person-nationality）。</p>
+<p><strong>（二）人工評估</strong>：用 Amazon Mechanical Turk，每個預測實例由 1 至 3 位標注者判真假，多數決；平手時各半機率。取測試資料裡出現最頻繁的十種關係，各抽前 100 與前 1000 個實例的分層樣本。</p>
+<p>結果（表 5）：前 100 個實例的平均精確率——只用句法 0.67、只用詞彙 0.66、兩者合併 0.69。前 1000 個實例——0.68 / 0.67 / 0.67。<strong>沒有任何一組特徵在所有關係上都明顯勝出。</strong></p>
+<p>摘要宣稱的「102 種關係、10,000 個實例、精確率 67.6%」就是從這裡來的。</p>
+<p><strong>句法特徵什麼時候有用</strong>：他們的分析很有意思——句法特徵對「歧義的關係」（director-film 對 writer-film）以及「論元在詞面上距離遠、但在依存結構上距離近」的情形特別有幫助。例子是：</p>
+<blockquote>
+<p>Back Street is a 1932 film made by Universal Pictures, directed by John M. Stahl, and produced by Carl Laemmle Jr.</p>
+</blockquote>
+<p>導演與片名之間隔了很多詞（詞彙特徵會變得又長又罕見），但依存路徑很短。</p>
+<p>無 LLM（2009 年），無模型自評。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自承的：句法剖析的計算成本高，未來可探討較簡單的塊狀（chunk-based）句法特徵能否留住多數效益；<strong>共指消解可能改善效能，但他們沒做</strong>（全文最後一句）。</p>
+<p>我讀出來的：</p>
+<ul>
+<li><strong>遠距監督假設本身很粗。</strong> 「任何同時含兩個實體的句子都可能表達那個關係」在維基百科這種事實密集的文本上勉強成立，在口語裡會產生大量雜訊——「我跟陳志遠那時候都在中華路」與「陳志遠找我編曲」是完全不同的事，但兩句都含這對人名。他們靠大量資料與合取特徵稀釋雜訊，我們沒有那個量。</li>
+<li><strong>它只能抽外部資料庫裡已經有的關係型別。</strong> 102 種關係全部來自 Freebase 的 schema。所以遠距監督學不到資料庫沒有的關係——這對我們是致命的，因為口述歷史最有價值的正是資料庫裡沒有的東西。</li>
+<li><strong>人工評估仍然需要人工</strong>，只是把成本從「標整份語料」壓到「判 100 個輸出對不對」。這個成本轉移值得注意。</li>
+<li><strong>精確率 0.67，召回率完全沒報。</strong> 論文通篇沒有召回率，因為沒有完整的標準答案可以算。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>這篇提供一條方法上合法的路，但同時埋了一個很嚴重的陷阱。</strong></p>
+<p><strong>先說陷阱，因為它比機會重要。</strong></p>
+<p>我們手上唯一夠格當「Freebase」的東西，是 ghouse／PASMA 那條線的<strong>既有 SNA 合作網絡</strong>（誰跟誰合作過）。<code>data/srt/person_id_map.json</code> 那 12,955 筆只有名字對編號，沒有關係，當不了遠距監督的來源。</p>
+<p>但 <code>CLAUDE.md</code> 已經定下一條原則：<strong>既有 SNA 在本專案是對照組、不是篩子</strong>，而 <code>output/experiments/baseline/told_vs_sna.json</code>（2026-09-06）是<strong>預先登記</strong>的對照，Spearman ρ = 0.2286。若拿同一份 SNA 當遠距監督的訓練訊號，之後又拿抽出來的口述網絡跟 SNA 比對，那就是<strong>循環論證</strong>——用 SNA 教出來的抽取器，抽出的網絡當然會像 SNA，那個相關係數就失去意義。</p>
+<p>三種可能的處置，都得使用者裁決：</p>
+<ol>
+<li><strong>不用 SNA 當監督來源</strong>，遠距監督這條路直接放棄，只借它的「多句特徵合併」想法（見下）。</li>
+<li><strong>把 SNA 切成兩半</strong>：一半當遠距監督、一半留作對照，並在報告裡明說。這是 Mintz 自己的 held-out 做法，方法上乾淨，但會削弱對照組的規模。</li>
+<li><strong>找另一個外部庫</strong>當監督來源（唱片目錄、著作權登記、報刊資料庫），與 SNA 完全獨立。成本最高，但方法上最乾淨，而且那些庫本來就是博論研究線在用的材料。</li>
+</ol>
+<p>我的判斷是第 3 條最值得，第 1 條是安全的預設，第 2 條看起來省事但會讓「口述網絡與 SNA 的差異」這個發現變得難以解釋。</p>
+<p><strong>再說可以拿走的東西。</strong></p>
+<ol>
+<li><strong>多句特徵合併，就是我們的跨人佐證。</strong> 這是全篇最有價值的機制，而且<strong>不需要任何外部資料庫也能用</strong>。我們的處境跟 Spielberg 那個例子結構相同：許石這個人散落在子女與劉福助的證詞裡，單一句可能含糊（「他那時候很辛苦」），多句合起來才成立一條生命過程。目前 <code>confidence_scorer.py</code> 的五訊號裡已經有「跨人佐證」，Mintz 給了它一個更強的形式——<strong>不是事後加權，而是在判斷之前就把多個出處的證據合併起來再判斷一次</strong>。這對 <code>output/registry/</code> 的設計有直接影響。</li>
+<li><strong>只輸出「新發現」。</strong> 他們只報訓練資料裡沒有的實例。對我們的對應做法是：<strong>把抽出的關係分成「SNA 已知」與「SNA 沒有」兩堆分開報</strong>。後者才是口述歷史的獨特貢獻，前者可以當抽取正確性的旁證（既有網絡佐證了我們抽對）。這個切分不需要遠距監督也能做，而且它把「與 SNA 比對」從一個可能循環的評估，變成一個有意義的分類。</li>
+<li><strong>句法特徵在什麼時候有用的判準。</strong> 論元在詞面上距離遠、依存結構上距離近時，句法特徵勝出。中文口語裡「那個誰啊，就是那時候在麗歌那邊，陳志遠找他去編曲的那個」這種句子正是這種情形。目前 <code>nlp_exp</code> 已經在跑 CKIP 的詞性，若要再進一步，依存剖析是有理由的下一步——但要先量一下我們的語料裡「論元詞面距離遠但句法距離近」的比例有多高，值不值得那個成本。</li>
+<li><strong>負例的建構方式</strong>（隨機挑沒有關係的實體對）。若我們要做任何分類器，這是現成的做法，而且不需要人工標注負例。</li>
+<li><strong>信心來自分類器的機率，不是模型自評。</strong> 這是紅線第 2 條的正面示範。</li>
+</ol>
+<p><strong>該避免的</strong></p>
+<ul>
+<li><strong>不要照抄「任何含兩實體的句子都表達該關係」這個假設。</strong> 在口語裡它會製造大量假關係。若真要用，必須加上述詞層的約束（句中要有 <code>life_nodes.py</code> 那類動詞），把它從「共現」收緊成「共現且有述詞」。這也呼應我們已經記取的一課：共現不等於論元關係。</li>
+<li><strong>不要期待它能發現外部庫沒有的關係型別。</strong> 遠距監督只會複製資料庫的 schema。</li>
+</ul>
+<p><strong>與四條紅線的相容性</strong>：紅線 1 相容且是正面示範（完全不對語料標注，監督來自外部資料庫）；紅線 2 相容（信心是分類器機率）；紅線 3 不相容（無出處）；紅線 4 未涉及。紅線 5（抽取端零標注）——<strong>要小心</strong>：用外部庫不違反，但若用 <code>entity_stage1_final.csv</code> 當那個外部庫，就違反了，因為它是本語料的人工標注。</p>
+<p><strong>與 <code>_卡點對照表.md</code> 的對應</strong>：第二節（跨訪談併人）、第五節（沒有標準答案怎麼評）。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

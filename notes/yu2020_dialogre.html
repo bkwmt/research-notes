@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yu 2020_DialogRE：對話關係抽取</title>
+<meta name="description" content="Yu 2020_DialogRE：對話關係抽取">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Yu 2020_DialogRE：對話關係抽取</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/yu2020_dialogre.md</code>　來源最後修改 2026-09-08　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Yu, D., Sun, K., Cardie, C., &amp; Yu, D. (2020). <em>Dialogue-Based Relation Extraction</em>. Proceedings of the 58th Annual Meeting of the ACL, 4927–4940. DOI 10.18653/v1/2020.acl-main.444。<strong>同儕審查（ACL 主會論文）</strong>。作者來自騰訊 AI Lab 與康乃爾大學。</li>
+<li><strong>對應待查問題</strong>：⑦零標注三元組抽取的參照點（兼涉①抽取現況、⑤評估）</li>
+<li><strong>一句話定位</strong>：第一個人工標注的<strong>對話關係抽取</strong>資料集，證明了三件對本專案很要緊的事——對話裡的關係幾乎都跨句（96.0%）、幾乎都跟說話者有關（89.9%）、而且<strong>資訊密度極低</strong>（每句平均只有 0.21 條關係，書面新聞是 0.73、維基百科是 1.44）。完整人工標注下最好的成績是 F1 61.2%。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>三項。第一，建了第一個人工標注的對話關係抽取資料集：1,788 段對話、10,168 條關係三元組、36 種關係型別，語料是美國情境喜劇《六人行》（Friends）十季全部 263 集的劇本。第二，設計了一個「對話式」的評估指標 F1c，衡量系統能多早認出一個關係（給定前 i 輪對話），呼應即時對話應用的需求。第三，把當時最強的方法（BERT）改成「知道哪些論元是對話參與者」的版本（BERTs），在兩種指標上都有實質提升。</p>
+<p>它的立論是一個批評：既有關係抽取幾乎都做正式書面文本（新聞、維基），而對話明明充滿跨句關係，卻長期被忽略；更糟的是，少數處理對話的工作<strong>直接套用一般關係抽取系統，完全不考慮說話者</strong>。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>這篇本身不是抽取系統，是資料集加基線。任務形式是：給一段對話 D 與一對論元 (a1, a2)，輸出兩者之間的關係型別。</p>
+<p>基線五種：Majority（多數類別）、CNN、LSTM、BiLSTM、BERT。他們的改良版 BERTs 做法很簡單——把輸入序列組成 <code>[CLS] d [SEP] a1 [SEP] a2 [SEP]</code>，並讓模型知道論元裡哪些是對話參與者。</p>
+<p><strong>標注流程值得記</strong>：標注者 A 先標出每個場景裡的關係三元組並切出對話段落；標注者 B 在看不到 A 的標籤的情況下，對 A 標出的候選論元對重新判斷關係。兩人的 Cohen's kappa 約 0.87。無法達成共識的案例直接刪除。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p><strong>關係體系 36 種</strong>，主要沿用 TAC-KBP Slot Filling 任務的欄位定義（人物的傳記屬性與機構的重要屬性），再依語料實況新增。新增的幾種恰好進了前十大：<code>per:girl/boyfriend</code>、<code>per:friends</code>、<code>per:roommate</code>，以及<strong><code>per:positive impression</code> 與 <code>per:negative impression</code></strong>。</p>
+<p>每個三元組除了 (主詞, 關係型別, 受詞) 之外還標兩樣東西：</p>
+<ol>
+<li><strong>觸發詞（trigger）</strong>：最清楚表達該關係的<strong>最小連續文字片段</strong>。表 1 的例子裡，「brother」這個詞就是 <code>per:siblings</code> 的觸發詞。全體只有 49.6% 的三元組有觸發詞。</li>
+<li><strong>反向三元組</strong>：若關係型別有對應的反向型別（<code>per:children</code> 對 <code>per:parents</code>），一併標注，觸發詞不變。</li>
+</ol>
+<p><strong>說話者匿名化</strong>：所有說話者名字換成 S1、S2 並依出現順序重編。目的是<strong>防止模型靠外部知識作弊</strong>——《六人行》的角色關係在維基百科式的百科全書裡查得到，不匿名的話模型可以不讀對話就答對。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>是純三元組，加兩個附屬欄位（觸發詞、反向關係）。<strong>觸發詞是這篇在表示法上對本專案最有價值的東西</strong>：它等於「這條關係的證據在原文的哪幾個字」，是一種細粒度的、字面層的證據定位。論文明說這是為了讓後續研究能做「附細粒度解釋與證據句」的關係抽取。</p>
+<p>但它<strong>不是出處</strong>——沒有記檔名、時間點、說話者身分。觸發詞只在單段對話內部定位。也沒有時間欄位、沒有信心分數。</p>
+<h2 id="5">5. 資料集</h2>
+<p>《六人行》十季 263 集的完整劇本，去掉括號或方括號裡描述非語言資訊（動作、場景）的內容。1,788 段對話、10,168 條三元組。切分為訓練 60%、開發 20%、測試 20%（依對話切）。</p>
+<p>平均每段對話：225.8 個詞、12.9 輪、3.3 位說話者、21.8 句、4.5 條關係、1.2 條無關係實例。</p>
+<p>英文，非中文；是劇本而非真實口語（這點論文自己在 5.3 節有討論）。公開發布。</p>
+<h2 id="6">6. 評估</h2>
+<p><strong>標準設定</strong>用 F1；<strong>對話式設定</strong>用新設計的 F1c。F1c 的核心是「可評估性」：給定前 i 輪，只有當 a1、a2 與該關係的觸發詞<strong>都已經出現過</strong>，這條關係才算可評估。沒有觸發詞的關係，要到最後一輪才算可評估。</p>
+<p>結果（表 5，測試集）：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>F1</th>
+<th>F1c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Majority</td>
+<td>35.8</td>
+<td>35.8</td>
+</tr>
+<tr>
+<td>CNN</td>
+<td>48.0</td>
+<td>45.0</td>
+</tr>
+<tr>
+<td>LSTM</td>
+<td>47.4</td>
+<td>44.9</td>
+</tr>
+<tr>
+<td>BiLSTM</td>
+<td>48.6</td>
+<td>45.0</td>
+</tr>
+<tr>
+<td>BERT</td>
+<td>58.5</td>
+<td>53.2</td>
+</tr>
+<tr>
+<td><strong>BERTs（知道說話者）</strong></td>
+<td><strong>61.2</strong></td>
+<td><strong>55.4</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>人工標注（Cohen's kappa 0.87），無任何 LLM 自評或 LLM 評審。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自承的：先導標注只有一位標注者參與新關係型別的定義與論元對的標記，可能帶有偏誤；語料只來自一部情境喜劇，角色群小、場景有限，這解釋了為何 ORG 與 GPE 論元比例偏低、說話者中心的三元組比例偏高。</p>
+<p>我讀出來的：</p>
+<ul>
+<li><strong>劇本不是真實口語。</strong> 《六人行》的對白是編劇寫的，資訊密度、句子完整度、關係表達的清晰度都高於真實訪談。所以 61.2% 這個數字對真實口述歷史而言恐怕是<strong>樂觀的上界</strong>。</li>
+<li><strong>論元對是給定的。</strong> 任務形式是「給一對論元，判斷關係」，不是「從對話裡找出所有關係」。真正的端對端抽取要先找出論元對，難度更高。這一點論文沒有強調，但影響很大——它報的 61.2% 不能直接理解成「從對話抽關係的成功率」。</li>
+<li><strong>匿名化雖然防了作弊，也刪掉了資訊。</strong> 真實情境裡人名本身帶線索（性別、族裔、時代），匿名化後模型少了這些。這對我們是相反的——我們不能匿名，因為人名正是我們要的東西。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>這篇最大的用處是三個數字，都用來校準期待。</strong></p>
+<p><strong>（一）0.21：口語的資訊密度</strong></p>
+<p>DialogRE 平均每句只有 0.21 條標注三元組，相對於 ACE 的 0.73、KnowledgeNet 的 1.44。論文把原因歸給對話的「低資訊密度」。這對我們是一個<strong>重要的辯護</strong>：如果我們的三元組抽取每句抽不出多少東西，那未必是抽取失敗，而是口語本來就稀疏。以後報告產出量時，應該拿這個比例當參照，而不是拿書面文本的密度來責備自己。</p>
+<p><strong>（二）96.0% 跨句、65.9% 跨輪</strong></p>
+<p>96.0% 的關係三元組其支持文字橫跨多個句子；65.9% 的三元組其兩個論元<strong>從未出現在同一輪對話裡</strong>。論文把原因歸給對話裡人稱代名詞頻率高、資訊密度低。</p>
+<p>這直接挑戰我們目前的做法：<code>triple_exp.py</code> 與 <code>triple_free_exp.py</code> 都是在句層或單位層抽取。若口述歷史也有類似的跨句比例，那麼<strong>單位內抽取會系統性地漏掉大部分關係</strong>。這是一個可以直接量的東西——用現有的斷句產出，統計有多少關係其主詞與受詞不在同一句。</p>
+<p><strong>（三）89.9% 與說話者有關</strong></p>
+<p>89.9% 的三元組不是說話者的屬性、就是兩位說話者之間的關係；77.3% 的主詞是說話者名字；超過 90% 至少含一個說話者論元。而且讓模型知道「哪些論元是對話參與者」（BERTs）就從 58.5 提升到 61.2。</p>
+<p>這替本專案 <code>person</code> 與 <code>speaker</code> 分開的設計提供了外部佐證，但也提出一個問題：我們的最終目標是<strong>未受訪者</strong>的生命過程（<code>CLAUDE.md</code> 硬約束 1），也就是說我們要的恰恰是那不到 10% 的部分——主詞既不是講述者、也不是對話參與者的關係。許石卷是這種情形的原型。這意味著 DialogRE 的方法（強化說話者意識）對我們只解決一半問題，另一半沒有前人。</p>
+<p><strong>（四）觸發詞：跟我們的動詞圈字是同一件事</strong></p>
+<p>DialogRE 的觸發詞是「最清楚表達該關係的最小連續文字片段」，而 <code>triple_exp.py</code> 讓模型圈出動詞、程式驗證它逐字出現在句中——這兩者結構上相同。他們的兩個發現可以直接檢驗我們的做法：</p>
+<ul>
+<li><strong>只有 49.6% 的三元組有觸發詞。</strong> 有些關係型別本質上沒有觸發詞可標，<code>per:title</code>（職稱）與 <code>per:alternate names</code>（別名）就被他們留空。<strong>對我們的意義是：以動詞為必要條件的抽取，會漏掉整類沒有動詞的關係</strong>——別名、職稱、隸屬。這正好解釋了 <code>life_nodes.py</code> 動詞表路線的天花板在哪，也說明為什麼 <code>triples_free/</code> 那條不限動詞的線值得並存。</li>
+<li><strong>有觸發詞的論元對，平均距離比沒有的更遠</strong>（68.3 對 61.2 個詞）。他們的解釋是觸發詞降低歧義，因此容許論元離得更遠。對我們：有明確動詞的關係可以放寬論元的搜尋範圍，沒有動詞的則要靠鄰近。</li>
+</ul>
+<p><strong>（五）匿名化：一個可以借的檢驗設計</strong></p>
+<p>他們把角色名換成 S1、S2，避免模型靠百科知識作弊。我們可以反過來用這招做<strong>腦補檢驗</strong>：把逐字稿裡的人名換成不存在的假名，看模型抽出的關係是否照樣成立。若模型在假名下抽不出來、或抽出真實世界的資訊，就是靠預訓練記憶在補。這與 AutoKG 的 VINE、Text2KGBench 的 unseen sentences 是同一思路，三篇互相印證，值得排進評估計畫。</p>
+<p><strong>該避免的</strong></p>
+<ul>
+<li><strong>不要拿 61.2% 當我們的目標值。</strong> 那是英文劇本、給定論元對、完整人工標注三個條件疊起來的成績，三個條件我們一個都沒有。</li>
+<li><strong>它的關係體系不能照搬。</strong> 36 種以親屬與交友為主（<code>per:siblings</code>、<code>per:roommate</code>），我們要的是錄音、編曲、引薦、拜師這一類職業協作關係。可借的是<strong>體系的形狀</strong>：以人為中心、含反向關係、區分實體型受詞與字串型受詞與數值型受詞。</li>
+</ul>
+<p><strong>要更正我先前的一個說法</strong></p>
+<p><code>_卡點對照表.md</code> 的「前人沒有的四件事」裡，我寫了「評價與品味（goût）敘述」沒有前人做過。這句要修正：<strong>DialogRE 有 <code>per:positive impression</code> 與 <code>per:negative impression</code> 兩種關係型別</strong>，而且觸發詞比例分別高達 70.4% 與 60.9%（是全部 36 種裡最高的一群）。這是「A 對 B 抱持正面／負面印象」的人際評價，確實不等於 Hennion 意義下的品味（對音樂、對做法、對聲音的判斷與依戀），但比「完全沒人做過」要近得多。正確的說法是：<strong>人對人的評價有前人做過且證明可抽（觸發詞比例高，代表評價通常有明確的語言標記）；人對作品、對做法的評價沒有。</strong></p>
+<p><strong>與四條紅線的相容性</strong>：紅線 2 完全相容（無 LLM 自評、無 LLM 評審）；紅線 3 部分相容（觸發詞是字面層的證據定位，方向對，但沒有檔名與時間點）；紅線 1 衝突（整套建立在人工標注的論元對與關係標籤上，這是我們拒絕的）；紅線 4 未涉及。</p>
+<p><strong>與 <code>_卡點對照表.md</code> 的對應</strong>：第五節（沒有標準答案怎麼評，它提供的是「有標準答案時的上界」）、第一節（動詞表的天花板）。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

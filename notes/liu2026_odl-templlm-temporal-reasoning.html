@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Liu 2026_ODL-TempLLM：本體引導＋描述邏輯推理的時間推論</title>
+<meta name="description" content="Liu 2026_ODL-TempLLM：本體引導＋描述邏輯推理的時間推論">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Liu 2026_ODL-TempLLM：本體引導＋描述邏輯推理的時間推論</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/liu2026_odl-templlm-temporal-reasoning.md</code>　來源最後修改 2026-09-09　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Liu, J., Bi, C., Wang, M., Deng, J., Ji, D., &amp; Pan, J. Z. (2026). <em>ODL-TempLLM: Ontology-Guided and Description Logic-Reasoned Temporal Reasoning with LLMs</em>. Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), 19113–19126. ACL Anthology 2026.acl-long.873。<strong>同儕審查（ACL 2026 主會議長論文）</strong>。武漢大學網路安全學院、武漢大學計算機學院、Alan Turing Institute／愛丁堡大學知識圖譜組（Jeff Z. Pan）。</li>
+<li><strong>對應待查問題</strong>：⑥來歷標記／極性／時間記法（時間記法那一半）、⑧本體學習與 schema 歸納、①LLM 抽取現況（時間層）、⑤無 gold standard 評估（一致性檢查當免標準答案的訊號，見第 8 節）</li>
+<li><strong>一句話定位</strong>：把「事件之間先後同時」的推論從 LLM 手裡拿走，交給一個用 OWL-Time 與 Allen 區間關係寫成的符號推理器；LLM 只負責把文字裡的事件與時間表述抄進本體。跟本專案的關係是：它替 <code>time_anchor.py</code> 那一步之後「句子有了年份、事件之間怎麼排序」提供一個現成的分工模型，而且這個分工形狀與我們「程式吃乾機械部分、模型一次只做一件事」幾乎同構；但它的推理只在絕對時間戳上運作，對口述歷史最常見的相對時間表述無能為力，這一點要看清。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>論文處理的任務是<strong>時間問答</strong>（temporal question answering）：給一段文字與一個問題（「LeBron James 在騎士隊奪冠之後效力過哪些球隊？」），要模型答對。它的診斷是 LLM 答錯不是因為讀不懂，而是因為事件之間的時間關係在文字裡是隱含的、沒有結構，模型要自己在腦裡拼，拼不齊。</p>
+<p>它宣稱的三項貢獻：</p>
+<ol>
+<li>一個神經符號（neuro-symbolic）框架，把「隱含的時間推論」換成「顯式建模＋演繹推理」。</li>
+<li>一套以擴充版 OWL-Time 與 Allen 區間代數（Allen's interval algebra）為底的推理機制，用 SWRL 規則讓描述邏輯推理器自動推出文字沒直說的時間關係。</li>
+<li>在三個時間問答基準上、六種 LLM 骨幹下，比現有方法高 2.07–31.83 F1、1.00–30.73 EM，並附消融實驗。</li>
+</ol>
+<p>放在文獻裡看，這篇的新意不在任何單一元件（OWL-Time、Allen、Pellet、SWRL、SPARQL 全是十幾二十年前的老東西），而在<strong>把 LLM 的角色壓縮成「填本體的抄寫員」</strong>，然後證明這樣做比讓模型自己推論好很多。這個立場與本專案 2026-09-03 以來的原則相同，所以它是一份可以引用的外部佐證。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>輸入是一組（脈絡文字、問題）配對。流程三段，只有第一段用到 LLM。</p>
+<p><strong>第一段：事件時間本體學習（Event-Temporal Ontology Learning）。</strong> 用白話說，就是請模型把文字裡的事件與時間表述一筆一筆登錄進一個空的本體。它不讓模型直接寫 OWL，而是給模型三個函式當作「登錄表格」，模型輸出的是函式呼叫（function calling）：</p>
+<ul>
+<li><code>add_individual(名字, 類別, 原文描述)</code>：登錄一個個體。類別只有三種：<code>Event</code>（事件）、<code>TimeInstant</code>（時間點）、<code>ProperInterval</code>（有長度的時間區間）。</li>
+<li><code>add_obj_pro(甲, 屬性, 乙)</code>：把兩個個體連起來。屬性只有四種：<code>eventTime</code>（事件→時間實體）、<code>hasTime</code>、<code>hasBeginning</code>（區間→起點）、<code>hasEnd</code>（區間→終點）。</li>
+<li><code>add_data_pro(個體, 屬性, 值)</code>：給時間點寫入一個標準化的時間戳，資料屬性只有一種 <code>inXSDDateTimeStamp</code>，格式是 <code>1962-10-01T00:00:00</code>。</li>
+</ul>
+<p>三個函式對應三次分開的提示（附錄 E 的 Figure 9）：先抽個體、再連物件屬性、最後填資料屬性。<strong>每一次提示只做一件事</strong>，而且提示裡把本體的類別與屬性定義全文列給模型看。模型回傳 JSON，含 <code>explanation</code>（模型自己的說明）與 <code>api_calls</code> 陣列；程式解析函式呼叫後由本體 API 執行，得到一個小本體。注意這個本體是<strong>每一題一個</strong>，不是全語料一個。</p>
+<p><strong>第二段：演繹式符號時間推理（Deductive Symbolic Temporal Reasoning）。</strong> 把第一段的本體丟給 Pellet（一個 OWL-DL 推理器），套一組 SWRL 規則。規則把 Allen 的 13 種區間關係（before、after、meets、met-by、overlaps、overlapped-by、starts、started-by、during、contains、finishes、finished-by、equals）加上點對點、點對區間的擴充，一條一條寫成「若甲的終點小於乙的起點，則甲 before 乙」這種形式（Listing 1）。推理器跑完，本體裡多出一堆原文沒直說、但從時間戳可以算出來的事件關係，稱為「豐富化本體」。</p>
+<p><strong>第三段：邏輯約束的檢索增強生成（Logic-Constrained Retrieval-Augmented Generation，LCRAG）。</strong> 第二段會推出太多關係（CoTempQA 平均每題 374 條、TOT 平均 22,410 條），全塞給模型反而更差。所以用 SPARQL 查詢樣板只撈跟問題有關的：<strong>實體約束</strong>（只留問題裡提到的實體）、<strong>時間錨點約束</strong>（只留問題裡出現的時間關鍵詞，如「之後」）、<strong>雙重相關共識</strong>（兩者交集）。撈出來的關係接在問題後面送 LLM 產生答案。交集版本只留原本不到 2% 的關係，效果最好。</p>
+<p>所以整條線上 LLM 出現兩次：開頭抄寫、結尾作答。中間的推論一個字都不經過模型。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>有明確的本體，而且極小。它拿 W3C 的 OWL-Time（時間點、區間、起訖、Allen 關係）當底，加一個 <code>Event</code> 類別與一個 <code>eventTime</code> 屬性，就是全部。事件本身沒有任何內部結構：沒有參與者、沒有地點、沒有事件類型，事件個體只掛一段原文描述當註解（annotation）。換句話說，它的本體只回答「什麼時候」，完全不管「誰、做了什麼」。</p>
+<p>推理出來的東西怎麼放：Pellet 推出的 13 種 Allen 關係直接當作事件與事件之間的物件屬性寫回本體，所以推論結果與原始斷言在本體裡是同一種東西，<strong>沒有欄位區分「文字說的」與「推出來的」</strong>。這是它與紅線第 4 條最大的落差（第 8 節細談）。</p>
+<p>沒有跨文件合併：一題一個本體，用完即棄。沒有去重、沒有實體對齊、沒有衝突處理。論文的「限制」一節自己也說目前是每一題對整個抽出的時間圖做全域推理，未來想做子圖選擇，可見他們的單位是題目不是人物或語料。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>底層是 OWL 本體，也就是 RDF 三元組；但語義上它是<strong>受本體約束的三元組</strong>，主詞受詞的類別與屬性的定義域值域都被固定死（例如 <code>hasBeginning</code> 的定義域必須是區間、值域必須是時間點）。事件之間的時間關係也是三元組：<code>事件甲 before 事件乙</code>。</p>
+<ul>
+<li><strong>出處</strong>：沒有正式的出處欄位。事件個體帶一段原文描述（<code>add_individual</code> 的第三個參數），那只是字串註解，沒有字元座標、沒有段落編號。因為任務是單題問答，出處對它沒有價值。</li>
+<li><strong>時間資訊</strong>：這篇整個就是時間資訊，但<strong>只有一種記法</strong>：<code>xsd:dateTimeStamp</code>，精確到秒。年份一律補成 1 月 1 日 0 時 0 分（Figure 3 的例子：「2016」寫成 <code>2016-01-01T00:00:00</code>）。這是個對它的基準無害、對我們有害的決定：口述裡的「八〇年代」「民國六十幾年」「大概三十年前」在這個記法下沒有位置，模型只能硬猜一個日期或不填。它自己的錯誤分析裡「時間表述模糊」佔 18%，跟這個記法直接相關。</li>
+<li><strong>信心分數</strong>：沒有。也沒有請模型自評。推出來的關係一律視為確定。</li>
+</ul>
+<p>它選 OWL 而不選自訂 JSON 的理由很實際：要用現成推理器。OWL-Time 是 W3C 標準、Pellet 是現成軟體、SWRL 是現成規則語言、SPARQL 是現成查詢語言。整條推論線不必寫一行推理程式。</p>
+<h2 id="5">5. 資料集</h2>
+<p>三個英文時間問答基準，全部公開，沒有新資料集：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>資料集</th>
+<th>性質</th>
+<th>考什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CoTempQA（Su et al. 2024a）</td>
+<td>真實世界事件改寫</td>
+<td>共時關係：Equal、Overlap、During、Mix 四類</td>
+</tr>
+<tr>
+<td>MenatQA（Wei et al. 2023；論文內文一律誤拼成 MentaQA）</td>
+<td>真實事件</td>
+<td>範圍、順序、反事實三種因素</td>
+</tr>
+<tr>
+<td>TOT（Test of Time, Fatemi et al. 2024）</td>
+<td><strong>完全合成</strong>、可控</td>
+<td>事件排序與時間跨度計算，排除預訓練污染；輸入平均一萬字元</td>
+</tr>
+</tbody>
+</table></div>
+<p>沒有中文、沒有口語、沒有訪談、沒有歷史文本。所有文字都是問答資料集式的陳述句，時間表述多半已經是年份或日期。跟我們的語料相比，它處理的是「時間已經寫在句子裡、只是關係要算」的簡單情形；我們的問題是「時間根本沒寫在句子裡」（13,142 句只有 620 句有自有年代）。</p>
+<h2 id="6">6. 評估</h2>
+<p>兩層評估。</p>
+<p><strong>答題層</strong>：對每個基準的標準答案算 token-level F1 與精確匹配（EM），五次獨立執行取平均。比較對象是同一個骨幹模型的四種設定：零樣本、少樣本＋思維鏈、ReAct、Temp-CoT，另加 FiD 與 BigBird 兩個非 LLM 基線。骨幹含 Llama2／3／3.1（70B 用 4-bit 量化在本機跑）、GPT-3.5-Turbo、GPT-4、GPT-5.1。這一層的 gold 來自基準本身，與作者無關。</p>
+<p><strong>時間關係抽取層</strong>（§4.4.1、附錄 D）：每個基準隨機抽 100 題，對所有 N² 個有序事件對標一個 Allen 關係（或「vague」），算微平均準確率。標注者是<strong>作者自己</strong>，附錄 D 明說「三位領域專家」「由作者自願進行，無外部標注者、無報酬」。以此比較三種抽關係的方法：完整系統、去掉推理器只用 LLM 讀本體（LLM-Ontology）、去掉本體直接讀原文（LLM-Context）。結果完整系統高出 25–30 個百分點，TOT 上超過 80% 對比不到 40%。</p>
+<p><strong>消融</strong>（表 2）：拆掉 LCRAG 掉得最兇（CoTempQA F1 84.17→69.88），拆推理器掉得較少但 TOT 上掉超過 20%。作者的解讀是「沒過濾的結構化輸出比不完整的結構更有害」。</p>
+<p><strong>錯誤分析</strong>（Figure 6）：模型預測錯誤 41%（輸入與關係都對、模型還是答錯，作者歸因於過濾太狠）、事件邊界模糊 26%（一句多事件切不開）、時間表述模糊 18%、屬性指派錯誤 15%（其中缺屬性 13%）。</p>
+<p>沒有用 LLM 當評審，這點乾淨。但關係層的 gold 是作者自己標的，而且抽 100 題就宣稱「顯著」，統計上沒給任何檢定；「domain experts」在附錄裡被揭穿是作者本人，正文卻寫成 expert-annotated。這是要打折的地方。</p>
+<p>另有幾處內部不一致，反映寫作與實驗管理的粗糙：摘要說最大增幅 31.83 F1，正文 §4.2 卻說 GPT-3.5 在 CoTempQA-Mix 上 F1 升 38.07、EM 升 78.87；Listing 1 的 SWRL 規則用 <code>hasStart</code>，本體定義的卻是 <code>hasBeginning</code>；Figure 5 圖例把系統寫成 OLTR-LLM；附錄 C 第一句「Since our framework lacks a formal ontology」寫的是消融變體卻沒說清。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>作者承認的兩點：（一）符號推理器很慢，不是為神經管線設計的；（二）每題都對整個時間圖做全域推理，沒有局部化。</p>
+<p>我讀出來、它沒明講的：</p>
+<ol>
+<li><strong>它的 Allen 代數只用了標籤，沒用代數。</strong> Allen 區間代數的力量在<strong>組合表</strong>（composition table）：知道甲 before 乙、乙 before 丙，不需要任何時間戳就能推出甲 before 丙；知道甲 during 乙、乙 before 丙，可推甲 before 丙。這是「定性時間推理」的本體。但 Listing 1 的規則是拿兩個時間戳做 <code>lessThan</code>，也就是<strong>定量比較</strong>；Allen 的 13 個名字只是比較結果的標籤。後果是：兩個事件只要有一個沒有絕對時間戳，推理器就推不出任何關係。論文沒有一條規則處理「文字直接說了甲在乙之後，但兩者都沒有日期」的情形。</li>
+<li><strong>時間顆粒度被抹平。</strong> 年份補成 1 月 1 日之後，同一年的兩件事會被推成 <code>equals</code>，實際上可能是 before；「2016」與「2016 年 6 月」會被推成 starts 或 equals，其實都是猜的。基準裡年份為主的題目不會暴露這件事，因為答案通常只問「之後是誰」。</li>
+<li><strong>不確定性沒有位置。</strong> 標注協定允許 <code>vague</code>，但本體與規則裡沒有對應物；推理器輸出的關係全是確定的。Allen 代數原本允許「關係集合」（一對事件的關係是 {before, meets} 的析取）表示部分知識，它沒用。</li>
+<li><strong>推論不可追溯。</strong> Pellet 有解釋服務（explanation），可以回答「這條關係是哪幾條斷言加哪條規則推出來的」，論文沒有啟用；推出的關係與原始斷言混在同一個本體裡。它在導論宣稱「traceable」，實際上只做到「推理過程是規則不是黑箱」，沒做到「每條結果附推導鏈」。</li>
+<li><strong>LLM 仍在產生值而非只做判斷。</strong> <code>add_data_pro</code> 要模型把「1962-10-01」改寫成 <code>1962-10-01T00:00:00</code>、把「2016」改寫成 <code>2016-01-01T00:00:00</code>。這是格式轉換，模型會出錯（錯誤分析的 15% 屬性錯誤就是這裡），而且是程式一行就能做的事。</li>
+<li><strong>單位是題目，換成語料就會炸。</strong> TOT 一萬字元推出 22,410 條關係，關係數量隨事件數平方成長。他們靠「問題」把 98% 濾掉；我們沒有問題，只有人物。13,142 句若全部兩兩配對是八千多萬對，不能把閉包實體化。</li>
+<li><strong>事件邊界問題被歸為錯誤而不是資料性質。</strong> 26% 的錯是「一句多事件切不開」。對他們是雜訊，對口述歷史是常態（一句話講三十年）。</li>
+</ol>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<h3 id="_1">分工是否同構</h3>
+<p><strong>同構，而且它比我們多證明了一件事。</strong> 它的三段分工是：LLM 抄寫（事件、時間表述、連結）→ 符號系統推論 → LLM 作答。我們的原則是「程式吃乾機械部分、模型一次只做一件事、不採用模型的字只取它的判斷」。對照起來：</p>
+<ul>
+<li>「一次只做一件事」：它三次提示分別做「登錄個體」「連屬性」「填時間戳」，形狀一樣。</li>
+<li>「推論交給符號系統」：它的消融數字（拆掉推理器 TOT 掉 20% 以上；只給 LLM 看本體而不給推理結果，關係準確率從 80% 掉到 40% 以下）是目前讀到的文獻裡<strong>最直接支持「時間排序不要讓 LLM 做」的實驗證據</strong>。週會報告或論文要為這條原則找外部佐證時可以引它。</li>
+<li>但我們<strong>比它更徹底</strong>：<code>time_anchor.py</code> 連時間表述的抽取都不用模型（九種正規式、民國換算、年次錨定全是程式），它還讓模型抄年份與轉格式。第 7 節第 5 點是它該向我們靠的地方，不是反過來。若哪天要引入模型處理正規式抓不到的表述（「我退伍那年」「阿姑出嫁前」），照我們斷句線的做法：模型只圈出「哪一段字是時間表述、掛在哪個事件上」，換算與正規化留給程式。</li>
+</ul>
+<h3 id="_2">它的時間本體能不能套到人物生命事件</h3>
+<p><strong>骨架可以直接借，規則不能。</strong></p>
+<p>骨架：OWL-Time 的 <code>Instant</code>／<code>ProperInterval</code>／<code>hasBeginning</code>／<code>hasEnd</code> 加一個 <code>Event</code> 類別，正好是 <code>time_anchor.py</code> 已經在做的事的形式化。<code>life_nodes.py</code> 反推的六類生命節點就是 <code>Event</code> 的六個子類；每個節點掛 <code>eventTime</code>，值是一個時間點（「民國 62 年簽的」）或一個區間（「八〇年代」→ 1980–1989；「我 15 歲到 18 歲在那邊學」→ 出生年＋15 到出生年＋18）。北流人物頁的出生年與得獎年就是絕對時間點個體，作用跟它 Figure 3 裡的 <code>timeInstant1</code> 相同。這部分沒有阻礙。</p>
+<p>規則：三個地方要改寫，不能照搬。</p>
+<ol>
+<li><strong>資料屬性換成年顆粒度＋區間。</strong> 不用 <code>xsd:dateTimeStamp</code>，用 <code>年_最早</code>／<code>年_最晚</code> 一對整數（<code>build_network.py</code> 邊上已經有這兩欄），等於 EDTF 的年區間。Allen 關係在區間上定義得很乾淨：甲 before 乙 若且唯若 甲.最晚 &lt; 乙.最早；兩個區間重疊時關係<strong>不定</strong>，回傳關係集合 {before, meets, overlaps, …} 而不是硬選一個。這正好接上 <code>loc2019_edtf-spec.md</code> 那條線。</li>
+<li><strong>加上定性規則，這是它沒做、我們最需要的。</strong> 我們的語料絕對時間表述與相對詞的比例約 1：28，而它的推理只吃絕對值。要讓「退伍之後」「後來」「那時候」變成邊，得直接把相對詞當作 Allen 關係的斷言：「之後」→ after、「之前」→ before、「那時候」「同時」→ 一個 {equals, during, contains, overlaps} 的集合、「一直到」→ finishes 或 meets。然後用 Allen 的<strong>組合表</strong>做傳遞：兩句都沒年份、但 A 之後 B、B 之後 C，就得 A before C。這是 Allen 1983 的正宗用法，也是 <code>_卡點對照表.md</code> 第六節裡 AutoSchemaKG 五種事件關係（before／after／同時／因為／結果）的形式化版本。<code>time_anchor.py</code> 目前對相對詞「只記錄、不推算」，這一步就是下一支程式該做的事；它的輸入 <code>_相對詞_未定年.jsonl</code> 已經在那裡。</li>
+<li><strong>定量與定性要能互相檢查。</strong> 有年份的句子推出來的關係，與相對詞斷言的關係，兩者若矛盾（年份說 A 在 B 之後，講述者卻說「A 之前」）就是<strong>程式化訊號</strong>：可能是年份推算錯（繼承層 D／E 跨了 trunk 邊界）、可能是講述者記錯、可能是我方代稱解析錯。這與紅線第 2 條「信心由程式化訊號推導」完全相容，而且是一個新訊號來源：<strong>時間一致性</strong>。Pellet 的一致性檢查（consistency check）在概念上就是這個，但我們不需要 Pellet，兩個整數比大小加一張 13×13 的組合表就夠。</li>
+</ol>
+<h3 id="4_1">推理出的年代能不能標成可追溯的推導鏈（紅線 4）</h3>
+<p><strong>能，但要自己寫，不能用它的工具鏈。</strong> 論文的作法是 Pellet 推完把結果混回本體，沒有推導鏈；它宣稱的 traceable 只是「規則是明的」。我們要的比這多一層：每條推出來的關係要能回答「哪幾條前提、哪一條規則」。做法很直接，<code>time_anchor.py</code> 句層已經是這個形狀（每筆有 <code>推算方式</code>、<code>可信層</code>、繼承距離、錨點 sid），把它推到事件對的層級：</p>
+<pre><code>{&quot;甲&quot;: sid_0231, &quot;乙&quot;: sid_0247, &quot;關係&quot;: [&quot;before&quot;],
+ &quot;推導&quot;: {&quot;規則&quot;: &quot;端點比較&quot;,
+          &quot;前提&quot;: [{&quot;sid&quot;: &quot;0231&quot;, &quot;年_最晚&quot;: 1975, &quot;推算方式&quot;: &quot;繼承_向前&quot;, &quot;可信層&quot;: &quot;D&quot;},
+                   {&quot;sid&quot;: &quot;0247&quot;, &quot;年_最早&quot;: 1978, &quot;推算方式&quot;: &quot;直接_民國&quot;, &quot;可信層&quot;: &quot;A&quot;}]},
+ &quot;可信層&quot;: &quot;D&quot;}
+</code></pre>
+<p>推導鏈的可信層取前提中最低者（跟 <code>time_anchor.py</code> 繼承降級的邏輯一致）；組合表推出來的關係再加一層「傳遞」標記與跳數。這樣一條鏈落成 JSONL 進 git，紅線第 4 條就成立，而且比它的 OWL 檔案更好查。<strong>該避免的</strong>是為此引進 OWL／Pellet／SWRL／SPARQL 整套 Java 工具鏈：它慢（作者自認）、預設不給解釋、輸出格式與我們正本／衍生分離的 JSONL 慣例不合，而且我們的推理只需要整數比較與一張固定的組合表，用不到描述邏輯的表達力。</p>
+<h3 id="_3">與四條紅線的對照</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>紅線</th>
+<th>相容性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 不做配對式人工 gold</td>
+<td>它做了（作者自標 300 題），我們不跟。但它的 <code>vague</code> 標籤提醒：不確定關係要有表示法，用關係集合而不是丟掉。</td>
+</tr>
+<tr>
+<td>2 不叫 LLM 自評信心</td>
+<td>相容。它沒問信心；<code>explanation</code> 欄位是模型的話，跟我們 <code>triples_free</code> 的「收錄理由」一樣留存不參與決定。</td>
+</tr>
+<tr>
+<td>3 每筆附出處</td>
+<td>它沒有正式出處。我們的事件個體就是 sid，出處 by construction。</td>
+</tr>
+<tr>
+<td>4 推理可追溯</td>
+<td>它沒做到，見上。我們自己寫推導鏈。</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="_4">一個要記住的規模警告</h3>
+<p>它 22,410 條關係的數字說明<strong>不能把 Allen 閉包實體化</strong>。我們的做法應該是：只落檔「直接斷言」（年份比較得出的、相對詞得出的）與「被查詢時按需推導」的鏈，並以人物為單位切子圖（它「限制」一節說想做卻沒做的局部化，在我們這裡是天然的：單位本來就是人物，不是訪談也不是語料）。每個人物子圖裡事件數是幾十到幾百，兩兩配對可承受。</p>
+<h3 id="_5">它的錯誤分析對我們的意義</h3>
+<p>事件邊界模糊 26%、時間表述模糊 18%，合計 44%，是它把「資料本身的模糊」計成「系統錯誤」的結果。對口述歷史，這兩者不是要修的 bug，是要保留的證據層次：一句話講三十年、一個「後來」跨兩個年代，就用區間與關係集合把模糊記下來，可信層照 A–F 分。它的 41%「輸入都對模型還是答錯」則提醒我們：最後若要模型讀推理結果來寫人物的生命過程摘要，那一步又會引入錯誤，摘要不能取代結構化邊當正本。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

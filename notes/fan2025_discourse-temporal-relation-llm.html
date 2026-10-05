@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fan 2025_篇章層時間關係抽取：讓 LLM 抽出一致的時間結構</title>
+<meta name="description" content="Fan 2025_篇章層時間關係抽取：讓 LLM 抽出一致的時間結構">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Fan 2025_篇章層時間關係抽取：讓 LLM 抽出一致的時間結構</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/fan2025_discourse-temporal-relation-llm.md</code>　來源最後修改 2026-09-09　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Fan, Y., &amp; Strube, M. (2025). <em>Consistent Discourse-level Temporal Relation Extraction Using Large Language Models</em>. Findings of the Association for Computational Linguistics: EMNLP 2025, 18605–18622. Suzhou, China, 2025-11-04～09. ACL Anthology 編號 2025.findings-emnlp.1010（DOI 依 Anthology 慣例應為 10.18653/v1/2025.findings-emnlp.1010，PDF 內未印出，待查）。<strong>同儕審查（EMNLP Findings，非主會）</strong>。作者屬海德堡理論研究所（Heidelberg Institute for Theoretical Studies, HITS）。</li>
+<li><strong>對應待查問題</strong>：⑥來歷標記／極性／時間記法（主：事件之間的相對時序）；⑤無 gold standard 評估（「一致性率」是不需標準答案的指標）；①LLM 抽取現況（零樣本 LLM 在時間關係上輸給微調小模型的證據）；旁及 ⑦零標注三元組抽取的參照點（8B 模型的表現數字）。</li>
+<li><strong>一句話定位</strong>：這篇處理的是「同一篇文章裡，事件 A 與事件 B 誰先誰後、誰包含誰」這種<strong>相對時序</strong>的判斷，而且事件對可以相隔十幾句；它的三招（縮小上下文、把「先後」拆成起點與終點的比較、用轉移性檢查抓矛盾再回頭修）正好對上本專案 <code>time_anchor.py</code> 做完絕對年代之後剩下的那 72.3% 沒年份的句子，以及「一致性」能不能當程式化可信度訊號這個問題。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>論文宣稱三點。第一，<strong>上下文選取</strong>（context selection）：不把整篇文章餵給模型，而是用實體連貫性把文章切成語段，只送含兩個目標事件的那一到兩段，實測比整篇輸入、比讓模型自己挑句子、比主題模型（BERTopic）挑句子都好。第二，<strong>受 Allen 區間代數（Allen's interval algebra, Allen 1983）啟發的提示設計</strong>：不直接問「A 對 B 是什麼關係」，而是要模型逐句寫出「A 的起點在 B 的起點之前、A 的終點在 B 的起點之前，所以關係是 before」。第三，<strong>反思式一致性學習</strong>（reflection-based consistency learning）：第一輪微調後，用轉移性規則（A 先於 B、B 先於 C，則 A 必先於 C）掃出互相矛盾的三元組，把矛盾指出來當第二輪微調的材料，讓模型「學會什麼叫一致」。作者自稱是第一個用自我反思（self-reflection）處理篇章層時間關係一致性的工作。</p>
+<p>它要解決的問題有明確的先行證據：Wei et al. (2024) 已經量到 LLM 在篇章層事件關係上<strong>常違反轉移性規則</strong>、也抓不到長距離依賴；Yuan et al. (2023) 用 ChatGPT 零樣本做時間關係只得 F1 24.3。這篇的定位是給出「怎麼把 LLM 拉到能用」的一套標準做法，同時把「一致性」提到與 F1 並列的評估面向。</p>
+<p>放在本專案的脈絡看，真正有新意的是第三點與它附帶的量測方法。前兩點各有前身（SCS-EERE 用強化學習挑上下文；Cohen &amp; Bar 2023 早把時間關係拆成是非題），這篇把它們組起來、在三個資料集上驗過，屬於工程整合。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p><strong>輸入</strong>：一篇新聞（已切好句子）、一份事件清單（事件多半是動詞，資料集已標好）、以及要判斷的事件對。<strong>輸出</strong>：該事件對的時序關係標籤（TDD-Man 五類：before、after、includes、is_included、simultaneous）。任務形式是<strong>分類</strong>，不是生成三元組；事件本身不用模型找。</p>
+<p>三步流程如下。</p>
+<p><strong>第一步：挑上下文。</strong> 先用 neuralcoref 做共指消解，把代名詞換回實體名，再抽每句的主詞、受詞與所有名詞片語做成實體清單；相鄰兩句的實體清單用 Sentence-BERT（all-MiniLM-L6-v2）算餘弦相似度，取最大值，超過門檻 γ（網格搜尋後取 0.7）就算同一語段，否則切開。事件 e1 在語段 i、e2 在語段 j，就把兩段接起來當輸入；在同一段就只送那一段。輸入長度上限 20 句。另一個對照做法是<strong>讓模型自己挑句子</strong>：先給每句編號，問模型哪幾句對判斷這對事件有用，再只送那幾句。消融實驗顯示模型挑的比程式切的差很多（F1 47.8 對 55.3），原因是模型常把低相關的句子也選進來、輸入變長，而且挑出來的句子零散不連續。<strong>目標事件在輸入裡用角括號標出</strong>（<code>&lt;e1&gt;taking&lt;/e1&gt;</code>），避免同一個字在文中出現多次時模型認錯位置。</p>
+<p><strong>第二步：拆解式提示。</strong> 模型不直接吐標籤，而是必須寫出一句固定格式的話，逐一比較兩事件的起點與終點，最後才給標籤（附錄表 6 列了九種標籤各自的期望輸出句）。作者的說法是這樣「逼模型把事件放到時間軸上、推出隱含的時間邊界」。消融拿掉這一步，F1 從 55.3 掉到 52.9，一致性 91.3 掉到 88.3。</p>
+<p><strong>第三步：一致性學習。</strong> 第一輪先用標準方式微調（LoRA）。微調完拿它在<strong>訓練集</strong>上的預測，用轉移性規則找出矛盾的事件三元組，把「這三對關係互相矛盾、矛盾在哪」寫進新的輸入，連同相關語段一起做第二輪微調（只跑一個 epoch）。附錄 F 澄清了正文說得含糊的一點：第二輪的<strong>提示裡不含正確答案</strong>，但<strong>訓練目標仍是 gold 標籤</strong>，所以這還是監督學習，不是無監督的自我修正。推論時則分兩次：先預測全部事件對，再把矛盾的三元組送回模型重問一次，<strong>只問兩次、不迭代</strong>。</p>
+<p>一個技術細節值得記：評估時 top-p 0.7、temperature 0.9。對分類任務用這麼高的隨機性很反常，論文沒解釋；五次平均能壓住一部分變異，但這也表示單次輸出的穩定性本來就不高。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>沒有 schema、沒有本體、沒有跨文件合併。組織單位是<strong>一篇文章一張時間圖</strong>（temporal graph）：節點是事件、邊是五類之一的時序標籤。所謂「一致」就是這張圖在轉移性下不自相矛盾（圖 1 的例子：e1 先於 e2、e2 先於 e3，卻預測 e1 後於 e3）。</p>
+<p>有一個「重新安排既有結構」的步驟，就是第三步：抓矛盾、回頭改。但它的邏輯是<strong>用模型重問</strong>，不是用演算法強制修正。作者明說傳統做法是整數線性規劃（ILP），把所有標籤的機率丟進去求全域最佳解，可是 LLM 吐的是句子不是機率分布，所以套不上；反思式重問是給 LLM 用的替代品。</p>
+<p>篇章切分（第一步）也是一種組織，但只是為了縮小輸入，切出來的語段不進產出。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>是<strong>事件對加標籤</strong>，形式上等於（事件 A，時序關係，事件 B）的三元組，但這是分類任務的自然形式，不是知識圖譜設計。五類標籤把 Allen 的十三種區間關係壓成五種（TDD-Man 的設計，不是這篇的）。</p>
+<p><strong>沒有出處欄位</strong>。輸入裡帶檔名（讓模型知道同一篇裡還有別的事件對，作者說這是不做反思也能有中等一致性的原因），但輸出不記句號、不記位置、不記證據句。<strong>沒有絕對時間</strong>：它處理的全是事件之間的相對順序，不推年份、不接時間軸。<strong>沒有信心分數</strong>，也沒有「不確定／無法判斷」這一類：TDD-Man 五類裡沒有 vague，模型被迫在每一對上選一個。<strong>沒有事件持續長度</strong>的顯式欄位，儘管 Allen 式推理明明需要起點與終點，這些只存在模型寫出來的那句話裡，不被結構化保留。</p>
+<p>為什麼選這個表示法：因為任務由資料集定義，作者接受了它。這一點對本專案是提醒，見第 8 節。</p>
+<h2 id="5">5. 資料集</h2>
+<p>三個都是<strong>英文新聞</strong>：TDD-Man（Naik et al. 2019，專家標注，目標是給出整篇的完整時間結構；測試集 1,500 對）、MAVEN-ERE（Wang et al. 2022，只用其時間關係部分；測試集不公開，作者拿原驗證集當測試、訓練集切五份）、TimeBank（Pustejovsky et al. 2003，沒有官方切分，作者借 TimeBank-Dense 的切法並把標籤簡化）。<strong>沒有中文、沒有口語、沒有訪談、沒有歷史文本</strong>。</p>
+<p>兩個數字說明資料的長相：TDD-Man 有 1,192 個事件對相隔超過 15 句，平均 672 個 token；MAVEN-ERE 訓練集 792,445 個實例裡 683,581 個是 before（86%），多數類別基線的 F1 就有 84.8、一致性 100%。作者在限制一節承認這種標籤分布是新聞體裁的產物，換成敘事或程序性文本不見得成立。</p>
+<p>模型是 Llama-3.3-70B-Instruct 與 Llama-3.1-8B-Instruct，LoRA 微調，硬體 NVIDIA H200。沒有提出新資料集。</p>
+<h2 id="6">6. 評估</h2>
+<p><strong>有 gold standard</strong>：三個資料集都是人工標注，指標是 micro F1，加上五次平均與 Wilcoxon 符號等級檢定。沒有用 LLM 當評審，沒有讓模型自評。</p>
+<p>另一個指標是<strong>一致性率</strong>（consistency rate，沿用 Naik et al. 2019）：對每個事件三元組 (e1, e2, e3)，若三對之間都有預測，就檢查它們是否滿足轉移性；一致的三元組數除以有預測的三元組總數。這個指標<strong>完全不需要標準答案</strong>，是程式對模型輸出的結構檢查。</p>
+<p>主要結果（TDD-Man）：本文 70B 版 F1 57.9、一致性 93.6；8B 版 55.3／91.3；此前最佳的 CPTRE（RoBERTa 系）56.5／65.9。零樣本 Llama 8B 只有 F1 16.8、一致性 43.8；70B 零樣本 26.8／76.0；不加三招只單純微調則 8B 48.5／83.2、70B 51.1／84.6。TimeBank 上 70B 版 66.0／87.8 對 CPTRE 61.1／51.7。</p>
+<p><strong>評估設計的三個問題</strong>，論文自己點出了第一個：</p>
+<ol>
+<li><strong>一致性是必要條件不是充分條件。</strong> 附錄 F 直說：把 1,500 對全預測成 simultaneous，一致性 100%、F1 極低；MAVEN-ERE 的多數類別基線也是一致性 100%。所以一致性率只能抓「有矛盾」，抓不到「一致地錯」。</li>
+<li><strong>F1 與一致性此消彼長。</strong> 消融裡拿掉反思微調，F1 反而<strong>升</strong>到 55.8（最高的一格），一致性掉到 82.6。作者承認這與 Liu et al. (2021) 用 ILP 強制一致會傷 F1 的觀察一致。換句話說，反思這一步買到的是結構上不矛盾，代價是個別判斷變差一點。在有 gold 的情境還看得到這個代價；沒有 gold 就看不到。</li>
+<li><strong>F1 增幅小得可疑。</strong> 70B 模型只比 RoBERTa 系的 CPTRE 高 1.4 個 F1，8B 版還輸。作者在結論裡老實承認「表現沒有達到我們的預期」、「放大模型規模不一定帶來實質提升」。這篇最誠實的地方就在這裡。</li>
+</ol>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文承認的：只有新聞體裁；挑出來的上下文仍含無關句；沒測 TIMELINE 資料集（付費牆）。</p>
+<p>我讀出來的：</p>
+<ul>
+<li><strong>模型其實不懂事件的長短。</strong> 混淆矩陣裡最大的錯是把 before 誤判成 includes（114 例），作者的診斷是起點比對了、終點估錯；反過來把 includes 判成 is_included 則是兩個事件的持續長度都估錯。<strong>狀態動詞</strong>（believe、relate、seem）最難，因為本來就沒有清楚的時間邊界。這直接撼動第二步的立論：要模型比較起點與終點，前提是模型知道事件多長，而它不知道。</li>
+<li><strong>短距離反而更差。</strong> 相隔 0～5 句的事件對準確率 53～57%，相隔 9～14 句卻有 62～66%；換成全文輸入也一樣。作者的解讀是「在篇章層語料上訓練的模型學不好短距離依賴」。這很反直覺，而且沒有進一步解釋；一個可能是短距離的對本來就是難例（同一段裡的事件常是描述同一件事的不同面向），資料集的標注偏好在此起作用。</li>
+<li><strong>反思機制到底教了什麼，證據薄弱。</strong> 消融第 4 列（PA：只在推論時重問、不做第二輪微調）一致性 84.5，比不重問的 82.6 只多 1.9；做了第二輪微調才到 91.3。所以「學會一致」靶的是微調，推論時的重問幾乎沒作用。這對不能微調、只靠提示的用法是壞消息。</li>
+<li><strong>沒有「無法判斷」這一類。</strong> 迫選五類，等於假設每一對事件都能從文本判定時序。新聞或許接近，口述不會。</li>
+<li><strong>一致性率的分母依賴預測的密度。</strong> 三對都有預測才算一個三元組。在他們的設定每對都有預測，所以分母穩定；在稀疏抽取的情境，這個指標的覆蓋率會很低。</li>
+<li><strong>對 Allen 代數的援用是名義上的。</strong> Allen 的核心是十三種關係的<strong>組合表</strong>（A 先於 B、B 重疊 C，則 A 與 C 有哪幾種可能），這篇只用了最簡單的轉移性（before 的傳遞），沒有用組合表做完整的約束傳播，也沒有把五類壓縮後的組合規則寫出來。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p>先講位置。<code>time_anchor.py</code> 做的是<strong>絕對定年</strong>：13,142 句定年 3,635（27.7%），其中自有年代只有 620 句，其餘靠段落內繼承；相對詞（那時候、後來、退伍）目前<strong>只記錄不推算</strong>。這篇處理的正是另一半：不靠年份、只靠文本判斷事件之間的先後與包含。兩者合起來才是 Allen 意義下的時間結構：有年份的事件當固定點，沒年份的事件靠相對關係掛在它們之間，得到一個區間約束而不是一個年份。所以這篇對「生命過程是時序化的事件序列」這條硬約束（CLAUDE.md 第 3 條）有直接用處，但要先把它的任務形式改成我們能用的樣子。</p>
+<p><strong>它怎麼在整篇層次維持一致性，這部分能搬多少。</strong> 它的做法是「先逐對預測、再用轉移性掃全篇、矛盾的送回去重問」。逐對預測本身沒有一致性可言，一致性完全來自事後的<strong>程式檢查</strong>加<strong>第二輪微調</strong>。前者我們可以直接照做：ORSE 的邊要是有時序標籤，程式就能對每一卷（或每一位人物跨卷併起來的事件集）算三元組是否滿足轉移性，這是純程式、不呼叫模型、不需 gold。後者我們做不了兩個原因：第二輪微調的訓練目標是 gold 標籤（違反紅線 1），而且我們走的是本機推論不微調。剩下能借的只有推論時重問（消融的 PA 列），而論文自己量到 PA 幾乎沒用（一致性 +1.9，F1 不動）。<strong>結論：借它的檢查、不借它的修正。</strong></p>
+<p><strong>「一致性」能不能當本專案的可信度訊號（紅線 2）。</strong> 能，而且性質上比 <code>confidence_scorer.py</code> 現有的五訊號更接近「跨筆佐證」：它不是問模型有多確定，而是問模型的多個判斷放在一起有沒有矛盾，完全由程式推導，與紅線 2 相容。但要做三件調整，否則會被它的弱點反咬：</p>
+<ol>
+<li><strong>把集合層的比率改成邊層的訊號。</strong> 論文算的是整篇的一致性率，我們要的是每一條邊的可信度。可行的做法是對每條時序邊記兩個數：它參與了多少個「三對都有預測」的三元組、其中多少個一致。零參與的邊標「未經一致性檢查」而不是「一致」，這一點呼應第 7 節說的分母問題。</li>
+<li><strong>一致性只能降信、不能升信。</strong> 論文自己的反例（全部預測 simultaneous 得 100%）說明一致不代表對。所以這個訊號只往一個方向用：落在矛盾三元組裡的邊扣分或標旗，不在矛盾裡的邊不加分。這跟紅線 2 的精神一致：程式化訊號是用來篩、不是用來背書。</li>
+<li><strong>用絕對年代當第二個獨立來源做異源查核。</strong> 這是論文沒有、我們有的東西。<code>time_anchor.py</code> 給了 27.7% 的句子年份與可信層 A–F；模型若說「A 在 B 之前」而兩句的年份區間反過來（且兩者可信層都在高層），這就是一筆程式抓到的矛盾，不需要第三個事件湊三元組。這比轉移性檢查覆蓋率高得多，因為只要兩端有年份就能查。使用者 2026-09-09 的裁決已經說過異源查核是<strong>可信度分層不是 ground truth</strong>，這裡同樣適用：年份區間與相對關係衝突，記為「兩源不一致」，不判誰對。</li>
+</ol>
+<p><strong>零樣本輸給微調小模型，對本機小模型路線的意義。</strong> 數字很刺眼：Llama 8B 零樣本在 TDD-Man F1 16.8（五類隨機約 20%），70B 零樣本也只有 26.8；加上三招微調後 8B 到 55.3，只比 70B 的 57.9 低 2.6。三個可以推的結論，後兩個是我的推測、論文沒直說：</p>
+<ul>
+<li><strong>模型大小幾乎不是變因，任務拆解與訓練才是。</strong> 這對「一律本機模型」（2026-08-22 裁決）是好消息：不必因為跑不動 70B 而放棄，但也代表<strong>零樣本地問本機模型「A 在 B 之前還是之後」得到的會接近亂猜</strong>，不能直接拿來當時序邊。</li>
+<li><strong>迫選多類是問題的根源之一。</strong> 五類裡 includes、is_included 需要估事件長短，論文證明模型估不了。口述裡的事件（「那時候我在麗歌」「後來去當兵」）多半是狀態或長期活動，正是論文說最難的那類。所以在我們的設定應該只問能問出來的：<strong>先後（before／after）加上「文本沒說」</strong>，把 includes 那一族整個放掉；這樣連隨機基線都從 20% 升到 33%，而且「文本沒說」是口述最常見的真實答案。</li>
+<li><strong>程式能先做的就先做。</strong> 論文的模型在有明確線索詞的情況下也要靠微調才學得會；我們的語料裡相對詞（退伍之後、後來、那時候）已由 <code>time_anchor.py</code> 逐句記錄。<strong>先讓程式用相對詞建候選時序邊</strong>（「X 之後」的句子事件晚於 X），模型只在程式無法判定時進場、而且只做「這句的『後來』指的是接前一句還是接前一段」這種二選一。這符合「不採用模型的字，只取它的判斷」，也把模型呼叫壓到最少。</li>
+</ul>
+<p><strong>Prompt 設計哪些可搬到中文口語。</strong></p>
+<ul>
+<li><strong>標出目標事件的位置</strong>（<code>&lt;e1&gt;…&lt;/e1&gt;</code>）：直接可搬，ORSE 本來就是先給主詞受詞再找關係，時序判斷同理先給兩個事件跨距再問。注意標記符號要避開 <code>〈〉「」</code> 這些語料裡的人工標注符號（我們在 <code>_無標注</code> 語料上抽取，但仍要避免與剝除規則衝突），用 <code>【E1】…【/E1】</code> 之類。</li>
+<li><strong>Allen 式拆解改成是非題</strong>：論文要模型寫一整句「A 的起點在 B 的起點之前…」，我們不該採用模型的字，改成 Cohen &amp; Bar (2023) 那種布林問答：「事件一開始的時候，事件二已經開始了嗎？」「事件一結束的時候，事件二已經結束了嗎？」各答是／否／文本沒說，標籤由程式從答案組合查表。這樣逐字驗證、格式合規都是 by construction，也跟 <code>orse_choice_exp.py</code> 的選擇題設計同一路數。</li>
+<li><strong>上下文用 trunk 不用全卷</strong>：論文的實體切分語段大致對應我們的 trunk（<code>&lt;BOS&gt;</code> 段落，1,917 個），它量到全文輸入會傷表現、模型自己挑上下文更傷。所以時序判斷的輸入就是含兩個事件的一或兩個 trunk，不要讓模型挑句子。差別在於他們假設新聞是專業作者寫的、連貫性可信；口述的 trunk 邊界是轉錄者切的，連貫性不保證，這是要另外量的。</li>
+<li><strong>告知模型同一卷還有其他事件對</strong>：論文靠在輸入裡放檔名達到中等一致性，這個便宜的做法可以試，但效果沒有被單獨量過。</li>
+</ul>
+<p><strong>該避免的地方。</strong></p>
+<ul>
+<li><strong>不要用「重問直到一致」來修結果。</strong> 在有 gold 的情境論文已看到修一致會傷 F1；我們沒有 gold，修了看不到代價。矛盾三元組落檔、標在邊上（紅線 4），保留兩輪輸出，不自動覆蓋。</li>
+<li><strong>不要沿用五類迫選。</strong> 理由上面說了；再加一條：論文的一致性檢查只用了 before 的轉移性，五類壓縮後的完整組合規則它沒寫，我們若照抄五類，一致性檢查會只覆蓋一小部分邊。</li>
+<li><strong>不要把「一致性率」寫成準確率的代理。</strong> 報告裡它只能是「結構品質」的一欄，與 F1 並列而不替代；沒有 gold 時尤其要在定義式旁邊寫上「全部同一標籤可得 100%」這個反例。</li>
+<li><strong>不要期待狀態性事件能判時序。</strong> 論文在新聞上都做不到，口述的「我那時候在做編曲」更不行。程式端應該先把事件動詞分成動作類與狀態類（<code>life_nodes.py</code> 的六類動詞表可以補這個維度），狀態類只掛年代區間、不進先後判斷。</li>
+</ul>
+<p><strong>與表示法的關係。</strong> 這篇對「口述歷史、非三元組、強制出處」沒有可借的表示法：它不記出處、不記絕對時間、不記不確定。反而是我們的設計比它完整。唯一可補進我們結構的欄位是<strong>事件對之間的相對時序邊</strong>本身（<code>before</code>／<code>after</code>／<code>未說</code>，加上檢查結果與參與的三元組數），掛在 <code>build_network.py</code> 的邊上與 <code>年_最早</code>／<code>年_最晚</code>／<code>年_可信層</code> 並列，兩者互為異源查核的對象。</p>
+<p><strong>對本專案最重要的一個啟示</strong>：一致性檢查是本專案還沒用到的一種<strong>免標準答案、純程式、由多筆判斷互相牽制</strong>的可信度訊號，而且我們比論文多一個獨立來源（絕對年代）可以拿來查它。<strong>一個該避免的地方</strong>：不要拿模型重問去修矛盾，論文自己的消融顯示這一步在不微調時幾乎無效、在微調時會傷準確率。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

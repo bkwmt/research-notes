@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>zhu2024_autokg — LLM 於知識圖譜建構與推理的能力評測，兼提 AutoKG 多代理構想</title>
+<meta name="description" content="zhu2024_autokg — LLM 於知識圖譜建構與推理的能力評測，兼提 AutoKG 多代理構想">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>zhu2024_autokg — LLM 於知識圖譜建構與推理的能力評測，兼提 AutoKG 多代理構想</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/zhu2024_autokg.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Zhu, Y., Wang, X., Chen, J., Qiao, S., Ou, Y., Yao, Y., Deng, S., Chen, H., Zhang, N. 2024. <em>LLMs for Knowledge Graph Construction and Reasoning: Recent Capabilities and Future Opportunities</em>. World Wide Web Journal（WWWJ）. arXiv:2305.13168（v4, 2024-12-26）. 同儕審查（已於 WWWJ 發表）。</li>
+<li><strong>對應待查問題</strong>：②agentic 建構（兼及 ①LLM 抽取／KG 建構現況、⑤無 gold standard 評估的反面對照）</li>
+<li><strong>一句話定位</strong>：這是一篇「評測導向」論文，系統性測 GPT 家族在知識圖譜（Knowledge Graph, KG）建構與推理各任務上的強弱，結論是 LLM 比較像「推理助手」而非「少樣本抽取器」；末尾提出一個尚未落實成完整系統的多代理自動建構構想 AutoKG，正是本專案追問「agentic 建構」時的參照對象。</li>
+</ul>
+<hr>
+<h2 id="1">1. 貢獻</h2>
+<p>論文自陳三項貢獻，實際份量差很多：</p>
+<ol>
+<li>
+<p><strong>一套跨八個資料集的 LLM 能力盤點</strong>（主體，也是最紮實的部分）。在零樣本（zero-shot，不給任何範例）與單樣本（one-shot，給一個示範）兩種設定下，量測 text-davinci-003、ChatGPT、GPT-4 在四類代表性任務上的表現，並以「完全監督訓練的最佳小模型」（Fine-Tuned SOTA）當對照基準。核心發現：GPT-4 這類 LLM 當「少樣本資訊抽取器」效果有限，但當「推理助手」相當可用。</p>
+</li>
+<li>
+<p><strong>提出一個新任務與新資料集 VINE</strong>（Virtual Knowledge Extraction，虛擬知識抽取）。用意是把「模型記得住」和「模型真的會泛化」拆開來測，做法是把真實資料裡的實體與關係換成憑空捏造、預訓練語料裡不可能出現的假詞，再要模型照指令抽取。</p>
+</li>
+<li>
+<p><strong>提出 AutoKG 的概念</strong>：用多個各司其職的 LLM 代理（agent）互相對話、並接上外部資料來源，來協作完成 KG 建構與推理。這一項只是概念示範（一張 Spider-Man 電影的 KG 圖），<strong>沒有量化評估</strong>，作者自己也用 "we introduce the concept of" 這種措辭。</p>
+</li>
+</ol>
+<p>要提醒人文讀者：這篇的名氣（常被稱作「AutoKG 論文」）主要來自第三項的響亮命名，但它真正做實驗、有數字撐的是第一、二項。第三項比較接近「未來展望」。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>這篇<strong>沒有一條端到端的建構管線</strong>，而是「一個任務、一個 prompt、量一次分數」的評測形態。輸入是各資料集裡的單句或問題，輸出照任務不同而不同。四類任務對應到 KG 生命週期的兩端：</p>
+<p><strong>建構端（construction）</strong>
+- 關係抽取（Relation Extraction, RE）：給一句話，要模型抽出 [主體, 關係, 客體] 三元組。
+- 事件抽取／事件偵測（Event Extraction / Event Detection, ED）：給一句話，要模型判斷句中觸發了哪些「事件類型」（例如 Competition、Ranking），本質是分類，不是三元組。</p>
+<p><strong>推理端（reasoning）</strong>
+- 連結預測（Link Prediction, LP）：給三元組的頭實體與關係，遮住尾實體要模型補（填空式，[MASK]）。
+- 問答（Question Answering, QA）：知識庫問答，含 MetaQA 的多跳（multi-hop）推理。</p>
+<p>抽取本身就是<strong>單次、單一模型</strong>的呼叫，沒有多步、沒有多代理分工。實驗在 2023 年 3–4 月透過<strong>互動介面（聊天視窗）而非 API</strong> 完成，每個資料集只抽 20 筆左右的隨機樣本（LP 的兩個資料集分別是 25、23 筆）。這個規模很小，作者也承認因隨機抽樣「結果可能有內在變異」。</p>
+<p>真正談到「多代理交棒」的是第 3 章的 AutoKG 構想，但它停在概念圖層次：借用 CAMEL 的角色扮演（role-playing）框架，指派「KG 助理」當顧問（Consultant）、「KG 使用者」當領域專家（domain expert），另設一個「任務指定者」把需求講清楚、一個「網頁搜尋者」（web searcher）去外部檢索；助理與使用者多輪對話直到使用者確認任務完成。這段沒有流程細節（作者明說 "omits the specific operational process"），也沒有任何評測數字。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p><strong>幾乎沒有組織層可談</strong>。這篇的產出是「單句抽取結果」，止於三元組或事件類型標籤，沒有：
+- schema 或本體（ontology）的自建（關係類型直接沿用各資料集既有的標註集）；
+- 跨文件的去重、實體合併、衝突解決；
+- 「重新安排既有結構」的融合或精煉步驟。</p>
+<p>它評測的資料集本身是既有 KG 或標註語料（FB15K-237 來自 Freebase、ATOMIC2020 是常識 KG），結構是別人定好的，論文只是拿 LLM 去填空或抽取，不涉及把零散結果組裝成一張圖的工程。這與本專案（extract_ohistory）要處理的「跨 314 篇訪談做實體消歧與登錄簿合併」完全不同層級——這篇根本沒踏進那一步。</p>
+<p>AutoKG 概念裡雖然畫了「KG 建構＋推理整合」的環，但同樣沒有落實的組織機制。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>是三元組（subject-predicate-object），而且是很傳統、很窄的那種。</strong> Fig. 4 的 VINE prompt 直接寫 "There might be Subject-Predicate-Object triples in the following sentence... give your answers in the form of [subject, predicate, object]"。LP 也是在三元組上遮尾實體。唯一不是三元組的是事件偵測，那產出的是<strong>事件類型標籤</strong>（純分類），可算一種非三元組表示，但也很貧乏，沒有事件框架（event frame）該有的論元角色（arguments/roles）結構。</p>
+<p>關鍵缺口，對本專案特別重要：
+- <strong>沒有出處欄位（provenance）</strong>。抽取結果不帶來源句、位置、說話者等資訊。
+- <strong>沒有時間資訊</strong>（no timestamp）。
+- <strong>沒有信心分數</strong>（no confidence）。也因此沒有「叫 LLM 自評信心」的問題——它壓根不記信心。</p>
+<p>為什麼是三元組？因為它的目標是「對齊既有 KG benchmark 的評分格式」（micro F1 等），三元組是這些 benchmark 的既定表示。這是評測方便，不是為知識表達的豐富度而選。對「口述歷史、要保留多重樣貌、要強制附出處」的需求，這篇的表示法沒有正面參考價值，反而是一個「過度簡化」的反例。</p>
+<h2 id="5">5. 資料集</h2>
+<p>八個資料集，全部沿用既有公開資料集，<strong>沒有提出常態性新 benchmark</strong>（VINE 例外，見下）：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>任務</th>
+<th>資料集</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>關係抽取 RE</td>
+<td>DuIE2.0、Re-TACRED、SciERC</td>
+<td><strong>DuIE2.0 是中文</strong>；SciERC 是科學領域（專業域），Re-TACRED 是通用域</td>
+</tr>
+<tr>
+<td>事件偵測 ED</td>
+<td>MAVEN</td>
+<td>通用域事件</td>
+</tr>
+<tr>
+<td>連結預測 LP</td>
+<td>FB15K-237、ATOMIC2020</td>
+<td>前者來自 Freebase，後者是常識 KG</td>
+</tr>
+<tr>
+<td>問答 QA</td>
+<td>FreebaseQA、MetaQA</td>
+<td>MetaQA 含多跳問答</td>
+</tr>
+</tbody>
+</table></div>
+<p>語言：<strong>有中文</strong>（DuIE2.0），其餘為英文。規模：評測時每個資料集只用 20 筆左右隨機樣本，屬小樣本抽測，不是全量跑分。領域：科學、通用、常識，<strong>沒有歷史文本、沒有口語逐字稿、沒有訪談語料</strong>。</p>
+<p><strong>VINE 是這篇唯一自建的資料集</strong>：以 Re-TACRED 測試集為底，把真實實體與關係替換成「現實中不存在」的捏造詞（來源之一是 2022–2023 年紐約時報競賽的參賽詞，另用隨機 7–9 字母序列加常見名詞後綴造新詞），構成虛擬三元組，用來測「模型面對從沒見過的知識時還能不能照指令抽取」。這個「用假詞隔離記憶效應」的巧思，是全篇方法上最有價值的設計。</p>
+<h2 id="6">6. 評估</h2>
+<p><strong>指標</strong>：都是對照 gold standard（人工標準答案）的傳統自動指標——
+- RE：micro F1（微觀 F1）
+- ED：F-score
+- LP：hits@1（FB15K-237）、bleu1（ATOMIC2020）
+- QA：AnswerExactMatch（答案完全比對）
+- VINE：抽對虛擬三元組的比例（accuracy）</p>
+<p><strong>核心數字（Table 1）</strong>：
+- RE 零樣本，GPT-4 在中文 DuIE2.0 拿 31.03，遠勝 ChatGPT 的 10.26，但監督 SOTA 是 69.42——差一截。
+- 全表看，<strong>建構任務 LLM 都輸給 fine-tuned SOTA</strong>；<strong>推理任務 LLM 追平甚至局部超越</strong>（FreebaseQA 上 ChatGPT 與 GPT-4 都是 95.0，比監督 SOTA 的 79.0 高 16 分；FB15K-237 單樣本 GPT-4 的 hits@1 接近 SOTA）。
+- 一個反直覺發現：<strong>單樣本不一定更好</strong>。QA 上 ChatGPT 與 GPT-4 給一個範例後反而退步，作者歸因於「對齊稅」（alignment tax，模型為對齊人類回饋犧牲了部分脈絡學習能力）。
+- VINE：GPT-4 抽對 80% 的虛擬三元組，ChatGPT 只有 27%——用來論證 GPT-4 是「真泛化」而非「靠記憶」。</p>
+<p><strong>有沒有 LLM 自評／LLM-as-a-judge？沒有。</strong> 全部用固定指標比對 gold label，沒有任何「叫 LLM 給自己打分」或「用一個 LLM 當裁判評另一個 LLM」的環節。這點與本專案的紅線一致（本專案也拒絕 LLM 自評信心）。</p>
+<p><strong>人工介入程度</strong>：評測階段靠既有標註當答案，人工介入低；但 AutoKG 概念那段，作者明說「即使有 AutoKG 協助，產出的 KG 仍需人工評估與驗證」（still necessitate manual evaluation and validation）。</p>
+<p><strong>評估設計的問題</strong>（作者自己點到，值得記）：現行指標「可能不足以評估 LLM」——資料集標籤未必涵蓋所有正確答案，模型用同義詞回答會被誤判為錯。加上樣本只有 20 筆、走互動介面而非 API、實驗時點固定在 2023 年 3–4 月，可重現性與代表性都偏弱。這是「用舊 benchmark 硬套新模型」的通病。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>作者自承：
+- API 的<strong>最大 token 限制</strong>（當時 gpt-3.5-turbo）會限制 KG 建構。
+- AutoKG 在<strong>全自動運作下缺少即時的人為糾錯</strong>；但每步都加人又太貴。
+- <strong>LLM 幻覺（hallucination）</strong>問題仍在，須靠比對標準答案、專家審查或半自動演算法把關。
+- 專業域（SciERC）表現明顯較差，推測因預訓練以通用語料為主、缺專業深度。</p>
+<p>我讀出、它沒明講或帶過的疑點：
+- <strong>AutoKG 名不副實</strong>：全篇最吸睛的賣點卻只有一張概念圖、零評測。把「概念」與「已驗證系統」並列為貢獻，容易誤導後續引用者（本專案追問 agentic 建構時要特別留意，別把它當成可複製的方法）。
+- <strong>樣本量太小</strong>（每資料集約 20 筆），還走聊天視窗手動操作，數字的統計意義有限，作者僅以「可能有變異」一句帶過。
+- <strong>三元組表示的天花板</strong>：把知識窄化成 SPO 三元組來遷就 benchmark，等於預設了「知識＝三元組」，對敘事性、評價性、多義的口述材料完全無能為力，但論文沒有反省這個表示選擇。
+- <strong>VINE 的假詞替換</strong>雖巧妙，但把真實實體換成隨機字母序列，語意脈絡也被破壞了，模型抽不出來未必是「不會泛化」，也可能是句子本身變得不自然——這個混淆因素沒有被討論。</p>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>可借用的：</strong>
+1. <strong>「建構 vs 推理」的能力分野</strong>是有用的心智模型。它提醒我們：LLM 拿來做「抽取／建構」時，別預期它勝過精調小模型，要靠設計（判準、多輪、佐證）補足；而它在「推理／推斷關係」上相對強。本專案的 srt-extract 屬建構端，正該把 LLM 定位成需要嚴格判準約束的抽取器，而非全信其輸出。
+2. <strong>VINE 的「隔離記憶效應」思路</strong>可轉用：若日後要驗證抽取結果不是模型「腦補」而是真的讀自逐字稿，可以設計「把逐字稿裡的專有名詞替換成不存在的假名、看模型是否仍只依文本抽取」這類對照測試，呼應本專案 extract-qa 的「腦補檢查」。
+3. <strong>它不叫 LLM 自評、不做 LLM-as-a-judge</strong>，與本專案紅線 2 一致，可當正面佐證：連這篇評測論文都靠固定指標而非模型自評。</p>
+<p><strong>該避免的：</strong>
+1. <strong>窄三元組表示</strong>。這篇止於 SPO 三元組與事件標籤，<strong>無出處、無時間、無信心</strong>——恰恰是本專案三條紅線（每筆強制附出處、信心由程式訊號推導、產物可追溯）要超越的最低標。本專案的「實體／事件／關係／goût 敘述＋強制 SourceCitation」混合結構，比它豐富得多，方向正確，不必向它看齊。
+2. <strong>把概念當成果</strong>。AutoKG 的多代理只有概念圖、沒有評測，不能直接搬。本專案若要走 agentic（目前 srt-extract → entity-resolve → extract-qa 的多 skill 分工其實已是一種務實的多階段 agent 設計），要比它做得更實：每一步落檔、每個判定可追溯，而不是畫個 role-playing 環就宣稱自動化。
+3. <strong>小樣本、互動介面式的評測</strong>。本專案評估要有明確語料範圍與可重現流程，別學它靠 20 筆手動抽測下結論。</p>
+<p><strong>與紅線的相容性</strong>：紅線 2（不叫 LLM 自評）與本篇做法相容；紅線 3（強制出處）本篇完全不做，是本專案要補上的缺口；紅線 1（不做配對式 gold standard）在本篇是反例——它整套評估都依賴既有 gold label，而本專案在事件與關係層刻意不建 gold standard，兩者取向不同，但這正凸顯本專案面對「無標準答案的口述材料」時，不能照抄這種 benchmark 式評測，得另想程式化訊號（出處有效性、跨人佐證等）來取代人工標準答案。</p>
+<p><strong>一句總評</strong>：這篇對「口述歷史、非三元組、強制出處」的正面參考價值有限，它的價值主要在反面——清楚示範了「遷就既有 KG benchmark」會把知識表示壓縮到多窄，反過來說明本專案堅持混合結構＋強制出處的必要。它真正值得借的是 VINE 的記憶／泛化隔離思路，以及「建構弱、推理強」這個對 LLM 定位的判斷。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

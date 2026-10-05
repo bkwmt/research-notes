@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Papaluca 2024_零／少樣本的知識圖譜三元組抽取</title>
+<meta name="description" content="Papaluca 2024_零／少樣本的知識圖譜三元組抽取">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Papaluca 2024_零／少樣本的知識圖譜三元組抽取</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/papaluca2024_zero-few-shot-kg-triplets.md</code>　來源最後修改 2026-09-08　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Papaluca, A., Krefl, D., Rodríguez Méndez, S. J., Lensky, A., &amp; Suominen, H. (2024). <em>Zero- and Few-Shots Knowledge Graph Triplet Extraction with Large Language Models</em>. Proceedings of the 1st Workshop on Knowledge Graphs and Large Language Models (KaLLM 2024), 12–23. ACL Anthology 2024.kallm-1.2。<strong>同儕審查（ACL workshop）</strong>。澳洲國立大學等。程式碼公開。</li>
+<li><strong>對應待查問題</strong>：⑧本體學習與 schema 歸納、⑦零標注三元組抽取的參照點</li>
+<li><strong>一句話定位</strong>：測了六個不同大小的語言模型在零樣本與少樣本下抽三元組的能力，得到一個很難看但很重要的數字——<strong>純零樣本的 F1 幾乎是 0</strong>。加上從知識庫檢索來的脈絡之後才回到可用水準。結論是：<strong>脈絡的品質決定成敗，模型大小只帶來對數級的改善</strong>。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>提出一條用知識庫（KB）動態補脈絡的流程：對每個待處理的句子，從知識庫檢索相關資訊塞進話術，再要模型抽三元組。相對於前人手工寫死的靜態脈絡，他們的脈絡是依句子動態檢索的，因此更靈活、更不綁資料集。另外，他們測了從 1 億到 650 億參數共六個模型，因此能同時分析「模型大小」與「脈絡品質」兩個因素各自的貢獻。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>基本話術很簡單：「以下提供一段文字。從中抽出最多 {max_triplets} 個 (主詞, 述詞, 受詞) 形式的知識三元組」，附兩個固定範例。他們試過三種話術變體，F1 沒有顯著差異，所以主實驗只用這個基本版。</p>
+<p><strong>知識庫補脈絡</strong>分兩種形式：</p>
+<ul>
+<li><strong>脈絡三元組</strong>（他們稱 0.5-Shots）：從知識庫檢索若干條與輸入句相似的三元組附在話術裡。這些三元組提示模型「該預期哪些關係與實體」，但<strong>不示範句子長什麼樣</strong>。</li>
+<li><strong>句子—三元組配對</strong>（Few-Shots）：檢索若干組「例句加該例句應抽出的三元組」，取代話術裡那兩個固定範例。</li>
+</ul>
+<p>檢索方式：把知識庫裡每條三元組的 <code>(主詞, 述詞, 受詞)</code> 字串用小型句子編碼器 MiniLM 編成向量存進索引；推論時把輸入句也編碼，用餘弦相似度取最相似的前 N 條。<strong>還多做一步</strong>：從這 N 條裡，每種關係型別只取前兩條，以免脈絡被單一高頻關係佔滿——他們指出不這樣做會得到偏向某一關係的分布，對含多種關係的句子不利。</p>
+<p><strong>知識庫是從該資料集的訓練集與驗證集建的。</strong></p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>純三元組，述詞必須對應到知識庫封閉關係集裡的某一種。無出處、無時間、無信心分數。這篇的重點不在表示法，在抽取條件。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>是，而且是<strong>受封閉關係集約束的</strong>三元組——主詞受詞要對應知識庫的節點，述詞要對應知識庫允許的邊型別。這一點在解讀它的數字時很關鍵，見第 8 節。</p>
+<h2 id="5">5. 資料集</h2>
+<p>兩個標準基準，都是英文：</p>
+<ul>
+<li><strong>WebNLG</strong>（Zheng 等人 2017 修訂版）：5,019 訓練／500 驗證／703 測試句，171 種關係，每句平均 2.29 條三元組。句子結構較線性、簡單。</li>
+<li><strong>NYT</strong>（Riedel 等人 2010）：56,195／5,000／5,000 句，24 種關係，每句平均 1.72 條。<strong>這個資料集本身就是用遠距監督建的</strong>（把 180 萬篇紐約時報文章對齊 Freebase）。</li>
+</ul>
+<p>模型：GPT-2（1 億／15 億）、Falcon（70 億／400 億）、LLaMA（130 億／650 億），全部用 8-bit 量化在本地跑，溫度 0.1。<strong>他們也試了 instructed／chat 微調版本，結果總是持平或更差，所以主報告用 base 版。</strong></p>
+<h2 id="6">6. 評估</h2>
+<p>微平均 F1，對照的是既有的完全微調模型（表 3）：NovelTagging 0.283／0.420（WebNLG／NYT）、CopyRE 0.371／0.587、GraphRel 0.429／0.619、OrderCopyRE 0.616／0.721、<strong>UniRel 0.947／0.937</strong>。</p>
+<p><strong>零樣本與 2-shots，不給知識庫脈絡（表 4）</strong>：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>WebNLG 0-Shot</th>
+<th>WebNLG 2-Shots</th>
+<th>NYT 0-Shot</th>
+<th>NYT 2-Shots</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-2 base</td>
+<td>0.000</td>
+<td>0.006</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>GPT-2 xl</td>
+<td>0.000</td>
+<td>0.037</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>Falcon 7b</td>
+<td>0.000</td>
+<td>0.066</td>
+<td>0.000</td>
+<td>0.002</td>
+</tr>
+<tr>
+<td>Falcon 40b</td>
+<td>0.021</td>
+<td>0.158</td>
+<td>0.000</td>
+<td>0.007</td>
+</tr>
+<tr>
+<td>LLaMA 13b</td>
+<td>0.006</td>
+<td>0.129</td>
+<td>0.000</td>
+<td>0.002</td>
+</tr>
+<tr>
+<td>LLaMA 65b</td>
+<td>0.041</td>
+<td>0.219</td>
+<td>0.000</td>
+<td>0.017</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>加上知識庫脈絡（表 5）</strong>：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>WebNLG 0.5-Shot</th>
+<th>WebNLG 5-Shots</th>
+<th>NYT 0.5-Shot</th>
+<th>NYT 5-Shots</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-2 base</td>
+<td>0.249</td>
+<td>0.430</td>
+<td>0.175</td>
+<td>0.375</td>
+</tr>
+<tr>
+<td>GPT-2 xl</td>
+<td>0.297</td>
+<td>0.517</td>
+<td>0.193</td>
+<td>0.448</td>
+</tr>
+<tr>
+<td>Falcon 7b</td>
+<td>0.381</td>
+<td>0.567</td>
+<td>0.250</td>
+<td>0.519</td>
+</tr>
+<tr>
+<td>Falcon 40b</td>
+<td>0.345</td>
+<td>0.615</td>
+<td>0.226</td>
+<td>0.547</td>
+</tr>
+<tr>
+<td>LLaMA 13b</td>
+<td>0.374</td>
+<td>0.609</td>
+<td>0.247</td>
+<td>0.582</td>
+</tr>
+<tr>
+<td>LLaMA 65b</td>
+<td>0.377</td>
+<td>0.677</td>
+<td>0.243</td>
+<td>0.647</td>
+</tr>
+</tbody>
+</table></div>
+<p>三個讀法：</p>
+<ol>
+<li><strong>零樣本近乎全滅。</strong> NYT 上六個模型全是 0.000。</li>
+<li><strong>脈絡的效益遠大於模型大小。</strong> GPT-2 base（1 億參數）加上脈絡三元組，F1 0.249，勝過 LLaMA 65b（650 倍大）不加脈絡的 0.041。作者的說法是模型大小只帶來對數級改善。</li>
+<li><strong>句子—三元組配對的範例比單純的脈絡三元組更有效</strong>（0.5-Shot 對 5-Shots 差距很大），因為前者不只告訴模型有哪些關係，還示範了「這種句子該抽成什麼」。</li>
+</ol>
+<p>他們另外量了<strong>檢索脈絡的品質</strong>（圖 3）：正確三元組出現在檢索回來的脈絡裡的機率，隨檢索數量 N 上升。這個機率與最終抽取效能強烈相關——NYT 表現差的原因之一就是檢索器在 NYT 上撈不到相關脈絡。</p>
+<p>無 LLM 自評、無 LLM 評審。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自承的：NYT 難的原因有二——句子結構複雜（從屬子句多、關係常隱含）；而且<strong>NYT 的標準答案往往只涵蓋句中實際關係的一個子集</strong>，所以沒有訓練範例時，模型無從得知哪些關係該抽、哪些不該。</p>
+<p>我讀出來的：</p>
+<ul>
+<li><strong>「零樣本 F1 = 0」的意思比字面窄。</strong> 這是在「述詞必須對應封閉關係集」的評分下算的。模型不是抽不出任何東西，是抽出的東西對不上那個封閉集。換一種評分（例如不要求對應封閉集，只看抽出的內容是否忠於原文），數字會完全不同。論文沒有做這個對照，這是它最大的盲點。</li>
+<li><strong>知識庫是從訓練集與驗證集建的</strong>，所以「零樣本」這個詞用得很鬆——模型沒有被微調，但脈絡來自標注資料。嚴格說這是檢索增強的少樣本，不是零樣本。</li>
+<li><strong>instructed 版本更差，這件事沒有被解釋。</strong> 只有一句話帶過。對想用本機 instruct 模型的人來說，這是需要自己驗證的重要訊號。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>這篇最該記的是一個必須小心引用的數字，以及一條清楚的行動指引。</strong></p>
+<p><strong>（一）「零樣本三元組抽取幾乎是 0」不能直接套到我們身上，但要知道它為什麼。</strong></p>
+<p>他們的評分要求述詞對應到知識庫的封閉關係集。我們的兩條線性質不同：</p>
+<ul>
+<li><code>triples/</code> 用 <code>life_nodes.py</code> 的動詞表界定述詞，<strong>有封閉集</strong>，所以比較接近他們的設定；差別在我們的動詞表是從語料的實際用詞來的，不是外部資料庫的抽象關係名。</li>
+<li><code>triples_free/</code> 不限動詞、模型自判，<strong>沒有封閉集</strong>，所以他們的數字對這條線幾乎不適用。</li>
+</ul>
+<p>這個區別要寫進報告。否則引用「零樣本 F1 近乎 0」會誤導——那是「零樣本且要對上外部 schema」的成績，不是「零樣本抽取」本身的成績。</p>
+<p><strong>（二）NYT 的困難就是我們的困難，而且他們講出了原因。</strong></p>
+<p>「標準答案只涵蓋句中實際關係的一個子集，所以模型無從得知哪些該抽、哪些不該」——這正是 <code>triples_free/</code> 讓模型自己判斷「什麼算知識」時碰到的問題。差別在他們有標準答案可以怪，我們沒有。這意味著：<strong>在沒有標準答案的情況下，「該抽什麼」這個問題只能靠判準說清楚，不能指望模型自己想出來</strong>。這替 <code>criteria.md</code> 這類判準文件的必要性提供了論證。</p>
+<p><strong>（三）行動指引：與其換更大的模型，不如給更好的脈絡。</strong></p>
+<p>GPT-2 base 加脈絡勝過 LLaMA 65b 不加脈絡。這與 NER4all 的發現同向（脈絡帶來 +11% 召回，話術技巧只有 1–2%），兩篇互相印證。對我們的具體意涵：<strong>目前所有實驗都是把單一句子丟給模型，沒有給任何脈絡。</strong> 可以做的是——</p>
+<ul>
+<li>把該句<strong>前後幾句</strong>一併給（Zep 用前 4 則訊息，Jing 2007 也強調輪次脈絡）；</li>
+<li>把該卷<strong>已經抽出的人物清單</strong>當脈絡（這不違反紅線 5，因為那是我們自己抽的，不是人工名冊）；</li>
+<li>把<strong>同一位被講述者在別卷已抽出的三元組</strong>當脈絡（這正是他們的「脈絡三元組」，而且直接服務跨訪談併人）。</li>
+</ul>
+<p>第三種最接近他們的做法，也最值得試，因為它同時是抽取增強與跨卷連結。</p>
+<p><strong>（四）檢索脈絡時要控制關係分布。</strong></p>
+<p>他們每種關係型別只取前兩條，以免脈絡被高頻關係佔滿。我們的語料裡「唱」「寫」「錄」是高頻述詞，若不控制，檢索回來的脈絡會全是這三種，反而壓抑罕見但有價值的關係（引薦、拜師、頂替）。這是一行程式的事，但不做會系統性偏斜。</p>
+<p><strong>（五）本機 instruct 模型可能不如 base 模型。</strong></p>
+<p>他們的 instructed／chat 版本「總是持平或更差」。我們用的是 LM Studio 上的 gemma 與 hermes，都是 instruct 系列。這是一個可以低成本驗證的變因：同一個模型的 base 與 instruct 版本各跑一遍陳志遠卷，比較逐字合規率與抽出量。<strong>但要注意 base 模型不遵守格式</strong>，我們的程式端得更寬容——這與 <code>judgment-and-words-must-coincide</code> 那條經驗一致（模型不照格式時先在程式端寬容，別往話術加規則）。</p>
+<p><strong>該避免的</strong></p>
+<ul>
+<li><strong>不要用他們建知識庫的方式。</strong> 他們的知識庫來自訓練集與驗證集的標注資料。我們若拿 <code>entity_stage1_final.csv</code> 做同樣的事就違反紅線 5。可以當脈絡來源的只有：我們自己抽出來的東西、或完全外部的庫。</li>
+<li><strong>不要把 0.677 當成天花板。</strong> 那是英文、封閉關係集、有標注知識庫可檢索三個條件下的成績。</li>
+</ul>
+<p><strong>與四條紅線的相容性</strong>：紅線 2 完全相容（無模型自評、無 LLM 評審）；紅線 1 有張力（知識庫來自標注資料，但那是資料集自帶的，不是他們另外標的）；紅線 3 不相容（無出處）；紅線 5 需注意（見上）。</p>
+<p><strong>與 <code>_卡點對照表.md</code> 的對應</strong>：第一節（動詞表／封閉集）、第三節（脈絡的效益）。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

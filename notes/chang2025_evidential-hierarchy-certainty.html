@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chang 2025 — 從讀者確定度檢測中文言據類別的階層</title>
+<meta name="description" content="Chang 2025 — 從讀者確定度檢測中文言據類別的階層">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Chang 2025 — 從讀者確定度檢測中文言據類別的階層</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/chang2025_evidential-hierarchy-certainty.md</code>　來源最後修改 2026-08-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<blockquote>
+<p>對應查證問題：漢語的言據分類（含「來源特定 vs 不特定」）有無實證研究；言據類別與確定程度的關係。</p>
+</blockquote>
+<h2 id="_1">這份文獻說了什麼</h2>
+<p>張瑜芸（政大）以問卷實驗（五點量表）測試：中文讀者對由不同言據標記引介的事件，確定程度是否不同。分類架構沿用 Ma（2011）提出的漢語五類言據階層，這是目前唯一為漢語建立的言據階層：<strong>視覺＞聽覺＞推論＞引述（reported with a known source，來源明示）＞傳聞（reported with an unknown source，來源不明）</strong>。五類定義：視覺（親眼觀察）、聽覺（親耳聽聞）、推論（基於明示證據）、<strong>引述（知識由明示的來源提供者傳達）</strong>、<strong>傳聞（不知道來源提供者是誰）</strong>。</p>
+<p>實驗結果：</p>
+<ol>
+<li>讀者確定度呈現<strong>兩條階層</strong>：推論＞引述＞傳聞；視覺＞傳聞。與 Ma 的單一階層部分吻合（傳聞墊底最穩定，傳聞類得到最多「弱確定」與「無法判斷」）。</li>
+<li><strong>讀者的確定度判斷不只看言據類別</strong>，還受三個內容因素影響：(a) 有沒有給出詳細的事件描寫、(b) 知識是否來自多個來源、(c) 事件是否觸及讀者的政治立場或社會信念。</li>
+<li>文中也回顧跨語言證據，指出言據階層有文化敏感性（Tuyuca 與 Kashaya 的視覺類排位不同）。</li>
+</ol>
+<h2 id="_2">與本專案設計的對照</h2>
+<ul>
+<li><strong>給「來源特定 vs 不特定」之分一個漢語實證支持</strong>：Ma 2011 與 Chang 2025 都把「來源明示的引述」與「來源不明的傳聞」分成兩類，而且讀者對兩者的確定度確實不同（引述高於傳聞）。本專案在「轉述」類下記來源者（名字或「不特定」），保留了這個有實證區辨力的資訊，同時避免了傳聞單獨成類樣本太少的問題（全語料傳聞僅約 15–20 例）。</li>
+<li><strong>強力支持「刻意不做確定程度分級」</strong>：Chang 的核心發現是確定度不是言據形式的穩定函數，它被事件細節、多來源、讀者立場攪動。既然人類讀者的確定度都做不到「由標記形式直接推得」，叫 LLM 給每筆關係一個確定度分數更不可靠。本專案的替代路線（形式判來歷＋程式化訊號推信心，其中「跨人佐證」正對應 Chang 的因素 (b) 多來源）在這篇文獻面前站得很穩，寫論文時可直接引用。</li>
+<li><strong>注意 Ma 2011 的出處品質</strong>：漢語五類階層的原始出處 Ma, Li（2011）發表在 IEEE 資訊工程會議，不是語言學場域。引用時建議以 Chang 2025（語言學同儕審查期刊、有實驗證據）為主要依據，Ma 2011 標註為階層的最初提出者即可。</li>
+<li><strong>一個可深挖的差異</strong>：Chang 的實驗裡「推論」排在「引述」之前，代表中文讀者覺得「有明示證據的推論」比「別人說的」更可靠。本專案把推測與轉述並列為不同來歷、不排序，這是對的：排序是讀者接收端的事，不是語料標注端的事。</li>
+</ul>
+<h2 id="_3">完整書目與取得方式</h2>
+<p>Chang, Yu-Yun（張瑜芸）. 2025. Assessing hierarchical categories of evidentiality in Chinese in terms of readers' certainty levels. <em>Concentric: Studies in Linguistics</em> 51(1): 121–145. DOI: 10.1075/consl.24027.cha</p>
+<ul>
+<li>同儕審查期刊（台師大英語系出版、John Benjamins 平台發行），開放取用（CC BY-NC 4.0），合法下載。</li>
+<li>本地檔：<code>refs/chang2025_evidential-hierarchy-certainty.pdf</code></li>
+</ul>
+<p>文中關鍵引用（未下載）：</p>
+<ul>
+<li>Ma, Li. 2011. Study on evidentiality in spoken Mandarin Chinese. In <em>Proceedings of the 6th IEEE Joint International Information Technology and Artificial Intelligence Conference</em>, 283–287. Chongqing: IEEE.（漢語五類言據階層的原始出處；IEEE Xplore 付費牆，未取得）</li>
+</ul>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

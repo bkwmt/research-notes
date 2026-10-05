@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>yang2025_graphusion（Graphusion：帶全局視角的知識圖譜建構 RAG 框架）</title>
+<meta name="description" content="yang2025_graphusion（Graphusion：帶全局視角的知識圖譜建構 RAG 框架）">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>yang2025_graphusion（Graphusion：帶全局視角的知識圖譜建構 RAG 框架）</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/yang2025_graphusion.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Yang, R., Yang, B., Zhao, X., Gao, F., Feng, A., Ouyang, S., Blum, M., She, T., Jiang, Y., Lecue, F., Lu, J., &amp; Li, I. (2025). <em>Graphusion: A RAG Framework for Knowledge Graph Construction with a Global Perspective</em>. Companion Proceedings of the ACM Web Conference 2025（WWW '25 Companion, NLP4KGC workshop）. DOI:10.1145/3701716.3717821. arXiv:2410.17600v2. 同儕審查（workshop 論文）。</li>
+<li><strong>對應待查問題</strong>：②agentic 建構（兼及 ①LLM 抽取／KG 建構現況、⑤無 gold standard 評估）</li>
+<li><strong>一句話定位</strong>：這篇明白主張「既有 LLM 建 KG 的方法都停在逐句／逐段的局部視角，缺一道把知識合起來的融合步驟」，並提出一個先抽後融的三步流程；它批評 local 視角、把 global fusion 當品質關鍵的論證，正是本專案「逐篇訪談抽取後必須跨訪談整合」這一兩層設計的主要文獻依據。</li>
+</ul>
+<hr>
+<h2 id="1">1. 貢獻</h2>
+<p>論文自陳三項貢獻，核心只有一項真正新：</p>
+<ol>
+<li><strong>提出「知識融合（knowledge fusion）」這一步，並宣稱是第一個把 LLM 用於整篇語料的綜合合併（comprehensive merging）而非只用來抽取的工作。</strong> 他們反覆強調：現有做法（含近期的 LLM 零樣本建 KG）都只在句子或段落層級抽三元組，屬於「局部視角（local perspective）」；局部抽出的東西彼此重複、指涉同一實體卻各自為政、關係還會互相矛盾。要得到一個乾淨、連通的知識圖譜，必須在全部抽完之後，另起一道站在全局的融合步驟去合併實體、解決衝突、補推新關係。這是全篇真正的賣點。</li>
+<li><strong>一個零樣本（zero-shot）、不需預先給定實體清單的科學 KG 建構流程</strong>，三步：種子實體生成 → 候選三元組抽取 → 知識融合（見第 2 節）。</li>
+<li><strong>一個新的、經專家審核的問答基準 TutorQA</strong>（1,200 題、六類任務），用來檢驗「用 Graphusion 建出來的 KG 到底對下游問答有沒有用」，情境設定在 NLP 教學。</li>
+</ol>
+<p>它跟 edge2024（GraphRAG）的關係值得先講清楚：Graphusion 承認 GraphRAG 已經示範了「用全局 KG 做查詢式摘要」的價值，但主張 GraphRAG 重點在「檢索與回答」，對「怎麼把圖建乾淨」著墨少（尤其缺實體消解與關係推論）；Graphusion 把力氣放在建構端的全局化。換句話說，兩篇都講 global，但 GraphRAG 的 global 在回答階段（社群摘要），Graphusion 的 global 在建構階段（融合）。</p>
+<hr>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p><strong>輸入</strong>：一批自由文本（實驗用 ACL 會議 2017–2023 年論文摘要，共 4,605 篇）。<strong>輸出</strong>：一組三元組 (head, relation, tail) 構成的 KG。整條流程分三步，是「多步、單一模型分工」而非多個獨立 agent 互相交棒——同一個 LLM 在不同步驟被餵不同 prompt，扮演不同角色，沒有多 agent 之間的訊息傳遞協定。</p>
+<p><strong>Step 1：種子實體生成（Seed Entity Generation）。</strong> 問題意識很實際：如果直接叫 LLM「把這領域的實體都列出來」，零樣本下它會吐出一大堆不相干、或顆粒度亂七八糟的實體（太廣如「模型」、太窄如某個專有名詞），品質很差。他們的解法是先用 <strong>BERTopic</strong>（一種用嵌入向量加 class-based TF-IDF 做主題聚類的主題模型 topic modeling）跑一遍語料，替每個主題挑出有代表性的實體，當作「種子實體（seed entities）」集合 Q。這一步的作用是<strong>先用資料本身的分布把抽取範圍圈定住，避免 LLM 亂抽</strong>——種子實體保證跟領域高度相關、顆粒度合理，後面每一步都繞著它們走。這是本篇一個蠻聰明的設計：不用人工給實體清單，改用非監督主題模型當「引導」。</p>
+<p><strong>Step 2：候選三元組抽取（Candidate Triplet Extraction）。</strong> 逐一取出種子實體 q，把它當查詢，用資訊檢索抓回包含 q 的文件段落當上下文，然後用一個思維鏈（Chain-of-Thought, CoT）prompt 叫 LLM 做三件事：(a) 從上下文抽出 q 與其他領域內實體（要求細顆粒度）；(b) 判定這些實體之間的關係（限定在七種關係型，見第 3 節，且註明有些關係是有方向的）；(c) 允許順便抽出「不含 q」的新三元組。做法上等於「以種子實體為錨、逐個實體展開」，抽完所有種子後把候選三元組全部存起來，記為 LLM 建的零樣本 KG（論文寫作 ZS-KG）。這步仍是局部的：每個 q 各自看自己的上下文，彼此不知道對方抽了什麼。</p>
+<p><strong>Step 3：知識融合（Knowledge Fusion）。</strong> 這才是重點，見第 3 節詳述。</p>
+<hr>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p><strong>Schema（本體約束）</strong>：把領域鎖定在 NLP，實體只收 NLP 概念（明說不管人名、組織）。關係型是<strong>封閉的七類</strong>（沿用 Multi-Task Identification of Entities/Relations 的既定分類，Luan et al.）：<code>Prerequisite_of</code>、<code>Used_for</code>、<code>Compare</code>、<code>Conjunction</code>、<code>Hyponym_of</code>、<code>Evaluate_for</code>、<code>Part_of</code>。也就是說這是一個<strong>受本體約束的三元組</strong>設計——關係不是自由文字，而是要落進這七個預定型別之一，而且部分關係有方向（例如 Prerequisite_of、Hyponym_of）。</p>
+<p><strong>融合模組怎麼做（本篇真正的技術貢獻，要寫透）</strong>：Step 2 抽出的是「每個實體各自的局部視角」，會有三個毛病：實體重複（<code>NMT</code> 與 <code>neural machine translation</code> 是同一回事卻算兩個）、關係矛盾（同一對實體被抽出互斥的關係）、以及該有的關係沒被抽到。融合步驟針對這三點，逐個查詢實體 q 進行：</p>
+<ol>
+<li>先從 ZS-KG 撈出所有「頭或尾等於 q」的三元組，組成 q 的局部子圖（論文記 LLM-KG）。若另有專家標註的 KG（G_E）可用，也撈出對應子圖 E-G，並再回到原始自由文本動態檢索一次背景（background），讓 LLM 有更多材料判斷。</li>
+<li>把這兩個子圖 + 背景文字一起塞進一個 <strong>Fusion Prompt</strong>，明文下四條規則，要 LLM 完成三件事：
+   - <strong>實體合併（entity merging）</strong>：語意相同或指涉同一對象的實體併成一個，保留較有意義／較具體的那個名稱（例：<code>neural MT</code> 併入 <code>neural machine translation</code>）。
+   - <strong>衝突解決（conflict resolution）</strong>：一對實體之間只保留一個關係；若有衝突，讀背景後選出正確的那個（例：machine translation 與 statistical machine translation 之間，<code>Hyponym_of</code> 勝過 <code>Prerequisite_of</code>）。
+   - <strong>新三元組推論（novel triplet inference）</strong>：從背景文字推出原本沒被抽到、但成立的新三元組（例：補上 neural MT <code>Part_of</code> machine translation）。</li>
+</ol>
+<p>值得標記的是：<strong>跨文件去重與衝突解決是「以實體為單位、局部地」做的</strong>——每次融合只看某個 q 的鄰域，而不是對整張圖做一次全域的實體解析。所謂 global，是相對於 Step 2「只看單一段落」而言站得高了一層（一個實體的所有出處匯總在一起看），但它並沒有做全圖一次性的實體對齊。這點對本專案很關鍵，第 8 節再談。</p>
+<hr>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>是純三元組。</strong> 形式定義寫得很死：KG = {(h_i, r_i, t_i) | h_i, t_i ∈ E, r_i ∈ R}，關係取自七型的封閉集合 R。沒有事件框架、沒有 n-ary 關係、沒有屬性圖，也<strong>沒有 edge2024（GraphRAG）那種文字摘要節點</strong>。這是它跟 GraphRAG 表示法上的根本差異：GraphRAG 用社群摘要（自然語言段落）當節點，Graphusion 回到最傳統的 (h, r, t)。</p>
+<p><strong>關鍵缺口（對本專案至為重要）</strong>：</p>
+<ul>
+<li><strong>沒有出處欄位（provenance）</strong>。三元組不記「這條關係是從哪篇摘要、哪一句抽出來的」。融合階段甚至主動把多個來源的重複三元組合併成一條，來源訊息在合併中被抹掉。</li>
+<li><strong>沒有時間資訊</strong>。三元組不帶時間戳，也沒有「這個關係在哪個年代成立」的欄位。</li>
+<li><strong>沒有信心分數</strong>。三元組不附任何 confidence。這點與本專案紅線二剛好一致（它沒叫 LLM 自評分數），但原因不同——它不是刻意迴避 LLM 自評，而是整個表示法根本沒有信心維度，最終品質改由外部人工評分（第 6 節）。</li>
+</ul>
+<p>它選純三元組的理由沒有明說，可推斷是：領域鎖定在「NLP 概念之間的靜態語意關係」（前置、上位、用於……），這類知識本來就接近教科書式的、去脈絡的、非時序的斷言，用三元組表達剛好；而且下游任務（LectureBankCD 連結預測、TutorQA 的前置關係推理）也都預設了三元組式的圖。它處理的知識形態與口述歷史「誰在哪一年對誰做了什麼、且各人說法不一」的形態，正好相反。</p>
+<hr>
+<h2 id="5">5. 資料集</h2>
+<ul>
+<li><strong>建構語料</strong>：ACL Anthology 2017–2023 年論文摘要，4,605 篇。純英文、科學領域、書面語（摘要，明說是為了「高密度、無雜訊、省算力」才只用摘要，不用全文）。<strong>沒有中文、沒有口語、沒有訪談</strong>。</li>
+<li><strong>連結預測評估</strong>：沿用 LectureBankCD（Li et al.），含 NLP／電腦視覺（CV）／生物資訊（BIO）三領域的實體對與前置關係標註（1,551／871／234 對），這裡有現成的人工標準答案（ground truth）。</li>
+<li><strong>新基準 TutorQA（本篇提出）</strong>：1,200 題、六類任務（關係判斷、前置預測、路徑搜尋、子圖補全、相似實體、Idea Hamster 專案發想），情境是 NLP 教學問答，全部經專家審核。任務 1、4 是可算準確率的二元／封閉題；任務 2、3、5 是開放的實體清單，用他們自訂的「相似度分數（similarity score，用 BERT 嵌入算 cosine 再平均）」與命中率評；任務 6 完全開放，只能人工評。</li>
+<li><strong>延伸試驗</strong>：日文醫藥資料（藥品說明書爬蟲，約 0.1 billion tokens），只抽了幾個案例看三元組合不合理，說「泛化性看起來不錯」，但坦承缺全面評估、留待未來。這是全篇唯一碰到非英文的地方，蜻蜓點水。</li>
+</ul>
+<p>資料公開性：ACL Anthology、LectureBankCD 為公開來源；TutorQA 為自建、宣稱會釋出（GitHub 連結在腳註）。</p>
+<hr>
+<h2 id="6">6. 評估</h2>
+<p>評估設計分兩塊，值得分開看，因為「有沒有 gold standard」在兩塊裡答案不同：</p>
+<p><strong>（一）KG 建構品質——沒有整圖的 gold standard，改用人工專家評分。</strong> 論文明說「要拿一張完整的標準答案圖來比對，實務上做不到」，所以放棄 P/R/F1 式的整圖比對。做法是：每個模型隨機抽 100 條三元組，請專家就兩個面向各給 1–3 分——<strong>實體品質（entity quality）</strong>（相關性與顆粒度是否恰當）與<strong>關係品質（relation quality）</strong>（關係是否邏輯上正確描述了頭尾實體）。用兩位專家算 <strong>Kappa（IAA，標註者間一致性）</strong>。結果：GPT-4o 版 Graphusion 實體 2.92／關係 2.37（滿分 3），且拿掉融合步驟後關係分從 2.37 掉到 2.08，用來論證融合步驟的必要。<strong>沒有用 LLM 自評，也沒有用 LLM 當評審</strong>——他們甚至點名 G-Eval（LLM-as-a-judge）這類方法存在，但選擇用真人專家評，這點在方法論上比許多同類論文乾淨。</p>
+<p><strong>（二）下游任務——有 gold standard。</strong> 連結預測用 LectureBankCD 的人工標註算 Acc／F1（宣稱零樣本 LP 比監督式基線高約 3% F1）；TutorQA 的封閉題有標準答案算準確率，開放題用相似度分數或專家評（任務 6 找兩位 NLP 專家評 Relevancy／Coverage／Convincity／Factuality 四面向，Kappa 0.67）。</p>
+<p><strong>評估設計的隱憂（讀出來的）</strong>：</p>
+<ul>
+<li><strong>融合這一步本身是 LLM 在裁決 LLM 的產物</strong>：衝突解決是叫同一個 LLM 判斷「先前抽出的哪個關係才對」。這不是用 LLM 評分，但確實是一種「LLM 驗證 LLM」的循環——只是它把最終品質判定交給了外部真人專家，才沒讓循環自我閉合。這道人工把關是它評估可信的關鍵。</li>
+<li><strong>人工評分只抽樣 100 條</strong>，且評的是「這條三元組讀起來對不對」，而非「該抽的有沒有漏」——也就是評了精確率面向，召回面向（融合有沒有漏補關係、有沒有錯併實體）幾乎沒被量測。</li>
+<li><strong>開放題的「相似度分數」用 BERT 嵌入的 cosine</strong>，等於用一個模型的語意空間去判另一個模型的答案對不對，這個指標本身的效度沒被檢驗。</li>
+</ul>
+<hr>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自承：GraphRAG 在他們評估裡表現偏低，坦承部分是因為他們為對齊自家評估而改動了 GraphRAG 的設定（等於承認比較不完全公平）；日文醫藥延伸缺完整評估；模型在不確定時傾向硬給一個關係（觀察到 100 例裡 40 例被塞成 <code>Part_of</code>），暴露七類封閉關係在「其實沒有關係」時無處可去的問題。</p>
+<p>我讀出、它沒明講的弱點：</p>
+<ol>
+<li><strong>表示法把出處與時間全丟了</strong>，融合階段還主動抹除來源。對科學概念圖也許無所謂，但這使得整套方法無法回答「這條斷言的證據在哪」，也無法追溯。對任何需要問責、需要引用原文的領域（歷史、法律、醫療）都是硬傷。</li>
+<li><strong>「global」名實不完全相符</strong>：融合是逐實體、局部鄰域地做，不是全圖一次性的實體解析與衝突消解。當同一實體的別名分散在很多查詢裡、或衝突牽涉三個以上實體時，這種逐點融合會漏。它比 Step 2 全局，但離「真正的全域一致」還有距離。</li>
+<li><strong>顆粒度與去脈絡</strong>：把知識壓成 (概念, 七類關係, 概念)，犧牲了時間、條件、主體立場。這對「教科書型」知識剛好，對「有主體、有時序、有分歧」的口述材料不適用。</li>
+<li><strong>召回沒被評</strong>，融合是否製造了錯誤合併（把不同東西併成一個）沒有被系統量測。</li>
+</ol>
+<hr>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>最重要的對應：它的「先局部抽、再全局融合」正是本專案兩層 harness 的文獻依據。</strong> Graphusion 對 local 視角的批評，幾乎可以逐句對到本專案：逐篇訪談各自抽出的東西，一定有同一個人被不同受訪者用不同稱呼提到、同一件事被兩人講出互相矛盾的版本、以及單篇看不出、要跨篇才浮現的關係。Graphusion 明確主張「抽取階段不做這件事，另設一道融合步驟專門做」，並用消融實驗（拿掉融合分數就掉）證明它值得。這替本專案「逐篇 local 抽取 → 跨訪談 global fusion」兩層設計提供了正當性與一個可借的骨架。它的融合三動作——<strong>實體合併、衝突解決、新關係推論</strong>——正好對應本專案 entity-resolve（消歧合併）與跨訪談整合要處理的事，可以直接當融合階段的功能清單參照。</p>
+<p><strong>可借用</strong>：</p>
+<ul>
+<li><strong>種子實體引導抽取</strong>這個點子很值得借。本專案有一份 5,335 筆的人工實體名冊（<code>entity_stage1_final.csv</code>），效果比 BERTopic 的非監督種子更強——等於本專案已經有比它更好的「種子」，可以在抽取階段就用名冊把 LLM 的抽取範圍圈住，避免亂抽、統一顆粒度。這是把它的想法拿來、又不違反紅線的用法。</li>
+<li><strong>融合階段給 LLM 明文規則 + 背景文字再檢索一次</strong>的做法（Fusion Prompt 那四條規則、動態撈背景）可參考，尤其「合併時保留較具體的名稱」「衝突時回讀原文再裁決」兩條很實用。</li>
+<li><strong>放棄整圖 gold standard、改用抽樣人工評 + Kappa</strong> 的評估姿態，與本專案紅線一（拒絕配對式 gold standard、事件與關係層無 gold standard）相容，是一個可接受的替代評估路徑。它點名並拒用 G-Eval（LLM 評審），也與本專案精神一致。</li>
+</ul>
+<p><strong>該避免／必須改造</strong>：</p>
+<ul>
+<li><strong>純三元組表示法與零出處，直接撞上本專案紅線三（每筆強制附出處：檔名、時間碼、口述者、段落）。</strong> Graphusion 的三元組不記來源、融合時還抹掉來源，這對本專案是不可接受的。本專案的知識表示是實體／事件／關係／goût 敘述的混合結構、每筆綁 SourceCitation，比它豐富一個維度。所以它的表示法<strong>不能照抄</strong>；能借的只是「先抽後融」的流程骨架，不是它的資料結構。</li>
+<li><strong>融合時抹除來源這個動作要反過來設計</strong>：本專案的跨訪談融合，合併實體、解決衝突時<strong>必須保留所有原始出處</strong>（一個合併後的實體要能列出它在哪些訪談、哪些時間碼被提到；一個被裁掉的矛盾說法也要留檔，記錄「誰這樣說、為何不採」）。這正呼應紅線四（推理過程可追溯、中間產物落檔）。換句話說，Graphusion 把衝突解決當成「留下正確的一條、丟掉錯的」；口述歷史的衝突恰恰是史料本身，不能丟——本專案應把「衝突」當成一種要保存並標記的關係，而非要消去的雜訊。</li>
+<li><strong>封閉七類關係、去時間、去主體立場的顆粒度不適用</strong>。口述歷史要保住時間、事件、以及受訪者的評價立場（goût），這些正是 Graphusion 為了做科學概念圖而刻意捨棄的東西。</li>
+</ul>
+<p><strong>與紅線的相容性總結</strong>：流程骨架（兩層、先抽後融）相容且是主要依據；評估姿態（無整圖 gold standard、不用 LLM 評審）相容；信心處理上它沒犯紅線二（沒叫 LLM 自評），但那是因為它根本沒有信心維度，本專案仍需自建程式化信心訊號。真正衝突的是表示法：<strong>它零出處、純三元組、抹除來源、去時間</strong>，全部與本專案「強制出處、混合結構、可追溯、保留分歧」的要求相反。結論是：借它的「為什麼要有 fusion」與「fusion 做哪三件事」，但 fusion 的實作方向要整個反過來——<strong>融合是為了把分散的出處匯總對齊，不是為了把它們合併掉。</strong></p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

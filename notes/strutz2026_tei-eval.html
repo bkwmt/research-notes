@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>strutz2026_tei-eval：LLM 做 TEI 編碼的多維度評估框架</title>
+<meta name="description" content="strutz2026_tei-eval：LLM 做 TEI 編碼的多維度評估框架">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>strutz2026_tei-eval：LLM 做 TEI 編碼的多維度評估框架</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/strutz2026_tei-eval.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Strutz, S. (2026). A Multi-Dimensional Evaluation Framework for Assessing LLM Performance in TEI Encoding. <em>Journal of Open Humanities Data</em>, 12: 39, pp. 1–20. DOI: 10.5334/johd.484.（Discussion Paper，同儕審查；2025-11-18 投稿、2026-01-19 接受、2026-03-02 出版。CC-BY 4.0）</li>
+<li><strong>對應待查問題</strong>：⑤無 gold standard 評估（主）；兼及 ③harness／agent 評估、④口述歷史／數位人文</li>
+<li><strong>一句話定位</strong>：這篇正面承認「人工參考答案本身不是唯一正確解」，改用多維度、部分給分（partial credit）、且完全不靠 LLM 評審的程式化評估，來衡量 LLM 生成的 TEI 編碼品質，正好是本專案「口述歷史沒有唯一正確答案」這個評估難題的直接參照。</li>
+</ul>
+<p>先說清楚 TEI 是什麼：TEI（Text Encoding Initiative，文本編碼倡議）是人文學界用一套 XML 標記把文獻的結構與意義標出來的社群標準。例如一封信裡哪一段是問候語、哪個字串是人名、哪裡是日期，都用像 <code>&lt;salute&gt;</code>、<code>&lt;persName&gt;</code>、<code>&lt;dateline&gt;</code> 這樣的標籤框起來。做這件事叫「TEI 編碼」，長期以來是數位學術版本（digital scholarly edition）最耗人力的瓶頸。這篇問的是：LLM 幫忙做這件事，做得好不好，我們要怎麼有系統地評估？</p>
+<h2 id="1">1. 貢獻</h2>
+<p>這篇宣稱的核心貢獻，是為「LLM 生成的 TEI 編碼」造出一套可規模化、可跨模型比較的評估框架，而且是在數位人文（Digital Humanities, DH）這個一向偏質性、抗拒量化的傳統裡，硬把量化評估做得站得住腳。它要解決的、別人沒解決的問題有兩層。</p>
+<p>第一層是<strong>評估空白</strong>。作者指出，現有 DH 的 LLM 實驗要嘛只做人工挑選的成功率（success rate）觀察，要嘛退回去只評 NER（命名實體辨識）這種可以用單一 F1 分數打發的孤立子任務；而既有的 Humanities Data Benchmark 只涵蓋影像類任務（metadata 抽取、OCR／HTR），完全跳過 TEI 這種「把文字轉成結構」的評估。也就是說，沒有人系統性地問過：LLM 在 TEI 編碼上哪些部分靠得住、哪些部分會一貫地失敗。</p>
+<p>第二層、也是對本專案最要緊的一點，是它<strong>點破了 NLP 標準指標在這裡的失效</strong>。TEI 編碼有三個特性讓 P/R/F1（精確率／召回率／F1）這套「對照單一標準答案」的做法失靈：（1）XML 是階層結構，一個語法錯誤會像骨牌一樣讓整份文件無法解析，但反過來，語法正確也完全不保證語意恰當；（2）TEI 準則本身<strong>明文允許同一個文本現象有多種合法編碼</strong>，例如一個人名可以合理標成 <code>&lt;persName&gt;</code>、<code>&lt;name type="person"&gt;</code> 或 <code>&lt;rs type="person"&gt;</code>，用嚴格比對會把這些都當成錯；（3）歷史文獻有非標準拼寫、時代性詞彙、多語言夾雜（code-switching）等複雜性。作者的立場很清楚（引 Dobson 2020）：人文研究裡的計算方法必須把「可詮釋性」擺在技術指標之上。</p>
+<p>具體交付物：一套八維度的任務分類法（task taxonomy）、逐維度對應的評估指標、一個分層的綜合計分制度、一份公開的 benchmark 資料集（Hammer-Purgstall 書信集，存於 Zenodo）、以及 MIT 授權的開源評估程式（GitHub）。並用四個當代模型做了實證的跨模型比較。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>要注意這篇的「抽取」跟本專案不太一樣：它抽的不是實體／事件／關係的知識圖譜，而是把純文字信件轉成有結構的 TEI XML 標記。但評估流程的邏輯值得細看。</p>
+<p>輸入是信件的純文字轉寫檔（UTF-8）。LLM 依提示（prompt）把它編成 TEI XML。作者刻意測試了<strong>五種提示情境</strong>，交叉兩個變因：編碼規則的詳細程度（簡單 vs. 詳細）、few-shot 範例數（zero-shot、two-shot、five-shot，也就是不給範例／給兩對／給五對輸入輸出示範）。他們甚至故意把任務加難：要求 LLM 允許 <code>&lt;salute&gt;</code>（問候語）出現在段落 <code>&lt;p&gt;</code> 裡面，這是 TEI 一個已知限制（兩者都是區塊層級元素、原本不能巢狀），藉此逼出模型處理邊界情況的能力。</p>
+<p>流程分兩階段（incremental methodology，遞進式）：先用 10 封信的小樣本做提示調校與框架驗證，確定好各模型的最佳提示配置後，再擴到 100 封信的完整評估。這個「先小樣本校準、再放大批次」的兩階段設計，跟本專案 Stage 2（互動校準 3–5 位）→ Stage 3（headless 批次）的節奏幾乎一模一樣。</p>
+<p>這裡沒有多 agent 分工，也沒有把 LLM 拿來當評審。抽取由 LLM 單次完成，評估則完全交給程式化的模組去算。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>核心是那張<strong>任務分類法（Table 1）</strong>，把「TEI 編碼」這件事拆成 0 到 7 共八個維度，每個維度對應一類編碼任務：</p>
+<ul>
+<li><strong>D0 格式轉換</strong>：純文字變成合法 XML。</li>
+<li><strong>D1 出處保存（Source Preservation）</strong>：保住原文的文字特徵（拼寫、標點）。</li>
+<li><strong>D2 Schema 應用</strong>：依 TEI P5 準則與專案自訂約束，選對元素與屬性。</li>
+<li><strong>D3 結構標記</strong>：<code>&lt;div&gt;</code>、<code>&lt;opener&gt;</code>、<code>&lt;closer&gt;</code>、段落邊界等文件骨架，階層與順序要對。</li>
+<li><strong>D4 語意標記</strong>：標出承載意義的片段——命名實體、時間表達、話語標記（discourse marker）等。</li>
+<li><strong>D5 脈絡充實（Contextual Enrichment）</strong>：把實體連到權威檔（authority record）、解消指涉、做正規化。</li>
+<li><strong>D6 詮釋資料管理（Metadata Management）</strong>。</li>
+<li><strong>D7 集合管理（Collection Management）</strong>：跨文件的一致性、品質漂移（quality drift）監控、互通性檢查。</li>
+</ul>
+<p>作者強調這不是嚴格分類，而是幫助理解「編碼的複雜度」與「失敗模式」的一把尺。他舉了一個很好的例子：處理一句問候語「I remain, Sir, yr humble servant」，模型可能語意上認得出這是問候語（展現 D3、D4 能力），卻漏掉閉合標籤（D0 失敗）；或產出合法 XML 卻把縮寫「yr」擴寫成「your」（D1 錯誤，改動了原文）；或選錯元素（D2 失敗）；或把問候語的邊界抓錯、只框住半句（D4 失敗，但這是否算錯，得看專案準則，可爭議）。<strong>同一個編碼決定可以在不同維度上分別對或錯——這正是拆維度的意義。</strong></p>
+<p>重點提醒：<strong>這篇實際只實作並評估了 D0–D4 前五維</strong>。理由是它的用例只處理輸入文字、不加外部知識，所以 D5（連權威檔）、D6（詮釋資料）被排除，D7（跨文件統計）也未納入。這一點對本專案有直接後果，第 8 節會回來談：D5「把實體連到權威檔、解消指涉」恰恰是最貼近本專案實體消歧與知識抽取的維度，而這篇沒碰。</p>
+<p>沒有跨文件去重或實體合併——因為它的產物是單封信的 XML 樹，不是跨訪談的圖。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>不是三元組。</strong> 它的知識表示就是 TEI XML 本身，即一棵階層式的標記樹（markup tree），標記直接內嵌（inline）在原文字串裡。這跟本專案的實體／事件／關係／goût 混合結構、以及純三元組都不同。</p>
+<p>在「出處、時間、信心」這三個欄位上：</p>
+<ul>
+<li><strong>出處（provenance）</strong>：這篇沒有本專案那種「每筆知識附檔名／時間碼／口述者／段落」的顯性出處欄位。但要注意，TEI 這種內嵌標記在概念上就是「標記黏在原文上」，出處是隱含在文件本身的。更關鍵的是它的 <strong>D1 出處保存</strong>維度：把 LLM 輸出的純文字內容抽出來，跟原始轉寫檔做字元層級的比對（diff），算相似度、分類改動型態（替換、插入、刪除），專門抓 LLM 的「過度正規化」（hypernormalisation，把歷史拼寫改成現代拼寫）與「幻覺」（hallucination，插入原文沒有的文字）。這個「拿輸出去比對原始來源、看忠不忠實」的檢查，跟本專案 extract-qa 的腦補檢查在精神上是同一件事。</li>
+<li><strong>時間資訊</strong>：無（它處理的是文件結構，不是時序事件）。</li>
+<li><strong>信心分數</strong>：無 LLM 自評信心。品質完全由程式化訊號推導（見第 6 節），這點與本專案紅線高度一致。</li>
+</ul>
+<p>為什麼選 XML 樹而不選三元組？因為它的任務目標就是產生一份可供學術版本使用的 TEI 文件，而 TEI 是人文學界既有的社群標準；三元組無法表達 TEI 那種帶詮釋彈性的階層標記。這也提醒：表示法要服從下游用途，本專案的下游是有向網絡，才選了實體／關係結構。</p>
+<h2 id="5">5. 資料集</h2>
+<p>語料是 <strong>Joseph von Hammer-Purgstall（1774–1856，奧地利東方學家、史家、外交官）的書信集</strong>，18–19 世紀手稿，逾 8,500 封橫跨六十年。<strong>多語言</strong>：以德文為主，夾英文、法文、義大利文，還有拉丁、希臘、阿拉伯文的 code-switching。<strong>沒有中文</strong>；是歷史文獻與私人書信，但不是口語訪談或口述歷史逐字稿——這點與本專案語料類型有距離。</p>
+<p>規模與抽樣：從 8,692 條目錄、篩掉未轉寫與需 OCR/HTR 的，得 2,984 封可處理信件；再用分層抽樣（依語言分布、書寫者多樣性、信件長度三準則）取 100 封做主樣本，另有 10 封小樣本供調校。作者用 XPath 查詢驗證了 10 封與 100 封樣本的結構多樣性相近。</p>
+<p>資料是<strong>公開自建的新 benchmark</strong>（存 Zenodo，DOI 10.5281/zenodo.17643901，CC-BY 4.0），六個檔案分別是：100 封的詮釋資料 JSON、純文字轉寫、<strong>人工編碼的 TEI 參考標註（reference component）</strong>、四個模型的 LLM 生成編碼（4×100＝400 份）、評估結果 JSON＋Excel、以及五種提示範本。人工參考由兩位編碼者製作（Strutz 本人與 Alexandra Wagner）。評估程式另以 MIT 授權開源於 GitHub。這種「原始輸入、人工參考、模型輸出、評估結果、提示範本」全部落檔公開的做法，正是可重現研究的範本。</p>
+<p>四個受測模型刻意不用旗艦（不用 GPT-5、Claude Opus），而選成本可控的替代：<strong>GPT-5-mini、Claude Sonnet 4.5</strong>（兩個專有模型）、<strong>Qwen3-14B-Q6、OLMo2-32B-instruct-Q4</strong>（兩個開放權重模型，量化後在 24GB VRAM 的 GPU 本地跑）。選兩個開放模型是為了回答一個 DH 的實務問題：當機構政策、資料隱私或預算不允許用專有 API 時，開放替代品夠不夠用。</p>
+<h2 id="6">6. 評估</h2>
+<p>這是全篇的重心，也是本專案要學的地方。核心設計是<strong>「按任務性質配對評估方法」</strong>，而不是對所有維度套同一把尺：D0–D2 用全自動、免參考答案（reference-free）的驗證；D3–D4 用需要人工參考的計算指標；D5–D6 留給專家人工審查；D7 用自動統計。</p>
+<p><strong>逐維度做法</strong>：</p>
+<ul>
+<li><strong>D0 語法驗證</strong>：用 XML 解析器檢查 well-formedness，二元通過／失敗，並把錯誤分類（標籤結構、字元編碼、屬性語法、文件結構）。免參考答案，不需領域知識。</li>
+<li><strong>D1 出處保存</strong>：如第 4 節所述，抽純文字比對原文，算相似度＋字元 diff。除了二元判定，還報相似度分數與改動型態。作者誠實點出限制：98–99% 的高相似度可能<strong>遮蔽</strong>掉關鍵的實質改動，程式分不出「學術上要命的竄改」與「無關痛癢的標點差異」。</li>
+<li><strong>D2 Schema 合規</strong>：用 Jing RelaxNG 驗證器做規則式結構檢查，二元 valid/invalid，並有一套決策邏輯處理標準 TEI／擴充 TEI／自訂 schema 三種專案。作者承認目前拿不到詳細的違規明細（驗證器會壓掉後續錯誤或報錯品質差）。</li>
+<li><strong>D3 結構忠實度</strong>：抽出階層式的元素序列，用 <strong>LCS（longest common subsequence，最長共同子序列）</strong>算結構相似度。作者特別交代<strong>為什麼不用 XMLDiff 或 Tree Edit Distance</strong>：那類基於編輯操作的計分，會把一個元素邊界的位移「懲罰兩次」（一次刪除、一次重插），連合理的編輯選擇（如問候語邊界不同）都重罰。LCS 則是保序、長度正規化、且對邊界寬容的——只要元素相對順序一致，即使中間夾雜不同元素也給分。這是典型的<strong>部分給分</strong>設計。</li>
+<li><strong>D4 語意內容準確度</strong>：看「元素—內容」的對應對不對。用子字串分析＋最佳配對（best-match pairing），把每個 LLM 元素依子字串關係配到參考元素，分成四種配對：完全相符、過度包含（over-inclusion，LLM 內容含參考再加料）、包含不足（under-inclusion，LLM 內容是參考的子字串）、無相符。<strong>關鍵是它把所有子字串關係都算成「實用配對」（practical match），報 inclusion/coverage 比率</strong>，而不是非對即錯。再加上<strong>跨維度的脈絡加權</strong>：若 D1 確認內容有保存，部分配對就當成「邊界誤差」給權重 0.8；若 D1 顯示來源忠實度失敗，部分配對就當成「可能是幻覺」給權重 0.6。指標用 Macro F1（把各類別平等看待，不被高頻類別壓過）。</li>
+</ul>
+<p><strong>部分給分的綜合計分（partial credit）</strong>——這是回答待查問題⑤的核心：</p>
+<p>分三層（見論文 Figure 1）：</p>
+<ol>
+<li><strong>Tier 0 效度閘門（Validity Gate）</strong>：D0 語法失敗 → 直接標 INVALID、不給分數。這是技術必要（無法解析就無法評），不是品質判斷。</li>
+<li><strong>Tier 1 核心品質分（0–100）</strong>：三個維度<strong>等權各 33.33%</strong>——D1 出處保存、D3 的 LCS 結構相似度、D4 的調整後語意 Macro F1。公式：核心品質 = ⅓ (D1_content + D3_LCS + D4_adjusted)。等權的理由是「沒有實證支持哪個維度該加重，就先均分，避免無根據的偏好」，並明說未來該用實證去驗證別的加權會不會更貼近人類判斷。</li>
+<li><strong>Tier 2 Schema 合規調整</strong>：D2 用<strong>乘法</strong>調整——完全合規 ×1.0，不合規 ×0.75（25% 罰分）。作者的論證很細緻：schema 違規（如用了非 TEI 的元素名）其實已經透過「找不到對應的參考元素」而滲入 D3、D4 的扣分裡了，所以這 25% 只是「標示」不合規，避免對同一個錯誤重複重罰。最終分 = min(100, 核心品質 × D2 因子)。</li>
+</ol>
+<p><strong>它怎麼面對不完美的 gold standard</strong>：這是本篇最誠實、也最值得學的部分。</p>
+<ul>
+<li>它從一開始就承認 TEI 允許詮釋多樣性，同一現象有多種合法編碼，所以嚴格比對會把合法變異當錯。它的對策就是上述的<strong>寬鬆比對（relaxed matching）</strong>：LCS 的邊界寬容、D4 的子字串「實用配對」與 inclusion/coverage 比率、脈絡加權——全都是為了不把「合理的編輯差異」誤判成錯誤。</li>
+<li>它把維度分開，好讓<strong>硬失敗（D0 語法、D2 schema）與詮釋性差異（D3、D4）不會混為一談</strong>。診斷價值在逐維度的報告，而不在最後那個綜合分數。</li>
+<li>在限制一節，它明講參考答案是 <strong>single-encoder reference standards（單一編碼者的參考標準）</strong>，本身只體現一種編輯選擇，問候語邊界這類仍有學術爭議。它提出未來應建立<strong>標註者間一致性（inter-annotator agreement）基線</strong>，用「人類編碼者彼此的差異範圍」來脈絡化 LLM 的表現——它甚至推測，85% 的結構準確度可能已達到、甚至輸給獨立作業的人類編碼者，因為人類自己在沒有即時驗證下也會產出不合 schema 的標記。換句話說，它把「LLM 的錯」放進「這任務本來就沒有唯一解、連人都會不一致」的框架裡看。</li>
+</ul>
+<p><strong>有沒有用 LLM 自評或 LLM 當評審？完全沒有。</strong> 整套評估是純程式化的：XML 解析器、RelaxNG 驗證器、LCS、子字串分析、字串相似度。零 LLM 參與評分。這與本專案「絕不叫 LLM 自評信心、不搞 LLM 驗證 LLM 的循環」的紅線完全一致，沒有循環論證的風險。</p>
+<p><strong>人工介入到什麼程度</strong>：抽取端全由 LLM 做；評估端全自動；人工只出現在「製作參考標註」與「D5–D6 這類需專家審查的維度（本篇未做）」。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p><strong>作者自己承認的</strong>：</p>
+<ul>
+<li><strong>D4 對所有元素一視同仁</strong>，但過度／不足包含的可接受度其實因元素而異——問候語邊界允許詮釋變異，<code>&lt;p&gt;</code> 段落卻該嚴格對齊，現行實作分不出來。</li>
+<li><strong>D4 用文件層級的 D1 去加權元素層級的配對</strong>，但內容改動可能發生在別的元素上，導致可靠度罰分被「錯置」。作者說做元素層級的內容保存檢查會更準，但計算成本更高。</li>
+<li><strong>單一編碼者參考</strong>的根本限制（見上），且尚未真正算出標註者間一致性——只停留在「未來該做」。</li>
+<li><strong>沒有輸出決定性（determinism）與重複測試</strong>：LLM 有隨機性，看似的優劣可能只是偶然，需要多次重跑才能分辨穩定能力與雜訊。這是很誠實的自我保留。</li>
+<li>本地模型受限於 20GB 以下，只能用較小或量化模型；且語料只是 Hammer-Purgstall 一批書信，結構與拼寫特徵未必能遷移到別的時代、地區、社會脈絡的書信集，效能 benchmark 的可轉移性有限。</li>
+<li>統計相關分析仍待補。</li>
+</ul>
+<p><strong>我讀出來、它沒明講或較弱的地方</strong>：</p>
+<ul>
+<li><strong>最關鍵的維度沒做</strong>。它只評 D0–D4（都是文件結構層面的編碼），而 D5「連權威檔、解消指涉」——也就是最接近知識抽取與實體消歧的維度——被排除了。所以這篇對「抽取出的實體／關係品質」其實無話可說；它評的是「文字被標記得對不對」，不是「從文字裡抽出的知識對不對」。對本專案而言，可借的是它的評估哲學，不是它的評估對象。</li>
+<li><strong>綜合分數與它自己的多維度精神有點矛盾</strong>。作者一邊說診斷價值在逐維度報告，一邊又把五維壓成一個 0–100 的單一分數並排名模型（GPT 93.6% &gt; Claude 92.4% …）。一旦壓成單一數字，前面那套「不要把合法變異當錯」的細膩就容易在排行榜式的解讀裡被沖淡。</li>
+<li><strong>等權 33.33% 是自承的權宜</strong>，沒有實證根據；而 relaxed matching 的「寬容」到底鬆到什麼程度算合理，也缺乏人類基線來校準——這使得「部分給分」目前更像一個合理的工程直覺，而非被驗證過的度量。</li>
+<li>D4 的子字串比對抓不到「語意上不恰當但文字剛好對」的情況（內容在、但脈絡錯），作者也承認這需要人工介入。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p>這篇是本專案評估設計的<strong>直接參照</strong>，價值主要不在它做 TEI（我們不做 TEI），而在它把「沒有唯一正確答案」這件事變成一套可操作的評估方法。逐條對照四條方法論紅線：</p>
+<p><strong>可借用的</strong>：</p>
+<ol>
+<li>
+<p><strong>按任務性質配對評估方法，而非一把尺套到底</strong>（最重要）。它的分工是：能程式化免參考檢查的（語法、schema、對照原始輸入的來源忠實度）就全自動；有人工參考可比的（結構、內容）用計算指標＋部分給分；純詮釋性的（連權威檔）留給人工。<strong>直接對映本專案的三層知識</strong>：實體層我們有人工名冊（entity_stage1_final.csv），可比照 D1–D4 那樣做「對照參考」的評估；但事件層與關係層沒有 gold standard，就該走「免參考的程式化訊號＋人工抽查」，而不是硬造一個配對式 gold standard。這篇等於示範了「有參考的地方才用參考、沒有的地方用程式訊號」的分層原則。</p>
+</li>
+<li>
+<p><strong>用部分給分取代 P/R/F1 的非對即錯</strong>。LCS 的保序、長度正規化、邊界寬容；D4 的子字串「實用配對」＋inclusion/coverage 比率；脈絡加權（0.8／0.6）——這一整套都是為了「同一件事有多種合法做法」而設計的寬鬆度量。口述歷史的抽取正是這種情境：一個事件的邊界、一段關係的措辭，本來就沒有唯一標準切法。本專案若要在實體層跟人工名冊比對，應該學它做<strong>寬鬆比對＋覆蓋率</strong>，而不是要求字串完全相同。</p>
+</li>
+<li>
+<p><strong>完全不用 LLM 當評審，全部程式化訊號</strong>。這與紅線 2 嚴絲合縫，且證明「不靠 LLM 自評也能做出多維度、細膩的評估」是可行的。它的訊號類型（解析器有效性、schema 合規、對照原始來源的差異、結構相似度）幾乎能一一對映到本專案 confidence_scorer 的五訊號（出處有效性、格式合規、穩定性、數值合理性、跨人佐證）。尤其 <strong>D1 拿輸出比對原始來源抓幻覺與過度正規化</strong>，就是 extract-qa 腦補檢查的同構做法，可直接借鏡實作。</p>
+</li>
+<li>
+<p><strong>誠實面對參考答案的不完美，並用人類基線去脈絡化</strong>。它明說參考是「單一編碼者的一種選擇」，並提議用標註者間一致性當基線。本專案雖不做配對式 gold standard，但這個心態值得移植：實體名冊也是「一種人工判斷」，評估報告應把「與名冊的差異」理解成「值得檢視的分歧」，而非「機器一定錯」。</p>
+</li>
+<li>
+<p><strong>中間產物全部落檔、可重現</strong>（輸入、人工參考、模型輸出、評估 JSON＋Excel 全公開）。與紅線 4 一致，是可追溯的範本。</p>
+</li>
+</ol>
+<p><strong>該避免或該警惕的</strong>：</p>
+<ol>
+<li>
+<p><strong>不要把多維度壓成單一綜合分數</strong>。這篇自己都說診斷價值在逐維度報告，卻仍給了 0–100 的排行榜。本專案應把各層、各訊號的判定分開保留，讓分歧可被逐筆檢視，抗拒「一個總分定生死」的誘惑。</p>
+</li>
+<li>
+<p><strong>不要無實證地發明權重</strong>。它的等權 33.33% 是自承的權宜。本專案若要合成任何分數，寧可保留原始訊號、標明權重是暫定，也不要假裝那個加權有根據。</p>
+</li>
+<li>
+<p><strong>它的評估對象與我們錯位，別照搬</strong>。它評的是「文字被標記得對不對」（D0–D4），完全沒碰最接近我們的 D5「實體連權威檔、解消指涉」。所以它對「抽取出的實體／關係本身正不正確」沒有現成答案，本專案在事件層、關係層仍得自己設計免參考的評估訊號。</p>
+</li>
+</ol>
+<p><strong>與紅線的相容性總結</strong>：紅線 2（不用 LLM 自評／不做 LLM 驗證 LLM）——<strong>完全相容</strong>，是最強的正面示範。紅線 4（可追溯、落檔）——<strong>相容</strong>。紅線 1（不做配對式 gold standard）——<strong>部分張力但可調和</strong>：它確實用了人工參考，但用的是寬鬆比對、且把參考當「一種合法版本」而非唯一真理；本專案實體層本就有人工名冊，可比照它「有參考才比對、且只用寬鬆比對」的做法，事件與關係層則維持免參考。紅線 3（每筆強制附出處）——<strong>大致正交</strong>：這篇沒有本專案那種逐筆出處欄位（TEI 是內嵌標記），但它的 D1 來源忠實度檢查，在「產出必須忠於來源」這點上與我們的出處精神相通，可視為出處驗證的一種鄰近做法。</p>
+<p>一句話收束：這篇最該被本專案吸收的，不是它的 TEI 指標，而是它示範了「在承認沒有唯一正確答案的前提下，仍然可以用純程式化、多維度、部分給分的方式做出有診斷力的評估」——這正是口述歷史抽取一直缺的那套評估語言。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>bian2025_LLM 賦能的知識圖譜建構綜述</title>
+<meta name="description" content="bian2025_LLM 賦能的知識圖譜建構綜述">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>bian2025_LLM 賦能的知識圖譜建構綜述</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/bian2025_llm-kgc-survey.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Bian, Haonan. 2025. <em>LLM-empowered Knowledge Graph Construction: A Survey</em>. 標為 ICAIS 2025 會議論文（"Published as a conference paper at ICAIS 2025"），同時以 arXiv:2510.20345v1（2025-10-23）流通。單一作者（西安電子科技大學 Xidian University）。<strong>預印本，實質未經嚴謹同儕審查</strong>（見第 7 節對其審查狀態的存疑）。</li>
+<li><strong>對應待查問題</strong>：①LLM 抽取／KG 建構現況（主）；旁及 ②agentic 建構、③harness／agent 評估（僅在「未來方向」點到）。</li>
+<li><strong>一句話定位</strong>：這篇把「用大型語言模型（Large Language Model, LLM）蓋知識圖譜」這件事，攤成一張分類地圖——沿用知識圖譜傳統的三層流水線（本體工程、知識抽取、知識融合），逐層盤點 LLM 時代冒出來的代表性做法，並貫穿一條「要不要先定 schema」的軸線。對本專案而言，它是一份快速掌握「這個領域現在有哪些路數、各家怎麼取捨」的入門地圖，但<strong>不提供任何可直接搬用的方法或評估設計</strong>。</li>
+</ul>
+<blockquote>
+<p>說明：知識圖譜（Knowledge Graph, KG）指把知識拆成「實體—關係—實體」這類結構、連成一張網的資料形式；schema（綱要／本體）則是事先規定「允許有哪些類型的實體與關係」的一套約束。這兩個詞是全篇的骨架。</p>
+</blockquote>
+<h2 id="1">1. 貢獻</h2>
+<p>這篇宣稱的貢獻是「系統性地綜述」LLM 如何重塑知識圖譜的建構。它的組織方式有一個明確的主張：傳統 KG 建構是<strong>三層流水線</strong>——本體工程（ontology engineering，先設計好概念與規則）、知識抽取（knowledge extraction，從文本抓出實體與關係）、知識融合（knowledge fusion，把來自不同來源的知識對齊、去重、消解衝突）；而 LLM 的到來讓這三層從「規則式、各段割裂」轉向「語言驅動、彼此交織、會自我修正」的生成式生態。</p>
+<p>它整理出傳統做法的三個老問題，作為 LLM 進場的理由：(1) 規模與資料稀疏（規則與監督式系統難跨領域）；(2) 對專家的依賴與僵化（schema 要大量人工、難調適）；(3) 流水線碎裂（各階段各做各的，錯誤會一路累積放大）。對應地，它主張 LLM 帶來三個機制：生成式知識建模、語意統一（用自然語言把異質來源接起來）、以指令協調整個建構流程。</p>
+<p>實話說，這篇的「貢獻」僅止於<strong>分類與敘述</strong>。它沒有提出新方法、沒有跑任何實驗、沒有做量化的方法比較表，也幾乎不對所引用的各家做批判性權衡（多半是正面轉述）。它的價值在「地圖」而非「判斷」。與 Pan et al. (2024) 那篇 roadmap 相比（見下方比較），本篇範圍更窄（只談「建構」，不談 KG 反過來強化 LLM 推理與問答的完整互動），但在「建構」這條線上鋪得比較細。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>因為是綜述，這裡談的是它<strong>歸納出的抽取路數</strong>，不是單一系統的流程。它把 LLM 驅動的知識抽取劈成兩大典範：</p>
+<ul>
+<li><strong>schema-based（有綱要）抽取</strong>：先有一套明訂的 schema 當作結構指引與語意約束，再叫 LLM 照著填。內部再分兩代：</li>
+<li><em>靜態綱要驅動</em>：schema 是固定骨架，LLM 在嚴格監督下填空。代表如 Kommineni et al. (2024)（LLM 先自問「能力問題」competency questions 界定範圍、建 TBox、再填 ABox）、<strong>KARMA</strong>（Lu &amp; Wang 2025，多 agent 架構，每個 agent 在固定本體邊界內做正規化與關係分類）、Feng et al. (2024) 的「本體接地抽取」（先從文本生一個領域本體，再拿它當指令去抽 RDF 三元組）。更晚近的 ODKE+、Bhattarai et al.（用醫學本體 UMLS 動態生 prompt）引入了局部彈性，但仍被既有大 schema 綁住。</li>
+<li>
+<p><em>動態／調適綱要</em>：把 schema 當成會隨抽取一起長大的東西，而非固定模板。代表如 <strong>AutoSchemaKG</strong>（Bai et al. 2025，用非監督分群從大語料誘導 schema，讓它隨內容迭代演化）、<strong>AdaKGC</strong>（Ye et al. 2023，用「綱要增強前綴指令」SPI 與「綱要約束動態解碼」SDD 對付 schema drift，不必重訓）。</p>
+</li>
+<li>
+<p><strong>schema-free（無綱要）抽取</strong>：不靠任何預設本體，直接讓 LLM 當「自主抽取器」從文本抓結構。再分兩條：</p>
+</li>
+<li><em>結構化生成抽取</em>：生成當下才即興長出一套隱性 schema。代表如 Nie et al. (2024) 把思維鏈（Chain-of-Thought, CoT，讓模型分步推理）接進抽取、<strong>AutoRE</strong>（Xue et al. 2024，RHF 即 Relation-Head-Facts 管線）、Papaluca et al. (2024) 的檢索增強 prompting、<strong>ChatIE</strong>（Wei et al. 2024，把抽取重構成多輪對話問答）、<strong>KGGEN</strong>（Mo et al. 2025，先偵測實體再生成關係，拆成兩次 LLM 呼叫以降低認知負擔、抑制錯誤傳播）。</li>
+<li><em>開放資訊抽取</em>（Open Information Extraction, OIE）：不限型別，盡量抽出所有可能的「實體—關係—實體」三元組。代表是 <strong>EDC</strong>（Zhang &amp; Soh 2024）的 Extract 階段，用少樣本 prompting 生一份原始的自然語言三元組草稿，之後再交給定義與正規化階段收拾。</li>
+</ul>
+<p><strong>是否多 agent／怎麼交棒</strong>：這篇明確點名幾個多 agent 或多步分工的例子——KARMA（多個專職 agent 分別處理綱要對齊、衝突消解、品質評估）、KGGEN（實體偵測與關係生成拆成兩次序列呼叫）、ChatIE（多輪對話逐步精修候選）、COMEM（Wang et al. 2024，小模型先做輕量過濾、大模型再細推理，串成多階段流水線）。但綜述層次只描述「有這種分工」，沒細講交棒時傳遞什麼資料格式、如何驗證中間結果。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>這篇把「組織知識」主要放在<strong>本體工程</strong>與<strong>知識融合</strong>兩層談。</p>
+<p><strong>本體怎麼來</strong>（第 3 節）分兩個方向：
+- <em>top-down（自上而下）：LLM 當本體助手</em>。延續語意網與知識工程傳統，讓 LLM 把自然語言需求（能力問題、使用者故事、領域描述）翻成 OWL 等形式本體。代表如 <strong>Ontogenia</strong>（Lippolis et al. 2025a，用「後設認知 prompting」讓模型自省與結構修正）、<strong>CQbyCQ</strong>、<strong>LLMs4OL</strong>、<strong>NeOn-GPT</strong>、<strong>LLMs4Life</strong>。這條路強調概念嚴謹、邏輯一致、人機協作，人只在關鍵檢查點介入。
+- <em>bottom-up（自下而上）：為 LLM 而生的 KG</em>。不再手工設計本體階層，而是<strong>從資料自動誘導 schema</strong>。代表如 <strong>GraphRAG</strong>（Edge et al. 2024）、<strong>OntoRAG</strong> 先從原始文本用 OIE 生實例級圖、再靠分群與泛化抽象出概念與關係（「資料到綱要」）；<strong>EDC</strong>（Extract–Define–Canonicalize，三階段：開放抽取→語意定義→綱要正規化）；<strong>AdaKGC</strong>（處理 schema 演化）；<strong>AutoSchemaKG</strong>（把 schema-based 與 schema-free 統一在一個架構裡，支援企業級 KG 即時生成與演化）。這條路把 KG 當成 LLM 的「外部知識記憶」，重可涵蓋性、可擴充、可維護，勝過純語意完整性。</p>
+<p><strong>跨文件去重、實體合併、衝突消解</strong>主要在<strong>知識融合</strong>（第 5 節）處理，分三層：
+- <em>schema-level（綱要層）融合</em>：統一結構骨架（概念、實體型別、關係、屬性）。三代演進：本體驅動一致性（Kommineni et al. 2024，用明訂本體當全域約束）→ 資料驅動統一（<strong>LKD-KGC</strong>，Sun et al. 2025，用向量分群＋LLM 去重自動合併等價實體型別，讓 schema 從資料浮現）→ LLM 賦能的正規化（EDC，讓 LLM 為每個 schema 元件生自然語言定義、再用向量相似度比對做自我對齊與跨綱要映射）。
+- <em>instance-level（實例層）融合</em>：處理具體實體的對齊、消歧、去重、衝突消解。代表如 <strong>KGGEN</strong>（迭代式 LLM 引導分群）、<strong>LLM-Align</strong>（Chen et al. 2024，把對齊當成受限的多選題）、<strong>EntGPT</strong>（Ding et al. 2025，先生候選再定向推理的兩階段精修）、<strong>Pons et al. 2025</strong>（用 RAG 融合，靠類別／子類別階層與實體描述做零樣本消歧）、<strong>COMEM</strong>（小大模型串接兼顧效率與精度）。
+- <em>hybrid（混合）框架</em>：把綱要層與實例層合進單一端到端流程。代表如 <strong>KARMA</strong>（多 agent）、<strong>ODKE+</strong>、<strong>Graphusion</strong>（Yang et al. 2024，在單一生成迴圈內完成對齊、整併、推論）。</p>
+<p>值得本專案留意：這篇談「衝突消解」時，訴諸的多半是<strong>語意相似度、LLM 推理、分群</strong>，而<strong>沒有任何一家把「出處（provenance）／時間碼／來源可靠度」當成合併判準或衝突仲裁的依據</strong>。這正是本專案「每筆強制附出處」設計會踩到、而這份地圖沒覆蓋的空白。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p><strong>主流仍是三元組</strong>。全篇預設的知識單位是「實體—關係—實體」（subject–predicate–object）三元組，OIE 與多數抽取／融合方法都圍著它轉。schema-based 那條線更是「受本體約束的三元組」（ontology-constrained triples）。</p>
+<p>但這篇也<strong>點名了幾種非純三元組的表示法</strong>，值得記下：
+- <strong>RHF（Relation–Head–Facts）</strong>：AutoRE 用的結構，把文件級關係抽取重組成「先定關係、再掛頭實體與事實」的層次，而非扁平三元組。
+- <strong>社群摘要節點（文字摘要）</strong>：GraphRAG 的做法會把子圖濃縮成自然語言摘要當節點，這是「文字節點」而非三元組。
+- <strong>時序知識圖譜（Temporal Knowledge Graph, TKG）</strong>：未來方向裡點名 <strong>Zep</strong>（Rasmussen et al. 2025），用 TKG 管理事實的時效、支援「隨時間」的推理與更新。
+- <strong>帶脈絡後設資料的「筆記」節點</strong>：<strong>A-MEM</strong>（Xu et al. 2025）把記憶建模成互聯的、附脈絡 metadata 的「notes」，供 agent 持續重組與成長。
+- <strong>多模態 KG（MMKG）</strong>：把文字、影像、音訊、影片整進統一結構（VaLiK、KG-MRI），節點不再限於文字實體。</p>
+<p><strong>出處、時間、信心分數</strong>：這是這份綜述最薄弱、也最和本專案相關的一塊。
+- <em>時間資訊</em>：只在 Zep／TKG 一處被當成核心，其餘幾乎不談。
+- <em>出處（provenance）</em>：<strong>全篇實質沒有把「每筆知識附來源／可追溯」當成一個設計維度來討論</strong>。它關心的是抽得準不準、schema 一不一致，而不是「這條知識是誰說的、出自哪份文件哪個位置」。
+- <em>信心分數</em>：只在 COMEM 的「輕量過濾」與 Pons 等消歧脈絡隱約碰到「可信度」，但沒有專門討論信心怎麼算；也<strong>沒有出現「叫 LLM 自評信心」這種做法的正反辯論</strong>（既沒推薦、也沒警示）。</p>
+<p>它為何多半仍選三元組：因為三元組能無縫接上既有 KG 基礎設施與 RAG（檢索增強生成）管線，這也呼應它把 KG 定位成「LLM 的外部知識記憶」的整體取向。非三元組表示法之所以被提，幾乎都是為了服務 agent 記憶或多模態，而非為了「附出處、可追溯」這個需求。</p>
+<h2 id="5">5. 資料集</h2>
+<p><strong>沒有。</strong> 這是一篇純敘述性綜述，本身不做實驗、不評估、不提出任何 benchmark 或資料集，也<strong>沒有整理一張「各方法用了哪些資料集／語言／規模」的對照表</strong>。這是它作為綜述的一個明顯缺項——讀者無法從中得知各家在什麼語料、什麼語言上驗證。</p>
+<p>就它轉述的內容看，被引方法的語料以英文、開放領域或特定專業領域（生命科學、臨床醫療用 UMLS、NLP 教育、心理健康 PKG-LLM）為主。<strong>通篇沒有提到中文語料，也沒有口述歷史、訪談、口語轉寫這類文本</strong>。歷史文本層面完全缺席。對本專案（中文、口語、訪談逐字稿）而言，這份地圖在資料面上幾乎沒有直接可對照的先例。</p>
+<h2 id="6">6. 評估</h2>
+<p><strong>這篇自己不做評估</strong>，所以嚴格說沒有 gold standard、沒有 P/R/F1、沒有 LLM-as-a-judge——因為它根本不跑實驗。它只在轉述各家時零星提到人家「達到高一致性」「接近初階人類建模者水準」等說法，多為原論文的自述，這篇並未加以查核或比較。</p>
+<p>它<strong>沒有專章討論「怎麼評估 LLM 建的 KG 好不好」</strong>，也沒有觸及本專案最在意的兩個評估難題：
+1. 沒有討論「無 gold standard 時如何評估」——這正是本專案事件層與關係層面對的處境。
+2. 沒有討論「用 LLM 驗證 LLM」這種循環的風險。它在未來方向裡把「品質評估」列為 KARMA 這類多 agent 的一項職責（等於讓 LLM agent 自己評自己），卻<strong>完全沒有反思這種自我評估的效度問題</strong>。</p>
+<p>所以在「評估方法論」這一格，這篇對本專案的參考價值近乎零，甚至反過來凸顯了一個學界普遍的盲點：熱衷於「怎麼建」，冷落「怎麼確認建得對」。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p><strong>論文自承的限制</strong>（放在結論）：規模化、可靠性、持續調適仍是挑戰；未來要靠更好的 prompt 設計、多模態整合、知識接地的推理。這些說法相當籠統、近乎口號。</p>
+<p><strong>我讀出的、它沒明講的弱點</strong>：
+- <em>只有地圖、沒有秤</em>：沒有任何量化比較、沒有資料集／指標對照表，讀者無法判斷各家孰優孰劣，只能接收作者的分類與正面轉述。作為一篇 survey，這是方法論上的硬傷。
+- <em>敘述偏頌揚、缺批判</em>：對幾乎每個被引框架都用「advanced」「significant evolution」這類正面語彙，很少指出各家的失敗模式或適用邊界。
+- <em>出處與可追溯性完全缺席</em>：如第 4、5 節所述，「每筆知識從哪來、能不能回溯」這個維度不在它的視野內。
+- <em>評估盲點</em>：不談無 gold standard 評估，也不警惕 LLM 自評／LLM 互評的循環效度。
+- <em>品質與掛名存疑</em>：標為「ICAIS 2025 會議論文」，但單一作者、篇幅偏短、參考文獻明顯粗糙（例如 Kommineni et al. 的出處欄直接寫成占位符「Journal Name」；多筆年份與版本標註前後不一）。這些跡象與本篇「未經嚴謹同儕審查的預印本」的定位一致，引用時應審慎，宜當「文獻線索的索引」而非「權威定論」。
+- <em>與 roadmap 的重疊未交代</em>：它反覆引用 Pan et al. (2024) roadmap 卻沒說清自己相對於前者的增量在哪（見下方比較）。</p>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>可借用</strong>：
+- <em>「有 schema／無 schema」這條軸線</em>值得內化成本專案的自我定位工具。本專案目前偏「弱 schema、詳細抽取、寧多勿漏」，接近它講的 <em>schema-free 結構化生成抽取</em>，但又保有一份人工實體名冊當對照——大致落在它兩極之間。它盤點的「動態調適 schema」（AutoSchemaKG、AdaKGC）提示：若日後想讓實體／關係型別隨語料成長，已有現成路數可參考。
+- <em>多步拆解降低幻覺</em>：KGGEN「先抽實體、再生關係」拆成兩次呼叫、ChatIE 的多輪精修、COMEM 小大模型串接——這些「分而治之、逐步精修」的想法，和本專案「兩層 harness（逐篇 local 抽取 → 跨訪談 global 融合）」的分工精神一致，可作為設計旁證。
+- <em>融合的三層切法</em>（綱要層 vs 實例層 vs 混合）可拿來檢視本專案的 <code>entity-resolve</code>：目前做的偏「實例層」消歧（跨訪談把同一人對齊），若未來要清理實體型別（如 WORKLOG 提到的「媒體名稱／媒體名」該併），那屬於「綱要層」問題，兩者宜分開處理。</p>
+<p><strong>該避免／須警惕（與四條紅線的對照）</strong>：
+- <em>紅線 2（絕不叫 LLM 自評信心）</em>：這篇把「品質評估」輕描淡寫地交給多 agent 自評，且對「用 LLM 驗證 LLM」毫無戒心。本專案的立場（信心由程式化訊號推導、拒絕 LLM 自評）與這份主流敘事<strong>明確相左</strong>，且本專案的謹慎在此更顯必要——不能因為地圖上大家都這麼做就跟進。
+- <em>紅線 3（每筆強制附出處）</em>：這篇<strong>沒有任何一家把出處當成一等公民</strong>。這既說明本專案的出處設計在文獻裡是相對少見、甚至前沿的取向（值得在論文中主張其貢獻），也意味著<strong>不能指望從這份地圖找到現成的出處建模範式</strong>，得自己設計。
+- <em>表示法</em>：這篇證實「純三元組」是主流，但也列出了 RHF、社群摘要節點、時序 KG、帶 metadata 的筆記節點等<strong>非三元組</strong>變體。本專案的「實體／事件／關係／goût 敘述＋強制出處」混合結構，最接近的親戚是 Zep 的時序 KG（有時間維度）與 A-MEM 的附脈絡筆記（有 metadata），但<strong>沒有任何一家同時處理「口語、評價性敘述（goût）、強制出處」三者</strong>。結論：本專案的表示法在既有譜系裡沒有現成模板，屬於需要自行論證的設計，這反而是可寫進方法論章節的差異點。</p>
+<p><strong>與 Pan et al. (2024) roadmap 的異同</strong>（本批另一 agent 讀 Pan，這裡先標出對照點）：
+- <em>範圍</em>：Pan et al. 的 roadmap 涵蓋 LLM 與 KG 的<strong>全面互動</strong>，三大框架是「KG 強化 LLM」「LLM 強化 KG」「兩者協同」，把 KG 用於 LLM 推理、問答、可解釋性都納入。Bian 這篇<strong>只切「KG 建構」這一塊</strong>，把 Pan 框架裡「LLM 強化 KG」的建構面拿出來放大。
+- <em>組織軸</em>：Pan 以「誰強化誰」為主軸；Bian 改用 KG 傳統的<strong>三層流水線（本體／抽取／融合）</strong>為骨架，再疊一條「schema-based vs schema-free」的橫軸。後者對「建構」這件事的內部結構鋪得更細。
+- <em>定位差異</em>：Bian 反覆引用並繼承 Pan「從規則式流水線轉向 LLM 驅動、統一、自適應框架」的大判斷，可視為 Pan 在「建構」子題上的<strong>加深與更新</strong>（收了 2024–2025 更多新框架如 AutoSchemaKG、EDC、KARMA）。但 Bian 缺 Pan 那種較嚴謹的框架界定與較完整的評估／應用討論，權威性與周延度不及 Pan。實務上：要「全景與定論」讀 Pan，要「建構這條線上 2025 年前後有哪些新招」翻 Bian。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

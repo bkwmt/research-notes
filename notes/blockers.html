@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>卡點對照表：實驗撞到的問題 → 前人已有的方法</title>
+<meta name="description" content="卡點對照表：實驗撞到的問題 → 前人已有的方法">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 索引與回顧</p>
+<h1>卡點對照表：實驗撞到的問題 → 前人已有的方法</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/_卡點對照表.md</code>　來源最後修改 2026-09-08　分類 索引與回顧</p>
+</div></header>
+<main class="wrap">
+<p>建立：2026-09-08。</p>
+<h2 id="_1">為什麼要這張表</h2>
+<p><code>_對照矩陣.md</code> 是按<strong>主題</strong>索引的（①LLM 抽取 ②agentic ③評估 ④口述歷史 ⑤無 gold
+standard），而實驗是按<strong>卡點</strong>推進的。兩種索引對不上，庫存就用不出來——2026-09-03
+到 09-07 這五天的實驗日誌共 1,865 行，除了 09-06 那次下載，沒有一處回頭引用
+<code>refs/notes/</code> 的二十份筆記，儘管下面前七條答案早在 2026-07-22 就寫在那些筆記的第 8 節
+（「可借用／該避免」）裡。<strong>2026-09-08 補讀八篇</strong>（Jing 2007、BenchIE、DialogRE、
+AutoSchemaKG、Mintz 2009、Papaluca 2024、Zep、OpenIE 綜述），各節的「已讀新增」是
+那兩批補讀的產物，第八節則是補讀時才浮現的新卡點。補讀也更正了兩處先前的判斷：
+<strong>評價不是完全沒有前人做過</strong>（DialogRE 有人際評價兩類），
+<strong>出處鏈條也不是沒有前例</strong>（Zep 有雙向索引）。</p>
+<p>這張表是反向索引：<strong>從手上的問題查文獻</strong>。每一條都註明卡點出處與文獻出處，
+可逐一回查。凡標「未讀」者只記書目與預期，不得當作結論引用
+（紅線：文獻引用必須讀過原文）。</p>
+<hr>
+<h2 id="_2">一、動詞表該不該手寫</h2>
+<p><strong>卡點</strong>：<code>triples/</code> 這條線由程式用 <code>life_nodes.py</code> 的動詞表界定述詞，模型只圈字；
+<code>triples_free/</code> 那條不限動詞、由模型自判什麼算知識。兩條並存是刻意的，但「手寫的
+動詞表算不算偷渡人工知識」這個疑問懸著沒解（見 CLAUDE.md<span class="src">（專案內部檔案 <code>../../CLAUDE.md</code>，未隨筆記公開）</span>
+三元組抽取的分工、WORKLOG.md<span class="src">（專案內部檔案 <code>../../WORKLOG.md</code>，未隨筆記公開）</span> 2026-09-07 之八、之九）。</p>
+<p><strong>前人的方法</strong>：bian2025 綜述把這條軸線命名為 <strong>schema-based ／ schema-free</strong>，
+並指出已有第三條路——「動態調適 schema」（AutoSchemaKG、AdaKGC）：先 schema-free
+抽，再從抽出來的結果<strong>歸納</strong>出 schema。見 <a href="bian2025_llm-kgc-survey.html">bian2025_llm-kgc-survey.md</a>
+第 8 節。xu2024 補上權衡的兩端：受控 schema 抽得準但綁死類型，開放式（OpenIE）
+靈活但難評估；口述歷史偏開放，這也解釋了為何我們難有標準答案
+（<a href="xu2024_generative-ie-survey.html">xu2024_generative-ie-survey.md</a>）。</p>
+<p><strong>可以怎麼用</strong>：不必在「手寫」與「不給」之間二選一。第三條路能讓動詞表從語料長出來，
+再拿手寫那份當對照——而兩份的差異本身就是一個可報告的結果。</p>
+<p><strong>已讀（2026-09-08）</strong>：<a href="bai2025_autoschemakg.html">bai2025_autoschemakg.md</a>。它的三階段抽取
+（實體—實體、實體—事件、事件—事件）與「概念化」是這條路的完整實作：對每個抽出的述詞生成
+三個不同抽象層次的詞（「participated in」→「engage in」「attend」「involve in」），再看這些
+概念詞怎麼聚成類。<strong>具體可做的事</strong>：先不限動詞地抽，再從抽出來的東西歸納出動詞表，
+拿它跟 <code>life_nodes.py</code> 手寫那份比對——兩份的差異就是「手寫動詞表是否偷渡人工知識」
+這個問題的答案。但它的正確率數字（90% 以上）是 DeepSeek-V3 當裁判算的，踩紅線 2，不可引用。</p>
+<p><strong>已讀新增（2026-09-08）——我們的兩條線有現成的名字，而且還缺第三條</strong>：
+<a href="liu2024_openie-survey.html">liu2024_openie-survey.md</a> 把開放式抽取分成三種任務設定：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>設定</th>
+<th>定義</th>
+<th>我們的對應</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ORTE</strong> 開放關係三元組抽取</td>
+<td>從文字直接抽三元組</td>
+<td><code>triple_free_exp.py</code>（生成式）、<code>triple_exp.py</code>（標記式）</td>
+</tr>
+<tr>
+<td><strong>ORSE</strong> 開放關係跨距抽取</td>
+<td><strong>先有主詞受詞，再找表達關係的那段字</strong></td>
+<td><strong>還沒試過</strong></td>
+</tr>
+<tr>
+<td><strong>ORC</strong> 開放關係分群</td>
+<td>把各種關係表述聚成同一類</td>
+<td>動詞表歸納（＝AutoSchemaKG 的概念化）</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>ORSE 值得當一個具名變因加進來</strong>：先用主角線定人物，再讓模型只找關係跨距。
+理由是我們的人名辨識有 65.9%、作品名只有 1.1%，先定人物可能比一次抽三個成分穩。
+它跟 DialogRE 的觸發詞標注其實是同一件事。已知缺點是錯誤傳遞（人物定錯關係就跟著錯），
+這要在報告裡說明。用這三個名字替變因命名的好處是報告能對上這個社群的詞彙，不必自創說法。</p>
+<p><strong>零樣本的效能參照點</strong>：<a href="papaluca2024_zero-few-shot-kg-triplets.html">papaluca2024_zero-few-shot-kg-triplets.md</a>
+測了六個模型（GPT-2 1 億到 LLaMA 650 億），<strong>純零樣本的 F1 在 WebNLG 是 0.000–0.041、
+在 NYT 全部是 0.000</strong>。但<strong>這個數字不能直接套到我們身上</strong>——他們的評分要求述詞對應到
+知識庫的封閉關係集，模型不是抽不出東西，是抽出的對不上那個封閉集。
+<code>triples_free/</code> 沒有封閉集，所以幾乎不適用；<code>triples/</code> 有動詞表，比較接近但仍不同
+（我們的動詞表來自語料實際用詞，不是外部資料庫的抽象關係名）。引用時務必註明條件。</p>
+<hr>
+<h2 id="_3">二、跨訪談把同一個人併起來</h2>
+<p><strong>卡點</strong>：<code>output/registry/</code> 至今不存在，別名未合併，所以
+build_network.py<span class="src">（專案內部檔案 <code>../../local_llm/experiments/build_network.py</code>，未隨筆記公開）</span> 產出的三層網絡
+每個數字都是下界（見 CLAUDE.md<span class="src">（專案內部檔案 <code>../../CLAUDE.md</code>，未隨筆記公開）</span> 對外發表一節）。</p>
+<p><strong>前人的方法</strong>（四篇互補，合起來是一份完整規格）：</p>
+<ol>
+<li><strong>Graphusion 的融合三動作</strong>：實體合併、衝突解決、新關係推論，且給了兩條可直接
+   採用的規則——「合併時保留較具體的名稱」「衝突時回讀原文再裁決」。
+   見 <a href="yang2025_graphusion.html">yang2025_graphusion.md</a>。</li>
+<li><strong>Blouin 的實體連結</strong>：消歧的升級版是連到外部穩定 ID。同一性判準因此從
+   「我們自己說了算」變成「連到公認的同一個 ID」。他們用領域專用庫（MCBD）補
+   Wikidata 的不足，多救回 547 個實體；我們對應的領域庫是
+   <code>data/srt/person_id_map.json</code>（12,955 筆）與 <code>data/entity_stage1_final.csv</code>
+   的 Alias 欄（522 筆）。見 <a href="blouin2024_chinese-newspapers-ner.html">blouin2024_chinese-newspapers-ner.md</a>。</li>
+<li><strong>KGGen 的反向約束</strong>：在話術裡明文禁止過度合併（它的例子是不可把第一型與第二型
+   糖尿病併在一起）。對我們就是同名不同人。見 <a href="mo2025_kggen.html">mo2025_kggen.md</a>。</li>
+<li><strong>bian2025 的分層</strong>：綱要層（「媒體名稱」該不該併「媒體名」）與實例層（跨訪談
+   對同一人）是兩種不同的問題，宜分開處理。</li>
+</ol>
+<p><strong>必須反著做的一處</strong>：Graphusion 融合時<strong>主動抹除來源</strong>，把衝突當成要消去的雜訊。
+口述歷史的衝突本身就是史料。合併後的實體要能列出它在哪些訪談、哪些時間碼被提到；
+被裁掉的矛盾說法也要保留，記明「誰這樣說、為何不採」。也就是把「衝突」建模成一種
+要保存並標記的關係，而不是要消滅的錯誤。</p>
+<p><strong>已讀新增（2026-09-08）</strong>：<a href="jing2007_conversational-social-networks.html">jing2007_conversational-social-networks.md</a>
+給了兩條<strong>程式化的合併約束</strong>，不必問模型：</p>
+<ul>
+<li><strong>用關係約束共指</strong>：若合併兩個叢集會產生互相矛盾的關係就不合併（A 是 B 的母親、C 是 B 的姊妹，
+  則 A 與 C 不該連）。他們從資料建一份「共存關係集合」查表。我們可以用 <code>life_nodes.py</code> 的類別
+  建對應的表——例如同一時期不會既是某人的老師又是學生。</li>
+<li><strong>凝聚式分群的最小距離門檻</strong>：C1={他, 父親} 與 C2={他, 弟弟} 不該因為兩個「他」很像就合併。
+  換成我們的情境：一組代稱含「陶姐」、另一組含「老師」，門檻應該擋下。
+  他們並主張<strong>不要用完全連結或平均連結</strong>，因為口語敘述焦點很局部，相似度模型判斷不了遠距離代名詞。</li>
+</ul>
+<p><strong>已讀新增（2026-09-08）之一——多句證據合併，這是這一節最該做的事</strong>：
+<a href="mintz2009_distant-supervision.html">mintz2009_distant-supervision.md</a> 的核心機制是
+<strong>把同一對實體在多個句子裡的特徵合併成單一特徵向量，再判斷一次</strong>。他們的例子：
+〈Spielberg, Saving Private Ryan〉，第一句可能是導演也可能是編劇或製片，第二句可能是
+「執掌某機構」，<strong>單獨看都不足以定論，合起來就可以</strong>。</p>
+<p>我們的處境結構相同——許石散落在子女與劉福助的證詞裡，單句含糊（「他那時候很辛苦」），
+多句合起來才成立一條生命過程。<code>confidence_scorer.py</code> 的五訊號裡已有「跨人佐證」，
+Mintz 給了它更強的形式：<strong>不是事後加權，而是在判斷之前就把多個出處的證據合併起來再判斷</strong>。
+這對 <code>output/registry/</code> 的設計有直接影響，而且<strong>不需要任何外部資料庫就能做</strong>。</p>
+<p><strong>⚠️ 但遠距監督本身埋了一個循環論證的陷阱。</strong> 我們手上唯一夠格當「Freebase」的是
+ghouse／PASMA 的<strong>既有 SNA 合作網絡</strong>（<code>person_id_map.json</code> 只有名字對編號、沒有關係，
+當不了監督來源）。而 <code>CLAUDE.md</code> 已定：<strong>既有 SNA 是對照組不是篩子</strong>，
+<code>output/experiments/baseline/told_vs_sna.json</code> 是預先登記的對照（ρ = 0.2286）。
+若拿同一份 SNA 當遠距監督的訓練訊號，之後又拿口述網絡跟它比對，
+<strong>用 SNA 教出來的抽取器抽出的網絡當然會像 SNA</strong>，那個相關係數就失去意義。</p>
+<p>三種處置（待使用者裁決）：（一）不用 SNA 當監督來源，只借「多句合併」的想法——
+安全的預設；（二）把 SNA 切兩半，一半監督一半對照，並在報告明說——Mintz 自己的
+held-out 做法，方法乾淨但削弱對照組規模；（三）找另一個與 SNA 獨立的外部庫
+（唱片目錄、著作權登記、報刊資料庫）——成本最高但最乾淨，而且那些庫本來就是
+博論研究線在用的材料。<strong>我的判斷是第三條最值得，第一條是安全預設，
+第二條看似省事但會讓「口述網絡與 SNA 的差異」這個發現變得難以解釋。</strong></p>
+<p><strong>另一個不必監督也能做的切分</strong>：Mintz 只輸出訓練資料裡沒有的實例。對應到我們就是
+<strong>把抽出的關係分成「SNA 已知」與「SNA 沒有」兩堆分開報</strong>——後者才是口述歷史的獨特貢獻，
+前者可當抽取正確性的旁證。這把「與 SNA 比對」從一個可能循環的評估，變成有意義的分類。</p>
+<p><strong>已讀新增之二——三個程式化的去重約束</strong>：
+<a href="rasmussen2025_zep-temporal-kg.html">rasmussen2025_zep-temporal-kg.md</a> 的
+<strong>邊去重只在「同一對實體之間」搜尋</strong>，既防止把不同實體對的相似邊錯誤合併，
+也大幅縮小搜尋空間。另外它<strong>用預先寫好的查詢寫入資料庫、不讓模型生成查詢</strong>
+（理由是確保 schema 一致、減少幻覺），這與本專案「程式吃乾機械部分」同向，可當外部佐證。
+但它的實體消解最後一步只交給模型判斷，中間沒有程式化約束——
+<strong>Jing 2007 的最小距離門檻與關係約束共指應該加在模型判斷之前，把明顯不該合併的先擋掉。</strong></p>
+<p><strong>待讀</strong>：<code>chen2024_llm-align.pdf</code>（LLM-Align）、<code>liu2022_kg-alignment-strong-fusion.pdf</code>（SFEA）。</p>
+<hr>
+<h2 id="11">三、零標注下作品名辨識只有 1.1%</h2>
+<p><strong>卡點</strong>：剝掉人工的全形括號標注後，作品名辨識從 32.0% 掉到 1.1%，「唱」「寫」「錄」
+從人—作品述詞掉進虛化類；人名幾乎不受影響（66.6% → 65.9%）。
+見 WORKLOG.md<span class="src">（專案內部檔案 <code>../../WORKLOG.md</code>，未隨筆記公開）</span> 2026-09-06 之六與 2026-09-07 之四。</p>
+<p><strong>前人的方法</strong>：NER4all 給出量化證據——<strong>把領域脈絡（歷史背景、人物角色、素材特性）
+寫進話術帶來 +11% 召回，而獎懲、重述、深呼吸那類技巧只有 1–2%</strong>；且 16-shot 以下的
+範例反而拖累效能，範例要人工標、很貴。見 <a href="hiltmann2025_ner4all.html">hiltmann2025_ner4all.md</a>。</p>
+<p><strong>它同時說明了 1.1% 的性質</strong>：CKIP 的 NER 訓練於 OntoNotes 5.0 中文部分，那套類別
+體系裡<strong>根本沒有「作品名」這一類</strong>。所以 1.1% 主要不是模型弱，是類別體系不合用。
+這一點改變了該做什麼——不是換更大的模型，是自己定義類別並用脈絡驅動。</p>
+<p><strong>與紅線的關係</strong>：脈絡寫進話術不違反抽取端零標注（紅線 5），因為寫進去的是領域背景，
+不是本語料的人工標注答案。這條界線在報告裡要說清楚。</p>
+<p><strong>已讀新增（2026-09-08）——第二篇獨立證據，方向一致</strong>：
+<a href="papaluca2024_zero-few-shot-kg-triplets.html">papaluca2024_zero-few-shot-kg-triplets.md</a>
+量到<strong>脈絡的效益遠大於模型大小</strong>：GPT-2 base（1 億參數）加上檢索來的脈絡三元組，
+F1 從 0.000 升到 0.249，<strong>勝過 LLaMA 65b（650 倍大）不加脈絡的 0.041</strong>。
+作者的結論是模型大小只帶來對數級的改善。這與 NER4all 的 +11% 是各自獨立的證據，方向相同。</p>
+<p><strong>具體可做的三件事</strong>（目前所有實驗都是把單一句子丟給模型，沒有任何脈絡）：</p>
+<ol>
+<li>把該句<strong>前後幾句</strong>一併給（Zep 用前 4 則，Jing 2007 也強調輪次脈絡）；</li>
+<li>把該卷<strong>已經抽出的人物清單</strong>當脈絡——不違反紅線 5，因為那是我們自己抽的；</li>
+<li>把<strong>同一位被講述者在別卷已抽出的三元組</strong>當脈絡——這正是他們的「脈絡三元組」，
+   而且同時服務跨訪談併人。第三種最值得試。</li>
+</ol>
+<p><strong>一個容易忽略的細節</strong>：他們檢索脈絡時，每種關係型別只取前兩條，以免脈絡被高頻關係佔滿。
+我們的「唱」「寫」「錄」是高頻述詞，不控制的話檢索回來的脈絡會全是這三種，
+反而壓抑罕見但有價值的關係（引薦、拜師、頂替）。一行程式的事，不做會系統性偏斜。</p>
+<p><strong>另一個可低成本驗證的變因</strong>：他們的 instructed／chat 微調版本「總是持平或更差」，
+所以主報告用 base 版。我們用的 gemma 與 hermes 都是 instruct 系列。
+同一模型的 base 與 instruct 各跑一遍陳志遠卷即可比較——但 base 模型不遵守格式，
+程式端要更寬容（這與「判斷與字必須重合」那條經驗一致：模型不照格式先在程式端寬容，
+別往話術加規則）。</p>
+<hr>
+<h2 id="787">四、主角線 78.7% 撐不住</h2>
+<p><strong>卡點</strong>：主角線一輪同時判定「這一句在講誰」「句子裡的稱呼指誰」「說話的人怎麼知道」，
+陳志遠卷跑完後判定 78.7% 撐不住，改走素樸線。
+見 WORKLOG.md<span class="src">（專案內部檔案 <code>../../WORKLOG.md</code>，未隨筆記公開）</span> 2026-09-06 之三。</p>
+<p><strong>前人的方法</strong>：pan2024 把<strong>共指消解（coreference resolution）列為與實體發現、關係
+抽取並列的獨立子任務</strong>。我們自己的筆記當時就寫下一句判斷：「本專案目前把消歧放跨訪談層，
+共指則較隱性。」見 <a href="pan2024_llm-kg-roadmap.html">pan2024_llm-kg-roadmap.md</a>。</p>
+<p><strong>這句話正指出問題</strong>：主角線同時在做句內共指（「他」指誰）與跨卷消歧（這個名字是不是
+別卷那個人），兩件性質不同的事擠在一輪裡。前人的做法是拆開成獨立關卡。</p>
+<p><strong>另一條</strong>：Cherukuri 的前處理只留受訪者回答、濾掉訪員提問。我們的情形更複雜——
+資料夾名是訪談的主題人物，不一定是說話的人（許石卷 139 句全是別人在講他），
+所以 <code>person</code> 與 <code>speaker</code> 必須分開，這點程式端已經做了。
+見 <a href="cherukuri2025_oral-history-llm.html">cherukuri2025_oral-history-llm.md</a>。</p>
+<p><strong>已讀新增（2026-09-08）——這一節最重要的證據</strong>：
+<a href="jing2007_conversational-social-networks.html">jing2007_conversational-social-networks.md</a>
+在同類型語料（USC Shoah Foundation 的大屠殺倖存者錄影訪談）上做同一件事，結論是
+<strong>社會網絡抽取的成敗幾乎全押在共指上：邊的 F 值 0.06 → 0.30，五倍，全部來自共指的改良</strong>。
+節點只從 0.59 進步到 0.64——難的從來不是找出有誰，是判斷誰跟誰有什麼關係。</p>
+<p>他們的錯誤示範值得記：「他媽媽叫 Mary」與「他弟弟 Mark 去當兵了」，兩個「他」若接反，
+得到的網絡<strong>人數對、邊數對、型別對，內容全錯</strong>。所以節點層的指標好看不代表網絡對。</p>
+<p><strong>三個可直接抄的程式化訊號</strong>（都不問模型，符合紅線 2）：</p>
+<ol>
+<li><strong>講述者角色辨識的三個指標</strong>：每人的輪次數、每人字數的差距、第一人稱代名詞
+   （我、我們）對第二人稱（你、你們）的比率。他們用這三個指標把說話者分成訪員／受訪者／其他，
+   開發集全部判對。對我們：可當 <code>output/experiments/trunks/</code> 裡 <code>speaker_source</code> 標為
+   「反推」或「預設」那些 trunk 的<strong>獨立交叉驗證訊號</strong>。</li>
+<li><strong>名字句式</strong>：「她叫 Irene」「我表哥 Mark」這類介紹句型當特徵。中文對應「他叫作」「我師父」。</li>
+<li><strong>先把每位講述者的所有第一人稱代名詞連成一組</strong>再分群，可大幅降低運算量。我們已經知道
+   每個 trunk 的講述者，這一步幾乎免費。</li>
+</ol>
+<p><strong>一條不能照抄的規則</strong>：他們只收「至少含一個具名指稱」的實體——從頭到尾只被叫「他」的人
+不進網絡。這與本專案最終目標（重建未受訪者的生命過程）直接衝突。始終沒被指名的人
+要留在圖裡標為未解實體，不能丟掉。</p>
+<p><strong>校準期待用的數字</strong>：邊 0.28–0.30，而且是在<strong>完整人工標注</strong>下。我們沒有標注、也還沒做
+代稱解析，數字只會更低。這不是壞消息，是把期待放回正確位置。</p>
+<hr>
+<h2 id="_4">五、沒有標準答案怎麼評</h2>
+<p><strong>卡點</strong>：紅線第 1 條拒絕配對式人工標註，事件層與關係層因此沒有 gold standard。</p>
+<p><strong>前人的方法</strong>（三套可疊用）：</p>
+<ol>
+<li><strong>Text2KGBench 的兩塊免標準答案指標</strong>：schema 符合度（抽出的關係型別是否都落在
+   允許清單裡）、幻覺（主詞與受詞是否真的在來源句裡出現）。兩者都只需要一份清單加
+   來源句，不需逐筆標答案。見
+   <a href="mihindukulasooriya2023_text2kgbench.html">mihindukulasooriya2023_text2kgbench.md</a>。
+   我們的條件更好：出處是資料裡的硬欄位，不是評測時的近似。</li>
+<li><strong>KGGen 的 MINE 事實還原率</strong>：不比對整張圖，只準備少數幾條「明確講過的事實」
+   （附時間碼），測抽取結果能不能還原。當召回率的代理指標。
+   見 <a href="mo2025_kggen.html">mo2025_kggen.md</a>。<strong>但它的還原判定用 LLM 當裁判，要改成程式化比對</strong>。</li>
+<li><strong>Strutz 的分層原則</strong>（最完整）：能程式化免參考檢查的就全自動、有人工參考可比的
+   用計算指標加部分給分、純詮釋性的留給人工。這正好對上我們的三層——實體層有人工名冊
+   可比，關係層與敘事層沒有。它的部分給分設計（LCS 保序、長度正規化、邊界寬容、
+   子字串實用配對加覆蓋率）是為「同一件事有多種合法做法」而設計的，適合事件邊界
+   本來就沒有唯一切法的情形。見 <a href="strutz2026_tei-eval.html">strutz2026_tei-eval.md</a>。
+   <strong>它自己的警告也要聽</strong>：不要把多維度壓成單一綜合分數。</li>
+</ol>
+<p><strong>已讀（2026-09-08）</strong>：<a href="gashteovski2022_benchie.html">gashteovski2022_benchie.md</a>。
+它帶來一個警告與一個意外的好消息。</p>
+<p><strong>警告：<code>triple_exp.py</code> 在結構上很接近它用來打臉的那個天真基線。</strong> BenchIE 自己實作了一個
+Naive OIE——用詞性標注器找每個動詞當述詞、前文當主詞、後文當受詞。在字詞重疊評分下
+它的精確率是 0.24（甚至高過 Stanford OIE 的 0.17），在事實層評分下只有 <strong>0.03，八分之一</strong>。
+<code>triple_exp.py</code> 是「程式用動詞表界定述詞、模型圈字、程式定位論元」，比天真基線多了篩選與判斷，
+但骨架相同。<strong>所以評估我們的三元組時絕不能用主詞／述詞／受詞各自的字詞重疊計分。</strong>
+目前 <code>triples/</code> 的逐字驗證是<strong>幻覺檢查</strong>（模型有沒有捏造字），不是<strong>正確性檢查</strong>（關係對不對），
+兩者不能互相取代。</p>
+<p><strong>好消息：中文做事實同義集的成本只有英文的二十分之一。</strong> 每個同義集英文平均要列 101 條，
+中文只要 5.4 條，因為中文沒有冠詞與限定詞（英文的 the、a 製造出大量彼此不同卻等價的寫法）。</p>
+<p><strong>一個需要使用者裁決的問題</strong>：BenchIE 的標注是<strong>在看模型輸出之前</strong>，先窮舉列出「這句話裡
+有哪些事實、每個事實有哪些合法寫法」——這是對<strong>語料</strong>的標注，不是對<strong>輸出</strong>的標注。
+紅線第 1 條拒絕的是後者（拿模型輸出人工判對錯、建 cluster_id 對照）。兩者順序不同、
+性質也不同。若判定可行，規模建議極小：從 13,142 句抽 100–150 句，只做人物相關的事實。
+若判定不可行，理由要寫清楚（例如：一旦有標準答案，後續設計就會不自覺朝它最佳化）。</p>
+<p><strong>三件可直接借的</strong>：（一）<strong>一個事實只計一次</strong>——TP 的單位是同義集不是三元組，重複抽出
+同一事實不加分；我們統計產出量前應先合併等價事實，否則數字虛胖。（二）<strong>選 BenchIE-E
+那個面向</strong>——主詞受詞必須是完整概念，不接受「陳志遠的」這種帶多餘詞的主詞，因為我們的
+下游是網絡。（三）<strong>共指寫進標準答案</strong>——他們的同義集用 <code>|</code> 同時接受本名與代名詞，
+意思是<strong>代稱未解不算抽取錯誤，是解析工作尚未完成</strong>。</p>
+<p><strong>已讀新增（2026-09-08）——修正上面那句「絕不能用字詞重疊計分」</strong>：
+<a href="liu2024_openie-survey.html">liu2024_openie-survey.md</a> 給了更準確的配對原則。
+評分器分兩類：<strong>token-level</strong>（關注個別詞元）與 <strong>fact-level</strong>（評估對資訊的忠實度，
+BenchIE 屬此類）。綜述的原則是——token-level 適合輸出為「輸入裡的精確詞元」的標記式模型；
+fact-level 適合<strong>生成式</strong>模型，因為輸出多樣、需要語意層評估。</p>
+<p>對應到我們：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>我們的線</th>
+<th>輸出性質</th>
+<th>該用的評分器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>triple_exp.py</code>（模型只圈字、程式逐字驗證）</td>
+<td>輸入裡的精確詞元</td>
+<td>token-level <strong>可以用</strong></td>
+</tr>
+<tr>
+<td><code>triple_free_exp.py</code>（結構化生成）</td>
+<td>生成式</td>
+<td><strong>必須用 fact-level</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>所以正確的說法不是「絕不能用字詞重疊」，而是：<strong>兩條線要用不同的評分器，
+而且不能拿它們的分數直接互比</strong>。搞錯的話會得到「程式界定動詞那條線比較好」的假結論——
+那只是因為它被用寬鬆的指標評。BenchIE 的天真基線警告仍然成立，但適用範圍是生成式那條線。</p>
+<p><strong>還有一個尚無公認答案的地方</strong>：綜述明說「忠實度這類面向仍然嚴重依賴人工評估，
+缺乏公認的指標」。這既表示我們沒有現成的尺，也表示若我們設計出一套程式化的忠實度檢查
+（出處落地、逐字驗證、跨人佐證），那本身就是可報告的方法貢獻。</p>
+<hr>
+<h2 id="_5">六、相對時間與生命過程的時序</h2>
+<p><strong>卡點</strong>：「生命過程」是時序化的事件序列，相對時間（「退伍之後」）是把事件接成序列的
+接續資訊，任何階段都不得丟掉（CLAUDE.md<span class="src">（專案內部檔案 <code>../../CLAUDE.md</code>，未隨筆記公開）</span> 硬約束 3）。</p>
+<p><strong>前人的方法</strong>：Blouin 把<strong>絕對日期與相對日期分成不同類型並保留參照點</strong>，而不是逼
+受訪者的話變成精確年份。見 <a href="blouin2024_chinese-newspapers-ner.html">blouin2024_chinese-newspapers-ner.md</a>。
+EDTF 規格（<a href="loc2019_edtf-spec.html">loc2019_edtf-spec.md</a>）提供不確定與大約日期的
+標準寫法。</p>
+<p><strong>已讀新增（2026-09-08）</strong>：<a href="bai2025_autoschemakg.html">bai2025_autoschemakg.md</a> 提供了
+<strong>現成的事件關係型別與量化理由</strong>。</p>
+<p>它的第三階段專門抽事件與事件之間的關係，型別固定五種：<strong>before、after、at the same time、
+because、as a result</strong>（之前、之後、同時、因為、結果）。口述歷史裡「退伍之後」「後來」
+「那時候」這類相對時間表述，正是這五種關係的語言標記。目前 <code>triple_exp.py</code> 與
+<code>triple_free_exp.py</code> 都只抽一組主詞述詞受詞，加一個「事件—事件」階段就直接對上生命過程。</p>
+<p>它的事件定義也值得採用：<strong>「一個獨立的簡單句子」</strong>——不強迫事件變成結構化框架
+（觸發詞加角色化論元），就讓它是一句話，靠事件之間的關係承載結構。好處是這種節點
+天然保留原文措辭，出處也好掛（一個事件節點對回一句原文、一個時間碼）。</p>
+<p><strong>量化理由</strong>：它的資訊保存度實驗顯示，<strong>只保留實體與實體間的關係，原文資訊只剩約七成；
+把事件當節點，可以保到九成以上</strong>。這替「生命過程是事件序列、不是實體屬性表」提供了外部數字。</p>
+<p><strong>已讀（2026-09-08）</strong>：<a href="rasmussen2025_zep-temporal-kg.html">rasmussen2025_zep-temporal-kg.md</a>。
+它的<strong>雙時間模型</strong>是這一節最完整的答案。兩條時間線——T 是事件本身的時序、
+T′ 是資料進入系統的時序；每條邊帶四個時間戳：</p>
+<ul>
+<li><code>t_valid</code> / <code>t_invalid</code>（屬 T）：這件事在真實世界何時為真、何時不再為真。
+  多數時候我們只能填未知或一個區間，這正是 EDTF 規格要處理的。</li>
+<li><code>t'_created</code> / <code>t'_expired</code>（屬 T′）：這筆知識何時被我們抽出、何時被推翻。
+  <strong>這一層我們目前完全沒有，但它其實就是紅線第 4 條（推理可追溯）在資料結構層的實作。</strong></li>
+</ul>
+<p><strong>相對時間的錨定</strong>：Zep 給每則訊息一個參考時間戳 <code>t_ref</code>，用它解析「下週四」「兩週後」
+「去年夏天」這類表述。我們的對應物是訪談日期加時間碼，但那只錨得住「說話的時間」，
+錨不住「事件的時間」（口述歷史講的是幾十年前的事）。所以可用的是它的<strong>四時間戳結構</strong>，
+不是 <code>t_ref</code> 本身。</p>
+<p><strong>矛盾要反著做，但機制可以留</strong>：Zep 遇到矛盾就讓舊邊失效、優先採信新資訊
+（為客服對話設計的，預設「後說的比先說的真」）。口述歷史不能這樣。但它的<strong>時間區間機制
+正好可以拿來記錄矛盾而不消滅它</strong>——兩條矛盾的邊都保留，各自帶有效區間與出處，
+衝突成為一個可查詢的狀態。這比 Graphusion 的「裁掉一條」好，也比單純「都留著」多了結構。</p>
+<p><strong>事件關係型別</strong>（來自 AutoSchemaKG）與<strong>四時間戳</strong>（來自 Zep）可以疊用：
+前者處理事件之間的先後因果，後者處理每個事件本身的時間定位。</p>
+<hr>
+<h2 id="_6">七、模型不肯說「我不知道」</h2>
+<p><strong>卡點</strong>：98 卷驗核發現模型不肯回報不確定，最後是程式的投票替它做了決定。
+見 WORKLOG.md<span class="src">（專案內部檔案 <code>../../WORKLOG.md</code>，未隨筆記公開）</span> 2026-09-06 之一。</p>
+<p><strong>前人的方法</strong>：gu2024 已經給出機制與證據——<strong>模型過度自信、自我驗證幾乎無效
+（重評時不肯推翻自己）、RLHF 訓練綁著自我增強偏誤（傾向給自己的產出打高分）</strong>。
+它同時用實驗證實兩招有效：<strong>多輪多數投票、對調位置</strong>；並指出一個反直覺的發現：
+要模型邊評邊解釋反而更不準。見 <a href="gu2024_llm-as-judge-survey.html">gu2024_llm-as-judge-survey.md</a>。</p>
+<p><strong>對我們的意義</strong>：斷句階段的投票已經是這一招，只是當時沒接上文獻。另外那條「可追溯
+不等於叫模型自我說明」的區分值得寫進方法論——我們的可追溯來自中間產物寫進檔案
+（紅線 4），不是靠模型解釋自己。</p>
+<hr>
+<h2 id="2026-09-08">八、抽出來的東西好像太少（2026-09-08 新增）</h2>
+<p><strong>卡點</strong>：這一條是讀 DialogRE 時浮現的，之前沒有被當成問題看待——三元組抽取每句抽不出
+多少東西，容易被理解成抽取失敗。</p>
+<p><strong>前人的方法</strong>：<a href="yu2020_dialogre.html">yu2020_dialogre.md</a> 量過口語的資訊密度：
+<strong>對話語料平均每句只有 0.21 條標注關係，書面新聞（ACE）是 0.73、維基百科
+（KnowledgeNet）是 1.44。</strong> 論文把原因歸給對話的低資訊密度與高人稱代名詞頻率。</p>
+<p><strong>對我們的意義</strong>：產出量少未必是抽取失敗，可能是口語本來就稀疏。以後報告產出量時，
+應該拿這個比例當參照，而不是拿書面文本的密度來責備自己。</p>
+<p><strong>同一篇的另外兩個數字，指向一個尚未處理的問題</strong>：DialogRE 裡 <strong>96.0% 的關係其支持文字
+橫跨多個句子</strong>，<strong>65.9% 的關係其兩個論元從未出現在同一輪對話裡</strong>。而
+<code>triple_exp.py</code> 與 <code>triple_free_exp.py</code> 都是在句層或單位層抽取。若口述歷史有類似比例，
+<strong>單位內抽取會系統性地漏掉大部分關係</strong>。</p>
+<p>這是可以直接量的：用現有的斷句產出，統計有多少關係其主詞與受詞不在同一句。
+建議排進下一輪，因為它決定的是抽取單位的大小，而不只是話術的措辭。</p>
+<p><strong>第三個數字</strong>：89.9% 的關係不是說話者的屬性、就是兩位說話者之間的關係。讓模型知道
+「哪些論元是對話參與者」就讓 F1 從 58.5 升到 61.2。這佐證了 <code>person</code> 與 <code>speaker</code> 分開的設計，
+但也點出一個沒有前人的地方——<strong>我們要的恰恰是那不到 10%：主詞既不是講述者、
+也不是在場者的關係</strong>。許石卷是這種情形的原型。</p>
+<hr>
+<h2 id="_7">前人沒有的四件事（不要指望能借）</h2>
+<p>這四項在二十篇裡都找不到現成模板，是本研究真正的空地，也是報告裡該主張的貢獻：</p>
+<ol>
+<li><strong>出處當一等公民</strong>。<strong>2026-09-08 修正</strong>：先前寫「沒有任何一家做到」不準確。
+   <a href="rasmussen2025_zep-temporal-kg.html">rasmussen2025_zep-temporal-kg.md</a> 做到了——它的
+   episode 子圖是<strong>非破壞性的原始資料層</strong>，episodic edges 與語意邊維護<strong>雙向索引</strong>，
+   論文明說是為了讓語意產物「可以追溯到來源以供引用或直接徵引」。所以正確的說法是：
+   <strong>出處鏈條有前例，但罕見，而且那個前例是商業產品的技術報告不是學術研究</strong>
+   （作者全來自 Zep AI，且完全沒評估抽取正確性）。學術文獻這一側仍然空白，
+   Graphusion 融合時還主動抹除來源。<strong>出處與「口語、評價、歷史材料」三者結合，
+   則確實沒有前例。</strong></li>
+<li><strong>對作品與做法的評價（goût）</strong>。<strong>2026-09-08 修正</strong>：先前寫「評價沒有前人做過」不準確。
+   DialogRE 有 <code>per:positive impression</code> 與 <code>per:negative impression</code> 兩種關係型別，
+   而且觸發詞比例高達 70.4% 與 60.9%（36 種裡最高的一群），代表人際評價通常有明確的
+   語言標記、可抽。正確的說法是：<strong>人對人的評價有前人做過且證明可抽；
+   人對作品、對聲音、對做法的評價（Hennion 意義下的品味）沒有。</strong></li>
+<li><strong>中文口語逐字稿的結構化抽取</strong>。真正測過中文的四篇（AgentRE、AutoKG、fang2025、
+   Blouin）全是書面文本；唯一碰口述訪談的 Cherukuri 是英文語料、任務是句子分類。
+   ASR 錯字、臺語詞彙這一層沒有人測過。</li>
+<li><strong>harness 評估本身</strong>。Yehudai 明講「解耦 LLM 與 harness 評估」才剛起步，
+   benchmark 全是英文工程領域。</li>
+</ol>
+<hr>
+<h2 id="_8">未讀清單與預期</h2>
+<p><strong>2026-09-08 兩批補讀，共八篇，均已寫入筆記</strong>：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>批次</th>
+<th>篇目</th>
+<th>補進哪幾節</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一批</td>
+<td>Jing 2007、BenchIE、DialogRE、AutoSchemaKG</td>
+<td>二、四／五／五、八／一、六</td>
+</tr>
+<tr>
+<td>第二批</td>
+<td>Mintz 2009、Papaluca 2024、Zep、OpenIE 綜述</td>
+<td>二／一、三／二、六／一、五</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>仍未讀</strong>（<code>refs/</code> 有 PDF 但無深讀筆記者）：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>檔案</th>
+<th>預期會補上什麼</th>
+<th>優先</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>chen2024_llm-align.pdf</code>、<code>liu2022_kg-alignment-strong-fusion.pdf</code></td>
+<td>實體對齊。<strong>但架構可能不合</strong>——兩篇都是嵌入式對齊，前提是兩個知識圖譜都已存在；我們是同一個人散落在多份逐字稿裡，還沒有「兩個圖」可對。建議做 <code>output/registry/</code> 時再讀，屆時才知道要問什麼</td>
+<td>中，但時機未到</td>
+</tr>
+<tr>
+<td><code>khorshidi2025_odke-plus.pdf</code></td>
+<td>ODKE+，本體導引抽取加驗證流程（Apple 的生產系統）</td>
+<td>低</td>
+</tr>
+<tr>
+<td><code>babaeigiglou2023_llms4ol.pdf</code>、<code>mateiu2023_ontology-engineering-llm.pdf</code>、<code>fathallah2024_llms4life.pdf</code>、<code>lippolis2025_ontology-generation-llm.pdf</code></td>
+<td>本體學習四篇，主題重疊高，建議合成一份對照筆記而非逐篇寫</td>
+<td>低</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_9">維護方式</h2>
+<p>每次實驗撞到新的卡點，在這裡加一節；每讀完一篇新文獻，回頭補進對應的卡點。
+若某個卡點查遍文獻確實沒有前人方法，明白寫進「前人沒有的」那一節——
+那是貢獻的證據，不是查漏。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

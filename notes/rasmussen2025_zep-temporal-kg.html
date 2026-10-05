@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rasmussen 2025_Zep：時序知識圖譜當 agent 的記憶層</title>
+<meta name="description" content="Rasmussen 2025_Zep：時序知識圖譜當 agent 的記憶層">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Rasmussen 2025_Zep：時序知識圖譜當 agent 的記憶層</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/rasmussen2025_zep-temporal-kg.md</code>　來源最後修改 2026-09-08　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Rasmussen, P., Paliychuk, P., Beauvais, T., Ryan, J., &amp; Chalef, D. (2025). <em>Zep: A Temporal Knowledge Graph Architecture for Agent Memory</em>. arXiv:2501.13956v1（v1, 2025-01-20）。作者全部任職 Zep AI。<strong>預印本，未經同儕審查；且是商業產品的技術報告</strong>，讀時要留意這一點。</li>
+<li><strong>對應待查問題</strong>：⑧本體學習與 schema 歸納、⑥時間記法（兼涉①）</li>
+<li><strong>一句話定位</strong>：<strong>這是二十四篇裡唯一一個把「原始資料層」與「抽出的知識層」用雙向索引綁在一起、讓每筆知識都能回溯到來源的系統</strong>，同時也是唯一處理「相對時間怎麼錨定」與「事實何時失效」的系統。這兩件事正是本專案紅線第 3 條與硬約束 3 要的東西。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>提出一個給語言模型 agent 用的記憶層服務，底層是動態的、有時間意識的知識圖譜引擎 Graphiti。相對於既有的檢索增強生成（RAG）框架多半處理靜態文件，Zep 要處理的是持續累積、彼此矛盾、會過時的對話資料。它宣稱在兩個既有基準（MemGPT 的 Deep Memory Retrieval、LongMemEval）上勝過當時最好的系統。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p>輸入單位叫 <strong>episode</strong>（訊息、文字或 JSON 三種型別，這篇聚焦訊息型）。一則訊息包含相對短的文字與<strong>產出這段話的行動者</strong>，並帶一個參考時間戳 <code>t_ref</code>。</p>
+<p>抽取分幾步：</p>
+<ol>
+<li><strong>實體抽取</strong>：處理當前訊息時，<strong>連同前 n 則訊息一起給</strong>（實作用 n = 4，等於兩個完整對話輪次）當作命名實體辨識的脈絡。<strong>說話者自動被抽為一個實體。</strong></li>
+<li><strong>反思（reflection）</strong>：抽完後跑一輪受 reflexion 啟發的反思，用意是減少幻覺、提高覆蓋。<strong>這一步是模型評自己的產出，與紅線第 2 條有張力。</strong></li>
+<li><strong>實體消解</strong>：把實體名嵌入 1024 維向量空間，用餘弦相似度在既有節點裡找相似的；同時對既有實體名與摘要做全文檢索，再撈一批候選。把候選節點加上 episode 脈絡交給模型，用專門的實體消解話術判斷。判定重複時，生成一個更新過的名稱與摘要。</li>
+<li><strong>寫入圖</strong>：用<strong>預先寫好的 Cypher 查詢</strong>，而不是讓模型生成資料庫查詢——理由是確保 schema 格式一致、減少幻覺。</li>
+</ol>
+<p>事實（邊）的處理類似：抽出後生成嵌入，做去重。<strong>去重的搜尋範圍被限制在「同一對實體之間的邊」</strong>，這既避免把不同實體對之間的相似邊錯誤合併，也大幅縮小搜尋空間。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p><strong>三層子圖，這是全篇最該學的結構。</strong></p>
+<ul>
+<li><strong>Episode 子圖 G_e</strong>：節點是原始輸入資料本身（訊息、文字、JSON）。論文明說它是「<strong>非破壞性的資料儲存</strong>（non-lossy data store），語意實體與關係從這裡抽出」。Episodic edges 把 episode 連到它提到的語意實體。</li>
+<li><strong>語意實體子圖 G_s</strong>：實體節點（從 episode 抽出並與既有實體消解過）與實體邊（關係）。</li>
+<li><strong>社群子圖 G_c</strong>：強連通實體的叢集，節點含該叢集的高層摘要。</li>
+</ul>
+<p><strong>雙向索引是關鍵</strong>：episode 與其衍生的語意邊互相維護索引，可以雙向走訪——「語意產物可以追溯到來源以供引用或直接徵引，而 episode 也能快速取回它相關的實體與事實」。</p>
+<p>他們把這個雙層設計類比為心理學上情節記憶（episodic memory，記得個別事件）與語意記憶（semantic memory，記得概念之間的關聯）的區分。</p>
+<p><strong>雙時間模型（bi-temporal）</strong>，這是第二個該學的東西。兩條時間線：</p>
+<ul>
+<li><strong>T</strong>：事件本身的時序</li>
+<li><strong>T′</strong>：資料進入系統的交易時序</li>
+</ul>
+<p>每條邊帶四個時間戳：<code>t'_created</code> 與 <code>t'_expired</code>（屬於 T′，記錄這筆事實在系統裡何時建立、何時失效）、<code>t_valid</code> 與 <code>t_invalid</code>（屬於 T，記錄這筆事實在真實世界中何時開始為真、何時不再為真）。</p>
+<p><strong>相對時間的處理</strong>：因為每則訊息有 <code>t_ref</code>，系統可以正確解析並轉換訊息內容裡的相對或部分日期——論文舉的例子是「下週四」「兩週後」「去年夏天」，以及「我兩週前開始新工作」。</p>
+<p><strong>邊失效（edge invalidation）</strong>：新邊可能讓既有邊失效。系統用模型比較新邊與語意相關的既有邊，找出矛盾；發現時間上重疊的矛盾時，把受影響那條邊的 <code>t_invalid</code> 設為使其失效的那條邊的 <code>t_valid</code>。<strong>依照交易時間線 T′，一律優先採信新資訊。</strong></p>
+<p>社群偵測用標籤傳播（label propagation）而非 Leiden，理由是標籤傳播容易做動態擴充——新節點加入時只看鄰居屬於哪些社群，取多數決指派，再更新該社群的摘要，不必整張圖重跑。他們承認這樣會逐漸偏離完整重跑的結果，所以仍需定期整體刷新。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>是屬性圖上的三元組，但<strong>帶時間有效區間</strong>，而且<strong>同一個事實可以在不同實體對之間被抽出多次</strong>，藉此以超邊（hyper-edge）的形式建模多實體事實。</p>
+<p><strong>有出處</strong>（episodic edges 加雙向索引）、<strong>有時間</strong>（四個時間戳）、<strong>沒有信心分數</strong>。</p>
+<h2 id="5">5. 資料集</h2>
+<p>Deep Memory Retrieval（來自 MemGPT）與 LongMemEval 兩個既有基準，都是英文對話。這篇沒有自建語料，也沒有中文、沒有歷史文本、沒有真實訪談。</p>
+<h2 id="6">6. 評估</h2>
+<p>只評記憶檢索的效果（正確率、延遲、可擴充性），不評知識圖譜建構的正確性。<strong>沒有任何地方評估「抽出的實體與事實對不對」</strong>——這是一個很大的缺口，讀的時候要記住。</p>
+<p>檢索流程分三步：搜尋（餘弦語意相似、Okapi BM25 全文、廣度優先三種併用）→ 重排序 → 建構脈絡字串。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自承的：動態社群更新會逐漸偏離完整重跑的結果，需要定期刷新；episode 與語意產物之間的雙向連結「本篇實驗沒有直接檢驗，留待未來工作」。</p>
+<p>我讀出來的：</p>
+<ul>
+<li><strong>這是商業產品的技術報告，不是同儕審查論文。</strong> 作者全部來自同一家公司，評估只做對自己有利的檢索任務，抽取正確性完全沒評。所有數字要打折看。</li>
+<li><strong>「優先採信新資訊」這條規則是為客服對話設計的</strong>（使用者換了工作、改了偏好，舊的就該失效）。它預設了「後說的比先說的真」，這在口述歷史裡完全不成立。</li>
+<li><strong>反思步驟是模型評自己</strong>，論文沒有量化它到底減少了多少幻覺。</li>
+<li><strong>實體消解最後一步交給模型判斷</strong>，沒有程式化的約束（對照 Jing 2007 的最小距離門檻與關係約束）。</li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>這篇要求我更正一個先前的判斷。</strong> 我在 <code>_卡點對照表.md</code> 寫過「二十篇裡沒有任何一家做到三元組層級的出處」。Zep 做到了：episodic 子圖保留非破壞性的原始資料，雙向索引讓每一條語意邊都能回到它的來源 episode，論文明說這是為了「引用或直接徵引」。所以正確的說法是：<strong>出處鏈條有前例，只是罕見，而且那個前例是商業系統不是學術研究；出處與「口語、評價、歷史材料」三者結合仍然沒有前例。</strong></p>
+<p><strong>（一）三層結構可以直接對應我們既有的東西。</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Zep</th>
+<th>我們</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Episode 子圖（非破壞性原始資料）</td>
+<td><code>data/srt/</code> 的逐字稿與 <code>output/experiments/trunks/</code>、<code>sentences.json</code></td>
+</tr>
+<tr>
+<td>Episodic edges（雙向索引）</td>
+<td>三元組的 <code>char_span</code>、檔名、時間碼</td>
+</tr>
+<tr>
+<td>語意實體子圖</td>
+<td><code>output/registry/</code>（尚未存在）與三層網絡</td>
+</tr>
+<tr>
+<td>社群子圖</td>
+<td>尚未做</td>
+</tr>
+</tbody>
+</table></div>
+<p>我們其實已經有前兩層，只是沒有把它想成一個「非破壞性資料層加雙向索引」的架構。把它明確化的好處是：<strong>出處不再是掛在每筆知識上的欄位，而是圖裡真實存在的一條邊</strong>，可以雙向走訪——不只「這條關係出自哪裡」，還能問「這一段話產生了哪些知識」。後者對查核很有用，因為它讓「這段話明明講了 X 卻沒抽出來」變成可以檢查的事。</p>
+<p><strong>（二）雙時間模型解決相對時間的錨定，這是硬約束 3 直接要的東西。</strong></p>
+<p><code>CLAUDE.md</code> 說相對時間（「退伍之後」）是把事件接成序列的接續資訊，不得丟掉。但只保留「退伍之後」四個字並不夠，還要能把它接到某個點上。Zep 的做法是每則訊息帶 <code>t_ref</code>，相對表述以它為錨。</p>
+<p>我們的對應物是<strong>訪談日期加時間碼</strong>。這給了一個下界錨點（「這段話是在某年某月說的」），但口述歷史講的是幾十年前的事，<code>t_ref</code> 只能錨定「說話的時間」，錨不了「事件的時間」。所以真正可用的是它的<strong>四時間戳結構</strong>，而不是 <code>t_ref</code> 本身：</p>
+<ul>
+<li><code>t_valid</code> / <code>t_invalid</code>：這件事在真實世界何時為真——多數時候我們只能填「未知」或一個區間，這正是 EDTF 規格（<code>loc2019_edtf-spec.md</code>）要處理的。</li>
+<li><code>t'_created</code> / <code>t'_expired</code>：這筆知識何時被我們抽出、何時被推翻——這一層我們目前完全沒有，但它其實就是紅線第 4 條（推理可追溯）在資料結構層的實作。</li>
+</ul>
+<p><strong>（三）矛盾的處理必須反著做，但機制可以留。</strong></p>
+<p>Zep 遇到矛盾就讓舊邊失效，優先採信新資訊。口述歷史不能這樣——兩位口述者對同一件事的不同說法，兩者都是史料。但它的<strong>時間區間機制正好可以拿來記錄矛盾而不消滅它</strong>：兩條矛盾的邊都保留，各自帶自己的有效區間與出處，衝突本身成為一個可查詢的狀態，而不是要解決的錯誤。這比 Graphusion 的「裁掉一條」好得多，也比單純「都留著」多了結構。</p>
+<p><strong>（四）三個可直接抄的程式化約束。</strong></p>
+<ol>
+<li><strong>邊去重只在同一對實體之間搜尋。</strong> 這既防止錯誤合併，也大幅縮小搜尋空間。我們做 <code>output/registry/</code> 時應該照做。</li>
+<li><strong>用預先寫好的查詢寫入資料庫，不讓模型生成查詢。</strong> 這與本專案「程式吃乾機械部分，模型一次只做一件事」完全同向，可以當外部佐證。</li>
+<li><strong>抽取時帶前 n 則的脈絡</strong>（他們用 4）。我們目前是單句送進去。這與 Papaluca 的發現（脈絡的效益遠大於模型大小）互相印證，值得當一個具名變因來測：單句、前後各一句、前後各兩句，比較抽出量與逐字合規率。</li>
+</ol>
+<p><strong>（五）說話者自動成為實體，這一點我們要更小心。</strong></p>
+<p>Zep 直接把訊息的行動者當實體。我們的情形複雜得多——<code>speaker</code> 是說話的人、<code>person</code> 是那一卷的主題人物，兩者不一定相同（許石卷 139 句全是別人在講他）。但「講述者本身就是圖上的一個節點」這個想法是對的，而且它正是敘事層網絡（講述者→被講述）已經在做的事。</p>
+<p><strong>該避免的</strong></p>
+<ul>
+<li><strong>反思步驟</strong>（模型評自己的抽取）踩紅線第 2 條，不採用。要提高覆蓋應該用多輪投票這類程式化訊號（gu2024 證實有效）。</li>
+<li><strong>實體消解的最後一步不要只交給模型。</strong> Zep 是「檢索候選 → 模型判斷」，中間沒有程式化約束。Jing 2007 的最小距離門檻與關係約束共指應該加在模型判斷之前，把明顯不該合併的先擋掉。</li>
+<li><strong>「優先採信新資訊」絕對不能照抄。</strong></li>
+<li><strong>它的評估不能引用。</strong> 這篇只評檢索效果，完全沒評抽取正確性，而且是廠商自評。</li>
+</ul>
+<p><strong>與四條紅線的相容性</strong>：<strong>紅線 3 相容且是唯一的正面範例</strong>（雙向索引的出處鏈條）；紅線 4 部分相容（有交易時間線，但沒有決策紀錄）；<strong>紅線 2 衝突</strong>（反思步驟、實體消解交給模型判斷）；紅線 1 相容（不用人工標注）。</p>
+<p><strong>與 <code>_卡點對照表.md</code> 的對應</strong>：第六節（相對時間與時序）、第二節（跨訪談併人的去重約束），以及「前人沒有的四件事」第 1 條需要修正。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bai 2025_AutoSchemaKG：從語料自動長出 schema 的知識圖譜建構</title>
+<meta name="description" content="Bai 2025_AutoSchemaKG：從語料自動長出 schema 的知識圖譜建構">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<h1>Bai 2025_AutoSchemaKG：從語料自動長出 schema 的知識圖譜建構</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/bai2025_autoschemakg.md</code>　來源最後修改 2026-09-08　分類 文獻深讀筆記（八節）</p>
+</div></header>
+<main class="wrap">
+<ul>
+<li><strong>完整書目</strong>：Bai, J., Fan, W., Hu, Q., Zong, Q., Li, C., Tsang, H. T., Luo, H., Yim, Y., Huang, H., Zhou, X., Qin, F., Zheng, T., Peng, X., Yao, X., Yang, H., Wu, L., Ji, Y., Zhang, G., Chen, R., &amp; Song, Y. (2025). <em>AutoSchemaKG: Autonomous Knowledge Graph Construction through Dynamic Schema Induction from Web-Scale Corpora</em>. arXiv:2505.23628v3（v3, 2025-08-01）。作者來自香港科技大學、香港中文大學與華為 Theory Lab。<strong>預印本，未查得同儕審查狀態</strong>。程式碼公開（github.com/HKUST-KnowComp/AutoSchemaKG）。</li>
+<li><strong>對應待查問題</strong>：⑧本體學習與 schema 歸納（新增類別；兼涉①抽取現況）</li>
+<li><strong>一句話定位</strong>：不預先給任何 schema，讓模型一邊抽三元組、一邊從語料歸納出型別體系；<strong>它最重要的實測結果不是那個 92% 的 schema 對齊率，而是「只用實體只能保住原文 70% 的資訊，加上事件節點就到 90% 以上」</strong>——這替本專案「生命過程是事件序列、不是實體屬性表」的立場提供了量化證據。</li>
+</ul>
+<h2 id="1">1. 貢獻</h2>
+<p>四項。第一，提出一個完全不需預先定義 schema 的知識圖譜建構框架：用大型語言模型同時抽三元組與歸納型別體系。第二，把實體與<strong>事件</strong>並列為圖的基本節點，並用「概念化」（conceptualization）把個別實例組織成語意類別。第三，實際跑了 5,000 萬份文件，建出 ATLAS 系列知識圖譜（9 億以上節點、59 億條邊）。第四，在多跳問答上超越當時最強基線 12–18%，並宣稱 schema 歸納與人工製作的 schema 有 92%（摘要寫 95%）的語意對齊，零人工介入。</p>
+<p>它針對的是一個它稱為「內在悖論」的問題：現有的知識圖譜建構都需要領域專家預先定義 schema，這從根本上限制了規模、適應力與領域涵蓋。</p>
+<h2 id="2">2. 知識怎麼被萃取（抽取流程）</h2>
+<p><strong>三個階段，三個獨立的話術，同一個模型（Llama-3-8B-Instruct）。</strong></p>
+<ul>
+<li><strong>階段一：實體—實體</strong>（話術 PEE）。要模型摘出段落裡所有重要實體與它們之間的關係。話術裡有一句對本專案特別要緊：<strong>「Exclude pronouns from being considered as entities」（不要把代名詞當實體）</strong>。</li>
+<li><strong>階段二：實體—事件</strong>（話術 PEV）。要模型分析事件與實體之間的參與關係。<strong>事件的定義是「a single independent sentence」——一個獨立的簡單句子</strong>。輸出是 <code>{"Event": "描述某事件的簡單句", "Entity": ["實體1", "實體2", ...]}</code>。</li>
+<li><strong>階段三：事件—事件</strong>（話術 PVV）。偵測事件之間的關係，<strong>型別固定五種：before、after、at the same time、because、as a result</strong>（之前、之後、同時、因為、結果）。</li>
+</ul>
+<p>輸出一律 JSON，解析失敗會修補（output processing 階段明列 "repair if needed"）。前處理是過濾語言、切段、分批。</p>
+<p><strong>Schema 歸納</strong>在抽取之後跑。對圖裡的每個元素（事件、實體、關係）叫模型生成<strong>至少三個不同抽象層次的概念詞</strong>：</p>
+<ul>
+<li>事件：「Sam playing with his dog」→「playing」「bonding」「relaxing event」</li>
+<li>關係：「participated in」→「engage in」「attend」「involve in」</li>
+<li>實體：同樣要抽象型別，但<strong>額外餵進鄰居節點的脈絡</strong>（取樣最多 Nctx 個鄰居組成脈絡字串）</li>
+</ul>
+<p>結果寫成 CSV，把每個節點與每種關係對應到概念集合。</p>
+<h2 id="3">3. 知識怎麼被組織（結構與屬性）</h2>
+<p>形式定義是 G = (V, E, C, φ, ψ)：V 分成事件節點 VE 與實體節點 VN（兩者不相交），E 是邊（可連實體—實體、實體—事件、事件—事件），C 是概念類別集合，φ 把每個節點對到一組概念，ψ 把每種關係對到一組概念。硬性約束是每個節點與每種關係<strong>至少要有一個概念</strong>。</p>
+<p>所以這是一個<strong>三層結構</strong>：實例層（實體與事件節點）、關係層（邊）、概念層（型別）。概念層不是預先寫死的本體，是從實例長出來的。</p>
+<p>跨文件的去重、實體合併、衝突解決——<strong>論文沒有處理</strong>。這是它與 Graphusion、KARMA 那一路的差別：它靠規模取勝，不靠融合。</p>
+<h2 id="4">4. 表示法：是不是三元組？</h2>
+<p>是三元組，但<strong>事件節點的內容是一個自然語言句子</strong>，這讓它實質上介於三元組與文字節點之間。一個事件節點「Sam playing with his dog」本身就是一句話，它與其他事件之間用 before／because 這類關係連起來。</p>
+<p><strong>沒有出處欄位。</strong> 論文說抽出的三元組「與對應文字及中介資料一起序列化成 JSON 檔」，但中介資料是文件層級的，圖裡沒有三元組層的來源指向。</p>
+<p><strong>沒有信心分數。</strong> <strong>有時間資訊，但是關係型的</strong>（before／after／at the same time），不是絕對日期欄位。</p>
+<h2 id="5">5. 資料集</h2>
+<p>兩類。問答語料：MuSiQue、2WikiQA、HotpotQA（各約 6 千至 1.2 萬個文字塊）。預訓練語料：Dolma 1.7 的三個子集——英文維基百科與 Wikibooks（ATLAS-Wiki）、Semantic Scholar 論文摘要（ATLAS-Pes2o）、3% 的 Common Crawl（ATLAS-CC）。</p>
+<p>規模：ATLAS-CC 有 3,504 萬個文字塊、2.41 億實體、6.96 億事件、3,107 萬概念，合計 9.37 億節點、59.58 億條邊。</p>
+<p><strong>全部是英文書面文本，沒有中文，沒有口語，沒有訪談。</strong></p>
+<p>計算成本：78,400 GPU 小時（80GB GPU，Llama-3-8B-instruct 配 Flash Attention）。</p>
+<h2 id="6">6. 評估</h2>
+<p>四種評估，其中兩種對本專案有用、一種踩紅線。</p>
+<p><strong>（一）三元組正確率——踩紅線第 2 條。</strong> 用 DeepSeek-V3 當裁判：給它原文與 Llama-3-8B 抽出的三元組，要它指出哪些是錯抽（假陽性）、哪些是原文有但沒抽到（假陰性），據此算精確率、召回率、F1。結果全部超過 90%（ATLAS-Wiki 的實體—實體 F1 94.09，事件—事件 96.01）。<strong>這是用一個大模型評另一個大模型，沒有人工驗證環節</strong>，數字不能照單全收。論文自稱這是「嚴謹的計數式評估、不靠主觀評分」，但換一個裁判就是換一套答案，這一點它沒有處理。</p>
+<p><strong>（二）資訊保存度——這個設計很好，值得學。</strong> 拿原始段落生成五題多選題（用 LLaMA-3-70B 出題），然後比較三種情況下的答題正確率：完全沒有脈絡（下界）、給原始段落（上界）、給知識圖譜資料。結果（表 3）：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>語料</th>
+<th>下界—上界</th>
+<th>只給實體</th>
+<th>只給事件</th>
+<th>事件＋實體</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ATLAS-Wiki（8B）</td>
+<td>46.29–99.29</td>
+<td>65.08</td>
+<td>92.69</td>
+<td>93.30</td>
+</tr>
+<tr>
+<td>ATLAS-Pes2o（8B）</td>
+<td>62.32–98.99</td>
+<td>80.00</td>
+<td>96.97</td>
+<td>97.37</td>
+</tr>
+<tr>
+<td>ATLAS-CC（8B）</td>
+<td>56.08–97.29</td>
+<td>76.78</td>
+<td>94.87</td>
+<td>96.28</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>只用實體節點，保住的資訊約七成；加上事件節點，逼近上界。</strong> 論文的結論是「事件層三元組比實體層三元組保存更豐富也更珍貴的資訊」。</p>
+<p><strong>（三）Schema 品質。</strong> 拿歸納出的概念去做實體分類、事件分類、關係分類三種任務，測它能召回多少既有型別。用兩個語意層指標（BS-R、BS-C，附錄才有定義）。結果多在 80–90% 以上，並且模型越大越好。</p>
+<p><strong>（四）下游多跳問答。</strong> 在 MuSiQue、2Wiki、HotpotQA 上與各種檢索方法比較。值得注意的是<strong>它自己的表格顯示，Entity-KG、Entity-Event-KG、Full-KG 三種配置的差異很小</strong>（HippoRAG2 配置下 MuSiQue 的 F1 分別是 47.2、47.3、47.3），與第（二）項那個「事件遠優於實體」的鮮明對比不一致。論文沒有解釋這個落差。</p>
+<h2 id="7">7. 發現的問題與限制</h2>
+<p>論文自承的：多跳問答上它的完整版本並沒有全面勝過 HippoRAG2（表 5 裡互有勝負）；建構成本極高。</p>
+<p>我讀出來的：</p>
+<ul>
+<li><strong>92% 的 schema 對齊率不能望文生義。</strong> 那是在 FB15kET、YAGO43kET、wikiHow 這些既有資料集上做型別分類任務的召回率，衡量的是「歸納出的概念能不能涵蓋既有型別」，不是「歸納出的 schema 跟專家設計的 schema 一樣好」。一個把所有東西都標上大量寬泛概念的系統也能拿高召回。</li>
+<li><strong>第（二）項與第（四）項的結論互相拉扯。</strong> 若事件節點真的把資訊保存從 70% 拉到 93%，下游問答不該幾乎沒有差別。合理的解釋是多跳問答的瓶頸在檢索而不在知識表示，但論文沒有討論。</li>
+<li><strong>三元組正確率是 LLM 評 LLM。</strong> 見上。</li>
+<li><strong>不做任何實體消歧與跨文件融合。</strong> 9 億個節點裡有多少是同一個實體的不同寫法，論文完全沒有交代。這對「web-scale 檢索」也許無所謂，對我們是核心問題。</li>
+<li><strong>「不要把代名詞當實體」這條話術規則，在口語語料上會毀掉大部分資訊。</strong></li>
+</ul>
+<h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
+<p><strong>最該帶走的一件事：事件節點的價值有了量化證據。</strong></p>
+<p><code>CLAUDE.md</code> 的硬約束 3 說「生命過程是時序化的事件序列」。AutoSchemaKG 的資訊保存度實驗替這個立場提供了外部數字：<strong>只保留實體與實體間的關係，原文資訊只剩約七成；把事件當節點，可以保到九成以上。</strong> 這正好說明為什麼把口述歷史壓成「人—述詞—人」的三元組會流失大量內容，也支持我們不走純三元組。</p>
+<p><strong>可借用的四件事</strong></p>
+<ol>
+<li><strong>三階段分開抽：實體—實體、實體—事件、事件—事件。</strong> 目前 <code>triple_exp.py</code> 與 <code>triple_free_exp.py</code> 都只做一件事——從句子抽出一組主詞述詞受詞。若加一個「事件—事件」的階段，專門問<strong>時序與因果</strong>，就直接對上生命過程的需求。他們的五種關係型別（before、after、at the same time、because、as a result）幾乎可以照用，中文對應「之前、之後、同時、因為、結果」；而口述歷史裡「退伍之後」「後來」「那時候」這類相對時間表述，正是這五種關係的語言標記。</li>
+<li><strong>事件定義成「一個獨立的簡單句子」。</strong> 這是一個很務實的設計：不強迫事件變成結構化框架（觸發詞＋角色化論元），就讓它是一句話，靠事件之間的關係承載結構。對我們的好處是，這種事件節點天然保留原文措辭，出處也好掛——一個事件節點對回一句原文、一個時間碼。</li>
+<li><strong>概念化（多層抽象詞）可以取代手寫動詞表。</strong> 對每個抽出的述詞生成三個不同抽象層次的詞（「participated in」→「engage in」「attend」「involve in」），再看這些概念詞怎麼聚成類。這正是 <code>_卡點對照表.md</code> 第一節說的第三條路：<strong>先不限動詞地抽，再從抽出來的東西歸納出動詞表，然後拿它跟 <code>life_nodes.py</code> 手寫的那份比對</strong>。兩份的差異本身就是可報告的結果，而且能回答「手寫動詞表是不是偷渡了人工知識」這個懸而未決的問題。</li>
+<li><strong>實體概念化時餵進鄰居脈絡。</strong> 判斷一個名字是人、是機構還是作品時，把圖上鄰居的資訊一起給。我們的語料裡作品名辨識只有 1.1%，而作品名往往出現在「唱」「錄」「寫」這類述詞的受詞位置——鄰居脈絡正是這個訊號。</li>
+</ol>
+<p><strong>該避免的三件事</strong></p>
+<ol>
+<li><strong>「不要把代名詞當實體」這條規則絕對不能照抄。</strong> <code>CLAUDE.md</code> 硬約束 3 明文保護人物指代。代名詞在書面百科裡是雜訊，在口述歷史裡是把事件接成序列的接續資訊。這是本專案與這篇論文語料性質差異最大的一點。</li>
+<li><strong>不要用 LLM 當裁判算正確率。</strong> 紅線第 2 條。它那些 90% 以上的數字全是 DeepSeek-V3 判的。</li>
+<li><strong>不要指望它處理跨來源的同一實體。</strong> 它完全不做消歧，靠規模淹過去。我們的 102 位受訪者、314 份逐字稿沒有這種規模可以淹。</li>
+</ol>
+<p><strong>與四條紅線的相容性</strong>：紅線 1 相容（不用人工標注）；<strong>紅線 2 直接衝突</strong>（核心正確率指標是 LLM 評 LLM）；紅線 3 不相容（無三元組層出處，需自建）；紅線 4 部分相容（中間產物序列化成 JSON，但沒有可追溯的決策紀錄）。</p>
+<p><strong>與 <code>_卡點對照表.md</code> 的對應</strong>：第一節（動詞表該不該手寫）與第六節（相對時間與生命過程的時序）。它是這兩節的主要依據。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+</main>
+</body>
+</html>
