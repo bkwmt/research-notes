@@ -1,0 +1,476 @@
+# 文獻庫登錄：refs/ 內每份 PDF 的授權判定。build.py 只複製 publish: true 且 license 在 manifest
+# allowed_licenses 內的檔案；其餘只在文獻庫頁列出書目並連到 source_url。
+# 判定依據寫在 evidence（2026-10-06 逐篇查核：arXiv abs 頁授權欄、ACL Anthology 頁尾聲明、PDF 內文授權句、
+# Crossref license 欄、HAL 與 GitHub API）。要改判定直接改 publish，重跑 build.py。
+
+aikhenvald2007_information-source.pdf:
+  publish: true
+  license: "CC BY-NC-ND 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+  evidence: "期刊層級聲明（italian-journal-linguistics.com：open access journal distributed in accordance with the CC-BY-NC-ND）；PDF 內未另標示，本站列為最弱的一筆，可改為只連結"
+  source_url: "https://www.italian-journal-linguistics.com/app/uploads/2021/06/10.aikhenvald.pdf"
+  version: "期刊官網版（IJL 19(1)）"
+
+airoldi2024_nested-relationality-taste-hierarchies.pdf:
+  publish: true
+  license: "CC BY-NC-ND 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+  evidence: "PDF 首頁：open access article under the CC BY-NC-ND license；Crossref license 欄同"
+  source_url: "https://doi.org/10.1016/j.poetic.2024.101864"
+  version: "出版社版（Poetics 102, 101864）"
+
+babaeigiglou2023_llms4ol.pdf:
+  publish: true
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0/"
+  evidence: "https://arxiv.org/abs/2307.16648"
+  source_url: "https://arxiv.org/abs/2307.16648"
+  version: "arXiv v2（2023-08-02）"
+
+bai2025_autoschemakg.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://arxiv.org/abs/2505.23628"
+  source_url: "https://arxiv.org/abs/2505.23628"
+  version: "arXiv v3（2025-08-01）"
+
+baumann2026_graded-conceptualization-taste.pdf:
+  publish: true
+  license: "CC BY-NC-ND 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+  evidence: "PDF 首頁：open access article under the CC BY-NC-ND license；Crossref license 欄同"
+  source_url: "https://doi.org/10.1016/j.poetic.2026.102092"
+  version: "出版社版（Poetics 115–116, 102092）"
+
+blouin2024_chinese-newspapers-ner.pdf:
+  publish: true
+  license: "CC BY-NC 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc/4.0/"
+  evidence: "PDF 頁尾：© 2024 ELRA Language Resource Association: CC BY-NC 4.0"
+  source_url: "https://aclanthology.org/2024.lrec-main.35/"
+  version: "ACL Anthology 版"
+
+buehler2025_agentic-graph-reasoning.pdf:
+  publish: true
+  license: "CC BY-NC-ND 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+  evidence: "https://arxiv.org/abs/2502.13025"
+  source_url: "https://arxiv.org/abs/2502.13025"
+  version: "arXiv v1（2025-02-18）；期刊版 J. Mater. Res. 40(15) 為 CC BY 4.0（Crossref），DOI 10.1557/s43578-025-01652-1"
+
+chang2025_evidential-hierarchy-certainty.pdf:
+  publish: true
+  license: "CC BY-NC 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc/4.0/"
+  evidence: "PDF 首頁：Available under the CC BY-NC 4.0 license. © 2025 Department of English, National Taiwan Normal University；Crossref license 欄同"
+  source_url: "https://doi.org/10.1075/consl.24027.cha"
+  version: "出版社版（Concentric）"
+
+edge2024_graphrag.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://arxiv.org/abs/2404.16130"
+  source_url: "https://arxiv.org/abs/2404.16130"
+  version: "arXiv v2（2025-02-19）"
+
+fan2025_discourse-temporal-relation-llm.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/2025.findings-emnlp.1010/"
+  version: "ACL Anthology 版"
+
+fang2025_historical-chinese-nlp.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://arxiv.org/abs/2503.19844"
+  source_url: "https://arxiv.org/abs/2503.19844"
+  version: "arXiv v1（2025-03-25）"
+
+fang2026_reproducible-annotation-guide.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://arxiv.org/abs/2604.09638"
+  source_url: "https://arxiv.org/abs/2604.09638"
+  version: "arXiv v2（2026-05-27）"
+
+fathallah2024_llms4life.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://arxiv.org/abs/2412.02035"
+  source_url: "https://arxiv.org/abs/2412.02035"
+  version: "arXiv v1（2024-12-02）"
+
+gao2026_fluid-user-preferences.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/2026.findings-acl.1033/"
+  version: "ACL Anthology 版"
+
+gashteovski2022_benchie.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/2022.acl-long.307/"
+  version: "ACL Anthology 版"
+
+gu2024_llm-as-judge-survey.pdf:
+  publish: true
+  license: "CC0 1.0"
+  license_url: "https://creativecommons.org/publicdomain/zero/1.0/"
+  evidence: "https://arxiv.org/abs/2411.15594"
+  source_url: "https://arxiv.org/abs/2411.15594"
+  version: "arXiv v6（2025-10-19）"
+
+hiltmann2025_ner4all.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://arxiv.org/abs/2502.04351"
+  source_url: "https://arxiv.org/abs/2502.04351"
+  version: "arXiv v1（2025-02-04）"
+
+jing2007_conversational-social-networks.pdf:
+  publish: true
+  license: "CC BY-NC-SA 3.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/P07-1131/"
+  version: "ACL Anthology 版"
+
+khorshidi2025_odke-plus.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://arxiv.org/abs/2509.04696"
+  source_url: "https://arxiv.org/abs/2509.04696"
+  version: "arXiv v1（2025-09-04）"
+
+li2025_agentic-kgr.pdf:
+  publish: true
+  license: "CC BY-NC-ND 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+  evidence: "https://arxiv.org/abs/2510.09156"
+  source_url: "https://arxiv.org/abs/2510.09156"
+  version: "arXiv v1（2025-10-10）"
+
+liu2022_kg-alignment-strong-fusion.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "PDF 首頁：Licensee MDPI… Creative Commons Attribution (CC BY)；Crossref license 欄同"
+  source_url: "https://doi.org/10.3390/app12199434"
+  version: "出版社版（Applied Sciences 12(19), 9434）"
+
+liu2024_openie-survey.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/2024.findings-emnlp.560/"
+  version: "ACL Anthology 版"
+
+liu2026_odl-templlm-temporal-reasoning.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/2026.acl-long.873/"
+  version: "ACL Anthology 版"
+
+mateiu2023_ontology-engineering-llm.pdf:
+  publish: true
+  license: "CC BY-NC-ND 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+  evidence: "https://arxiv.org/abs/2307.16699"
+  source_url: "https://arxiv.org/abs/2307.16699"
+  version: "arXiv v1（2023-07-31）"
+
+mihindukulasooriya2023_text2kgbench.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://arxiv.org/abs/2308.02357"
+  source_url: "https://arxiv.org/abs/2308.02357"
+  version: "arXiv v1（2023-08-04）；ISWC 2023 正式版另有出版社著作權"
+
+mintz2009_distant-supervision.pdf:
+  publish: true
+  license: "CC BY-NC-SA 3.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/P09-1113/"
+  version: "ACL Anthology 版"
+
+mo2025_kggen.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://arxiv.org/abs/2502.09956"
+  source_url: "https://arxiv.org/abs/2502.09956"
+  version: "arXiv v2（2025-11-06）；NeurIPS 2025 正式版作者名單不同，引用依 proceedings"
+
+niu2024_contempo-temporal-relation-extraction.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/2024.findings-acl.89/"
+  version: "ACL Anthology 版"
+
+papaluca2024_zero-few-shot-kg-triplets.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/2024.kallm-1.2/"
+  version: "ACL Anthology 版"
+
+peper2024_shoes-acosi-implicit-opinion.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/2024.findings-emnlp.907/"
+  version: "ACL Anthology 版"
+
+portelli2018_what-makes-oral-history-different.pdf:
+  publish: true
+  license: "CC BY-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/4.0/"
+  evidence: "PDF 內編者註：Licencja CC BY-SA 4.0；DOAJ 收錄"
+  source_url: "https://wrhm.pl/wrhm/article/view/213"
+  version: "波蘭文譯本（Wrocławski Rocznik Historii Mówionej 8）"
+
+rasmussen2025_zep-temporal-kg.pdf:
+  publish: true
+  license: "CC BY-NC-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  evidence: "https://arxiv.org/abs/2501.13956"
+  source_url: "https://arxiv.org/abs/2501.13956"
+  version: "arXiv v1（2025-01-20）"
+
+stankovic2026_tei-ner-interview-corpus.pdf:
+  publish: true
+  license: "CC BY-NC 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc/4.0/"
+  evidence: "ELRA 會議論文集授權 CC BY-NC 4.0（LREC-COLING 2024 PDF 頁尾明示；LREC 2026 同政策，且由 ACL Anthology 收錄）"
+  source_url: "https://aclanthology.org/2026.lrec2026-1.114/"
+  version: "ACL Anthology 版"
+
+strutz2026_tei-eval.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "PDF 內文：open-access article distributed under the terms of the Creative Commons Attribution 4.0 International License (CC-BY 4.0)"
+  source_url: "https://doi.org/10.5334/johd.484"
+  version: "出版社版（JOHD 12(39)）"
+
+su2025_transformer-temporal-ie-review.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/2025.emnlp-main.1467/"
+  version: "ACL Anthology 版"
+
+usumi2026_prepper-preference-profiling.pdf:
+  publish: true
+  license: "CC BY-NC 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc/4.0/"
+  evidence: "ELRA 會議論文集授權 CC BY-NC 4.0（LREC-COLING 2024 PDF 頁尾明示；LREC 2026 同政策，且由 ACL Anthology 收錄）"
+  source_url: "https://aclanthology.org/2026.lrec2026-1.52/"
+  version: "ACL Anthology 版"
+
+yehudai2025_agent-eval-survey.pdf:
+  publish: true
+  license: "CC BY-NC-SA 4.0"
+  license_url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  evidence: "https://arxiv.org/abs/2503.16416"
+  source_url: "https://arxiv.org/abs/2503.16416"
+  version: "arXiv v2（2026-04-23）"
+
+yu2020_dialogre.pdf:
+  publish: true
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+  evidence: "https://aclanthology.org/（頁尾聲明：2016 年起 CC BY 4.0；2016 年前 CC BY-NC-SA 3.0）"
+  source_url: "https://aclanthology.org/2020.acl-main.444/"
+  version: "ACL Anthology 版"
+
+bian2025_llm-kgc-survey.pdf:
+  publish: false
+  license: "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  license_url: "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+  evidence: "https://arxiv.org/abs/2510.20345"
+  source_url: "https://arxiv.org/abs/2510.20345"
+  version: "arXiv v1（2025-10-23）"
+
+chappell2001_sinitic-evidential.pdf:
+  publish: false
+  license: "HAL 作者存放授權（hal-authorisation-v1，非 CC）"
+  license_url: ""
+  evidence: "https://api.archives-ouvertes.fr/search/?q=halId_s:halshs-00273298&fl=licence_s"
+  source_url: "https://shs.hal.science/halshs-00273298v1"
+  version: "HAL 出版前版本"
+
+chen2024_llm-align.pdf:
+  publish: false
+  license: "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  license_url: "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+  evidence: "https://arxiv.org/abs/2412.04690"
+  source_url: "https://arxiv.org/abs/2412.04690"
+  version: "arXiv v1（2024-12-06）"
+
+cherukuri2025_oral-history-llm.pdf:
+  publish: false
+  license: "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  license_url: "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+  evidence: "https://arxiv.org/abs/2508.06729"
+  source_url: "https://arxiv.org/abs/2508.06729"
+  version: "arXiv v1（2025-08-08）"
+
+chiang2021_hakka-say-verb.pdf:
+  publish: false
+  license: "中研院語言所網站上傳，未標示轉載授權（論文集）"
+  license_url: ""
+  evidence: "https://www.ling.sinica.edu.tw/upload/researcher_manager_result/91ddb6156ad7aa04c7d8fb109c618b6a.pdf"
+  source_url: "https://www.ling.sinica.edu.tw/upload/researcher_manager_result/91ddb6156ad7aa04c7d8fb109c618b6a.pdf"
+  version: "研究所網站版"
+
+faller2002_cuzco-quechua-evidentials.pdf:
+  publish: false
+  license: "作者保留著作權（博士論文，PDF 扉頁 © Martina T. Faller 2002）"
+  license_url: ""
+  evidence: "https://personalpages.manchester.ac.uk/staff/martina.t.faller/documents/Thesis-A4.pdf"
+  source_url: "https://personalpages.manchester.ac.uk/staff/martina.t.faller/documents/Thesis-A4.pdf"
+  version: "作者網頁版（Stanford 博士論文）"
+
+huang2003_doubts-complementation.pdf:
+  publish: false
+  license: "中研院語言所期刊網站免費下載，未標示轉載授權"
+  license_url: ""
+  evidence: "https://www.ling.sinica.edu.tw/item/en?act=journal&code=download&article_id=92"
+  source_url: "https://www.ling.sinica.edu.tw/item/en?act=journal&code=download&article_id=92"
+  version: "期刊官網版（Language and Linguistics 4(2)）"
+
+ldc2005_ace-english-events-guidelines.pdf:
+  publish: false
+  license: "LDC 標注規範，未標示轉載授權"
+  license_url: ""
+  evidence: "https://www.ldc.upenn.edu/sites/www.ldc.upenn.edu/files/english-events-guidelines-v5.4.3.pdf"
+  source_url: "https://www.ldc.upenn.edu/sites/www.ldc.upenn.edu/files/english-events-guidelines-v5.4.3.pdf"
+  version: "LDC 官網版 v5.4.3"
+
+lippolis2025_ontology-generation-llm.pdf:
+  publish: false
+  license: "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  license_url: "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+  evidence: "https://arxiv.org/abs/2503.05388"
+  source_url: "https://arxiv.org/abs/2503.05388"
+  version: "arXiv v1（2025-03-07）"
+
+lu2025_karma.pdf:
+  publish: false
+  license: "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  license_url: "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+  evidence: "https://arxiv.org/abs/2502.06472"
+  source_url: "https://arxiv.org/abs/2502.06472"
+  version: "arXiv v2（2026-01-11）；NeurIPS 2025 poster"
+
+mbakwe2009_review-vansina-oral-tradition.pdf:
+  publish: false
+  license: "INJODEMAR 期刊整期 PDF，未標示轉載授權"
+  license_url: ""
+  evidence: "https://ajosdemar.com/wp-content/uploads/2024/04/Vol.-4-No.-1-200919.pdf"
+  source_url: "https://ajosdemar.com/wp-content/uploads/2024/04/Vol.-4-No.-1-200919.pdf"
+  version: "期刊網站版（INJODEMAR 4(1)）"
+
+pan2024_llm-kg-roadmap.pdf:
+  publish: false
+  license: "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  license_url: "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+  evidence: "https://arxiv.org/abs/2306.08302"
+  source_url: "https://arxiv.org/abs/2306.08302"
+  version: "arXiv v3（2024-01-25）；期刊版 IEEE TKDE 屬 IEEE"
+
+sauri2008_double-layered-factuality.pdf:
+  publish: false
+  license: "作者網頁提供，未標示轉載授權（LREC 2008 LAW workshop）"
+  license_url: ""
+  evidence: "https://www.cs.brandeis.edu/~roser/pubs/sauriPustejovsky_lrec08_2.pdf"
+  source_url: "https://www.cs.brandeis.edu/~roser/pubs/sauriPustejovsky_lrec08_2.pdf"
+  version: "作者網頁版"
+
+sauri2008_factbank-annotation-guidelines.pdf:
+  publish: false
+  license: "作者網頁提供，未標示轉載授權（Brandeis 技術文件）"
+  license_url: ""
+  evidence: "https://www.cs.brandeis.edu/~roser/pubs/fb_annotGuidelines.pdf"
+  source_url: "https://www.cs.brandeis.edu/~roser/pubs/fb_annotGuidelines.pdf"
+  version: "作者網頁版"
+
+sauri2008_factuality-profiler-phd.pdf:
+  publish: false
+  license: "作者網頁提供，未標示轉載授權（Brandeis 博士論文）"
+  license_url: ""
+  evidence: "https://www.cs.brandeis.edu/~roser/pubs/sauriDiss_1.5.pdf"
+  source_url: "https://www.cs.brandeis.edu/~roser/pubs/sauriDiss_1.5.pdf"
+  version: "作者網頁版"
+
+sauri2009_factbank-corpus-documentation.pdf:
+  publish: false
+  license: "LDC 語料文件，未標示轉載授權"
+  license_url: ""
+  evidence: "https://catalog.ldc.upenn.edu/docs/LDC2009T23/readme.pdf"
+  source_url: "https://catalog.ldc.upenn.edu/docs/LDC2009T23/readme.pdf"
+  version: "LDC 官網版（LDC2009T23 readme）"
+
+shi2024_agentre.pdf:
+  publish: false
+  license: "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  license_url: "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+  evidence: "https://arxiv.org/abs/2409.01854"
+  source_url: "https://arxiv.org/abs/2409.01854"
+  version: "arXiv v1（2024-09-03）；正式版 CIKM '24，DOI 10.1145/3627673.3679791"
+
+vlachidis_medorah-ontology-memory-recollection.pdf:
+  publish: false
+  license: "GitHub 儲存庫未附授權檔（license: null）"
+  license_url: ""
+  evidence: "https://api.github.com/repos/articoder/MeDoraH_Ontology"
+  source_url: "https://github.com/articoder/MeDoraH_Ontology"
+  version: "GitHub 儲存庫內簡報"
+
+xu2024_generative-ie-survey.pdf:
+  publish: false
+  license: "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  license_url: "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+  evidence: "https://arxiv.org/abs/2312.17617"
+  source_url: "https://arxiv.org/abs/2312.17617"
+  version: "arXiv v3（2024-10-31）；期刊版 Frontiers of CS 屬 Springer"
+
+yang2025_graphusion.pdf:
+  publish: false
+  license: "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  license_url: "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+  evidence: "https://arxiv.org/abs/2410.17600"
+  source_url: "https://arxiv.org/abs/2410.17600"
+  version: "arXiv v2（2025-02-03）；正式版 WWW '25 Companion，DOI 10.1145/3701716.3717821"
+
+zhu2024_autokg.pdf:
+  publish: false
+  license: "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  license_url: "http://arxiv.org/licenses/nonexclusive-distrib/1.0/"
+  evidence: "https://arxiv.org/abs/2305.13168"
+  source_url: "https://arxiv.org/abs/2305.13168"
+  version: "arXiv v4（2024-12-26）；期刊版 WWWJ 屬 Springer"

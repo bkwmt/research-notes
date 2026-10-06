@@ -54,19 +54,37 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<p class="crumb"><a href="../index.html">Research Notes</a> › ⑧ 本體學習與 schema 歸納</p>
 <h1>Bai 2025_AutoSchemaKG：從語料自動長出 schema 的知識圖譜建構</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/bai2025_autoschemakg.md</code>　來源最後修改 2026-09-08　分類 文獻深讀筆記（八節）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/bai2025_autoschemakg.md</code>　來源最後修改 2026-09-08　分類 ⑧ 本體學習與 schema 歸納　問題 <a class="qtag main" href="../index.html#q8" title="本體學習與 schema 歸納">⑧</a>　<a class="pdfbtn" href="../papers/bai2025_autoschemakg.pdf" title="站內 PDF（CC BY 4.0，0.7 MB）">原文 PDF</a></p>
 </div></header>
 <main class="wrap">
 <ul>
-<li><strong>完整書目</strong>：Bai, J., Fan, W., Hu, Q., Zong, Q., Li, C., Tsang, H. T., Luo, H., Yim, Y., Huang, H., Zhou, X., Qin, F., Zheng, T., Peng, X., Yao, X., Yang, H., Wu, L., Ji, Y., Zhang, G., Chen, R., &amp; Song, Y. (2025). <em>AutoSchemaKG: Autonomous Knowledge Graph Construction through Dynamic Schema Induction from Web-Scale Corpora</em>. arXiv:2505.23628v3（v3, 2025-08-01）。作者來自香港科技大學、香港中文大學與華為 Theory Lab。<strong>預印本，未查得同儕審查狀態</strong>。程式碼公開（github.com/HKUST-KnowComp/AutoSchemaKG）。</li>
+<li><strong>完整書目</strong>：Bai, J., Fan, W., Hu, Q., Zong, Q., Li, C., Tsang, H. T., Luo, H., Yim, Y., Huang, H., Zhou, X., Qin, F., Zheng, T., Peng, X., Yao, X., Yang, H., Wu, L., Ji, Y., Zhang, G., Chen, R., &amp; Song, Y. (2025). <em>AutoSchemaKG: Autonomous Knowledge Graph Construction through Dynamic Schema Induction from Web-Scale Corpora</em>. <a href="https://arxiv.org/abs/2505.23628v3">arXiv:2505.23628v3</a>（v3, 2025-08-01）。作者來自香港科技大學、香港中文大學與華為 Theory Lab。<strong>預印本，未查得同儕審查狀態</strong>。程式碼公開（<a href="https://github.com/HKUST-KnowComp/AutoSchemaKG">github.com/HKUST-KnowComp/AutoSchemaKG</a>）。</li>
 <li><strong>對應待查問題</strong>：⑧本體學習與 schema 歸納（新增類別；兼涉①抽取現況）</li>
 <li><strong>一句話定位</strong>：不預先給任何 schema，讓模型一邊抽三元組、一邊從語料歸納出型別體系；<strong>它最重要的實測結果不是那個 92% 的 schema 對齊率，而是「只用實體只能保住原文 70% 的資訊，加上事件節點就到 90% 以上」</strong>——這替本專案「生命過程是事件序列、不是實體屬性表」的立場提供了量化證據。</li>
 </ul>
@@ -159,7 +177,7 @@ img{max-width:100%;height:auto}
 <ol>
 <li><strong>三階段分開抽：實體—實體、實體—事件、事件—事件。</strong> 目前 <code>triple_exp.py</code> 與 <code>triple_free_exp.py</code> 都只做一件事——從句子抽出一組主詞述詞受詞。若加一個「事件—事件」的階段，專門問<strong>時序與因果</strong>，就直接對上生命過程的需求。他們的五種關係型別（before、after、at the same time、because、as a result）幾乎可以照用，中文對應「之前、之後、同時、因為、結果」；而口述歷史裡「退伍之後」「後來」「那時候」這類相對時間表述，正是這五種關係的語言標記。</li>
 <li><strong>事件定義成「一個獨立的簡單句子」。</strong> 這是一個很務實的設計：不強迫事件變成結構化框架（觸發詞＋角色化論元），就讓它是一句話，靠事件之間的關係承載結構。對我們的好處是，這種事件節點天然保留原文措辭，出處也好掛——一個事件節點對回一句原文、一個時間碼。</li>
-<li><strong>概念化（多層抽象詞）可以取代手寫動詞表。</strong> 對每個抽出的述詞生成三個不同抽象層次的詞（「participated in」→「engage in」「attend」「involve in」），再看這些概念詞怎麼聚成類。這正是 <code>_卡點對照表.md</code> 第一節說的第三條路：<strong>先不限動詞地抽，再從抽出來的東西歸納出動詞表，然後拿它跟 <code>life_nodes.py</code> 手寫的那份比對</strong>。兩份的差異本身就是可報告的結果，而且能回答「手寫動詞表是不是偷渡了人工知識」這個懸而未決的問題。</li>
+<li><strong>概念化（多層抽象詞）可以取代手寫動詞表。</strong> 對每個抽出的述詞生成三個不同抽象層次的詞（「participated in」→「engage in」「attend」「involve in」），再看這些概念詞怎麼聚成類。這正是 <a href="../notes/blockers.html"><code>_卡點對照表.md</code></a> 第一節說的第三條路：<strong>先不限動詞地抽，再從抽出來的東西歸納出動詞表，然後拿它跟 <code>life_nodes.py</code> 手寫的那份比對</strong>。兩份的差異本身就是可報告的結果，而且能回答「手寫動詞表是不是偷渡了人工知識」這個懸而未決的問題。</li>
 <li><strong>實體概念化時餵進鄰居脈絡。</strong> 判斷一個名字是人、是機構還是作品時，把圖上鄰居的資訊一起給。我們的語料裡作品名辨識只有 1.1%，而作品名往往出現在「唱」「錄」「寫」這類述詞的受詞位置——鄰居脈絡正是這個訊號。</li>
 </ol>
 <p><strong>該避免的三件事</strong></p>
@@ -169,8 +187,8 @@ img{max-width:100%;height:auto}
 <li><strong>不要指望它處理跨來源的同一實體。</strong> 它完全不做消歧，靠規模淹過去。我們的 102 位受訪者、314 份逐字稿沒有這種規模可以淹。</li>
 </ol>
 <p><strong>與四條紅線的相容性</strong>：紅線 1 相容（不用人工標注）；<strong>紅線 2 直接衝突</strong>（核心正確率指標是 LLM 評 LLM）；紅線 3 不相容（無三元組層出處，需自建）；紅線 4 部分相容（中間產物序列化成 JSON，但沒有可追溯的決策紀錄）。</p>
-<p><strong>與 <code>_卡點對照表.md</code> 的對應</strong>：第一節（動詞表該不該手寫）與第六節（相對時間與生命過程的時序）。它是這兩節的主要依據。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<p><strong>與 <a href="../notes/blockers.html"><code>_卡點對照表.md</code></a> 的對應</strong>：第一節（動詞表該不該手寫）與第六節（相對時間與生命過程的時序）。它是這兩節的主要依據。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

@@ -54,19 +54,37 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../../index.html">Research Notes</a> › IDOHL 調查報告（2026-10-05）</p>
+<p class="crumb"><a href="../../index.html">Research Notes</a> › ④ 口述歷史與數位人文</p>
 <h1>IDOHL 開源釋出與程式碼調查</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/idohl/03_開源釋出與程式碼.md</code>　來源最後修改 2026-10-06　分類 IDOHL 調查報告（2026-10-05）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/idohl/03_開源釋出與程式碼.md</code>　來源最後修改 2026-10-06　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../../index.html#q4" title="口述歷史與數位人文">④</a></p>
 </div></header>
 <main class="wrap">
 <p>調查日期：2026-10-05
-對象：International Digital Oral History Lab（IDOHL）在 https://idohl.org/OpenSource-Release 列出的五個 GitHub 儲存庫
+對象：International Digital Oral History Lab（IDOHL）在 <a href="https://idohl.org/OpenSource-Release">https://idohl.org/OpenSource-Release</a> 列出的五個 GitHub 儲存庫
 方法：只以 GitHub REST API（<code>gh api</code>）與 raw 檔案讀取檢視內容，另抓取 idohl.org 網頁、NKOS 2026 投影片 PDF、Zenodo 紀錄作為旁證。未 clone、未安裝任何套件、未執行任何儲存庫內的程式。資料樣本的統計數字是以本機 Python 讀取下載的 JSON 計算而得，計算對象是對方公開的資料檔，不是對方的程式。
 報告體例：中立報導體；每條事實後附來源 URL；查不到的寫「儲存庫未載明」。</p>
 <hr>
@@ -144,36 +162,36 @@ img{max-width:100%;height:auto}
 </tbody>
 </table></div>
 <p>四個儲存庫<strong>都沒有 LICENSE 檔</strong>，GitHub API 的 <code>license</code> 欄位均為 <code>null</code>。依 GitHub 服務條款，無授權檔的公開儲存庫預設保留所有權利，第三方只能檢視與 fork，不能合法重用程式碼或資料。idohl.org 開源頁宣稱「所有儲存庫遵循 FAIR 原則」，但 FAIR 的 R（可重用）在法律層面沒有被滿足。
-來源：<code>gh api repos/&lt;owner&gt;/&lt;repo&gt;</code> 於 2026-10-05 的回應；https://idohl.org/OpenSource-Release</p>
+來源：<code>gh api repos/&lt;owner&gt;/&lt;repo&gt;</code> 於 2026-10-05 的回應；<a href="https://idohl.org/OpenSource-Release">https://idohl.org/OpenSource-Release</a></p>
 <hr>
 <h2 id="2-international-digital-oral-history-lab">2. 帳號頁：International-Digital-Oral-History-Lab</h2>
 <h3 id="_1">事實</h3>
 <ul>
 <li>帳號型別 <code>User</code>，不是 <code>Organization</code>，所以 <code>orgs/</code> 端點查無此物、沒有成員列表可查。建立於 2024-11-12T15:43:37Z，與 <code>MeDoraH_Project</code> 的建立時間（15:44:19Z）只差 42 秒，可推定帳號是為了放置這個儲存庫而開設。
-  來源：https://api.github.com/users/International-Digital-Oral-History-Lab</li>
+  來源：<a href="https://api.github.com/users/International-Digital-Oral-History-Lab">https://api.github.com/users/International-Digital-Oral-History-Lab</a></li>
 <li>公開儲存庫 3 個：<code>IDOHL-updator</code>（2026-05-06 建立，GitHub Actions 定期抓取新聞寫入 <code>landing_page/data/news-cache.json</code>，供網站使用）、<code>MDOH_Project</code>、<code>MeDoraH_Project</code>。開源頁稱「共 5 個儲存庫」，是把 <code>articoder</code> 名下兩個也計算進去。
-  來源：https://api.github.com/users/International-Digital-Oral-History-Lab/repos</li>
+  來源：<a href="https://api.github.com/users/International-Digital-Oral-History-Lab/repos">https://api.github.com/users/International-Digital-Oral-History-Lab/repos</a></li>
 <li>commit 作者有兩個名字：<code>International-Digital-Oral-History-Lab</code> 與 <code>medorah</code>（MeDoraH_Project 的前三個 commit），以及 Jiajie Zhang（<code>articoder</code>）。
-  來源：https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/commits</li>
+  來源：<a href="https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/commits">https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/commits</a></li>
 <li><code>articoder</code> 的真實姓名是 <strong>Jiajie Zhang</strong>（GitHub 帳號 2013-08-24 建立，12 個公開儲存庫），不是 Andreas Vlachidis。idohl.org 團隊頁將他列為 UCL 資訊研究系（Department of Information Studies）Research Associate，只參與 MeDoraH。他過去的儲存庫顯示其背景：Cambridge 博士論文 LaTeX 樣板、<code>REF-UoA11-Ontology</code>（MIT 授權，含圖資料集）、<code>Text2Event</code>（事件抽取）、<code>awesome-semantic-web</code>。
-  來源：https://api.github.com/users/articoder ；https://api.github.com/users/articoder/repos ；https://idohl.org/team</li>
+  來源：<a href="https://api.github.com/users/articoder">https://api.github.com/users/articoder</a> ；<a href="https://api.github.com/users/articoder/repos">https://api.github.com/users/articoder/repos</a> ；<a href="https://idohl.org/team">https://idohl.org/team</a></li>
 <li>研究團隊（idohl.org 團隊頁）：PI 三位 Andrew Flinn（UCL）、Julianne Nyhan（TU Darmstadt 與 UCL）、Andreas Vlachidis（UCL）；博士後 Frieda Schmidt、Aleksey Varfolomeyev（TU Darmstadt）；Research Associate Jiajie Zhang（UCL）；Honorary Research Fellow Marco Humbel（英國國家檔案館）；研究助理 Valentina Prishchepova、Florian Elleringmann（TU Darmstadt）。
-  來源：https://idohl.org/team</li>
+  來源：<a href="https://idohl.org/team">https://idohl.org/team</a></li>
 </ul>
 <hr>
 <h2 id="3-mdoh_project">3. MDOH_Project</h2>
 <h3 id="_2">目的</h3>
 <p>README 描述 MDOH 為「發展方法論與技術工作流程，主動運用口述歷史典藏的口語、聽覺與聲音面向」，涵蓋回溯數位化與原生數位材料；目前焦點是<strong>以 AI 工具結合非數位方法偵測訪談中的笑聲</strong>，理由是笑聲、遲疑、語速等聲音元素常被人工逐字稿省略。
-來源：https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MDOH_Project/main/README.md</p>
+來源：<a href="https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MDOH_Project/main/README.md">https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MDOH_Project/main/README.md</a></p>
 <h3 id="_3">目錄結構</h3>
 <p>整個儲存庫只有一個檔案 <code>README.md</code>（3,872 bytes）。README 列出的 <code>data/</code>、<code>docs/</code>、<code>src/</code>、<code>notebooks/</code>、<code>outputs/</code>、<code>references/</code> 六個資料夾<strong>都不存在</strong>；README 還保留著樣板句「If your repository structure differs, update this section to match.」。
-來源：https://api.github.com/repos/International-Digital-Oral-History-Lab/MDOH_Project/git/trees/main?recursive=1</p>
+來源：<a href="https://api.github.com/repos/International-Digital-Oral-History-Lab/MDOH_Project/git/trees/main?recursive=1">https://api.github.com/repos/International-Digital-Oral-History-Lab/MDOH_Project/git/trees/main?recursive=1</a></p>
 <h3 id="_4">歷史與授權</h3>
 <p>2 個 commit（「Initial commit」與「Add files via upload」），都在 2026-03-02 的 21 分鐘內完成；無 LICENSE；0 star、0 fork、0 issue。
-來源：https://api.github.com/repos/International-Digital-Oral-History-Lab/MDOH_Project/commits</p>
+來源：<a href="https://api.github.com/repos/International-Digital-Oral-History-Lab/MDOH_Project/commits">https://api.github.com/repos/International-Digital-Oral-History-Lab/MDOH_Project/commits</a></p>
 <h3 id="_5">笑聲偵測與多模態對齊使用什麼技術</h3>
 <p>儲存庫未載明。沒有任何程式碼、模型名稱或資料。idohl.org 的 MDOH 頁面只提到語音轉文字管線使用 <strong>WhisperX</strong>，多模態分析在逐字稿之後進行，涵蓋逐字稿、聲音、波形、頻譜圖與中繼資料；笑聲偵測採用哪個音訊模型（例如 openSMILE 或深度學習分類器）網站與儲存庫均未說明。理論基礎是 Smyth, Nyhan &amp; Flinn (2023) <em>Digital Scholarship in the Humanities</em> 38(2): 720–736 的多模態口述歷史論文。
-來源：https://idohl.org/MDOH/ ；https://doi.org/10.1093/llc/fqac094</p>
+來源：<a href="https://idohl.org/MDOH/">https://idohl.org/MDOH/</a> ；<a href="https://doi.org/10.1093/llc/fqac094">https://doi.org/10.1093/llc/fqac094</a></p>
 <h3 id="_6">可借用之處</h3>
 <p>只有概念層可以借用：把「逐字稿省略的副語言事件」（笑聲、遲疑、停頓）當成分析類別而非雜訊。這與 extract_ohistory 把「證詞的多重樣貌是證據層次、不是待清理的雜訊」的立場相容。我們的 SRT 帶有時間碼，若日後要把音訊層的事件掛回句層，MDOH 這條線是可對照的對象，但目前對方沒有任何可比的實作。</p>
 <h3 id="extract_ohistory">與 extract_ohistory 的差異</h3>
@@ -185,10 +203,10 @@ img{max-width:100%;height:auto}
 <h2 id="4-medorah_project">4. MeDoraH_Project</h2>
 <h3 id="_7">目的</h3>
 <p>README 自述 MeDoraH（Mixed-methods Digital Oral History）為 UCL 與 TU Darmstadt 合作計畫，目標是用語意網技術結合歷史詮釋分析來理解數位人文（Digital Humanities）的演變。四個目標：檔案管理（檔案綱要與數位典藏庫）、內容建模（口述敘事的結構與關係）、FAIR 合規、語意增益。idohl.org 計畫頁補充語料為 Hidden Histories 英語訪談再加上十個新的德語訪談，分析為跨語言（英／德）。資助方為 AHRC 與 DFG（DFG 的 mixed-methods 計畫清單 PDF 載有此案，但該 PDF 的文字層無法抽出，細節未能查證）。
-來源：https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MeDoraH_Project/main/README.md ；https://idohl.org/medorah/ ；https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf</p>
+來源：<a href="https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MeDoraH_Project/main/README.md">https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MeDoraH_Project/main/README.md</a> ；<a href="https://idohl.org/medorah/">https://idohl.org/medorah/</a> ；<a href="https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf">https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf</a></p>
 <h3 id="_8">目錄結構</h3>
 <p>只有 <code>README.md</code>（4,291 bytes）。README 連結到的 <code>CONTRIBUTING.md</code> 不存在。
-來源：https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/git/trees/main?recursive=1</p>
+來源：<a href="https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/git/trees/main?recursive=1">https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/git/trees/main?recursive=1</a></p>
 <h3 id="readme">README 列出的儲存庫群與實際狀態</h3>
 <p>README 列出了七個儲存庫，實際存在兩個：
 - <code>articoder/medorah_nlp</code>、<code>articoder/medorah_ontology</code>：存在（即本報告第 5、6 節）。
@@ -198,7 +216,7 @@ img{max-width:100%;height:auto}
 來源：同上 README</p>
 <h3 id="issue">歷史、授權、issue</h3>
 <p>8 個 commit，7 個在 2024-11-12 至 11-13、1 個在 2026-03-02，全是修改 README；無 LICENSE；2 star；4 個 issue 都是空白內文的工作標籤（「TPDL Metadata Paper」兩則、「Network Paper」、「SEO Optimisation」，2025-02-22 建立）。「TPDL Metadata Paper」對應後來實際發表在 MTSR 2025 的中繼資料論文（見第 6 節）。
-來源：https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/issues?state=all</p>
+來源：<a href="https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/issues?state=all">https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/issues?state=all</a></p>
 <h3 id="_9">可借用之處</h3>
 <p>README 的「成果分類法」（技術基礎設施／研究工具與資料集／出版品／資料集／方法）可以當我們整理 extract_ohistory 對外釋出清單時的骨架；但要避免對方的毛病：把預定成果寫成像已釋出。</p>
 <h3 id="extract_ohistory_1">與 extract_ohistory 的差異</h3>
@@ -212,7 +230,7 @@ img{max-width:100%;height:auto}
 3. <strong>Ontology Visualiser</strong>：本體的互動式 HTML 圖，六個頂層領域 Actor、Event、Artefact、ConceptualItem、SpatialEntity、TemporalEntity。
 4. <strong>Clustering</strong>：「HDBSCAN + SpanBERT」述詞嵌入分群、WordNet 上位詞、silhouette 與 Pareto 最佳組態評估、HTML 報告。
 README 的目錄圖還列了 <code>Omeka Front End/</code>，但 <code>main</code> 分支上沒有這個資料夾（只在 15 個 <code>palette*</code> 分支上，內容是 IDOHL 網站的靜態 HTML）。
-來源：https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/README.md ；https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1</p>
+來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/README.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/README.md</a> ；<a href="https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1">https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1</a></p>
 <h3 id="52-main-ds_store-__pycache__">5.2 目錄結構（<code>main</code> 分支，略去 <code>.DS_Store</code> 與 <code>__pycache__</code>）</h3>
 <pre><code>README.md
 Text Mining/
@@ -232,38 +250,38 @@ Text Mining/
 Workflows/               三張 .xmind 與對應 .svg、README.md
 </code></pre>
 <p>三份 <code>semantic_triple_analysis.py</code> 與兩份 <code>generate_report_modern.py</code> 是同一支程式的複本（大小相同），散在三個資料夾。
-來源：https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1</p>
+來源：<a href="https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1">https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1</a></p>
 <h3 id="53-issuerelease">5.3 歷史、分支、issue、release</h3>
 <ul>
 <li>44 個 commit 全由 Jiajie Zhang 提交；2024-07-28 建立，2024-09 之後停頓到 2025-01-20，2025-08 至 2026-02 密集更新，<code>main</code> 最後一個 commit 是 2026-02-23 的「Directory update」。
-  來源：https://api.github.com/repos/articoder/MeDoraH_NLP/commits</li>
+  來源：<a href="https://api.github.com/repos/articoder/MeDoraH_NLP/commits">https://api.github.com/repos/articoder/MeDoraH_NLP/commits</a></li>
 <li>17 個分支：<code>main</code>、<code>Using-the-turn-taking</code>（落後 main 32 個 commit，無新內容）、15 個 <code>palette*</code> 分支，全由 Google 的程式代理 Jules 自動建立，對應 14 個未合併的 PR（#9–#21，2026-02-02 至 02-14），內容全是 IDOHL 網站 HTML 的無障礙修正。另有 2 個 issue：#4「Exploartive Text Mining」（2024-08-30，TF-IDF／RAKE／YAKE／LDA／BERTopic 的探索計畫）、#6「Segmenting Conversation」（2025-03-04 關閉，描述話輪切分演算法的七個步驟：由檔名解析講者、產生講者樣式、逐行比對、建立 Turn 物件、輸出 JSON、重建全文比對長度與 MD5 驗證無損）。<strong>切分程式本身沒有釋出</strong>，儲存庫只有描述。
-  來源：https://api.github.com/repos/articoder/MeDoraH_NLP/branches ；https://api.github.com/repos/articoder/MeDoraH_NLP/issues/6</li>
+  來源：<a href="https://api.github.com/repos/articoder/MeDoraH_NLP/branches">https://api.github.com/repos/articoder/MeDoraH_NLP/branches</a> ；<a href="https://api.github.com/repos/articoder/MeDoraH_NLP/issues/6">https://api.github.com/repos/articoder/MeDoraH_NLP/issues/6</a></li>
 <li>9 個 release：v0.1.2 beta（2026-02-02，「not ready for production use」）、v0.2.1（02-16，加 Parallel Reading）、v0.2.4、v0.2.5、v0.3.0（04-15 至 04-16）、v0.3.2（04-21）、v0.3.3（04-26）、v0.3.4（05-11）、v0.4.0（05-27）。每個 release 附 macOS（x64、aarch64 的 .dmg 與 .app.tar.gz）、Windows（.msi、.exe）、Linux（.AppImage、.deb、.rpm）二進位檔與 <code>.sig</code> 簽章、<code>latest.json</code>（Tauri 自動更新清單，列 11 個平台）。<strong>九個 tag 全指向同一個 commit 21433058</strong>，表示二進位檔是在這個儲存庫之外建置的；release 說明裡的 commit 雜湊（fef1054、b8cce22 等）在本儲存庫都查不到。
-  來源：https://api.github.com/repos/articoder/MeDoraH_NLP/releases ；https://api.github.com/repos/articoder/MeDoraH_NLP/tags ；https://github.com/articoder/MeDoraH_NLP/releases/download/v0.4.0/latest.json</li>
+  來源：<a href="https://api.github.com/repos/articoder/MeDoraH_NLP/releases">https://api.github.com/repos/articoder/MeDoraH_NLP/releases</a> ；<a href="https://api.github.com/repos/articoder/MeDoraH_NLP/tags">https://api.github.com/repos/articoder/MeDoraH_NLP/tags</a> ；<a href="https://github.com/articoder/MeDoraH_NLP/releases/download/v0.4.0/latest.json">https://github.com/articoder/MeDoraH_NLP/releases/download/v0.4.0/latest.json</a></li>
 </ul>
 <h3 id="54">5.4 技術棧與模型</h3>
 <h4 id="541-python-11">5.4.1 Python 腳本（11 支，可讀）</h4>
 <p>所有 <code>.py</code> 的 import 彙總：pandas、numpy、hdbscan、umap（<code>umap.umap_</code>）、plotly、scikit-learn（StandardScaler、TruncatedSVD）、scipy（gaussian_kde）、nltk（wordnet、averaged_perceptron_tagger、punkt）、networkx、matplotlib、seaborn、pyvis、jinja2、tqdm。
 <strong>沒有任何一支 .py 匯入</strong> spaCy、textacy、fastcoref、transformers、sentence-transformers、openai、google-generativeai、anthropic 或任何 LLM SDK。沒有 <code>requirements.txt</code>、<code>pyproject.toml</code>、<code>setup.py</code>；<code>CLAUDE.md</code> 明寫「No external package management files ... minimal dependency approach」。
-來源：https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Claim%20Clustering_Report.py 等 11 檔；https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/CLAUDE.md</p>
+來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Claim%20Clustering_Report.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Claim%20Clustering_Report.py</a> 等 11 檔；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/CLAUDE.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/CLAUDE.md</a></p>
 <p>分項：
 - <strong>前處理</strong>：<code>transform_utterance_to_sentences.py</code> 以正規表示式切句（保護 e.g.、Dr.、小數、縮寫、括號內句點），句 id 格式 <code>話輪序-句序</code>（如 <code>2-2</code>）。<code>generate_previous_current_pairs.py</code> 把「訪問者一句＋受訪者一句」組成一對，再附上前一對作為上下文，寫成 <code>Previous-current pair - N.json</code>。這就是送入 LLM 的提示單位，但提示詞本身不在儲存庫。
-  來源：https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/transform_utterance_to_sentences.py ；https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/generate_previous_current_pairs.py
+  來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/transform_utterance_to_sentences.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/transform_utterance_to_sentences.py</a> ；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/generate_previous_current_pairs.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/generate_previous_current_pairs.py</a>
 - <strong>後處理與儀表板</strong>：<code>generate_report_modern.py</code> 讀取抽取 JSON，統計實體型別頻率、結構模式（主詞型別→關係→受詞型別）、基數（1:1、1:N、N:1）、定義域／值域多樣性、多型別實體，渲染 Jinja 模板成單檔 HTML。<code>semantic_triple_analysis.py</code> 以 networkx 建立有向圖、計算 degree 與 betweenness 中心性、以 pyvis 輸出互動圖。兩支都是<strong>純程式、不呼叫模型</strong>。
-  來源：https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Dashboard%20HTML%20Only/generate_report_modern.py ；https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Network%20Analysis/semantic_triple_analysis.py
+  來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Dashboard%20HTML%20Only/generate_report_modern.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Dashboard%20HTML%20Only/generate_report_modern.py</a> ；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Network%20Analysis/semantic_triple_analysis.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Network%20Analysis/semantic_triple_analysis.py</a>
 - <strong>分群</strong>：五支腳本是同一個 <code>EmbeddingVisualizer</code> 類別的演化版。輸入是 parquet 檔（欄位 <code>predicate_embedding</code>／<code>claim_embedding</code>、<code>predicate_text</code>、<code>subject_text</code>、<code>object_text</code>、<code>source_file</code>），路徑寫死在作者本機（<code>/Users/jiajiezhang/Downloads/Clustering_Embeddings/spanbert_predicate_embeddings.parquet</code> 等）。流程：UMAP 降維（<code>n_neighbors=100, n_components=50, min_dist=0.1, metric="cosine"</code>）→ HDBSCAN（固定 <code>min_cluster_size=70, min_samples=35</code>，或在目標群數區間內網格搜尋）→ 每群取代表片語、WordNet 動詞上位詞、動詞停用詞表（be／have／do／情態動詞）→ Plotly WebGL 圖與 HTML 報告。<code>Cluster Assessment.py</code> 進行 min_cluster_size × min_samples 二維網格評估，<code>Pareto Front.py</code> 繪製 Pareto 前緣（此檔標頭寫「Revision Author: Gemini」、註解為簡體中文，是以 Gemini 改寫程式碼，<strong>不是呼叫 Gemini API</strong>；檔名「HTML Clustering Report (HDBSCAN+Gemini).py」同理，該檔沒有任何 API 呼叫）。<strong>產生嵌入的程式缺席</strong>：<code>spanbert_predicate_clustering.py</code> 只有兩行 <code>from embedding_analyzer.main import main</code>，而 <code>embedding_analyzer</code> 套件不在儲存庫。所以 SpanBERT 採用哪個 checkpoint、claim 嵌入採用哪個模型，儲存庫未載明。
-  來源：https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/HTML%20Clustering%20Report%20(HDBSCAN%2BGemini).py ；https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/spanbert_predicate_clustering.py ；https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Pareto%20Front.py
+  來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/HTML%20Clustering%20Report%20(HDBSCAN%2BGemini).py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/HTML%20Clustering%20Report%20(HDBSCAN%2BGemini).py</a> ；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/spanbert_predicate_clustering.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/spanbert_predicate_clustering.py</a> ；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Pareto%20Front.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Pareto%20Front.py</a>
 - <strong>早期探索（2024）</strong>：<code>Text Mining - 1st round with Comments.md</code> 記錄第一輪探索以 spaCy 大模型進行 TF-IDF、RAKE、YAKE 關鍵詞抽取，並以 LDA（以 coherence／perplexity 選定主題數）與 BERTopic（句嵌入 <code>all-mpnet-base-v2</code>、UMAP、HDBSCAN）建立主題模型，並附 Nyhan 的審閱批註。這條線後來被放棄。
-  來源：https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Text%20Mining%20-%201st%20round%20with%20Comments.md</p>
+  來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Text%20Mining%20-%201st%20round%20with%20Comments.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Text%20Mining%20-%201st%20round%20with%20Comments.md</a></p>
 <h4 id="542-narragraphllm">5.4.2 NarraGraph（LLM 抽取的實際載體）：只有二進位檔</h4>
 <ul>
 <li>idohl.org 開源頁描述 NarraGraph v0.4 為「From Narrative to Network」，技術棧 <strong>Tauri 2、React 19、Rust</strong>，功能含 LLM 抽取、互動網絡分析、SPARQL 匯出、research copilot。<strong>儲存庫 <code>main</code> 分支沒有任何 Rust、TypeScript 或 React 原始碼</strong>，GitHub 全站搜尋「NarraGraph」也搜尋不到對應原始碼儲存庫（同名的 <code>youngsforever/NarraGraph</code> 是合肥工業大學一位使用者 2026-03-20 建立的空儲存庫，只有 <code>.gitkeep</code>）。開源頁「GitHub via MeDoraH_NLP repository」的說法，實際只對應到 release 的安裝檔。
-  來源：https://idohl.org/OpenSource-Release ；<code>gh search repos NarraGraph</code> ；https://api.github.com/repos/youngsforever/NarraGraph</li>
+  來源：<a href="https://idohl.org/OpenSource-Release">https://idohl.org/OpenSource-Release</a> ；<code>gh search repos NarraGraph</code> ；<a href="https://api.github.com/repos/youngsforever/NarraGraph">https://api.github.com/repos/youngsforever/NarraGraph</a></li>
 <li>release 說明透露的能力：v0.3.4「reverse-proxy LLM provider support with dynamic model capability」、v0.4.0「fetch reverse-proxy models in LocalLLM panel」「research-copilot: provider-initial badge on the model selector」「sparql-playground」、v0.3.3「PreprocessingPage module for data preparation, speech transcription, and parallel reading」「network analysis tools, including temporal community tracking, null models, snapshot comparison, and power-law distribution fitting」「weighted centrality metrics」。可知程式支援多個 LLM 供應商、本機 LLM 面板與反向代理端點，但<strong>提示詞內容、預設模型、溫度等參數不在任何公開檔案裡</strong>。
-  來源：https://api.github.com/repos/articoder/MeDoraH_NLP/releases</li>
+  來源：<a href="https://api.github.com/repos/articoder/MeDoraH_NLP/releases">https://api.github.com/repos/articoder/MeDoraH_NLP/releases</a></li>
 <li>NKOS 2026 投影片（Zhang、Vlachidis、Nyhan，2026-08-03 於首爾國立中央圖書館的 NKOS 工作坊）補上模型名單：第 12 頁「model-agnostic — Gemini 2.5 Pro · Gemma 3 · Qwen 3」；第 10 頁範例宣稱的驗證欄記為「extractor: claude-opus-4-8」「confirmed — 0 of 3 refute votes」。哪一趟、哪批正式數字採用哪個模型，投影片未說明。
-  來源：https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf（第 10、12 頁）</li>
+  來源：<a href="https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf">https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf</a>（第 10、12 頁）</li>
 <li>投影片第 4 頁回顧他們先前的「傳統 NLP 管線」實驗：實驗一是依存句法剖析＋spaCy NER，實驗二是微調 BERT 模型、共指消解、命題抽取；結論是「共指消解很關鍵；宣稱抽取在某些情況有用」「管線式工作流程產生的資料品質不足以支撐本體設計」。這是他們轉向 LLM 的理由。<strong>沒有提到 REBEL／mREBEL、T5 或 fastcoref（LingMess）</strong>，共指消解採用什麼工具，儲存庫與投影片均未載明。
   來源：同上 PDF 第 4 頁</li>
 </ul>
@@ -273,7 +291,7 @@ Workflows/               三張 .xmind 與對應 .svg、README.md
 <li>「分層多代理工作流程」：context stratification → extractor LLMs × 3 configs → consolidator → output validation → validated schema，再加 human-in-the-loop（評估、結構感知分群、修訂綱要）。</li>
 <li><strong>三趟抽取</strong>：Pass 1 open（無綱要）、Pass 2 schema-guided（注入本體）、Pass 3 RQ-driven（針對研究問題的探針）；輸入是切塊（chunks）而非整卷，理由是「context rot」。三趟結果交由 reconcile 與人工 review；「收斂→信心，分歧→綱要的缺口」。</li>
 <li>投影片第 7 頁指出通用 LLM 零樣本抽取的三種失效：參數知識覆寫（把 Malloy 從未說過的「educatedAt University of California」產生出來）、把遲疑壓平（Nitti 的「if I remember correctly, for $242,000」丟棄保留語）、context rot（整卷輸入時講者歸屬失敗）。
-  來源：同上 PDF 第 7、8、9、12 頁；https://zenodo.org/records/22115456</li>
+  來源：同上 PDF 第 7、8、9、12 頁；<a href="https://zenodo.org/records/22115456">https://zenodo.org/records/22115456</a></li>
 </ul>
 <h3 id="55">5.5 資料</h3>
 <h4 id="551">5.5.1 逐字稿</h4>
@@ -281,21 +299,21 @@ Workflows/               三張 .xmind 與對應 .svg、README.md
 <li><code>Text Mining/Preprocessing/Segmented_Transcript_JSON/</code> 有 <strong>19 卷</strong>英語訪談的話輪 JSON，來自 Hidden Histories 計畫（Nyhan &amp; Flinn 2016, <em>Computation and the Humanities: Towards an Oral History of Digital Humanities</em>, Springer，開放取用）。檔名格式「訪問者_受訪者.json」：Julianne Nyhan 訪 Claus Huitfeldt、Gabriel Egan、Geoffrey Rockwell、Hans Rutimann、Harold Short、Helen Agüera、John Bradley、John Nitti、Judy Malloy、Manfred Thaller、Mary Dee Harris、Michael Sperberg-McQueen、Susan Hockey、Tito Orlandi、Wilhelm Ott、Willard McCarty；Anne Welsh 訪 John Unsworth、Ray Siemens；Willard McCarty 與 Harold Short 訪 John Burrows 與 Hugh Craig。</li>
 <li>每筆話輪四個欄位 <code>speaker_name</code>、<code>role</code>（Interviewer／Interviewee）、<code>utterance</code>、<code>order</code>；<strong>沒有時間碼</strong>，也沒有音訊檔對應。Judy Malloy 卷為 56 個話輪、10,507 字，切句後 557 句。</li>
 <li>德語的十卷新訪談（idohl.org 計畫頁提到）不在任何儲存庫。
-  來源：https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1 ；https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/Segmented_Transcript_JSON/Julianne%20Nyhan_Judy%20Malloy.json ；https://doi.org/10.1007/978-3-319-20170-2</li>
+  來源：<a href="https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1">https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1</a> ；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/Segmented_Transcript_JSON/Julianne%20Nyhan_Judy%20Malloy.json">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/Segmented_Transcript_JSON/Julianne%20Nyhan_Judy%20Malloy.json</a> ；<a href="https://doi.org/10.1007/978-3-319-20170-2">https://doi.org/10.1007/978-3-319-20170-2</a></li>
 </ul>
 <h4 id="552-python">5.5.2 抽取結果（示範資料，以本機 Python 統計）</h4>
 <ul>
 <li><strong>Bottom-up 層</strong>（<code>Examples/Test_ButtomUp_Extraction.json</code>，與 <code>Historical Entity Layer/extracted_data.json</code>、<code>Network Analysis/data.json</code> 幾乎相同）：Judy Malloy 一卷，28 個話輪、655 筆抽取。每筆欄位：<code>subject_entity{name, entity_type}</code>、<code>relation{surface_form, semantic_form}</code>、<code>object_entity{name, entity_type}</code>、<code>evidence_sources</code>（句 id 清單，如 <code>["2-2"]</code>）、<code>evidence_text</code>（整句原文）。655 筆<strong>全部帶有句 id 與證據句</strong>。實體型別由模型自由命名，單卷就有 <strong>160 個不同型別</strong>（PERSON 325、ORGANISATION 32、GROUP 25、CONCEPT 21…）與 <strong>436 個不同關係標籤</strong>（DESCRIBED_AS 24、IS_A 19、CREATED 17…）。主詞沒有任何代名詞（<code>I</code>、<code>she</code> 等為 0 筆），表示<strong>模型已把「我」改寫成「Judy Malloy」</strong>；PERSON 主詞不是講述者本人的有 116 筆（35.7%）。</li>
 <li><strong>Ontology population 層</strong>（<code>Examples/Test_OntologyPopulation.json</code>）：31 個話輪、304 筆。每筆欄位：<code>extraction_id</code>、<code>subject{canonical_name, ontology_mapping{mapping_status, class}}</code>、<code>relation{surface_form, ontology_mapping{mapping_status, property}, is_negated}</code>、<code>object</code>、<code>epistemic_stance{claim_type[], certainty_level, temporal_grounding, attribution_type}</code>、<code>reasons{sub_obj_classes, relation, epistemic_stance}</code>（模型的自由文字理由）、<code>provenance{evidence_sentence_ids[], evidence_text}</code>。對映狀態：主詞 304 筆全 mapped，受詞 300 mapped／4 unmapped，關係 293 mapped／10 unmapped／1 uncertain；unmapped 時模型以角括號自創屬性名（<code>&lt;connectedTo&gt;</code>、<code>&lt;transportedBy&gt;</code>、<code>&lt;hasInterestLevel&gt;</code>）。知態標記分布：<code>claim_type</code> direct_experience 176、general_knowledge 68、evaluative_judgment 35、inference 15、<strong>hearsay 8</strong>、hypothetical 3；<code>certainty_level</code> certain 264、probable 32、uncertain 8；<code>temporal_grounding</code> distant_memory 187、synchronous 64、historical_reconstruction 39、recent_memory 14；<code>attribution_type</code> general_attribution 140、direct_quote 55、<strong>indirect_report 11</strong>、空值 98；<code>is_negated</code> 12 筆。304 筆全部帶有 <code>evidence_sentence_ids</code>。用到本體 37 個類別、50 個屬性（usesTechnology 42、hasEmploymentAt 21、uses 16…）。</li>
 <li><strong>合併資料</strong>（<code>LLM Hermeneutic Workbench/Combined_Interviews.json</code>）：715 個話輪、<strong>1,298 筆</strong>抽取，來自 16 個來源檔（另有 57 個話輪沒有來源欄）；153 個實體型別、787 個關係標籤。<strong>這份合併檔的抽取只有 <code>evidence_text</code>，沒有 <code>evidence_sources</code> 句 id</strong>，出處粒度退回話輪層。PERSON 主詞不是講述者本人的有 282／659 筆（42.8%），例如 John Unsworth 卷講到 Susan Nutter、Stevan Harnad、Martha Nell Smith 等人。<code>Combined.json</code> 為 891 個話輪、<strong>1,647 筆</strong>，數字與 NKOS 摘要「1,647 claims across 176 narrative units」完全相符，可推定這就是論文使用的資料。
-  來源：https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_ButtomUp_Extraction.json ；https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_OntologyPopulation.json ；https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined_Interviews.json ；https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined.json ；https://www.dublincore.org/conferences/2026/sessions/nkos-workshop/</li>
+  來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_ButtomUp_Extraction.json">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_ButtomUp_Extraction.json</a> ；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_OntologyPopulation.json">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_OntologyPopulation.json</a> ；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined_Interviews.json">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined_Interviews.json</a> ；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined.json">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined.json</a> ；<a href="https://www.dublincore.org/conferences/2026/sessions/nkos-workshop/">https://www.dublincore.org/conferences/2026/sessions/nkos-workshop/</a></li>
 </ul>
 <h4 id="553">5.5.3 文件裡值得注意的細節</h4>
 <ul>
 <li><code>Historical Entity Layer/CLAUDE.md</code> 與 <code>Agents.md</code> 是供 Claude Code 與 OpenAI Codex 讀取的程式碼說明，<code>.Jules/palette.md</code> 是 Google Jules 的學習記錄；加上 15 個 Jules 分支，可知對方的程式開發大量使用程式代理。<code>Manual.md</code> 是供一般使用者閱讀的儀表板手冊，以簡體中文撰寫。
-  來源：https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/CLAUDE.md ；https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Manual.md</li>
+  來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/CLAUDE.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/CLAUDE.md</a> ；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Manual.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Manual.md</a></li>
 <li><code>Parallel Reading</code> 功能：原文與譯文 .docx 並排、依講者縮寫（如 <code>GC:</code>、<code>JJ:</code>）對齊段落、多人標注合併匯出。這是為德語訪談與英譯對照設計的。
-  來源：https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Parallel%20Reading/README_PARALLEL_READING.md</li>
+  來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Parallel%20Reading/README_PARALLEL_READING.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Parallel%20Reading/README_PARALLEL_READING.md</a></li>
 </ul>
 <h3 id="56">5.6 評估</h3>
 <p>儲存庫內<strong>沒有評估程式、沒有 gold standard、沒有 P／R／F1</strong>。可查到的評估數字全在 NKOS 2026 投影片與 DH2026 摘要：
@@ -304,7 +322,7 @@ Workflows/               三張 .xmind 與對應 .svg、README.md
 - 綱要歸納：schema-free 那趟產生 <strong>160 個原始實體型別</strong>，收斂成 <strong>22 個類別（7 個頂層＋15 個子類）</strong>、11 種關係模式；「Concept」一型出現 951 次，依圖上結構位置拆分成 ConceptualFramework、Methodology、Discipline 與 Claims 層的立場標記。
 - 與手工編碼對照（2025 手工 vs 2026 claims graph）：被憶及的人 124 vs 209；clustering 0.0975 vs 0.0388；三角形 57 vs 51；記憶的交會點「人（P-P-P 33）」vs「機構（I-P-P 23）」；中心技術 IBM 360/20・TUSTEP vs IBM 7094・FORTRAN；35.7% 節點掛上 Wikidata；hearsay 25 筆、probable 169 筆。
 - 投影片第 10 頁的驗證欄「confirmed — 0 of 3 refute votes」顯示信心來自三組態抽取器的投票，是程式化訊號；但 Reference 層的「confidence: 0.97」來源未載明。
-來源：https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf（第 10、13、15、16、19、20 頁）；https://zenodo.org/records/22115456</p>
+來源：<a href="https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf">https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf</a>（第 10、13、15、16、19、20 頁）；<a href="https://zenodo.org/records/22115456">https://zenodo.org/records/22115456</a></p>
 <h3 id="57">5.7 可借用之處</h3>
 <ol>
 <li><strong>知態立場四欄位的設計</strong>（<code>claim_type</code>／<code>certainty_level</code>／<code>temporal_grounding</code>／<code>attribution_type</code>＋<code>is_negated</code>）是一組可直接參照的受控詞表，特別是 <code>attribution_type</code> 把 direct_quote、indirect_report、general_attribution 分開，對應我們的「來歷」（自述／他述／消息來源交代）。但要注意：對方這四欄是由模型判定的，我們的紅線是來歷由程式掃描線索詞，可以借用詞表、不借用做法。</li>
@@ -385,7 +403,7 @@ Workflows/               三張 .xmind 與對應 .svg、README.md
 <h2 id="6-medorah_ontology">6. MeDoraH_Ontology</h2>
 <h3 id="61">6.1 目的</h3>
 <p>README 自述為「MeDoraH 本體與綱要儲存庫」，目標與 MeDoraH_Project README 相同四項；FAIR 做法列持久識別碼、Dublin Core 與 FOAF、存取權資訊、出處資訊。README 列出的 <code>/extensions</code>（對映與對齊資源）與 <code>/tools</code>（工具腳本）兩個資料夾<strong>不存在</strong>。
-來源：https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/README.md</p>
+來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/README.md">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/README.md</a></p>
 <h3 id="62">6.2 目錄結構</h3>
 <pre><code>README.md
 MeDoraH Ontology - File.ttl                 檔案層本體（13.7 KB）
@@ -397,10 +415,10 @@ Related Resources/                          Oral History Projects.md、Review of
 documentation/Metadata/                     Initial Design of Metadata.md（2024-09-25）、File Schema Track.md、File Schema (Deprecated).md、Landscape_OH_Metadata_v1_MH (1).docx
 documentation/Ontology/                     MeDoraH Ontology Prototype (v0.1).md、v0.2.md
 </code></pre>
-<p>來源：https://api.github.com/repos/articoder/MeDoraH_Ontology/git/trees/main?recursive=1</p>
+<p>來源：<a href="https://api.github.com/repos/articoder/MeDoraH_Ontology/git/trees/main?recursive=1">https://api.github.com/repos/articoder/MeDoraH_Ontology/git/trees/main?recursive=1</a></p>
 <h3 id="63-issue">6.3 歷史、授權、issue</h3>
 <p>17 個 commit 全由 Jiajie Zhang 提交：2024-08-30 至 09-05 建立檔案綱要與本體初稿，2025-01-20 一次更新，2025-11-16 上傳本體原型文件，2026-01 至 05 四次更新（最後是 2026-05-11「Update turtle file」）。無 LICENSE。6 個 issue 全部處於開啟狀態，都是工作標籤（Metadata design for files、Metadata Review、Ontology design for interview content、Metadata literature review、Metadata Paper、Ontology Literature Review），只有 #1 有內文：「要為檔案和內容建模建一個大詞彙不切實際，兩者之間有一定連結就夠了」。
-來源：https://api.github.com/repos/articoder/MeDoraH_Ontology/commits ；https://api.github.com/repos/articoder/MeDoraH_Ontology/issues</p>
+來源：<a href="https://api.github.com/repos/articoder/MeDoraH_Ontology/commits">https://api.github.com/repos/articoder/MeDoraH_Ontology/commits</a> ；<a href="https://api.github.com/repos/articoder/MeDoraH_Ontology/issues">https://api.github.com/repos/articoder/MeDoraH_Ontology/issues</a></p>
 <h3 id="64-turtle">6.4 本體內容（三個 Turtle 檔）</h3>
 <h4 id="641-ontologyontology-prototype-v02ttl">6.4.1 內容層：<code>Ontology/Ontology Prototype V0.2.ttl</code></h4>
 <ul>
@@ -412,26 +430,26 @@ documentation/Ontology/                     MeDoraH Ontology Prototype (v0.1).md
 <li><strong>沒有 Statement、Claim、Evidence、Speaker 之類的類別。</strong> 本體的 <code>rdfs:comment</code> 明確說明：這是「entity-centric Fabula／Reference layer：受訪者談論的對象，而非敘事結構、立場或知態情態。宣稱、出處、信心與證據跨距應在 Claim 層、RDF-star 標注、具化陳述節點或互補的 SHACL／PROV-O 模型中建模」。亦即投影片裡的 Claims 層與 <code>medorah:Divergence</code> 類別<strong>不在已釋出的 TTL 裡</strong>。</li>
 <li><strong>時間表徵</strong>：<code>TemporalEntity</code> 是一個實體類別（「年、十年、時期、日期範圍」），只透過 <code>hasTimeExtent</code>（Event→TemporalEntity）掛在事件上；沒有 xsd:date／gYear 資料屬性，沒有區間起訖，沒有相對時間或不確定時間的表徵。</li>
 <li>與投影片的差異：投影片稱「22 classes（7 top-level + 15 sub）」，TTL 有 43 個具名類別。差異原因未載明，可能是投影片計算的是另一個版本。
-來源：https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl ；https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md</li>
+來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl</a> ；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md</a></li>
 </ul>
 <h4 id="642-medorah-ontology-filettl">6.4.2 檔案層：<code>MeDoraH Ontology - File.ttl</code></h4>
 <ul>
 <li>命名空間 <code>http://www.medorah.org/ontology#</code>（與內容層不同）。8 個自訂類別 <code>Interview</code>、<code>Interviewer</code>、<code>Interviewee</code>、<code>Project</code>、<code>Collection</code>、<code>AudioFile</code>、<code>TranscriptFile</code>、<code>SpeechSegment</code>，另宣告外部類別 <code>foaf:Person</code>、<code>dcterms:BibliographicResource</code>、<code>prov:Entity</code>。<code>Interview</code> 是 <code>dcterms:BibliographicResource</code> 與 <code>prov:Entity</code> 的子類；<code>Interviewer</code>／<code>Interviewee</code> 是 <code>foaf:Person</code> 的子類。</li>
 <li>10 個物件屬性（hasInterviewer、hasInterviewee、partOfProject、inCollection、hasAudioFile、hasTranscriptFile、hasSpeechSegment、speaker、audioFileReference、wasGeneratedBy）加 <code>prov:wasGeneratedBy</code>；38 個資料屬性。</li>
 <li><strong>時間碼在這一層</strong>：<code>SpeechSegment</code> 有 <code>startTime</code>／<code>endTime</code>（xsd:time）、<code>transcriptText</code>、<code>speaker</code>（→foaf:Person）、<code>audioFileReference</code>、<code>segmentIndex</code>、<code>synopsis</code>、<code>keywords</code>、<code>speechCharacteristics</code>。但 5.5 節的抽取 JSON 完全沒有用到這一層，兩層之間沒有連結屬性。
-來源：https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/MeDoraH%20Ontology%20-%20File.ttl</li>
+來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/MeDoraH%20Ontology%20-%20File.ttl">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/MeDoraH%20Ontology%20-%20File.ttl</a></li>
 </ul>
 <h4 id="643-metadata-vocabularyoh_metadata_vocab_v3ttl">6.4.3 中繼資料詞彙：<code>Metadata Vocabulary/OH_metadata_vocab_V3.ttl</code></h4>
 <ul>
 <li>標題「MeDoraH Oral History Metadata Vocabulary」3.0 版，命名空間 <code>http://hiddenhistories.net/oral_history_ontology/</code>，建立 2024-07-01、修改 2026-03-08；基於 Oral History Association Metadata Task Force 的「Metadata Elements for Oral History 1.1」。8 個類別：<code>Oral_History_Life_Cycle</code> 與四個階段子類 <code>PlanStage</code>、<code>InterviewStage</code>、<code>ProcessingStage</code>、<code>PublicationAccessStage</code>，加 <code>Person</code>、<code>Interviewer</code>、<code>Interviewee</code>；2 個物件屬性、27 個資料屬性（interviewDate、recordingDuration、transcriber、translator、processingTools、rights、orcid、viafID 等），對映到 <code>dc:</code>／<code>dcterms:</code> 詞彙。V2→V3 的差異是屬性改名與增刪（例如 <code>transcriberName</code>→<code>transcriber</code>，新增 <code>citation</code>、<code>rights</code>、<code>publisher</code>、<code>summary</code>）。</li>
 <li>這份詞彙對應 Humbel, Vlachidis, Zhang, Schmidt, Prishchepova, Nyhan &amp; Flinn (2026)〈Implementing FAIR principles for interoperable oral history collections through mappings to Dublin Core〉，MTSR 2025（2025-12-15 至 19，Thessaloniki），Springer CCIS，in press。UCL Discovery 頁被 Cloudflare 擋住未能讀取全文；搜尋摘要稱其「以 OHA 2022 年標準中立的中繼資料元素彙編為基礎，提出對映到 Dublin Core 的子集綱要」，另有搜尋結果提到該綱要「對齊 CIDOC-CRM、Dublin Core 與 PBCore」，但 TTL 裡只有 dc／dcterms，<strong>沒有 CRM 或 PBCore 的對映三元組</strong>。
-來源：https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V3.ttl ；https://discovery.ucl.ac.uk/id/eprint/10220832/（2026-10-05 回 403／Cloudflare 驗證頁）；https://www.ucl.ac.uk/institute-of-advanced-studies/events/2024/nov/oral-histories-metadata-usability-accessibility-and-interoperability</li>
+來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V3.ttl">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V3.ttl</a> ；<a href="https://discovery.ucl.ac.uk/id/eprint/10220832/">https://discovery.ucl.ac.uk/id/eprint/10220832/</a>（2026-10-05 回 403／Cloudflare 驗證頁）；<a href="https://www.ucl.ac.uk/institute-of-advanced-studies/events/2024/nov/oral-histories-metadata-usability-accessibility-and-interoperability">https://www.ucl.ac.uk/institute-of-advanced-studies/events/2024/nov/oral-histories-metadata-usability-accessibility-and-interoperability</a></li>
 </ul>
 <h3 id="65-network-analysishand-coded-data-based">6.5 手工編碼網絡資料（<code>Network Analysis/Hand Coded Data Based/</code>）</h3>
 <ul>
 <li><code>Palladio_Full/entity.csv</code> 366 筆：Type 分布 Institution 141、Person 128、Discipline 51、Software 20、Equipment 18、Method 8；欄位 <code>isFemale</code>、<code>Profession</code>、<code>Entity_Type</code>、<code>Entity_Country</code> 多數為編號 <code>99</code>（缺值）。<code>relationship.csv</code> 598 筆：<code>RelationType</code> 是 1 到 16 的數字編號（4 與 6 各 147 筆、14 有 78 筆），<code>RelationStartYear</code>／<code>RelationEndYear</code> 幾乎全為 99。<strong>沒有編號對照表</strong>，數字代表什麼關係儲存庫未載明。Judy Malloy 子集 64 實體／93 關係。</li>
 <li>投影片第 19 頁的「hand-coded '25：people recalled 124」與 entity.csv 的 Person 128 相近；這是論文裡「人工 vs LLM」對照的人工端。設計文件與 Text Mining 筆記提到人工編碼出自 Frieda（Schmidt）。
-來源：https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/entity.csv ；https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv</li>
+來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/entity.csv">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/entity.csv</a> ；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv</a></li>
 </ul>
 <h3 id="66-documentationontologymedorah-ontology-prototype-v02md">6.6 設計文件要點（<code>documentation/Ontology/MeDoraH Ontology Prototype v0.2.md</code>）</h3>
 <ul>
@@ -439,7 +457,7 @@ documentation/Ontology/                     MeDoraH Ontology Prototype (v0.1).md
 <li>§9.1「KG Population and Provenance」：每筆抽取關係應附來源（訪談、逐字稿、段落 id）、證據跨距（引文或位移）、抽取器中繼資料（方法／模型／提示版本）、信心與驗證狀態（自動＋人工審查）。<strong>這是規範性要求，釋出的資料裡只有前兩項</strong>（句 id 與證據句），模型與提示版本沒有落在任何公開檔案。</li>
 <li>§8 能力問題（competency questions）列了四組，但儲存庫沒有對應的 SPARQL 查詢或測試。</li>
 <li>§10.3 開放問題：studiedAt vs hasEducationIn 是否都要；事件地點能否是機構；人對人的 influences 與概念對概念的 conceptuallyInfluences 要在提示詞裡分清楚。
-來源：https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md</li>
+來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md</a></li>
 </ul>
 <h3 id="67">6.7 可借用之處</h3>
 <ol>
@@ -534,81 +552,81 @@ documentation/Ontology/                     MeDoraH Ontology Prototype (v0.1).md
 <hr>
 <h2 id="9">9. 來源清單</h2>
 <p>GitHub（2026-10-05 以 <code>gh api</code> 存取）
-- https://github.com/International-Digital-Oral-History-Lab
-- https://api.github.com/users/International-Digital-Oral-History-Lab
-- https://api.github.com/users/International-Digital-Oral-History-Lab/repos
-- https://github.com/International-Digital-Oral-History-Lab/MDOH_Project
-- https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MDOH_Project/main/README.md
-- https://github.com/International-Digital-Oral-History-Lab/MeDoraH_Project
-- https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MeDoraH_Project/main/README.md
-- https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/issues?state=all
-- https://github.com/articoder/MeDoraH_NLP
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/README.md
-- https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1
-- https://api.github.com/repos/articoder/MeDoraH_NLP/commits
-- https://api.github.com/repos/articoder/MeDoraH_NLP/branches
-- https://api.github.com/repos/articoder/MeDoraH_NLP/issues?state=all
-- https://api.github.com/repos/articoder/MeDoraH_NLP/releases
-- https://api.github.com/repos/articoder/MeDoraH_NLP/tags
-- https://github.com/articoder/MeDoraH_NLP/releases/download/v0.4.0/latest.json
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/transform_utterance_to_sentences.py
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/generate_previous_current_pairs.py
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Dashboard%20HTML%20Only/generate_report_modern.py
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Network%20Analysis/semantic_triple_analysis.py
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Claim%20Clustering_Report.py
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Cluster%20Assessment.py
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/HTML%20Clustering%20Report%20(HDBSCAN%2BGemini).py
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/HTML%20Clustering%20Report%20Generation.py
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Predicate%20with%20WordNet.py
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Pareto%20Front.py
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/spanbert_predicate_clustering.py
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/CLAUDE.md
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Agents.md
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Manual.md
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Top%20150%20Most%20Frequent%20Structural%20Pattern.txt
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Text%20Mining%20-%201st%20round%20with%20Comments.md
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Ontology%20Visualiser/MeDoraH%20Ontology%20Documentation%20V0.2%20Short.md
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/README.md
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_ButtomUp_Extraction.json
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_OntologyPopulation.json
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined_Interviews.json
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined.json
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Parallel%20Reading/README_PARALLEL_READING.md
-- https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/Segmented_Transcript_JSON/Julianne%20Nyhan_Judy%20Malloy.json
-- https://github.com/articoder/MeDoraH_Ontology
-- https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/README.md
-- https://api.github.com/repos/articoder/MeDoraH_Ontology/git/trees/main?recursive=1
-- https://api.github.com/repos/articoder/MeDoraH_Ontology/commits
-- https://api.github.com/repos/articoder/MeDoraH_Ontology/issues
-- https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl
-- https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/MeDoraH%20Ontology%20-%20File.ttl
-- https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V3.ttl
-- https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V2.ttl
-- https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md
-- https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Metadata/Initial%20Design%20of%20Metadata.md
-- https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Metadata/File%20Schema%20(Deprecated).md
-- https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Related%20Resources/Review%20of%20the%20Oral%20History%20Schemas.md
-- https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/entity.csv
-- https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv
-- https://api.github.com/users/articoder
-- https://api.github.com/users/articoder/repos
-- https://api.github.com/repos/youngsforever/NarraGraph（確認為無關的空儲存庫）</p>
+- <a href="https://github.com/International-Digital-Oral-History-Lab">https://github.com/International-Digital-Oral-History-Lab</a>
+- <a href="https://api.github.com/users/International-Digital-Oral-History-Lab">https://api.github.com/users/International-Digital-Oral-History-Lab</a>
+- <a href="https://api.github.com/users/International-Digital-Oral-History-Lab/repos">https://api.github.com/users/International-Digital-Oral-History-Lab/repos</a>
+- <a href="https://github.com/International-Digital-Oral-History-Lab/MDOH_Project">https://github.com/International-Digital-Oral-History-Lab/MDOH_Project</a>
+- <a href="https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MDOH_Project/main/README.md">https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MDOH_Project/main/README.md</a>
+- <a href="https://github.com/International-Digital-Oral-History-Lab/MeDoraH_Project">https://github.com/International-Digital-Oral-History-Lab/MeDoraH_Project</a>
+- <a href="https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MeDoraH_Project/main/README.md">https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/MeDoraH_Project/main/README.md</a>
+- <a href="https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/issues?state=all">https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project/issues?state=all</a>
+- <a href="https://github.com/articoder/MeDoraH_NLP">https://github.com/articoder/MeDoraH_NLP</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/README.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/README.md</a>
+- <a href="https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1">https://api.github.com/repos/articoder/MeDoraH_NLP/git/trees/main?recursive=1</a>
+- <a href="https://api.github.com/repos/articoder/MeDoraH_NLP/commits">https://api.github.com/repos/articoder/MeDoraH_NLP/commits</a>
+- <a href="https://api.github.com/repos/articoder/MeDoraH_NLP/branches">https://api.github.com/repos/articoder/MeDoraH_NLP/branches</a>
+- <a href="https://api.github.com/repos/articoder/MeDoraH_NLP/issues?state=all">https://api.github.com/repos/articoder/MeDoraH_NLP/issues?state=all</a>
+- <a href="https://api.github.com/repos/articoder/MeDoraH_NLP/releases">https://api.github.com/repos/articoder/MeDoraH_NLP/releases</a>
+- <a href="https://api.github.com/repos/articoder/MeDoraH_NLP/tags">https://api.github.com/repos/articoder/MeDoraH_NLP/tags</a>
+- <a href="https://github.com/articoder/MeDoraH_NLP/releases/download/v0.4.0/latest.json">https://github.com/articoder/MeDoraH_NLP/releases/download/v0.4.0/latest.json</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/transform_utterance_to_sentences.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/transform_utterance_to_sentences.py</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/generate_previous_current_pairs.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/generate_previous_current_pairs.py</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Dashboard%20HTML%20Only/generate_report_modern.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Dashboard%20HTML%20Only/generate_report_modern.py</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Network%20Analysis/semantic_triple_analysis.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Network%20Analysis/semantic_triple_analysis.py</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Claim%20Clustering_Report.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Claim%20Clustering_Report.py</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Cluster%20Assessment.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Cluster%20Assessment.py</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/HTML%20Clustering%20Report%20(HDBSCAN%2BGemini).py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/HTML%20Clustering%20Report%20(HDBSCAN%2BGemini).py</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/HTML%20Clustering%20Report%20Generation.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/HTML%20Clustering%20Report%20Generation.py</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Predicate%20with%20WordNet.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Predicate%20with%20WordNet.py</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Pareto%20Front.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/Pareto%20Front.py</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/spanbert_predicate_clustering.py">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Clustering/spanbert_predicate_clustering.py</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/CLAUDE.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/CLAUDE.md</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Agents.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Agents.md</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Manual.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Manual.md</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Top%20150%20Most%20Frequent%20Structural%20Pattern.txt">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Historical%20Entity%20Layer/Top%20150%20Most%20Frequent%20Structural%20Pattern.txt</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Text%20Mining%20-%201st%20round%20with%20Comments.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Text%20Mining%20-%201st%20round%20with%20Comments.md</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Ontology%20Visualiser/MeDoraH%20Ontology%20Documentation%20V0.2%20Short.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Ontology%20Visualiser/MeDoraH%20Ontology%20Documentation%20V0.2%20Short.md</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/README.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/README.md</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_ButtomUp_Extraction.json">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_ButtomUp_Extraction.json</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_OntologyPopulation.json">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_OntologyPopulation.json</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined_Interviews.json">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined_Interviews.json</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined.json">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Combined.json</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Parallel%20Reading/README_PARALLEL_READING.md">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Parallel%20Reading/README_PARALLEL_READING.md</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/Segmented_Transcript_JSON/Julianne%20Nyhan_Judy%20Malloy.json">https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/Preprocessing/Segmented_Transcript_JSON/Julianne%20Nyhan_Judy%20Malloy.json</a>
+- <a href="https://github.com/articoder/MeDoraH_Ontology">https://github.com/articoder/MeDoraH_Ontology</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/README.md">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/README.md</a>
+- <a href="https://api.github.com/repos/articoder/MeDoraH_Ontology/git/trees/main?recursive=1">https://api.github.com/repos/articoder/MeDoraH_Ontology/git/trees/main?recursive=1</a>
+- <a href="https://api.github.com/repos/articoder/MeDoraH_Ontology/commits">https://api.github.com/repos/articoder/MeDoraH_Ontology/commits</a>
+- <a href="https://api.github.com/repos/articoder/MeDoraH_Ontology/issues">https://api.github.com/repos/articoder/MeDoraH_Ontology/issues</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/MeDoraH%20Ontology%20-%20File.ttl">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/MeDoraH%20Ontology%20-%20File.ttl</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V3.ttl">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V3.ttl</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V2.ttl">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V2.ttl</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Metadata/Initial%20Design%20of%20Metadata.md">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Metadata/Initial%20Design%20of%20Metadata.md</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Metadata/File%20Schema%20(Deprecated).md">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Metadata/File%20Schema%20(Deprecated).md</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Related%20Resources/Review%20of%20the%20Oral%20History%20Schemas.md">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Related%20Resources/Review%20of%20the%20Oral%20History%20Schemas.md</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/entity.csv">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/entity.csv</a>
+- <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv</a>
+- <a href="https://api.github.com/users/articoder">https://api.github.com/users/articoder</a>
+- <a href="https://api.github.com/users/articoder/repos">https://api.github.com/users/articoder/repos</a>
+- <a href="https://api.github.com/repos/youngsforever/NarraGraph">https://api.github.com/repos/youngsforever/NarraGraph</a>（確認為無關的空儲存庫）</p>
 <p>IDOHL 網站
-- https://idohl.org/OpenSource-Release
-- https://idohl.org/
-- https://idohl.org/medorah/
-- https://idohl.org/MDOH/
-- https://idohl.org/team
-- https://idohl.org/resources-publications</p>
+- <a href="https://idohl.org/OpenSource-Release">https://idohl.org/OpenSource-Release</a>
+- <a href="https://idohl.org/">https://idohl.org/</a>
+- <a href="https://idohl.org/medorah/">https://idohl.org/medorah/</a>
+- <a href="https://idohl.org/MDOH/">https://idohl.org/MDOH/</a>
+- <a href="https://idohl.org/team">https://idohl.org/team</a>
+- <a href="https://idohl.org/resources-publications">https://idohl.org/resources-publications</a></p>
 <p>論文、投影片與紀錄
-- Zhang, J., Vlachidis, A., &amp; Nyhan, J. (2026). Hermeneutic Ontology Engineering: LLM-Assisted Schema Induction for Oral History Knowledge Organisation. NKOS Workshop, DCMI 2026, 2026-08-03, National Library of Korea, Seoul. 投影片 PDF：https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf ；工作坊頁（含摘要）：https://www.dublincore.org/conferences/2026/sessions/nkos-workshop/
-- Zhang, J., Vlachidis, A., Nyhan, J., &amp; Elleringmann, F. (2026). Modelling the memory of Digital Humanities through an LLM-driven hermeneutic framework. Presentation, DH2026, Daejeon, 2026-07-27 至 31. Zenodo, CC-BY-4.0. https://zenodo.org/records/22115456 ；DOI https://doi.org/10.5281/zenodo.22115457
-- Humbel, M., Vlachidis, A., Zhang, J., Schmidt, F., Prishchepova, V., Nyhan, J., &amp; Flinn, A. (2026). Implementing FAIR principles for interoperable oral history collections through mappings to Dublin Core. MTSR 2025, Springer CCIS, in press. https://discovery.ucl.ac.uk/id/eprint/10220832/（2026-10-05 無法讀取，HTTP 403）
-- Vlachidis, A., Zhang, J., &amp; Nyhan, J. (2026). Designing an Ontology of Memory and Recollection: Experiences from the Mixed Methods Digital Oral History (MeDoraH) project. https://discovery.ucl.ac.uk/id/eprint/10224816/（2026-10-05 無法讀取，HTTP 403）
-- Nyhan, J., &amp; Flinn, A. (2016). Computation and the Humanities: Towards an Oral History of Digital Humanities. Springer. https://doi.org/10.1007/978-3-319-20170-2
-- Smyth, H. K., Nyhan, J., &amp; Flinn, A. (2023). Exploring the possibilities of Thomson's fourth paradigm transformation: The case for a multimodal approach to digital oral history? Digital Scholarship in the Humanities, 38(2), 720–736. https://doi.org/10.1093/llc/fqac094
-- DFG, AHRC-DFG mixed methods 計畫清單：https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf（文字層無法抽出）</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+- Zhang, J., Vlachidis, A., &amp; Nyhan, J. (2026). Hermeneutic Ontology Engineering: LLM-Assisted Schema Induction for Oral History Knowledge Organisation. NKOS Workshop, DCMI 2026, 2026-08-03, National Library of Korea, Seoul. 投影片 PDF：<a href="https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf">https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf</a> ；工作坊頁（含摘要）：<a href="https://www.dublincore.org/conferences/2026/sessions/nkos-workshop/">https://www.dublincore.org/conferences/2026/sessions/nkos-workshop/</a>
+- Zhang, J., Vlachidis, A., Nyhan, J., &amp; Elleringmann, F. (2026). Modelling the memory of Digital Humanities through an LLM-driven hermeneutic framework. Presentation, DH2026, Daejeon, 2026-07-27 至 31. Zenodo, CC-BY-4.0. <a href="https://zenodo.org/records/22115456">https://zenodo.org/records/22115456</a> ；DOI <a href="https://doi.org/10.5281/zenodo.22115457">https://doi.org/10.5281/zenodo.22115457</a>
+- Humbel, M., Vlachidis, A., Zhang, J., Schmidt, F., Prishchepova, V., Nyhan, J., &amp; Flinn, A. (2026). Implementing FAIR principles for interoperable oral history collections through mappings to Dublin Core. MTSR 2025, Springer CCIS, in press. <a href="https://discovery.ucl.ac.uk/id/eprint/10220832/">https://discovery.ucl.ac.uk/id/eprint/10220832/</a>（2026-10-05 無法讀取，HTTP 403）
+- Vlachidis, A., Zhang, J., &amp; Nyhan, J. (2026). Designing an Ontology of Memory and Recollection: Experiences from the Mixed Methods Digital Oral History (MeDoraH) project. <a href="https://discovery.ucl.ac.uk/id/eprint/10224816/">https://discovery.ucl.ac.uk/id/eprint/10224816/</a>（2026-10-05 無法讀取，HTTP 403）
+- Nyhan, J., &amp; Flinn, A. (2016). Computation and the Humanities: Towards an Oral History of Digital Humanities. Springer. <a href="https://doi.org/10.1007/978-3-319-20170-2">https://doi.org/10.1007/978-3-319-20170-2</a>
+- Smyth, H. K., Nyhan, J., &amp; Flinn, A. (2023). Exploring the possibilities of Thomson's fourth paradigm transformation: The case for a multimodal approach to digital oral history? Digital Scholarship in the Humanities, 38(2), 720–736. <a href="https://doi.org/10.1093/llc/fqac094">https://doi.org/10.1093/llc/fqac094</a>
+- DFG, AHRC-DFG mixed methods 計畫清單：<a href="https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf">https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf</a>（文字層無法抽出）</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

@@ -4,21 +4,48 @@
 
 sources_root: ~/Developer
 site_title: Research Notes
-site_subtitle: 程明（Ming Cheng）的文獻筆記、團隊側寫與導讀投影片
-license_notice: 筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。
+site_subtitle: 程明（Ming Cheng）的文獻筆記、團隊側寫與導讀投影片，依研究線與待查問題分類
+license_notice: 筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。
 
-# 一、團隊與機構側寫：已是單檔 HTML，直接複製
+# ---------------------------------------------------------------- 分類
+# 首頁第一層是「研究線」，第二層是各線底下的區塊。extract_ohistory 的區塊沿用 refs.md 的
+# 九類待查問題（①～⑨），每篇文獻的主要問題取 refs.md 表格「問題」欄的第一個編號，其餘編號當標籤。
+research_lines:
+  - id: oral-history-extraction
+    title: 口述歷史的 LLM 知識抽取（extract_ohistory）
+    blurb: 從戰後臺灣流行音樂幕後人物的口述歷史逐字稿抽取人物、事件、關係與品味敘述；文獻依 refs.md 的九類待查問題歸檔。
+    groups: [索引與回顧, "①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨"]
+  - id: music-sna
+    title: 音樂社會網絡分析（SNA）
+    blurb: 以社會網絡分析研究音樂場景與幕後合作網絡；目前只有一份導讀投影片，後續筆記會加進來。
+    groups: [導讀投影片]
+
+questions:
+  "①": LLM 抽取與知識圖譜建構現況
+  "②": agentic 建構
+  "③": Agent Skills 與 harness 的出處
+  "④": 口述歷史與數位人文
+  "⑤": 無 gold standard 的評估
+  "⑥": 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）
+  "⑦": 零標注三元組抽取的參照點
+  "⑧": 本體學習與 schema 歸納
+  "⑨": 跨來源實體對齊
+
+# ---------------------------------------------------------------- 一、團隊與機構側寫：已是單檔 HTML，直接複製
 profiles:
   - src: extract_ohistory/refs/idohl_lab-profile_2026-10-05.html
     out: profiles/idohl-lab-profile-2026-10-05.html
     title: International Digital Oral History Lab（IDOHL）團隊側寫
     blurb: UCL 與 TU Darmstadt 合辦的數位口述歷史實驗室：團隊、年表、三個計畫、開源釋出、與 extract_ohistory 的對照、閱讀建議。
     date: 2026-10-05
+    group: "④"
+    tags: "④⑧⑤"
 
-# 二、文獻筆記（markdown → HTML）
+# ---------------------------------------------------------------- 二、文獻筆記（markdown → HTML）
 notes:
   src_dir: extract_ohistory/refs
   out_dir: notes
+  refs_index: refs.md            # 書目總表：每篇文獻的問題編號與書目欄位從這裡的表格解析
   # 八節深讀筆記：notes/*.md 裡不以底線開頭者，檔名維持原 stem
   eight_section_glob: notes/*.md
   # 索引、回顧、模板、調查報告：指定輸出檔名（ASCII）
@@ -37,12 +64,29 @@ notes:
       reason: 語料衍生（含受訪者原句的 KWIC），不屬筆記類
     - path: notes/講述者標記盤點_2026-09-04.txt
       reason: 語料盤點（受訪者名單），不屬筆記類
-  categories:
-    索引與回顧: [refs.html, review-2026-07.html, matrix.html, blockers.html, template.html]
-    IDOHL 調查報告（2026-10-05）: [idohl/01-team-history.html, idohl/02-three-projects.html, idohl/03-open-source-code.html, idohl/04-publications-related-work.html]
-    # 其餘都歸「文獻深讀筆記（八節）」
+  # 不屬任何待查問題的索引頁
+  index_group: 索引與回顧
+  index_pages: [refs.html, review-2026-07.html, matrix.html, blockers.html, template.html]
+  # refs.md 查不到問題編號、或要改歸類的來源檔（鍵為相對 src_dir 的路徑）
+  question_overrides:
+    notes/portelli2018_what-makes-oral-history-different.md: "④"
+    notes/mbakwe2009_review-vansina-oral-tradition.md: "④"
+    notes/vansina1985_oral-tradition-as-history.md: "④"
+    notes/idohl/01_團隊與歷史.md: "④"
+    notes/idohl/02_三個計畫.md: "④"
+    notes/idohl/03_開源釋出與程式碼.md: "④"
+    notes/idohl/04_出版與相關工作.md: "④"
 
-# 三、導讀投影片（Marp markdown → 公開版 HTML）
+# ---------------------------------------------------------------- 三、文獻庫（refs/ 的 PDF 原文）
+# 只上站 publish: true 且授權在 allowed_licenses 內的檔案（登錄與判定依據見 tools/documents.yaml）；
+# 其餘在文獻庫頁只列書目並連到原始出處。
+documents:
+  src_dir: extract_ohistory/refs
+  out_dir: papers
+  registry: tools/documents.yaml
+  allowed_licenses: [CC0 1.0, CC BY 4.0, CC BY-SA 4.0, CC BY-NC 4.0, CC BY-NC-SA 3.0, CC BY-NC-SA 4.0, CC BY-NC-ND 4.0]
+
+# ---------------------------------------------------------------- 四、導讀投影片（Marp markdown → 公開版 HTML）
 slides:
   - src_md: SLIDES/crossley2008_punk/crossley2008.md
     src_img_dir: SLIDES/crossley2008_punk/img
@@ -50,6 +94,7 @@ slides:
     title: Pretty Connected：早期英國 punk 的社會網絡（Crossley 2008 導讀）
     blurb: 實驗室週會的論文導讀投影片。公開版移除了出版社圖表與未授權照片，保留三張公眾領域或 CC 授權的照片。
     date: 2026-07-30
+    group: 導讀投影片
     # 公開版可保留的圖（公眾領域或 CC 授權），其餘 img/ 一律不複製、不引用
     keep_images:
       pistols_matlock_1976.jpg: "Koen Suyk／Anefo，荷蘭國家檔案館，CC0（Wikimedia Commons: Sex_Pistols_in_Paradiso.jpg）"

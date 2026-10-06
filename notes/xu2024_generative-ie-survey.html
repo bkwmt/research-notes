@@ -54,19 +54,37 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<p class="crumb"><a href="../index.html">Research Notes</a> › ① LLM 抽取與知識圖譜建構現況</p>
 <h1>xu2024_生成式資訊抽取綜述</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/xu2024_generative-ie-survey.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/xu2024_generative-ie-survey.md</code>　來源最後修改 2026-07-22　分類 ① LLM 抽取與知識圖譜建構現況　問題 <a class="qtag main" href="../index.html#q1" title="LLM 抽取與知識圖譜建構現況">①</a>　<a class="pdfbtn ext" href="https://arxiv.org/abs/2312.17617" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></p>
 </div></header>
 <main class="wrap">
 <ul>
-<li><strong>完整書目</strong>：Xu, D., Chen, W., Peng, W., Zhang, C., Xu, T., Zhao, X., Wu, X., Zheng, Y., Wang, Y., &amp; Chen, E. (2024). <em>Large Language Models for Generative Information Extraction: A Survey</em>. Frontiers of Computer Science（DOI: 10.1007/s11704-024-40555-y）. arXiv:2312.17617v3. 同儕審查（已被 FCS 接受）。</li>
+<li><strong>完整書目</strong>：Xu, D., Chen, W., Peng, W., Zhang, C., Xu, T., Zhao, X., Wu, X., Zheng, Y., Wang, Y., &amp; Chen, E. (2024). <em>Large Language Models for Generative Information Extraction: A Survey</em>. Frontiers of Computer Science（DOI: <a href="https://doi.org/10.1007/s11704-024-40555-y">10.1007/s11704-024-40555-y</a>）. <a href="https://arxiv.org/abs/2312.17617v3">arXiv:2312.17617v3</a>. 同儕審查（已被 FCS 接受）。</li>
 <li><strong>對應待查問題</strong>：①LLM 抽取／KG 建構現況（主）。附帶觸及 ③harness／agent 評估、⑤無 gold standard 評估（多為反面對照）。</li>
 <li><strong>一句話定位</strong>：這是第一篇專門盤點「用大型語言模型（Large Language Models, LLM）做生成式資訊抽取」的綜述，替本專案畫出整個技術地圖：主流怎麼定義任務、用什麼表示法、拿什麼資料與指標評估。它同時也反襯出本專案幾條方法論紅線（強制出處、不叫 LLM 自評、無 gold standard 的層級）在主流文獻裡幾乎是空白。</li>
 </ul>
@@ -160,7 +178,7 @@ img{max-width:100%;height:auto}
 <li><strong>紅線 4（推理過程落檔）</strong>：綜述層級不涉及，但本專案「中間產物全落 git」與它收錄的 self-consistency／多輪 QA 精神不衝突，差別在我們把過程留給人查核，而非交給 LLM 自我確認。</li>
 </ul>
 <p><strong>對「口述歷史、非三元組、強制出處」需求的整體判斷</strong>：這篇在「非三元組」上有正面參考價值（事件框架、屬性對、程式碼類別都不是純三元組），但在「口述歷史」與「強制出處」上幾乎交白卷——沒有口述語料、沒有出處欄位、沒有跨訪談消歧。換句話說，它把本專案要解的三個難題裡最難的兩個標成了主流的空白區。這既確認了本專案的定位價值，也提醒我們：這些環節的方法得自己設計，文獻能提供的多半只是任務骨架與反面教材。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

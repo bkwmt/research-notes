@@ -54,6 +54,24 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
@@ -67,7 +85,7 @@ img{max-width:100%;height:auto}
 <main class="wrap">
 <p>2026-07-20。本回顧回答三個問題：LLM 抽取知識圖譜目前的方法版圖長什麼樣；
 agentic 方法宣稱的優勢，證據到什麼程度；口述歷史語料的特殊條件（無 gold standard、
-口語文本、繁體中文）有哪些可借鑑的做法。完整書目見文末與 <code>refs.md</code>，
+口語文本、繁體中文）有哪些可借鑑的做法。完整書目見文末與 <a href="../notes/refs.html"><code>refs.md</code></a>，
 已下載的 PDF 在本資料夾。書目均經二次核實（含 DOI／arXiv 編號與作者名單）。</p>
 <h2 id="_1">一、從單次抽取到多步建構</h2>
 <p>LLM 時代的資訊抽取已經整合成「生成式抽取」（generative information extraction）
@@ -174,97 +192,97 @@ LLM 評審只做語意層的輔助訊號並報告偏誤處理方式。</p>
 <ul>
 <li>Xu, D., Chen, W., Peng, W., et al. (2024). Large Language Models for Generative
   Information Extraction: A Survey. <em>Frontiers of Computer Science</em>. 同儕審查。
-  arXiv:2312.17617。已下載（arXiv 版）。</li>
+  <a href="https://arxiv.org/abs/2312.17617">arXiv:2312.17617</a>。已下載（arXiv 版）。</li>
 <li>Pan, S., Luo, L., Wang, Y., et al. (2024). Unifying Large Language Models and
   Knowledge Graphs: A Roadmap. <em>IEEE Transactions on Knowledge and Data
-  Engineering</em>. 同儕審查。arXiv:2306.08302。已下載（arXiv 版）。</li>
+  Engineering</em>. 同儕審查。<a href="https://arxiv.org/abs/2306.08302">arXiv:2306.08302</a>。已下載（arXiv 版）。</li>
 <li>Edge, D., Trinh, H., Cheng, N., et al. (2024). From Local to Global: A Graph RAG
-  Approach to Query-Focused Summarization. arXiv:2404.16130。預印本，未經同儕審查
+  Approach to Query-Focused Summarization. <a href="https://arxiv.org/abs/2404.16130">arXiv:2404.16130</a>。預印本，未經同儕審查
   （Microsoft Research）。已下載。</li>
 <li>Mo, B., Yu, K., Kazdan, J., et al. (2025). KGGen: Extracting Knowledge Graphs
   from Plain Text with Language Models. NeurIPS 2025 (poster). 同儕審查。
-  arXiv:2502.09956。已下載（arXiv 版）。注意：arXiv 版（9 人）與 NeurIPS
+  <a href="https://arxiv.org/abs/2502.09956">arXiv:2502.09956</a>。已下載（arXiv 版）。注意：arXiv 版（9 人）與 NeurIPS
   頁面（7 人）作者名單不一致，正式引用時依 proceedings 名單。</li>
 <li>Bian, H. (2025). LLM-empowered Knowledge Graph Construction: A Survey.
-  arXiv:2510.20345。預印本，未經同儕審查。已下載。</li>
+  <a href="https://arxiv.org/abs/2510.20345">arXiv:2510.20345</a>。預印本，未經同儕審查。已下載。</li>
 </ul>
 <h3 id="agentic_1">Agentic 知識圖譜建構</h3>
 <ul>
 <li>Shi, Y., Jiang, G., Qiu, T., &amp; Yang, D. (2024). AgentRE: An Agent-Based Framework
   for Navigating Complex Information Landscapes in Relation Extraction. <em>CIKM '24</em>.
-  同儕審查。DOI:10.1145/3627673.3679791。arXiv:2409.01854。已下載（arXiv 版）。</li>
+  同儕審查。DOI:<a href="https://doi.org/10.1145/3627673.3679791">10.1145/3627673.3679791</a>。<a href="https://arxiv.org/abs/2409.01854">arXiv:2409.01854</a>。已下載（arXiv 版）。</li>
 <li>Lu, Y., Wu, W., Zhao, X., Peng, R., &amp; Wang, J. (2025). KARMA: Leveraging
   Multi-Agent LLMs for Automated Knowledge Graph Enrichment. NeurIPS 2025 (poster).
-  同儕審查。arXiv:2502.06472。已下載（arXiv 版）。</li>
+  同儕審查。<a href="https://arxiv.org/abs/2502.06472">arXiv:2502.06472</a>。已下載（arXiv 版）。</li>
 <li>Yang, R., Yang, B., Zhao, X., et al. (2025). Graphusion: A RAG Framework for
   Knowledge Graph Construction with a Global Perspective. <em>Companion Proceedings
   of the ACM Web Conference 2025</em> (NLP4KGC). 同儕審查。
-  DOI:10.1145/3701716.3717821。arXiv:2410.17600。已下載（arXiv 版）。</li>
+  DOI:<a href="https://doi.org/10.1145/3701716.3717821">10.1145/3701716.3717821</a>。<a href="https://arxiv.org/abs/2410.17600">arXiv:2410.17600</a>。已下載（arXiv 版）。</li>
 <li>Zhu, Y., Wang, X., Chen, J., et al. (2024). LLMs for Knowledge Graph Construction
   and Reasoning: Recent Capabilities and Future Opportunities. <em>World Wide Web
-  Journal</em>. 同儕審查。arXiv:2305.13168。已下載（arXiv 版）。</li>
+  Journal</em>. 同儕審查。<a href="https://arxiv.org/abs/2305.13168">arXiv:2305.13168</a>。已下載（arXiv 版）。</li>
 <li>Buehler, M. J. (2025). Agentic Deep Graph Reasoning Yields Self-Organizing
   Knowledge Networks. <em>Journal of Materials Research</em> 40(15), 2204–2242. 同儕審查。
-  DOI:10.1557/s43578-025-01652-1。arXiv:2502.13025。已下載（arXiv 版）。</li>
+  DOI:<a href="https://doi.org/10.1557/s43578-025-01652-1">10.1557/s43578-025-01652-1</a>。<a href="https://arxiv.org/abs/2502.13025">arXiv:2502.13025</a>。已下載（arXiv 版）。</li>
 <li>Li, J., Sun, Z., Zhou, Z., et al. (2025). Agentic-KGR: Co-evolutionary Knowledge
-  Graph Construction through Multi-Agent Reinforcement Learning. arXiv:2510.09156。
+  Graph Construction through Multi-Agent Reinforcement Learning. <a href="https://arxiv.org/abs/2510.09156">arXiv:2510.09156</a>。
   預印本，未經同儕審查。已下載。僅作趨勢佐證。</li>
 </ul>
 <h3 id="agent-skills-harness">Agent Skills 與 harness（業界文件，非同儕審查）</h3>
 <ul>
 <li>Anthropic (2025-10-16). Equipping Agents for the Real World with Agent Skills.
-  anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills</li>
+  <a href="https://anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills</a></li>
 <li>Anthropic (2025-11-26). Effective Harnesses for Long-Running Agents.
-  anthropic.com/engineering/effective-harnesses-for-long-running-agents</li>
+  <a href="https://anthropic.com/engineering/effective-harnesses-for-long-running-agents">anthropic.com/engineering/effective-harnesses-for-long-running-agents</a></li>
 <li>Anthropic (2025-09-29). Effective Context Engineering for AI Agents.
-  anthropic.com/engineering/effective-context-engineering-for-ai-agents</li>
+  <a href="https://anthropic.com/engineering/effective-context-engineering-for-ai-agents">anthropic.com/engineering/effective-context-engineering-for-ai-agents</a></li>
 <li>Anthropic (2024-12-19). Building Effective Agents.
-  anthropic.com/engineering/building-effective-agents</li>
+  <a href="https://anthropic.com/engineering/building-effective-agents">anthropic.com/engineering/building-effective-agents</a></li>
 <li>Yehudai, A., et al. (2025). Survey on Evaluation of LLM-based Agents.
-  arXiv:2503.16416。預印本，未經同儕審查。已下載。</li>
+  <a href="https://arxiv.org/abs/2503.16416">arXiv:2503.16416</a>。預印本，未經同儕審查。已下載。</li>
 </ul>
 <h3 id="_5">口述歷史與數位人文</h3>
 <ul>
 <li>Sun, Y., Yang, W., &amp; Liu, Y. (2024). The Application of Constructing Knowledge
   Graph of Oral Historical Archives Resources Based on LLM-RAG. <em>Proceedings of
-  ICISDM 2024</em> (ACM), 142–149. 同儕審查（會議）。DOI:10.1145/3686397.3686420。
+  ICISDM 2024</em> (ACM), 142–149. 同儕審查（會議）。DOI:<a href="https://doi.org/10.1145/3686397.3686420">10.1145/3686397.3686420</a>。
   付費牆，未下載。</li>
 <li>Cherukuri, K. S., Moses, P. A., Sakata, A., Chen, J., &amp; Chen, H. (2025). Large
   Language Models for Oral History Understanding with Text Classification and
-  Sentiment Analysis. arXiv:2508.06729。預印本，未經同儕審查。已下載。</li>
+  Sentiment Analysis. <a href="https://arxiv.org/abs/2508.06729">arXiv:2508.06729</a>。預印本，未經同儕審查。已下載。</li>
 <li>Chen, H., Kim, J., Chen, J., &amp; Sakata, A. (2024). Demystifying Oral History with
   Natural Language Processing and Data Analytics: A Case Study of the Densho
   Digital Collection. <em>The Electronic Library</em> 42(4), 643–663. 同儕審查。
-  DOI:10.1108/EL-12-2023-0303。付費牆，未下載。</li>
+  DOI:<a href="https://doi.org/10.1108/EL-12-2023-0303">10.1108/EL-12-2023-0303</a>。付費牆，未下載。</li>
 <li>Hiltmann, T., Dröge, M., Dresselhaus, N., et al. (2025). NER4all or Context is
   All You Need: Using LLMs for Low-Effort, High-Performance NER on Historical
-  Texts. A Humanities Informed Approach. arXiv:2502.04351。預印本，未經同儕審查。
+  Texts. A Humanities Informed Approach. <a href="https://arxiv.org/abs/2502.04351">arXiv:2502.04351</a>。預印本，未經同儕審查。
   已下載。</li>
 <li>Fang, Z., Wu, L.-C., Kong, X., &amp; Stewart, S. D. (2025). A Comparative Analysis of
   Word Segmentation, Part-of-Speech Tagging, and Named Entity Recognition for
-  Historical Chinese Sources, 1900–1950. arXiv:2503.19844。預印本，未經同儕審查。
+  Historical Chinese Sources, 1900–1950. <a href="https://arxiv.org/abs/2503.19844">arXiv:2503.19844</a>。預印本，未經同儕審查。
   已下載。</li>
 <li>Blouin, B., Armand, C., &amp; Henriot, C. (2024). A Dataset for Named Entity
   Recognition and Entity Linking in Chinese Historical Newspapers.
-  <em>LREC-COLING 2024</em>, 385–394. 同儕審查。aclanthology.org/2024.lrec-main.35。
+  <em>LREC-COLING 2024</em>, 385–394. 同儕審查。<a href="https://aclanthology.org/2024.lrec-main.35">aclanthology.org/2024.lrec-main.35</a>。
   已下載。</li>
 </ul>
 <h3 id="_6">評估</h3>
 <ul>
-<li>Gu, J., et al. (2024). A Survey on LLM-as-a-Judge. arXiv:2411.15594。預印本，
+<li>Gu, J., et al. (2024). A Survey on LLM-as-a-Judge. <a href="https://arxiv.org/abs/2411.15594">arXiv:2411.15594</a>。預印本，
   未經同儕審查。已下載。</li>
 <li>Strutz, S. (2026). A Multi-Dimensional Evaluation Framework for Assessing LLM
   Performance in TEI Encoding. <em>Journal of Open Humanities Data</em> 12(39). 同儕審查。
-  DOI:10.5334/johd.484。已下載。</li>
+  DOI:<a href="https://doi.org/10.5334/johd.484">10.5334/johd.484</a>。已下載。</li>
 <li>Mihindukulasooriya, N., et al. (2023). Text2KGBench: A Benchmark for
   Ontology-Driven Knowledge Graph Generation from Text. ISWC 2023 相關發表。
-  arXiv:2308.02357。已下載（arXiv 版）。</li>
+  <a href="https://arxiv.org/abs/2308.02357">arXiv:2308.02357</a>。已下載（arXiv 版）。</li>
 <li>Fang, Q., Garcia Bernardo, J., &amp; van Kesteren, E.-J. (2026). A Methodological
   Guide on Using Large Language Models for Reproducible Text Annotation in the
-  Social Sciences and Humanities with Python and R. arXiv:2604.09638 (v2)。
+  Social Sciences and Humanities with Python and R. <a href="https://arxiv.org/abs/2604.09638">arXiv:2604.09638</a> (v2)。
   預印本，未經同儕審查。已下載。</li>
 </ul>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

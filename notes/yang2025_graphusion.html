@@ -54,19 +54,37 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<p class="crumb"><a href="../index.html">Research Notes</a> › ② agentic 建構</p>
 <h1>yang2025_graphusion（Graphusion：帶全局視角的知識圖譜建構 RAG 框架）</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/yang2025_graphusion.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/yang2025_graphusion.md</code>　來源最後修改 2026-07-22　分類 ② agentic 建構　問題 <a class="qtag main" href="../index.html#q2" title="agentic 建構">②</a>　<a class="pdfbtn ext" href="https://arxiv.org/abs/2410.17600" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></p>
 </div></header>
 <main class="wrap">
 <ul>
-<li><strong>完整書目</strong>：Yang, R., Yang, B., Zhao, X., Gao, F., Feng, A., Ouyang, S., Blum, M., She, T., Jiang, Y., Lecue, F., Lu, J., &amp; Li, I. (2025). <em>Graphusion: A RAG Framework for Knowledge Graph Construction with a Global Perspective</em>. Companion Proceedings of the ACM Web Conference 2025（WWW '25 Companion, NLP4KGC workshop）. DOI:10.1145/3701716.3717821. arXiv:2410.17600v2. 同儕審查（workshop 論文）。</li>
+<li><strong>完整書目</strong>：Yang, R., Yang, B., Zhao, X., Gao, F., Feng, A., Ouyang, S., Blum, M., She, T., Jiang, Y., Lecue, F., Lu, J., &amp; Li, I. (2025). <em>Graphusion: A RAG Framework for Knowledge Graph Construction with a Global Perspective</em>. Companion Proceedings of the ACM Web Conference 2025（WWW '25 Companion, NLP4KGC workshop）. DOI:<a href="https://doi.org/10.1145/3701716.3717821">10.1145/3701716.3717821</a>. <a href="https://arxiv.org/abs/2410.17600v2">arXiv:2410.17600v2</a>. 同儕審查（workshop 論文）。</li>
 <li><strong>對應待查問題</strong>：②agentic 建構（兼及 ①LLM 抽取／KG 建構現況、⑤無 gold standard 評估）</li>
 <li><strong>一句話定位</strong>：這篇明白主張「既有 LLM 建 KG 的方法都停在逐句／逐段的局部視角，缺一道把知識合起來的融合步驟」，並提出一個先抽後融的三步流程；它批評 local 視角、把 global fusion 當品質關鍵的論證，正是本專案「逐篇訪談抽取後必須跨訪談整合」這一兩層設計的主要文獻依據。</li>
 </ul>
@@ -153,7 +171,7 @@ img{max-width:100%;height:auto}
 <li><strong>封閉七類關係、去時間、去主體立場的顆粒度不適用</strong>。口述歷史要保住時間、事件、以及受訪者的評價立場（goût），這些正是 Graphusion 為了做科學概念圖而刻意捨棄的東西。</li>
 </ul>
 <p><strong>與紅線的相容性總結</strong>：流程骨架（兩層、先抽後融）相容且是主要依據；評估姿態（無整圖 gold standard、不用 LLM 評審）相容；信心處理上它沒犯紅線二（沒叫 LLM 自評），但那是因為它根本沒有信心維度，本專案仍需自建程式化信心訊號。真正衝突的是表示法：<strong>它零出處、純三元組、抹除來源、去時間</strong>，全部與本專案「強制出處、混合結構、可追溯、保留分歧」的要求相反。結論是：借它的「為什麼要有 fusion」與「fusion 做哪三件事」，但 fusion 的實作方向要整個反過來——<strong>融合是為了把分散的出處匯總對齊，不是為了把它們合併掉。</strong></p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

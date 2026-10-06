@@ -54,19 +54,37 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<p class="crumb"><a href="../index.html">Research Notes</a> › ⑤ 無 gold standard 的評估</p>
 <h1>Gu 2024_LLM 當評審綜述</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/gu2024_llm-as-judge-survey.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/gu2024_llm-as-judge-survey.md</code>　來源最後修改 2026-07-22　分類 ⑤ 無 gold standard 的評估　問題 <a class="qtag main" href="../index.html#q5" title="無 gold standard 的評估">⑤</a>　<a class="pdfbtn" href="../papers/gu2024_llm-as-judge-survey.pdf" title="站內 PDF（CC0 1.0，9.8 MB）">原文 PDF</a></p>
 </div></header>
 <main class="wrap">
 <ul>
-<li><strong>完整書目</strong>：Gu, J., Jiang, X., Shi, Z., Tan, H., Zhai, X., Xu, C., Li, W., Shen, Y., Ma, S., Liu, H., Wang, S., Zhang, K., Lin, Z., Zhang, B., Ni, L., Gao, W., Wang, Y., &amp; Guo, J. (2024). <em>A Survey on LLM-as-a-Judge</em>. arXiv:2411.15594（v6, 2025-10-19）。預印本，未經同儕審查。</li>
+<li><strong>完整書目</strong>：Gu, J., Jiang, X., Shi, Z., Tan, H., Zhai, X., Xu, C., Li, W., Shen, Y., Ma, S., Liu, H., Wang, S., Zhang, K., Lin, Z., Zhang, B., Ni, L., Gao, W., Wang, Y., &amp; Guo, J. (2024). <em>A Survey on LLM-as-a-Judge</em>. <a href="https://arxiv.org/abs/2411.15594">arXiv:2411.15594</a>（v6, 2025-10-19）。預印本，未經同儕審查。</li>
 <li><strong>對應待查問題</strong>：⑤無 gold standard 評估（並旁及 ③harness／agent 評估）</li>
 <li><strong>一句話定位</strong>：這是「用大型語言模型（LLM）當評審」（LLM-as-a-Judge）這個做法的第一份系統性綜述，把散落的文獻整理成統一框架，重點回答「怎麼建立可信賴的 LLM 評審系統」；對本專案的意義在於它把 LLM 當評審會犯的各種偏誤、以及對付這些偏誤的手段，一次盤點清楚，正好用來檢驗本專案紅線 2（「絕不叫 LLM 自評信心分數」）站不站得住。</li>
 </ul>
@@ -163,7 +181,7 @@ img{max-width:100%;height:auto}
 - 紅線 3（強制附出處）：這篇完全沒有出處概念，無法提供正面借鑑，但它的「具體性偏誤／權威偏誤／引用偏誤會鼓勵腦補捏造」的發現，反過來論證了為什麼本專案必須把「出處有效性」當硬訊號——不驗出處，就是替模型的捏造背書。
 - 紅線 4（推理可追溯、中間產物落檔）：相容，且這篇的「附解釋反而更差」與「黑箱不透明」兩點，提醒本專案的可追溯必須靠程式化落檔，不能寄望模型自陳。</p>
 <p><strong>對「口述歷史、非三元組、強制出處」這個需求的參考價值</strong>：這篇在表示法與出處設計上幾乎給不出直接參考（它評的是回應品質，不碰知識結構，也沒有出處與時間欄位）。它的價值不在此，而在於它是一份「反面教材與界線圖」：它把 LLM 當評審會犯的每一種偏誤與每一種無效補救都標了出來，讓本專案能精確地說明——為什麼信心分數要走程式化訊號、LLM 只能待在外部查核的位置、以及查核本身該怎麼設計才不會掉回這篇指認的那些坑裡。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

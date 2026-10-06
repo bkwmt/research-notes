@@ -54,19 +54,37 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<p class="crumb"><a href="../index.html">Research Notes</a> › ⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）</p>
 <h1>Fan 2025_篇章層時間關係抽取：讓 LLM 抽出一致的時間結構</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/fan2025_discourse-temporal-relation-llm.md</code>　來源最後修改 2026-09-09　分類 文獻深讀筆記（八節）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/fan2025_discourse-temporal-relation-llm.md</code>　來源最後修改 2026-09-09　分類 ⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）　問題 <a class="qtag main" href="../index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="qtag" href="../index.html#q5" title="無 gold standard 的評估">⑤</a>　<a class="pdfbtn" href="../papers/fan2025_discourse-temporal-relation-llm.pdf" title="站內 PDF（CC BY 4.0，3.8 MB）">原文 PDF</a></p>
 </div></header>
 <main class="wrap">
 <ul>
-<li><strong>完整書目</strong>：Fan, Y., &amp; Strube, M. (2025). <em>Consistent Discourse-level Temporal Relation Extraction Using Large Language Models</em>. Findings of the Association for Computational Linguistics: EMNLP 2025, 18605–18622. Suzhou, China, 2025-11-04～09. ACL Anthology 編號 2025.findings-emnlp.1010（DOI 依 Anthology 慣例應為 10.18653/v1/2025.findings-emnlp.1010，PDF 內未印出，待查）。<strong>同儕審查（EMNLP Findings，非主會）</strong>。作者屬海德堡理論研究所（Heidelberg Institute for Theoretical Studies, HITS）。</li>
+<li><strong>完整書目</strong>：Fan, Y., &amp; Strube, M. (2025). <em>Consistent Discourse-level Temporal Relation Extraction Using Large Language Models</em>. Findings of the Association for Computational Linguistics: EMNLP 2025, 18605–18622. Suzhou, China, 2025-11-04～09. ACL Anthology 編號 <a href="https://aclanthology.org/2025.findings-emnlp.1010/">2025.findings-emnlp.1010</a>（DOI 依 Anthology 慣例應為 <a href="https://doi.org/10.18653/v1/2025.findings-emnlp.1010">10.18653/v1/2025.findings-emnlp.1010</a>，PDF 內未印出，待查）。<strong>同儕審查（EMNLP Findings，非主會）</strong>。作者屬海德堡理論研究所（Heidelberg Institute for Theoretical Studies, HITS）。</li>
 <li><strong>對應待查問題</strong>：⑥來歷標記／極性／時間記法（主：事件之間的相對時序）；⑤無 gold standard 評估（「一致性率」是不需標準答案的指標）；①LLM 抽取現況（零樣本 LLM 在時間關係上輸給微調小模型的證據）；旁及 ⑦零標注三元組抽取的參照點（8B 模型的表現數字）。</li>
 <li><strong>一句話定位</strong>：這篇處理的是「同一篇文章裡，事件 A 與事件 B 誰先誰後、誰包含誰」這種<strong>相對時序</strong>的判斷，而且事件對可以相隔十幾句；它的三招（縮小上下文、把「先後」拆成起點與終點的比較、用轉移性檢查抓矛盾再回頭修）正好對上本專案 <code>time_anchor.py</code> 做完絕對年代之後剩下的那 72.3% 沒年份的句子，以及「一致性」能不能當程式化可信度訊號這個問題。</li>
 </ul>
@@ -145,7 +163,7 @@ img{max-width:100%;height:auto}
 </ul>
 <p><strong>與表示法的關係。</strong> 這篇對「口述歷史、非三元組、強制出處」沒有可借的表示法：它不記出處、不記絕對時間、不記不確定。反而是我們的設計比它完整。唯一可補進我們結構的欄位是<strong>事件對之間的相對時序邊</strong>本身（<code>before</code>／<code>after</code>／<code>未說</code>，加上檢查結果與參與的三元組數），掛在 <code>build_network.py</code> 的邊上與 <code>年_最早</code>／<code>年_最晚</code>／<code>年_可信層</code> 並列，兩者互為異源查核的對象。</p>
 <p><strong>對本專案最重要的一個啟示</strong>：一致性檢查是本專案還沒用到的一種<strong>免標準答案、純程式、由多筆判斷互相牽制</strong>的可信度訊號，而且我們比論文多一個獨立來源（絕對年代）可以拿來查它。<strong>一個該避免的地方</strong>：不要拿模型重問去修矛盾，論文自己的消融顯示這一步在不微調時幾乎無效、在微調時會傷準確率。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

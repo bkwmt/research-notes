@@ -30,6 +30,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+## 文獻庫（`papers/`）的 PDF：各依其自身授權
+
+`papers/` 內的每份 PDF 都是第三方著作，依該著作自己的授權轉載（CC BY 4.0、CC BY-SA 4.0、CC BY-NC 4.0、
+CC BY-NC-SA 3.0／4.0、CC BY-NC-ND 4.0 或 CC0 1.0），每份的授權、判定依據與原始出處列在
+[文獻庫頁](papers/index.html) 與 `tools/documents.yaml`。沒有轉載授權的文獻（arXiv 非專屬散布授權、
+作者網頁、HAL、LDC、GitHub 無授權檔等）不放在本站，只列書目並連到原始出處。本站為非商業用途，
+轉載 NC 類授權的檔案時未做任何改作。若著作權人認為某份不應在此，請來信即撤。
+
 ## 不在本授權範圍內的東西
 
 - 被評述的論文、專書、簡報的原文與圖表，著作權屬原作者與出版社；筆記只做摘述與短引。

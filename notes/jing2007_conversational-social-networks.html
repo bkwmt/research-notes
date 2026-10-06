@@ -54,15 +54,33 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<p class="crumb"><a href="../index.html">Research Notes</a> › ⑦ 零標注三元組抽取的參照點</p>
 <h1>Jing 2007_從口述訪談轉寫抽社會網絡與傳記事實</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/jing2007_conversational-social-networks.md</code>　來源最後修改 2026-09-08　分類 文獻深讀筆記（八節）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/jing2007_conversational-social-networks.md</code>　來源最後修改 2026-09-08　分類 ⑦ 零標注三元組抽取的參照點　問題 <a class="qtag main" href="../index.html#q7" title="零標注三元組抽取的參照點">⑦</a>　<a class="pdfbtn" href="../papers/jing2007_conversational-social-networks.pdf" title="站內 PDF（CC BY-NC-SA 3.0，0.1 MB）">原文 PDF</a></p>
 </div></header>
 <main class="wrap">
 <ul>
@@ -191,8 +209,8 @@ img{max-width:100%;height:auto}
 <li><strong>邊 0.28–0.30，而且是在完整人工標注下</strong>。這是我們談自己的網絡品質時該擺在旁邊的參照點。<code>output/experiments/network/</code> 目前三層網絡沒有任何標注、也沒做代稱解析，數字只會更低。這不是壞消息，是<strong>把期待放回正確位置</strong>：這個任務本來就難，2007 年 IBM 用完整標注做到 0.3。</li>
 </ul>
 <p><strong>與四條紅線的相容性</strong>：紅線 2 完全相容（沒有任何模型自評，全靠程式化特徵與人工標準答案）；紅線 3 不相容（無出處，需自建）；紅線 1 有張力但性質可切割（它的人工標注是實體與關係的型別標注，不是我們拒絕的配對式消歧 gold standard）；紅線 4 未涉及。</p>
-<p><strong>與 <code>_卡點對照表.md</code> 的對應</strong>：第四節（主角線撐不住）、第二節（跨訪談併人）。這篇應該成為那兩節的主要依據。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<p><strong>與 <a href="../notes/blockers.html"><code>_卡點對照表.md</code></a> 的對應</strong>：第四節（主角線撐不住）、第二節（跨訪談併人）。這篇應該成為那兩節的主要依據。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

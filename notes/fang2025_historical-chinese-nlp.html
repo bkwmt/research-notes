@@ -54,19 +54,37 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<p class="crumb"><a href="../index.html">Research Notes</a> › ④ 口述歷史與數位人文</p>
 <h1>Fang 2025_歷史中文 NLP：LLM vs 傳統工具在斷詞／詞性／NER 的比較</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/fang2025_historical-chinese-nlp.md</code>　來源最後修改 2026-07-22　分類 文獻深讀筆記（八節）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/fang2025_historical-chinese-nlp.md</code>　來源最後修改 2026-07-22　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../index.html#q4" title="口述歷史與數位人文">④</a>　<a class="pdfbtn" href="../papers/fang2025_historical-chinese-nlp.pdf" title="站內 PDF（CC BY 4.0，0.4 MB）">原文 PDF</a></p>
 </div></header>
 <main class="wrap">
 <ul>
-<li><strong>完整書目</strong>：Fang, Z., Wu, L.-C., Kong, X., &amp; Stewart, S. D. 2025. <em>A Comparative Analysis of Word Segmentation, Part-of-Speech Tagging, and Named Entity Recognition for Historical Chinese Sources, 1900–1950</em>. arXiv:2503.19844（v1, 2025-03-25）。預印本，未經同儕審查。</li>
+<li><strong>完整書目</strong>：Fang, Z., Wu, L.-C., Kong, X., &amp; Stewart, S. D. 2025. <em>A Comparative Analysis of Word Segmentation, Part-of-Speech Tagging, and Named Entity Recognition for Historical Chinese Sources, 1900–1950</em>. <a href="https://arxiv.org/abs/2503.19844">arXiv:2503.19844</a>（v1, 2025-03-25）。預印本，未經同儕審查。</li>
 <li><strong>對應待查問題</strong>：④口述歷史／數位人文（兼涉 ①LLM 抽取現況、⑤無 gold standard 評估的反面對照）</li>
 <li><strong>一句話定位</strong>：這篇拿 1900–1950 年上海圖書館「民國期刊語料」的繁體中文史料，把六種傳統中文 NLP 工具和七款 LLM 放在斷詞、詞性標註、命名實體辨識三個任務上正面對打，結論是 LLM 全面勝出但成本高得多。它直接回答了本專案最關心的問題：拿現成 LLM 處理年代久遠、用語變動的中文文本，到底靠不靠得住。</li>
 </ul>
@@ -126,7 +144,7 @@ img{max-width:100%;height:auto}
 - 紅線 3（強制附出處）：這篇<strong>沒有</strong>出處欄位設計可借，因為它任務層次不到跨文本。本專案的出處需求仍要自己扛。
 - 紅線 4（可追溯）：這篇是單次呼叫、無中間產物，也無可借鑑的落檔設計。</p>
 <p><strong>表示法層面的參考價值</strong>：有限。它的 <code>{text, pos, ent}</code> 扁平 token 結構與本專案「實體／事件／關係／goût＋出處」的混合結構差距很大，不是三元組也不是我們要的框架。但它的 <strong>prompt 設計哲學</strong>（明令不刪改原文、不腦補、輸出固定 JSON、附範例）值得直接沿用到 srt-extract 的指令裡，尤其「Do not remove any text」這種對抗 LLM 自作主張的護欄，與本專案「寧多勿漏、忠於原文」的詳細抽取原則同向。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

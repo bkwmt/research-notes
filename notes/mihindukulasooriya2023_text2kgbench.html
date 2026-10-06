@@ -54,19 +54,37 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<p class="crumb"><a href="../index.html">Research Notes</a> › ⑤ 無 gold standard 的評估</p>
 <h1>Mihindukulasooriya 等人 2023_Text2KGBench：本體約束下從文本生成知識圖譜的評測基準</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/mihindukulasooriya2023_text2kgbench.md</code>　來源最後修改 2026-10-06　分類 文獻深讀筆記（八節）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/mihindukulasooriya2023_text2kgbench.md</code>　來源最後修改 2026-10-06　分類 ⑤ 無 gold standard 的評估　問題 <a class="qtag main" href="../index.html#q5" title="無 gold standard 的評估">⑤</a>　<a class="pdfbtn" href="../papers/mihindukulasooriya2023_text2kgbench.pdf" title="站內 PDF（CC BY 4.0，1.6 MB）">原文 PDF</a></p>
 </div></header>
 <main class="wrap">
 <ul>
-<li><strong>完整書目</strong>：Mihindukulasooriya, N., Tiwari, S., Enguix, C. F., &amp; Lata, K. (2023). <em>Text2KGBench: A Benchmark for Ontology-Driven Knowledge Graph Generation from Text</em>. The Semantic Web – ISWC 2023（第 22 屆國際語意網會議，Resources Track）。arXiv:2308.02357v1。DOI: 10.5281/zenodo.7916716（資料集）。同儕審查（ISWC 2023 資源論文，已通過審查；arXiv 版標為 A Preprint）。</li>
+<li><strong>完整書目</strong>：Mihindukulasooriya, N., Tiwari, S., Enguix, C. F., &amp; Lata, K. (2023). <em>Text2KGBench: A Benchmark for Ontology-Driven Knowledge Graph Generation from Text</em>. The Semantic Web – ISWC 2023（第 22 屆國際語意網會議，Resources Track）。<a href="https://arxiv.org/abs/2308.02357v1">arXiv:2308.02357v1</a>。DOI: <a href="https://doi.org/10.5281/zenodo.7916716">10.5281/zenodo.7916716</a>（資料集）。同儕審查（ISWC 2023 資源論文，已通過審查；arXiv 版標為 A Preprint）。</li>
 <li><strong>對應待查問題</strong>：⑤無 gold standard 評估（兼及 ①LLM 抽取／KG 建構現況）。</li>
 <li><strong>一句話定位</strong>：這篇提出一套評測，量「給定一份本體（ontology，描述某領域有哪些概念、哪些關係、關係兩端該接什麼類型的正式規格）與若干句子，語言模型能不能只用本體允許的關係把句子裡的事實抽成三元組」。它的關鍵貢獻是把評估拆成三個可各自量化的面向——抽對了沒、有沒有守本體、有沒有幻覺——其中「本體符合度」與「幻覺」兩項只靠比對本體與句子本身即可算出，不必替整份語料備妥人工標準答案。這正好對得上本專案「無 gold standard」的立場。</li>
 </ul>
@@ -155,7 +173,7 @@ img{max-width:100%;height:auto}
 <li><strong>語料性質差太遠</strong>：乾淨英文百科句 vs. 中文口述訪談。這篇的幻覺子字串比對在本專案語境幾乎必然失效，只能借「三面向拆解」的架構思想，比對演算法要重做。</li>
 </ol>
 <p><strong>一句話總結對本專案的價值</strong>：Text2KGBench 證明了「本體／schema 符合度」與「以來源為準的幻覺檢查」這兩個指標可以純程式化計算、只需抽樣核對、無需替整份語料標答案。這正是本專案在事件層與關係層「沒有 gold standard」時，仍能給出可量化品質訊號的一條現成路子；而本專案因為強制附出處、又有人工實體名冊，其實比這篇更有本錢把這條路走得更嚴謹。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

@@ -2,651 +2,1548 @@
  "profiles/idohl-lab-profile-2026-10-05.html": {
   "kind": "profile",
   "title": "International Digital Oral History Lab（IDOHL）團隊側寫",
-  "category": "團隊與機構側寫",
+  "group": "④",
+  "tags": "④⑧⑤",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "UCL 與 TU Darmstadt 合辦的數位口述歷史實驗室：團隊、年表、三個計畫、開源釋出、與 extract_ohistory 的對照、閱讀建議。",
+  "doc": null,
   "source": "extract_ohistory/refs/idohl_lab-profile_2026-10-05.html",
   "source_sha256": "b3ef83d07bbc3d179e62f20decea10d01bfafba59a68da00a5c9bcc0148d798a",
   "source_mtime": "2026-10-05",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/refs.html": {
   "kind": "note",
   "title": "refs 總表（extract_ohistory 文獻庫）",
+  "group": "索引與回顧",
+  "tags": "",
   "category": "索引與回顧",
   "blurb": "",
+  "doc": null,
   "source": "extract_ohistory/refs/refs.md",
   "source_sha256": "32849b8391af11b3dec187779576087e5a49373307eb2f9f4fa6ddcc09306c94",
   "source_mtime": "2026-10-05",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/review-2026-07.html": {
   "kind": "note",
   "title": "文獻回顧：LLM 知識抽取與 agentic harness（extract_ohistory 轉向依據）",
+  "group": "索引與回顧",
+  "tags": "",
   "category": "索引與回顧",
   "blurb": "",
+  "doc": null,
   "source": "extract_ohistory/refs/文獻回顧_2026-07.md",
   "source_sha256": "d45820fc6daa5a472e6ee180c1a824ccfa82dbbf625849450a449fc43eaff31d",
   "source_mtime": "2026-07-20",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/matrix.html": {
   "kind": "note",
   "title": "跨文獻對照矩陣（20 份深讀筆記彙整）",
+  "group": "索引與回顧",
+  "tags": "",
   "category": "索引與回顧",
   "blurb": "",
+  "doc": null,
   "source": "extract_ohistory/refs/notes/_對照矩陣.md",
   "source_sha256": "76d2d146be6a68fe4a8f63864e4f2a74b730097a41ebfcf481b74a31687f6256",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/blockers.html": {
   "kind": "note",
   "title": "卡點對照表：實驗撞到的問題 → 前人已有的方法",
+  "group": "索引與回顧",
+  "tags": "",
   "category": "索引與回顧",
   "blurb": "",
+  "doc": null,
   "source": "extract_ohistory/refs/notes/_卡點對照表.md",
   "source_sha256": "77684f8502b5a59c8652777049989ae714065b33b86a1ac76ff7e986a7de6b45",
   "source_mtime": "2026-09-08",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/template.html": {
   "kind": "note",
   "title": "深讀筆記：模板與撰寫說明（給閱讀 agent）",
+  "group": "索引與回顧",
+  "tags": "",
   "category": "索引與回顧",
   "blurb": "",
+  "doc": null,
   "source": "extract_ohistory/refs/notes/_筆記模板與說明.md",
   "source_sha256": "4f82a5ed4a9e25770629e3c23c41374f3368473ace91446ba3f9ebb5021356f1",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/idohl/01-team-history.html": {
   "kind": "note",
   "title": "IDOHL 團隊與歷史：International Digital Oral History Lab（UCL × TU Darmstadt）",
-  "category": "IDOHL 調查報告（2026-10-05）",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": null,
   "source": "extract_ohistory/refs/notes/idohl/01_團隊與歷史.md",
   "source_sha256": "3d98028819db563d0ce78cd4156e7b87bc6096d9ec6624908f00a6fcb1fb6605",
   "source_mtime": "2026-10-05",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/idohl/02-three-projects.html": {
   "kind": "note",
   "title": "IDOHL 三個研究計畫調查報告：Hidden Histories、MDOH、MeDoraH",
-  "category": "IDOHL 調查報告（2026-10-05）",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": null,
   "source": "extract_ohistory/refs/notes/idohl/02_三個計畫.md",
   "source_sha256": "08e70d42b620a8b17f53b84e03679d94657c27aa8951f89fb2f797539a876634",
   "source_mtime": "2026-10-05",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/idohl/03-open-source-code.html": {
   "kind": "note",
   "title": "IDOHL 開源釋出與程式碼調查",
-  "category": "IDOHL 調查報告（2026-10-05）",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": null,
   "source": "extract_ohistory/refs/notes/idohl/03_開源釋出與程式碼.md",
   "source_sha256": "74fd37e045b350b2250d959e341dafa74009f5c40b670c98f9343598ff26b3a8",
   "source_mtime": "2026-10-06",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/idohl/04-publications-related-work.html": {
   "kind": "note",
   "title": "IDOHL 出版品與相關工作",
-  "category": "IDOHL 調查報告（2026-10-05）",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": null,
   "source": "extract_ohistory/refs/notes/idohl/04_出版與相關工作.md",
   "source_sha256": "9685f3bc3ee3d88dd28eaa896014a763e81636a26b4b37972f940300fcb63162",
   "source_mtime": "2026-10-05",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/aikhenvald2007_information-source.html": {
   "kind": "note",
   "title": "Aikhenvald 2007 — 訊息來源與言據性：我們能下什麼結論？",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "aikhenvald2007_information-source.pdf",
+   "internal": true,
+   "license": "CC BY-NC-ND 4.0"
+  },
   "source": "extract_ohistory/refs/notes/aikhenvald2007_information-source.md",
   "source_sha256": "dff736cfc46f457f2c0522719d9d2d054d38317f20479b71a2b9c343472115a0",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/airoldi2024_nested-relationality-taste-hierarchies.html": {
   "kind": "note",
   "title": "Airoldi 2024_用數位痕跡繪製品味階序的巢狀關係性",
-  "category": "文獻深讀筆記（八節）",
+  "group": "④",
+  "tags": "④⑥⑤",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": {
+   "name": "airoldi2024_nested-relationality-taste-hierarchies.pdf",
+   "internal": true,
+   "license": "CC BY-NC-ND 4.0"
+  },
   "source": "extract_ohistory/refs/notes/airoldi2024_nested-relationality-taste-hierarchies.md",
   "source_sha256": "3e9bae8a30a7f570c24d174b0fe28beb68b2cbfd925e4e063a2ed077c7d1a0da",
   "source_mtime": "2026-09-09",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/bai2025_autoschemakg.html": {
   "kind": "note",
   "title": "Bai 2025_AutoSchemaKG：從語料自動長出 schema 的知識圖譜建構",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑧",
+  "tags": "⑧",
+  "category": "⑧ 本體學習與 schema 歸納",
   "blurb": "",
+  "doc": {
+   "name": "bai2025_autoschemakg.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/bai2025_autoschemakg.md",
   "source_sha256": "59df776fa328825692e977b77122bc5583c463b338731f4732d9ab538f4315d6",
   "source_mtime": "2026-09-08",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/baumann2026_graded-conceptualization-taste.html": {
   "kind": "note",
   "title": "baumann2026_graded-conceptualization-taste",
-  "category": "文獻深讀筆記（八節）",
+  "group": "④",
+  "tags": "④⑥",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": {
+   "name": "baumann2026_graded-conceptualization-taste.pdf",
+   "internal": true,
+   "license": "CC BY-NC-ND 4.0"
+  },
   "source": "extract_ohistory/refs/notes/baumann2026_graded-conceptualization-taste.md",
   "source_sha256": "cd864d843c911d9c0d98a55a94003dfcb6237a78c12f050192d2de67db120ff2",
   "source_mtime": "2026-09-09",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/bian2025_llm-kgc-survey.html": {
   "kind": "note",
   "title": "bian2025_LLM 賦能的知識圖譜建構綜述",
-  "category": "文獻深讀筆記（八節）",
+  "group": "①",
+  "tags": "①",
+  "category": "① LLM 抽取與知識圖譜建構現況",
   "blurb": "",
+  "doc": {
+   "name": "bian2025_llm-kgc-survey.pdf",
+   "internal": false,
+   "license": "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  },
   "source": "extract_ohistory/refs/notes/bian2025_llm-kgc-survey.md",
   "source_sha256": "2d4ec3e88f711650bd5f528c08183cf9b0400dea9cfbd6c693c91ef5e955b796",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/blouin2024_chinese-newspapers-ner.html": {
   "kind": "note",
   "title": "Blouin 2024_中文歷史報刊的 NER 與實體連結資料集",
-  "category": "文獻深讀筆記（八節）",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": {
+   "name": "blouin2024_chinese-newspapers-ner.pdf",
+   "internal": true,
+   "license": "CC BY-NC 4.0"
+  },
   "source": "extract_ohistory/refs/notes/blouin2024_chinese-newspapers-ner.md",
   "source_sha256": "b87ce2334430c3571ee2b82eb492d0e264adfe6be384e3129517bd45bce0f831",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/buehler2025_agentic-graph-reasoning.html": {
   "kind": "note",
   "title": "buehler2025_agentic-graph-reasoning",
-  "category": "文獻深讀筆記（八節）",
+  "group": "②",
+  "tags": "②",
+  "category": "② agentic 建構",
   "blurb": "",
+  "doc": {
+   "name": "buehler2025_agentic-graph-reasoning.pdf",
+   "internal": true,
+   "license": "CC BY-NC-ND 4.0"
+  },
   "source": "extract_ohistory/refs/notes/buehler2025_agentic-graph-reasoning.md",
   "source_sha256": "70e22ef1c0b5306742f7b512cb2de4f5e343801bdffd23822db5def9c10c2cd6",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/chang2025_evidential-hierarchy-certainty.html": {
   "kind": "note",
   "title": "Chang 2025 — 從讀者確定度檢測中文言據類別的階層",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "chang2025_evidential-hierarchy-certainty.pdf",
+   "internal": true,
+   "license": "CC BY-NC 4.0"
+  },
   "source": "extract_ohistory/refs/notes/chang2025_evidential-hierarchy-certainty.md",
   "source_sha256": "eeac20b7c859755a29c04d1e32969d15fe438badcbda4b4510c1a49f4f691cc1",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/chappell2001_sinitic-evidential.html": {
   "kind": "note",
   "title": "Chappell 2001 — 漢語系語言言據標記的類型學（經驗體「過」作為言據詞）",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "chappell2001_sinitic-evidential.pdf",
+   "internal": false,
+   "license": "HAL 作者存放授權（hal-authorisation-v1，非 CC）"
+  },
   "source": "extract_ohistory/refs/notes/chappell2001_sinitic-evidential.md",
   "source_sha256": "509066f803a78dae1f0ea2c9b5a3a90d459da9c75ae8d2438addc99d1d962fbd",
   "source_mtime": "2026-10-06",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/cherukuri2025_oral-history-llm.html": {
   "kind": "note",
   "title": "Cherukuri 2025_LLM 做口述歷史的文本分類與情感分析",
-  "category": "文獻深讀筆記（八節）",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": {
+   "name": "cherukuri2025_oral-history-llm.pdf",
+   "internal": false,
+   "license": "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  },
   "source": "extract_ohistory/refs/notes/cherukuri2025_oral-history-llm.md",
   "source_sha256": "91d6263194ae84ba13dc95075bd5033e310cb1cba78f54634a99ab6bd9d6a7c0",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/chiang2021_hakka-say-verb.html": {
   "kind": "note",
   "title": "江敏華 2021 — 臺灣客語言說動詞「話」的語法化與詞彙化",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "chiang2021_hakka-say-verb.pdf",
+   "internal": false,
+   "license": "中研院語言所網站上傳，未標示轉載授權（論文集）"
+  },
   "source": "extract_ohistory/refs/notes/chiang2021_hakka-say-verb.md",
   "source_sha256": "f7c61099c179c21149fb5601dca316c65005f4741daedd60c5519b54004b5ba2",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/edge2024_graphrag.html": {
   "kind": "note",
   "title": "Edge 2024_GraphRAG：先建圖再做社群摘要的全域問答",
-  "category": "文獻深讀筆記（八節）",
+  "group": "①",
+  "tags": "①",
+  "category": "① LLM 抽取與知識圖譜建構現況",
   "blurb": "",
+  "doc": {
+   "name": "edge2024_graphrag.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/edge2024_graphrag.md",
   "source_sha256": "b1bb75e09bd322d61ee6a767d765c1cfd82b9b927beb7142f1baf81ef1a7171d",
   "source_mtime": "2026-10-06",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/faller2002_cuzco-quechua-evidentials.html": {
   "kind": "note",
   "title": "Faller 2002 — 庫斯科蓋丘亞語言據詞的語意與語用",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "faller2002_cuzco-quechua-evidentials.pdf",
+   "internal": false,
+   "license": "作者保留著作權（博士論文，PDF 扉頁 © Martina T. Faller 2002）"
+  },
   "source": "extract_ohistory/refs/notes/faller2002_cuzco-quechua-evidentials.md",
   "source_sha256": "1eaaab5fddfb1f005c9c0e6d1e816ad13261f4bcddf7c856b430eb212c58a41e",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/fan2025_discourse-temporal-relation-llm.html": {
   "kind": "note",
   "title": "Fan 2025_篇章層時間關係抽取：讓 LLM 抽出一致的時間結構",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥⑤",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "fan2025_discourse-temporal-relation-llm.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/fan2025_discourse-temporal-relation-llm.md",
   "source_sha256": "53e7e68494a1ec8cfc71404559a70b4b57be8a97a2d8de13eaf93f9cd0837aa3",
   "source_mtime": "2026-09-09",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/fang2025_historical-chinese-nlp.html": {
   "kind": "note",
   "title": "Fang 2025_歷史中文 NLP：LLM vs 傳統工具在斷詞／詞性／NER 的比較",
-  "category": "文獻深讀筆記（八節）",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": {
+   "name": "fang2025_historical-chinese-nlp.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/fang2025_historical-chinese-nlp.md",
   "source_sha256": "802d5f94539d06eb6a2ae2faaef44e002e1a7d90e5a0e35e276b13065bca3dc2",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/fang2026_reproducible-annotation-guide.html": {
   "kind": "note",
   "title": "Fang 2026_用 LLM 做可重現文本標註的方法指南（人文社科）",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑤",
+  "tags": "⑤",
+  "category": "⑤ 無 gold standard 的評估",
   "blurb": "",
+  "doc": {
+   "name": "fang2026_reproducible-annotation-guide.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/fang2026_reproducible-annotation-guide.md",
   "source_sha256": "f10b628eaffd0306d7b9d04909e4ab4e77a1c20f7155e7687950aaa012a5bca4",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/gao2026_fluid-user-preferences.html": {
   "kind": "note",
   "title": "Gao 2026_流動的使用者偏好：穩定偏好與情境偏好的二分，以及 S2Pref 資料集",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥⑤",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "gao2026_fluid-user-preferences.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/gao2026_fluid-user-preferences.md",
   "source_sha256": "23e4d0670433e21c534591f8db1874198b556601a53104d76e40f4dfae2a1c0a",
   "source_mtime": "2026-09-09",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/gashteovski2022_benchie.html": {
   "kind": "note",
   "title": "Gashteovski 2022_BenchIE：以事實為單位的開放式抽取評估",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑦",
+  "tags": "⑦",
+  "category": "⑦ 零標注三元組抽取的參照點",
   "blurb": "",
+  "doc": {
+   "name": "gashteovski2022_benchie.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/gashteovski2022_benchie.md",
   "source_sha256": "612b9fd5822b0ca2101a1b6f0d5a92f9be3cb537c2ac727e06cd43c93414a2d7",
   "source_mtime": "2026-09-08",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/gu2024_llm-as-judge-survey.html": {
   "kind": "note",
   "title": "Gu 2024_LLM 當評審綜述",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑤",
+  "tags": "⑤",
+  "category": "⑤ 無 gold standard 的評估",
   "blurb": "",
+  "doc": {
+   "name": "gu2024_llm-as-judge-survey.pdf",
+   "internal": true,
+   "license": "CC0 1.0"
+  },
   "source": "extract_ohistory/refs/notes/gu2024_llm-as-judge-survey.md",
   "source_sha256": "37af09b1ec5bab5635cbd6cbc54b1a9ccf20e3b6ba0c94e7f1e8145845cc5a87",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/hiltmann2025_ner4all.html": {
   "kind": "note",
   "title": "Hiltmann 2025_NER4all：把歷史脈絡寫進 prompt 就能做好 NER",
-  "category": "文獻深讀筆記（八節）",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": {
+   "name": "hiltmann2025_ner4all.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/hiltmann2025_ner4all.md",
   "source_sha256": "b6a9bd9706157da39371e1a7d8ccaca03defb5cead462666ca95dcdf41b046fd",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/huang2003_doubts-complementation.html": {
   "kind": "note",
   "title": "Huang 2003 — 對補語結構的懷疑：功能學派的分析（台灣華語口語的覺得、記得、知道）",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "huang2003_doubts-complementation.pdf",
+   "internal": false,
+   "license": "中研院語言所期刊網站免費下載，未標示轉載授權"
+  },
   "source": "extract_ohistory/refs/notes/huang2003_doubts-complementation.md",
   "source_sha256": "8f6ce885ec444022b2818377a7f2898e85d3a4095954dffd3c0bd9a93c43d9d7",
   "source_mtime": "2026-10-06",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/jing2007_conversational-social-networks.html": {
   "kind": "note",
   "title": "Jing 2007_從口述訪談轉寫抽社會網絡與傳記事實",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑦",
+  "tags": "⑦",
+  "category": "⑦ 零標注三元組抽取的參照點",
   "blurb": "",
+  "doc": {
+   "name": "jing2007_conversational-social-networks.pdf",
+   "internal": true,
+   "license": "CC BY-NC-SA 3.0"
+  },
   "source": "extract_ohistory/refs/notes/jing2007_conversational-social-networks.md",
   "source_sha256": "bbb8ddb77a15164e0c1439aeadb6c9a693a9a7dd43a17729e6312a950d2bc2c2",
   "source_mtime": "2026-09-08",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/ldc2005_ace-english-events-guidelines.html": {
   "kind": "note",
   "title": "ldc2005_ace-english-events-guidelines",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "ldc2005_ace-english-events-guidelines.pdf",
+   "internal": false,
+   "license": "LDC 標注規範，未標示轉載授權"
+  },
   "source": "extract_ohistory/refs/notes/ldc2005_ace-english-events-guidelines.md",
   "source_sha256": "eb8df5a09aadaea12329d0c55a289f232ce4f6cc2ecea37b4e70e93674e2b77c",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/li2025_agentic-kgr.html": {
   "kind": "note",
   "title": "li2025_agentic-kgr",
-  "category": "文獻深讀筆記（八節）",
+  "group": "②",
+  "tags": "②",
+  "category": "② agentic 建構",
   "blurb": "",
+  "doc": {
+   "name": "li2025_agentic-kgr.pdf",
+   "internal": true,
+   "license": "CC BY-NC-ND 4.0"
+  },
   "source": "extract_ohistory/refs/notes/li2025_agentic-kgr.md",
   "source_sha256": "740e4af2c6a24fe45d5ee5a735c5611ccf3b93dec18f9f956e6a676353770c7d",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/liu2024_openie-survey.html": {
   "kind": "note",
   "title": "Liu 2024_開放式資訊抽取綜述：從規則式模型到大型語言模型",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑧",
+  "tags": "⑧①",
+  "category": "⑧ 本體學習與 schema 歸納",
   "blurb": "",
+  "doc": {
+   "name": "liu2024_openie-survey.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/liu2024_openie-survey.md",
   "source_sha256": "04ecb598b46015f99391b423344b183b55ec7503f0bd5ce12f0a4ecda3d1e574",
   "source_mtime": "2026-09-08",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/liu2026_odl-templlm-temporal-reasoning.html": {
   "kind": "note",
   "title": "Liu 2026_ODL-TempLLM：本體引導＋描述邏輯推理的時間推論",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥⑧",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "liu2026_odl-templlm-temporal-reasoning.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/liu2026_odl-templlm-temporal-reasoning.md",
   "source_sha256": "4ff9f9e6dd756c2ef9bd3a295bdfac0c7572458fe003f3aba5eb9fd01b90d23f",
   "source_mtime": "2026-09-09",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/loc2019_edtf-spec.html": {
   "kind": "note",
   "title": "loc2019_edtf-spec",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": null,
   "source": "extract_ohistory/refs/notes/loc2019_edtf-spec.md",
   "source_sha256": "8c4b5098bd12b50a3d59e9ffdb7bae225a530e2c0e93c7502ab0222a6c68fa99",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/lu2025_karma.html": {
   "kind": "note",
   "title": "lu2025_karma — KARMA：用多智能體 LLM 自動擴充知識圖譜",
-  "category": "文獻深讀筆記（八節）",
+  "group": "②",
+  "tags": "②",
+  "category": "② agentic 建構",
   "blurb": "",
+  "doc": {
+   "name": "lu2025_karma.pdf",
+   "internal": false,
+   "license": "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  },
   "source": "extract_ohistory/refs/notes/lu2025_karma.md",
   "source_sha256": "12e576762d141b1d554cf830b4ee60c398f44fd69ec1b96df0eae11dc6c4a0dd",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/mbakwe2009_review-vansina-oral-tradition.html": {
   "kind": "note",
   "title": "mbakwe2009_review-vansina-oral-tradition",
-  "category": "文獻深讀筆記（八節）",
+  "group": "④",
+  "tags": "④⑥",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": {
+   "name": "mbakwe2009_review-vansina-oral-tradition.pdf",
+   "internal": false,
+   "license": "INJODEMAR 期刊整期 PDF，未標示轉載授權"
+  },
   "source": "extract_ohistory/refs/notes/mbakwe2009_review-vansina-oral-tradition.md",
   "source_sha256": "9e9d11b7c07a9f0be1c75ddca132ce032ce0df732d44b3915d7d86774bf45441",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/mihindukulasooriya2023_text2kgbench.html": {
   "kind": "note",
   "title": "Mihindukulasooriya 等人 2023_Text2KGBench：本體約束下從文本生成知識圖譜的評測基準",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑤",
+  "tags": "⑤",
+  "category": "⑤ 無 gold standard 的評估",
   "blurb": "",
+  "doc": {
+   "name": "mihindukulasooriya2023_text2kgbench.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/mihindukulasooriya2023_text2kgbench.md",
   "source_sha256": "222c584fce5fc8d55252520a3b881ae0b400b59bcdf30f55ae365cdf275a42d7",
   "source_mtime": "2026-10-06",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/mintz2009_distant-supervision.html": {
   "kind": "note",
   "title": "Mintz 2009_遠距監督：不用標注資料的關係抽取",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑦",
+  "tags": "⑦",
+  "category": "⑦ 零標注三元組抽取的參照點",
   "blurb": "",
+  "doc": {
+   "name": "mintz2009_distant-supervision.pdf",
+   "internal": true,
+   "license": "CC BY-NC-SA 3.0"
+  },
   "source": "extract_ohistory/refs/notes/mintz2009_distant-supervision.md",
   "source_sha256": "d3c89e77e8365a183b786c5435ae8fd29efcbf00537e12906165e1c97e3f7cdf",
   "source_mtime": "2026-09-08",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/mo2025_kggen.html": {
   "kind": "note",
   "title": "Mo 等人 2025_KGGen：用語言模型從純文字抽取知識圖譜",
-  "category": "文獻深讀筆記（八節）",
+  "group": "①",
+  "tags": "①⑤",
+  "category": "① LLM 抽取與知識圖譜建構現況",
   "blurb": "",
+  "doc": {
+   "name": "mo2025_kggen.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/mo2025_kggen.md",
   "source_sha256": "4626a3d9883ab9a4cd5f6bff2b26dd79220337888224803fe71d52341ed5c58a",
   "source_mtime": "2026-10-06",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/niu2024_contempo-temporal-relation-extraction.html": {
   "kind": "note",
   "title": "Niu 2024_ConTempo：用對比學習教模型分清「之前」與「之後」的時間關係抽取",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "niu2024_contempo-temporal-relation-extraction.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/niu2024_contempo-temporal-relation-extraction.md",
   "source_sha256": "d31a57c1c77f65b13a1da58d5ff091e11ba792b169862754c559660ad95f65c1",
   "source_mtime": "2026-09-09",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/pan2024_llm-kg-roadmap.html": {
   "kind": "note",
   "title": "pan2024_LLM 與知識圖譜統一路線圖",
-  "category": "文獻深讀筆記（八節）",
+  "group": "①",
+  "tags": "①",
+  "category": "① LLM 抽取與知識圖譜建構現況",
   "blurb": "",
+  "doc": {
+   "name": "pan2024_llm-kg-roadmap.pdf",
+   "internal": false,
+   "license": "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  },
   "source": "extract_ohistory/refs/notes/pan2024_llm-kg-roadmap.md",
   "source_sha256": "1ce8199f73ecc6283721373b55d2a3e8138def32b6b9cd02a7ba28d87c520699",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/papaluca2024_zero-few-shot-kg-triplets.html": {
   "kind": "note",
   "title": "Papaluca 2024_零／少樣本的知識圖譜三元組抽取",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑧",
+  "tags": "⑧⑦",
+  "category": "⑧ 本體學習與 schema 歸納",
   "blurb": "",
+  "doc": {
+   "name": "papaluca2024_zero-few-shot-kg-triplets.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/papaluca2024_zero-few-shot-kg-triplets.md",
   "source_sha256": "2622023bcd85312b3553b1d755deb0097d3972761f606b3e0bfa59cec1272eca",
   "source_mtime": "2026-09-08",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/peper2024_shoes-acosi-implicit-opinion.html": {
   "kind": "note",
   "title": "Peper 2024_Shoes-ACOSI：把「沒有評價詞的評價」圈成一段原文",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥⑤",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "peper2024_shoes-acosi-implicit-opinion.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/peper2024_shoes-acosi-implicit-opinion.md",
   "source_sha256": "ebf3133aefb584a8956b05ed3595836379c5640fd233dbfade238f8b3ba408a4",
   "source_mtime": "2026-09-09",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/portelli2018_what-makes-oral-history-different.html": {
   "kind": "note",
   "title": "portelli2018_what-makes-oral-history-different",
-  "category": "文獻深讀筆記（八節）",
+  "group": "④",
+  "tags": "④⑥",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": {
+   "name": "portelli2018_what-makes-oral-history-different.pdf",
+   "internal": true,
+   "license": "CC BY-SA 4.0"
+  },
   "source": "extract_ohistory/refs/notes/portelli2018_what-makes-oral-history-different.md",
   "source_sha256": "f09f0fe7862a3a815ea87406f611320a99d696d4db47744577f144295e6ca133",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/rasmussen2025_zep-temporal-kg.html": {
   "kind": "note",
   "title": "Rasmussen 2025_Zep：時序知識圖譜當 agent 的記憶層",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑧",
+  "tags": "⑧⑥",
+  "category": "⑧ 本體學習與 schema 歸納",
   "blurb": "",
+  "doc": {
+   "name": "rasmussen2025_zep-temporal-kg.pdf",
+   "internal": true,
+   "license": "CC BY-NC-SA 4.0"
+  },
   "source": "extract_ohistory/refs/notes/rasmussen2025_zep-temporal-kg.md",
   "source_sha256": "70bf853248bbf87e700b8f482b7699fe1bf521354ed764399a45f45980a9d4f0",
   "source_mtime": "2026-09-08",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/sauri2008_double-layered-factuality.html": {
   "kind": "note",
   "title": "sauri2008_double-layered-factuality",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "sauri2008_double-layered-factuality.pdf",
+   "internal": false,
+   "license": "作者網頁提供，未標示轉載授權（LREC 2008 LAW workshop）"
+  },
   "source": "extract_ohistory/refs/notes/sauri2008_double-layered-factuality.md",
   "source_sha256": "3ad2467d0a5403ad692f57eb95334d7b7605e59b8a19b7b1dad6c5247341f58f",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/sauri2008_factbank-annotation-guidelines.html": {
   "kind": "note",
   "title": "sauri2008_factbank-annotation-guidelines",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "sauri2008_factbank-annotation-guidelines.pdf",
+   "internal": false,
+   "license": "作者網頁提供，未標示轉載授權（Brandeis 技術文件）"
+  },
   "source": "extract_ohistory/refs/notes/sauri2008_factbank-annotation-guidelines.md",
   "source_sha256": "efd7d267217e2dd93a902836d231747f669f3b1c3bdc608f5aa050ca652097b2",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/sauri2008_factuality-profiler-phd.html": {
   "kind": "note",
   "title": "sauri2008_factuality-profiler-phd",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "sauri2008_factuality-profiler-phd.pdf",
+   "internal": false,
+   "license": "作者網頁提供，未標示轉載授權（Brandeis 博士論文）"
+  },
   "source": "extract_ohistory/refs/notes/sauri2008_factuality-profiler-phd.md",
   "source_sha256": "51cf54563d8fc2a4bbb3ad9ffb33be244bb64b8ed497d8d5deddbbb1d11365a8",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/sauri2009_factbank-corpus-documentation.html": {
   "kind": "note",
   "title": "sauri2009_factbank-corpus-documentation",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "sauri2009_factbank-corpus-documentation.pdf",
+   "internal": false,
+   "license": "LDC 語料文件，未標示轉載授權"
+  },
   "source": "extract_ohistory/refs/notes/sauri2009_factbank-corpus-documentation.md",
   "source_sha256": "be382bd7462f39517d8ca25882bab674cf50323511c9c0ab353d10112fb871b5",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/shi2024_agentre.html": {
   "kind": "note",
   "title": "shi2024_agentre：AgentRE，一個給關係抽取用的 agent 框架",
-  "category": "文獻深讀筆記（八節）",
+  "group": "②",
+  "tags": "②",
+  "category": "② agentic 建構",
   "blurb": "",
+  "doc": {
+   "name": "shi2024_agentre.pdf",
+   "internal": false,
+   "license": "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  },
   "source": "extract_ohistory/refs/notes/shi2024_agentre.md",
   "source_sha256": "fb6af5efa6bf12167da197fcc2de2f3c41a7e7c4ba7b76fd7f28a1abf9d11e21",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/stankovic2026_tei-ner-interview-corpus.html": {
   "kind": "note",
   "title": "stankovic2026_tei-ner-interview-corpus：把訪談語料編成 TEI、接上 Wikidata、再用文本計量讀它",
-  "category": "文獻深讀筆記（八節）",
+  "group": "④",
+  "tags": "④⑨⑤",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": {
+   "name": "stankovic2026_tei-ner-interview-corpus.pdf",
+   "internal": true,
+   "license": "CC BY-NC 4.0"
+  },
   "source": "extract_ohistory/refs/notes/stankovic2026_tei-ner-interview-corpus.md",
   "source_sha256": "a3f7828add5fadb838b9058d4c35a547e3fdacb3027c0f35f8310d1e56959609",
   "source_mtime": "2026-10-06",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/strutz2026_tei-eval.html": {
   "kind": "note",
   "title": "strutz2026_tei-eval：LLM 做 TEI 編碼的多維度評估框架",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑤",
+  "tags": "⑤",
+  "category": "⑤ 無 gold standard 的評估",
   "blurb": "",
+  "doc": {
+   "name": "strutz2026_tei-eval.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/strutz2026_tei-eval.md",
   "source_sha256": "43bf4a8a57477eba4917c138e9bd266ba8d1af53a26c1c598e671f4abe754f9c",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/su2025_transformer-temporal-ie-review.html": {
   "kind": "note",
   "title": "su2025_transformer-temporal-ie-review",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥⑤",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "su2025_transformer-temporal-ie-review.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/su2025_transformer-temporal-ie-review.md",
   "source_sha256": "df276c32ef04186150c12985f50c2e0f18b89a9765d2ae1f29e450065cd8ffb0",
   "source_mtime": "2026-09-09",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/usumi2026_prepper-preference-profiling.html": {
   "kind": "note",
   "title": "usumi2026_PrePPER 偏好模式人物側寫",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑥",
+  "tags": "⑥⑤",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
   "blurb": "",
+  "doc": {
+   "name": "usumi2026_prepper-preference-profiling.pdf",
+   "internal": true,
+   "license": "CC BY-NC 4.0"
+  },
   "source": "extract_ohistory/refs/notes/usumi2026_prepper-preference-profiling.md",
   "source_sha256": "78482b6b0cd1129c0024c959d4f1d457e6e1cf2be7848e04d47af8cb24ec9bae",
   "source_mtime": "2026-09-09",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/vansina1985_oral-tradition-as-history.html": {
   "kind": "note",
   "title": "vansina1985_oral-tradition-as-history",
-  "category": "文獻深讀筆記（八節）",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": null,
   "source": "extract_ohistory/refs/notes/vansina1985_oral-tradition-as-history.md",
   "source_sha256": "7bd61f9bad610905fadb9c430be6270890051e7962fb61eccae57bb85b1ee699",
   "source_mtime": "2026-08-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/vlachidis_medorah-ontology-memory-recollection.html": {
   "kind": "note",
   "title": "vlachidis_medorah-ontology-memory-recollection",
-  "category": "文獻深讀筆記（八節）",
+  "group": "④",
+  "tags": "④⑧",
+  "category": "④ 口述歷史與數位人文",
   "blurb": "",
+  "doc": {
+   "name": "vlachidis_medorah-ontology-memory-recollection.pdf",
+   "internal": false,
+   "license": "GitHub 儲存庫未附授權檔（license: null）"
+  },
   "source": "extract_ohistory/refs/notes/vlachidis_medorah-ontology-memory-recollection.md",
   "source_sha256": "ac3678787889811bd33d262b626d68e93e1f846fd142ca9a9e457c5578a26a7e",
   "source_mtime": "2026-10-05",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/xu2024_generative-ie-survey.html": {
   "kind": "note",
   "title": "xu2024_生成式資訊抽取綜述",
-  "category": "文獻深讀筆記（八節）",
+  "group": "①",
+  "tags": "①",
+  "category": "① LLM 抽取與知識圖譜建構現況",
   "blurb": "",
+  "doc": {
+   "name": "xu2024_generative-ie-survey.pdf",
+   "internal": false,
+   "license": "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  },
   "source": "extract_ohistory/refs/notes/xu2024_generative-ie-survey.md",
   "source_sha256": "389888df5f98e2f1fbfe3187122fff807dc0c4bc20669ba481130bb2effda833",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/yang2025_graphusion.html": {
   "kind": "note",
   "title": "yang2025_graphusion（Graphusion：帶全局視角的知識圖譜建構 RAG 框架）",
-  "category": "文獻深讀筆記（八節）",
+  "group": "②",
+  "tags": "②",
+  "category": "② agentic 建構",
   "blurb": "",
+  "doc": {
+   "name": "yang2025_graphusion.pdf",
+   "internal": false,
+   "license": "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  },
   "source": "extract_ohistory/refs/notes/yang2025_graphusion.md",
   "source_sha256": "79b715a76b358bea653ba26f322ec484f8bbebe24ca20a478e903cca6581e9f0",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/yehudai2025_agent-eval-survey.html": {
   "kind": "note",
   "title": "Yehudai 2025_LLM agent 評估綜述",
-  "category": "文獻深讀筆記（八節）",
+  "group": "③",
+  "tags": "③⑤",
+  "category": "③ Agent Skills 與 harness 的出處",
   "blurb": "",
+  "doc": {
+   "name": "yehudai2025_agent-eval-survey.pdf",
+   "internal": true,
+   "license": "CC BY-NC-SA 4.0"
+  },
   "source": "extract_ohistory/refs/notes/yehudai2025_agent-eval-survey.md",
   "source_sha256": "0933077fb238f2acabc712df4567946dae5c38d3eb9a0c1fc6a267cb012581eb",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/yu2020_dialogre.html": {
   "kind": "note",
   "title": "Yu 2020_DialogRE：對話關係抽取",
-  "category": "文獻深讀筆記（八節）",
+  "group": "⑦",
+  "tags": "⑦",
+  "category": "⑦ 零標注三元組抽取的參照點",
   "blurb": "",
+  "doc": {
+   "name": "yu2020_dialogre.pdf",
+   "internal": true,
+   "license": "CC BY 4.0"
+  },
   "source": "extract_ohistory/refs/notes/yu2020_dialogre.md",
   "source_sha256": "5d4d9536891651465564345457745f18462cabeede0775c1ecafffacb29eb0e1",
   "source_mtime": "2026-09-08",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "notes/zhu2024_autokg.html": {
   "kind": "note",
   "title": "zhu2024_autokg — LLM 於知識圖譜建構與推理的能力評測，兼提 AutoKG 多代理構想",
-  "category": "文獻深讀筆記（八節）",
+  "group": "②",
+  "tags": "②",
+  "category": "② agentic 建構",
   "blurb": "",
+  "doc": {
+   "name": "zhu2024_autokg.pdf",
+   "internal": false,
+   "license": "arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載）"
+  },
   "source": "extract_ohistory/refs/notes/zhu2024_autokg.md",
   "source_sha256": "7b1969235823413444c3a22d371bcf3b514cecebda382825a0e54cc32f3a0d1d",
   "source_mtime": "2026-07-22",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
  },
  "slides/crossley2008-pretty-connected/index.html": {
   "kind": "slides",
   "title": "Pretty Connected：早期英國 punk 的社會網絡（Crossley 2008 導讀）",
+  "group": "導讀投影片",
+  "tags": "",
   "category": "導讀投影片",
   "blurb": "實驗室週會的論文導讀投影片。公開版移除了出版社圖表與未授權照片，保留三張公眾領域或 CC 授權的照片。",
+  "doc": null,
   "source": "SLIDES/crossley2008_punk/crossley2008.md",
   "source_sha256": "0bb858ae46b230baf1c384f777aae39d96eb7f809fa72663db756b44628871ef",
   "source_mtime": "2026-07-30",
-  "built_at": "2026-10-06T05:04:11"
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/aikhenvald2007_information-source.pdf": {
+  "kind": "pdf",
+  "title": "Aikhenvald (2007) Information source and evidentiality",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
+  "blurb": "CC BY-NC-ND 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/aikhenvald2007_information-source.pdf",
+  "source_sha256": "bfa03077e56a3d68c5ff9c87bf1a6651063066c16b88ebb5ba860260b23f6d8d",
+  "source_mtime": "2026-08-22",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/airoldi2024_nested-relationality-taste-hierarchies.pdf": {
+  "kind": "pdf",
+  "title": "Airoldi (2024) 巢狀關係性的品味階序；「類比邊」＝拿誰當比較對象",
+  "group": "④",
+  "tags": "④⑥⑤",
+  "category": "④ 口述歷史與數位人文",
+  "blurb": "CC BY-NC-ND 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/airoldi2024_nested-relationality-taste-hierarchies.pdf",
+  "source_sha256": "bc0b0e036174c91c81df80de1e008ac9d5c7c6bb6fb9fdabaad8f30a0bc446f8",
+  "source_mtime": "2026-09-09",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/babaeigiglou2023_llms4ol.pdf": {
+  "kind": "pdf",
+  "title": "Babaei Giglou, D'Souza & Auer (2023) LLMs4OL：LLM 做本體學習",
+  "group": "⑧",
+  "tags": "⑧",
+  "category": "⑧ 本體學習與 schema 歸納",
+  "blurb": "CC BY-SA 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/babaeigiglou2023_llms4ol.pdf",
+  "source_sha256": "586ea4a177d57a8e2893afafdec6b4004f7dd0b5047f07c534dd174b2fd623a7",
+  "source_mtime": "2026-09-08",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/bai2025_autoschemakg.pdf": {
+  "kind": "pdf",
+  "title": "Bai et al. (2025) AutoSchemaKG（動態 schema 歸納）",
+  "group": "⑧",
+  "tags": "⑧",
+  "category": "⑧ 本體學習與 schema 歸納",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/bai2025_autoschemakg.pdf",
+  "source_sha256": "2458f88afb84deb945561d2280d1aba11285ee0015cf6b9a93689034689a6a09",
+  "source_mtime": "2026-09-08",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/baumann2026_graded-conceptualization-taste.pdf": {
+  "kind": "pdf",
+  "title": "Baumann & Price (2026) 品味的分級概念（純理論；三軸五列）",
+  "group": "④",
+  "tags": "④⑥",
+  "category": "④ 口述歷史與數位人文",
+  "blurb": "CC BY-NC-ND 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/baumann2026_graded-conceptualization-taste.pdf",
+  "source_sha256": "40b55047a3c50a102ffb733db9cdfe868e530f91c052c7faf137d82150a22f94",
+  "source_mtime": "2026-09-09",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/blouin2024_chinese-newspapers-ner.pdf": {
+  "kind": "pdf",
+  "title": "Blouin et al. (2024) 中文歷史報刊 NER 資料集",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
+  "blurb": "CC BY-NC 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/blouin2024_chinese-newspapers-ner.pdf",
+  "source_sha256": "9a70dd8099c6cb2b5dff1f0e3f9d4e51fba9a1664bf414534d7b9e4094456cfa",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/buehler2025_agentic-graph-reasoning.pdf": {
+  "kind": "pdf",
+  "title": "Buehler (2025) Agentic 迭代建圖",
+  "group": "②",
+  "tags": "②",
+  "category": "② agentic 建構",
+  "blurb": "CC BY-NC-ND 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/buehler2025_agentic-graph-reasoning.pdf",
+  "source_sha256": "08619859e06c45eb5f813c68736e6a97dfaa7e29258ba9886209d46492984be0",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/chang2025_evidential-hierarchy-certainty.pdf": {
+  "kind": "pdf",
+  "title": "Chang (2025) 言據階層與讀者確定度",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
+  "blurb": "CC BY-NC 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/chang2025_evidential-hierarchy-certainty.pdf",
+  "source_sha256": "5df7f3b16ab55a7160945877988d94ebd0c2086eb76ed2026ac92f857c0ff178",
+  "source_mtime": "2026-08-22",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/edge2024_graphrag.pdf": {
+  "kind": "pdf",
+  "title": "Edge et al. (2024) GraphRAG",
+  "group": "①",
+  "tags": "①",
+  "category": "① LLM 抽取與知識圖譜建構現況",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/edge2024_graphrag.pdf",
+  "source_sha256": "730f1a9f38d16689900969a3eeeb1b31e45eda1dcc1f37a043afa90aff76c867",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/fan2025_discourse-temporal-relation-llm.pdf": {
+  "kind": "pdf",
+  "title": "Fan & Strube (2025) 篇章層時間關係＋轉移性一致性檢查；8B 微調≈70B",
+  "group": "⑥",
+  "tags": "⑥⑤",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/fan2025_discourse-temporal-relation-llm.pdf",
+  "source_sha256": "625d8a1304074ff91900967f0ac55eb86c24785961408b118d391ee6a7074781",
+  "source_mtime": "2026-09-09",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/fang2025_historical-chinese-nlp.pdf": {
+  "kind": "pdf",
+  "title": "Fang, Z. et al. (2025) 民國中文 NLP 工具比較",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/fang2025_historical-chinese-nlp.pdf",
+  "source_sha256": "c5b52f4511439a0a2e7b16db3734853bb9a6cf871c1cfbf9cd7171d69e82b481",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/fang2026_reproducible-annotation-guide.pdf": {
+  "kind": "pdf",
+  "title": "Fang, Q. et al. (2026) 人文社科 LLM 標註方法指南",
+  "group": "⑤",
+  "tags": "⑤",
+  "category": "⑤ 無 gold standard 的評估",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/fang2026_reproducible-annotation-guide.pdf",
+  "source_sha256": "e661708ca4ca4edba7c8a3073c4ddd5c81b1899a15e3ecc48c182b6cfedab28b",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/fathallah2024_llms4life.pdf": {
+  "kind": "pdf",
+  "title": "Fathallah, Staab & Algergawy (2024) LLMs4Life：生命科學本體學習",
+  "group": "⑧",
+  "tags": "⑧",
+  "category": "⑧ 本體學習與 schema 歸納",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/fathallah2024_llms4life.pdf",
+  "source_sha256": "ddee010f99c10d463ae2772edc84b844c81f318044ae573887995ecbb05b49b7",
+  "source_mtime": "2026-09-08",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/gao2026_fluid-user-preferences.pdf": {
+  "kind": "pdf",
+  "title": "Gao et al. (2026) 跨情境流動偏好（合成資料、五環節全 LLM 評估）",
+  "group": "⑥",
+  "tags": "⑥⑤",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/gao2026_fluid-user-preferences.pdf",
+  "source_sha256": "be0aeeb307bc00af3f561e527ed547b6283f5044258e6889b4416df3bc0dce4b",
+  "source_mtime": "2026-09-09",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/gashteovski2022_benchie.pdf": {
+  "kind": "pdf",
+  "title": "Gashteovski et al. (2022) BenchIE：事實導向的 OIE 評估（含中文）",
+  "group": "⑦",
+  "tags": "⑦",
+  "category": "⑦ 零標注三元組抽取的參照點",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/gashteovski2022_benchie.pdf",
+  "source_sha256": "c66fc883fc44dae4b4eeb3d8569b32b7b22bde1ada45213472250b22c9e9aeb9",
+  "source_mtime": "2026-09-06",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/gu2024_llm-as-judge-survey.pdf": {
+  "kind": "pdf",
+  "title": "Gu et al. (2024) LLM-as-a-Judge 綜述",
+  "group": "⑤",
+  "tags": "⑤",
+  "category": "⑤ 無 gold standard 的評估",
+  "blurb": "CC0 1.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/gu2024_llm-as-judge-survey.pdf",
+  "source_sha256": "b9aa718f833b295d3790820d9d2f844c8445dfd3bec7bf3bd5136d1faaef1c0b",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/hiltmann2025_ner4all.pdf": {
+  "kind": "pdf",
+  "title": "Hiltmann et al. (2025) NER4all（歷史文本 NER）",
+  "group": "④",
+  "tags": "④",
+  "category": "④ 口述歷史與數位人文",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/hiltmann2025_ner4all.pdf",
+  "source_sha256": "5c8d2d5b6dfd015269ec97f48f02c5cce7014465ce5a9b13fff24f72ad65873e",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/jing2007_conversational-social-networks.pdf": {
+  "kind": "pdf",
+  "title": "Jing, Kambhatla & Roukos (2007) 從對話語音轉寫抽社會網絡與傳記事實",
+  "group": "⑦",
+  "tags": "⑦",
+  "category": "⑦ 零標注三元組抽取的參照點",
+  "blurb": "CC BY-NC-SA 3.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/jing2007_conversational-social-networks.pdf",
+  "source_sha256": "38cc563886d13b9c9184fc05efe4b20b74302317decadec0bbe869ff992d66a3",
+  "source_mtime": "2026-09-06",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/khorshidi2025_odke-plus.pdf": {
+  "kind": "pdf",
+  "title": "Khorshidi et al. (2025) ODKE+（本體導引開放域抽取）",
+  "group": "⑧",
+  "tags": "⑧",
+  "category": "⑧ 本體學習與 schema 歸納",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/khorshidi2025_odke-plus.pdf",
+  "source_sha256": "2e2e1831608b60968123d183f5ff81a2aa269b632fbc3b32f0b6061cb1f96b78",
+  "source_mtime": "2026-09-08",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/li2025_agentic-kgr.pdf": {
+  "kind": "pdf",
+  "title": "Li et al. (2025) Agentic-KGR（RL 共演化）",
+  "group": "②",
+  "tags": "②",
+  "category": "② agentic 建構",
+  "blurb": "CC BY-NC-ND 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/li2025_agentic-kgr.pdf",
+  "source_sha256": "8536ad47bd82f8bfdfd42c729ba3d54e5b5b86a021013e60a8a778d3518410e1",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/liu2022_kg-alignment-strong-fusion.pdf": {
+  "kind": "pdf",
+  "title": "Liu, S. et al. (2022) SFEA：節點層強融合對齊網絡",
+  "group": "⑨",
+  "tags": "⑨",
+  "category": "⑨ 跨來源實體對齊",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/liu2022_kg-alignment-strong-fusion.pdf",
+  "source_sha256": "99f9b39d0490a1cff79b8689b159f133a6845afa76a0d35b281ec788ac2a1200",
+  "source_mtime": "2026-09-08",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/liu2024_openie-survey.pdf": {
+  "kind": "pdf",
+  "title": "Liu, P. et al. (2024) OpenIE 綜述：規則式到 LLM",
+  "group": "⑧",
+  "tags": "⑧①",
+  "category": "⑧ 本體學習與 schema 歸納",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/liu2024_openie-survey.pdf",
+  "source_sha256": "c07148d51988cb3ce006f4a4e82f63dc4a947e5bc160382bb67c1b3aeca889fd",
+  "source_mtime": "2026-09-08",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/liu2026_odl-templlm-temporal-reasoning.pdf": {
+  "kind": "pdf",
+  "title": "Liu et al. (2026) ODL-TempLLM：LLM 只抽、OWL-Time＋推理器排序",
+  "group": "⑥",
+  "tags": "⑥⑧",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/liu2026_odl-templlm-temporal-reasoning.pdf",
+  "source_sha256": "64107133104abc7f3286b26c6fadb3d284197b6d79a93515170a17919417e562",
+  "source_mtime": "2026-09-09",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/mateiu2023_ontology-engineering-llm.pdf": {
+  "kind": "pdf",
+  "title": "Mateiu & Groza (2023) 用 LLM 做本體工程（NL→OWL）",
+  "group": "⑧",
+  "tags": "⑧",
+  "category": "⑧ 本體學習與 schema 歸納",
+  "blurb": "CC BY-NC-ND 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/mateiu2023_ontology-engineering-llm.pdf",
+  "source_sha256": "c531bd1fed4c8b23a18ee29c7cf1acb5fea6e84a3bb166ed0bfbd23d6168ca97",
+  "source_mtime": "2026-09-08",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/mihindukulasooriya2023_text2kgbench.pdf": {
+  "kind": "pdf",
+  "title": "Mihindukulasooriya et al. (2023) Text2KGBench",
+  "group": "⑤",
+  "tags": "⑤",
+  "category": "⑤ 無 gold standard 的評估",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/mihindukulasooriya2023_text2kgbench.pdf",
+  "source_sha256": "cbb12b93dad6bfef4c4fbe728a24e5d6e5b9d5e09612b81171b8f2cffc83beda",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/mintz2009_distant-supervision.pdf": {
+  "kind": "pdf",
+  "title": "Mintz, Bills, Snow & Jurafsky (2009) 遠距監督：無標注的關係抽取",
+  "group": "⑦",
+  "tags": "⑦",
+  "category": "⑦ 零標注三元組抽取的參照點",
+  "blurb": "CC BY-NC-SA 3.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/mintz2009_distant-supervision.pdf",
+  "source_sha256": "ca347d9a13b51ff00b15727818bf49639c708e7b5525afc5f98454cd5a929a17",
+  "source_mtime": "2026-09-06",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/mo2025_kggen.pdf": {
+  "kind": "pdf",
+  "title": "Mo et al. (2025) KGGen ＋ MINE benchmark",
+  "group": "①",
+  "tags": "①⑤",
+  "category": "① LLM 抽取與知識圖譜建構現況",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/mo2025_kggen.pdf",
+  "source_sha256": "58c82ff6455e45e7f06890896401ceae29a8a9ffba1c2aa17a5ac445cb758678",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/niu2024_contempo-temporal-relation-extraction.pdf": {
+  "kind": "pdf",
+  "title": "Niu et al. (2024) ConTempo：對比學習的事件時間關係分類；CleanMATRES",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/niu2024_contempo-temporal-relation-extraction.pdf",
+  "source_sha256": "2409e361bb1c16d7f9e9377aba7807ede600889e6b65d6d70aad3653dac7f930",
+  "source_mtime": "2026-09-09",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/papaluca2024_zero-few-shot-kg-triplets.pdf": {
+  "kind": "pdf",
+  "title": "Papaluca et al. (2024) 零／少樣本 KG 三元組抽取",
+  "group": "⑧",
+  "tags": "⑧⑦",
+  "category": "⑧ 本體學習與 schema 歸納",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/papaluca2024_zero-few-shot-kg-triplets.pdf",
+  "source_sha256": "af4c93fea14e4a3179ba3ced8f8d1c8e87aae28231b560391477cd7fddd07dae",
+  "source_mtime": "2026-09-08",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/peper2024_shoes-acosi-implicit-opinion.pdf": {
+  "kind": "pdf",
+  "title": "Peper et al. (2024) Shoes-ACOSI：隱含意見也圈成跨距的五元組 ABSA",
+  "group": "⑥",
+  "tags": "⑥⑤",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/peper2024_shoes-acosi-implicit-opinion.pdf",
+  "source_sha256": "e7e6363895e7e3fdb73d9c71e75bb4eb298368b978468cdc760a809cc5009b84",
+  "source_mtime": "2026-09-09",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/portelli2018_what-makes-oral-history-different.pdf": {
+  "kind": "pdf",
+  "title": "Portelli (2018 譯本) What Makes Oral History Different",
+  "group": "⑥",
+  "tags": "⑥",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
+  "blurb": "CC BY-SA 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/portelli2018_what-makes-oral-history-different.pdf",
+  "source_sha256": "e9af1ec29f82ba1a5e0655fd39d2a1e68497297ad96709488648ef005dd18629",
+  "source_mtime": "2026-08-22",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/rasmussen2025_zep-temporal-kg.pdf": {
+  "kind": "pdf",
+  "title": "Rasmussen et al. (2025) Zep：時序知識圖譜（agent 記憶）",
+  "group": "⑧",
+  "tags": "⑧⑥",
+  "category": "⑧ 本體學習與 schema 歸納",
+  "blurb": "CC BY-NC-SA 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/rasmussen2025_zep-temporal-kg.pdf",
+  "source_sha256": "d26f7eb599540e8b14d75e7efda58a07661abbb1b864e58323b5768475a15d42",
+  "source_mtime": "2026-09-08",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/stankovic2026_tei-ner-interview-corpus.pdf": {
+  "kind": "pdf",
+  "title": "Stanković et al. (2026) 訪談語料 TEI＋NER/NEL＋文本計量＋Linked Data",
+  "group": "④",
+  "tags": "④⑨⑤",
+  "category": "④ 口述歷史與數位人文",
+  "blurb": "CC BY-NC 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/stankovic2026_tei-ner-interview-corpus.pdf",
+  "source_sha256": "5b8e6494bd57381e3c8bcd5438835c179835af1d95f66c3f28fc2264ec833935",
+  "source_mtime": "2026-09-09",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/strutz2026_tei-eval.pdf": {
+  "kind": "pdf",
+  "title": "Strutz (2026) TEI 編碼多維度評估",
+  "group": "⑤",
+  "tags": "⑤",
+  "category": "⑤ 無 gold standard 的評估",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/strutz2026_tei-eval.pdf",
+  "source_sha256": "b75f531c2023ee7e54a7d3e5d3af3fe4186fb42b135a9f341d74d7cf2def5076",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/su2025_transformer-temporal-ie-review.pdf": {
+  "kind": "pdf",
+  "title": "Su, Howard & Bethard (2025) Transformer 時間資訊抽取綜述（四格分類、32 資料集全是書面語）",
+  "group": "⑥",
+  "tags": "⑥⑤",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/su2025_transformer-temporal-ie-review.pdf",
+  "source_sha256": "f364108d755b01e23205a111b91ed446203f2515534ad992f4ea5f1b0565b67b",
+  "source_mtime": "2026-09-09",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/usumi2026_prepper-preference-profiling.pdf": {
+  "kind": "pdf",
+  "title": "Usumi et al. (NTT) (2026) PrePPER：偏好模式分節的自然語言側寫",
+  "group": "⑥",
+  "tags": "⑥⑤",
+  "category": "⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）",
+  "blurb": "CC BY-NC 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/usumi2026_prepper-preference-profiling.pdf",
+  "source_sha256": "abbacd78af1cf6840125a3592623ee0048d4cae4314ded9cd0e28082d4397fd3",
+  "source_mtime": "2026-09-09",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/yehudai2025_agent-eval-survey.pdf": {
+  "kind": "pdf",
+  "title": "Yehudai et al. (2025) Agent 評估綜述",
+  "group": "③",
+  "tags": "③⑤",
+  "category": "③ Agent Skills 與 harness 的出處",
+  "blurb": "CC BY-NC-SA 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/yehudai2025_agent-eval-survey.pdf",
+  "source_sha256": "19bc35c936e81fad34ebcf62a9a8f825bd02898d3751de5692247695a34ac47d",
+  "source_mtime": "2026-07-20",
+  "built_at": "2026-10-06T18:26:38"
+ },
+ "papers/yu2020_dialogre.pdf": {
+  "kind": "pdf",
+  "title": "Yu, Sun, Cardie & Yu (2020) DialogRE：對話關係抽取資料集",
+  "group": "⑦",
+  "tags": "⑦",
+  "category": "⑦ 零標注三元組抽取的參照點",
+  "blurb": "CC BY 4.0",
+  "doc": null,
+  "source": "extract_ohistory/refs/yu2020_dialogre.pdf",
+  "source_sha256": "25d18bf55d956d6630ba2e5d84636e2493eda70dab8cc4e514eef8f6e64ad4ca",
+  "source_mtime": "2026-09-06",
+  "built_at": "2026-10-06T18:26:38"
  }
 }

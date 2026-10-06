@@ -54,19 +54,37 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<p class="crumb"><a href="../index.html">Research Notes</a> › ④ 口述歷史與數位人文</p>
 <h1>stankovic2026_tei-ner-interview-corpus：把訪談語料編成 TEI、接上 Wikidata、再用文本計量讀它</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/stankovic2026_tei-ner-interview-corpus.md</code>　來源最後修改 2026-10-06　分類 文獻深讀筆記（八節）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/stankovic2026_tei-ner-interview-corpus.md</code>　來源最後修改 2026-10-06　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../index.html#q4" title="口述歷史與數位人文">④</a><a class="qtag" href="../index.html#q9" title="跨來源實體對齊">⑨</a><a class="qtag" href="../index.html#q5" title="無 gold standard 的評估">⑤</a>　<a class="pdfbtn" href="../papers/stankovic2026_tei-ner-interview-corpus.pdf" title="站內 PDF（CC BY-NC 4.0，5.0 MB）">原文 PDF</a></p>
 </div></header>
 <main class="wrap">
 <ul>
-<li><strong>完整書目</strong>：Stanković, R., Vučenović, T., Rujević, B., Ikonić Nešić, M., &amp; Škorić, M. (2026). Integrating TEI, NER/NEL, Textometry, and Linked Data for a Semantically Enriched Interview Corpus. <em>Proceedings of the Fifteenth Language Resources and Evaluation Conference (LREC 2026)</em>, pp. 1474–1484. 11–16 May 2026. ELRA Language Resources Association. ACL Anthology 編號 2026.lrec2026-1.114（PDF 未標示 DOI）。<strong>同儕審查的會議論文</strong>（LREC 主會議）。</li>
+<li><strong>完整書目</strong>：Stanković, R., Vučenović, T., Rujević, B., Ikonić Nešić, M., &amp; Škorić, M. (2026). Integrating TEI, NER/NEL, Textometry, and Linked Data for a Semantically Enriched Interview Corpus. <em>Proceedings of the Fifteenth Language Resources and Evaluation Conference (LREC 2026)</em>, pp. 1474–1484. 11–16 May 2026. ELRA Language Resources Association. ACL Anthology 編號 <a href="https://aclanthology.org/2026.lrec2026-1.114/">2026.lrec2026-1.114</a>（PDF 未標示 DOI）。<strong>同儕審查的會議論文</strong>（LREC 主會議）。</li>
 <li><strong>對應待查問題</strong>：④口述歷史／數位人文（主）；⑨跨來源實體對齊（NEL 到 Wikidata、NIF 連結資料）；⑤無 gold standard 評估（部分：文本計量那一節提供免標準答案的語料訊號，但論文本身的評估是有 gold standard 的一方）；⑥時間記法（只到「訪談年份」這個粒度，附帶）。</li>
 <li><strong>一句話定位</strong>：一組塞爾維亞團隊把 57 場廣播訪談（已編輯成書的逐字稿）編成 TEI XML、用微調的 encoder 模型做命名實體辨識、把實體連到 Wikidata 的 QID、輸出成 NIF 連結資料、再用 TXM 做文本計量，最後試著用 LLM 做問答摘要。它是目前為止最貼近本專案「訪談語料 → 帶講述者與出處的實體層 → 跨來源接外部庫」這條路徑的完整示範，但它<strong>沒有做關係抽取</strong>、沒有時間碼、評估很薄，所以它的價值在「工程骨架可對照」，不在「方法可搬」。</li>
 </ul>
@@ -191,7 +209,7 @@ img{max-width:100%;height:auto}
 </ul>
 <h3 id="_1">一句話收束</h3>
 <p>這篇最該被本專案吸收的是<strong>文本計量那一節</strong>：特定性分析是現成的、免標準答案、不呼叫模型的語料訊號，能一次回應「被講述排序沒校正講述量」「動詞表全靠手寫」「時間軸沒有口述語料自己的數字」三個卡點。最該避免的是<strong>它的連結層做法</strong>：校正式 gold 加人工校正 NEL，直接踩紅線 1，而且它自己的頻率數字透露連結覆蓋率只有三到五成，卻沒有把這個數字報出來。TEI 不必改成工作格式，但值得在 <code>sentences.json</code> 之後加一支匯出腳本，把 sid、時間碼、<code>P#####</code> 映射成 ISO/TEI，換取 TXM 與數位人文界的互通。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

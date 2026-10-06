@@ -54,15 +54,33 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../../index.html">Research Notes</a> › IDOHL 調查報告（2026-10-05）</p>
+<p class="crumb"><a href="../../index.html">Research Notes</a> › ④ 口述歷史與數位人文</p>
 <h1>IDOHL 團隊與歷史：International Digital Oral History Lab（UCL × TU Darmstadt）</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/idohl/01_團隊與歷史.md</code>　來源最後修改 2026-10-05　分類 IDOHL 調查報告（2026-10-05）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/idohl/01_團隊與歷史.md</code>　來源最後修改 2026-10-05　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../../index.html#q4" title="口述歷史與數位人文">④</a></p>
 </div></header>
 <main class="wrap">
 <ul>
@@ -72,17 +90,17 @@ img{max-width:100%;height:auto}
 </ul>
 <hr>
 <h2 id="1">1. 實驗室定位</h2>
-<p><strong>名稱與定位。</strong> 全名 International Digital Oral History Lab（國際數位口述歷史實驗室，以下簡稱 IDOHL），首頁副標「A collaboration between UCL and TU Darmstadt」，三個關鍵詞「Preserved Voices / Human Interpretations / Computational Lenses」。使命段落標題「Memory, Meaning Making, and Algorithms」：實驗室研究演算法過程（含人工智慧與自然語言處理）對口述歷史的擷取、傳播與分析造成的影響，結合質性與量化方法，檢視數位工具如何影響記憶、意義生成與歷史理解。來源：https://idohl.org/</p>
-<p><strong>兩個機構、兩個學術單位。</strong> 英國端是倫敦大學學院（University College London, UCL）的資訊研究系（Department of Information Studies, DIS）與 UCL 數位人文中心（UCL Centre for Digital Humanities, UCLDH）；德國端是達姆施塔特工業大學（Technische Universität Darmstadt, TU Darmstadt）歷史研究所（Institut für Geschichte）的「人文資料科學與方法論」講座（Humanities Data Science and Methodology, HDSM）。三位主持人的任職（Flinn、Vlachidis 在 UCL DIS；Nyhan 在 TU Darmstadt HDSM，同時是 UCL 榮譽教授）決定了這個雙軸結構。來源：https://idohl.org/team ；https://profiles.ucl.ac.uk/api/users/29443</p>
-<p><strong>三支柱。</strong> 首頁以三格呈現：Research &amp; Collaboration（「Leading projects in Oral History, critical AI, and Digital Humanities across international partnerships」）、Education（「Master's courses, PhD supervision, and workshops emphasise ethical digital methods in oral history」）、Community（「Online seminars featuring international experts and open events connecting researchers worldwide」）。來源：https://idohl.org/</p>
-<p><strong>三個計畫。</strong> 導覽列列出 Hidden Histories（2011 起）、MDOH（Multimodal Digital Oral History，計畫頁標「since 2023」）、MeDoraH（Mixed-methods Digital Oral History，2024 起）。計畫總覽頁把三者描述為「three interconnected research initiatives (2011–present)」。來源：https://idohl.org/Projects</p>
-<p><strong>架站平台與技術結構。</strong> 頁尾「Powered by Omeka S」。經 Omeka S API 查得，同一個 Omeka S 實例承載四個站：<code>medorah</code>（建於 2024-10-10）、<code>hiddenhistories</code>（2024-10-31）、<code>lab</code>（2025-05-14，即 IDOHL 首頁）、<code>MDOH</code>（2025-09-04）。來源：https://idohl.org/api/sites 。「Updates」頁沒有自己撰寫的消息，而是由前端 JavaScript 讀取 GitHub 倉庫 <code>International-Digital-Oral-History-Lab/IDOHL-updator</code> 的 <code>landing_page/data/news-cache.json</code>，聚合兩個來源各 6 則：UCL Information Studies 新聞與 HDSM 部落格的 <code>digital_oral_history_lab</code> 分類。來源：https://idohl.org/updates 原始碼；https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/IDOHL-updator/main/landing_page/data/news-cache.json 。「Infrastructure」頁只有一句「A page for the physical lab and its equipment. A video etc will be added to this page in due course.」來源：https://idohl.org/infrastructure</p>
-<p><strong>網域。</strong> idohl.org 於 2026-04-28 註冊（註冊商 Ascio；名稱伺服器 checkdomain.de）；在此之前，同一套 Omeka S 站掛在舊計畫網域 hiddenhistories.net 下（實驗室站路徑 <code>/s/digital-oral-history-lab/</code>，MeDoraH 另有子網域 medorah.hiddenhistories.net），hiddenhistories.net 現已 301 轉向 idohl.org。來源：whois idohl.org；Wayback CDX（見第 4 節年表）；MeDoraH 海報頁首印有 medorah.hiddenhistories.net（https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf ）。</p>
-<p><strong>對外聯絡。</strong> medorah@ucl.ac.uk；GitHub 帳號 <code>International-Digital-Oral-History-Lab</code>（帳號型態 User，非 Organization，建於 2024-11-12）。來源：https://idohl.org/OpenSource-Release ；https://api.github.com/users/International-Digital-Oral-History-Lab</p>
+<p><strong>名稱與定位。</strong> 全名 International Digital Oral History Lab（國際數位口述歷史實驗室，以下簡稱 IDOHL），首頁副標「A collaboration between UCL and TU Darmstadt」，三個關鍵詞「Preserved Voices / Human Interpretations / Computational Lenses」。使命段落標題「Memory, Meaning Making, and Algorithms」：實驗室研究演算法過程（含人工智慧與自然語言處理）對口述歷史的擷取、傳播與分析造成的影響，結合質性與量化方法，檢視數位工具如何影響記憶、意義生成與歷史理解。來源：<a href="https://idohl.org/">https://idohl.org/</a></p>
+<p><strong>兩個機構、兩個學術單位。</strong> 英國端是倫敦大學學院（University College London, UCL）的資訊研究系（Department of Information Studies, DIS）與 UCL 數位人文中心（UCL Centre for Digital Humanities, UCLDH）；德國端是達姆施塔特工業大學（Technische Universität Darmstadt, TU Darmstadt）歷史研究所（Institut für Geschichte）的「人文資料科學與方法論」講座（Humanities Data Science and Methodology, HDSM）。三位主持人的任職（Flinn、Vlachidis 在 UCL DIS；Nyhan 在 TU Darmstadt HDSM，同時是 UCL 榮譽教授）決定了這個雙軸結構。來源：<a href="https://idohl.org/team">https://idohl.org/team</a> ；<a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a></p>
+<p><strong>三支柱。</strong> 首頁以三格呈現：Research &amp; Collaboration（「Leading projects in Oral History, critical AI, and Digital Humanities across international partnerships」）、Education（「Master's courses, PhD supervision, and workshops emphasise ethical digital methods in oral history」）、Community（「Online seminars featuring international experts and open events connecting researchers worldwide」）。來源：<a href="https://idohl.org/">https://idohl.org/</a></p>
+<p><strong>三個計畫。</strong> 導覽列列出 Hidden Histories（2011 起）、MDOH（Multimodal Digital Oral History，計畫頁標「since 2023」）、MeDoraH（Mixed-methods Digital Oral History，2024 起）。計畫總覽頁把三者描述為「three interconnected research initiatives (2011–present)」。來源：<a href="https://idohl.org/Projects">https://idohl.org/Projects</a></p>
+<p><strong>架站平台與技術結構。</strong> 頁尾「Powered by Omeka S」。經 Omeka S API 查得，同一個 Omeka S 實例承載四個站：<code>medorah</code>（建於 2024-10-10）、<code>hiddenhistories</code>（2024-10-31）、<code>lab</code>（2025-05-14，即 IDOHL 首頁）、<code>MDOH</code>（2025-09-04）。來源：<a href="https://idohl.org/api/sites">https://idohl.org/api/sites</a> 。「Updates」頁沒有自己撰寫的消息，而是由前端 JavaScript 讀取 GitHub 倉庫 <code>International-Digital-Oral-History-Lab/IDOHL-updator</code> 的 <code>landing_page/data/news-cache.json</code>，聚合兩個來源各 6 則：UCL Information Studies 新聞與 HDSM 部落格的 <code>digital_oral_history_lab</code> 分類。來源：<a href="https://idohl.org/updates">https://idohl.org/updates</a> 原始碼；<a href="https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/IDOHL-updator/main/landing_page/data/news-cache.json">https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/IDOHL-updator/main/landing_page/data/news-cache.json</a> 。「Infrastructure」頁只有一句「A page for the physical lab and its equipment. A video etc will be added to this page in due course.」來源：<a href="https://idohl.org/infrastructure">https://idohl.org/infrastructure</a></p>
+<p><strong>網域。</strong> idohl.org 於 2026-04-28 註冊（註冊商 Ascio；名稱伺服器 checkdomain.de）；在此之前，同一套 Omeka S 站掛在舊計畫網域 hiddenhistories.net 下（實驗室站路徑 <code>/s/digital-oral-history-lab/</code>，MeDoraH 另有子網域 medorah.hiddenhistories.net），hiddenhistories.net 現已 301 轉向 idohl.org。來源：whois idohl.org；Wayback CDX（見第 4 節年表）；MeDoraH 海報頁首印有 medorah.hiddenhistories.net（<a href="https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf">https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf</a> ）。</p>
+<p><strong>對外聯絡。</strong> medorah@ucl.ac.uk；GitHub 帳號 <code>International-Digital-Oral-History-Lab</code>（帳號型態 User，非 Organization，建於 2024-11-12）。來源：<a href="https://idohl.org/OpenSource-Release">https://idohl.org/OpenSource-Release</a> ；<a href="https://api.github.com/users/International-Digital-Oral-History-Lab">https://api.github.com/users/International-Digital-Oral-History-Lab</a></p>
 <p><strong>網站未載明的事項。</strong> 首頁與各頁都沒有寫實驗室的成立日期、首頁層級的經費來源、網站上線日期。</p>
 <hr>
 <h2 id="2">2. 團隊表</h2>
-<p>團隊頁分四組：Principal Investigators（3 人）、Research Staff（3 人）、Affiliates（1 人）、Research Assistants（2 人）。來源：https://idohl.org/team 。下表的「職稱」取團隊頁寫法，括號內註明其他頁面的差異；「推斷角色」是從計畫頁、經費新聞與出版品推斷，非網站明文。</p>
+<p>團隊頁分四組：Principal Investigators（3 人）、Research Staff（3 人）、Affiliates（1 人）、Research Assistants（2 人）。來源：<a href="https://idohl.org/team">https://idohl.org/team</a> 。下表的「職稱」取團隊頁寫法，括號內註明其他頁面的差異；「推斷角色」是從計畫頁、經費新聞與出版品推斷，非網站明文。</p>
 <div class="tablewrap"><table>
 <thead>
 <tr>
@@ -105,7 +123,7 @@ img{max-width:100%;height:auto}
 <td>獨立檔案與社群檔案、口述歷史、參與式遺產行動主義、檔案與社會正義</td>
 <td>Nyhan &amp; Flinn (2016) <em>Computation and the Humanities</em>（Springer）；Smyth, Nyhan &amp; Flinn (2023) DSH 38(2)；Flinn, Boyd, Morgan &amp; Nyhan (2024) <em>Oral History</em> 52(3)</td>
 <td>口述歷史方法論與檔案學端；MDOH 共同主導（笑聲、遲疑的多模態分析）；MeDoraH 的 UCL Co-I</td>
-<td>https://profiles.ucl.ac.uk/9621-andrew-flinn/about</td>
+<td><a href="https://profiles.ucl.ac.uk/9621-andrew-flinn/about">https://profiles.ucl.ac.uk/9621-andrew-flinn/about</a></td>
 </tr>
 <tr>
 <td>2</td>
@@ -115,7 +133,7 @@ img{max-width:100%;height:auto}
 <td>數位人文、計算史、對 AI／資料／遺產的批判取徑、數位口述歷史、隱而不顯的勞動史</td>
 <td>Nyhan &amp; Flinn (2016)；Nyhan (2022／2023) <em>Hidden and Devalued Feminized Labour in the Digital Humanities</em>（Routledge）；Nyhan &amp; Passarotti 編 (2019) <em>One Origin of Digital Humanities</em>（Springer）</td>
 <td>實驗室的智識源頭與 TU Darmstadt 端 PI；Hidden Histories PI；MeDoraH 德方申請人</td>
-<td>https://profiles.ucl.ac.uk/29443-julianne-nyhan ；https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_53504.en.jsp</td>
+<td><a href="https://profiles.ucl.ac.uk/29443-julianne-nyhan">https://profiles.ucl.ac.uk/29443-julianne-nyhan</a> ；<a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_53504.en.jsp">https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_53504.en.jsp</a></td>
 </tr>
 <tr>
 <td>3</td>
@@ -125,7 +143,7 @@ img{max-width:100%;height:auto}
 <td>自然語言處理、資訊抽取、語意資料建模與詮釋資料、CIDOC-CRM、FAIR 資料</td>
 <td>Humbel, Nyhan, Vlachidis et al. (2021) <em>Journal of Documentation</em>（早期現代文獻的 NER 綜述）；Vlachidis, Tudhope &amp; Wansleeben (2021) 荷蘭語考古概念的知識型 NER；Humbel et al. (2024) <em>Journal of Documentation</em> 81(1)</td>
 <td>技術端：NLP、知識圖譜、本體論；MeDoraH 的 UCL PI</td>
-<td>https://profiles.ucl.ac.uk/57279-andreas-vlachidis/about</td>
+<td><a href="https://profiles.ucl.ac.uk/57279-andreas-vlachidis/about">https://profiles.ucl.ac.uk/57279-andreas-vlachidis/about</a></td>
 </tr>
 <tr>
 <td>4</td>
@@ -135,7 +153,7 @@ img{max-width:100%;height:auto}
 <td>混合方法的歷史研究、殖民脈絡下的博物館藏品資料、計算在人文學中出現與變遷的敘事</td>
 <td>Schmidt (2024) “Retracing the Mobile Object: Digitising Biographies of Aboriginal Material Culture”（heiUP 專章）；Schmidt (2023) “Das Quantitative Ausmaß europäischer Aneignungspraktiken indigener Kulturgüter Australiens. Eine Genderperspektive”</td>
 <td>MeDoraH 德方博後：詮釋學與歷史分析、德語訪談（UCL 新聞所述 TU Darmstadt 兩名 PDRA 的專長為 hermeneutics、network analysis、oral history）</td>
-<td>https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_67520.en.jsp</td>
+<td><a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_67520.en.jsp">https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_67520.en.jsp</a></td>
 </tr>
 <tr>
 <td>5</td>
@@ -145,7 +163,7 @@ img{max-width:100%;height:auto}
 <td>計算語言學、數位人文基礎建設、歷史研究的資訊科學；語意網表述歷史文獻</td>
 <td>Varfolomeyev et al. (2013) “Representation of historical sources on the semantic web by means of Attempto Controlled English”（CCIS）；(2019) “The Representation of Facts about Old Russian Charters on the Semantic Web”（<em>Slavistica Vilnensis</em>）；(2017) “Semantic infrastructure of a smart museum”（<em>Personal and Ubiquitous Computing</em>）</td>
 <td>MDOH 與 MeDoraH 的技術支援（多模態處理、語意網基礎建設）</td>
-<td>https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_69504.en.jsp</td>
+<td><a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_69504.en.jsp">https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_69504.en.jsp</a></td>
 </tr>
 <tr>
 <td>6</td>
@@ -155,7 +173,7 @@ img{max-width:100%;height:auto}
 <td>知識圖譜、文字分析、知識表徵、NLP、可解釋 AI、大型語言模型、GraphRAG</td>
 <td>博士論文 <em>From Text to Knowledge: A New Approach to Impact Case Study Analytics</em>（Newcastle）；開源：NarraGraph v0.4、MeDoraH_NLP、MeDoraH_Ontology（GitHub articoder）</td>
 <td>MeDoraH 的 UCL 博後；NLP 管線與本體論的主要開發者（倉庫掛在其帳號下）</td>
-<td>https://profiles.ucl.ac.uk/99799-jiajie-zhang/about</td>
+<td><a href="https://profiles.ucl.ac.uk/99799-jiajie-zhang/about">https://profiles.ucl.ac.uk/99799-jiajie-zhang/about</a></td>
 </tr>
 <tr>
 <td>7</td>
@@ -165,7 +183,7 @@ img{max-width:100%;height:auto}
 <td>藏品即資料（collections as data）、自動文字辨識（OCR／HTR）、命名實體辨識、參與式行動研究、社會運動檔案</td>
 <td>Humbel et al. (2021) <em>Journal of Documentation</em>；Humbel et al. (2024) <em>Journal of Documentation</em> 81(1) 56–85；早期現代手寫辨識模型（HTR-United）</td>
 <td>MeDoraH 的文字探勘（Humanist 郵件清單語料）、FAIR 資料、研究倫理與資料保護；Voices Unbound 共同召集人</td>
-<td>https://profiles.ucl.ac.uk/67801-marco-humbel</td>
+<td><a href="https://profiles.ucl.ac.uk/67801-marco-humbel">https://profiles.ucl.ac.uk/67801-marco-humbel</a></td>
 </tr>
 <tr>
 <td>8</td>
@@ -189,32 +207,32 @@ img{max-width:100%;height:auto}
 </tr>
 </tbody>
 </table></div>
-<p>表格來源：團隊頁 https://idohl.org/team ；UCL JSON 端點 https://profiles.ucl.ac.uk/api/users/9621 、/29443 、/57279 、/99799 、/67801 ；TU Darmstadt 兩頁（上表）；ORCID https://orcid.org/0000-0002-5532-6185 （Varfolomeyev）、https://orcid.org/0009-0000-3129-7722 （Friederike Schmidt）、https://orcid.org/0009-0008-5998-3175 （Elleringmann）；Crossref（DOI 10.1108/jd-02-2021-0032、10.1108/jd-12-2023-0263、10.1007/978-3-030-71903-6_6、10.1007/978-3-642-41360-5_14、10.15388/slavviln.2019.64(1).06、10.1007/s00779-016-0996-7、10.17885/HEIUP.1305.C18419、10.5281/ZENODO.8322364）；開源頁 https://idohl.org/OpenSource-Release ；2025-07-14 存檔團隊頁 http://web.archive.org/web/20250714121706/https://hiddenhistories.net/s/digital-oral-history-lab/page/research-team ；UCL Festival 報告 https://hdsm.hypotheses.org/5336 。</p>
+<p>表格來源：團隊頁 <a href="https://idohl.org/team">https://idohl.org/team</a> ；UCL JSON 端點 <a href="https://profiles.ucl.ac.uk/api/users/9621">https://profiles.ucl.ac.uk/api/users/9621</a> 、/29443 、/57279 、/99799 、/67801 ；TU Darmstadt 兩頁（上表）；ORCID <a href="https://orcid.org/0000-0002-5532-6185">https://orcid.org/0000-0002-5532-6185</a> （Varfolomeyev）、<a href="https://orcid.org/0009-0000-3129-7722">https://orcid.org/0009-0000-3129-7722</a> （Friederike Schmidt）、<a href="https://orcid.org/0009-0008-5998-3175">https://orcid.org/0009-0008-5998-3175</a> （Elleringmann）；Crossref（DOI <a href="https://doi.org/10.1108/jd-02-2021-0032">10.1108/jd-02-2021-0032</a>、<a href="https://doi.org/10.1108/jd-12-2023-0263">10.1108/jd-12-2023-0263</a>、<a href="https://doi.org/10.1007/978-3-030-71903-6_6">10.1007/978-3-030-71903-6_6</a>、<a href="https://doi.org/10.1007/978-3-642-41360-5_14">10.1007/978-3-642-41360-5_14</a>、<a href="https://doi.org/10.15388/slavviln.2019.64(1).06">10.15388/slavviln.2019.64(1).06</a>、<a href="https://doi.org/10.1007/s00779-016-0996-7">10.1007/s00779-016-0996-7</a>、<a href="https://doi.org/10.17885/HEIUP.1305.C18419">10.17885/HEIUP.1305.C18419</a>、<a href="https://doi.org/10.5281/ZENODO.8322364">10.5281/ZENODO.8322364</a>）；開源頁 <a href="https://idohl.org/OpenSource-Release">https://idohl.org/OpenSource-Release</a> ；2025-07-14 存檔團隊頁 <a href="http://web.archive.org/web/20250714121706/https://hiddenhistories.net/s/digital-oral-history-lab/page/research-team">http://web.archive.org/web/20250714121706/https://hiddenhistories.net/s/digital-oral-history-lab/page/research-team</a> ；UCL Festival 報告 <a href="https://hdsm.hypotheses.org/5336">https://hdsm.hypotheses.org/5336</a> 。</p>
 <p><strong>團隊表的補充說明。</strong></p>
 <ul>
-<li>職稱不一致之處已在表內括號註明。Varfolomeyev 在團隊頁是「Postdoctoral Researcher」，在 TU Darmstadt 官方頁與 ORCID（2024-10 起）是技術人員；Zhang 在團隊頁是 Research Associate、在 UCL 職位欄是 Research Fellow；Humbel 在 2025-07 存檔團隊頁同時列「Research Fellow, UCL」與「Postdoctoral Researcher, TU Darmstadt」，2025-08 的海報也標他「Postdoc, TU Darmstadt」，顯示 MeDoraH 的德方兩個博後名額曾由 Humbel 與 Schmidt 擔任，而現行團隊頁把他歸入 Affiliates。來源：同上；https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf 。</li>
+<li>職稱不一致之處已在表內括號註明。Varfolomeyev 在團隊頁是「Postdoctoral Researcher」，在 TU Darmstadt 官方頁與 ORCID（2024-10 起）是技術人員；Zhang 在團隊頁是 Research Associate、在 UCL 職位欄是 Research Fellow；Humbel 在 2025-07 存檔團隊頁同時列「Research Fellow, UCL」與「Postdoctoral Researcher, TU Darmstadt」，2025-08 的海報也標他「Postdoc, TU Darmstadt」，顯示 MeDoraH 的德方兩個博後名額曾由 Humbel 與 Schmidt 擔任，而現行團隊頁把他歸入 Affiliates。來源：同上；<a href="https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf">https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf</a> 。</li>
 <li>存檔團隊頁與海報把 Flinn 誤拼為「Flynn」，檢索時要兩種拼法並用。來源：同上。</li>
 <li>Schmidt 的 ORCID 匹配依據：TU Darmstadt 頁面的電子郵件以 friederike.schmidt 開頭，ORCID 紀錄同時列 Greifswald 與 TU Darmstadt HDSM，就職月份（2024-05）與 MeDoraH 起始相符。我判斷為同一人，但 ORCID 本身未填姓名以外的簡介。</li>
-<li>團隊頁之外，HDSM 講座另有成員 Nadezhda Povroznik（Wissenschaftliche Mitarbeiterin，2025 年 3 至 7 月為倫敦大學 School of Advanced Study 訪問研究員），不在 IDOHL 名單上。來源：https://hdsm.hypotheses.org/ ；https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp</li>
-<li>Hidden Histories 的前任成員：Anne Welsh（UCLDH，co-PI 2011–2012）、Marc Theobald（Universität Trier，RA 2011–2012）、Jessica Salmon（Trier）；另有 Oliver Duke-Williams（Additional Researcher）與 Rudolf Ammann（標誌設計）。來源：https://idohl.org/hiddenhistories/about-hidden-histories 。2022 年講座系列由 Hannah Smyth 與 Daniele Metilli（皆 UCL）協辦。來源：https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/</li>
+<li>團隊頁之外，HDSM 講座另有成員 Nadezhda Povroznik（Wissenschaftliche Mitarbeiterin，2025 年 3 至 7 月為倫敦大學 School of Advanced Study 訪問研究員），不在 IDOHL 名單上。來源：<a href="https://hdsm.hypotheses.org/">https://hdsm.hypotheses.org/</a> ；<a href="https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp">https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp</a></li>
+<li>Hidden Histories 的前任成員：Anne Welsh（UCLDH，co-PI 2011–2012）、Marc Theobald（Universität Trier，RA 2011–2012）、Jessica Salmon（Trier）；另有 Oliver Duke-Williams（Additional Researcher）與 Rudolf Ammann（標誌設計）。來源：<a href="https://idohl.org/hiddenhistories/about-hidden-histories">https://idohl.org/hiddenhistories/about-hidden-histories</a> 。2022 年講座系列由 Hannah Smyth 與 Daniele Metilli（皆 UCL）協辦。來源：<a href="https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/">https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/</a></li>
 </ul>
 <hr>
 <h2 id="3-pi">3. 三位 PI 的分工與學術路徑</h2>
 <h3 id="31-julianne-nyhan-tu-darmstadt">3.1 Julianne Nyhan：智識源頭與 TU Darmstadt 端</h3>
-<p>Nyhan 於 2001 年在科克大學學院（University College Cork）取得歷史與希臘羅馬文明學士，2006 年取得歷史學博士；2011-09-01 起任職 UCL 資訊研究系。UCL 內的職務依序為：MA/MSc Digital Humanities 學程主任（2017–2022）、UCL Centre for Critical Heritage 領導委員會成員（2016–2022）、UCLDH 副主任（2018-10 至 2021-09）、UCLDH 主任（2021 至 2022-01）、Professor of Digital Humanities（2021-10-01 至 2024-09-01），2024-09-01 起為 Professor Emerita。來源：https://profiles.ucl.ac.uk/api/users/29443 （<code>academicAppointments</code>、<code>institutionalAppointments</code>、<code>certifications</code>、<code>tabSummaryAbout</code>）。</p>
-<p>轉任 TU Darmstadt 的時間點：UCL 個人頁 JSON 記載「Professor and Chair of Humanities Data Science and Methodology, TU Darmstadt, Institute of History」起始日 2022-01-01；她的個人網站寫「W3 Chair ... appointed 2022」。這個 W3 教授職缺由 TU Darmstadt 歷史研究所於 2019-10-21 公告、2019-12-08 截止，職稱即「Professor (W3) for Humanities Data Science and Methodology」，職責含人文學的資料基礎（文字、圖像、地理資料）、數位史料評估的教學、參與跨系的「Data and Discourse Studies」碩士學程，並預定兼任資訊科學系成員。公告未明說這是否為新設講座。來源：https://profiles.ucl.ac.uk/api/users/29443 ；https://juliannenyhan.com/about/ ；https://dhlab.philhist.unibas.ch/en/news/details/job-the-institute-of-history-at-technische-universitaet-darmstadt-seeks-to-appoint-a-professor-w3/ 。2023 至 2025 年她兼任歷史研究所所長（Managing Director）。來源：https://profiles.ucl.ac.uk/api/users/29443 。</p>
-<p>她在 2022-01 到 2024-09 之間同時持有 TU Darmstadt 講座與 UCL 教授職，這段重疊期正是 2022 年多模態講座系列（署名「TU Darmstadt &amp; UCL」）與 2023 年 MeDoraH 申請的時期；UCL 與 Darmstadt 的雙軸結構由此而來。來源：同上；https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/</p>
-<p>研究主題：計算系統如何中介並改變我們與過去的遭遇；史料如何變成資料；知識如何被計算系統形式化、組織、呈現或隱形化；社會技術基礎建設與常被隱藏的人力勞動如何形塑所知與所憶。她在 UCL 個人頁明文寫道，與 Flinn 和 Vlachidis 共同領導 International Digital Oral History Lab。累計主持或共同主持約 900 萬英鎊經費（AHRC、DFG、Leverhulme、歐盟執委會、2016 Digging Into Data）；曾任 Sloane Lab PI（2021–2024）；現共同主持 AHRC–DFG 的 MeDoraH（2024–2027）。編委：<em>Digital Scholarship in the Humanities</em>、<em>Zeitschrift für digitale Geisteswissenschaften</em>（2024–2026）；諮詢委員：Walter Benjamin Kolleg（Bern）、C²DH（Luxembourg）。來源：https://profiles.ucl.ac.uk/api/users/29443</p>
-<p>在實驗室中的位置（推斷）：Hidden Histories 的 PI 與主要訪談者（2016 年專書 14 篇訪談中 13 篇由她訪問）；MDOH 概念的共同提出者；MeDoraH 的德方申請人（海報標「PI, TU Darmstadt」）。來源：Crossref 10.1007/978-3-319-20170-2 章節清單；https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf</p>
+<p>Nyhan 於 2001 年在科克大學學院（University College Cork）取得歷史與希臘羅馬文明學士，2006 年取得歷史學博士；2011-09-01 起任職 UCL 資訊研究系。UCL 內的職務依序為：MA/MSc Digital Humanities 學程主任（2017–2022）、UCL Centre for Critical Heritage 領導委員會成員（2016–2022）、UCLDH 副主任（2018-10 至 2021-09）、UCLDH 主任（2021 至 2022-01）、Professor of Digital Humanities（2021-10-01 至 2024-09-01），2024-09-01 起為 Professor Emerita。來源：<a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a> （<code>academicAppointments</code>、<code>institutionalAppointments</code>、<code>certifications</code>、<code>tabSummaryAbout</code>）。</p>
+<p>轉任 TU Darmstadt 的時間點：UCL 個人頁 JSON 記載「Professor and Chair of Humanities Data Science and Methodology, TU Darmstadt, Institute of History」起始日 2022-01-01；她的個人網站寫「W3 Chair ... appointed 2022」。這個 W3 教授職缺由 TU Darmstadt 歷史研究所於 2019-10-21 公告、2019-12-08 截止，職稱即「Professor (W3) for Humanities Data Science and Methodology」，職責含人文學的資料基礎（文字、圖像、地理資料）、數位史料評估的教學、參與跨系的「Data and Discourse Studies」碩士學程，並預定兼任資訊科學系成員。公告未明說這是否為新設講座。來源：<a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a> ；<a href="https://juliannenyhan.com/about/">https://juliannenyhan.com/about/</a> ；<a href="https://dhlab.philhist.unibas.ch/en/news/details/job-the-institute-of-history-at-technische-universitaet-darmstadt-seeks-to-appoint-a-professor-w3/">https://dhlab.philhist.unibas.ch/en/news/details/job-the-institute-of-history-at-technische-universitaet-darmstadt-seeks-to-appoint-a-professor-w3/</a> 。2023 至 2025 年她兼任歷史研究所所長（Managing Director）。來源：<a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a> 。</p>
+<p>她在 2022-01 到 2024-09 之間同時持有 TU Darmstadt 講座與 UCL 教授職，這段重疊期正是 2022 年多模態講座系列（署名「TU Darmstadt &amp; UCL」）與 2023 年 MeDoraH 申請的時期；UCL 與 Darmstadt 的雙軸結構由此而來。來源：同上；<a href="https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/">https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/</a></p>
+<p>研究主題：計算系統如何中介並改變我們與過去的遭遇；史料如何變成資料；知識如何被計算系統形式化、組織、呈現或隱形化；社會技術基礎建設與常被隱藏的人力勞動如何形塑所知與所憶。她在 UCL 個人頁明文寫道，與 Flinn 和 Vlachidis 共同領導 International Digital Oral History Lab。累計主持或共同主持約 900 萬英鎊經費（AHRC、DFG、Leverhulme、歐盟執委會、2016 Digging Into Data）；曾任 Sloane Lab PI（2021–2024）；現共同主持 AHRC–DFG 的 MeDoraH（2024–2027）。編委：<em>Digital Scholarship in the Humanities</em>、<em>Zeitschrift für digitale Geisteswissenschaften</em>（2024–2026）；諮詢委員：Walter Benjamin Kolleg（Bern）、C²DH（Luxembourg）。來源：<a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a></p>
+<p>在實驗室中的位置（推斷）：Hidden Histories 的 PI 與主要訪談者（2016 年專書 14 篇訪談中 13 篇由她訪問）；MDOH 概念的共同提出者；MeDoraH 的德方申請人（海報標「PI, TU Darmstadt」）。來源：Crossref <a href="https://doi.org/10.1007/978-3-319-20170-2">10.1007/978-3-319-20170-2</a> 章節清單；<a href="https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf">https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf</a></p>
 <h3 id="32-andrew-flinn">3.2 Andrew Flinn：口述歷史與檔案學端</h3>
-<p>Flinn 1987 年曼徹斯特大學學士、1989 年利物浦大學碩士、1999 年曼徹斯特大學博士。1990–1999 年任 National Museum of Labour History 檔案員，1999–2001 年在曼徹斯特大學擔任 ESRC「Communists in British Society」傳記計畫研究員；2002 年起在 UCL 任教（Archives and Records Management MA），UCL 機構任命紀錄為 2005-07-01 Associate Professor；現為 Professor of Archival Studies and Oral History，兼人文學院研究生事務副院長（Vice Dean for Postgraduate Research）。2011 年春為波士頓 Simmons College 訪問教授。主持過兩個 AHRC 計畫：「Community archives and identities」（2008–2010）、「Dig Where You Stand」（2012–2013）。來源：https://profiles.ucl.ac.uk/api/users/9621</p>
-<p>學會與公共角色：Sloane Lab 副 PI；大英圖書館 National Life Stories 理事；UK and Ireland Community Archives and Heritage Group 主席。研究興趣：激進公共史、獨立檔案與社群史、口述歷史、遺產行動主義與社會正義、使用者生成內容與參與式檔案實踐。來源：https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf （IFPH 2024 摘要內的作者簡介）；https://profiles.ucl.ac.uk/api/users/9621</p>
-<p>在實驗室中的位置：他是三個計畫全部掛名的兩人之一（另一位是 Nyhan）。Hidden Histories 期間負責口述歷史方法（2011 研討會論文「Oral History and acts of recovery: humanizing history?」）；MDOH 由他與 Nyhan 共同推動，2024 IFPH 世界公共史大會論文「Exploring uncertainty and laughter in oral histories」以笑聲與遲疑為例，主張在聲譜圖與波形層次分析口述歷史；MeDoraH 為 UCL Co-I。來源：https://idohl.org/team ；https://hiddenhistories.omeka.net/items/show/6 （搜尋結果所示，未直接讀取）；https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf ；http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research</p>
+<p>Flinn 1987 年曼徹斯特大學學士、1989 年利物浦大學碩士、1999 年曼徹斯特大學博士。1990–1999 年任 National Museum of Labour History 檔案員，1999–2001 年在曼徹斯特大學擔任 ESRC「Communists in British Society」傳記計畫研究員；2002 年起在 UCL 任教（Archives and Records Management MA），UCL 機構任命紀錄為 2005-07-01 Associate Professor；現為 Professor of Archival Studies and Oral History，兼人文學院研究生事務副院長（Vice Dean for Postgraduate Research）。2011 年春為波士頓 Simmons College 訪問教授。主持過兩個 AHRC 計畫：「Community archives and identities」（2008–2010）、「Dig Where You Stand」（2012–2013）。來源：<a href="https://profiles.ucl.ac.uk/api/users/9621">https://profiles.ucl.ac.uk/api/users/9621</a></p>
+<p>學會與公共角色：Sloane Lab 副 PI；大英圖書館 National Life Stories 理事；UK and Ireland Community Archives and Heritage Group 主席。研究興趣：激進公共史、獨立檔案與社群史、口述歷史、遺產行動主義與社會正義、使用者生成內容與參與式檔案實踐。來源：<a href="https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf">https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf</a> （IFPH 2024 摘要內的作者簡介）；<a href="https://profiles.ucl.ac.uk/api/users/9621">https://profiles.ucl.ac.uk/api/users/9621</a></p>
+<p>在實驗室中的位置：他是三個計畫全部掛名的兩人之一（另一位是 Nyhan）。Hidden Histories 期間負責口述歷史方法（2011 研討會論文「Oral History and acts of recovery: humanizing history?」）；MDOH 由他與 Nyhan 共同推動，2024 IFPH 世界公共史大會論文「Exploring uncertainty and laughter in oral histories」以笑聲與遲疑為例，主張在聲譜圖與波形層次分析口述歷史；MeDoraH 為 UCL Co-I。來源：<a href="https://idohl.org/team">https://idohl.org/team</a> ；<a href="https://hiddenhistories.omeka.net/items/show/6">https://hiddenhistories.omeka.net/items/show/6</a> （搜尋結果所示，未直接讀取）；<a href="https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf">https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf</a> ；<a href="http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research">http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research</a></p>
 <p>升等時間：2024 IFPH 摘要與 2025-07-14 存檔團隊頁都寫 Reader，現行團隊頁與 UCL 職位欄寫 Professor，所以升等落在 2025-07 到 2026-10 之間；確切日期網站未載明。</p>
 <h3 id="33-andreas-vlachidisnlp">3.3 Andreas Vlachidis：NLP 與知識圖譜的技術端</h3>
-<p>Vlachidis 的學歷全部在格拉摩根大學（University of Glamorgan，今 University of South Wales）：2003 年學士、2004 年碩士、2012 年博士，論文題目領域為「Semantic Indexing of Archaeological Grey Literature」；2010 年取得雪菲爾大學 GATE 的 Advanced Certified Text Analyst 認證，2011 年起為 FHEA，2005 年起為 BCS 會員。職涯：2004–2005 Swansea 的 ICT 開發主管；2014–2017 University of South Wales 專案經理（CEWN、Re-DrAW 等威爾斯區域計畫）；2016-06 至 2018-03 UCL DIS 研究員；2018-04 至 2019-03 UWE Bristol 資深講師；2019-04-01 起 UCL DIS 講師；2023-10-01 起 Associate Professor of Information Science。來源：https://profiles.ucl.ac.uk/api/users/57279</p>
-<p>研究路徑：從考古灰色文獻的語意索引出發（規則式資訊抽取、GATE、CIDOC-CRM 與其考古延伸 CRM-EH），經歐盟 FP7 ARIADNE、H2020 ARIADNEplus、CrossCult 等計畫，擴展到文化遺產資料的語意建模與 FAIR 整合；曾開發 GATE 的威爾斯語 NLP 工具組。現為 Sloane Lab 的 Co-I 與技術負責人（資料統一、聚合、知識庫），PI 計畫「Text Analytics for inclusive AI education platforms」，Alan Turing Institute「Humanities and Data Science」研究興趣小組召集人，並任 University of South Wales 訪問教授。教學：INST0073 Natural Language Processing and Text Analysis 等三門模組的負責人。來源：https://profiles.ucl.ac.uk/api/users/57279</p>
-<p>在實驗室中的位置：MeDoraH 的 UCL 端 PI（UCL 新聞與 Humanist 招聘公告皆由他具名），負責本體論、知識圖譜與 NLP 管線的設計方向；Zhang 是他招募的博後（Humanist 公告 2024-01-23 的職缺即「Research Associate in Semantic Web and Information Extraction」）。他只掛名 MDOH 與 MeDoraH，不在 Hidden Histories 名單上，與其 2016 年才進入 UCL 相符。來源：http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research ；https://www.dhhumanist.org/volume/37/408/ ；https://idohl.org/team</p>
+<p>Vlachidis 的學歷全部在格拉摩根大學（University of Glamorgan，今 University of South Wales）：2003 年學士、2004 年碩士、2012 年博士，論文題目領域為「Semantic Indexing of Archaeological Grey Literature」；2010 年取得雪菲爾大學 GATE 的 Advanced Certified Text Analyst 認證，2011 年起為 FHEA，2005 年起為 BCS 會員。職涯：2004–2005 Swansea 的 ICT 開發主管；2014–2017 University of South Wales 專案經理（CEWN、Re-DrAW 等威爾斯區域計畫）；2016-06 至 2018-03 UCL DIS 研究員；2018-04 至 2019-03 UWE Bristol 資深講師；2019-04-01 起 UCL DIS 講師；2023-10-01 起 Associate Professor of Information Science。來源：<a href="https://profiles.ucl.ac.uk/api/users/57279">https://profiles.ucl.ac.uk/api/users/57279</a></p>
+<p>研究路徑：從考古灰色文獻的語意索引出發（規則式資訊抽取、GATE、CIDOC-CRM 與其考古延伸 CRM-EH），經歐盟 FP7 ARIADNE、H2020 ARIADNEplus、CrossCult 等計畫，擴展到文化遺產資料的語意建模與 FAIR 整合；曾開發 GATE 的威爾斯語 NLP 工具組。現為 Sloane Lab 的 Co-I 與技術負責人（資料統一、聚合、知識庫），PI 計畫「Text Analytics for inclusive AI education platforms」，Alan Turing Institute「Humanities and Data Science」研究興趣小組召集人，並任 University of South Wales 訪問教授。教學：INST0073 Natural Language Processing and Text Analysis 等三門模組的負責人。來源：<a href="https://profiles.ucl.ac.uk/api/users/57279">https://profiles.ucl.ac.uk/api/users/57279</a></p>
+<p>在實驗室中的位置：MeDoraH 的 UCL 端 PI（UCL 新聞與 Humanist 招聘公告皆由他具名），負責本體論、知識圖譜與 NLP 管線的設計方向；Zhang 是他招募的博後（Humanist 公告 2024-01-23 的職缺即「Research Associate in Semantic Web and Information Extraction」）。他只掛名 MDOH 與 MeDoraH，不在 Hidden Histories 名單上，與其 2016 年才進入 UCL 相符。來源：<a href="http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research">http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research</a> ；<a href="https://www.dhhumanist.org/volume/37/408/">https://www.dhhumanist.org/volume/37/408/</a> ；<a href="https://idohl.org/team">https://idohl.org/team</a></p>
 <h3 id="34">3.4 分工小結</h3>
 <p>從經費文件看，MeDoraH 的正式分工是 Vlachidis（UCL PI）、Flinn（UCL Co-I）、Nyhan（TU Darmstadt 申請人）；從實驗室網站看，Nyhan 與 Flinn 貫穿三個計畫，Vlachidis 自 MDOH 起加入。我的判斷：Nyhan 提供研究議題（數位人文史、口述歷史作為資料）、Flinn 提供口述歷史與檔案學的方法立場（多模態、共享權威、參與式），Vlachidis 提供語意技術與 NLP 工程；博後與助理分別掛在這三條線下。來源：同上各節。</p>
 <hr>
@@ -231,17 +249,17 @@ img{max-width:100%;height:auto}
 <tr>
 <td>1949</td>
 <td>Roberto Busa 著手中世紀拉丁文本的計算索引；Hidden Histories 以此為研究起點</td>
-<td>https://idohl.org/hiddenhistories/</td>
+<td><a href="https://idohl.org/hiddenhistories/">https://idohl.org/hiddenhistories/</a></td>
 </tr>
 <tr>
 <td>2002</td>
 <td>Flinn 開始在 UCL 任教</td>
-<td>https://profiles.ucl.ac.uk/api/users/9621</td>
+<td><a href="https://profiles.ucl.ac.uk/api/users/9621">https://profiles.ucl.ac.uk/api/users/9621</a></td>
 </tr>
 <tr>
 <td>2006</td>
 <td>Nyhan 取得 University College Cork 歷史學博士</td>
-<td>https://profiles.ucl.ac.uk/api/users/29443</td>
+<td><a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a></td>
 </tr>
 <tr>
 <td>2011-09-01</td>
@@ -251,117 +269,117 @@ img{max-width:100%;height:auto}
 <tr>
 <td>2011-09-17</td>
 <td>「Hidden Histories: Symposium on Methodologies for the History of Computing in the Humanities, c.1949-1980」於 UCL 舉行；Trier 大學 HKFZ 提供 5,000 歐元種子經費，UCLDH 協辦；試行研究完成 5 篇口述歷史訪談（Willard McCarty、Geoffrey Rockwell、Harold Short、Ray Siemens、John Unsworth），訪談地點為 DH2011（Stanford）、UCL 與 Skype；十位講者，多場演講錄成 podcast</td>
-<td>https://idohl.org/item/112 ；https://idohl.org/hiddenhistories/events-updates</td>
+<td><a href="https://idohl.org/item/112">https://idohl.org/item/112</a> ；<a href="https://idohl.org/hiddenhistories/events-updates">https://idohl.org/hiddenhistories/events-updates</a></td>
 </tr>
 <tr>
 <td>2011–2012</td>
 <td>Anne Welsh 任 co-PI，Marc Theobald（Trier）任 RA</td>
-<td>https://idohl.org/hiddenhistories/about-hidden-histories</td>
+<td><a href="https://idohl.org/hiddenhistories/about-hidden-histories">https://idohl.org/hiddenhistories/about-hidden-histories</a></td>
 </tr>
 <tr>
 <td>2012-11-27</td>
 <td>Nyhan, Flinn &amp; Welsh〈A short Introduction to the Hidden Histories project and interviews〉刊於 <em>Digital Humanities Quarterly</em> 6(3)</td>
-<td>Crossref 10.63744/uh8up8fcgsvw</td>
+<td>Crossref <a href="https://doi.org/10.63744/uh8up8fcgsvw">10.63744/uh8up8fcgsvw</a></td>
 </tr>
 <tr>
 <td>2013-07-30（線上）／2015</td>
 <td>Nyhan, Flinn &amp; Welsh〈Oral History and the Hidden Histories project〉刊於 <em>Digital Scholarship in the Humanities</em> 30(1): 71–85</td>
-<td>Crossref 10.1093/llc/fqt044 ；https://idohl.org/resources-publications</td>
+<td>Crossref <a href="https://doi.org/10.1093/llc/fqt044">10.1093/llc/fqt044</a> ；<a href="https://idohl.org/resources-publications">https://idohl.org/resources-publications</a></td>
 </tr>
 <tr>
 <td>2016</td>
 <td>Nyhan &amp; Flinn《Computation and the Humanities: Towards an Oral History of Digital Humanities》（Springer Series on Cultural Computing，CC BY-NC 2.5），18 章含 14 篇訪談（Burrows／Craig／McCarty、Ott、Orlandi、Hockey、Malloy、Harris、Nitti、Agüera、Rutimann、Sperberg-McQueen、Thaller、Bradley、Huitfeldt、Egan）</td>
-<td>Crossref 10.1007/978-3-319-20170-2 及其章節</td>
+<td>Crossref <a href="https://doi.org/10.1007/978-3-319-20170-2">10.1007/978-3-319-20170-2</a> 及其章節</td>
 </tr>
 <tr>
 <td>2016-06 至 2018-03</td>
 <td>Vlachidis 首次在 UCL DIS 任研究員</td>
-<td>https://profiles.ucl.ac.uk/api/users/57279</td>
+<td><a href="https://profiles.ucl.ac.uk/api/users/57279">https://profiles.ucl.ac.uk/api/users/57279</a></td>
 </tr>
 <tr>
 <td>2018-10</td>
 <td>Nyhan 任 UCLDH 副主任</td>
-<td>https://profiles.ucl.ac.uk/api/users/29443</td>
+<td><a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a></td>
 </tr>
 <tr>
 <td>2019</td>
 <td>Nyhan &amp; Passarotti 編《One Origin of Digital Humanities: Fr Roberto Busa in His Own Words》（Springer）</td>
-<td>https://idohl.org/resources-publications</td>
+<td><a href="https://idohl.org/resources-publications">https://idohl.org/resources-publications</a></td>
 </tr>
 <tr>
 <td>2019-04-01</td>
 <td>Vlachidis 任 UCL DIS 講師</td>
-<td>https://profiles.ucl.ac.uk/api/users/57279</td>
+<td><a href="https://profiles.ucl.ac.uk/api/users/57279">https://profiles.ucl.ac.uk/api/users/57279</a></td>
 </tr>
 <tr>
 <td>2019-10-21</td>
 <td>TU Darmstadt 歷史研究所公告 W3 教授職缺「Humanities Data Science and Methodology」，2019-12-08 截止</td>
-<td>https://dhlab.philhist.unibas.ch/en/news/details/job-the-institute-of-history-at-technische-universitaet-darmstadt-seeks-to-appoint-a-professor-w3/</td>
+<td><a href="https://dhlab.philhist.unibas.ch/en/news/details/job-the-institute-of-history-at-technische-universitaet-darmstadt-seeks-to-appoint-a-professor-w3/">https://dhlab.philhist.unibas.ch/en/news/details/job-the-institute-of-history-at-technische-universitaet-darmstadt-seeks-to-appoint-a-professor-w3/</a></td>
 </tr>
 <tr>
 <td>2021</td>
 <td>Nyhan 任 UCLDH 主任（至 2022-01）；2021-10-01 升任 UCL Professor of Digital Humanities；Sloane Lab（AHRC，2021–2024）啟動</td>
-<td>https://profiles.ucl.ac.uk/api/users/29443</td>
+<td><a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a></td>
 </tr>
 <tr>
 <td>2021-11-15</td>
 <td>Humbel 任 UCL DIS 研究員（Sloane Lab，2021–2024）</td>
-<td>https://profiles.ucl.ac.uk/api/users/67801</td>
+<td><a href="https://profiles.ucl.ac.uk/api/users/67801">https://profiles.ucl.ac.uk/api/users/67801</a></td>
 </tr>
 <tr>
 <td>2022-01-01</td>
 <td>Nyhan 就任 TU Darmstadt HDSM 講座教授；2022-01 卸任 UCLDH 主任</td>
-<td>https://profiles.ucl.ac.uk/api/users/29443 ；https://juliannenyhan.com/about/</td>
+<td><a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a> ；<a href="https://juliannenyhan.com/about/">https://juliannenyhan.com/about/</a></td>
 </tr>
 <tr>
 <td>2022</td>
 <td>Nyhan《Hidden and Devalued Feminized Labour in the Digital Humanities: On the Index Thomisticus Project 1954-67》（Routledge；實驗室書目寫 2022，UCL 個人頁寫 2023）</td>
-<td>https://idohl.org/resources-publications ；https://profiles.ucl.ac.uk/api/users/29443</td>
+<td><a href="https://idohl.org/resources-publications">https://idohl.org/resources-publications</a> ；<a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a></td>
 </tr>
 <tr>
 <td>2022-05-27</td>
 <td>講座系列網站 multimodaldigitaloralhistory.omeka.net 的最早 Wayback 快照（該站 2026-10-05 已顯示 Site Not Found）</td>
-<td>Wayback CDX；https://multimodaldigitaloralhistory.omeka.net/</td>
+<td>Wayback CDX；<a href="https://multimodaldigitaloralhistory.omeka.net/">https://multimodaldigitaloralhistory.omeka.net/</a></td>
 </tr>
 <tr>
 <td>2022-06-03</td>
 <td>EADH 名單公告「Multimodal Digital Oral History: The Forward-View Seminar」，召集人 Flinn（UCL）與 Nyhan（TU Darmstadt／UCL），協辦 Smyth 與 Metilli</td>
-<td>https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/</td>
+<td><a href="https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/">https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/</a></td>
 </tr>
 <tr>
 <td>2022-06-08 至 07-20</td>
 <td>五場線上講座（講者見第 5 節）；錄影以「HDSM: Multimodal Digital Humanities Ringvorlesung」（SoSe 2022，CC BY-NC-ND 4.0）存於 TU Darmstadt OpenLearnWare</td>
-<td>同上；https://openlearnware.tu-darmstadt.de/collection/hdsm-multimodal-digital-humanities-ringvorlesung-417/</td>
+<td>同上；<a href="https://openlearnware.tu-darmstadt.de/collection/hdsm-multimodal-digital-humanities-ringvorlesung-417/">https://openlearnware.tu-darmstadt.de/collection/hdsm-multimodal-digital-humanities-ringvorlesung-417/</a></td>
 </tr>
 <tr>
 <td>2023-01-02</td>
 <td>Smyth, Nyhan &amp; Flinn〈Exploring the possibilities of Thomson's fourth paradigm transformation - The case for a multimodal approach to digital oral history?〉線上刊出，<em>DSH</em> 38(2): 720–736；MDOH 一詞的奠基文章</td>
-<td>Crossref 10.1093/llc/fqac094 ；https://idohl.org/MDOH/</td>
+<td>Crossref <a href="https://doi.org/10.1093/llc/fqac094">10.1093/llc/fqac094</a> ；<a href="https://idohl.org/MDOH/">https://idohl.org/MDOH/</a></td>
 </tr>
 <tr>
 <td>2023</td>
 <td>MDOH 成為計畫（計畫總覽頁「since 2023」）；Nyhan 任 TU Darmstadt 歷史研究所所長（2023–2025）；Humbel 任 UCLDH 早期研究者副主任（2023–2025）</td>
-<td>https://idohl.org/Projects ；https://profiles.ucl.ac.uk/api/users/29443 ；https://www.nationalarchives.gov.uk/people/marco-humbel/</td>
+<td><a href="https://idohl.org/Projects">https://idohl.org/Projects</a> ；<a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a> ；<a href="https://www.nationalarchives.gov.uk/people/marco-humbel/">https://www.nationalarchives.gov.uk/people/marco-humbel/</a></td>
 </tr>
 <tr>
 <td>2023-05</td>
 <td>HDSM 部落格啟用（僅見於搜尋引擎對 TU Darmstadt 新聞頁的摘要，原頁現為 404，無法直接查證）</td>
-<td>https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/news_archiv_ifg_details_95488.en.jsp （404）</td>
+<td><a href="https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/news_archiv_ifg_details_95488.en.jsp">https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/news_archiv_ifg_details_95488.en.jsp</a> （404）</td>
 </tr>
 <tr>
 <td>2023-10-01</td>
 <td>Vlachidis 升任 Associate Professor</td>
-<td>https://profiles.ucl.ac.uk/api/users/57279</td>
+<td><a href="https://profiles.ucl.ac.uk/api/users/57279">https://profiles.ucl.ac.uk/api/users/57279</a></td>
 </tr>
 <tr>
 <td>2023-12-13</td>
 <td>UCL 新聞宣布 MeDoraH 獲 AHRC 與 DFG 補助（AHRC–DFG 英德合作計畫第 5 輪，18 件之一）：UCL £441,798、TU Darmstadt €632,736，34 個月，2024-02-01 起；PI Vlachidis、Co-I Flinn、德方 Nyhan；UCL 聘 1 名語意網與資訊抽取 PDRA，TU Darmstadt 聘 2 名詮釋學／網絡分析／口述歷史 PDRA。AHRC 編號 AH/Y007557/1</td>
-<td>http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research ；https://gtr.ukri.org/gtr/api/projects?q=%22Mixed-methods%20Digital%20Oral%20History%22</td>
+<td><a href="http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research">http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research</a> ；<a href="https://gtr.ukri.org/gtr/api/projects?q=%22Mixed-methods%20Digital%20Oral%20History%22">https://gtr.ukri.org/gtr/api/projects?q=%22Mixed-methods%20Digital%20Oral%20History%22</a></td>
 </tr>
 <tr>
 <td>2024-01-23</td>
 <td>Vlachidis 在 Humanist 37.408 刊登 MeDoraH 博後職缺（2024-02-16 截止）；同日 Frieda Schmidt（當時 Greifswald）在 TU Darmstadt Oberseminar 演講「Mixed Methods in Historical Research」</td>
-<td>https://www.dhhumanist.org/volume/37/408/ ；https://www.gugw.tu-darmstadt.de/termine_details_fb2_107072.en.jsp</td>
+<td><a href="https://www.dhhumanist.org/volume/37/408/">https://www.dhhumanist.org/volume/37/408/</a> ；<a href="https://www.gugw.tu-darmstadt.de/termine_details_fb2_107072.en.jsp">https://www.gugw.tu-darmstadt.de/termine_details_fb2_107072.en.jsp</a></td>
 </tr>
 <tr>
 <td>2024-02-01</td>
@@ -371,57 +389,57 @@ img{max-width:100%;height:auto}
 <tr>
 <td>2024-05</td>
 <td>Schmidt 任 HDSM 博後</td>
-<td>https://orcid.org/0009-0000-3129-7722</td>
+<td><a href="https://orcid.org/0009-0000-3129-7722">https://orcid.org/0009-0000-3129-7722</a></td>
 </tr>
 <tr>
 <td>2024-07-06</td>
 <td>Zhang 任 UCL DIS 研究員；2024-07-28 建 MeDoraH_NLP 倉庫、2024-08-30 建 MeDoraH_Ontology 倉庫</td>
-<td>https://profiles.ucl.ac.uk/api/users/99799 ；https://api.github.com/users/articoder/repos</td>
+<td><a href="https://profiles.ucl.ac.uk/api/users/99799">https://profiles.ucl.ac.uk/api/users/99799</a> ；<a href="https://api.github.com/users/articoder/repos">https://api.github.com/users/articoder/repos</a></td>
 </tr>
 <tr>
 <td>2024</td>
 <td>Flinn &amp; Nyhan 在 IFPH 世界公共史大會（Belval）發表 MDOH 論文；Nyhan 在 MPIWG（Berlin）與韓國口述歷史學會 15 週年研討會（Seoul）演講</td>
-<td>https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf ；https://idohl.org/resources-publications</td>
+<td><a href="https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf">https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf</a> ；<a href="https://idohl.org/resources-publications">https://idohl.org/resources-publications</a></td>
 </tr>
 <tr>
 <td>2024-09-01</td>
 <td>Nyhan 轉為 UCL Professor Emerita</td>
-<td>https://profiles.ucl.ac.uk/api/users/29443</td>
+<td><a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a></td>
 </tr>
 <tr>
 <td>2024-10</td>
 <td>Varfolomeyev 任 HDSM 技術人員</td>
-<td>https://orcid.org/0000-0002-5532-6185</td>
+<td><a href="https://orcid.org/0000-0002-5532-6185">https://orcid.org/0000-0002-5532-6185</a></td>
 </tr>
 <tr>
 <td>2024-10-10</td>
 <td>Omeka S「MeDoraH」站建立；2024-10-20 匯入第一批訪談項目；2024-10-31「Hidden Histories」站建立（當時掛在 hiddenhistories.net）</td>
-<td>https://idohl.org/api/sites ；https://idohl.org/api/items?sort_by=created&amp;sort_order=asc</td>
+<td><a href="https://idohl.org/api/sites">https://idohl.org/api/sites</a> ；<a href="https://idohl.org/api/items?sort_by=created&amp;sort_order=asc">https://idohl.org/api/items?sort_by=created&amp;sort_order=asc</a></td>
 </tr>
 <tr>
 <td>2024-10-14 至 2025-02-03</td>
 <td>「Voices Unbound: Lecture Series on Digital Oral History」，週一 14:25–15:45（CET），混合形式；TU Darmstadt、UCL、C²DH、MPIWG 合辦（節目見第 5 節）</td>
-<td>https://www.gugw.tu-darmstadt.de/termine_details_fb2_121984.en.jsp ；http://web.archive.org/web/20260617192308/https://www.ucl.ac.uk/digital-humanities/ucldh-events/ucldh-seminar-series/seminar-series-2024-25</td>
+<td><a href="https://www.gugw.tu-darmstadt.de/termine_details_fb2_121984.en.jsp">https://www.gugw.tu-darmstadt.de/termine_details_fb2_121984.en.jsp</a> ；<a href="http://web.archive.org/web/20260617192308/https://www.ucl.ac.uk/digital-humanities/ucldh-events/ucldh-seminar-series/seminar-series-2024-25">http://web.archive.org/web/20260617192308/https://www.ucl.ac.uk/digital-humanities/ucldh-events/ucldh-seminar-series/seminar-series-2024-25</a></td>
 </tr>
 <tr>
 <td>2024-11-12</td>
 <td>GitHub 帳號「International-Digital-Oral-History-Lab」建立，同日建 MeDoraH_Project 倉庫。這是本次調查找到最早帶日期的「International Digital Oral History Lab」名稱</td>
-<td>https://api.github.com/users/International-Digital-Oral-History-Lab ；https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project</td>
+<td><a href="https://api.github.com/users/International-Digital-Oral-History-Lab">https://api.github.com/users/International-Digital-Oral-History-Lab</a> ；<a href="https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project">https://api.github.com/repos/International-Digital-Oral-History-Lab/MeDoraH_Project</a></td>
 </tr>
 <tr>
 <td>2024-11-15</td>
 <td>Flinn, Boyd, Morgan &amp; Nyhan〈Democratising Access? The interface of new technologies and archived life stories〉（<em>Oral History</em> 52(3)）開放取用</td>
-<td>HDSM 部落格分類頁第 2 頁 https://hdsm.hypotheses.org/category/digital_oral_history_lab/page/2</td>
+<td>HDSM 部落格分類頁第 2 頁 <a href="https://hdsm.hypotheses.org/category/digital_oral_history_lab/page/2">https://hdsm.hypotheses.org/category/digital_oral_history_lab/page/2</a></td>
 </tr>
 <tr>
 <td>2025-02-26</td>
 <td>MeDoraH 站新增「Interviews (FAIR Archive)」頁</td>
-<td>https://idohl.org/api/site_pages</td>
+<td><a href="https://idohl.org/api/site_pages">https://idohl.org/api/site_pages</a></td>
 </tr>
 <tr>
 <td>2025-03-28</td>
 <td>HDSM 與 UCLDH 在 UCL 合辦文字探勘（tf-idf）工作坊</td>
-<td>https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp</td>
+<td><a href="https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp">https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp</a></td>
 </tr>
 <tr>
 <td>2025-04-11</td>
@@ -431,52 +449,52 @@ img{max-width:100%;height:auto}
 <tr>
 <td>2025-05-14</td>
 <td>Omeka S「Lab」站建立（即今日 IDOHL 首頁；當時路徑 hiddenhistories.net/s/digital-oral-history-lab）；隨後建頁：Projects 05-14、Updates 05-18、Resources &amp; Publications 05-20、Research Team 06-02、Supervision 06-09、Infrastructure 06-13</td>
-<td>https://idohl.org/api/sites ；https://idohl.org/api/site_pages</td>
+<td><a href="https://idohl.org/api/sites">https://idohl.org/api/sites</a> ；<a href="https://idohl.org/api/site_pages">https://idohl.org/api/site_pages</a></td>
 </tr>
 <tr>
 <td>2025-05-22</td>
 <td>Nyhan 發表第六屆 Susan Hockey Lecture「Oral History as Data? Critically approaching the digital turn in method, meaning and recollection」（UCL，UCLDH 15 週年）；錄影 2025-07-03 釋出</td>
-<td>https://hdsm.hypotheses.org/4911 ；https://hdsm.hypotheses.org/5284</td>
+<td><a href="https://hdsm.hypotheses.org/4911">https://hdsm.hypotheses.org/4911</a> ；<a href="https://hdsm.hypotheses.org/5284">https://hdsm.hypotheses.org/5284</a></td>
 </tr>
 <tr>
 <td>2025-06</td>
 <td>UCLDH 與 HDSM 簽署合作備忘錄（MoU），內容含共享基礎建設、研究人員流動、聯合計畫</td>
-<td>https://blogs.ucl.ac.uk/dh/2025/09/30/ucldh-at-15-highlights-milestones-whats-next</td>
+<td><a href="https://blogs.ucl.ac.uk/dh/2025/09/30/ucldh-at-15-highlights-milestones-whats-next">https://blogs.ucl.ac.uk/dh/2025/09/30/ucldh-at-15-highlights-milestones-whats-next</a></td>
 </tr>
 <tr>
 <td>2025-07-09</td>
 <td>Nyhan 公開演講「Mixed-methods Digital Oral History: Reflections on Limits, Horizons and Emerging Findings」（錄影 2025-11-17 釋出）；同日 Wayback 首次存檔實驗室首頁 hiddenhistories.net/s/digital-oral-history-lab/page/home，頁面已標「International Digital Oral History Lab, A collaboration between UCL and TU Darmstadt」，為最早的網頁存證</td>
-<td>https://hdsm.hypotheses.org/6578 ；http://web.archive.org/web/20250709134009/https://hiddenhistories.net/s/digital-oral-history-lab/page/home</td>
+<td><a href="https://hdsm.hypotheses.org/6578">https://hdsm.hypotheses.org/6578</a> ；<a href="http://web.archive.org/web/20250709134009/https://hiddenhistories.net/s/digital-oral-history-lab/page/home">http://web.archive.org/web/20250709134009/https://hiddenhistories.net/s/digital-oral-history-lab/page/home</a></td>
 </tr>
 <tr>
 <td>2025-07-15</td>
 <td>Humbel 在 UCL Festival of Digital Research, Innovation &amp; Scholarship 以 IDOHL 名義報告「Leveraging mailing list archives for digital history research: A case study on mining the Humanist discussion group」（共同作者 Nyhan、Flinn、Prishchepova、Varfolomeyev、Elleringmann；Humanist 郵件清單 1987 年起 38 年、4 萬餘則，使用 spaCy 與 Mallet）</td>
-<td>https://hdsm.hypotheses.org/5336</td>
+<td><a href="https://hdsm.hypotheses.org/5336">https://hdsm.hypotheses.org/5336</a></td>
 </tr>
 <tr>
 <td>2025-08</td>
 <td>MeDoraH 海報（Nyhan、Vlachidis、Flinn、Humbel、Schmidt、Zhang）在「DFG Celebrating 100th Funded Project」展出；頁首網址 medorah.hiddenhistories.net</td>
-<td>http://web.archive.org/web/20260316163345/https://discovery.ucl.ac.uk/id/eprint/10222596/ ；https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf</td>
+<td><a href="http://web.archive.org/web/20260316163345/https://discovery.ucl.ac.uk/id/eprint/10222596/">http://web.archive.org/web/20260316163345/https://discovery.ucl.ac.uk/id/eprint/10222596/</a> ；<a href="https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf">https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf</a></td>
 </tr>
 <tr>
 <td>2025-09-04</td>
 <td>Omeka S「MDOH」站建立</td>
-<td>https://idohl.org/api/sites</td>
+<td><a href="https://idohl.org/api/sites">https://idohl.org/api/sites</a></td>
 </tr>
 <tr>
 <td>2025-09-16 至 19</td>
 <td>HDSM 團隊參與 Connected Past 2025（Coimbra）</td>
-<td>https://hdsm.hypotheses.org/5990</td>
+<td><a href="https://hdsm.hypotheses.org/5990">https://hdsm.hypotheses.org/5990</a></td>
 </tr>
 <tr>
 <td>2025</td>
 <td>Flinn &amp; Nyhan 在 ESSHC 2025（Leiden）發表「Possibilities / impossibilities for shared authority in the digital oral history paradigm?」</td>
-<td>https://idohl.org/resources-publications</td>
+<td><a href="https://idohl.org/resources-publications">https://idohl.org/resources-publications</a></td>
 </tr>
 <tr>
 <td>2026-03-02</td>
 <td>GitHub 建 MDOH_Project 倉庫；2026-03-03 新增「Open Source &amp; Release」頁（NarraGraph v0.4）；2026-03-04 新版 Home</td>
-<td>https://api.github.com/repos/International-Digital-Oral-History-Lab/MDOH_Project ；https://idohl.org/api/site_pages</td>
+<td><a href="https://api.github.com/repos/International-Digital-Oral-History-Lab/MDOH_Project">https://api.github.com/repos/International-Digital-Oral-History-Lab/MDOH_Project</a> ；<a href="https://idohl.org/api/site_pages">https://idohl.org/api/site_pages</a></td>
 </tr>
 <tr>
 <td>2026-03-16</td>
@@ -491,33 +509,33 @@ img{max-width:100%;height:auto}
 <tr>
 <td>2026-05-06</td>
 <td>IDOHL-updator 倉庫初始提交（Updates 頁的消息聚合器）</td>
-<td>https://api.github.com/repos/International-Digital-Oral-History-Lab/IDOHL-updator</td>
+<td><a href="https://api.github.com/repos/International-Digital-Oral-History-Lab/IDOHL-updator">https://api.github.com/repos/International-Digital-Oral-History-Lab/IDOHL-updator</a></td>
 </tr>
 <tr>
 <td>2026-05-12</td>
-<td>https://idohl.org/ 的最早 Wayback 快照</td>
-<td>http://web.archive.org/cdx/search/cdx?url=idohl.org</td>
+<td><a href="https://idohl.org/">https://idohl.org/</a> 的最早 Wayback 快照</td>
+<td><a href="http://web.archive.org/cdx/search/cdx?url=idohl.org">http://web.archive.org/cdx/search/cdx?url=idohl.org</a></td>
 </tr>
 <tr>
 <td>2026-06-01</td>
 <td>新增「Study &amp; Supervision」頁；2026-07-24 新 Homepage；2026-08-17 多頁大幅修訂；2026-08-27 hiddenhistories.net 各路徑回 301</td>
-<td>https://idohl.org/api/site_pages ；Wayback CDX</td>
+<td><a href="https://idohl.org/api/site_pages">https://idohl.org/api/site_pages</a> ；Wayback CDX</td>
 </tr>
 <tr>
 <td>2026-09-16</td>
 <td>Lab 站最後修改；2026-10-01 消息快取最後更新</td>
-<td>https://idohl.org/api/sites ；news-cache.json</td>
+<td><a href="https://idohl.org/api/sites">https://idohl.org/api/sites</a> ；news-cache.json</td>
 </tr>
 </tbody>
 </table></div>
 <hr>
 <h2 id="5">5. 教學與社群活動</h2>
 <h3 id="51-study-supervision">5.1 Study &amp; Supervision（教學與指導）</h3>
-<p>頁面標題「Open for enquiries · UCL × TU Darmstadt」。三種參與途徑：Mini-Projects（UCL 與 TU Darmstadt 研究方法模組的學生，數週）、Dissertations（碩士約 3 個月至博士最長 4 年，實驗室共同指導）、Placements（UCL MA Digital Humanities 與 TU Darmstadt 數位人文碩士的實習，須有明確交付物）。六個指導主題：Ontology and Vocabulary for Oral History；Human-centred Artificial Intelligence；Computational Analysis of Oral History Recollection；Historical &amp; Cultural Analysis（數位人文及鄰近學科的歷史、網絡與「peoplescapes」）；Multi-modality Data Processing and Analysis（語音辨識、音訊處理、影片分析）；Knowledge Graphs Infrastructure Construction；另可自提題目。流程：Microsoft Forms 詢問表（姓名、所屬、途徑、主題、200 字動機、選填 CV、預計開始時間）、5 個工作日內回覆、合適者收到主題簡介並安排 30 分鐘視訊會談、再 5 個工作日內決定；每週 30 分鐘指導會議；可混合或遠距。列出的學生：Zewei Liu（UCL DIS 實習 2025，MA DH，「NLP-Driven Metadata Enrichment for Oral History Interviews」，為 MeDoraH 管線開發 LLM 關鍵詞抽取）、Gerald Ong（UCL DIS 實習 2025，「Enhancing Oral History Digital Collection with Omeka-S」）、Sarah Jan（TU Darmstadt 碩士專題 2026，「OHMS Integration for the Hidden Histories Catalogue」）。頁面未個別列出指導教師，也未提到工作坊或暑期學校。來源：https://idohl.org/Study-Supervision</p>
-<p>TU Darmstadt 端的課程：Nyhan 2026–27 冬季學期開四門課，含數位口述歷史方法；UCL 端 Vlachidis 負責 INST0073 NLP and Text Analysis，Zhang 擔任該模組助教。來源：https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_53504.en.jsp ；https://profiles.ucl.ac.uk/api/users/57279 ；https://profiles.ucl.ac.uk/api/users/99799</p>
+<p>頁面標題「Open for enquiries · UCL × TU Darmstadt」。三種參與途徑：Mini-Projects（UCL 與 TU Darmstadt 研究方法模組的學生，數週）、Dissertations（碩士約 3 個月至博士最長 4 年，實驗室共同指導）、Placements（UCL MA Digital Humanities 與 TU Darmstadt 數位人文碩士的實習，須有明確交付物）。六個指導主題：Ontology and Vocabulary for Oral History；Human-centred Artificial Intelligence；Computational Analysis of Oral History Recollection；Historical &amp; Cultural Analysis（數位人文及鄰近學科的歷史、網絡與「peoplescapes」）；Multi-modality Data Processing and Analysis（語音辨識、音訊處理、影片分析）；Knowledge Graphs Infrastructure Construction；另可自提題目。流程：Microsoft Forms 詢問表（姓名、所屬、途徑、主題、200 字動機、選填 CV、預計開始時間）、5 個工作日內回覆、合適者收到主題簡介並安排 30 分鐘視訊會談、再 5 個工作日內決定；每週 30 分鐘指導會議；可混合或遠距。列出的學生：Zewei Liu（UCL DIS 實習 2025，MA DH，「NLP-Driven Metadata Enrichment for Oral History Interviews」，為 MeDoraH 管線開發 LLM 關鍵詞抽取）、Gerald Ong（UCL DIS 實習 2025，「Enhancing Oral History Digital Collection with Omeka-S」）、Sarah Jan（TU Darmstadt 碩士專題 2026，「OHMS Integration for the Hidden Histories Catalogue」）。頁面未個別列出指導教師，也未提到工作坊或暑期學校。來源：<a href="https://idohl.org/Study-Supervision">https://idohl.org/Study-Supervision</a></p>
+<p>TU Darmstadt 端的課程：Nyhan 2026–27 冬季學期開四門課，含數位口述歷史方法；UCL 端 Vlachidis 負責 INST0073 NLP and Text Analysis，Zhang 擔任該模組助教。來源：<a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_53504.en.jsp">https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_53504.en.jsp</a> ；<a href="https://profiles.ucl.ac.uk/api/users/57279">https://profiles.ucl.ac.uk/api/users/57279</a> ；<a href="https://profiles.ucl.ac.uk/api/users/99799">https://profiles.ucl.ac.uk/api/users/99799</a></p>
 <h3 id="52-2022-multimodal-digital-oral-history-the-forward-view-seminar">5.2 2022 年講座系列「Multimodal Digital Oral History: The Forward-View Seminar」</h3>
-<p>召集人 Andrew Flinn（UCL）與 Julianne Nyhan（TU Darmstadt／UCL），協辦 Hannah Smyth 與 Daniele Metilli（UCL）。合辦單位依 2022-06-03 公告：Centre for Critical Heritage Studies UCL、Chair of Humanities Data Science and Methodology（TU Darmstadt）、International Centre for Archives and Records Management Research（UCL）、UCL Centre for Digital Humanities。線上 Zoom，18:00–19:30 CEST。來源：https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/</p>
-<p>關於「哥德堡」：實驗室的出版品頁寫合辦者為「Centre for Critical Heritage Studies, University of Gothenburg」，2022 年公告與 OpenLearnWare 則寫「Centre for Critical Heritage Studies UCL」。CCHS 本身是哥德堡大學與 UCL 自 2016 年 4 月起合辦的中心，兩種寫法指同一單位的兩個端點。來源：https://idohl.org/resources-publications ；https://openlearnware.tu-darmstadt.de/collection/hdsm-multimodal-digital-humanities-ringvorlesung-417/ ；https://www.ucl.ac.uk/critical-heritage-studies/about （搜尋結果所示）。</p>
+<p>召集人 Andrew Flinn（UCL）與 Julianne Nyhan（TU Darmstadt／UCL），協辦 Hannah Smyth 與 Daniele Metilli（UCL）。合辦單位依 2022-06-03 公告：Centre for Critical Heritage Studies UCL、Chair of Humanities Data Science and Methodology（TU Darmstadt）、International Centre for Archives and Records Management Research（UCL）、UCL Centre for Digital Humanities。線上 Zoom，18:00–19:30 CEST。來源：<a href="https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/">https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/</a></p>
+<p>關於「哥德堡」：實驗室的出版品頁寫合辦者為「Centre for Critical Heritage Studies, University of Gothenburg」，2022 年公告與 OpenLearnWare 則寫「Centre for Critical Heritage Studies UCL」。CCHS 本身是哥德堡大學與 UCL 自 2016 年 4 月起合辦的中心，兩種寫法指同一單位的兩個端點。來源：<a href="https://idohl.org/resources-publications">https://idohl.org/resources-publications</a> ；<a href="https://openlearnware.tu-darmstadt.de/collection/hdsm-multimodal-digital-humanities-ringvorlesung-417/">https://openlearnware.tu-darmstadt.de/collection/hdsm-multimodal-digital-humanities-ringvorlesung-417/</a> ；<a href="https://www.ucl.ac.uk/critical-heritage-studies/about">https://www.ucl.ac.uk/critical-heritage-studies/about</a> （搜尋結果所示）。</p>
 <div class="tablewrap"><table>
 <thead>
 <tr>
@@ -584,9 +602,9 @@ img{max-width:100%;height:auto}
 </tr>
 </tbody>
 </table></div>
-<p>來源：同上 EADH 公告。錄影：Panopto 資料夾（https://tu-darmstadt.cloud.panopto.eu/Panopto/Pages/Sessions/List.aspx#folderID=%224af39e5e-d43b-4320-b1ec-b06100a1d7bd%22 ）直接讀取回 HTTP 403，講者清單因此取自公告而非錄影目錄；另一份錄影合集在 OpenLearnWare（上列網址）。IFPH 2024 摘要稱這個系列為「our 2022 MDOH seminar series」。來源：https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf</p>
+<p>來源：同上 EADH 公告。錄影：Panopto 資料夾（<a href="https://tu-darmstadt.cloud.panopto.eu/Panopto/Pages/Sessions/List.aspx#folderID=%224af39e5e-d43b-4320-b1ec-b06100a1d7bd%22">https://tu-darmstadt.cloud.panopto.eu/Panopto/Pages/Sessions/List.aspx#folderID=%224af39e5e-d43b-4320-b1ec-b06100a1d7bd%22</a> ）直接讀取回 HTTP 403，講者清單因此取自公告而非錄影目錄；另一份錄影合集在 OpenLearnWare（上列網址）。IFPH 2024 摘要稱這個系列為「our 2022 MDOH seminar series」。來源：<a href="https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf">https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf</a></p>
 <h3 id="53-202425-voices-unbound-lecture-series-on-digital-oral-history">5.3 2024–25 年講座系列「Voices Unbound: Lecture Series on Digital Oral History」</h3>
-<p>UCLDH 頁面的全名為「Voices unbound? Exploring new and/or possible directions in digital and experimental oral history」。合辦：TU Darmstadt、UCL Centre for Digital Humanities、Luxembourg Centre for Contemporary and Digital History（C²DH）、Max-Planck-Institut für Wissenschaftsgeschichte（MPIWG）。召集人：Julianne Nyhan（TU Darmstadt）、Andrew Flinn、Andreas Vlachidis、Marco Humbel（UCL）、Shih-Pei Chen（MPIWG）、Gerben Zaagsma（C²DH）。形式：TU Darmstadt 學生在講堂現場、其他人遠距；週一 14:25–15:45（CET；UCL 頁寫 1:25pm–2:45pm），2024-10-14 至 2025-02-03；演講錄影發布於兩校媒體頻道。來源：https://www.gugw.tu-darmstadt.de/termine_details_fb2_121984.en.jsp ；http://web.archive.org/web/20260617192308/https://www.ucl.ac.uk/digital-humanities/ucldh-events/ucldh-seminar-series/seminar-series-2024-25</p>
+<p>UCLDH 頁面的全名為「Voices unbound? Exploring new and/or possible directions in digital and experimental oral history」。合辦：TU Darmstadt、UCL Centre for Digital Humanities、Luxembourg Centre for Contemporary and Digital History（C²DH）、Max-Planck-Institut für Wissenschaftsgeschichte（MPIWG）。召集人：Julianne Nyhan（TU Darmstadt）、Andrew Flinn、Andreas Vlachidis、Marco Humbel（UCL）、Shih-Pei Chen（MPIWG）、Gerben Zaagsma（C²DH）。形式：TU Darmstadt 學生在講堂現場、其他人遠距；週一 14:25–15:45（CET；UCL 頁寫 1:25pm–2:45pm），2024-10-14 至 2025-02-03；演講錄影發布於兩校媒體頻道。來源：<a href="https://www.gugw.tu-darmstadt.de/termine_details_fb2_121984.en.jsp">https://www.gugw.tu-darmstadt.de/termine_details_fb2_121984.en.jsp</a> ；<a href="http://web.archive.org/web/20260617192308/https://www.ucl.ac.uk/digital-humanities/ucldh-events/ucldh-seminar-series/seminar-series-2024-25">http://web.archive.org/web/20260617192308/https://www.ucl.ac.uk/digital-humanities/ucldh-events/ucldh-seminar-series/seminar-series-2024-25</a></p>
 <div class="tablewrap"><table>
 <thead>
 <tr>
@@ -613,7 +631,7 @@ img{max-width:100%;height:auto}
 <td>2024-11-11</td>
 <td>Michael Townsen Hicks</td>
 <td>Large Language Models are bullshitters（HDSM 歸類為 Invited Lecture 與 Digital_Oral_History_Lab；UCLDH 節目表未列，是否屬本系列網站未明說）</td>
-<td>https://hdsm.hypotheses.org/4057</td>
+<td><a href="https://hdsm.hypotheses.org/4057">https://hdsm.hypotheses.org/4057</a></td>
 </tr>
 <tr>
 <td>2024-11-18</td>
@@ -655,16 +673,16 @@ img{max-width:100%;height:auto}
 <td>2025-02-03</td>
 <td>Linde Apel</td>
 <td>Oral History and the digital transformation. Some historical, ethical and methodological remarks（系列末場）</td>
-<td>https://hdsm.hypotheses.org/4595</td>
+<td><a href="https://hdsm.hypotheses.org/4595">https://hdsm.hypotheses.org/4595</a></td>
 </tr>
 </tbody>
 </table></div>
-<p>HDSM 貼文來源：https://hdsm.hypotheses.org/category/digital_oral_history_lab 及 /page/2 。UCLDH 15 週年回顧稱此系列主題「ranged from text mining and linguistic analysis to metadata standards and critical reflections on AI」。來源：https://blogs.ucl.ac.uk/dh/2025/09/30/ucldh-at-15-highlights-milestones-whats-next 。Panopto 資料夾（https://tu-darmstadt.cloud.panopto.eu/Panopto/Pages/Sessions/List.aspx#folderID=%22a0b7cc54-cd4b-4782-8c5d-b1e300ea6ac0%22 ）直接讀取回 403。</p>
+<p>HDSM 貼文來源：<a href="https://hdsm.hypotheses.org/category/digital_oral_history_lab">https://hdsm.hypotheses.org/category/digital_oral_history_lab</a> 及 /page/2 。UCLDH 15 週年回顧稱此系列主題「ranged from text mining and linguistic analysis to metadata standards and critical reflections on AI」。來源：<a href="https://blogs.ucl.ac.uk/dh/2025/09/30/ucldh-at-15-highlights-milestones-whats-next">https://blogs.ucl.ac.uk/dh/2025/09/30/ucldh-at-15-highlights-milestones-whats-next</a> 。Panopto 資料夾（<a href="https://tu-darmstadt.cloud.panopto.eu/Panopto/Pages/Sessions/List.aspx#folderID=%22a0b7cc54-cd4b-4782-8c5d-b1e300ea6ac0%22">https://tu-darmstadt.cloud.panopto.eu/Panopto/Pages/Sessions/List.aspx#folderID=%22a0b7cc54-cd4b-4782-8c5d-b1e300ea6ac0%22</a> ）直接讀取回 403。</p>
 <h3 id="54">5.4 工作坊與其他活動</h3>
 <ul>
-<li><strong>Hidden Histories Symposium（2011-09-17，UCL）</strong>：十位講者與一場主持討論，涵蓋歷史書寫方法、口述歷史方法論、資訊科學的起源、被忽略人物的重現；多場錄為 podcast（Omeka 項目集「Hidden Histories Symposium Podcasts」建於 2024-11-01）。來源：https://idohl.org/item/112 ；https://idohl.org/hiddenhistories/events-updates ；https://idohl.org/api/item_sets</li>
-<li><strong>文字探勘工作坊（2025-03-28，UCL）</strong>：HDSM 與 UCLDH 合辦，主題 tf-idf。來源：https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp</li>
-<li><strong>HDSM 公開演講</strong>：2025-05-22 Susan Hockey Lecture；2025-07-09 Nyhan 公開演講；2026 年 HDSM 另有 Geoffrey Rockwell（2026-04-28）、Can Şimşek（2026-04-21）等演講，但 2026 年沒有任何貼文被歸入 Digital_Oral_History_Lab 分類（該分類共 17 篇，最新為 2025-11-17）。來源：https://hdsm.hypotheses.org/ ；news-cache.json</li>
+<li><strong>Hidden Histories Symposium（2011-09-17，UCL）</strong>：十位講者與一場主持討論，涵蓋歷史書寫方法、口述歷史方法論、資訊科學的起源、被忽略人物的重現；多場錄為 podcast（Omeka 項目集「Hidden Histories Symposium Podcasts」建於 2024-11-01）。來源：<a href="https://idohl.org/item/112">https://idohl.org/item/112</a> ；<a href="https://idohl.org/hiddenhistories/events-updates">https://idohl.org/hiddenhistories/events-updates</a> ；<a href="https://idohl.org/api/item_sets">https://idohl.org/api/item_sets</a></li>
+<li><strong>文字探勘工作坊（2025-03-28，UCL）</strong>：HDSM 與 UCLDH 合辦，主題 tf-idf。來源：<a href="https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp">https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp</a></li>
+<li><strong>HDSM 公開演講</strong>：2025-05-22 Susan Hockey Lecture；2025-07-09 Nyhan 公開演講；2026 年 HDSM 另有 Geoffrey Rockwell（2026-04-28）、Can Şimşek（2026-04-21）等演講，但 2026 年沒有任何貼文被歸入 Digital_Oral_History_Lab 分類（該分類共 17 篇，最新為 2025-11-17）。來源：<a href="https://hdsm.hypotheses.org/">https://hdsm.hypotheses.org/</a> ；news-cache.json</li>
 <li><strong>UCL Festival of Digital Research（2025-07-15）</strong>：見年表。</li>
 </ul>
 <hr>
@@ -687,81 +705,81 @@ img{max-width:100%;height:auto}
 <hr>
 <h2 id="7">7. 來源清單</h2>
 <p><strong>idohl.org（含 API）</strong>
-- https://idohl.org/
-- https://idohl.org/team
-- https://idohl.org/updates
-- https://idohl.org/Study-Supervision
-- https://idohl.org/resources-publications
-- https://idohl.org/OpenSource-Release
-- https://idohl.org/Projects
-- https://idohl.org/infrastructure
-- https://idohl.org/item/112
-- https://idohl.org/hiddenhistories/
-- https://idohl.org/hiddenhistories/about-hidden-histories
-- https://idohl.org/hiddenhistories/events-updates
-- https://idohl.org/hiddenhistories/projects
-- https://idohl.org/MDOH/
-- https://idohl.org/medorah/
-- https://idohl.org/medorah/Oral_History_Interviews
-- https://idohl.org/api/sites
-- https://idohl.org/api/site_pages?per_page=100
-- https://idohl.org/api/items?per_page=8&amp;sort_by=created&amp;sort_order=asc
-- https://idohl.org/api/item_sets?per_page=50</p>
+- <a href="https://idohl.org/">https://idohl.org/</a>
+- <a href="https://idohl.org/team">https://idohl.org/team</a>
+- <a href="https://idohl.org/updates">https://idohl.org/updates</a>
+- <a href="https://idohl.org/Study-Supervision">https://idohl.org/Study-Supervision</a>
+- <a href="https://idohl.org/resources-publications">https://idohl.org/resources-publications</a>
+- <a href="https://idohl.org/OpenSource-Release">https://idohl.org/OpenSource-Release</a>
+- <a href="https://idohl.org/Projects">https://idohl.org/Projects</a>
+- <a href="https://idohl.org/infrastructure">https://idohl.org/infrastructure</a>
+- <a href="https://idohl.org/item/112">https://idohl.org/item/112</a>
+- <a href="https://idohl.org/hiddenhistories/">https://idohl.org/hiddenhistories/</a>
+- <a href="https://idohl.org/hiddenhistories/about-hidden-histories">https://idohl.org/hiddenhistories/about-hidden-histories</a>
+- <a href="https://idohl.org/hiddenhistories/events-updates">https://idohl.org/hiddenhistories/events-updates</a>
+- <a href="https://idohl.org/hiddenhistories/projects">https://idohl.org/hiddenhistories/projects</a>
+- <a href="https://idohl.org/MDOH/">https://idohl.org/MDOH/</a>
+- <a href="https://idohl.org/medorah/">https://idohl.org/medorah/</a>
+- <a href="https://idohl.org/medorah/Oral_History_Interviews">https://idohl.org/medorah/Oral_History_Interviews</a>
+- <a href="https://idohl.org/api/sites">https://idohl.org/api/sites</a>
+- <a href="https://idohl.org/api/site_pages?per_page=100">https://idohl.org/api/site_pages?per_page=100</a>
+- <a href="https://idohl.org/api/items?per_page=8&amp;sort_by=created&amp;sort_order=asc">https://idohl.org/api/items?per_page=8&amp;sort_by=created&amp;sort_order=asc</a>
+- <a href="https://idohl.org/api/item_sets?per_page=50">https://idohl.org/api/item_sets?per_page=50</a></p>
 <p><strong>個人頁與機構頁</strong>
-- https://profiles.ucl.ac.uk/9621-andrew-flinn/about （資料實際取自 https://profiles.ucl.ac.uk/api/users/9621 ）
-- https://profiles.ucl.ac.uk/29443-julianne-nyhan （https://profiles.ucl.ac.uk/api/users/29443 ）
-- https://profiles.ucl.ac.uk/57279-andreas-vlachidis/about （https://profiles.ucl.ac.uk/api/users/57279 ）
-- https://profiles.ucl.ac.uk/99799-jiajie-zhang/about （https://profiles.ucl.ac.uk/api/users/99799 ）
-- https://profiles.ucl.ac.uk/67801-marco-humbel （https://profiles.ucl.ac.uk/api/users/67801 ）
-- https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_67520.en.jsp （Schmidt）
-- https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_69504.en.jsp （Varfolomeyev）
-- https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_53504.en.jsp （Nyhan）
-- https://juliannenyhan.com/ ；https://juliannenyhan.com/about/
-- https://www.nationalarchives.gov.uk/people/marco-humbel/
-- https://campus.dariah.eu/people/nyhan-julianne
-- https://orcid.org/0000-0002-5532-6185 ；https://orcid.org/0009-0000-3129-7722 ；https://orcid.org/0009-0008-5998-3175
-- https://api.github.com/users/International-Digital-Oral-History-Lab ；https://api.github.com/users/articoder ；https://api.github.com/repos/International-Digital-Oral-History-Lab/IDOHL-updator ；.../MeDoraH_Project ；.../MDOH_Project
-- https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/IDOHL-updator/main/landing_page/data/news-cache.json</p>
+- <a href="https://profiles.ucl.ac.uk/9621-andrew-flinn/about">https://profiles.ucl.ac.uk/9621-andrew-flinn/about</a> （資料實際取自 <a href="https://profiles.ucl.ac.uk/api/users/9621">https://profiles.ucl.ac.uk/api/users/9621</a> ）
+- <a href="https://profiles.ucl.ac.uk/29443-julianne-nyhan">https://profiles.ucl.ac.uk/29443-julianne-nyhan</a> （<a href="https://profiles.ucl.ac.uk/api/users/29443">https://profiles.ucl.ac.uk/api/users/29443</a> ）
+- <a href="https://profiles.ucl.ac.uk/57279-andreas-vlachidis/about">https://profiles.ucl.ac.uk/57279-andreas-vlachidis/about</a> （<a href="https://profiles.ucl.ac.uk/api/users/57279">https://profiles.ucl.ac.uk/api/users/57279</a> ）
+- <a href="https://profiles.ucl.ac.uk/99799-jiajie-zhang/about">https://profiles.ucl.ac.uk/99799-jiajie-zhang/about</a> （<a href="https://profiles.ucl.ac.uk/api/users/99799">https://profiles.ucl.ac.uk/api/users/99799</a> ）
+- <a href="https://profiles.ucl.ac.uk/67801-marco-humbel">https://profiles.ucl.ac.uk/67801-marco-humbel</a> （<a href="https://profiles.ucl.ac.uk/api/users/67801">https://profiles.ucl.ac.uk/api/users/67801</a> ）
+- <a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_67520.en.jsp">https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_67520.en.jsp</a> （Schmidt）
+- <a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_69504.en.jsp">https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_69504.en.jsp</a> （Varfolomeyev）
+- <a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_53504.en.jsp">https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_53504.en.jsp</a> （Nyhan）
+- <a href="https://juliannenyhan.com/">https://juliannenyhan.com/</a> ；<a href="https://juliannenyhan.com/about/">https://juliannenyhan.com/about/</a>
+- <a href="https://www.nationalarchives.gov.uk/people/marco-humbel/">https://www.nationalarchives.gov.uk/people/marco-humbel/</a>
+- <a href="https://campus.dariah.eu/people/nyhan-julianne">https://campus.dariah.eu/people/nyhan-julianne</a>
+- <a href="https://orcid.org/0000-0002-5532-6185">https://orcid.org/0000-0002-5532-6185</a> ；<a href="https://orcid.org/0009-0000-3129-7722">https://orcid.org/0009-0000-3129-7722</a> ；<a href="https://orcid.org/0009-0008-5998-3175">https://orcid.org/0009-0008-5998-3175</a>
+- <a href="https://api.github.com/users/International-Digital-Oral-History-Lab">https://api.github.com/users/International-Digital-Oral-History-Lab</a> ；<a href="https://api.github.com/users/articoder">https://api.github.com/users/articoder</a> ；<a href="https://api.github.com/repos/International-Digital-Oral-History-Lab/IDOHL-updator">https://api.github.com/repos/International-Digital-Oral-History-Lab/IDOHL-updator</a> ；.../MeDoraH_Project ；.../MDOH_Project
+- <a href="https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/IDOHL-updator/main/landing_page/data/news-cache.json">https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/IDOHL-updator/main/landing_page/data/news-cache.json</a></p>
 <p><strong>經費、新聞、活動</strong>
-- http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research （原頁 https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research 被 Cloudflare 擋住）
-- https://gtr.ukri.org/gtr/api/projects?q=%22Mixed-methods%20Digital%20Oral%20History%22 （AH/Y007557/1）
-- https://www.dhhumanist.org/volume/37/408/
-- https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf （MeDoraH 海報）
-- http://web.archive.org/web/20260316163345/https://discovery.ucl.ac.uk/id/eprint/10222596/
-- https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf
-- https://dhlab.philhist.unibas.ch/en/news/details/job-the-institute-of-history-at-technische-universitaet-darmstadt-seeks-to-appoint-a-professor-w3/
-- https://blogs.ucl.ac.uk/dh/2025/09/30/ucldh-at-15-highlights-milestones-whats-next
-- https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp
-- https://www.gugw.tu-darmstadt.de/termine_details_fb2_121984.en.jsp （Voices Unbound 公告）
-- http://web.archive.org/web/20260617192308/https://www.ucl.ac.uk/digital-humanities/ucldh-events/ucldh-seminar-series/seminar-series-2024-25
-- https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/ （2022 系列公告）
-- https://openlearnware.tu-darmstadt.de/collection/hdsm-multimodal-digital-humanities-ringvorlesung-417/
-- https://www.gugw.tu-darmstadt.de/termine_details_fb2_107072.en.jsp （Schmidt 2024-01-23 演講）
-- https://hdsm.hypotheses.org/ ；https://hdsm.hypotheses.org/category/digital_oral_history_lab ；.../page/2
-- https://hdsm.hypotheses.org/4057 ；/4595 ；/4911 ；/5284 ；/5336 ；/5990 ；/6578
-- https://www.ucl.ac.uk/critical-heritage-studies/about</p>
+- <a href="http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research">http://web.archive.org/web/20260309150727/https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research</a> （原頁 <a href="https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research">https://www.ucl.ac.uk/arts-humanities/news/2023/dec/medorah-multidisciplinary-project-introducing-digital-turn-oral-history-research</a> 被 Cloudflare 擋住）
+- <a href="https://gtr.ukri.org/gtr/api/projects?q=%22Mixed-methods%20Digital%20Oral%20History%22">https://gtr.ukri.org/gtr/api/projects?q=%22Mixed-methods%20Digital%20Oral%20History%22</a> （AH/Y007557/1）
+- <a href="https://www.dhhumanist.org/volume/37/408/">https://www.dhhumanist.org/volume/37/408/</a>
+- <a href="https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf">https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf</a> （MeDoraH 海報）
+- <a href="http://web.archive.org/web/20260316163345/https://discovery.ucl.ac.uk/id/eprint/10222596/">http://web.archive.org/web/20260316163345/https://discovery.ucl.ac.uk/id/eprint/10222596/</a>
+- <a href="https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf">https://discovery.ucl.ac.uk/10212788/1/Flinn_IFPH%20MDOH%20paper_final.pdf</a>
+- <a href="https://dhlab.philhist.unibas.ch/en/news/details/job-the-institute-of-history-at-technische-universitaet-darmstadt-seeks-to-appoint-a-professor-w3/">https://dhlab.philhist.unibas.ch/en/news/details/job-the-institute-of-history-at-technische-universitaet-darmstadt-seeks-to-appoint-a-professor-w3/</a>
+- <a href="https://blogs.ucl.ac.uk/dh/2025/09/30/ucldh-at-15-highlights-milestones-whats-next">https://blogs.ucl.ac.uk/dh/2025/09/30/ucldh-at-15-highlights-milestones-whats-next</a>
+- <a href="https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp">https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/index_2.en.jsp</a>
+- <a href="https://www.gugw.tu-darmstadt.de/termine_details_fb2_121984.en.jsp">https://www.gugw.tu-darmstadt.de/termine_details_fb2_121984.en.jsp</a> （Voices Unbound 公告）
+- <a href="http://web.archive.org/web/20260617192308/https://www.ucl.ac.uk/digital-humanities/ucldh-events/ucldh-seminar-series/seminar-series-2024-25">http://web.archive.org/web/20260617192308/https://www.ucl.ac.uk/digital-humanities/ucldh-events/ucldh-seminar-series/seminar-series-2024-25</a>
+- <a href="https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/">https://lists.digitalhumanities.org/archives/list/eadh-topics@lists.digitalhumanities.org/thread/3VVJIRYGXCMREXBJ3XHIGMXFA3BCQRI6/</a> （2022 系列公告）
+- <a href="https://openlearnware.tu-darmstadt.de/collection/hdsm-multimodal-digital-humanities-ringvorlesung-417/">https://openlearnware.tu-darmstadt.de/collection/hdsm-multimodal-digital-humanities-ringvorlesung-417/</a>
+- <a href="https://www.gugw.tu-darmstadt.de/termine_details_fb2_107072.en.jsp">https://www.gugw.tu-darmstadt.de/termine_details_fb2_107072.en.jsp</a> （Schmidt 2024-01-23 演講）
+- <a href="https://hdsm.hypotheses.org/">https://hdsm.hypotheses.org/</a> ；<a href="https://hdsm.hypotheses.org/category/digital_oral_history_lab">https://hdsm.hypotheses.org/category/digital_oral_history_lab</a> ；.../page/2
+- <a href="https://hdsm.hypotheses.org/4057">https://hdsm.hypotheses.org/4057</a> ；/4595 ；/4911 ；/5284 ；/5336 ；/5990 ；/6578
+- <a href="https://www.ucl.ac.uk/critical-heritage-studies/about">https://www.ucl.ac.uk/critical-heritage-studies/about</a></p>
 <p><strong>歷史存證</strong>
-- http://web.archive.org/cdx/search/cdx?url=idohl.org
-- http://web.archive.org/cdx/search/cdx?url=hiddenhistories.net&amp;matchType=domain&amp;from=2023
-- http://web.archive.org/web/20250709134009/https://hiddenhistories.net/s/digital-oral-history-lab/page/home
-- http://web.archive.org/web/20250714121706/https://hiddenhistories.net/s/digital-oral-history-lab/page/research-team
-- http://web.archive.org/cdx/search/cdx?url=multimodaldigitaloralhistory.omeka.net
+- <a href="http://web.archive.org/cdx/search/cdx?url=idohl.org">http://web.archive.org/cdx/search/cdx?url=idohl.org</a>
+- <a href="http://web.archive.org/cdx/search/cdx?url=hiddenhistories.net&amp;matchType=domain&amp;from=2023">http://web.archive.org/cdx/search/cdx?url=hiddenhistories.net&amp;matchType=domain&amp;from=2023</a>
+- <a href="http://web.archive.org/web/20250709134009/https://hiddenhistories.net/s/digital-oral-history-lab/page/home">http://web.archive.org/web/20250709134009/https://hiddenhistories.net/s/digital-oral-history-lab/page/home</a>
+- <a href="http://web.archive.org/web/20250714121706/https://hiddenhistories.net/s/digital-oral-history-lab/page/research-team">http://web.archive.org/web/20250714121706/https://hiddenhistories.net/s/digital-oral-history-lab/page/research-team</a>
+- <a href="http://web.archive.org/cdx/search/cdx?url=multimodaldigitaloralhistory.omeka.net">http://web.archive.org/cdx/search/cdx?url=multimodaldigitaloralhistory.omeka.net</a>
 - whois idohl.org（2026-10-05 查詢）</p>
 <p><strong>書目核對（Crossref）</strong>
-- 10.1007/978-3-319-20170-2（2016 專書及章節）
-- 10.63744/uh8up8fcgsvw（DHQ 2012）
-- 10.1093/llc/fqt044（DSH 2013／2015）
-- 10.1093/llc/fqac094（DSH 2023）
-- 10.1108/jd-02-2021-0032 ；10.1108/jd-12-2023-0263 ；10.1007/978-3-030-71903-6_6
-- 10.1007/978-3-642-41360-5_14 ；10.15388/slavviln.2019.64(1).06 ；10.1007/s00779-016-0996-7
-- 10.17885/HEIUP.1305.C18419 ；10.5281/ZENODO.8322364</p>
+- <a href="https://doi.org/10.1007/978-3-319-20170-2">10.1007/978-3-319-20170-2</a>（2016 專書及章節）
+- <a href="https://doi.org/10.63744/uh8up8fcgsvw">10.63744/uh8up8fcgsvw</a>（DHQ 2012）
+- <a href="https://doi.org/10.1093/llc/fqt044">10.1093/llc/fqt044</a>（DSH 2013／2015）
+- <a href="https://doi.org/10.1093/llc/fqac094">10.1093/llc/fqac094</a>（DSH 2023）
+- <a href="https://doi.org/10.1108/jd-02-2021-0032">10.1108/jd-02-2021-0032</a> ；<a href="https://doi.org/10.1108/jd-12-2023-0263">10.1108/jd-12-2023-0263</a> ；<a href="https://doi.org/10.1007/978-3-030-71903-6_6">10.1007/978-3-030-71903-6_6</a>
+- <a href="https://doi.org/10.1007/978-3-642-41360-5_14">10.1007/978-3-642-41360-5_14</a> ；<a href="https://doi.org/10.15388/slavviln.2019.64(1).06">10.15388/slavviln.2019.64(1).06</a> ；<a href="https://doi.org/10.1007/s00779-016-0996-7">10.1007/s00779-016-0996-7</a>
+- <a href="https://doi.org/10.17885/HEIUP.1305.C18419">10.17885/HEIUP.1305.C18419</a> ；<a href="https://doi.org/10.5281/ZENODO.8322364">10.5281/ZENODO.8322364</a></p>
 <p><strong>讀取失敗、僅記錄的網址</strong>
-- https://multimodaldigitaloralhistory.omeka.net/ （Site Not Found）
-- https://gepris.dfg.de/gepris/projekt/528052031 （需 JavaScript）
-- https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/news_archiv_ifg_details_95488.en.jsp （404）
-- https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_70016.en.jsp （Humbel 的 TU 頁，404）
+- <a href="https://multimodaldigitaloralhistory.omeka.net/">https://multimodaldigitaloralhistory.omeka.net/</a> （Site Not Found）
+- <a href="https://gepris.dfg.de/gepris/projekt/528052031">https://gepris.dfg.de/gepris/projekt/528052031</a> （需 JavaScript）
+- <a href="https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/news_archiv_ifg_details_95488.en.jsp">https://www.geschichte.tu-darmstadt.de/aktuelles_ifg/news_archiv_ifg/news_archiv_ifg_details_95488.en.jsp</a> （404）
+- <a href="https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_70016.en.jsp">https://www.geschichte.tu-darmstadt.de/institut_fuer_geschichte_1/ifg_kontaktdetails_70016.en.jsp</a> （Humbel 的 TU 頁，404）
 - Panopto 兩個資料夾（403）</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

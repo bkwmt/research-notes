@@ -54,19 +54,37 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<p class="crumb"><a href="../index.html">Research Notes</a> › ⑧ 本體學習與 schema 歸納</p>
 <h1>Rasmussen 2025_Zep：時序知識圖譜當 agent 的記憶層</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/rasmussen2025_zep-temporal-kg.md</code>　來源最後修改 2026-09-08　分類 文獻深讀筆記（八節）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/rasmussen2025_zep-temporal-kg.md</code>　來源最後修改 2026-09-08　分類 ⑧ 本體學習與 schema 歸納　問題 <a class="qtag main" href="../index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="qtag" href="../index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a>　<a class="pdfbtn" href="../papers/rasmussen2025_zep-temporal-kg.pdf" title="站內 PDF（CC BY-NC-SA 4.0，0.1 MB）">原文 PDF</a></p>
 </div></header>
 <main class="wrap">
 <ul>
-<li><strong>完整書目</strong>：Rasmussen, P., Paliychuk, P., Beauvais, T., Ryan, J., &amp; Chalef, D. (2025). <em>Zep: A Temporal Knowledge Graph Architecture for Agent Memory</em>. arXiv:2501.13956v1（v1, 2025-01-20）。作者全部任職 Zep AI。<strong>預印本，未經同儕審查；且是商業產品的技術報告</strong>，讀時要留意這一點。</li>
+<li><strong>完整書目</strong>：Rasmussen, P., Paliychuk, P., Beauvais, T., Ryan, J., &amp; Chalef, D. (2025). <em>Zep: A Temporal Knowledge Graph Architecture for Agent Memory</em>. <a href="https://arxiv.org/abs/2501.13956v1">arXiv:2501.13956v1</a>（v1, 2025-01-20）。作者全部任職 Zep AI。<strong>預印本，未經同儕審查；且是商業產品的技術報告</strong>，讀時要留意這一點。</li>
 <li><strong>對應待查問題</strong>：⑧本體學習與 schema 歸納、⑥時間記法（兼涉①）</li>
 <li><strong>一句話定位</strong>：<strong>這是二十四篇裡唯一一個把「原始資料層」與「抽出的知識層」用雙向索引綁在一起、讓每筆知識都能回溯到來源的系統</strong>，同時也是唯一處理「相對時間怎麼錨定」與「事實何時失效」的系統。這兩件事正是本專案紅線第 3 條與硬約束 3 要的東西。</li>
 </ul>
@@ -118,7 +136,7 @@ img{max-width:100%;height:auto}
 <li><strong>實體消解最後一步交給模型判斷</strong>，沒有程式化的約束（對照 Jing 2007 的最小距離門檻與關係約束）。</li>
 </ul>
 <h2 id="8-extract_ohistory">8. 對 extract_ohistory 的啟示</h2>
-<p><strong>這篇要求我更正一個先前的判斷。</strong> 我在 <code>_卡點對照表.md</code> 寫過「二十篇裡沒有任何一家做到三元組層級的出處」。Zep 做到了：episodic 子圖保留非破壞性的原始資料，雙向索引讓每一條語意邊都能回到它的來源 episode，論文明說這是為了「引用或直接徵引」。所以正確的說法是：<strong>出處鏈條有前例，只是罕見，而且那個前例是商業系統不是學術研究；出處與「口語、評價、歷史材料」三者結合仍然沒有前例。</strong></p>
+<p><strong>這篇要求我更正一個先前的判斷。</strong> 我在 <a href="../notes/blockers.html"><code>_卡點對照表.md</code></a> 寫過「二十篇裡沒有任何一家做到三元組層級的出處」。Zep 做到了：episodic 子圖保留非破壞性的原始資料，雙向索引讓每一條語意邊都能回到它的來源 episode，論文明說這是為了「引用或直接徵引」。所以正確的說法是：<strong>出處鏈條有前例，只是罕見，而且那個前例是商業系統不是學術研究；出處與「口語、評價、歷史材料」三者結合仍然沒有前例。</strong></p>
 <p><strong>（一）三層結構可以直接對應我們既有的東西。</strong></p>
 <div class="tablewrap"><table>
 <thead>
@@ -151,7 +169,7 @@ img{max-width:100%;height:auto}
 <p><code>CLAUDE.md</code> 說相對時間（「退伍之後」）是把事件接成序列的接續資訊，不得丟掉。但只保留「退伍之後」四個字並不夠，還要能把它接到某個點上。Zep 的做法是每則訊息帶 <code>t_ref</code>，相對表述以它為錨。</p>
 <p>我們的對應物是<strong>訪談日期加時間碼</strong>。這給了一個下界錨點（「這段話是在某年某月說的」），但口述歷史講的是幾十年前的事，<code>t_ref</code> 只能錨定「說話的時間」，錨不了「事件的時間」。所以真正可用的是它的<strong>四時間戳結構</strong>，而不是 <code>t_ref</code> 本身：</p>
 <ul>
-<li><code>t_valid</code> / <code>t_invalid</code>：這件事在真實世界何時為真——多數時候我們只能填「未知」或一個區間，這正是 EDTF 規格（<code>loc2019_edtf-spec.md</code>）要處理的。</li>
+<li><code>t_valid</code> / <code>t_invalid</code>：這件事在真實世界何時為真——多數時候我們只能填「未知」或一個區間，這正是 EDTF 規格（<a href="../notes/loc2019_edtf-spec.html"><code>loc2019_edtf-spec.md</code></a>）要處理的。</li>
 <li><code>t'_created</code> / <code>t'_expired</code>：這筆知識何時被我們抽出、何時被推翻——這一層我們目前完全沒有，但它其實就是紅線第 4 條（推理可追溯）在資料結構層的實作。</li>
 </ul>
 <p><strong>（三）矛盾的處理必須反著做，但機制可以留。</strong></p>
@@ -172,8 +190,8 @@ img{max-width:100%;height:auto}
 <li><strong>它的評估不能引用。</strong> 這篇只評檢索效果，完全沒評抽取正確性，而且是廠商自評。</li>
 </ul>
 <p><strong>與四條紅線的相容性</strong>：<strong>紅線 3 相容且是唯一的正面範例</strong>（雙向索引的出處鏈條）；紅線 4 部分相容（有交易時間線，但沒有決策紀錄）；<strong>紅線 2 衝突</strong>（反思步驟、實體消解交給模型判斷）；紅線 1 相容（不用人工標注）。</p>
-<p><strong>與 <code>_卡點對照表.md</code> 的對應</strong>：第六節（相對時間與時序）、第二節（跨訪談併人的去重約束），以及「前人沒有的四件事」第 1 條需要修正。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<p><strong>與 <a href="../notes/blockers.html"><code>_卡點對照表.md</code></a> 的對應</strong>：第六節（相對時間與時序）、第二節（跨訪談併人的去重約束），以及「前人沒有的四件事」第 1 條需要修正。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

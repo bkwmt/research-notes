@@ -29,6 +29,21 @@ class P(html.parser.HTMLParser):
 
 problems = 0
 ext_urls: set[str] = set()
+
+# 文獻庫守門：papers/ 底下的每個 PDF 都必須在 tools/documents.yaml 登錄且 publish: true
+try:
+    import yaml
+    _reg = yaml.safe_load((ROOT / "tools" / "documents.yaml").read_text(encoding="utf-8")) or {}
+    _allowed = set((yaml.safe_load((ROOT / "tools" / "manifest.yaml").read_text(encoding="utf-8")).get("documents") or {}).get("allowed_licenses", []))
+    for pdf in sorted((ROOT / "papers").glob("*.pdf")):
+        info = _reg.get(pdf.name)
+        if not info or not info.get("publish"):
+            problems += 1; print(f"[文獻庫] {pdf.relative_to(ROOT)}：未登錄或 publish 不是 true")
+        elif info.get("license") not in _allowed:
+            problems += 1; print(f"[文獻庫] {pdf.relative_to(ROOT)}：授權「{info.get('license')}」不在 allowed_licenses")
+    print(f"文獻庫 {len(list((ROOT / 'papers').glob('*.pdf')))} 份 PDF 已核對登錄")
+except ModuleNotFoundError:
+    print("（略過文獻庫核對：缺 pyyaml）")
 for p in sorted(PAGES):
     s = p.read_text(encoding="utf-8")
     rel = p.relative_to(ROOT)

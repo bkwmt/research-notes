@@ -54,19 +54,37 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../index.html">Research Notes</a> › 文獻深讀筆記（八節）</p>
+<p class="crumb"><a href="../index.html">Research Notes</a> › ⑧ 本體學習與 schema 歸納</p>
 <h1>Liu 2024_開放式資訊抽取綜述：從規則式模型到大型語言模型</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/liu2024_openie-survey.md</code>　來源最後修改 2026-09-08　分類 文獻深讀筆記（八節）</p>
+<p class="meta">來源 <code>extract_ohistory/refs/notes/liu2024_openie-survey.md</code>　來源最後修改 2026-09-08　分類 ⑧ 本體學習與 schema 歸納　問題 <a class="qtag main" href="../index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="qtag" href="../index.html#q1" title="LLM 抽取與知識圖譜建構現況">①</a>　<a class="pdfbtn" href="../papers/liu2024_openie-survey.pdf" title="站內 PDF（CC BY 4.0，1.1 MB）">原文 PDF</a></p>
 </div></header>
 <main class="wrap">
 <ul>
-<li><strong>完整書目</strong>：Liu, P., Gao, W., Dong, W., Ai, L., Gong, Z., Huang, S., Li, Z., Hoque, E., Hirschberg, J., &amp; Zhang, Y. (2024). <em>A Survey on Open Information Extraction from Rule-based Model to Large Language Model</em>. Findings of the Association for Computational Linguistics: EMNLP 2024, 9586–9608. ACL Anthology 2024.findings-emnlp.560。<strong>同儕審查（EMNLP Findings）</strong>。西湖大學、羅徹斯特大學、浙江大學、哥倫比亞大學、阿里達摩院、東北大學。</li>
+<li><strong>完整書目</strong>：Liu, P., Gao, W., Dong, W., Ai, L., Gong, Z., Huang, S., Li, Z., Hoque, E., Hirschberg, J., &amp; Zhang, Y. (2024). <em>A Survey on Open Information Extraction from Rule-based Model to Large Language Model</em>. Findings of the Association for Computational Linguistics: EMNLP 2024, 9586–9608. ACL Anthology <a href="https://aclanthology.org/2024.findings-emnlp.560/">2024.findings-emnlp.560</a>。<strong>同儕審查（EMNLP Findings）</strong>。西湖大學、羅徹斯特大學、浙江大學、哥倫比亞大學、阿里達摩院、東北大學。</li>
 <li><strong>對應待查問題</strong>：⑧本體學習與 schema 歸納、①LLM 抽取現況、⑤評估</li>
 <li><strong>一句話定位</strong>：把開放式資訊抽取（OpenIE）二十年的發展整理成一條線，最有用的是兩組分類——<strong>三種任務設定</strong>（ORTE／ORSE／ORC）與<strong>兩類評分器</strong>（token-level／fact-level），前者可以用來替我們兩條並行的抽取線命名，後者直接回答「該用哪種指標」。</li>
 </ul>
@@ -160,9 +178,9 @@ img{max-width:100%;height:auto}
 <li><code>triple_exp.py</code> 的輸出是<strong>輸入裡的精確詞元</strong>（模型只圈字、程式逐字驗證），所以<strong>可以用 token-level 評分器</strong>。</li>
 <li><code>triple_free_exp.py</code> 是<strong>生成式</strong>輸出，<strong>必須用 fact-level 評分器</strong>（BenchIE 那一路）。</li>
 </ul>
-<p>這比我先前在 <code>_卡點對照表.md</code> 寫的「絕不能用字詞重疊計分」更準確。正確的說法是：<strong>兩條線要用不同的評分器，而且不能拿它們的分數直接互比</strong>。這一點如果搞錯，會得到「程式界定動詞那條線表現比較好」的假結論——那只是因為它被用寬鬆的指標評。</p>
+<p>這比我先前在 <a href="../notes/blockers.html"><code>_卡點對照表.md</code></a> 寫的「絕不能用字詞重疊計分」更準確。正確的說法是：<strong>兩條線要用不同的評分器，而且不能拿它們的分數直接互比</strong>。這一點如果搞錯，會得到「程式界定動詞那條線表現比較好」的假結論——那只是因為它被用寬鬆的指標評。</p>
 <p><strong>（三）中文的可用參照點只有三個，而且都不是口語。</strong></p>
-<p>SAOKE、BenchIE-zh、COER。BenchIE-zh 是翻譯來的（見 <code>gashteovski2022_benchie.md</code>），SAOKE 與 COER 是百度百科與中文新聞。<strong>沒有一個是口語，也沒有一個是繁體。</strong> 這替本專案的定位再加一筆證據：繁中口語逐字稿在 OpenIE 這條線上是空白。</p>
+<p>SAOKE、BenchIE-zh、COER。BenchIE-zh 是翻譯來的（見 <a href="../notes/gashteovski2022_benchie.html"><code>gashteovski2022_benchie.md</code></a>），SAOKE 與 COER 是百度百科與中文新聞。<strong>沒有一個是口語，也沒有一個是繁體。</strong> 這替本專案的定位再加一筆證據：繁中口語逐字稿在 OpenIE 這條線上是空白。</p>
 <p>COER 有一點值得留意：100 萬條、由非監督抽取器自動建立。若我們要找一個「中文的、大規模的、不靠人工標注的」參照點，它是目前唯一的候選——但它的領域（百科與新聞）與我們差太遠，只能當方法上的先例，不能當效能對照。</p>
 <p><strong>（四）三元組不是唯一選項，這是社群自己說的。</strong></p>
 <p>論文在定義 ORTE 時明講「實際抽取任務並不總是限於三元組，也可以涉及更多元的 n-ary 關係，例如條件、時間資訊」。這句可以直接引用來支持我們不走純三元組——不是標新立異，是這個領域自己承認的範圍。</p>
@@ -174,8 +192,8 @@ img{max-width:100%;height:auto}
 <li><strong>不要把 LLM 時代的樂觀敘事照搬。</strong> 綜述自己也說 LLM 在長尾任務上不行、幻覺是主要劣勢，而口述歷史裡的人物與事件恰恰全是長尾。</li>
 </ul>
 <p><strong>與四條紅線的相容性</strong>：綜述不做實驗，沒有直接的相容性問題。但它整理的主流方法裡，出處、時間、信心欄位全部缺席，這再次支持「出處設計沒有現成模板」的判斷。</p>
-<p><strong>與 <code>_卡點對照表.md</code> 的對應</strong>：第一節（動詞表／任務設定的命名）、第五節（評分器的選擇）。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<p><strong>與 <a href="../notes/blockers.html"><code>_卡點對照表.md</code></a> 的對應</strong>：第一節（動詞表／任務設定的命名）、第五節（評分器的選擇）。</p>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>

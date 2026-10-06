@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Research Notes</title>
-<meta name="description" content="程明（Ming Cheng）的文獻筆記、團隊側寫與導讀投影片">
+<meta name="description" content="程明（Ming Cheng）的文獻筆記、團隊側寫與導讀投影片，依研究線與待查問題分類">
 <style>
 :root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
@@ -54,6 +54,24 @@ img{max-width:100%;height:auto}
 .toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
 .toc li{break-inside:avoid;margin:.15em 0}
 @media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
 
 </style>
 </head>
@@ -61,92 +79,126 @@ img{max-width:100%;height:auto}
 <header class="hero"><div class="wrap">
 <p class="crumb"><a href="index.html">Research Notes</a> › 首頁</p>
 <h1>Research Notes</h1>
-<p class="sub">程明（Ming Cheng）的文獻筆記、團隊側寫與導讀投影片</p>
-<p class="meta">共 65 頁　建置 2026-10-06</p>
+<p class="sub">程明（Ming Cheng）的文獻筆記、團隊側寫與導讀投影片，依研究線與待查問題分類</p>
+<p class="meta">共 65 頁、38 份站內 PDF　建置 2026-10-06</p>
 </div></header>
 <main class="wrap">
 <div class="notebox"><b>這是什麼</b>：研究過程中寫下的文獻筆記、團隊側寫與論文導讀，從各研究專案複製快照而來；
-正本仍在原專案，日期欄是來源檔的最後修改日。筆記採「八節模板」（貢獻、抽取流程、組織、表示法、資料集、評估、問題、對本專案的啟示），
-讀者設定為人文學者。每篇都標明來源檔路徑；寫作時的專案內部檔案連結改成灰字註記、不對外連。</div>
-<div class="toc"><ul><li><a href="#團隊與機構側寫">團隊與機構側寫</a>（1）</li><li><a href="#導讀投影片">導讀投影片</a>（1）</li><li><a href="#索引與回顧">索引與回顧</a>（5）</li><li><a href="#IDOHL 調查報告（2026-10-05）">IDOHL 調查報告（2026-10-05）</a>（4）</li><li><a href="#文獻深讀筆記（八節）">文獻深讀筆記（八節）</a>（54）</li></ul></div>
-<h2 id="團隊與機構側寫">團隊與機構側寫 <span class="tag">1</span></h2>
-<ul class="list">
-<li><a class="t" href="profiles/idohl-lab-profile-2026-10-05.html">International Digital Oral History Lab（IDOHL）團隊側寫</a><span class="d">2026-10-05</span><span class="b">UCL 與 TU Darmstadt 合辦的數位口述歷史實驗室：團隊、年表、三個計畫、開源釋出、與 extract_ohistory 的對照、閱讀建議。</span></li>
-</ul><h2 id="導讀投影片">導讀投影片 <span class="tag">1</span></h2>
-<ul class="list">
-<li><a class="t" href="slides/crossley2008-pretty-connected/index.html">Pretty Connected：早期英國 punk 的社會網絡（Crossley 2008 導讀）</a><span class="d">2026-07-30</span><span class="b">實驗室週會的論文導讀投影片。公開版移除了出版社圖表與未授權照片，保留三張公眾領域或 CC 授權的照片。</span></li>
-</ul><h2 id="索引與回顧">索引與回顧 <span class="tag">5</span></h2>
+正本仍在原專案，日期欄是來源檔的最後修改日。第一層依<b>研究線</b>分，第二層沿用各研究線自己的分類：extract_ohistory 用書目總表的九類<b>待查問題</b>（①～⑨），
+每篇的主要問題是實心標籤、其餘是空心標籤。筆記採「八節模板」（貢獻、抽取流程、組織、表示法、資料集、評估、問題、對本專案的啟示），讀者設定為人文學者。
+<a href="papers/index.html">文獻庫</a>：59 份 PDF 的清單，38 份有轉載授權可直接在站內閱讀，其餘連到原始出處。</div>
+<div class="toc"><ul><li class="line-title"><a href="#oral-history-extraction">口述歷史的 LLM 知識抽取（extract_ohistory）</a>（71）<ul class="sub"><li><a href="#索引與回顧">索引與回顧</a>（5）</li><li><a href="#q1">① LLM 抽取與知識圖譜建構現況</a>（5）</li><li><a href="#q2">② agentic 建構</a>（6）</li><li><a href="#q3">③ Agent Skills 與 harness 的出處</a>（1）</li><li><a href="#q4">④ 口述歷史與數位人文</a>（16）</li><li><a href="#q5">⑤ 無 gold standard 的評估</a>（4）</li><li><a href="#q6">⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）</a>（19）</li><li><a href="#q7">⑦ 零標注三元組抽取的參照點</a>（4）</li><li><a href="#q8">⑧ 本體學習與 schema 歸納</a>（9）</li><li><a href="#q9">⑨ 跨來源實體對齊</a>（2）</li></ul></li><li class="line-title"><a href="#music-sna">音樂社會網絡分析（SNA）</a>（1）<ul class="sub"><li><a href="#導讀投影片">導讀投影片</a>（1）</li></ul></li><li class="line-title"><a href="papers/index.html">文獻庫</a>（59 份，38 份站內 PDF）</li></ul></div>
+<h2 class="line" id="oral-history-extraction">口述歷史的 LLM 知識抽取（extract_ohistory） <span class="tag">71</span></h2>
+<p class="line-blurb">從戰後臺灣流行音樂幕後人物的口述歷史逐字稿抽取人物、事件、關係與品味敘述；文獻依 refs.md 的九類待查問題歸檔。</p>
+<h3 class="group" id="索引與回顧">索引與回顧 <span class="tag">5</span></h3>
 <ul class="list">
 <li><a class="t" href="notes/blockers.html">卡點對照表：實驗撞到的問題 → 前人已有的方法</a><span class="d">2026-09-08</span></li>
 <li><a class="t" href="notes/matrix.html">跨文獻對照矩陣（20 份深讀筆記彙整）</a><span class="d">2026-07-22</span></li>
 <li><a class="t" href="notes/refs.html">refs 總表（extract_ohistory 文獻庫）</a><span class="d">2026-10-05</span></li>
 <li><a class="t" href="notes/review-2026-07.html">文獻回顧：LLM 知識抽取與 agentic harness（extract_ohistory 轉向依據）</a><span class="d">2026-07-20</span></li>
 <li><a class="t" href="notes/template.html">深讀筆記：模板與撰寫說明（給閱讀 agent）</a><span class="d">2026-07-22</span></li>
-</ul><h2 id="IDOHL 調查報告（2026-10-05）">IDOHL 調查報告（2026-10-05） <span class="tag">4</span></h2>
+</ul>
+<h3 class="group" id="q1">① LLM 抽取與知識圖譜建構現況 <span class="tag">5</span></h3>
 <ul class="list">
-<li><a class="t" href="notes/idohl/01-team-history.html">IDOHL 團隊與歷史：International Digital Oral History Lab（UCL × TU Darmstadt）</a><span class="d">2026-10-05</span></li>
-<li><a class="t" href="notes/idohl/02-three-projects.html">IDOHL 三個研究計畫調查報告：Hidden Histories、MDOH、MeDoraH</a><span class="d">2026-10-05</span></li>
-<li><a class="t" href="notes/idohl/03-open-source-code.html">IDOHL 開源釋出與程式碼調查</a><span class="d">2026-10-06</span></li>
-<li><a class="t" href="notes/idohl/04-publications-related-work.html">IDOHL 出版品與相關工作</a><span class="d">2026-10-05</span></li>
-</ul><h2 id="文獻深讀筆記（八節）">文獻深讀筆記（八節） <span class="tag">54</span></h2>
+<li><a class="t" href="notes/bian2025_llm-kgc-survey.html">bian2025_LLM 賦能的知識圖譜建構綜述</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q1" title="LLM 抽取與知識圖譜建構現況">①</a><a class="pdfbtn ext" href="https://arxiv.org/abs/2510.20345" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></li>
+<li><a class="t" href="notes/edge2024_graphrag.html">Edge 2024_GraphRAG：先建圖再做社群摘要的全域問答</a><span class="d">2026-10-06</span><a class="qtag main" href="index.html#q1" title="LLM 抽取與知識圖譜建構現況">①</a><a class="pdfbtn" href="papers/edge2024_graphrag.pdf" title="站內 PDF（CC BY 4.0，6.9 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/mo2025_kggen.html">Mo 等人 2025_KGGen：用語言模型從純文字抽取知識圖譜</a><span class="d">2026-10-06</span><a class="qtag main" href="index.html#q1" title="LLM 抽取與知識圖譜建構現況">①</a><a class="qtag" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/mo2025_kggen.pdf" title="站內 PDF（CC BY 4.0，1.3 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/pan2024_llm-kg-roadmap.html">pan2024_LLM 與知識圖譜統一路線圖</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q1" title="LLM 抽取與知識圖譜建構現況">①</a><a class="pdfbtn ext" href="https://arxiv.org/abs/2306.08302" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></li>
+<li><a class="t" href="notes/xu2024_generative-ie-survey.html">xu2024_生成式資訊抽取綜述</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q1" title="LLM 抽取與知識圖譜建構現況">①</a><a class="pdfbtn ext" href="https://arxiv.org/abs/2312.17617" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></li>
+</ul>
+<h3 class="group" id="q2">② agentic 建構 <span class="tag">6</span></h3>
 <ul class="list">
-<li><a class="t" href="notes/aikhenvald2007_information-source.html">Aikhenvald 2007 — 訊息來源與言據性：我們能下什麼結論？</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/airoldi2024_nested-relationality-taste-hierarchies.html">Airoldi 2024_用數位痕跡繪製品味階序的巢狀關係性</a><span class="d">2026-09-09</span></li>
-<li><a class="t" href="notes/bai2025_autoschemakg.html">Bai 2025_AutoSchemaKG：從語料自動長出 schema 的知識圖譜建構</a><span class="d">2026-09-08</span></li>
-<li><a class="t" href="notes/baumann2026_graded-conceptualization-taste.html">baumann2026_graded-conceptualization-taste</a><span class="d">2026-09-09</span></li>
-<li><a class="t" href="notes/bian2025_llm-kgc-survey.html">bian2025_LLM 賦能的知識圖譜建構綜述</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/blouin2024_chinese-newspapers-ner.html">Blouin 2024_中文歷史報刊的 NER 與實體連結資料集</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/buehler2025_agentic-graph-reasoning.html">buehler2025_agentic-graph-reasoning</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/chang2025_evidential-hierarchy-certainty.html">Chang 2025 — 從讀者確定度檢測中文言據類別的階層</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/chappell2001_sinitic-evidential.html">Chappell 2001 — 漢語系語言言據標記的類型學（經驗體「過」作為言據詞）</a><span class="d">2026-10-06</span></li>
-<li><a class="t" href="notes/cherukuri2025_oral-history-llm.html">Cherukuri 2025_LLM 做口述歷史的文本分類與情感分析</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/chiang2021_hakka-say-verb.html">江敏華 2021 — 臺灣客語言說動詞「話」的語法化與詞彙化</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/edge2024_graphrag.html">Edge 2024_GraphRAG：先建圖再做社群摘要的全域問答</a><span class="d">2026-10-06</span></li>
-<li><a class="t" href="notes/faller2002_cuzco-quechua-evidentials.html">Faller 2002 — 庫斯科蓋丘亞語言據詞的語意與語用</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/fan2025_discourse-temporal-relation-llm.html">Fan 2025_篇章層時間關係抽取：讓 LLM 抽出一致的時間結構</a><span class="d">2026-09-09</span></li>
-<li><a class="t" href="notes/fang2025_historical-chinese-nlp.html">Fang 2025_歷史中文 NLP：LLM vs 傳統工具在斷詞／詞性／NER 的比較</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/fang2026_reproducible-annotation-guide.html">Fang 2026_用 LLM 做可重現文本標註的方法指南（人文社科）</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/gao2026_fluid-user-preferences.html">Gao 2026_流動的使用者偏好：穩定偏好與情境偏好的二分，以及 S2Pref 資料集</a><span class="d">2026-09-09</span></li>
-<li><a class="t" href="notes/gashteovski2022_benchie.html">Gashteovski 2022_BenchIE：以事實為單位的開放式抽取評估</a><span class="d">2026-09-08</span></li>
-<li><a class="t" href="notes/gu2024_llm-as-judge-survey.html">Gu 2024_LLM 當評審綜述</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/hiltmann2025_ner4all.html">Hiltmann 2025_NER4all：把歷史脈絡寫進 prompt 就能做好 NER</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/huang2003_doubts-complementation.html">Huang 2003 — 對補語結構的懷疑：功能學派的分析（台灣華語口語的覺得、記得、知道）</a><span class="d">2026-10-06</span></li>
-<li><a class="t" href="notes/jing2007_conversational-social-networks.html">Jing 2007_從口述訪談轉寫抽社會網絡與傳記事實</a><span class="d">2026-09-08</span></li>
-<li><a class="t" href="notes/ldc2005_ace-english-events-guidelines.html">ldc2005_ace-english-events-guidelines</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/li2025_agentic-kgr.html">li2025_agentic-kgr</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/liu2024_openie-survey.html">Liu 2024_開放式資訊抽取綜述：從規則式模型到大型語言模型</a><span class="d">2026-09-08</span></li>
-<li><a class="t" href="notes/liu2026_odl-templlm-temporal-reasoning.html">Liu 2026_ODL-TempLLM：本體引導＋描述邏輯推理的時間推論</a><span class="d">2026-09-09</span></li>
-<li><a class="t" href="notes/loc2019_edtf-spec.html">loc2019_edtf-spec</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/lu2025_karma.html">lu2025_karma — KARMA：用多智能體 LLM 自動擴充知識圖譜</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/mbakwe2009_review-vansina-oral-tradition.html">mbakwe2009_review-vansina-oral-tradition</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/mihindukulasooriya2023_text2kgbench.html">Mihindukulasooriya 等人 2023_Text2KGBench：本體約束下從文本生成知識圖譜的評測基準</a><span class="d">2026-10-06</span></li>
-<li><a class="t" href="notes/mintz2009_distant-supervision.html">Mintz 2009_遠距監督：不用標注資料的關係抽取</a><span class="d">2026-09-08</span></li>
-<li><a class="t" href="notes/mo2025_kggen.html">Mo 等人 2025_KGGen：用語言模型從純文字抽取知識圖譜</a><span class="d">2026-10-06</span></li>
-<li><a class="t" href="notes/niu2024_contempo-temporal-relation-extraction.html">Niu 2024_ConTempo：用對比學習教模型分清「之前」與「之後」的時間關係抽取</a><span class="d">2026-09-09</span></li>
-<li><a class="t" href="notes/pan2024_llm-kg-roadmap.html">pan2024_LLM 與知識圖譜統一路線圖</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/papaluca2024_zero-few-shot-kg-triplets.html">Papaluca 2024_零／少樣本的知識圖譜三元組抽取</a><span class="d">2026-09-08</span></li>
-<li><a class="t" href="notes/peper2024_shoes-acosi-implicit-opinion.html">Peper 2024_Shoes-ACOSI：把「沒有評價詞的評價」圈成一段原文</a><span class="d">2026-09-09</span></li>
-<li><a class="t" href="notes/portelli2018_what-makes-oral-history-different.html">portelli2018_what-makes-oral-history-different</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/rasmussen2025_zep-temporal-kg.html">Rasmussen 2025_Zep：時序知識圖譜當 agent 的記憶層</a><span class="d">2026-09-08</span></li>
-<li><a class="t" href="notes/sauri2008_double-layered-factuality.html">sauri2008_double-layered-factuality</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/sauri2008_factbank-annotation-guidelines.html">sauri2008_factbank-annotation-guidelines</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/sauri2008_factuality-profiler-phd.html">sauri2008_factuality-profiler-phd</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/sauri2009_factbank-corpus-documentation.html">sauri2009_factbank-corpus-documentation</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/shi2024_agentre.html">shi2024_agentre：AgentRE，一個給關係抽取用的 agent 框架</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/stankovic2026_tei-ner-interview-corpus.html">stankovic2026_tei-ner-interview-corpus：把訪談語料編成 TEI、接上 Wikidata、再用文本計量讀它</a><span class="d">2026-10-06</span></li>
-<li><a class="t" href="notes/strutz2026_tei-eval.html">strutz2026_tei-eval：LLM 做 TEI 編碼的多維度評估框架</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/su2025_transformer-temporal-ie-review.html">su2025_transformer-temporal-ie-review</a><span class="d">2026-09-09</span></li>
-<li><a class="t" href="notes/usumi2026_prepper-preference-profiling.html">usumi2026_PrePPER 偏好模式人物側寫</a><span class="d">2026-09-09</span></li>
-<li><a class="t" href="notes/vansina1985_oral-tradition-as-history.html">vansina1985_oral-tradition-as-history</a><span class="d">2026-08-22</span></li>
-<li><a class="t" href="notes/vlachidis_medorah-ontology-memory-recollection.html">vlachidis_medorah-ontology-memory-recollection</a><span class="d">2026-10-05</span></li>
-<li><a class="t" href="notes/xu2024_generative-ie-survey.html">xu2024_生成式資訊抽取綜述</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/yang2025_graphusion.html">yang2025_graphusion（Graphusion：帶全局視角的知識圖譜建構 RAG 框架）</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/yehudai2025_agent-eval-survey.html">Yehudai 2025_LLM agent 評估綜述</a><span class="d">2026-07-22</span></li>
-<li><a class="t" href="notes/yu2020_dialogre.html">Yu 2020_DialogRE：對話關係抽取</a><span class="d">2026-09-08</span></li>
-<li><a class="t" href="notes/zhu2024_autokg.html">zhu2024_autokg — LLM 於知識圖譜建構與推理的能力評測，兼提 AutoKG 多代理構想</a><span class="d">2026-07-22</span></li>
+<li><a class="t" href="notes/buehler2025_agentic-graph-reasoning.html">buehler2025_agentic-graph-reasoning</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q2" title="agentic 建構">②</a><a class="pdfbtn" href="papers/buehler2025_agentic-graph-reasoning.pdf" title="站內 PDF（CC BY-NC-ND 4.0，12.4 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/li2025_agentic-kgr.html">li2025_agentic-kgr</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q2" title="agentic 建構">②</a><a class="pdfbtn" href="papers/li2025_agentic-kgr.pdf" title="站內 PDF（CC BY-NC-ND 4.0，15.8 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/lu2025_karma.html">lu2025_karma — KARMA：用多智能體 LLM 自動擴充知識圖譜</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q2" title="agentic 建構">②</a><a class="pdfbtn ext" href="https://arxiv.org/abs/2502.06472" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></li>
+<li><a class="t" href="notes/shi2024_agentre.html">shi2024_agentre：AgentRE，一個給關係抽取用的 agent 框架</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q2" title="agentic 建構">②</a><a class="pdfbtn ext" href="https://arxiv.org/abs/2409.01854" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></li>
+<li><a class="t" href="notes/yang2025_graphusion.html">yang2025_graphusion（Graphusion：帶全局視角的知識圖譜建構 RAG 框架）</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q2" title="agentic 建構">②</a><a class="pdfbtn ext" href="https://arxiv.org/abs/2410.17600" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></li>
+<li><a class="t" href="notes/zhu2024_autokg.html">zhu2024_autokg — LLM 於知識圖譜建構與推理的能力評測，兼提 AutoKG 多代理構想</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q2" title="agentic 建構">②</a><a class="pdfbtn ext" href="https://arxiv.org/abs/2305.13168" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></li>
+</ul>
+<h3 class="group" id="q3">③ Agent Skills 與 harness 的出處 <span class="tag">1</span></h3>
+<ul class="list">
+<li><a class="t" href="notes/yehudai2025_agent-eval-survey.html">Yehudai 2025_LLM agent 評估綜述</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q3" title="Agent Skills 與 harness 的出處">③</a><a class="qtag" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/yehudai2025_agent-eval-survey.pdf" title="站內 PDF（CC BY-NC-SA 4.0，0.6 MB）">原文 PDF</a></li>
+</ul>
+<h3 class="group" id="q4">④ 口述歷史與數位人文 <span class="tag">16</span></h3>
+<ul class="list">
+<li><a class="t" href="notes/airoldi2024_nested-relationality-taste-hierarchies.html">Airoldi 2024_用數位痕跡繪製品味階序的巢狀關係性</a><span class="d">2026-09-09</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a><a class="qtag" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="qtag" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/airoldi2024_nested-relationality-taste-hierarchies.pdf" title="站內 PDF（CC BY-NC-ND 4.0，6.2 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/baumann2026_graded-conceptualization-taste.html">baumann2026_graded-conceptualization-taste</a><span class="d">2026-09-09</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a><a class="qtag" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn" href="papers/baumann2026_graded-conceptualization-taste.pdf" title="站內 PDF（CC BY-NC-ND 4.0，0.7 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/blouin2024_chinese-newspapers-ner.html">Blouin 2024_中文歷史報刊的 NER 與實體連結資料集</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a><a class="pdfbtn" href="papers/blouin2024_chinese-newspapers-ner.pdf" title="站內 PDF（CC BY-NC 4.0，0.2 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/cherukuri2025_oral-history-llm.html">Cherukuri 2025_LLM 做口述歷史的文本分類與情感分析</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a><a class="pdfbtn ext" href="https://arxiv.org/abs/2508.06729" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></li>
+<li><a class="t" href="notes/fang2025_historical-chinese-nlp.html">Fang 2025_歷史中文 NLP：LLM vs 傳統工具在斷詞／詞性／NER 的比較</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a><a class="pdfbtn" href="papers/fang2025_historical-chinese-nlp.pdf" title="站內 PDF（CC BY 4.0，0.4 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/hiltmann2025_ner4all.html">Hiltmann 2025_NER4all：把歷史脈絡寫進 prompt 就能做好 NER</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a><a class="pdfbtn" href="papers/hiltmann2025_ner4all.pdf" title="站內 PDF（CC BY 4.0，0.8 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/idohl/01-team-history.html">IDOHL 團隊與歷史：International Digital Oral History Lab（UCL × TU Darmstadt）</a><span class="d">2026-10-05</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a></li>
+<li><a class="t" href="notes/idohl/02-three-projects.html">IDOHL 三個研究計畫調查報告：Hidden Histories、MDOH、MeDoraH</a><span class="d">2026-10-05</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a></li>
+<li><a class="t" href="notes/idohl/03-open-source-code.html">IDOHL 開源釋出與程式碼調查</a><span class="d">2026-10-06</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a></li>
+<li><a class="t" href="notes/idohl/04-publications-related-work.html">IDOHL 出版品與相關工作</a><span class="d">2026-10-05</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a></li>
+<li><a class="t" href="notes/mbakwe2009_review-vansina-oral-tradition.html">mbakwe2009_review-vansina-oral-tradition</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a><a class="qtag" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn ext" href="https://ajosdemar.com/wp-content/uploads/2024/04/Vol.-4-No.-1-200919.pdf" title="外部連結：著作權所限未隨站公開（INJODEMAR 期刊整期 PDF，未標示轉載授權）">原文（外部）</a></li>
+<li><a class="t" href="notes/portelli2018_what-makes-oral-history-different.html">portelli2018_what-makes-oral-history-different</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a><a class="qtag" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn" href="papers/portelli2018_what-makes-oral-history-different.pdf" title="站內 PDF（CC BY-SA 4.0，0.2 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/stankovic2026_tei-ner-interview-corpus.html">stankovic2026_tei-ner-interview-corpus：把訪談語料編成 TEI、接上 Wikidata、再用文本計量讀它</a><span class="d">2026-10-06</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a><a class="qtag" href="index.html#q9" title="跨來源實體對齊">⑨</a><a class="qtag" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/stankovic2026_tei-ner-interview-corpus.pdf" title="站內 PDF（CC BY-NC 4.0，5.0 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/vansina1985_oral-tradition-as-history.html">vansina1985_oral-tradition-as-history</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a></li>
+<li><a class="t" href="notes/vlachidis_medorah-ontology-memory-recollection.html">vlachidis_medorah-ontology-memory-recollection</a><span class="d">2026-10-05</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a><a class="qtag" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="pdfbtn ext" href="https://github.com/articoder/MeDoraH_Ontology" title="外部連結：著作權所限未隨站公開（GitHub 儲存庫未附授權檔（license: null））">原文（外部）</a></li>
+<li><a class="t" href="profiles/idohl-lab-profile-2026-10-05.html">International Digital Oral History Lab（IDOHL）團隊側寫</a><span class="d">2026-10-05</span><a class="qtag main" href="index.html#q4" title="口述歷史與數位人文">④</a><a class="qtag" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="qtag" href="index.html#q5" title="無 gold standard 的評估">⑤</a><span class="b">UCL 與 TU Darmstadt 合辦的數位口述歷史實驗室：團隊、年表、三個計畫、開源釋出、與 extract_ohistory 的對照、閱讀建議。</span></li>
+</ul>
+<h3 class="group" id="q5">⑤ 無 gold standard 的評估 <span class="tag">4</span></h3>
+<ul class="list">
+<li><a class="t" href="notes/fang2026_reproducible-annotation-guide.html">Fang 2026_用 LLM 做可重現文本標註的方法指南（人文社科）</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/fang2026_reproducible-annotation-guide.pdf" title="站內 PDF（CC BY 4.0，0.6 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/gu2024_llm-as-judge-survey.html">Gu 2024_LLM 當評審綜述</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/gu2024_llm-as-judge-survey.pdf" title="站內 PDF（CC0 1.0，9.8 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/mihindukulasooriya2023_text2kgbench.html">Mihindukulasooriya 等人 2023_Text2KGBench：本體約束下從文本生成知識圖譜的評測基準</a><span class="d">2026-10-06</span><a class="qtag main" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/mihindukulasooriya2023_text2kgbench.pdf" title="站內 PDF（CC BY 4.0，1.6 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/strutz2026_tei-eval.html">strutz2026_tei-eval：LLM 做 TEI 編碼的多維度評估框架</a><span class="d">2026-07-22</span><a class="qtag main" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/strutz2026_tei-eval.pdf" title="站內 PDF（CC BY 4.0，2.2 MB）">原文 PDF</a></li>
+</ul>
+<h3 class="group" id="q6">⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料） <span class="tag">19</span></h3>
+<ul class="list">
+<li><a class="t" href="notes/aikhenvald2007_information-source.html">Aikhenvald 2007 — 訊息來源與言據性：我們能下什麼結論？</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn" href="papers/aikhenvald2007_information-source.pdf" title="站內 PDF（CC BY-NC-ND 4.0，0.1 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/chang2025_evidential-hierarchy-certainty.html">Chang 2025 — 從讀者確定度檢測中文言據類別的階層</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn" href="papers/chang2025_evidential-hierarchy-certainty.pdf" title="站內 PDF（CC BY-NC 4.0，0.4 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/chappell2001_sinitic-evidential.html">Chappell 2001 — 漢語系語言言據標記的類型學（經驗體「過」作為言據詞）</a><span class="d">2026-10-06</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn ext" href="https://shs.hal.science/halshs-00273298v1" title="外部連結：著作權所限未隨站公開（HAL 作者存放授權（hal-authorisation-v1，非 CC））">原文（外部）</a></li>
+<li><a class="t" href="notes/chiang2021_hakka-say-verb.html">江敏華 2021 — 臺灣客語言說動詞「話」的語法化與詞彙化</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn ext" href="https://www.ling.sinica.edu.tw/upload/researcher_manager_result/91ddb6156ad7aa04c7d8fb109c618b6a.pdf" title="外部連結：著作權所限未隨站公開（中研院語言所網站上傳，未標示轉載授權（論文集））">原文（外部）</a></li>
+<li><a class="t" href="notes/faller2002_cuzco-quechua-evidentials.html">Faller 2002 — 庫斯科蓋丘亞語言據詞的語意與語用</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn ext" href="https://personalpages.manchester.ac.uk/staff/martina.t.faller/documents/Thesis-A4.pdf" title="外部連結：著作權所限未隨站公開（作者保留著作權（博士論文，PDF 扉頁 © Martina T. Faller 2002））">原文（外部）</a></li>
+<li><a class="t" href="notes/fan2025_discourse-temporal-relation-llm.html">Fan 2025_篇章層時間關係抽取：讓 LLM 抽出一致的時間結構</a><span class="d">2026-09-09</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="qtag" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/fan2025_discourse-temporal-relation-llm.pdf" title="站內 PDF（CC BY 4.0，3.8 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/gao2026_fluid-user-preferences.html">Gao 2026_流動的使用者偏好：穩定偏好與情境偏好的二分，以及 S2Pref 資料集</a><span class="d">2026-09-09</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="qtag" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/gao2026_fluid-user-preferences.pdf" title="站內 PDF（CC BY 4.0，0.7 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/huang2003_doubts-complementation.html">Huang 2003 — 對補語結構的懷疑：功能學派的分析（台灣華語口語的覺得、記得、知道）</a><span class="d">2026-10-06</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn ext" href="https://www.ling.sinica.edu.tw/item/en?act=journal&amp;code=download&amp;article_id=92" title="外部連結：著作權所限未隨站公開（中研院語言所期刊網站免費下載，未標示轉載授權）">原文（外部）</a></li>
+<li><a class="t" href="notes/ldc2005_ace-english-events-guidelines.html">ldc2005_ace-english-events-guidelines</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn ext" href="https://www.ldc.upenn.edu/sites/www.ldc.upenn.edu/files/english-events-guidelines-v5.4.3.pdf" title="外部連結：著作權所限未隨站公開（LDC 標注規範，未標示轉載授權）">原文（外部）</a></li>
+<li><a class="t" href="notes/liu2026_odl-templlm-temporal-reasoning.html">Liu 2026_ODL-TempLLM：本體引導＋描述邏輯推理的時間推論</a><span class="d">2026-09-09</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="qtag" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="pdfbtn" href="papers/liu2026_odl-templlm-temporal-reasoning.pdf" title="站內 PDF（CC BY 4.0，1.0 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/loc2019_edtf-spec.html">loc2019_edtf-spec</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a></li>
+<li><a class="t" href="notes/niu2024_contempo-temporal-relation-extraction.html">Niu 2024_ConTempo：用對比學習教模型分清「之前」與「之後」的時間關係抽取</a><span class="d">2026-09-09</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn" href="papers/niu2024_contempo-temporal-relation-extraction.pdf" title="站內 PDF（CC BY 4.0，0.4 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/peper2024_shoes-acosi-implicit-opinion.html">Peper 2024_Shoes-ACOSI：把「沒有評價詞的評價」圈成一段原文</a><span class="d">2026-09-09</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="qtag" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/peper2024_shoes-acosi-implicit-opinion.pdf" title="站內 PDF（CC BY 4.0，1.5 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/sauri2008_double-layered-factuality.html">sauri2008_double-layered-factuality</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn ext" href="https://www.cs.brandeis.edu/~roser/pubs/sauriPustejovsky_lrec08_2.pdf" title="外部連結：著作權所限未隨站公開（作者網頁提供，未標示轉載授權（LREC 2008 LAW workshop））">原文（外部）</a></li>
+<li><a class="t" href="notes/sauri2008_factbank-annotation-guidelines.html">sauri2008_factbank-annotation-guidelines</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn ext" href="https://www.cs.brandeis.edu/~roser/pubs/fb_annotGuidelines.pdf" title="外部連結：著作權所限未隨站公開（作者網頁提供，未標示轉載授權（Brandeis 技術文件））">原文（外部）</a></li>
+<li><a class="t" href="notes/sauri2008_factuality-profiler-phd.html">sauri2008_factuality-profiler-phd</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn ext" href="https://www.cs.brandeis.edu/~roser/pubs/sauriDiss_1.5.pdf" title="外部連結：著作權所限未隨站公開（作者網頁提供，未標示轉載授權（Brandeis 博士論文））">原文（外部）</a></li>
+<li><a class="t" href="notes/sauri2009_factbank-corpus-documentation.html">sauri2009_factbank-corpus-documentation</a><span class="d">2026-08-22</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn ext" href="https://catalog.ldc.upenn.edu/docs/LDC2009T23/readme.pdf" title="外部連結：著作權所限未隨站公開（LDC 語料文件，未標示轉載授權）">原文（外部）</a></li>
+<li><a class="t" href="notes/su2025_transformer-temporal-ie-review.html">su2025_transformer-temporal-ie-review</a><span class="d">2026-09-09</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="qtag" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/su2025_transformer-temporal-ie-review.pdf" title="站內 PDF（CC BY 4.0，0.4 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/usumi2026_prepper-preference-profiling.html">usumi2026_PrePPER 偏好模式人物側寫</a><span class="d">2026-09-09</span><a class="qtag main" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="qtag" href="index.html#q5" title="無 gold standard 的評估">⑤</a><a class="pdfbtn" href="papers/usumi2026_prepper-preference-profiling.pdf" title="站內 PDF（CC BY-NC 4.0，0.8 MB）">原文 PDF</a></li>
+</ul>
+<h3 class="group" id="q7">⑦ 零標注三元組抽取的參照點 <span class="tag">4</span></h3>
+<ul class="list">
+<li><a class="t" href="notes/gashteovski2022_benchie.html">Gashteovski 2022_BenchIE：以事實為單位的開放式抽取評估</a><span class="d">2026-09-08</span><a class="qtag main" href="index.html#q7" title="零標注三元組抽取的參照點">⑦</a><a class="pdfbtn" href="papers/gashteovski2022_benchie.pdf" title="站內 PDF（CC BY 4.0，0.5 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/jing2007_conversational-social-networks.html">Jing 2007_從口述訪談轉寫抽社會網絡與傳記事實</a><span class="d">2026-09-08</span><a class="qtag main" href="index.html#q7" title="零標注三元組抽取的參照點">⑦</a><a class="pdfbtn" href="papers/jing2007_conversational-social-networks.pdf" title="站內 PDF（CC BY-NC-SA 3.0，0.1 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/mintz2009_distant-supervision.html">Mintz 2009_遠距監督：不用標注資料的關係抽取</a><span class="d">2026-09-08</span><a class="qtag main" href="index.html#q7" title="零標注三元組抽取的參照點">⑦</a><a class="pdfbtn" href="papers/mintz2009_distant-supervision.pdf" title="站內 PDF（CC BY-NC-SA 3.0，0.2 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/yu2020_dialogre.html">Yu 2020_DialogRE：對話關係抽取</a><span class="d">2026-09-08</span><a class="qtag main" href="index.html#q7" title="零標注三元組抽取的參照點">⑦</a><a class="pdfbtn" href="papers/yu2020_dialogre.pdf" title="站內 PDF（CC BY 4.0，0.7 MB）">原文 PDF</a></li>
+</ul>
+<h3 class="group" id="q8">⑧ 本體學習與 schema 歸納 <span class="tag">9</span></h3>
+<ul class="list">
+<li><a class="t" href="notes/bai2025_autoschemakg.html">Bai 2025_AutoSchemaKG：從語料自動長出 schema 的知識圖譜建構</a><span class="d">2026-09-08</span><a class="qtag main" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="pdfbtn" href="papers/bai2025_autoschemakg.pdf" title="站內 PDF（CC BY 4.0，0.7 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/liu2024_openie-survey.html">Liu 2024_開放式資訊抽取綜述：從規則式模型到大型語言模型</a><span class="d">2026-09-08</span><a class="qtag main" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="qtag" href="index.html#q1" title="LLM 抽取與知識圖譜建構現況">①</a><a class="pdfbtn" href="papers/liu2024_openie-survey.pdf" title="站內 PDF（CC BY 4.0，1.1 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/papaluca2024_zero-few-shot-kg-triplets.html">Papaluca 2024_零／少樣本的知識圖譜三元組抽取</a><span class="d">2026-09-08</span><a class="qtag main" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="qtag" href="index.html#q7" title="零標注三元組抽取的參照點">⑦</a><a class="pdfbtn" href="papers/papaluca2024_zero-few-shot-kg-triplets.pdf" title="站內 PDF（CC BY 4.0，0.7 MB）">原文 PDF</a></li>
+<li><a class="t" href="notes/rasmussen2025_zep-temporal-kg.html">Rasmussen 2025_Zep：時序知識圖譜當 agent 的記憶層</a><span class="d">2026-09-08</span><a class="qtag main" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="qtag" href="index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="pdfbtn" href="papers/rasmussen2025_zep-temporal-kg.pdf" title="站內 PDF（CC BY-NC-SA 4.0，0.1 MB）">原文 PDF</a></li>
+<li><span class="t">Babaei Giglou, D&#x27;Souza &amp; Auer (2023). LLMs4OL：LLM 做本體學習</span><span class="d">尚無筆記</span><a class="qtag main" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="pdfbtn" href="papers/babaeigiglou2023_llms4ol.pdf" title="站內 PDF（CC BY-SA 4.0，0.6 MB）">原文 PDF</a></li>
+<li><span class="t">Fathallah, Staab &amp; Algergawy (2024). LLMs4Life：生命科學本體學習</span><span class="d">尚無筆記</span><a class="qtag main" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="pdfbtn" href="papers/fathallah2024_llms4life.pdf" title="站內 PDF（CC BY 4.0，2.9 MB）">原文 PDF</a></li>
+<li><span class="t">Khorshidi et al. (2025). ODKE+（本體導引開放域抽取）</span><span class="d">尚無筆記</span><a class="qtag main" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="pdfbtn" href="papers/khorshidi2025_odke-plus.pdf" title="站內 PDF（CC BY 4.0，0.3 MB）">原文 PDF</a></li>
+<li><span class="t">Lippolis et al. (2025). 用 LLM 生成本體</span><span class="d">尚無筆記</span><a class="qtag main" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="pdfbtn ext" href="https://arxiv.org/abs/2503.05388" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></li>
+<li><span class="t">Mateiu &amp; Groza (2023). 用 LLM 做本體工程（NL→OWL）</span><span class="d">尚無筆記</span><a class="qtag main" href="index.html#q8" title="本體學習與 schema 歸納">⑧</a><a class="pdfbtn" href="papers/mateiu2023_ontology-engineering-llm.pdf" title="站內 PDF（CC BY-NC-ND 4.0，0.5 MB）">原文 PDF</a></li>
+</ul>
+<h3 class="group" id="q9">⑨ 跨來源實體對齊 <span class="tag">2</span></h3>
+<ul class="list">
+<li><span class="t">Chen, Lu &amp; Wang (2024). LLM-Align：用 LLM 做實體對齊</span><span class="d">尚無筆記</span><a class="qtag main" href="index.html#q9" title="跨來源實體對齊">⑨</a><a class="pdfbtn ext" href="https://arxiv.org/abs/2412.04690" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></li>
+<li><span class="t">Liu, S. et al. (2022). SFEA：節點層強融合對齊網絡</span><span class="d">尚無筆記</span><a class="qtag main" href="index.html#q9" title="跨來源實體對齊">⑨</a><a class="pdfbtn" href="papers/liu2022_kg-alignment-strong-fusion.pdf" title="站內 PDF（CC BY 4.0，3.6 MB）">原文 PDF</a></li>
+</ul>
+<h2 class="line" id="music-sna">音樂社會網絡分析（SNA） <span class="tag">1</span></h2>
+<p class="line-blurb">以社會網絡分析研究音樂場景與幕後合作網絡；目前只有一份導讀投影片，後續筆記會加進來。</p>
+<h3 class="group" id="導讀投影片">導讀投影片 <span class="tag">1</span></h3>
+<ul class="list">
+<li><a class="t" href="slides/crossley2008-pretty-connected/index.html">Pretty Connected：早期英國 punk 的社會網絡（Crossley 2008 導讀）</a><span class="d">2026-07-30</span><span class="b">實驗室週會的論文導讀投影片。公開版移除了出版社圖表與未授權照片，保留三張公眾領域或 CC 授權的照片。</span></li>
 </ul>
 
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。　建置 2026-10-06。</p></footer>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
 </main>
 </body>
 </html>
