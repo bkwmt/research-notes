@@ -63,6 +63,7 @@ series:
       - {out: notes/idohl/07-method-comparison.html, label: 方法對照（以 ICCCM 海報為準）}
       - {out: notes/idohl/08-time.html, label: 時間專題}
       - {out: notes/idohl/09-actions.html, label: 可借、不借、待辦}
+      - {out: notes/idohl/10-promises-vs-delivery.html, label: 承諾與交付（GtR 對照）}
       - {out: notes/idohl/05-tools-relevance.html, label: 附錄：GitHub 工具清單}
       - {out: notes/idohl/01-team-history.html, label: 原始調查 01 團隊與歷史}
       - {out: notes/idohl/02-three-projects.html, label: 原始調查 02 三個計畫}
@@ -92,6 +93,7 @@ notes:
     notes/idohl/07_方法對照.md: idohl/07-method-comparison.html
     notes/idohl/08_時間專題.md: idohl/08-time.html
     notes/idohl/09_可借不借待辦.md: idohl/09-actions.html
+    notes/idohl/10_承諾與交付.md: idohl/10-promises-vs-delivery.html
   exclude:
     - path: notes/語料言據標記盤點_2026-08-22.md
       reason: 語料衍生（含受訪者原句的 KWIC），不屬筆記類
@@ -114,6 +116,7 @@ notes:
     notes/idohl/07_方法對照.md: "④"
     notes/idohl/08_時間專題.md: "④"
     notes/idohl/09_可借不借待辦.md: "④"
+    notes/idohl/10_承諾與交付.md: "④"
 
 # ---------------------------------------------------------------- 三、文獻庫（refs/ 的 PDF 原文）
 # 只上站 publish: true 且授權在 allowed_licenses 內的檔案（登錄與判定依據見 tools/documents.yaml）；

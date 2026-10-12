@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>承諾與交付：經費單位的成果登錄，對照 GitHub 上查得到的東西</title>
+<meta name="description" content="承諾與交付：經費單位的成果登錄，對照 GitHub 上查得到的東西">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
+/* ---- 首頁改版（2026-10-13）：三個入口、系列封面卡、清單預設收合、筆記頁 hero 瘦身 ---- */
+.intro{font-size:1rem;color:var(--line);margin:1em 0 .3em}
+details.about{font-size:.9rem;color:var(--grey);margin:0 0 1.6em}
+details.about summary{cursor:pointer;color:var(--line)}
+details.about p{margin:.5em 0 0}
+h2.entry{margin-top:1.8em}
+.scard{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:10px;padding:16px 20px;margin:.8em 0}
+.scard h3{margin:0 0 .25em;font-size:1.2rem;color:var(--ink)}
+.scard .b{color:var(--line);margin:.2em 0 .6em;font-size:.95rem}
+.scard ol.ch{margin:.3em 0 .5em;padding-left:1.5em;columns:2;column-gap:28px;font-size:.95rem}
+.scard ol.ch li{break-inside:avoid;margin:.12em 0}
+.scard .logs{font-size:.88rem;color:var(--grey);margin:.4em 0 0}
+.scard .logs a{margin-right:.4em}
+@media (max-width:640px){.scard ol.ch{columns:1}}
+h3.rline{font-size:1.12rem;color:var(--ink);margin:1.4em 0 .1em}
+.rline-blurb{color:var(--grey);font-size:.92rem;margin:0 0 .6em}
+details.group{border-bottom:1px solid var(--rule);padding:.45em 0}
+details.group summary{cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:.5em}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::before{content:"▸";color:var(--grey);font-size:.9em;transition:transform .15s}
+details.group[open] summary::before{transform:rotate(90deg)}
+details.group .list{margin:.3em 0 .3em 1.4em;font-size:.95rem}
+details.group .list li{padding:.4em 0}
+.ecard{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin:.8em 0}
+.ecard b{font-size:1.05rem}
+p.series{font-size:.88rem;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:8px 14px;margin:0 0 1.2em;line-height:1.7}
+p.series strong{color:var(--accent)}
+footer .foot{margin:0 0 .4em}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../../index.html">Research Notes</a> › <a href="../../profiles/idohl-contribution-and-today-2026-10-13.html">IDOHL 系列</a></p>
+<h1>承諾與交付：經費單位的成果登錄，對照 GitHub 上查得到的東西</h1>
+
+<p class="meta">2026-10-13</p>
+</div></header>
+<main class="wrap">
+<p class="series"><strong>IDOHL 系列</strong>：<a href="../../profiles/idohl-contribution-and-today-2026-10-13.html">導讀</a> · <a href="../../profiles/idohl-lab-profile-2026-10-05.html">1 側寫</a> · <a href="../../notes/idohl/06-contributions.html">2 貢獻</a> · <a href="../../notes/idohl/07-method-comparison.html">3 方法對照</a> · <a href="../../notes/idohl/08-time.html">4 時間</a> · <a href="../../notes/idohl/09-actions.html">5 可借與待辦</a> · <strong>6 承諾與交付</strong> · 附錄：<a href="../../notes/idohl/05-tools-relevance.html">工具清單</a>、原始調查 <a href="../../notes/idohl/01-team-history.html">01</a>、<a href="../../notes/idohl/02-three-projects.html">02</a>、<a href="../../notes/idohl/03-open-source-code.html">03</a>、<a href="../../notes/idohl/04-publications-related-work.html">04</a></p>
+<p>查證日期：2026-10-13。起因是追問「他們承諾卻沒做到的，論文裡真的沒有其他線索嗎」。答案是線索有，但最直接的不在論文，在 UKRI 的成果登錄。
+方法：UKRI Gateway to Research（GtR）API 讀計畫 AH/Y007557/1 的全部成果紀錄（原始 JSON 快照存在 <code>sources/gtr_AH-Y007557-1_2026-10-13.json</code>）；GitHub 以 <code>gh api</code> 與轉址測試；idohl.org 以 curl；UCL Discovery 的 PDF 直接下載；兩場 YouTube 演講以自動字幕讀過。
+體例：中立報導體。表格的「實況」欄只寫查得到的檔案與狀態，判斷另起一欄。</p>
+<hr>
+<h2 id="0">0. 給週會的三句話</h2>
+<ol>
+<li><strong>對經費單位的自評比網站說得更滿</strong>：五項軟體全部登記「已開源」、八項資料庫與模型登記「已提供他人」、關鍵發現寫「ontology released stable version」「open access to datasets」；GitHub 上對得到的是一個 V0.2 原型本體、四支後處理腳本、安裝檔，與零個資料集。</li>
+<li><strong>他們有 ground truth，沒有公開</strong>：人工標注的「集體記憶、互為主體性、身分展演」基準資料登記為 providedToOthers: False；MDOH 的 ASR 與笑聲偵測也有人工校正的 ground truth 與自建的轉錄編輯器，演講說「希望釋出」，至今沒有。</li>
+<li><strong>對本研究的用法</strong>：related work 引用 GtR 原文對照 GitHub 實況，只陳述登記狀態與可查到的檔案，不下評語；本研究每次模型呼叫落檔進 git 這件事，在這個對照下才顯出分量。</li>
+</ol>
+<hr>
+<h2 id="1">1. 來源是什麼，為什麼有分量</h2>
+<p>UKRI 要求受資助計畫每年透過 Researchfish 回報成果，公開在 Gateway to Research。每條成果由計畫主持人自己填寫，欄位包括 <code>softwareOpenSourced</code>（軟體是否開源）、<code>providedToOthers</code>（是否已提供他人）、<code>yearFirstProvided</code>（首次提供年份）與自由文字的描述與影響。它是<strong>承諾的正本</strong>：措辭是計畫自己選的，狀態是計畫自己勾的。MeDoraH 的登錄有 5 項軟體與技術產品、8 項研究資料庫與模型、1 項研究材料、1 條關鍵發現、1 條影響摘要、9 筆出版品、6 筆合作、11 筆傳播。</p>
+<p>來源：<a href="https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1">https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1</a> ；API <a href="https://gtr.ukri.org/gtr/api/projects/10F2A066-994E-4626-A909-766A3F196307">https://gtr.ukri.org/gtr/api/projects/10F2A066-994E-4626-A909-766A3F196307</a></p>
+<hr>
+<h2 id="2">2. 對照表</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>登記的項目（GtR 原文用語）</th>
+<th>登記狀態</th>
+<th>查到的實況</th>
+<th>判斷</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MeDoraH Project GitHub Repository: Oral History Analysis Tools and Datasets</strong>：「Datasets derived from oral history interviews, computational models, software tools, documentation and methodological guidelines… follows FAIR」，網址 <a href="https://github.com/medorah/MeDoraH-Project">github.com/medorah/MeDoraH-Project</a></td>
+<td>Database/Collection of data，2024，providedToOthers: True</td>
+<td>網址轉址到 <code>International-Digital-Oral-History-Lab/MeDoraH_Project</code>，<strong>只有一個 README</strong>；README 預告的五個子儲存庫（kg、api、tools、datasets、analysis）從未建立</td>
+<td>未交付</td>
+</tr>
+<tr>
+<td><strong>NarraGraph</strong>：「Built with Rust and Tauri… open-source cross-platform tools」</td>
+<td>Software，2025，softwareOpenSourced: True</td>
+<td>九個 release 只有安裝檔，九個 tag 指同一 commit，原始碼不在任何公開儲存庫，無 LICENSE</td>
+<td>未交付（只有二進位）</td>
+</tr>
+<tr>
+<td><strong>LLM Hermeneutic Workbench</strong></td>
+<td>Webtool，2025，softwareOpenSourced: True</td>
+<td>自評裡自己寫「Available as compiled binaries via GitHub Releases」；儲存庫只有示範 JSON 與 HTML 模板</td>
+<td>未交付（只有二進位）</td>
+</tr>
+<tr>
+<td><strong>Ontology and Knowledge Graph Visualiser</strong></td>
+<td>Webtool，2025，softwareOpenSourced: True</td>
+<td><code>Text Mining/Ontology Visualiser/Interactive Visualisation.html</code> 存在，可開</td>
+<td>交付</td>
+</tr>
+<tr>
+<td><strong>Parallel Reading Interface</strong></td>
+<td>Webtool，2025，softwareOpenSourced: True</td>
+<td>只有 README 與 .docx 範例，功能在 NarraGraph 二進位檔裡</td>
+<td>未交付（只有二進位）</td>
+</tr>
+<tr>
+<td><strong>1st iteration Omeka-S archive platform</strong></td>
+<td>Webtool，2024，softwareOpenSourced: True</td>
+<td>idohl.org 的 Omeka S 站在線；站的設定與主題檔沒有釋出（MeDoraH_NLP 的 palette 分支只有靜態 HTML）</td>
+<td>部分</td>
+</tr>
+<tr>
+<td><strong>MeDoraH Ontology (alpha version)</strong>：「complete documentation and usage guidelines… temporal relationships」；關鍵發現進一步寫「released stable version… rigorously mapped to CIDOC-CRM… Discourse、Narrative、Claims、Historical Reference 四層」</td>
+<td>Computer model，2025，providedToOthers: True</td>
+<td>TTL 是 <code>owl:versionInfo "0.2"</code>、<code>dcterms:created 2026-05-07</code>；CIDOC-CRM 只有 scopeNote 的非正式對應；Claims 層與 Divergence 不在 TTL；時間只有 TemporalEntity 掛具名事件</td>
+<td>部分（與「stable」「rigorously mapped」「四層」不符）</td>
+</tr>
+<tr>
+<td><strong>LLM-based Open Information Extraction</strong>：「temporal and spatial context extraction… attribution of claims to speakers with evidential grounding… prompt engineering techniques optimised for oral history」</td>
+<td>Computer model，2025，providedToOthers: True，指向 MeDoraH_NLP</td>
+<td>MeDoraH_NLP 裡沒有任何提示詞或抽取程式；只有抽取結果 JSON</td>
+<td>未交付（結果有、方法無）</td>
+</tr>
+<tr>
+<td><strong>Hermeneutic Ontology Population Workflow</strong>：「provenance tracking linking populated ontology instances back to source transcript segments」</td>
+<td>Computer model，2025，providedToOthers: True</td>
+<td>示範 JSON 的 304 筆帶 evidence_sentence_ids；合併檔退回話輪層；程式封在二進位檔</td>
+<td>部分</td>
+</tr>
+<tr>
+<td><strong>Hybrid Clustering for Ontology Engineering</strong>：「comparative studies show advantages… documented in research publications」</td>
+<td>Data analysis technique，2025，providedToOthers: True</td>
+<td>六支分群腳本在儲存庫，但輸入 parquet 在作者本機、嵌入套件缺席，跑不起來；找不到任何發表的比較數字</td>
+<td>部分</td>
+</tr>
+<tr>
+<td><strong>JSON-based Transcript Preprocessing Pipeline</strong>：「applied to all interviews… reusable structured dataset」</td>
+<td>Computer model，2025，providedToOthers: True</td>
+<td>兩支切句與話輪對腳本可跑；19 卷話輪 JSON 在儲存庫（無時間碼）；issue #6 描述的話輪切分程式本身沒有釋出</td>
+<td>部分</td>
+</tr>
+<tr>
+<td><strong>MeDoraH Metadata Structure</strong>：「comprehensive metadata framework… complete documentation」，指向 <a href="https://idohl.org/medorah/metadata">idohl.org/medorah/metadata</a></td>
+<td>Computer model，2026，providedToOthers: True</td>
+<td>那一頁 55 個字，唯一的檔案連結是 OHA 的元素清單 PDF；詞彙 TTL 在 Ontology 儲存庫</td>
+<td>部分</td>
+</tr>
+<tr>
+<td><strong>Linguistic indicators for collective memory, intersubjectivity and identity performance</strong>：「develops a human annotated ground truth… evaluates LLM performance (ChatGPT)」；關鍵發現稱之為「annotated benchmark dataset… resources for NLP researchers」</td>
+<td>Research material，2026，<strong>providedToOthers: False</strong></td>
+<td>未公開</td>
+<td>未交付（自己登記為未提供）</td>
+</tr>
+<tr>
+<td>MDOH：TU Darmstadt 實習「Ground truth data for digital oral history and generative AI workflows」，人工校正 ASR 與笑聲偵測，自建轉錄編輯器</td>
+<td>合作紀錄</td>
+<td>MDOH_Project 只有 README；演講（2025-07）說「we hope that this will be released to other researchers and to libraries and archives」</td>
+<td>未交付</td>
+</tr>
+</tbody>
+</table></div>
+<p>數一下：13 項裡交付 1、部分 6、未交付 6。登記為「已開源」的五項軟體，原始碼可讀的只有 Visualiser 那一個 HTML。</p>
+<hr>
+<h2 id="3">3. 論文與演講裡的線索</h2>
+<ul>
+<li><strong>投影片《The potential of LLMs in Knowledge Engineering and Ontology Development, promise or peril?》</strong>（Vlachidis、Zhang、Nyhan、Flinn，23 頁，UCL Discovery 可直接下載）：傳統管線用 textacy 的 SVO 與 OpenIE6；零樣本模型評估名單 text2graph-llama-3.2-3b、Babelscape/rebel-large、mREBEL、ibm-research/knowgl-large；評估結果只寫「low precision and coverage for complex sentences」，無數字；十類述詞聚類（1 Employment… 10 Cognitive and Affective States）。來源：<a href="https://discovery.ucl.ac.uk/id/eprint/10220832/7/Vlachidis_Networks%20for%20Oral%20History%20Hermeneutics.pdf">https://discovery.ucl.ac.uk/id/eprint/10220832/7/Vlachidis_Networks%20for%20Oral%20History%20Hermeneutics.pdf</a></li>
+<li><strong>Nyhan 演講 2025-05-22「Oral History as Data」與 2025-07-14「Mixed-methods Digital Oral History: Limits, Horizons and Emerging Findings」</strong>（自動字幕合計約 15,000 字）：三元組抽取「Jiajie has been evaluating a range of zero-shot models… from Llama, IBM and REBEL families and we're still unsure… hallucination again」；笑聲偵測是 Whisper 加 Python 腳本的原型；沒有提到資料集或程式的釋出時程。來源：<a href="https://www.youtube.com/watch?v=jXfFOXyViKs">https://www.youtube.com/watch?v=jXfFOXyViKs</a> ；<a href="https://www.youtube.com/watch?v=xtdz6MQP6fI">https://www.youtube.com/watch?v=xtdz6MQP6fI</a></li>
+<li><strong>IOHA 2025《Non-verbal and paralinguistic expressions in an academic community oral history》</strong>：笑聲那條線的發表，GtR 出版品清單有、本系列先前未登錄；會議網站 2026-10-13 連不上，內容未讀。</li>
+<li><strong>讀不到的三篇</strong>：Humbel 等〈Implementing FAIR principles…〉（MTSR 2025，Springer CCIS，UCL Discovery 10220831）、Vlachidis 等〈Designing an Ontology of Memory and Recollection〉（iConference 2026，10224816）、Flinn 等〈Oral History as Data: Multimodal Approaches〉（Bloomsbury Handbook，in press）。UCL Discovery 的頁面與 OAI 端點都被 Cloudflare 擋住，只有直接的 PDF 路徑可下載，而這三篇的 PDF 路徑猜不到。</li>
+<li><strong>其他 2026 著作</strong>（ORCID、OpenAlex）：Sloane Lab、Sinhala 對話系統、氣候敘事資料集，與口述歷史線無關；figshare 的「IDOHL Website」紀錄（CC BY 4.0）只是一個指向網站的連結。</li>
+</ul>
+<hr>
+<h2 id="4">4. 一個更正</h2>
+<p>GtR 登記的網址 <code>github.com/medorah/MeDoraH-Project</code> 會轉址到現在的實驗室帳號，證明 <code>medorah</code> 是<strong>改名前的舊帳號名</strong>（GitHub 對改名保留轉址），這也解釋了早期 commit 作者欄的「medorah」。先前寫「帳號不存在」不精確，已在<a href="../../notes/idohl/05-tools-relevance.html">工具清單</a>改正；五個子儲存庫在新舊名下都查無，仍是從未建立。</p>
+<hr>
+<h2 id="5">5. 怎麼用</h2>
+<ul>
+<li>寫 related work 時，引 GtR 的原文（登記狀態、年份、用語）與 GitHub 的檔案清單並列，不加評語；讀者自己會對出落差。</li>
+<li>不要寫成「他們沒做」。登記的是「已提供」，查到的是「只有二進位」或「只有 README」；兩者並陳即可。</li>
+<li>本研究可以對照著說的三件事：每次模型呼叫的 <code>calls.jsonl</code> 進 git；句層出處含時間碼；信心由程式訊號推導。這三件事在對方的自評裡都有對應的承諾（provenance tracking、evidential grounding、reproducible research），差別在能不能被第三方檢視。</li>
+</ul>
+<hr>
+<h2 id="6">6. 來源</h2>
+<ul>
+<li>GtR 計畫頁：<a href="https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1">https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1</a> ；API 快照 <code>sources/gtr_AH-Y007557-1_2026-10-13.json</code>（含 5 項軟體、8 項資料庫與模型、1 項研究材料、關鍵發現、影響摘要、9 筆出版品、6 筆合作的原文）</li>
+<li>關鍵發現：<a href="https://gtr.ukri.org/gtr/api/outcomes/keyfindings/BE117B31-45AA-42F9-BD29-E8BE7B2A60DB">https://gtr.ukri.org/gtr/api/outcomes/keyfindings/BE117B31-45AA-42F9-BD29-E8BE7B2A60DB</a></li>
+<li>資料集儲存庫登記：<a href="https://gtr.ukri.org/gtr/api/outcomes/researchdatabaseandmodels/6350D3C9-0B54-4C26-87E4-C186A5A583F1">https://gtr.ukri.org/gtr/api/outcomes/researchdatabaseandmodels/6350D3C9-0B54-4C26-87E4-C186A5A583F1</a></li>
+<li>研究材料（ground truth，未提供）：<a href="https://gtr.ukri.org/gtr/api/outcomes/researchmaterials/06A628A6-9F69-482B-8B8D-8C38291F3D53">https://gtr.ukri.org/gtr/api/outcomes/researchmaterials/06A628A6-9F69-482B-8B8D-8C38291F3D53</a></li>
+<li>GitHub：<a href="https://github.com/International-Digital-Oral-History-Lab/MeDoraH_Project">https://github.com/International-Digital-Oral-History-Lab/MeDoraH_Project</a> ；<a href="https://github.com/articoder/MeDoraH_NLP">https://github.com/articoder/MeDoraH_NLP</a> ；<a href="https://github.com/articoder/MeDoraH_Ontology">https://github.com/articoder/MeDoraH_Ontology</a></li>
+<li>中繼資料頁：<a href="https://idohl.org/medorah/metadata">https://idohl.org/medorah/metadata</a></li>
+<li>投影片 PDF：<a href="https://discovery.ucl.ac.uk/id/eprint/10220832/7/Vlachidis_Networks%20for%20Oral%20History%20Hermeneutics.pdf">https://discovery.ucl.ac.uk/id/eprint/10220832/7/Vlachidis_Networks%20for%20Oral%20History%20Hermeneutics.pdf</a></li>
+<li>演講：<a href="https://www.youtube.com/watch?v=jXfFOXyViKs">https://www.youtube.com/watch?v=jXfFOXyViKs</a> ；<a href="https://www.youtube.com/watch?v=xtdz6MQP6fI">https://www.youtube.com/watch?v=xtdz6MQP6fI</a></li>
+<li>Zotero 群組（70 筆書目）：<a href="https://www.zotero.org/groups/6026315">https://www.zotero.org/groups/6026315</a></li>
+<li>ORCID（Vlachidis）：<a href="https://orcid.org/0000-0003-0986-4430">https://orcid.org/0000-0003-0986-4430</a></li>
+</ul>
+<footer><p class="foot">來源 <code>extract_ohistory/refs/notes/idohl/10_承諾與交付.md</code>　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../../index.html#q4" title="口述歷史與數位人文">④</a></p><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
+</main>
+</body>
+</html>
