@@ -40,6 +40,13 @@ profiles:
     date: 2026-10-05
     group: "④"
     tags: "④⑧⑤"
+  - src: extract_ohistory/refs/idohl_contribution-and-today_2026-10-13.html
+    out: profiles/idohl-contribution-and-today-2026-10-13.html
+    title: IDOHL 團隊的貢獻、對本研究的幫助，與 2026-10-13 的工作
+    blurb: IDOHL 貢獻了什麼（立場、語料、表徵設計、抽取方法與評估、工具、出版），對 extract_ohistory 的幫助分四層，四件可動手的純程式工作，以及 2026-10-13 的複查與落檔紀錄。
+    date: 2026-10-13
+    group: "④"
+    tags: "④⑧⑤"
 
 # ---------------------------------------------------------------- 二、文獻筆記（markdown → HTML）
 notes:
@@ -59,6 +66,7 @@ notes:
     notes/idohl/02_三個計畫.md: idohl/02-three-projects.html
     notes/idohl/03_開源釋出與程式碼.md: idohl/03-open-source-code.html
     notes/idohl/04_出版與相關工作.md: idohl/04-publications-related-work.html
+    notes/idohl/05_工具清單與關聯性_2026-10-13.md: idohl/05-tools-relevance.html
   exclude:
     - path: notes/語料言據標記盤點_2026-08-22.md
       reason: 語料衍生（含受訪者原句的 KWIC），不屬筆記類
@@ -76,6 +84,7 @@ notes:
     notes/idohl/02_三個計畫.md: "④"
     notes/idohl/03_開源釋出與程式碼.md: "④"
     notes/idohl/04_出版與相關工作.md: "④"
+    notes/idohl/05_工具清單與關聯性_2026-10-13.md: "④"
 
 # ---------------------------------------------------------------- 三、文獻庫（refs/ 的 PDF 原文）
 # 只上站 publish: true 且授權在 allowed_licenses 內的檔案（登錄與判定依據見 tools/documents.yaml）；

@@ -176,12 +176,31 @@ def doc_button(name: str, depth: int) -> str:
 
 
 # ---------------------------------------------------------------- profiles
+def rewrite_html_links(s: str, src: Path, src_to_out: dict[Path, str], out_rel: str) -> str:
+    """側寫 HTML 裡的相對連結：指向站內頁（筆記或其他側寫）的改成站內連結，
+    指向原專案其他檔案（WORKLOG、plans、程式）的改成灰字註記，與筆記的 rewrite_links 同一規則。"""
+    def repl(m: re.Match) -> str:
+        href, label = m.group(1), m.group(2)
+        if href.startswith(("http://", "https://", "#", "mailto:")):
+            return m.group(0)
+        path_part, _, anchor = href.partition("#")
+        resolved = (src.parent / path_part).resolve()
+        if resolved in src_to_out:
+            return f'<a href="{rel_link(src_to_out[resolved], out_rel)}{"#" + anchor if anchor else ""}">{label}</a>'
+        return f'{label}<span class="src">（專案內部檔案 <code>{html.escape(path_part)}</code>，未隨筆記公開）</span>'
+    return re.sub(r'<a href="([^"]+)">(.*?)</a>', repl, s, flags=re.S)
+
+
 def build_profiles():
-    for item in cfg.get("profiles", []):
+    profiles = cfg.get("profiles", [])
+    src_to_out = {src.resolve(): out for src, out in collect_notes()}
+    src_to_out.update({(SRC_ROOT / it["src"]).resolve(): it["out"] for it in profiles})
+    for item in profiles:
         src = SRC_ROOT / item["src"]
         out = ROOT / item["out"]
         out.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(src, out)
+        out.write_text(rewrite_html_links(src.read_text(encoding="utf-8"), src.resolve(), src_to_out, item["out"]),
+                       encoding="utf-8")
         record(item["out"], src, "profile", item["title"], group=item.get("group", "團隊與機構側寫"),
                tags=item.get("tags", ""), blurb=item.get("blurb", ""))
         print(f"[profile] {item['out']}")

@@ -10,7 +10,7 @@
 | 研究線 | 區塊 | 內容 | 來源專案 |
 |---|---|---|---|
 | 口述歷史的 LLM 知識抽取 | 索引與回顧 | 書目總表、文獻回顧、對照矩陣、卡點對照表、筆記模板 | extract_ohistory/refs |
-| 〃 | 待查問題 ①～⑨ | 54 篇八節深讀筆記、IDOHL 團隊側寫與四份調查報告，各掛在 `refs.md` 給它的主要問題底下；其餘問題編號當標籤 | extract_ohistory/refs |
+| 〃 | 待查問題 ①～⑨ | 54 篇八節深讀筆記、IDOHL 團隊側寫、貢獻與關聯性報告、五份調查報告，各掛在 `refs.md` 給它的主要問題底下；其餘問題編號當標籤 | extract_ohistory/refs |
 | 音樂社會網絡分析（SNA） | 導讀投影片 | Crossley (2008) Pretty Connected 導讀（公開版） | SLIDES/crossley2008_punk |
 | （跨線） | 文獻庫 `papers/` | `refs/` 全部 59 份 PDF 的清單；38 份有轉載授權者放在站內可直接閱讀，21 份只列書目並連到原始出處 | extract_ohistory/refs |
 

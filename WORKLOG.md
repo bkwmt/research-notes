@@ -6,7 +6,7 @@
 ## 現況
 
 - 網址：https://bkwmt.github.io/research-notes/ （GitHub Pages，`main` 根目錄，無 CI）
-- 內容：65 頁（團隊側寫 1、文獻筆記 63＝八節深讀 54＋索引與回顧 5＋IDOHL 調查報告 4、導讀投影片 1）＋文獻庫頁；
+- 內容：67 頁（團隊側寫與報告 2、文獻筆記 64＝八節深讀 54＋索引與回顧 5＋IDOHL 調查報告 5、導讀投影片 1）＋文獻庫頁；
   文獻庫 59 份 PDF 中 38 份上站（約 82 MB）、21 份只連結原始出處
 - 分類：首頁第一層研究線（口述歷史的 LLM 知識抽取／音樂社會網絡分析），第二層沿用 `refs.md` 的九類待查問題 ①～⑨；
   每篇的主要問題取 `refs.md` 表格「問題」欄第一個編號，`refs.md` 沒列的在 manifest `question_overrides` 指定
@@ -18,6 +18,19 @@
   沒有轉載授權的 21 份 PDF（只連結）。完整盤點見 2026-10-06 日誌。
 
 ## 日誌
+
+### 2026-10-13（一）　IDOHL 貢獻與關聯性報告上站；側寫 HTML 的相對連結改寫
+
+使用者在 extract_ohistory 要了一份 HTML（IDOHL 團隊的貢獻、對本研究的幫助、今日工作），並指示直接發布到這裡。
+新增兩頁：側寫 `profiles/idohl-contribution-and-today-2026-10-13.html`（來源 `extract_ohistory/refs/idohl_contribution-and-today_2026-10-13.html`）
+與筆記 `notes/idohl/05-tools-relevance.html`（來源 `refs/notes/idohl/05_工具清單與關聯性_2026-10-13.md`），都歸問題 ④。
+站點 65 → 67 頁。
+
+**`build.py` 一處改動**：側寫原本是整檔複製，但這份新側寫有指向原專案的相對連結（WORKLOG、plans、refs.md、其他筆記）。
+加了 `rewrite_html_links()`，規則與筆記的 `rewrite_links()` 相同：指向站內頁（筆記或其他側寫）的改成站內連結，
+指向原專案其他檔案的改成灰字註記「專案內部檔案 …，未隨筆記公開」。`build_profiles()` 改為讀檔、改寫、寫檔，
+不再 `shutil.copy2`。10-05 那份側寫沒有相對連結，輸出不變。
+驗證：`check.py` 69 頁 0 項問題、外部連結 462 個；單元測試 16 個通過。
 
 ### 2026-10-06（一）　建站：盤點 621 個 HTML，只收參考與筆記類
 

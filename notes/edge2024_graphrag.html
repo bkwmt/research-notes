@@ -186,7 +186,7 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 <li><strong>評估不能照它做。</strong> GraphRAG 全靠 LLM 評審＋LLM 抽主張交叉驗證，是「用 LLM 驗 LLM」的閉環，且迴避事實正確性。本專案的紅線 1 是「不做配對式人工 gold standard，但實體層有人工名冊當對照」，方向不同：本專案至少在實體層有非 LLM 的外部基準。GraphRAG 那套 comprehensiveness/diversity 之類的「軟」品質指標，不適合用來判斷抽取是否腦補；本專案的 <code>extract-qa</code>（出處存在性、年份合理性、腦補檢查）在事實正確性上比它扎實，應繼續強化，而不是被它的評估風格帶偏。</li>
 </ul>
 <p><strong>一句總結對照</strong>：GraphRAG 證明了「圖＋文字摘要節點」能把大語料變得可全局提問，這個表示法思路對本專案的「非三元組」需求有正面參考價值；但它在出處、消歧、信心、評估四件事上的做法，剛好全部踩在本專案的四條紅線上，屬於「架構可借、實作要反著做」的典型案例。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-06。</p></footer>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
 </main>
 </body>
 </html>
