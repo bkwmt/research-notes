@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>方法對照：MeDoraH 與本研究（以 ICCCM 2026 海報定稿為準）</title>
+<meta name="description" content="方法對照：MeDoraH 與本研究（以 ICCCM 2026 海報定稿為準）">
+<style>
+:root{--ink:#24344C;--line:#3E5A7D;--accent:#9B2744;--paper:#F1F4F8;--grey:#849BB7;--pink:#D4A7B2;--bg:#FFFFFF;--card:#F7F9FC;--rule:#D6DEE8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}}
+:root[data-theme="dark"]{--ink:#E6ECF4;--line:#9DB4D1;--accent:#E07A95;--paper:#1B2433;--grey:#8DA2BD;--bg:#111822;--card:#18212E;--rule:#2A3747}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"PingFang TC","Noto Sans TC","Heiti TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 72px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--rule)}
+header.hero .wrap{padding-top:28px;padding-bottom:22px}
+.crumb{font-size:.88rem;color:var(--grey);margin:0 0 .8em}
+.crumb a{color:var(--grey)}
+h1{font-size:1.7rem;line-height:1.3;margin:0 0 .4em;letter-spacing:.01em}
+.sub{color:var(--line);font-size:1.02rem;margin:0 0 .6em}
+.meta{font-size:.88rem;color:var(--grey);margin:0}
+h2{font-size:1.32rem;margin:2.2em 0 .6em;padding-bottom:.25em;border-bottom:2px solid var(--line);scroll-margin-top:16px}
+h3{font-size:1.1rem;margin:1.7em 0 .5em;color:var(--line)}
+h4{font-size:1rem;margin:1.3em 0 .3em}
+p{margin:.6em 0}
+a{color:var(--line);text-decoration:underline;text-decoration-color:var(--grey);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+hr{border:0;border-top:1px solid var(--rule);margin:2em 0}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92rem}
+th,td{border:1px solid var(--rule);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--paper);font-weight:600}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+blockquote{margin:1em 0;padding:.6em 1.1em;border-left:4px solid var(--pink);background:var(--card)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--paper);padding:1px 5px;border-radius:4px;word-break:break-all}
+pre{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;word-break:normal}
+ul,ol{padding-left:1.5em}
+li{margin:.25em 0}
+.card{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:12px 16px;margin:1em 0}
+.card.warn{border-left-color:var(--accent)}
+.notebox{font-size:.9rem;color:var(--grey);background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:1.2em 0}
+.notebox b{color:var(--ink)}
+.list{list-style:none;padding:0;margin:.6em 0}
+.list li{padding:.55em 0;border-bottom:1px solid var(--rule)}
+.list li:last-child{border-bottom:0}
+.list .t{font-weight:600}
+.list .d{color:var(--grey);font-size:.86rem;margin-left:.6em;white-space:nowrap}
+.list .b{display:block;color:var(--line);font-size:.92rem;margin-top:.15em}
+.tag{display:inline-block;font-size:.74rem;padding:1px 8px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-right:4px;vertical-align:middle}
+footer{margin-top:3.5em;padding-top:1em;border-top:1px solid var(--rule);font-size:.85rem;color:var(--grey)}
+img{max-width:100%;height:auto}
+.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 18px;margin:18px 0 8px;font-size:.92rem}
+.toc ul{margin:.3em 0 0;padding-left:1.3em;columns:2;column-gap:28px}
+.toc li{break-inside:avoid;margin:.15em 0}
+@media (max-width:640px){.toc ul{columns:1}}
+/* ---- 分類與文獻庫（2026-10-06） ---- */
+h2.line{border-bottom-width:3px;margin-top:2.6em}
+.line-blurb{color:var(--grey);font-size:.95rem;margin:-.2em 0 1em}
+h3.group{font-size:1.08rem;color:var(--ink);margin:1.8em 0 .4em;padding-left:.6em;border-left:4px solid var(--line)}
+.qtag{display:inline-block;font-size:.8rem;line-height:1;padding:3px 6px 2px;border-radius:999px;background:var(--paper);color:var(--line);border:1px solid var(--rule);margin-left:.35em;vertical-align:middle;text-decoration:none}
+.qtag.main{background:var(--line);color:var(--bg);border-color:var(--line)}
+.pdfbtn{display:inline-block;font-size:.82rem;line-height:1.1;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--line);text-decoration:none;margin-left:.5em;white-space:nowrap;vertical-align:middle}
+.pdfbtn:hover{background:var(--line);color:var(--bg)}
+.pdfbtn.ext{border-style:dashed;color:var(--grey);border-color:var(--grey)}
+.pdfbtn.ext:hover{background:var(--card);color:var(--ink)}
+a.doc{text-decoration-style:dotted}
+.toc .line-title{font-weight:600;color:var(--ink);list-style:none;margin-left:-1.3em;margin-top:.5em}
+.toc ul.sub{columns:1;padding-left:1.3em;margin-top:0}
+table.docs{font-size:.88rem}
+table.docs td:nth-child(1){min-width:16em}
+table.docs .lic{color:var(--grey);font-size:.84rem}
+.stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
+.stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
+
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<p class="crumb"><a href="../../index.html">Research Notes</a> › ④ 口述歷史與數位人文</p>
+<h1>方法對照：MeDoraH 與本研究（以 ICCCM 2026 海報定稿為準）</h1>
+
+<p class="meta">來源 <code>extract_ohistory/refs/notes/idohl/07_方法對照.md</code>　來源最後修改 2026-10-13　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../../index.html#q4" title="口述歷史與數位人文">④</a></p>
+</div></header>
+<main class="wrap">
+<p><strong>IDOHL 系列</strong>：<a href="../../profiles/idohl-contribution-and-today-2026-10-13.html">導讀</a> · <a href="../../profiles/idohl-lab-profile-2026-10-05.html">1 側寫</a> · <a href="../../notes/idohl/06-contributions.html">2 貢獻</a> · <strong>3 方法對照</strong> · <a href="../../notes/idohl/08-time.html">4 時間</a> · <a href="../../notes/idohl/09-actions.html">5 可借與待辦</a> · 附錄：<a href="../../notes/idohl/05-tools-relevance.html">工具清單</a>、原始調查 <a href="../../notes/idohl/01-team-history.html">01</a>、<a href="../../notes/idohl/02-three-projects.html">02</a>、<a href="../../notes/idohl/03-open-source-code.html">03</a>、<a href="../../notes/idohl/04-publications-related-work.html">04</a></p>
+<p>查證日期：2026-10-13。對方的材料是 NKOS 2026 投影片（22 頁）、DH2026 摘要、釋出的本體與示範資料；本研究的材料是 ICCCM 2026 海報文案正本 <code>poster/copy.yaml</code> 與兩分鐘講稿 <code>poster/talk_2min.md</code>（專案內部檔案）。
+這一頁把先前散在四處的對照（<a href="../../notes/vlachidis_medorah-ontology-memory-recollection.html">vlachidis 簡報筆記</a> §8、<a href="../../notes/idohl/03-open-source-code.html">03</a> §5.8 與 §6.8、10-05 側寫第 8 節、10-13 報告）<strong>併成一張表</strong>。</p>
+<hr>
+<h2 id="1">1. 怎麼讀這張表</h2>
+<p>五欄：面向｜MeDoraH｜本研究（海報定稿）｜以我的判斷｜證據。
+「以我的判斷」只有四個值：</p>
+<ul>
+<li><strong>可借</strong>：想法可以重寫進本專案的程式（對方零 LICENSE，一律重寫不取用）。</li>
+<li><strong>先例</strong>：設計方向相同，寫作時可引為同行做法。</li>
+<li><strong>對照</strong>：寫作時當差異點，用對方的公開紀錄逐條證明。</li>
+<li><strong>無關</strong>：對本專案沒有影響。</li>
+</ul>
+<p>證據欄寫到頁碼、檔名或鍵名，讓讀者能自己回去看。對方的投影片頁碼指 NKOS 2026 PDF；本研究的「第 n 格」指海報文案正本的格號。</p>
+<hr>
+<h2 id="2">2. 對照表</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>面向</th>
+<th>MeDoraH</th>
+<th>本研究（海報定稿）</th>
+<th>以我的判斷</th>
+<th>證據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>起點</td>
+<td>逐字稿切塊直接送模型；實體、關係、型別全由模型產生（schema-free 第一趟）</td>
+<td>5,335 筆人工標注實體，管線從名冊出發；模型只找「表達關係的那幾個字」（ORSE）</td>
+<td>對照</td>
+<td>投影片第 12 頁；海報第 1 格 b、第 3 格第一步</td>
+</tr>
+<tr>
+<td>模型的角色</td>
+<td>生成式：寫出 canonical name、型別、關係標籤、知態四欄、理由</td>
+<td>選擇題：型別七選一、句界切點、代稱選編號、關係選原文字；模型不寫字</td>
+<td>對照（本研究的方法主張）</td>
+<td><code>Test_OntologyPopulation.json</code> 欄位；海報第 3 格標題與原則框</td>
+</tr>
+<tr>
+<td>用字與出處</td>
+<td>證據句保留（句 id、evidence_text）；合併檔退回話輪層；<strong>無時間碼</strong></td>
+<td>逐字稿的字、逐字元驗證、每行追得回時間碼；字元座標可回溯</td>
+<td>對照</td>
+<td><code>Combined_Interviews.json</code> 無 evidence_sources；海報第 3 格原則「The words stay the transcript's」</td>
+</tr>
+<tr>
+<td>共指</td>
+<td>模型把「我」改寫成人名（主詞代名詞 0 筆）；工具未載明</td>
+<td>只對映不改寫；程式定案 776、其餘 20,537 由模型在短名單裡選編號；主角線分 person 與 speaker</td>
+<td>對照</td>
+<td><code>Test_ButtomUp_Extraction.json</code> 統計；海報第 3 格第三步</td>
+</tr>
+<tr>
+<td>他述</td>
+<td>存在（合併檔 42.8% PERSON 主詞非講述者）但無欄位、非分析對象；前處理排除引述與轉述</td>
+<td>主要材料；邊帶「來歷」欄（他述／自述）由程式判定；許石卷由子女與朋友講述</td>
+<td>對照（與硬約束 1 正面衝突）</td>
+<td><a href="../../notes/idohl/03-open-source-code.html">03</a> §5.5.2；<a href="../../notes/vlachidis_medorah-ontology-memory-recollection.html">vlachidis</a> §8(5)；海報第 4 格</td>
+</tr>
+<tr>
+<td>分類與綱要</td>
+<td>模型自由命名（單卷 160 型別、436 關係標籤），人收斂成 22 類；綱要由抽取結果回頭修（hermeneutic loop）</td>
+<td>程式查表（<code>life_nodes.py</code> 六類動詞表），模型不命名；綱要固定</td>
+<td>對照；另有一處先例：11 種關係模式「粗層保召回、細層靠動詞表」的兩層結構</td>
+<td>投影片第 14、16 頁；TTL 的 11 種模式；WORKLOG 2026-09-10</td>
+</tr>
+<tr>
+<td>品味與評價</td>
+<td>述詞聚類裡「信念與評價」自成一群</td>
+<td>六類之一「品味與依附」；但 28 個動詞有 20 個從未出現在跨距</td>
+<td>先例（goût 獨立成類的旁證）</td>
+<td><a href="../../notes/vlachidis_medorah-ontology-memory-recollection.html">vlachidis</a> §8(4)；<code>orse_label/report.md</code></td>
+</tr>
+<tr>
+<td>人在迴圈的位置</td>
+<td>事後：研究者在工作台 accept、reject、split、merge</td>
+<td>事前：研究者設計每一題的選項；「每一步研究者都在」</td>
+<td>對照</td>
+<td>投影片第 13、16 頁；海報第 0 格 APPROACH</td>
+</tr>
+<tr>
+<td>模型與部署</td>
+<td>model-agnostic：Gemini 2.5 Pro、claude-opus-4-8、Gemma 3、Qwen 3；NarraGraph 有本機 LLM 面板</td>
+<td>全部本機：Gemma-4-26B-A4B-TAIDE-zhTW 萃取、Hermes-4-70B 查核（查核尚未跑過語料）</td>
+<td>對照；對方也支援本機，on-device 不能寫成獨家</td>
+<td>投影片第 10、12 頁；release v0.3.4；海報第 3 格設備行</td>
+</tr>
+<tr>
+<td>信心</td>
+<td>三組態投票（程式訊號）＋ certainty_level 由模型判（講述者的確定度）；Reference 層 0.97 來源未明</td>
+<td>程式化訊號（共識／減票共識／單次支持、逐字驗證、五訊號）；絕不叫模型自評</td>
+<td>先例（投票同構）＋對照（模型判 certainty 不借）</td>
+<td>投影片第 10 頁；WORKLOG 2026-09-06 證據等級</td>
+</tr>
+<tr>
+<td>單位與矛盾</td>
+<td>受訪者與敘事單元；Divergence 把矛盾證詞建成一級物件、不裁決</td>
+<td>人物（含未受訪者）；講述者與被講述者兩欄；衝突不合併（<code>persons.jsonl</code> 的 <code>_衝突</code>）</td>
+<td>對照（單位）＋先例（Divergence）</td>
+<td>投影片第 11 頁；海報第 0 格問題；<code>output/experiments/dates/</code></td>
+</tr>
+<tr>
+<td>外部對照</td>
+<td>Wikidata Q 編號（35.7% 節點）</td>
+<td>PASMA 專輯掛名庫（1,916 張，同領域獨立檔案）與北流人物頁（同機構編纂）</td>
+<td>對照</td>
+<td>投影片第 19 頁；海報第 1 格 c</td>
+</tr>
+<tr>
+<td>評估</td>
+<td>1,429 筆人工回讀：91.3% warranted、8.5% over-specified、2 筆 unsupported；無 recall、無 gold standard</td>
+<td>無 gold standard（紅線 1）；實體層對名冊；關係層免標準答案訊號與異源查核（可信度分層）；「A floor, not a total」；每個數字由 <code>check_numbers.py</code> 從落檔重算</td>
+<td>對照（不能反過來拿對方當支持證據）</td>
+<td>投影片第 20 頁；海報頁尾素材出處</td>
+</tr>
+<tr>
+<td>可重現</td>
+<td>二進位檔；九個 tag 同一 commit；提示詞、參數未公開；中間產物只有示範 JSON</td>
+<td>每次呼叫的 <code>calls.jsonl</code> 正本進 git，衍生物可重算；批次由使用者親跑</td>
+<td>對照</td>
+<td><a href="../../notes/idohl/03-open-source-code.html">03</a> §5.3；CLAUDE.md 紅線 4</td>
+</tr>
+<tr>
+<td>授權與釋出</td>
+<td>六個儲存庫零 LICENSE；資料可讀、不可合法重用</td>
+<td>程式與語料未公開；對外只放筆記（research-notes）</td>
+<td>對照（任何借用都是重寫）</td>
+<td><a href="../../notes/idohl/05-tools-relevance.html">05</a></td>
+</tr>
+<tr>
+<td>時間</td>
+<td>temporal 欄位是記憶距離；TemporalEntity 只掛具名事件；無年份推算</td>
+<td>三條定年規則、可信層 A 到 F、27.7% 可定年；相對詞只記不算</td>
+<td>本研究領先；先後關係兩邊都沒做</td>
+<td>見 <a href="../../notes/idohl/08-time.html">08 時間專題</a></td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="3">3. 三點判斷</h2>
+<ol>
+<li><strong>核心主張相反。</strong> 對方讓模型先讀、再用結果修綱要（投影片第 21 頁「extraction as evaluation of the schema」）；本研究把綱要固定成程式查表、只讓模型選。兩者都成立，但回答的問題不同：對方問「綱要該長什麼樣」，本研究問「沒有標準答案時，哪些判斷能交給模型而不失去可驗證性」。</li>
+<li><strong>交會點在動詞。</strong> 海報右下第二個未決事項「動詞決定箭頭，中文關係動詞如何分類（分群）」，正是對方方法的中心（predicate clustering → candidate templates to accept or reject，第 13 頁）。這是最值得互相參照的地方，也是 <a href="../../notes/idohl/09-actions.html">09</a> 第 ③ 件工作的由來。</li>
+<li><strong>投票同構，但多一層。</strong> 對方的三組態投票與本研究的證據等級是同一種程式化訊號，可引為同行做法；但對方另外讓模型判 certainty，本研究依紅線 2 不做。寫作時兩件事要分開講。</li>
+</ol>
+<hr>
+<h2 id="4">4. 與四條紅線的相容性</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>紅線</th>
+<th>相容性</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 不做人工配對式 gold standard</td>
+<td>相容，理由不同</td>
+<td>對方是根本沒有評估，本研究是刻意選擇免標準答案訊號；不能混為一談</td>
+</tr>
+<tr>
+<td>2 不叫 LLM 自評信心</td>
+<td>部分相容</td>
+<td>對方的抽取信心靠投票（相容），但 certainty_level 由模型判（不相容）</td>
+</tr>
+<tr>
+<td>3 每筆強制出處</td>
+<td>方向一致、落實不足</td>
+<td>對方出處在介面層與 JSON 欄位、無時間碼、共指改寫原文</td>
+</tr>
+<tr>
+<td>4 推理可追溯</td>
+<td>不相容</td>
+<td>對方的中間產物只有示範 JSON，提示詞與投票紀錄未公開</td>
+</tr>
+<tr>
+<td>5 抽取端零標注</td>
+<td>對方整條線屬「含人工標注」</td>
+<td>第二趟把本體注入抽取；本研究零標注線沒有對應物</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="5">5. 來源</h2>
+<ul>
+<li>NKOS 2026 投影片：<a href="https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf">https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf</a></li>
+<li>DH2026 摘要：<a href="https://zenodo.org/records/22115456">https://zenodo.org/records/22115456</a></li>
+<li>示範資料：<a href="https://github.com/articoder/MeDoraH_NLP">https://github.com/articoder/MeDoraH_NLP</a> （<code>Text Mining/LLM Hermeneutic Workbench/Examples/</code>）</li>
+<li>本體：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl</a></li>
+<li>本研究：<code>poster/copy.yaml</code>、<code>poster/talk_2min.md</code>、<code>WORKLOG.md</code>（2026-09-06、09-10、09-15）、<code>.claude/memory/</code></li>
+</ul>
+<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
+</main>
+</body>
+</html>

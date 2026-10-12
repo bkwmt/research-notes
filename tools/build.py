@@ -7,6 +7,7 @@
   documents  依 tools/documents.yaml 把有轉載授權的 PDF 複製到 papers/，並產生文獻庫頁
   slides     把 Marp 投影片轉成「公開版」HTML（移除未授權圖片與講稿註解）
   index      產生首頁：第一層研究線、第二層待查問題（分類來自 refs.md 的表格）
+             並掃側寫頁的 <h3 class="log" id="log-YYYY-MM-DD"> 列出每個工作天的日誌連結
 每個產出都記進 manifest.lock.json（來源路徑、sha256、來源修改時間、建置時間），
 原專案一律不動。
 
@@ -191,10 +192,16 @@ def rewrite_html_links(s: str, src: Path, src_to_out: dict[Path, str], out_rel: 
     return re.sub(r'<a href="([^"]+)">(.*?)</a>', repl, s, flags=re.S)
 
 
+def all_src_to_out() -> dict[Path, str]:
+    """筆記與側寫的來源絕對路徑 → 站內輸出路徑；兩邊互相連結都靠這張表。"""
+    table = {src.resolve(): out for src, out in collect_notes()}
+    table.update({(SRC_ROOT / it["src"]).resolve(): it["out"] for it in cfg.get("profiles", [])})
+    return table
+
+
 def build_profiles():
     profiles = cfg.get("profiles", [])
-    src_to_out = {src.resolve(): out for src, out in collect_notes()}
-    src_to_out.update({(SRC_ROOT / it["src"]).resolve(): it["out"] for it in profiles})
+    src_to_out = all_src_to_out()
     for item in profiles:
         src = SRC_ROOT / item["src"]
         out = ROOT / item["out"]
@@ -299,7 +306,7 @@ def build_notes():
     n = cfg["notes"]
     base = SRC_ROOT / n["src_dir"]
     items = collect_notes()
-    src_to_out = {src.resolve(): out for src, out in items}
+    src_to_out = all_src_to_out()
     for src, out_rel in items:
         rel = src.relative_to(base).as_posix()
         text = src.read_text(encoding="utf-8")
@@ -523,6 +530,21 @@ def build_index():
             sub.append(f'<li><a href="#{gid}">{html.escape(group_label(g))}</a>（{n_g}）</li>')
         toc.append(f'<li class="line-title"><a href="#{html.escape(line["id"])}">{html.escape(line["title"])}</a>（{n_line}）<ul class="sub">{"".join(sub)}</ul></li>')
 
+    # 工作日誌：掃所有側寫輸出檔裡的 <h3 class="log" id="log-YYYY-MM-DD">，每個工作天一個連結
+    logs: list[tuple[str, str, str]] = []
+    for item in cfg.get("profiles", []):
+        out_p = ROOT / item["out"]
+        if out_p.exists():
+            logs += [(d, t, f'{item["out"]}#log-{d}') for d, t in sitelib.scan_worklog(out_p.read_text(encoding="utf-8"))]
+    logs.sort(key=lambda x: x[0], reverse=True)
+    log_block = ""
+    if logs:
+        log_block = ('<h2 class="line" id="worklog">工作日誌 <span class="tag">' + str(len(logs)) + '</span></h2>\n'
+                     '<p class="line-blurb">每個工作天一條，寫做了什麼、怎麼查證、落在哪裡；內容在各系列導讀頁的最末一節。</p>\n<ul class="list">\n'
+                     + "\n".join(f'<li><a class="t" href="{h}">{html.escape(t)}</a><span class="d">{d}</span></li>' for d, t, h in logs)
+                     + "\n</ul>")
+        toc.append(f'<li class="line-title"><a href="#worklog">工作日誌</a>（{len(logs)} 天）</li>')
+
     n_pub = sum(1 for v in DOCS.values() if v["publish"])
     papers_link = (f'<a href="{cfg["documents"]["out_dir"]}/index.html">文獻庫</a>：{len(DOCS)} 份 PDF 的清單，{n_pub} 份有轉載授權可直接在站內閱讀，其餘連到原始出處。'
                    if DOCS else "")
@@ -531,6 +553,7 @@ def build_index():
 每篇的主要問題是實心標籤、其餘是空心標籤。筆記採「八節模板」（貢獻、抽取流程、組織、表示法、資料集、評估、問題、對本專案的啟示），讀者設定為人文學者。
 {papers_link}</div>
 <div class="toc"><ul>{''.join(toc)}{f'<li class="line-title"><a href="{cfg["documents"]["out_dir"]}/index.html">文獻庫</a>（{len(DOCS)} 份，{n_pub} 份站內 PDF）</li>' if DOCS else ''}</ul></div>
+{log_block}
 {chr(10).join(sections)}
 """
     out = ROOT / "index.html"

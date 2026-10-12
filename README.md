@@ -10,7 +10,7 @@
 | 研究線 | 區塊 | 內容 | 來源專案 |
 |---|---|---|---|
 | 口述歷史的 LLM 知識抽取 | 索引與回顧 | 書目總表、文獻回顧、對照矩陣、卡點對照表、筆記模板 | extract_ohistory/refs |
-| 〃 | 待查問題 ①～⑨ | 54 篇八節深讀筆記、IDOHL 團隊側寫、貢獻與關聯性報告、五份調查報告，各掛在 `refs.md` 給它的主要問題底下；其餘問題編號當標籤 | extract_ohistory/refs |
+| 〃 | 待查問題 ①～⑨ | 54 篇八節深讀筆記、IDOHL 系列六頁（導讀、側寫、貢獻、方法對照、時間、可借與待辦）＋附錄五份，各掛在 `refs.md` 給它的主要問題底下；其餘問題編號當標籤 | extract_ohistory/refs |
 | 音樂社會網絡分析（SNA） | 導讀投影片 | Crossley (2008) Pretty Connected 導讀（公開版） | SLIDES/crossley2008_punk |
 | （跨線） | 文獻庫 `papers/` | `refs/` 全部 59 份 PDF 的清單；38 份有轉載授權者放在站內可直接閱讀，21 份只列書目並連到原始出處 | extract_ohistory/refs |
 
@@ -54,6 +54,7 @@ python3 -m venv .venv && .venv/bin/pip install markdown pyyaml   # 第一次
 - 新 PDF：在 `tools/documents.yaml` 加一筆，先查授權（arXiv abs 頁的授權欄、ACL Anthology 頁尾聲明、PDF 內文授權句、Crossref 的 license 欄），
   能轉載才標 `publish: true`；不能轉載的填 `source_url` 即可。
 - 新側寫或投影片：在 manifest 對應區塊加一筆並指定 `group`。
+- 新的工作天：在系列導讀頁最末加一個 `<h3 class="log" id="log-YYYY-MM-DD">YYYY-MM-DD　標題</h3>` 與內容，重跑 `build.py` 首頁就會多一個連結（`sitelib.scan_worklog`）。
 - 新研究線：在 manifest `research_lines` 加一條，列出它的區塊。
 
 ## 授權

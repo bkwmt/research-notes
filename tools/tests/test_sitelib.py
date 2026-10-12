@@ -121,5 +121,17 @@ class CodePathsToLinks(unittest.TestCase):
         self.assertEqual(sitelib.code_paths_to_links(md, {"notes/_對照矩陣.md": "x.html"}.get), md)
 
 
+
+class ScanWorklog(unittest.TestCase):
+    def test_dates_sorted_newest_first_and_tags_stripped(self):
+        src = ('<h3 class="log" id="log-2026-10-05">2026-10-05　IDOHL 網站側寫</h3><p>x</p>'
+               '<h3 class="log" id="log-2026-10-13">2026-10-13　<em>複查</em>與系列改版</h3>'
+               '<h3 id="other">不是日誌</h3>')
+        self.assertEqual(sitelib.scan_worklog(src),
+                         [("2026-10-13", "2026-10-13 複查與系列改版"), ("2026-10-05", "2026-10-05 IDOHL 網站側寫")])
+
+    def test_no_log_headings(self):
+        self.assertEqual(sitelib.scan_worklog("<h3>沒有</h3>"), [])
+
 if __name__ == "__main__":
     unittest.main()

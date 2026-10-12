@@ -5,6 +5,8 @@
   parse_refs_tables     解析 refs.md 的 markdown 表格，取出每份文獻的書目欄位與問題編號。
   primary_question      依「覆寫 → 第一個編號 → 區塊預設」決定主要問題。
   code_paths_to_links   把 markdown 裡 `路徑.md`／`路徑.pdf` 這類程式碼片段改成站內連結。
+  scan_worklog          從側寫 HTML 掃出每個工作天的日誌標題（<h3 class="log" id="log-YYYY-MM-DD">），
+                        首頁據此列出每一天的連結。
 """
 from __future__ import annotations
 
@@ -160,3 +162,18 @@ def code_paths_to_links(md: str, resolver: Callable[[str], str | None]) -> str:
         link = resolver(m.group(1))
         return f"[`{m.group(1)}`]({link})" if link else m.group(0)
     return _CODE_PATH.sub(repl, md)
+
+
+# ---------------------------------------------------------------- 工作日誌
+_LOG_H3 = re.compile(r'<h3\s+class="log"\s+id="log-(\d{4}-\d{2}-\d{2})"[^>]*>(.*?)</h3>', re.S)
+
+
+def scan_worklog(html_text: str) -> list[tuple[str, str]]:
+    """回傳 [(日期, 標題文字)]，日期新到舊；標題裡的標籤剝掉、空白收斂。
+    側寫頁的工作日誌約定：每個工作天一個 <h3 class="log" id="log-YYYY-MM-DD">YYYY-MM-DD　標題</h3>。"""
+    items = []
+    for date, raw in _LOG_H3.findall(html_text):
+        title = re.sub(r"<[^>]+>", "", raw)
+        title = re.sub(r"\s+", " ", title).strip()
+        items.append((date, title))
+    return sorted(items, key=lambda t: t[0], reverse=True)
