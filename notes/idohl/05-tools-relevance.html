@@ -305,6 +305,23 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 <li>ICCCM 2026 海報的目的是「找同路人」，IDOHL 是最明顯的一個；<code>IDOHL-updator</code> 的機器人每週仍在提交，帳號活著。是否聯繫 Jiajie Zhang 或 Andreas Vlachidis 由使用者決定。</li>
 </ul>
 <hr>
+<h2 id="8a-icccm">8a. 追問：方法差異（以 ICCCM 海報為準）與對方對「時間」的處理</h2>
+<p><strong>方法差異</strong>（本研究＝海報定稿；對方＝NKOS 2026 投影片與釋出資料）：起點是人工名冊 vs 模型 schema-free 全抽；
+模型只做選擇題（型別七選一、句界切點、代稱選編號、關係選原文字）vs 生成式寫出 canonical name、型別、關係標籤、知態四欄；
+用字一律逐字稿且帶時間碼 vs 「我」改寫成人名且無時間碼；分類程式查表 vs 模型自由命名後人工收斂（160 → 22）；
+人在迴圈事前設計選項 vs 事後在工作台 accept／reject；全部本機模型 vs model-agnostic 含雲端；信心全程式訊號 vs 三組態投票＋模型判 certainty；
+單位是人物（講述者與被講述者分欄）vs 受訪者；外部對照 PASMA 與北流 vs Wikidata；評估「下界不是總數」vs 1,429 筆回讀 91.3%；
+calls.jsonl 進 git vs 二進位檔。三點判斷：核心主張相反（對方 extraction as evaluation of the schema，本研究綱要固定只讓模型選）；
+交會點在動詞（海報未決事項二＝對方的 predicate clustering）；投票同構但對方多一層模型判 certainty。</p>
+<p><strong>時間</strong>：有提及、無工具、無表徵。RQ1 與 GtR 計畫書提「時間向度」「時間與空間脈絡」；宣稱層 <code>temporal</code> 四值是記憶距離不是年代；
+本體 <code>TemporalEntity</code> 是實體類別、只經 <code>hasTimeExtent</code> 掛具名事件，無 xsd:date、無起訖、無相對時間，投影片第 14 頁把 TIME／TIME_SPAN
+原始型別收進它；年份偶爾出現在宣稱標籤文字（<code>isComputerised (1964)</code>）不是欄位；手工編碼 <code>RelationStartYear</code>／<code>RelationEndYear</code> 幾乎全 99；
+檔案層 <code>SpeechSegment</code> 的 startTime／endTime 是錄音秒數且抽取未用；NarraGraph v0.3.3 的 temporal community tracking 是黑盒、時間軸來源未載明；
+DH2026 摘要未提時間。對本研究的意義：海報「Time is the hard problem」那格對方空白，本研究的三條定年規則、可信層 A–F、
+57.3%／27.7% 量測與生命脊椎記號是相對最接近同行的明確領先；先後關係（TLINK）兩邊都沒做。
+來源：NKOS 2026 投影片第 3、9、10、13、14、21 頁（2026-10-13 逐頁重讀）；<a href="https://zenodo.org/records/22115456">https://zenodo.org/records/22115456</a> ；
+<a href="https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1">https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1</a> ；<code>poster/copy.yaml</code>、<code>poster/talk_2min.md</code>。</p>
+<hr>
 <h2 id="9">9. 來源</h2>
 <p>GitHub（2026-10-13 以 <code>gh api</code> 與 curl 存取）
 - <a href="https://api.github.com/users/International-Digital-Oral-History-Lab/repos">https://api.github.com/users/International-Digital-Oral-History-Lab/repos</a>

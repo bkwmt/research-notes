@@ -66,7 +66,7 @@ ol.read li{margin:.8em 0}
 <div class="wrap">
 <h1>IDOHL 團隊的貢獻、對本研究的幫助，與今日工作</h1>
 <p class="sub">International Digital Oral History Lab（IDOHL，國際數位口述歷史實驗室，UCL 與 TU Darmstadt 合辦）。本頁回答兩個問題：這個團隊貢獻了什麼、對 extract_ohistory 有什麼幫助；並記錄 2026-10-13 的工作內容。</p>
-<p class="meta">查證日期 2026-10-13。事實基礎是 2026-10-05 的四份逐檔調查（<a href="../notes/idohl/03-open-source-code.html">notes/idohl/01 到 04</a>）與今日以 <code>gh api</code> 的複查；團隊全貌另見 <a href="../profiles/idohl-lab-profile-2026-10-05.html">IDOHL 團隊側寫</a>。__LINKCHECK__</p>
+<p class="meta">查證日期 2026-10-13。事實基礎是 2026-10-05 的四份逐檔調查（<a href="../notes/idohl/03-open-source-code.html">notes/idohl/01 到 04</a>）與今日以 <code>gh api</code> 的複查，第 6 節另逐頁重讀 NKOS 2026 投影片；團隊全貌另見 <a href="../profiles/idohl-lab-profile-2026-10-05.html">IDOHL 團隊側寫</a>。__LINKCHECK__</p>
 </div>
 </header>
 
@@ -80,8 +80,9 @@ ol.read li{margin:.8em 0}
 <li><a href="#s3">對本研究的幫助：分四層</a></li>
 <li><a href="#s4">四件值得動手的事</a></li>
 <li><a href="#s5">保留與風險</a></li>
-<li><a href="#s6">今日工作內容（2026-10-13）</a></li>
-<li><a href="#s7">資料來源</a></li>
+<li><a href="#s6">方法差異（以 ICCCM 海報為準）與時間的處理</a></li>
+<li><a href="#s7">今日工作內容（2026-10-13）</a></li>
+<li><a href="#s8">資料來源</a></li>
 </ol>
 </nav>
 
@@ -284,7 +285,58 @@ ol.read li{margin:.8em 0}
 </ul>
 
 <!-- ============================================================ -->
-<h2 id="s6"><span class="no">6</span>今日工作內容（2026-10-13）</h2>
+<h2 id="s6"><span class="no">6</span>方法差異（以 ICCCM 海報為準）與時間的處理</h2>
+
+<p>本節回答兩個追問：本研究的方法（以 ICCCM 2026 海報定稿為準）與 MeDoraH 的差異在哪裡；對方對「時間」有沒有工具或提及。對方的材料是 NKOS 2026 投影片（22 頁，2026-10-13 逐頁重讀）、DH2026 摘要、釋出的本體與示範資料；本研究的材料是海報文案正本與兩分鐘講稿（專案內部檔案，未隨筆記公開）。</p>
+
+<h3>6.1 方法差異</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th>面向</th><th>本研究（ICCCM 海報）</th><th>MeDoraH（NKOS 2026、釋出資料）</th></tr></thead>
+<tbody>
+<tr><td>起點</td><td>5,335 筆人工標注實體，管線從名冊出發；模型只找「表達關係的那幾個字」</td><td>逐字稿切塊直接送模型，實體、關係、型別全由模型產生（schema-free 第一趟）</td></tr>
+<tr><td>模型的角色</td><td>「把每個判斷變成選擇題」：七選一型別、句界切點、代稱從短名單選編號、關係從原文選字；模型不寫字</td><td>生成式抽取：模型寫出 canonical name、型別、關係標籤、知態立場四欄與理由；再映射本體</td></tr>
+<tr><td>用字</td><td>一律是逐字稿的字，逐字元驗證，每行追得回時間碼</td><td>證據句保留，但「我」已被改寫成人名；無時間碼（輸入是純文字）</td></tr>
+<tr><td>分類</td><td>程式查表（六類動詞表），模型不命名</td><td>模型自由命名（單卷 160 型別），人再收斂成 22 類；綱要歸納是他們的主要貢獻</td></tr>
+<tr><td>人在迴圈的位置</td><td>事前：研究者設計每一題的選項</td><td>事後：研究者在工作台對抽取結果 accept、reject、split、merge</td></tr>
+<tr><td>模型</td><td>Gemma-4-26B-A4B-TAIDE 萃取、Hermes-4-70B 查核，全部本機</td><td>model-agnostic：Gemini 2.5 Pro、claude-opus-4-8、Gemma 3、Qwen 3</td></tr>
+<tr><td>信心</td><td>程式化訊號（共識等級、逐字驗證），不叫模型自評</td><td>三組態投票（程式訊號，與本研究同構）＋ certainty 由模型判定</td></tr>
+<tr><td>單位</td><td>人物；講述者與被講述者是兩個欄位（許石卷由子女與朋友講述）</td><td>受訪者；他述存在（42.8%）但無欄位、非分析對象</td></tr>
+<tr><td>外部對照</td><td>PASMA 專輯掛名庫（同領域獨立檔案）與北流人物頁</td><td>Wikidata Q 編號（35.7% 節點）</td></tr>
+<tr><td>評估</td><td>無 gold standard；「A floor, not a total」；每個數字從落檔重算</td><td>1,429 筆人工回讀 91.3% warranted，無 recall</td></tr>
+<tr><td>可重現</td><td>每次呼叫的 calls.jsonl 進 git</td><td>NarraGraph 二進位檔，提示詞未公開</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<h4>三點判斷</h4>
+<ol>
+<li><strong>核心主張相反。</strong> 對方讓模型先讀、再用結果修綱要（投影片第 21 頁「extraction as evaluation of the schema」）；本研究把綱要固定成程式查表、只讓模型選。</li>
+<li><strong>交會點在動詞。</strong> 海報右下第二個未決事項「動詞決定箭頭，中文關係動詞如何分類（分群）」，正是對方方法的中心（predicate clustering → candidate templates to accept or reject，第 13 頁）。這是最值得互相參照的地方。</li>
+<li><strong>投票同構，但多一層。</strong> 對方的三組態投票與本研究的「共識／減票共識／單次支持」是同一種程式化訊號，可引為同行做法；但對方另外讓模型判 certainty，本研究不做（紅線 2）。</li>
+</ol>
+</div>
+
+<h3>6.2 對方對「時間」的處理：有提及、無工具、無表徵</h3>
+<ul>
+<li><strong>提及止於研究問題。</strong> RQ1「網絡結構如何表徵口述歷史的敘事與時間向度」（投影片第 3 頁）；GtR 計畫書第三階段「處理口語模式、時間與空間脈絡」。<span class="src">來源：<a href="https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf">NKOS 2026 投影片</a>；<a href="https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1">GtR AH/Y007557/1</a></span></li>
+<li><strong>宣稱層的 temporal 欄位是記憶距離，不是年代</strong>：distant_memory、recent_memory、synchronous、historical_reconstruction（示範檔 304 筆裡 distant_memory 187；第 10 頁與工作台截圖每筆宣稱旁的「distant memory」）。</li>
+<li><strong>本體</strong>：TemporalEntity 是實體類別（年、十年、時期、日期範圍），只經 hasTimeExtent 掛在具名事件上；沒有 xsd:date 或 gYear，沒有起訖，沒有相對或不確定時間。第 14 頁把模型吐出的 TIME、TIME_SPAN 兩個原始型別收進 TemporalEntity，等於把時間當「被提到的東西」，不當軸。<span class="src">來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">Ontology Prototype V0.2.ttl</a></span></li>
+<li><strong>年份偶爾出現在宣稱標籤文字裡</strong>（第 9 頁 isComputerised (1964)），但是標籤的一部分，不是欄位。</li>
+<li><strong>手工編碼資料</strong>有 RelationStartYear、RelationEndYear 兩欄，幾乎全填 99（缺值）。對方想過人工給關係定年，沒有做成。<span class="src">來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv">relationship.csv</a></span></li>
+<li><strong>檔案層</strong>的 SpeechSegment startTime、endTime 是錄音秒數，抽取結果完全沒用到；中繼資料詞彙有 interviewDate。</li>
+<li><strong>NarraGraph v0.3.3 release 說明</strong>列了 temporal community tracking 與 snapshot comparison，但那是二進位檔，時間軸從哪裡來（訪談順序、Wikidata 日期）儲存庫未載明。<span class="src">來源：<a href="https://github.com/articoder/MeDoraH_NLP/releases">MeDoraH_NLP releases</a></span></li>
+<li>沒有年份推算、沒有相對時間（before／after）、沒有時間軸圖、沒有任何對應 time_anchor 的程式。<a href="https://zenodo.org/records/22115456">DH2026 摘要</a>一句都沒提時間。</li>
+</ul>
+
+<div class="card warn">
+<h4>對本研究的意義</h4>
+<p>海報「Time is the hard problem」那一格，對方是空白的。本研究有三條定年規則（自報、歲數推、鄰句借）、可信層 A 到 F、「57.3% 的句子只給先後、27.7% 掛得上年份」這組量測，以及生命脊椎圖的實心、半實心、空心記號。這是本研究相對於最接近同行最明確的領先，related work 可以直說。要誠實補一句：先後關係（TLINK）兩邊都沒做，本研究只是量出了它有多大。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s7"><span class="no">7</span>今日工作內容（2026-10-13）</h2>
 
 <p>起因是使用者詢問 IDOHL 網站所連的 GitHub 有哪些工具，接著要求先思考與本專案的關聯、先給報告，最後要一份 HTML。全程沒有寫程式、沒有呼叫模型、沒有 commit。</p>
 
@@ -297,6 +349,8 @@ ol.read li{margin:.8em 0}
 <li class="key"><span class="yr">落檔</span>四處（見 6.3），另把核准的計畫複製進 plans/，並在 plans/README.md 補登 10-05 那份漏登的 IDOHL 計畫。</li>
 <li><span class="yr">驗證</span>05 筆記內 15 個網址逐一檢查，全部 200，只有 NarraGraph 介紹頁 404 且已在文內標明；簡體字、中國大陸詞彙、破折號的 grep 為零。</li>
 <li><span class="yr">本頁</span>依使用者要求寫成單檔 HTML，版式沿用 10-05 的團隊側寫。</li>
+<li><span class="yr">發布</span>本頁與 05 筆記登記進 research-notes（build.py 加側寫相對連結改寫），check 0 項問題，commit 並 push，兩頁上線確認。</li>
+<li><span class="yr">追問</span>使用者追問方法差異（以 ICCCM 海報為準）與對方的時間處理：重讀 NKOS 22 頁投影片與 DH2026 摘要、對照海報文案正本，寫成第 6 節，再次發布。</li>
 </ul>
 
 <h3>6.2 複查結果：10-05 之後沒有新釋出</h3>
@@ -345,7 +399,7 @@ ol.read li{margin:.8em 0}
 </ol>
 
 <!-- ============================================================ -->
-<h2 id="s7"><span class="no">7</span>資料來源</h2>
+<h2 id="s8"><span class="no">8</span>資料來源</h2>
 
 <h4>GitHub（2026-10-13 以 gh api 與 curl 存取）</h4>
 <ul class="refs">
@@ -356,7 +410,7 @@ ol.read li{margin:.8em 0}
 <li><a href="https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/IDOHL-updator/main/scripts/README.md">IDOHL-updator scripts/README.md</a>；<a href="https://raw.githubusercontent.com/International-Digital-Oral-History-Lab/IDOHL-updator/main/.github/workflows/fetch-news.yml">fetch-news.yml</a></li>
 <li><a href="https://github.com/International-Digital-Oral-History-Lab">github.com/International-Digital-Oral-History-Lab</a>；<a href="https://github.com/International-Digital-Oral-History-Lab/MDOH_Project">MDOH_Project</a>；<a href="https://github.com/International-Digital-Oral-History-Lab/MeDoraH_Project">MeDoraH_Project</a></li>
 <li><a href="https://github.com/articoder/MeDoraH_NLP">github.com/articoder/MeDoraH_NLP</a>；<a href="https://github.com/articoder/MeDoraH_Ontology">MeDoraH_Ontology</a></li>
-<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">Ontology Prototype V0.2.ttl</a>；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/MeDoraH%20Ontology%20-%20File.ttl">File.ttl</a>；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V3.ttl">OH_metadata_vocab_V3.ttl</a>；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md">本體設計文件 v0.2</a></li>
+<li><a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">Ontology Prototype V0.2.ttl</a>；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/MeDoraH%20Ontology%20-%20File.ttl">File.ttl</a>；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Metadata%20Vocabulary/OH_metadata_vocab_V3.ttl">OH_metadata_vocab_V3.ttl</a>；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/documentation/Ontology/MeDoraH%20Ontology%20Prototype%20v0.2.md">本體設計文件 v0.2</a>；<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv">Palladio relationship.csv</a></li>
 </ul>
 <h4>IDOHL 網站</h4>
 <ul class="refs">
@@ -367,6 +421,7 @@ ol.read li{margin:.8em 0}
 <ul class="refs">
 <li><a href="https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf">NKOS 2026 投影片（Zhang、Vlachidis、Nyhan）</a>；<a href="https://www.dublincore.org/conferences/2026/sessions/nkos-workshop/">工作坊頁</a></li>
 <li><a href="https://zenodo.org/records/22115456">DH2026 摘要（Zenodo）</a></li>
+<li><a href="https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1">UKRI Gateway to Research：MeDoraH AH/Y007557/1</a></li>
 <li><a href="https://discovery.ucl.ac.uk/id/eprint/10224816/">Vlachidis、Zhang 與 Nyhan 2026，iConference</a>；<a href="https://discovery.ucl.ac.uk/id/eprint/10220832/">Humbel 等 2026，MTSR 2025</a>；<a href="https://discovery.ucl.ac.uk/id/eprint/10194919/">Flinn 等 2024</a>；<a href="https://discovery.ucl.ac.uk/id/eprint/10127463/">Humbel 等 2021</a></li>
 <li><a href="https://doi.org/10.1093/llc/fqac094">Smyth、Nyhan 與 Flinn 2023</a>；<a href="https://doi.org/10.1093/llc/fqt044">Nyhan、Flinn 與 Welsh 2015</a>；<a href="https://doi.org/10.1007/978-3-319-20170-2">Nyhan 與 Flinn 2016</a></li>
 </ul>
@@ -376,6 +431,7 @@ ol.read li{margin:.8em 0}
 <li><a href="../notes/vlachidis_medorah-ontology-memory-recollection.html">refs/notes/vlachidis_medorah-ontology-memory-recollection.md</a> 第 8 節</li>
 <li>plans/2026-09-10_表徵審查_宣稱事件中心.md<span class="src">（專案內部檔案 <code>../plans/2026-09-10_表徵審查_宣稱事件中心.md</code>，未隨筆記公開）</span></li>
 <li><a href="../profiles/idohl-lab-profile-2026-10-05.html">refs/idohl_lab-profile_2026-10-05.html</a>（團隊側寫）</li>
+<li>poster/copy.yaml<span class="src">（專案內部檔案 <code>../poster/copy.yaml</code>，未隨筆記公開）</span>（ICCCM 海報文案正本）；poster/talk_2min.md<span class="src">（專案內部檔案 <code>../poster/talk_2min.md</code>，未隨筆記公開）</span>（兩分鐘講稿）</li>
 </ul>
 
 </main>
