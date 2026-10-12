@@ -129,8 +129,72 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 </tr>
 </tbody>
 </table></div>
-<p>其他：<code>articoder</code> 名下另有 10 個與 IDOHL 無關的舊儲存庫（Cambridge 博論樣板、Text2Event、awesome-semantic-web 等，最後 push 均在 2024 年以前），開源頁沒有列入，本報告不計。NarraGraph 介紹頁 <code>https://idohl.org/NarraGraph_landingpage.html</code> 仍回 404；<code>medorah/*</code> 五個儲存庫仍不存在；六個儲存庫 <code>license</code> 欄位仍為 <code>null</code>。帳號型別仍是 User，不是 Organization。
+<p>其他：<code>articoder</code> 名下另有 10 個與 IDOHL 無關的舊儲存庫（Cambridge 博論樣板、Text2Event、awesome-semantic-web 等，最後 push 均在 2024 年以前），開源頁沒有列入，本報告不計。開源頁與 GitHub 頁面列出的工具（<code>MDOH_Project</code>、<code>MeDoraH_Project</code>、<code>MeDoraH_NLP</code>、<code>MeDoraH_Ontology</code>、<code>IDOHL-updator</code>，以及 NarraGraph 的 release 頁）<strong>全部可達</strong>。查不到的只有兩種，都不是工具本身：MeDoraH_Project README 預告的五個子儲存庫（作者自己把其中三個標為 Coming Soon，<code>medorah</code> 這個帳號不存在），以及開源頁 NarraGraph 卡片連到的介紹頁 <code>NarraGraph_landingpage.html</code>（尚未發布，見 2a）。六個儲存庫 <code>license</code> 欄位仍為 <code>null</code>。帳號型別仍是 User，不是 Organization。
 來源：<code>gh api users/International-Digital-Oral-History-Lab/repos</code>、<code>gh api users/articoder/repos</code>、<code>gh api repos/articoder/MeDoraH_NLP/releases</code>、<code>gh api repos/International-Digital-Oral-History-Lab/IDOHL-updator/commits</code>，2026-10-13；curl <code>https://idohl.org/OpenSource-Release</code>。</p>
+<h3 id="2a-2026-10-13-404">2a. 逐連結複查（2026-10-13，使用者指出「工具不該 404」後再查一次）</h3>
+<p>以瀏覽器 user agent、跟隨轉址測每一個連結；GitHub 另以 <code>gh api</code> 查帳號與儲存庫是否存在。</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>連結</th>
+<th>狀態</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/International-Digital-Oral-History-Lab">https://github.com/International-Digital-Oral-History-Lab</a> （帳號頁）</td>
+<td>200</td>
+<td>列三個儲存庫：MeDoraH_Project、MDOH_Project、IDOHL-updator</td>
+</tr>
+<tr>
+<td><a href="https://github.com/International-Digital-Oral-History-Lab/MDOH_Project">https://github.com/International-Digital-Oral-History-Lab/MDOH_Project</a></td>
+<td>200</td>
+<td>只有 README</td>
+</tr>
+<tr>
+<td><a href="https://github.com/International-Digital-Oral-History-Lab/MeDoraH_Project">https://github.com/International-Digital-Oral-History-Lab/MeDoraH_Project</a></td>
+<td>200</td>
+<td>只有 README</td>
+</tr>
+<tr>
+<td><a href="https://github.com/International-Digital-Oral-History-Lab/IDOHL-updator">https://github.com/International-Digital-Oral-History-Lab/IDOHL-updator</a></td>
+<td>200</td>
+<td>新聞聚合器</td>
+</tr>
+<tr>
+<td><a href="https://github.com/articoder/MeDoraH_NLP">https://github.com/articoder/MeDoraH_NLP</a></td>
+<td>200</td>
+<td>工具與資料</td>
+</tr>
+<tr>
+<td><a href="https://github.com/articoder/MeDoraH_NLP/releases">https://github.com/articoder/MeDoraH_NLP/releases</a></td>
+<td>200</td>
+<td>NarraGraph v0.1.2 到 v0.4.0 安裝檔</td>
+</tr>
+<tr>
+<td><a href="https://github.com/articoder/MeDoraH_Ontology">https://github.com/articoder/MeDoraH_Ontology</a></td>
+<td>200</td>
+<td>本體與資料</td>
+</tr>
+<tr>
+<td><a href="https://github.com/medorah/medorah-kg">https://github.com/medorah/medorah-kg</a>、-api、-tools、-datasets、-analysis</td>
+<td>404</td>
+<td>MeDoraH_Project README 預告的子儲存庫；<code>gh api users/medorah</code> 與 <code>orgs/medorah</code> 都回 404，三個擁有者名下也沒有同名儲存庫；README 把 kg、api、tools 標為 Coming Soon</td>
+</tr>
+<tr>
+<td><a href="https://idohl.org/OpenSource-Release">https://idohl.org/OpenSource-Release</a></td>
+<td>200</td>
+<td>開源頁；卡片上的四個 GitHub 連結都可達</td>
+</tr>
+<tr>
+<td><a href="https://idohl.org/NarraGraph_landingpage.html">https://idohl.org/NarraGraph_landingpage.html</a></td>
+<td>404</td>
+<td>開源頁 NarraGraph 卡片的「Explore the application page」；Omeka S 四個站 22 頁裡沒有這一頁、102 個資產裡沒有、Wayback 無快照、MeDoraH_NLP 的 Omeka Front End 資料夾（15 個 palette 分支）只有 MeDoraH、MDOH、Hidden Histories 的介紹頁</td>
+</tr>
+</tbody>
+</table></div>
+<p>結論：<strong>工具本身沒有 404</strong>。查不到的是作者自己標為「即將推出」的子儲存庫，與一個寫了連結但沒有上線的介紹頁。</p>
 <hr>
 <h2 id="3">3. 工具清單（六個儲存庫，開源頁宣稱五個）</h2>
 <h3 id="international-digital-oral-history-lab">實驗室帳號 <code>International-Digital-Oral-History-Lab</code></h3>
@@ -155,7 +219,7 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 </tr>
 <tr>
 <td><code>MeDoraH_Project</code></td>
-<td>只有 README；連結到的 <code>medorah/medorah-kg</code>、<code>-api</code>、<code>-tools</code>、<code>-datasets</code>、<code>-analysis</code> 五個儲存庫全部 404</td>
+<td>只有 README；README 預告五個子儲存庫 <code>medorah/medorah-kg</code>、<code>-api</code>、<code>-tools</code>、<code>-datasets</code>、<code>-analysis</code>，三個標 Coming Soon，2026-10-13 複查仍未建立（帳號 <code>medorah</code> 不存在）</td>
 <td>無程式</td>
 </tr>
 </tbody>
@@ -220,7 +284,7 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 - <a href="https://github.com/articoder/MeDoraH_Ontology">https://github.com/articoder/MeDoraH_Ontology</a></p>
 <p>IDOHL 網站
 - <a href="https://idohl.org/OpenSource-Release">https://idohl.org/OpenSource-Release</a>
-- <a href="https://idohl.org/NarraGraph_landingpage.html">https://idohl.org/NarraGraph_landingpage.html</a>（2026-10-05 與 2026-10-13 均回 404）</p>
+- <a href="https://idohl.org/NarraGraph_landingpage.html">https://idohl.org/NarraGraph_landingpage.html</a>（開源頁連到的介紹頁，尚未發布：2026-10-05 與 10-13 均查無此頁；Omeka 站內頁面與資產、Wayback、MeDoraH_NLP 17 個分支都沒有）</p>
 <p>本專案內部
 - <a href="../../notes/idohl/03-open-source-code.html">03_開源釋出與程式碼.md</a>（2026-10-05 逐檔調查，本報告的事實基礎）
 - <a href="../../notes/vlachidis_medorah-ontology-memory-recollection.html"><code>refs/notes/vlachidis_medorah-ontology-memory-recollection.md</code></a> 第 8 節
