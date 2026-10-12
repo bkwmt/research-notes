@@ -72,6 +72,34 @@ table.docs td:nth-child(1){min-width:16em}
 table.docs .lic{color:var(--grey);font-size:.84rem}
 .stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
 .stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
+/* ---- 首頁改版（2026-10-13）：三個入口、系列封面卡、清單預設收合、筆記頁 hero 瘦身 ---- */
+.intro{font-size:1rem;color:var(--line);margin:1em 0 .3em}
+details.about{font-size:.9rem;color:var(--grey);margin:0 0 1.6em}
+details.about summary{cursor:pointer;color:var(--line)}
+details.about p{margin:.5em 0 0}
+h2.entry{margin-top:1.8em}
+.scard{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:10px;padding:16px 20px;margin:.8em 0}
+.scard h3{margin:0 0 .25em;font-size:1.2rem;color:var(--ink)}
+.scard .b{color:var(--line);margin:.2em 0 .6em;font-size:.95rem}
+.scard ol.ch{margin:.3em 0 .5em;padding-left:1.5em;columns:2;column-gap:28px;font-size:.95rem}
+.scard ol.ch li{break-inside:avoid;margin:.12em 0}
+.scard .logs{font-size:.88rem;color:var(--grey);margin:.4em 0 0}
+.scard .logs a{margin-right:.4em}
+@media (max-width:640px){.scard ol.ch{columns:1}}
+h3.rline{font-size:1.12rem;color:var(--ink);margin:1.4em 0 .1em}
+.rline-blurb{color:var(--grey);font-size:.92rem;margin:0 0 .6em}
+details.group{border-bottom:1px solid var(--rule);padding:.45em 0}
+details.group summary{cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:.5em}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::before{content:"▸";color:var(--grey);font-size:.9em;transition:transform .15s}
+details.group[open] summary::before{transform:rotate(90deg)}
+details.group .list{margin:.3em 0 .3em 1.4em;font-size:.95rem}
+details.group .list li{padding:.4em 0}
+.ecard{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin:.8em 0}
+.ecard b{font-size:1.05rem}
+p.series{font-size:.88rem;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:8px 14px;margin:0 0 1.2em;line-height:1.7}
+p.series strong{color:var(--accent)}
+footer .foot{margin:0 0 .4em}
 
 </style>
 </head>
@@ -80,7 +108,7 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 <p class="crumb"><a href="../index.html">Research Notes</a> › ① LLM 抽取與知識圖譜建構現況</p>
 <h1>bian2025_LLM 賦能的知識圖譜建構綜述</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/bian2025_llm-kgc-survey.md</code>　來源最後修改 2026-07-22　分類 ① LLM 抽取與知識圖譜建構現況　問題 <a class="qtag main" href="../index.html#q1" title="LLM 抽取與知識圖譜建構現況">①</a>　<a class="pdfbtn ext" href="https://arxiv.org/abs/2510.20345" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></p>
+<p class="meta">2026-07-22　<a class="pdfbtn ext" href="https://arxiv.org/abs/2510.20345" title="外部連結：著作權所限未隨站公開（arXiv 非專屬散布授權（僅授權 arXiv 散布，第三方不得轉載））">原文（外部）</a></p>
 </div></header>
 <main class="wrap">
 <ul>
@@ -164,7 +192,7 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 - <em>範圍</em>：Pan et al. 的 roadmap 涵蓋 LLM 與 KG 的<strong>全面互動</strong>，三大框架是「KG 強化 LLM」「LLM 強化 KG」「兩者協同」，把 KG 用於 LLM 推理、問答、可解釋性都納入。Bian 這篇<strong>只切「KG 建構」這一塊</strong>，把 Pan 框架裡「LLM 強化 KG」的建構面拿出來放大。
 - <em>組織軸</em>：Pan 以「誰強化誰」為主軸；Bian 改用 KG 傳統的<strong>三層流水線（本體／抽取／融合）</strong>為骨架，再疊一條「schema-based vs schema-free」的橫軸。後者對「建構」這件事的內部結構鋪得更細。
 - <em>定位差異</em>：Bian 反覆引用並繼承 Pan「從規則式流水線轉向 LLM 驅動、統一、自適應框架」的大判斷，可視為 Pan 在「建構」子題上的<strong>加深與更新</strong>（收了 2024–2025 更多新框架如 AutoSchemaKG、EDC、KARMA）。但 Bian 缺 Pan 那種較嚴謹的框架界定與較完整的評估／應用討論，權威性與周延度不及 Pan。實務上：要「全景與定論」讀 Pan，要「建構這條線上 2025 年前後有哪些新招」翻 Bian。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
+<footer><p class="foot">來源 <code>extract_ohistory/refs/notes/bian2025_llm-kgc-survey.md</code>　分類 ① LLM 抽取與知識圖譜建構現況　問題 <a class="qtag main" href="../index.html#q1" title="LLM 抽取與知識圖譜建構現況">①</a></p><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
 </main>
 </body>
 </html>

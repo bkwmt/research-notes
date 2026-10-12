@@ -5,7 +5,7 @@
 
 ## 內容與分類
 
-首頁第一層依**研究線**分，第二層沿用各研究線自己的分類。
+首頁三個入口：**主題系列**（多頁一主題，有封面與章節順序）、**研究線與文獻筆記**（第一層研究線，第二層沿用各研究線自己的分類，預設收合）、**文獻庫**。
 
 | 研究線 | 區塊 | 內容 | 來源專案 |
 |---|---|---|---|
@@ -54,6 +54,7 @@ python3 -m venv .venv && .venv/bin/pip install markdown pyyaml   # 第一次
 - 新 PDF：在 `tools/documents.yaml` 加一筆，先查授權（arXiv abs 頁的授權欄、ACL Anthology 頁尾聲明、PDF 內文授權句、Crossref 的 license 欄），
   能轉載才標 `publish: true`；不能轉載的填 `source_url` 即可。
 - 新側寫或投影片：在 manifest 對應區塊加一筆並指定 `group`。
+- 新主題系列：在 manifest `series` 加一筆（封面 `cover`、章節 `pages` 的順序與短名 `label`、所屬問題 `group`）；成員筆記的麵包屑會指回封面，首頁只列一張卡。
 - 新的工作天：在系列導讀頁最末加一個 `<h3 class="log" id="log-YYYY-MM-DD">YYYY-MM-DD　標題</h3>` 與內容，重跑 `build.py` 首頁就會多一個連結（`sitelib.scan_worklog`）。
 - 新研究線：在 manifest `research_lines` 加一條，列出它的區塊。
 

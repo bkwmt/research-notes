@@ -62,6 +62,13 @@ ol.read li{margin:.8em 0}
 .series{font-size:.9rem;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:0 0 1.2em}
 .series b{color:var(--accent)}
 h3.log{margin-top:1.6em}
+ol.chapters{list-style:none;padding:0;margin:1em 0;counter-reset:ch}
+ol.chapters li{counter-increment:ch;display:grid;grid-template-columns:2.2em 1fr auto;grid-template-areas:'n t u' 'n q q';gap:.1em .8em;align-items:baseline;background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--line);border-radius:8px;padding:10px 14px;margin:.5em 0}
+ol.chapters li::before{content:counter(ch);grid-area:n;font-weight:700;color:var(--accent);font-size:1.2rem}
+ol.chapters .ct{grid-area:t;font-weight:600;font-size:1.05rem}
+ol.chapters .use{grid-area:u;font-size:.8rem;color:var(--line);background:var(--paper);border:1px solid var(--rule);border-radius:999px;padding:1px 8px}
+ol.chapters .q{grid-area:q;color:var(--line);font-size:.93rem}
+@media (max-width:560px){ol.chapters li{grid-template-columns:2.2em 1fr;grid-template-areas:'n t' 'n u' 'n q'}}
 </style>
 </head>
 <body>
@@ -69,43 +76,26 @@ h3.log{margin-top:1.6em}
 <div class="wrap">
 <h1>IDOHL 系列導讀</h1>
 <p class="sub">International Digital Oral History Lab（IDOHL，國際數位口述歷史實驗室，UCL 與 TU Darmstadt 合辦）是 extract_ohistory 目前查到最接近的同類計畫。這個系列回答五個問題：他們是誰、貢獻了什麼、與本研究的方法差在哪、時間怎麼處理、接下來做什麼。</p>
-<p class="meta">本頁是入口與紀錄，不放分析本文。系列最後一次更新 2026-10-13；工作日誌在本頁最末，每個工作天一節。</p>
+<p class="meta">系列最後更新 2026-10-13。工作日誌在本頁最末，每個工作天一節。</p>
 </div>
 </header>
 
 <main class="wrap">
-<p class="series"><b>IDOHL 系列</b>：導讀（本頁） · <a href="../profiles/idohl-lab-profile-2026-10-05.html">1 側寫</a> · <a href="../notes/idohl/06-contributions.html">2 貢獻</a> · <a href="../notes/idohl/07-method-comparison.html">3 方法對照</a> · <a href="../notes/idohl/08-time.html">4 時間</a> · <a href="../notes/idohl/09-actions.html">5 可借與待辦</a> · 附錄：<a href="../notes/idohl/05-tools-relevance.html">工具清單</a>、原始調查 <a href="../notes/idohl/01-team-history.html">01</a>、<a href="../notes/idohl/02-three-projects.html">02</a>、<a href="../notes/idohl/03-open-source-code.html">03</a>、<a href="../notes/idohl/04-publications-related-work.html">04</a></p>
 
-<nav class="toc" aria-label="目錄">
-<strong>目錄</strong>
-<ol>
-<li><a href="#s1">怎麼讀</a></li>
-<li><a href="#s2">怎麼確認</a></li>
-<li><a href="#s3">名詞表</a></li>
-<li><a href="#s4">版本紀錄</a></li>
-<li><a href="#s5">工作日誌</a></li>
-</ol>
-</nav>
 
 <!-- ============================================================ -->
 <h2 id="s1"><span class="no">1</span>怎麼讀</h2>
 
 <p class="lead">一頁回答一個問題。按順序讀是學習，跳著查是確認。</p>
 
-<div class="tablewrap">
-<table>
-<thead><tr><th>#</th><th>頁</th><th>回答的問題</th><th>讀者的用途</th><th>形式</th></tr></thead>
-<tbody>
-<tr><td>1</td><td><a href="../profiles/idohl-lab-profile-2026-10-05.html">團隊側寫</a></td><td>他們是誰：團隊、年表、三個計畫、出版、方法論立場</td><td>認識對方</td><td>HTML，2026-10-05</td></tr>
-<tr><td>2</td><td><a href="../notes/idohl/06-contributions.html">貢獻：做到與沒做到</a></td><td>六個面向各貢獻了什麼、做到哪裡；為什麼「可檢視結果、不能重跑抽取」</td><td>確認事實</td><td>筆記</td></tr>
-<tr><td>3</td><td><a href="../notes/idohl/07-method-comparison.html">方法對照</a></td><td>以 ICCCM 2026 海報定稿為準，逐面向比：起點、模型角色、用字、共指、他述、分類、人在迴圈、模型、信心、單位、外部對照、評估、可重現、授權、時間</td><td>理解差異；每列有「以我的判斷」與證據</td><td>筆記，一張表</td></tr>
-<tr><td>4</td><td><a href="../notes/idohl/08-time.html">時間專題</a></td><td>他們怎麼處理時間、我們怎麼處理、兩邊都沒做的（先後關係）</td><td>最難的一關，獨立一頁</td><td>筆記</td></tr>
-<tr><td>5</td><td><a href="../notes/idohl/09-actions.html">可借、不借、待辦</a></td><td>四件純程式工作、先例清單、不借五項、保留、待決定</td><td>行動</td><td>筆記</td></tr>
-<tr><td>附</td><td><a href="../notes/idohl/05-tools-relevance.html">工具清單</a></td><td>六個 GitHub 儲存庫各是什麼、能不能跑、最後 push</td><td>查證</td><td>筆記</td></tr>
-<tr><td>附</td><td><a href="../notes/idohl/01-team-history.html">01</a> <a href="../notes/idohl/02-three-projects.html">02</a> <a href="../notes/idohl/03-open-source-code.html">03</a> <a href="../notes/idohl/04-publications-related-work.html">04</a></td><td>2026-10-05 的四份原始調查報告，每條事實附 URL</td><td>查證</td><td>筆記</td></tr>
-</tbody>
-</table>
-</div>
+<ol class="chapters">
+<li><a class="ct" href="../profiles/idohl-lab-profile-2026-10-05.html">團隊側寫</a><span class="use">認識對方</span><span class="q">他們是誰：團隊、年表、三個計畫、出版、方法論立場。</span></li>
+<li><a class="ct" href="../notes/idohl/06-contributions.html">貢獻：做到與沒做到</a><span class="use">確認事實</span><span class="q">六個面向各貢獻了什麼、做到哪裡；為什麼「可檢視結果、不能重跑抽取」。</span></li>
+<li><a class="ct" href="../notes/idohl/07-method-comparison.html">方法對照</a><span class="use">理解差異</span><span class="q">以 ICCCM 2026 海報定稿為準，十六個面向逐一比：對方、本研究、判斷與證據。</span></li>
+<li><a class="ct" href="../notes/idohl/08-time.html">時間專題</a><span class="use">最難的一關</span><span class="q">他們怎麼處理時間、我們怎麼處理、兩邊都沒做的先後關係。</span></li>
+<li><a class="ct" href="../notes/idohl/09-actions.html">可借、不借、待辦</a><span class="use">行動</span><span class="q">四件純程式工作、先例清單、不借五項、保留、待決定。</span></li>
+</ol>
+<p class="small"><strong>附錄</strong>：<a href="../notes/idohl/05-tools-relevance.html">工具清單</a>、<a href="../notes/idohl/01-team-history.html">原始調查 01 團隊與歷史</a>、<a href="../notes/idohl/02-three-projects.html">原始調查 02 三個計畫</a>、<a href="../notes/idohl/03-open-source-code.html">原始調查 03 開源釋出與程式碼</a>、<a href="../notes/idohl/04-publications-related-work.html">原始調查 04 出版與相關工作</a>。原始調查每條事實附 URL，查證用。</p>
 
 <!-- ============================================================ -->
 <h2 id="s2"><span class="no">2</span>怎麼確認</h2>

@@ -46,6 +46,26 @@ TODAY = dt.date.today().isoformat()
 NOW = dt.datetime.now().isoformat(timespec="seconds")
 QUESTIONS: dict[str, str] = cfg.get("questions", {})
 LINES: list[dict] = cfg.get("research_lines", [])
+SERIES: list[dict] = cfg.get("series", [])
+
+
+def series_pages(sr: dict) -> list[tuple[str, str | None]]:
+    """系列章節 [(站上路徑, 短名或 None)]；manifest 可寫字串或 {out, label}。"""
+    out = []
+    for pg in sr.get("pages", []):
+        if isinstance(pg, dict):
+            out.append((pg["out"], pg.get("label")))
+        else:
+            out.append((pg, None))
+    return out
+
+
+def series_of(out_rel: str) -> dict | None:
+    """這頁屬於哪個主題系列（封面或章節）；不屬於任何系列回 None。"""
+    for sr in SERIES:
+        if out_rel == sr["cover"] or out_rel in [o for o, _ in series_pages(sr)]:
+            return sr
+    return None
 
 lock: dict[str, dict] = {}
 
@@ -91,7 +111,7 @@ def record(out_rel: str, src: Path, kind: str, title: str, *, group: str, tags: 
     }
 
 
-def page(title: str, body: str, *, crumb: str, sub: str = "", meta: str = "", depth: int = 1, description: str = "") -> str:
+def page(title: str, body: str, *, crumb: str, sub: str = "", meta: str = "", depth: int = 1, description: str = "", foot: str = "") -> str:
     """把內文包成單檔 HTML。depth 決定回首頁的相對路徑。"""
     home = "../" * depth + "index.html"
     return f"""<!doctype html>
@@ -114,7 +134,7 @@ def page(title: str, body: str, *, crumb: str, sub: str = "", meta: str = "", de
 </div></header>
 <main class="wrap">
 {body}
-<footer><p>{html.escape(cfg['license_notice'])}　建置 {TODAY}。</p></footer>
+<footer>{f'<p class="foot">{foot}</p>' if foot else ''}<p>{html.escape(cfg['license_notice'])}　建置 {TODAY}。</p></footer>
 </main>
 </body>
 </html>
@@ -181,15 +201,17 @@ def rewrite_html_links(s: str, src: Path, src_to_out: dict[Path, str], out_rel: 
     """側寫 HTML 裡的相對連結：指向站內頁（筆記或其他側寫）的改成站內連結，
     指向原專案其他檔案（WORKLOG、plans、程式）的改成灰字註記，與筆記的 rewrite_links 同一規則。"""
     def repl(m: re.Match) -> str:
-        href, label = m.group(1), m.group(2)
+        before, href, after, label = m.group(1), m.group(2), m.group(3), m.group(4)
         if href.startswith(("http://", "https://", "#", "mailto:")):
             return m.group(0)
         path_part, _, anchor = href.partition("#")
         resolved = (src.parent / path_part).resolve()
         if resolved in src_to_out:
-            return f'<a href="{rel_link(src_to_out[resolved], out_rel)}{"#" + anchor if anchor else ""}">{label}</a>'
+            new_href = f'{rel_link(src_to_out[resolved], out_rel)}{"#" + anchor if anchor else ""}'
+            return f'<a{before}href="{new_href}"{after}>{label}</a>'
         return f'{label}<span class="src">（專案內部檔案 <code>{html.escape(path_part)}</code>，未隨筆記公開）</span>'
-    return re.sub(r'<a href="([^"]+)">(.*?)</a>', repl, s, flags=re.S)
+    # <a> 可帶其他屬性（class、aria-label），href 前後都保留
+    return re.sub(r'<a\b([^>]*?\s)href="([^"]+)"([^>]*)>(.*?)</a>', repl, s, flags=re.S)
 
 
 def all_src_to_out() -> dict[Path, str]:
@@ -326,13 +348,16 @@ def build_notes():
         if (h := doc_href(pdf_name, depth)):
             doc = {"name": pdf_name, "internal": h[2], "license": DOCS[pdf_name]["license"]}
         main = group if group in QUESTIONS else None
-        meta = (f"來源 <code>{html.escape(str(src.relative_to(SRC_ROOT)))}</code>　"
-                f"來源最後修改 {mtime(src)}　分類 {html.escape(group_label(group))}"
-                + (f"　問題 {qtags(tags, main, depth)}" if tags else "")
-                + (f"　{doc_button(pdf_name, depth)}" if doc else ""))
+        meta = f"{mtime(src)}" + (f"　{doc_button(pdf_name, depth)}" if doc else "")
+        foot = (f"來源 <code>{html.escape(str(src.relative_to(SRC_ROOT)))}</code>　分類 {html.escape(group_label(group))}"
+                + (f"　問題 {qtags(tags, main, depth)}" if tags else ""))
+        sr = series_of(out_rel)
+        crumb = (f'<a href="{rel_link(sr["cover"], out_rel)}">{html.escape(sr["title"])}</a>' if sr
+                 else html.escape(group_label(group)))
+        body = re.sub(r"^<p><strong>([^<]*系列)</strong>", r'<p class="series"><strong>\1</strong>', body, count=1)
         out = ROOT / out_rel
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(page(title, body, crumb=html.escape(group_label(group)), meta=meta, depth=depth), encoding="utf-8")
+        out.write_text(page(title, body, crumb=crumb, meta=meta, depth=depth, foot=foot), encoding="utf-8")
         record(out_rel, src, "note", title, group=group, tags=tags, doc=doc)
         print(f"[note] {out_rel}  {group}{'' if not doc else '  +PDF' if doc['internal'] else '  +外部'}")
 
@@ -475,10 +500,16 @@ def build_slides():
 
 # ---------------------------------------------------------------- index
 def build_index():
+    """首頁：三個入口（主題系列、研究線與文獻筆記、文獻庫）。清單預設收合；系列成員在問題清單裡收成一列。"""
     pages = {k: v for k, v in lock.items() if v.get("kind") != "pdf"}
+    in_series = {o for sr in SERIES for o in [sr["cover"], *[o for o, _ in series_pages(sr)]]}
     by_group: dict[str, list[tuple[str, dict]]] = {}
     for out_rel, info in pages.items():
+        if out_rel in in_series:
+            continue
         by_group.setdefault(info.get("group") or info.get("category", "其他"), []).append((out_rel, info))
+    for sr in SERIES:  # 系列在所屬問題裡佔一列
+        by_group.setdefault(sr.get("group", "其他"), []).append((sr["cover"], {"series": sr}))
     covered = {g for line in LINES for g in line["groups"]}
     leftover = [g for g in by_group if g not in covered]
     leftover += [g for g in (sitelib.primary_question(REFS.get(n, {}).get("questions", "")) or "未分類" for n in DOCS)
@@ -486,15 +517,17 @@ def build_index():
     lines = LINES + ([{"id": "other", "title": "其他", "blurb": "", "groups": leftover}] if leftover else [])
 
     def li(out_rel: str, info: dict) -> str:
-        blurb = f'<span class="b">{html.escape(info["blurb"])}</span>' if info.get("blurb") else ""
-        main = info.get("group") if info.get("group") in QUESTIONS else None
-        tags = qtags(info.get("tags", ""), main, 0)
+        if "series" in info:
+            sr = info["series"]
+            n = 1 + len(series_pages(sr))
+            return (f'<li><a class="t" href="{out_rel}">{html.escape(sr["title"])}</a>'
+                    f'<span class="d">{n} 頁</span><span class="b">{html.escape(sr["blurb"])}</span></li>')
         doc = info.get("doc")
         btn = doc_button(doc["name"], 0) if doc else ""
         return (f'<li><a class="t" href="{out_rel}">{html.escape(info["title"])}</a>'
-                f'<span class="d">{info["source_mtime"]}</span>{tags}{btn}{blurb}</li>')
+                f'<span class="d">{info["source_mtime"]}</span>{btn}</li>')
 
-    # 只有 PDF、還沒寫筆記的文獻也掛在所屬問題底下（站內 PDF 或原始出處），讓每個問題的庫存一目了然
+    # 只有 PDF、還沒寫筆記的文獻也掛在所屬問題底下
     note_stems = {Path(k).stem for k, v in pages.items() if v.get("kind") == "note"}
     doc_only: dict[str, list[str]] = {}
     for name in sorted(DOCS):
@@ -505,56 +538,63 @@ def build_index():
 
     def li_doc(name: str) -> str:
         row = REFS.get(name, {})
-        main = sitelib.primary_question(row.get("questions", ""))
         bib = (f"{html.escape(row['author'])} ({html.escape(row['year'])}). {html.escape(row['short'])}" if row else html.escape(name))
-        return (f'<li><span class="t">{bib}</span><span class="d">尚無筆記</span>{qtags(row.get("questions", ""), main, 0)}'
-                f'{doc_button(name, 0)}</li>')
+        return f'<li><span class="t">{bib}</span><span class="d">尚無筆記</span>{doc_button(name, 0)}</li>'
 
-    sections, toc = [], []
+    # 入口一：主題系列
+    series_html = []
+    for sr in SERIES:
+        chapters = []
+        for o, label in series_pages(sr):
+            t = label or pages.get(o, {}).get("title", o)
+            chapters.append(f'<li><a href="{o}">{html.escape(t)}</a></li>')
+        cover_p = ROOT / sr["cover"]
+        logs = sitelib.scan_worklog(cover_p.read_text(encoding="utf-8")) if cover_p.exists() else []
+        logs_html = ("<p class=\"logs\">工作日誌：" + " ".join(f'<a href="{sr["cover"]}#log-{d}">{d}</a>' for d, _ in logs) + "</p>") if logs else ""
+        series_html.append(f'<div class="scard"><h3><a href="{sr["cover"]}">{html.escape(sr["title"])}</a></h3>'
+                           f'<p class="b">{html.escape(sr["blurb"])}</p>'
+                           f'<p class="small">先讀<a href="{sr["cover"]}">封面</a>：怎麼讀、怎麼確認、名詞表。章節：</p>'
+                           f'<ol class="ch">{"".join(chapters)}</ol>{logs_html}</div>')
+
+    # 入口二：研究線與文獻筆記（每個問題一個收合區塊）
+    sections = []
     for line in lines:
         groups = [g for g in line["groups"] if g in by_group or g in doc_only]
         if not groups:
             continue
         n_line = sum(len(by_group.get(g, [])) + len(doc_only.get(g, [])) for g in groups)
-        sections.append(f'<h2 class="line" id="{html.escape(line["id"])}">{html.escape(line["title"])} <span class="tag">{n_line}</span></h2>')
+        sections.append(f'<h3 class="rline" id="{html.escape(line["id"])}">{html.escape(line["title"])} <span class="tag">{n_line}</span></h3>')
         if line.get("blurb"):
-            sections.append(f'<p class="line-blurb">{html.escape(line["blurb"])}</p>')
-        sub = []
+            sections.append(f'<p class="rline-blurb">{html.escape(line["blurb"])}</p>')
         for g in groups:
             gid = f"q{sitelib.CIRCLED.index(g) + 1}" if g in QUESTIONS else re.sub(r"\W+", "-", g)
             rows = sorted(by_group.get(g, []), key=lambda kv: kv[0])
             extra = doc_only.get(g, [])
             n_g = len(rows) + len(extra)
-            sections.append(f'<h3 class="group" id="{gid}">{html.escape(group_label(g))} <span class="tag">{n_g}</span></h3>\n<ul class="list">\n'
-                            + "\n".join([li(o, i) for o, i in rows] + [li_doc(nm) for nm in extra]) + "\n</ul>")
-            sub.append(f'<li><a href="#{gid}">{html.escape(group_label(g))}</a>（{n_g}）</li>')
-        toc.append(f'<li class="line-title"><a href="#{html.escape(line["id"])}">{html.escape(line["title"])}</a>（{n_line}）<ul class="sub">{"".join(sub)}</ul></li>')
-
-    # 工作日誌：掃所有側寫輸出檔裡的 <h3 class="log" id="log-YYYY-MM-DD">，每個工作天一個連結
-    logs: list[tuple[str, str, str]] = []
-    for item in cfg.get("profiles", []):
-        out_p = ROOT / item["out"]
-        if out_p.exists():
-            logs += [(d, t, f'{item["out"]}#log-{d}') for d, t in sitelib.scan_worklog(out_p.read_text(encoding="utf-8"))]
-    logs.sort(key=lambda x: x[0], reverse=True)
-    log_block = ""
-    if logs:
-        log_block = ('<h2 class="line" id="worklog">工作日誌 <span class="tag">' + str(len(logs)) + '</span></h2>\n'
-                     '<p class="line-blurb">每個工作天一條，寫做了什麼、怎麼查證、落在哪裡；內容在各系列導讀頁的最末一節。</p>\n<ul class="list">\n'
-                     + "\n".join(f'<li><a class="t" href="{h}">{html.escape(t)}</a><span class="d">{d}</span></li>' for d, t, h in logs)
-                     + "\n</ul>")
-        toc.append(f'<li class="line-title"><a href="#worklog">工作日誌</a>（{len(logs)} 天）</li>')
+            sections.append(f'<details class="group" id="{gid}"><summary>{html.escape(group_label(g))} <span class="tag">{n_g}</span></summary>\n<ul class="list">\n'
+                            + "\n".join([li(o, i) for o, i in rows] + [li_doc(nm) for nm in extra]) + "\n</ul></details>")
 
     n_pub = sum(1 for v in DOCS.values() if v["publish"])
-    papers_link = (f'<a href="{cfg["documents"]["out_dir"]}/index.html">文獻庫</a>：{len(DOCS)} 份 PDF 的清單，{n_pub} 份有轉載授權可直接在站內閱讀，其餘連到原始出處。'
-                   if DOCS else "")
-    body = f"""<div class="notebox"><b>這是什麼</b>：研究過程中寫下的文獻筆記、團隊側寫與論文導讀，從各研究專案複製快照而來；
-正本仍在原專案，日期欄是來源檔的最後修改日。第一層依<b>研究線</b>分，第二層沿用各研究線自己的分類：extract_ohistory 用書目總表的九類<b>待查問題</b>（①～⑨），
-每篇的主要問題是實心標籤、其餘是空心標籤。筆記採「八節模板」（貢獻、抽取流程、組織、表示法、資料集、評估、問題、對本專案的啟示），讀者設定為人文學者。
-{papers_link}</div>
-<div class="toc"><ul>{''.join(toc)}{f'<li class="line-title"><a href="{cfg["documents"]["out_dir"]}/index.html">文獻庫</a>（{len(DOCS)} 份，{n_pub} 份站內 PDF）</li>' if DOCS else ''}</ul></div>
-{log_block}
+    papers_card = (f'<div class="ecard"><b><a href="{cfg["documents"]["out_dir"]}/index.html">文獻庫</a></b>　'
+                   f'{len(DOCS)} 份 PDF 的清單，{n_pub} 份有轉載授權可直接在站內閱讀，其餘連到原始出處。</div>' if DOCS else "")
+    about = """<details class="about"><summary>這個站怎麼分類</summary>
+<p>每一頁都是從研究專案複製來的快照，正本仍在原專案，日期是來源檔的最後修改日。
+<b>主題系列</b>是多頁一主題的報告，有封面與章節順序。<b>研究線與文獻筆記</b>依研究線分，第二層沿用各研究線自己的分類：
+extract_ohistory 用書目總表的九類待查問題（①～⑨），每篇筆記的主要問題在頁尾；筆記採「八節模板」（貢獻、抽取流程、組織、表示法、資料集、評估、問題、對本專案的啟示），讀者設定為人文學者。
+<b>文獻庫</b>是 PDF 原文，只放有轉載授權的。</p></details>"""
+    script = """<script>
+(function(){function openTarget(){var h=location.hash;if(!h)return;var el=document.getElementById(h.slice(1));if(el&&el.tagName==='DETAILS'){el.open=true;}}
+window.addEventListener('hashchange',openTarget);openTarget();})();
+</script>"""
+    body = f"""<p class="intro">研究過程中寫下的文獻筆記、主題系列與論文導讀。三個入口：先看主題系列，再按研究線找筆記，原文在文獻庫。</p>
+{about}
+<h2 class="entry">主題系列</h2>
+{"".join(series_html) or '<p class="small">尚無系列。</p>'}
+<h2 class="entry">研究線與文獻筆記</h2>
 {chr(10).join(sections)}
+<h2 class="entry">文獻庫</h2>
+{papers_card}
+{script}
 """
     out = ROOT / "index.html"
     out.write_text(page(cfg["site_title"], body, crumb="首頁", sub=html.escape(cfg["site_subtitle"]),

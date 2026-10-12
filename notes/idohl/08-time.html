@@ -72,84 +72,62 @@ table.docs td:nth-child(1){min-width:16em}
 table.docs .lic{color:var(--grey);font-size:.84rem}
 .stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
 .stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
+/* ---- 首頁改版（2026-10-13）：三個入口、系列封面卡、清單預設收合、筆記頁 hero 瘦身 ---- */
+.intro{font-size:1rem;color:var(--line);margin:1em 0 .3em}
+details.about{font-size:.9rem;color:var(--grey);margin:0 0 1.6em}
+details.about summary{cursor:pointer;color:var(--line)}
+details.about p{margin:.5em 0 0}
+h2.entry{margin-top:1.8em}
+.scard{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:10px;padding:16px 20px;margin:.8em 0}
+.scard h3{margin:0 0 .25em;font-size:1.2rem;color:var(--ink)}
+.scard .b{color:var(--line);margin:.2em 0 .6em;font-size:.95rem}
+.scard ol.ch{margin:.3em 0 .5em;padding-left:1.5em;columns:2;column-gap:28px;font-size:.95rem}
+.scard ol.ch li{break-inside:avoid;margin:.12em 0}
+.scard .logs{font-size:.88rem;color:var(--grey);margin:.4em 0 0}
+.scard .logs a{margin-right:.4em}
+@media (max-width:640px){.scard ol.ch{columns:1}}
+h3.rline{font-size:1.12rem;color:var(--ink);margin:1.4em 0 .1em}
+.rline-blurb{color:var(--grey);font-size:.92rem;margin:0 0 .6em}
+details.group{border-bottom:1px solid var(--rule);padding:.45em 0}
+details.group summary{cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:.5em}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::before{content:"▸";color:var(--grey);font-size:.9em;transition:transform .15s}
+details.group[open] summary::before{transform:rotate(90deg)}
+details.group .list{margin:.3em 0 .3em 1.4em;font-size:.95rem}
+details.group .list li{padding:.4em 0}
+.ecard{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin:.8em 0}
+.ecard b{font-size:1.05rem}
+p.series{font-size:.88rem;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:8px 14px;margin:0 0 1.2em;line-height:1.7}
+p.series strong{color:var(--accent)}
+footer .foot{margin:0 0 .4em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../../index.html">Research Notes</a> › ④ 口述歷史與數位人文</p>
+<p class="crumb"><a href="../../index.html">Research Notes</a> › <a href="../../profiles/idohl-contribution-and-today-2026-10-13.html">IDOHL 系列</a></p>
 <h1>時間專題：口述歷史裡的時間，他們怎麼處理、我們怎麼處理、兩邊都沒做的</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/idohl/08_時間專題.md</code>　來源最後修改 2026-10-13　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../../index.html#q4" title="口述歷史與數位人文">④</a></p>
+<p class="meta">2026-10-13</p>
 </div></header>
 <main class="wrap">
-<p><strong>IDOHL 系列</strong>：<a href="../../profiles/idohl-contribution-and-today-2026-10-13.html">導讀</a> · <a href="../../profiles/idohl-lab-profile-2026-10-05.html">1 側寫</a> · <a href="../../notes/idohl/06-contributions.html">2 貢獻</a> · <a href="../../notes/idohl/07-method-comparison.html">3 方法對照</a> · <strong>4 時間</strong> · <a href="../../notes/idohl/09-actions.html">5 可借與待辦</a> · 附錄：<a href="../../notes/idohl/05-tools-relevance.html">工具清單</a>、原始調查 <a href="../../notes/idohl/01-team-history.html">01</a>、<a href="../../notes/idohl/02-three-projects.html">02</a>、<a href="../../notes/idohl/03-open-source-code.html">03</a>、<a href="../../notes/idohl/04-publications-related-work.html">04</a></p>
+<p class="series"><strong>IDOHL 系列</strong>：<a href="../../profiles/idohl-contribution-and-today-2026-10-13.html">導讀</a> · <a href="../../profiles/idohl-lab-profile-2026-10-05.html">1 側寫</a> · <a href="../../notes/idohl/06-contributions.html">2 貢獻</a> · <a href="../../notes/idohl/07-method-comparison.html">3 方法對照</a> · <strong>4 時間</strong> · <a href="../../notes/idohl/09-actions.html">5 可借與待辦</a> · 附錄：<a href="../../notes/idohl/05-tools-relevance.html">工具清單</a>、原始調查 <a href="../../notes/idohl/01-team-history.html">01</a>、<a href="../../notes/idohl/02-three-projects.html">02</a>、<a href="../../notes/idohl/03-open-source-code.html">03</a>、<a href="../../notes/idohl/04-publications-related-work.html">04</a></p>
 <p>查證日期：2026-10-13。對方的材料是 NKOS 2026 投影片（逐頁重讀）、DH2026 摘要、本體 TTL、手工編碼 CSV、release 說明；本研究的材料是海報文案正本第 4 格與右下「WHERE IT STANDS」、<code>time_anchor.py</code>、2026-09-10 架構審查。</p>
 <hr>
 <h2 id="1">1. 為什麼獨立一頁</h2>
 <p>海報右下第一句是「<strong>Time is the hard problem.</strong> Testimony gives order far more often than dates.」；對方的 RQ1 是「網絡結構如何表徵口述歷史的敘事與<strong>時間</strong>向度」。兩邊都把時間放在最前面，所以值得單獨比。</p>
 <hr>
 <h2 id="2">2. 對方：有提及、無工具、無表徵</h2>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th>#</th>
-<th>證據</th>
-<th>說明</th>
-<th>來源</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>RQ1 與 GtR 計畫書</td>
-<td>「敘事與時間向度」「處理口語模式、時間與空間脈絡」。提及止於研究問題層</td>
-<td>投影片第 3 頁；<a href="https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1">https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1</a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>宣稱層的 <code>temporal</code> 欄位</td>
-<td>四值是<strong>記憶距離</strong>，不是年代：distant_memory、recent_memory、synchronous、historical_reconstruction（示範檔 304 筆裡 distant_memory 187）。工作台每筆宣稱旁的「distant memory」就是它</td>
-<td>投影片第 10、13 頁；<code>Test_OntologyPopulation.json</code></td>
-</tr>
-<tr>
-<td>3</td>
-<td>本體 <code>TemporalEntity</code></td>
-<td>實體類別（年、十年、時期、日期範圍），只經 <code>hasTimeExtent</code> 掛在<strong>具名事件</strong>上；沒有 xsd:date 或 gYear，沒有起訖，沒有相對或不確定時間</td>
-<td><a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl</a></td>
-</tr>
-<tr>
-<td>4</td>
-<td>原始型別收斂</td>
-<td>模型吐出的 TIME、TIME_SPAN 被收進 TemporalEntity：時間被當成「被提到的東西」，不當軸</td>
-<td>投影片第 14 頁</td>
-</tr>
-<tr>
-<td>5</td>
-<td>宣稱標籤裡的年份</td>
-<td><code>isComputerised (1964)</code> 的年份是標籤文字的一部分，不是欄位</td>
-<td>投影片第 9 頁</td>
-</tr>
-<tr>
-<td>6</td>
-<td>手工編碼資料</td>
-<td><code>RelationStartYear</code>、<code>RelationEndYear</code> 兩欄幾乎全填 99（缺值）。想過人工給關係定年，沒有做成</td>
-<td><a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv</a></td>
-</tr>
-<tr>
-<td>7</td>
-<td>檔案層與中繼資料</td>
-<td><code>SpeechSegment</code> 的 startTime、endTime 是錄音秒數，抽取結果沒用到；詞彙有 interviewDate</td>
-<td><code>MeDoraH Ontology - File.ttl</code>；<code>OH_metadata_vocab_V3.ttl</code></td>
-</tr>
-<tr>
-<td>8</td>
-<td>NarraGraph v0.3.3</td>
-<td>release 說明列 temporal community tracking、snapshot comparison；二進位檔，時間軸從哪裡來（訪談順序、Wikidata 日期）儲存庫未載明</td>
-<td><a href="https://github.com/articoder/MeDoraH_NLP/releases">https://github.com/articoder/MeDoraH_NLP/releases</a></td>
-</tr>
-</tbody>
-</table></div>
+<ol>
+<li><strong>RQ1 與 GtR 計畫書</strong>：「敘事與時間向度」「處理口語模式、時間與空間脈絡」。提及止於研究問題層。來源：投影片第 3 頁；<a href="https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1">https://gtr.ukri.org/projects?ref=AH%2FY007557%2F1</a></li>
+<li><strong>宣稱層的 <code>temporal</code> 欄位</strong>：四值是<strong>記憶距離</strong>，不是年代：distant_memory、recent_memory、synchronous、historical_reconstruction（示範檔 304 筆裡 distant_memory 187）。工作台每筆宣稱旁的「distant memory」就是它。來源：投影片第 10、13 頁；<code>Test_OntologyPopulation.json</code></li>
+<li><strong>本體 <code>TemporalEntity</code></strong>：實體類別（年、十年、時期、日期範圍），只經 <code>hasTimeExtent</code> 掛在<strong>具名事件</strong>上；沒有 xsd:date 或 gYear，沒有起訖，沒有相對或不確定時間。來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl</a></li>
+<li><strong>原始型別收斂</strong>：模型吐出的 TIME、TIME_SPAN 被收進 TemporalEntity：時間被當成「被提到的東西」，不當軸。來源：投影片第 14 頁</li>
+<li><strong>宣稱標籤裡的年份</strong>：<code>isComputerised (1964)</code> 的年份是標籤文字的一部分，不是欄位。來源：投影片第 9 頁</li>
+<li><strong>手工編碼資料</strong>：<code>RelationStartYear</code>、<code>RelationEndYear</code> 兩欄幾乎全填 99（缺值）。想過人工給關係定年，沒有做成。來源：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Network%20Analysis/Hand%20Coded%20Data%20Based/Palladio_Full/relationship.csv</a></li>
+<li><strong>檔案層與中繼資料</strong>：<code>SpeechSegment</code> 的 startTime、endTime 是錄音秒數，抽取結果沒用到；詞彙有 interviewDate。來源：<code>MeDoraH Ontology - File.ttl</code>；<code>OH_metadata_vocab_V3.ttl</code></li>
+<li><strong>NarraGraph v0.3.3</strong>：release 說明列 temporal community tracking、snapshot comparison；二進位檔，時間軸從哪裡來（訪談順序、Wikidata 日期）儲存庫未載明。來源：<a href="https://github.com/articoder/MeDoraH_NLP/releases">https://github.com/articoder/MeDoraH_NLP/releases</a></li>
+</ol>
 <p>沒有年份推算、沒有相對時間（before／after）、沒有時間軸圖、沒有任何對應 <code>time_anchor.py</code> 的程式。DH2026 摘要一句都沒提時間。</p>
 <hr>
 <h2 id="3">3. 本研究（以海報為準）</h2>
@@ -197,7 +175,7 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 <li>release 說明：<a href="https://github.com/articoder/MeDoraH_NLP/releases">https://github.com/articoder/MeDoraH_NLP/releases</a></li>
 <li>本研究：<code>poster/copy.yaml</code>（第 4 格、第 5 格圖例、結論算式框）、<code>local_llm/experiments/time_anchor.py</code>、<code>output/experiments/time/</code>、<code>plans/2026-09-10_表徵審查_宣稱事件中心.md</code></li>
 </ul>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
+<footer><p class="foot">來源 <code>extract_ohistory/refs/notes/idohl/08_時間專題.md</code>　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../../index.html#q4" title="口述歷史與數位人文">④</a></p><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
 </main>
 </body>
 </html>

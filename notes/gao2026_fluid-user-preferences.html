@@ -72,6 +72,34 @@ table.docs td:nth-child(1){min-width:16em}
 table.docs .lic{color:var(--grey);font-size:.84rem}
 .stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
 .stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
+/* ---- 首頁改版（2026-10-13）：三個入口、系列封面卡、清單預設收合、筆記頁 hero 瘦身 ---- */
+.intro{font-size:1rem;color:var(--line);margin:1em 0 .3em}
+details.about{font-size:.9rem;color:var(--grey);margin:0 0 1.6em}
+details.about summary{cursor:pointer;color:var(--line)}
+details.about p{margin:.5em 0 0}
+h2.entry{margin-top:1.8em}
+.scard{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:10px;padding:16px 20px;margin:.8em 0}
+.scard h3{margin:0 0 .25em;font-size:1.2rem;color:var(--ink)}
+.scard .b{color:var(--line);margin:.2em 0 .6em;font-size:.95rem}
+.scard ol.ch{margin:.3em 0 .5em;padding-left:1.5em;columns:2;column-gap:28px;font-size:.95rem}
+.scard ol.ch li{break-inside:avoid;margin:.12em 0}
+.scard .logs{font-size:.88rem;color:var(--grey);margin:.4em 0 0}
+.scard .logs a{margin-right:.4em}
+@media (max-width:640px){.scard ol.ch{columns:1}}
+h3.rline{font-size:1.12rem;color:var(--ink);margin:1.4em 0 .1em}
+.rline-blurb{color:var(--grey);font-size:.92rem;margin:0 0 .6em}
+details.group{border-bottom:1px solid var(--rule);padding:.45em 0}
+details.group summary{cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:.5em}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::before{content:"▸";color:var(--grey);font-size:.9em;transition:transform .15s}
+details.group[open] summary::before{transform:rotate(90deg)}
+details.group .list{margin:.3em 0 .3em 1.4em;font-size:.95rem}
+details.group .list li{padding:.4em 0}
+.ecard{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin:.8em 0}
+.ecard b{font-size:1.05rem}
+p.series{font-size:.88rem;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:8px 14px;margin:0 0 1.2em;line-height:1.7}
+p.series strong{color:var(--accent)}
+footer .foot{margin:0 0 .4em}
 
 </style>
 </head>
@@ -80,7 +108,7 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 <p class="crumb"><a href="../index.html">Research Notes</a> › ⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）</p>
 <h1>Gao 2026_流動的使用者偏好：穩定偏好與情境偏好的二分，以及 S2Pref 資料集</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/gao2026_fluid-user-preferences.md</code>　來源最後修改 2026-09-09　分類 ⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）　問題 <a class="qtag main" href="../index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="qtag" href="../index.html#q5" title="無 gold standard 的評估">⑤</a>　<a class="pdfbtn" href="../papers/gao2026_fluid-user-preferences.pdf" title="站內 PDF（CC BY 4.0，0.7 MB）">原文 PDF</a></p>
+<p class="meta">2026-09-09　<a class="pdfbtn" href="../papers/gao2026_fluid-user-preferences.pdf" title="站內 PDF（CC BY 4.0，0.7 MB）">原文 PDF</a></p>
 </div></header>
 <main class="wrap">
 <ul>
@@ -206,7 +234,7 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 <h3 id="_3">表示法與出處設計的參考價值</h3>
 <p>有限但具體。<strong>可借</strong>：面向／條件／表現三層、以「條件互斥」容納極性衝突、情境敘述必含時間／地點／人物／觸發事件四成分（後者可當我們事件框架的最小欄位檢查表）。<strong>不可借</strong>：偏好沒有指向文本的出處指針、時間只有一個層次、條件是自由字串沒有詞表、真值靠建構而非抽取。相關度標籤（每輪對目標偏好的證據密度）是個可轉譯的想法，但在我們這裡必須改成程式化訊號（例如該句是否含 goût 觸發詞、是否含時間表述、是否含極性詞），不能再讓模型標。</p>
 <p>紅線對照：紅線 1 不衝突（它的資料是合成的，不涉及對抽取結果標注；但它的「真值由建構而來」在我們這裡沒有對應物）；紅線 2 <strong>直接衝突</strong>（見上）；紅線 3 它沒有做，要自己補；紅線 4 它的管線中間產物（15k 原始生成、被剔除的 5k）並未釋出，不可追溯。</p>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
+<footer><p class="foot">來源 <code>extract_ohistory/refs/notes/gao2026_fluid-user-preferences.md</code>　分類 ⑥ 來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）　問題 <a class="qtag main" href="../index.html#q6" title="來歷標記、極性與時間記法（含時間關係、品味敘述、訪談語料）">⑥</a><a class="qtag" href="../index.html#q5" title="無 gold standard 的評估">⑤</a></p><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
 </main>
 </body>
 </html>

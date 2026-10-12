@@ -48,6 +48,27 @@ profiles:
     group: "④"
     tags: "④⑧⑤"
 
+# ---------------------------------------------------------------- 一之二、主題系列：多頁一主題，有封面、有順序（2026-10-13）
+# 首頁以卡片列出系列（封面、章節順序、工作日誌）；系列成員在所屬問題的清單裡收成一列，不逐頁列。
+# 成員筆記的麵包屑指回封面；封面頁最末的 <h3 class="log" id="log-YYYY-MM-DD"> 是工作日誌。
+series:
+  - id: idohl
+    title: IDOHL 系列
+    blurb: 最接近的同類計畫 International Digital Oral History Lab（UCL 與 TU Darmstadt）：他們是誰、貢獻了什麼、與本研究的方法差在哪、時間怎麼處理、接下來做什麼。
+    cover: profiles/idohl-contribution-and-today-2026-10-13.html
+    group: "④"
+    pages:   # out: 站上路徑；label: 首頁卡片上的短名（省略則用頁面標題）
+      - {out: profiles/idohl-lab-profile-2026-10-05.html, label: 團隊側寫}
+      - {out: notes/idohl/06-contributions.html, label: 貢獻：做到與沒做到}
+      - {out: notes/idohl/07-method-comparison.html, label: 方法對照（以 ICCCM 海報為準）}
+      - {out: notes/idohl/08-time.html, label: 時間專題}
+      - {out: notes/idohl/09-actions.html, label: 可借、不借、待辦}
+      - {out: notes/idohl/05-tools-relevance.html, label: 附錄：GitHub 工具清單}
+      - {out: notes/idohl/01-team-history.html, label: 原始調查 01 團隊與歷史}
+      - {out: notes/idohl/02-three-projects.html, label: 原始調查 02 三個計畫}
+      - {out: notes/idohl/03-open-source-code.html, label: 原始調查 03 開源釋出與程式碼}
+      - {out: notes/idohl/04-publications-related-work.html, label: 原始調查 04 出版與相關工作}
+
 # ---------------------------------------------------------------- 二、文獻筆記（markdown → HTML）
 notes:
   src_dir: extract_ohistory/refs

@@ -72,6 +72,34 @@ table.docs td:nth-child(1){min-width:16em}
 table.docs .lic{color:var(--grey);font-size:.84rem}
 .stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
 .stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
+/* ---- 首頁改版（2026-10-13）：三個入口、系列封面卡、清單預設收合、筆記頁 hero 瘦身 ---- */
+.intro{font-size:1rem;color:var(--line);margin:1em 0 .3em}
+details.about{font-size:.9rem;color:var(--grey);margin:0 0 1.6em}
+details.about summary{cursor:pointer;color:var(--line)}
+details.about p{margin:.5em 0 0}
+h2.entry{margin-top:1.8em}
+.scard{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:10px;padding:16px 20px;margin:.8em 0}
+.scard h3{margin:0 0 .25em;font-size:1.2rem;color:var(--ink)}
+.scard .b{color:var(--line);margin:.2em 0 .6em;font-size:.95rem}
+.scard ol.ch{margin:.3em 0 .5em;padding-left:1.5em;columns:2;column-gap:28px;font-size:.95rem}
+.scard ol.ch li{break-inside:avoid;margin:.12em 0}
+.scard .logs{font-size:.88rem;color:var(--grey);margin:.4em 0 0}
+.scard .logs a{margin-right:.4em}
+@media (max-width:640px){.scard ol.ch{columns:1}}
+h3.rline{font-size:1.12rem;color:var(--ink);margin:1.4em 0 .1em}
+.rline-blurb{color:var(--grey);font-size:.92rem;margin:0 0 .6em}
+details.group{border-bottom:1px solid var(--rule);padding:.45em 0}
+details.group summary{cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:.5em}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::before{content:"▸";color:var(--grey);font-size:.9em;transition:transform .15s}
+details.group[open] summary::before{transform:rotate(90deg)}
+details.group .list{margin:.3em 0 .3em 1.4em;font-size:.95rem}
+details.group .list li{padding:.4em 0}
+.ecard{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin:.8em 0}
+.ecard b{font-size:1.05rem}
+p.series{font-size:.88rem;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:8px 14px;margin:0 0 1.2em;line-height:1.7}
+p.series strong{color:var(--accent)}
+footer .foot{margin:0 0 .4em}
 
 </style>
 </head>
@@ -80,7 +108,7 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 <p class="crumb"><a href="../index.html">Research Notes</a> › ④ 口述歷史與數位人文</p>
 <h1>vansina1985_oral-tradition-as-history</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/vansina1985_oral-tradition-as-history.md</code>　來源最後修改 2026-08-22　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../index.html#q4" title="口述歷史與數位人文">④</a></p>
+<p class="meta">2026-08-22</p>
 </div></header>
 <main class="wrap">
 <p>（原書付費未取得，本筆記依出版社官方頁、書內搜尋結果與一篇書評交叉驗證；
@@ -152,7 +180,7 @@ Remembered」），但逐層追問「這則訊息怎麼傳到說話者口中」�
   （慣見引法：定義在 1985: 27 前後、口述歷史區分在 1985: 12–13，僅供
   查找方向，未經本次查證確認）。</li>
 </ul>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
+<footer><p class="foot">來源 <code>extract_ohistory/refs/notes/vansina1985_oral-tradition-as-history.md</code>　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../index.html#q4" title="口述歷史與數位人文">④</a></p><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
 </main>
 </body>
 </html>

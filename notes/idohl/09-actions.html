@@ -72,18 +72,46 @@ table.docs td:nth-child(1){min-width:16em}
 table.docs .lic{color:var(--grey);font-size:.84rem}
 .stat{display:inline-block;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 12px;margin:.3em .5em .3em 0;font-size:.9rem}
 .stat b{color:var(--accent);font-size:1.1rem;margin-right:.2em}
+/* ---- 首頁改版（2026-10-13）：三個入口、系列封面卡、清單預設收合、筆記頁 hero 瘦身 ---- */
+.intro{font-size:1rem;color:var(--line);margin:1em 0 .3em}
+details.about{font-size:.9rem;color:var(--grey);margin:0 0 1.6em}
+details.about summary{cursor:pointer;color:var(--line)}
+details.about p{margin:.5em 0 0}
+h2.entry{margin-top:1.8em}
+.scard{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:10px;padding:16px 20px;margin:.8em 0}
+.scard h3{margin:0 0 .25em;font-size:1.2rem;color:var(--ink)}
+.scard .b{color:var(--line);margin:.2em 0 .6em;font-size:.95rem}
+.scard ol.ch{margin:.3em 0 .5em;padding-left:1.5em;columns:2;column-gap:28px;font-size:.95rem}
+.scard ol.ch li{break-inside:avoid;margin:.12em 0}
+.scard .logs{font-size:.88rem;color:var(--grey);margin:.4em 0 0}
+.scard .logs a{margin-right:.4em}
+@media (max-width:640px){.scard ol.ch{columns:1}}
+h3.rline{font-size:1.12rem;color:var(--ink);margin:1.4em 0 .1em}
+.rline-blurb{color:var(--grey);font-size:.92rem;margin:0 0 .6em}
+details.group{border-bottom:1px solid var(--rule);padding:.45em 0}
+details.group summary{cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:.5em}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::before{content:"▸";color:var(--grey);font-size:.9em;transition:transform .15s}
+details.group[open] summary::before{transform:rotate(90deg)}
+details.group .list{margin:.3em 0 .3em 1.4em;font-size:.95rem}
+details.group .list li{padding:.4em 0}
+.ecard{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin:.8em 0}
+.ecard b{font-size:1.05rem}
+p.series{font-size:.88rem;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:8px 14px;margin:0 0 1.2em;line-height:1.7}
+p.series strong{color:var(--accent)}
+footer .foot{margin:0 0 .4em}
 
 </style>
 </head>
 <body>
 <header class="hero"><div class="wrap">
-<p class="crumb"><a href="../../index.html">Research Notes</a> › ④ 口述歷史與數位人文</p>
+<p class="crumb"><a href="../../index.html">Research Notes</a> › <a href="../../profiles/idohl-contribution-and-today-2026-10-13.html">IDOHL 系列</a></p>
 <h1>可借、不借、待辦</h1>
 
-<p class="meta">來源 <code>extract_ohistory/refs/notes/idohl/09_可借不借待辦.md</code>　來源最後修改 2026-10-13　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../../index.html#q4" title="口述歷史與數位人文">④</a></p>
+<p class="meta">2026-10-13</p>
 </div></header>
 <main class="wrap">
-<p><strong>IDOHL 系列</strong>：<a href="../../profiles/idohl-contribution-and-today-2026-10-13.html">導讀</a> · <a href="../../profiles/idohl-lab-profile-2026-10-05.html">1 側寫</a> · <a href="../../notes/idohl/06-contributions.html">2 貢獻</a> · <a href="../../notes/idohl/07-method-comparison.html">3 方法對照</a> · <a href="../../notes/idohl/08-time.html">4 時間</a> · <strong>5 可借與待辦</strong> · 附錄：<a href="../../notes/idohl/05-tools-relevance.html">工具清單</a>、原始調查 <a href="../../notes/idohl/01-team-history.html">01</a>、<a href="../../notes/idohl/02-three-projects.html">02</a>、<a href="../../notes/idohl/03-open-source-code.html">03</a>、<a href="../../notes/idohl/04-publications-related-work.html">04</a></p>
+<p class="series"><strong>IDOHL 系列</strong>：<a href="../../profiles/idohl-contribution-and-today-2026-10-13.html">導讀</a> · <a href="../../profiles/idohl-lab-profile-2026-10-05.html">1 側寫</a> · <a href="../../notes/idohl/06-contributions.html">2 貢獻</a> · <a href="../../notes/idohl/07-method-comparison.html">3 方法對照</a> · <a href="../../notes/idohl/08-time.html">4 時間</a> · <strong>5 可借與待辦</strong> · 附錄：<a href="../../notes/idohl/05-tools-relevance.html">工具清單</a>、原始調查 <a href="../../notes/idohl/01-team-history.html">01</a>、<a href="../../notes/idohl/02-three-projects.html">02</a>、<a href="../../notes/idohl/03-open-source-code.html">03</a>、<a href="../../notes/idohl/04-publications-related-work.html">04</a></p>
 <p>日期：2026-10-13。這一頁是行動清單：前面三頁的判斷落到「要做什麼、不做什麼、誰決定」。四件工作都是純程式、不呼叫模型，標成<strong>待排程、未做</strong>。</p>
 <hr>
 <h2 id="1">1. 可借的（想法可借，程式要重寫）</h2>
@@ -116,7 +144,7 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 <li>為什麼：目前唯一能與同行並列的數字；語料不同（英語數位人文學者 vs 臺灣音樂人），差距本身也是可報的觀察</li>
 </ul>
 <hr>
-<h2 id="2-07">2. 可引為先例（寫作用，對應 <a href="../../notes/idohl/07-method-comparison.html">07</a> 表格裡標「先例」的列）</h2>
+<h2 id="2-07">2. 可引為先例（寫作用，對應 <a href="../../notes/idohl/07-method-comparison.html">07</a> 裡標「先例」的面向）</h2>
 <ul>
 <li>Claim 層與實體層分離的本體設計 ↔ Speaker → Claim → Event → participants 三層。</li>
 <li>11 種關係模式「粗層保召回、細層靠動詞表」↔ <code>life_nodes.py</code> 六類。</li>
@@ -183,7 +211,7 @@ table.docs .lic{color:var(--grey);font-size:.84rem}
 <li>本頁的事實都出自 <a href="../../notes/idohl/06-contributions.html">06</a>、<a href="../../notes/idohl/07-method-comparison.html">07</a>、<a href="../../notes/idohl/08-time.html">08</a> 與 <a href="../../notes/idohl/03-open-source-code.html">03</a>，不另列。</li>
 <li>本專案側的檔案：<code>orse_label/</code>、<code>network/orse/</code>、<code>registry/</code>、<code>dates/</code>、<code>life_nodes.py</code>、<code>CLAUDE.md</code>（紅線與最終目標）。</li>
 </ul>
-<footer><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
+<footer><p class="foot">來源 <code>extract_ohistory/refs/notes/idohl/09_可借不借待辦.md</code>　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../../index.html#q4" title="口述歷史與數位人文">④</a></p><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
 </main>
 </body>
 </html>
