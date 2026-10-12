@@ -157,7 +157,7 @@ footer .foot{margin:0 0 .4em}
 </tr>
 </tbody>
 </table></div>
-<p>其他：<code>articoder</code> 名下另有 10 個與 IDOHL 無關的舊儲存庫（Cambridge 博論樣板、Text2Event、awesome-semantic-web 等，最後 push 均在 2024 年以前），開源頁沒有列入，本報告不計。開源頁與 GitHub 頁面列出的工具（<code>MDOH_Project</code>、<code>MeDoraH_Project</code>、<code>MeDoraH_NLP</code>、<code>MeDoraH_Ontology</code>、<code>IDOHL-updator</code>，以及 NarraGraph 的 release 頁）<strong>全部可達</strong>。查不到的只有兩種，都不是工具本身：MeDoraH_Project README 預告的五個子儲存庫（作者自己把其中三個標為 Coming Soon，<code>medorah</code> 這個帳號不存在），以及開源頁 NarraGraph 卡片連到的介紹頁 <code>NarraGraph_landingpage.html</code>（尚未發布，見 2a）。六個儲存庫 <code>license</code> 欄位仍為 <code>null</code>。帳號型別仍是 User，不是 Organization。
+<p>其他：<code>articoder</code> 名下另有 10 個與 IDOHL 無關的舊儲存庫（Cambridge 博論樣板、Text2Event、awesome-semantic-web 等，最後 push 均在 2024 年以前），開源頁沒有列入，本報告不計。開源頁與 GitHub 頁面列出的工具（<code>MDOH_Project</code>、<code>MeDoraH_Project</code>、<code>MeDoraH_NLP</code>、<code>MeDoraH_Ontology</code>、<code>IDOHL-updator</code>，以及 NarraGraph 的 release 頁）<strong>全部可達</strong>。查不到的只有兩種，都不是工具本身：MeDoraH_Project README 預告的五個子儲存庫（作者自己把其中三個標為 Coming Soon；<code>medorah</code> 是實驗室帳號改名前的舊名，GitHub 保留轉址，但這五個儲存庫在新舊名下都不存在），以及開源頁 NarraGraph 卡片連到的介紹頁 <code>NarraGraph_landingpage.html</code>（尚未發布，見 2a）。六個儲存庫 <code>license</code> 欄位仍為 <code>null</code>。帳號型別仍是 User，不是 Organization。
 來源：<code>gh api users/International-Digital-Oral-History-Lab/repos</code>、<code>gh api users/articoder/repos</code>、<code>gh api repos/articoder/MeDoraH_NLP/releases</code>、<code>gh api repos/International-Digital-Oral-History-Lab/IDOHL-updator/commits</code>，2026-10-13；curl <code>https://idohl.org/OpenSource-Release</code>。</p>
 <h3 id="2a-2026-10-13-404">2a. 逐連結複查（2026-10-13，使用者指出「工具不該 404」後再查一次）</h3>
 <p>以瀏覽器 user agent、跟隨轉址測每一個連結；GitHub 另以 <code>gh api</code> 查帳號與儲存庫是否存在。</p>
@@ -208,7 +208,7 @@ footer .foot{margin:0 0 .4em}
 <tr>
 <td><a href="https://github.com/medorah/medorah-kg">https://github.com/medorah/medorah-kg</a>、-api、-tools、-datasets、-analysis</td>
 <td>404</td>
-<td>MeDoraH_Project README 預告的子儲存庫；<code>gh api users/medorah</code> 與 <code>orgs/medorah</code> 都回 404，三個擁有者名下也沒有同名儲存庫；README 把 kg、api、tools 標為 Coming Soon</td>
+<td>MeDoraH_Project README 預告的子儲存庫。<code>medorah</code> 是實驗室帳號的舊名（<code>github.com/medorah/MeDoraH-Project</code> 會轉址到 <code>International-Digital-Oral-History-Lab/MeDoraH_Project</code>，GitHub 對改名帳號保留轉址），所以 <code>users/medorah</code> 回 404 不代表從未存在；但這五個儲存庫在新舊兩個名字下都查無，是從未建立。README 把 kg、api、tools 標為 Coming Soon</td>
 </tr>
 <tr>
 <td><a href="https://idohl.org/OpenSource-Release">https://idohl.org/OpenSource-Release</a></td>
@@ -247,7 +247,7 @@ footer .foot{margin:0 0 .4em}
 </tr>
 <tr>
 <td><code>MeDoraH_Project</code></td>
-<td>只有 README；README 預告五個子儲存庫 <code>medorah/medorah-kg</code>、<code>-api</code>、<code>-tools</code>、<code>-datasets</code>、<code>-analysis</code>，三個標 Coming Soon，2026-10-13 複查仍未建立（帳號 <code>medorah</code> 不存在）</td>
+<td>只有 README；README 預告五個子儲存庫 <code>medorah/medorah-kg</code>、<code>-api</code>、<code>-tools</code>、<code>-datasets</code>、<code>-analysis</code>，三個標 Coming Soon，2026-10-13 複查仍未建立（<code>medorah</code> 是舊帳號名，已改名為 <code>International-Digital-Oral-History-Lab</code>，轉址仍在；五個儲存庫在新舊名下都沒有）</td>
 <td>無程式</td>
 </tr>
 </tbody>
