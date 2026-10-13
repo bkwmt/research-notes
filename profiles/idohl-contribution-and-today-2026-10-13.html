@@ -91,7 +91,7 @@ ol.chapters .q{grid-area:q;color:var(--line);font-size:.93rem}
 <ol class="chapters">
 <li><a class="ct" href="../profiles/idohl-lab-profile-2026-10-05.html">團隊側寫</a><span class="use">認識對方</span><span class="q">他們是誰：團隊、年表、三個計畫、出版、方法論立場。</span></li>
 <li><a class="ct" href="../notes/idohl/06-contributions.html">貢獻：做到與沒做到</a><span class="use">確認事實</span><span class="q">六個面向各貢獻了什麼、做到哪裡；為什麼「可檢視結果、不能重跑抽取」。</span></li>
-<li><a class="ct" href="../notes/idohl/07-method-comparison.html">方法對照</a><span class="use">理解差異</span><span class="q">以 ICCCM 2026 海報定稿為準，十六個面向逐一比：對方、本研究、判斷與證據。</span></li>
+<li><a class="ct" href="../notes/idohl/07-method-comparison.html">方法對照</a><span class="use">理解差異</span><span class="q">以 ICCCM 2026 海報定稿為準。總表標出每個面向的差異類型（提示詞、管線設計、邏輯判斷、資料與表徵、釋出），兩條管線並排的流程圖，逐面向貼提示詞原文、程式原文或虛擬碼。</span></li>
 <li><a class="ct" href="../notes/idohl/08-time.html">時間專題</a><span class="use">最難的一關</span><span class="q">他們怎麼處理時間、我們怎麼處理、兩邊都沒做的先後關係。</span></li>
 <li><a class="ct" href="../notes/idohl/09-actions.html">可借、不借、待辦</a><span class="use">行動</span><span class="q">四件純程式工作、先例清單、不借五項、保留、待決定。</span></li>
 <li><a class="ct" href="../notes/idohl/10-promises-vs-delivery.html">承諾與交付</a><span class="use">週會簡報用</span><span class="q">經費單位的成果登錄（GtR）對照 GitHub 實況：13 項裡交付 1、部分 6、未交付 6；他們有 ground truth 但未公開。</span></li>
@@ -112,20 +112,23 @@ ol.chapters .q{grid-area:q;color:var(--line);font-size:.93rem}
 <!-- ============================================================ -->
 <h2 id="s3"><span class="no">3</span>名詞表</h2>
 
+<p class="small">每條最後一行是<strong>源頭</strong>：這個詞從哪份文件來、在本系列哪一頁展開。對方的源頭寫到投影片頁碼或檔案；本研究的源頭寫到站上的頁或專案內部的程式檔（後者不隨筆記公開，只給檔名）。</p>
+
 <dl class="kv">
-<dt>ORSE／ORTE／ORC</dt><dd>開放關係抽取的三種任務設定（liu2024 綜述）：ORSE（Open Relation Span Extraction）先有主詞受詞、模型只找表達關係的那段字，是本研究現行主線；ORTE 三個成分都由模型找，是對方的做法；ORC 把關係表述聚成同一類，是對方的述詞分群與本研究的動詞表歸納。</dd>
-<dt>Claim 層</dt><dd>把「誰說的、多確定、怎麼知道的」當一等物件，與「被談到的人事物」（實體層、對方叫 Reference）分開。對方的本體明文把 Claim 排除在外；本研究 2026-09-10 審查定的三層是 Speaker → Claim → Event → participants。</dd>
-<dt>知態立場（epistemic stance）</dt><dd>對方四欄：claim_type（直接經驗、傳聞…）、certainty_level、temporal_grounding（記憶距離）、attribution_type（直接引述、間接轉述…）。本研究對應物是「來歷」（自述／他述／消息來源交代），由程式掃線索詞判定。</dd>
-<dt>Divergence</dt><dd>對方的一級物件：兩位講述者對同一事實的不同說法都保留，由歷史學者標型別、不裁決。本研究的對應物是人物登錄簿「衝突不合併」。</dd>
-<dt>TIMEX3／TLINK</dt><dd>TimeML 的兩個層：TIMEX3 是把時間表述正規化成年份（本研究做了，27.7% 的句子掛得上）；TLINK 是事件之間的先後關係（before／after），兩邊都沒做。</dd>
-<dt>可信層 A 到 F</dt><dd>本研究句層年份的來歷：A 講述者自報年份；B、C 由歲數推算（依出生年來源）；D、E 從前面已定年的句子繼承（距離 3 句內或更遠）；F 只有後面的句子有年。圖上對應實心、半實心、空心。</dd>
-<dt>配置模型（虛無模型）</dt><dd>保留每個節點度數、隨機重連邊的對照網絡。拿它算 reciprocity 或 PageRank 的隨機期望，才能說實際值是否高於隨機。對方 NarraGraph 列了這功能，本研究待做。</dd>
-<dt>HDBSCAN、UMAP</dt><dd>對方述詞分群用的兩個演算法：UMAP 先降維、HDBSCAN 再分群（不需指定群數，會留「雜訊」群）。群名用 WordNet 上位詞查表，不叫模型命名。</dd>
-<dt>Wikidata Q 編號</dt><dd>對方 Reference 層的外部錨點（35.7% 節點掛上）。本研究的外部對照是 PASMA 專輯掛名庫與北流人物頁。</dd>
-<dt>CIDOC-CRM</dt><dd>文化遺產領域的事件中心本體。對方只以 scopeNote 註記「可能可對齊」，沒有正式等價宣告；NTU-Bonn 德方的資料庫用它。</dd>
-<dt>FAIR</dt><dd>可尋得、可取用、可互通、可重用。對方自稱遵循，但零 LICENSE 讓 R 在法律上不成立。</dd>
-<dt>PASMA</dt><dd>Private Archive of Scanned Music Artifacts，本團隊自建的專輯掛名庫（1,916 張），本研究唯一的獨立外部對照。</dd>
-<dt>他述／自述</dt><dd>一條關係邊的講述者是不是邊的端點：不是就是他述。他述是本研究的主要材料，因為未受訪者的生命過程只能從別人口中重建。</dd>
+<dt>ORSE／ORTE／ORC</dt><dd>開放關係抽取的三種任務設定：ORSE（Open Relation Span Extraction）先有主詞受詞、模型只找表達關係的那段字，是本研究現行主線；ORTE 三個成分都由模型找，是對方的做法；ORC 把關係表述聚成同一類，是對方的述詞分群與本研究的動詞表歸納。<br><span class="src">源頭：<a href="https://aclanthology.org/2024.findings-emnlp.560/">Liu et al. 2024, EMNLP Findings</a>（<a href="../notes/liu2024_openie-survey.html">站上筆記</a>）；本研究的採用見 <a href="../notes/idohl/07-method-comparison.html">方法對照 4.1</a>。</span></dd>
+<dt>Claim 層</dt><dd>把「誰說的、多確定、怎麼知道的」當一等物件，與「被談到的人事物」（實體層，對方叫 Reference）分開。對方的本體註解明文把宣稱、出處、信心排除在外，說它們屬於 Claim 層；本研究 2026-09-10 審查定的三層是 Speaker → Claim → Event → participants。<br><span class="src">源頭：四層架構在 NKOS 2026 投影片第 9 頁與 <a href="https://zenodo.org/records/22115456">DH2026 摘要</a>；排除聲明在 <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">本體 V0.2 TTL</a> 的註解；本研究的審查紀錄是專案內部檔 <code>plans/2026-09-10_表徵審查_宣稱事件中心.md</code>；展開見 <a href="../notes/idohl/06-contributions.html">貢獻</a> 表徵一節。</span></dd>
+<dt>知態立場（epistemic stance）</dt><dd>對方四欄：claim_type（直接經驗、傳聞…）、certainty_level、temporal_grounding（記憶距離）、attribution_type（直接引述、間接轉述…）。本研究對應物是「來歷」（自述／他述／消息來源交代），由程式掃線索詞判定。<br><span class="src">源頭：欄位與值域在 <a href="https://raw.githubusercontent.com/articoder/MeDoraH_NLP/main/Text%20Mining/LLM%20Hermeneutic%20Workbench/Examples/Test_OntologyPopulation.json">Test_OntologyPopulation.json</a>（304 筆的分布見 <a href="../notes/idohl/03-open-source-code.html">原始調查 03</a> §5.5.2）；本研究的判準是 <code>build_network.py</code> 的 <code>provenance()</code>，原文貼在 <a href="../notes/idohl/07-method-comparison.html">方法對照 4.5</a>。</span></dd>
+<dt>Divergence</dt><dd>對方的一級物件：兩位講述者對同一事實的不同說法都保留，由歷史學者標型別、不裁決。本研究的對應物是人物登錄簿「衝突不合併」。<br><span class="src">源頭：NKOS 2026 投影片第 11 頁（TEI 在 MLA 還是 Vassar College 開始的例子）；不在已釋出的 TTL 裡。本研究的衝突紀錄是 <code>output/experiments/dates/persons_衝突.jsonl</code>（專案內部）。</span></dd>
+<dt>TIMEX3／TLINK</dt><dd>TimeML 的兩個層：TIMEX3 是把時間表述正規化成年份（本研究做了，27.7% 的句子掛得上）；TLINK 是事件之間的先後關係（before／after），兩邊都沒做。<br><span class="src">源頭：<a href="https://timeml.github.io/site/publications/timeMLdocs/timeml_1.2.1.html">TimeML 1.2.1 標注指南</a>；近年以 Transformer 做時間抽取的綜述見 <a href="../notes/su2025_transformer-temporal-ie-review.html">su2025 筆記</a>；兩邊的落差見 <a href="../notes/idohl/08-time.html">時間專題</a>。</span></dd>
+<dt>可信層 A 到 F</dt><dd>本研究句層年份的來歷：A 講述者自報年份；B、C 由歲數推算（依出生年來源）；D、E 從前面已定年的句子繼承（距離 3 句內或更遠）；F 只有後面的句子有年。圖上對應實心、半實心、空心。<br><span class="src">源頭：<code>time_anchor.py</code> 的 <code>TIER_OF</code> 表（原文貼在 <a href="../notes/idohl/07-method-comparison.html">方法對照 4.16</a>）；三條規則與圖上記號見 <a href="../notes/idohl/08-time.html">時間專題</a>；落檔 <code>output/experiments/time/</code>（專案內部）。</span></dd>
+<dt>配置模型（虛無模型）</dt><dd>保留每個節點度數、隨機重連邊的對照網絡。拿它算 reciprocity 或 PageRank 的隨機期望，才能說實際值是否高於隨機。對方 NarraGraph 列了這功能，本研究待做。<br><span class="src">源頭：<a href="https://doi.org/10.1137/16M1087175">Fosdick et al. 2018, SIAM Review</a>（固定度序列的隨機圖模型）；對方的功能宣告在 <a href="https://github.com/articoder/MeDoraH_NLP/releases/tag/v0.3.3">NarraGraph v0.3.3 release 說明</a>（null models）；本研究的待辦是 <a href="../notes/idohl/09-actions.html">可借與待辦</a> 第 ② 件。</span></dd>
+<dt>HDBSCAN、UMAP</dt><dd>對方述詞分群用的兩個演算法：UMAP 先降維、HDBSCAN 再分群（不需指定群數，會留「雜訊」群）。群名用 WordNet 上位詞查表，不叫模型命名。<br><span class="src">源頭：<a href="https://arxiv.org/abs/1802.03426">McInnes, Healy &amp; Melville 2018（UMAP）</a>；<a href="https://doi.org/10.21105/joss.00205">McInnes, Healy &amp; Astels 2017（hdbscan 套件）</a>；對方的參數在 <a href="https://github.com/articoder/MeDoraH_NLP/tree/main/Text%20Mining/Clustering">Clustering 腳本</a>（UMAP 50 維、HDBSCAN 70／35），整理在 <a href="../notes/idohl/07-method-comparison.html">方法對照 4.6</a>。</span></dd>
+<dt>Wikidata Q 編號</dt><dd>對方 Reference 層的外部錨點（35.7% 節點掛上）。本研究的外部對照是 PASMA 專輯掛名庫與北流人物頁。<br><span class="src">源頭：<a href="https://www.wikidata.org/wiki/Help:Items">Wikidata Help:Items</a>；對方的比例在 NKOS 2026 投影片第 19 頁。</span></dd>
+<dt>CIDOC-CRM</dt><dd>文化遺產領域的事件中心本體。對方只以 scopeNote 註記「可能可對齊」，沒有正式等價宣告；NTU-Bonn 德方的資料庫用它。<br><span class="src">源頭：<a href="https://cidoc-crm.org/">cidoc-crm.org</a>；對方的註記在 <a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">本體 V0.2 TTL</a>。</span></dd>
+<dt>FAIR</dt><dd>可尋得、可取用、可互通、可重用。對方自稱遵循，但零 LICENSE 讓 R 在法律上不成立。<br><span class="src">源頭：<a href="https://doi.org/10.1038/sdata.2016.18">Wilkinson et al. 2016, Scientific Data</a>；對方的宣稱在 <a href="https://www.dfg.de/resource/blob/365486/11-ahrc-mixed-methods.pdf">2025 年 DFG 海報</a>的四項目標與 idohl.org 的「Interviews (FAIR Archive)」頁；授權現況見 <a href="../notes/idohl/10-promises-vs-delivery.html">承諾與交付</a>。</span></dd>
+<dt>PASMA</dt><dd>Private Archive of Scanned Music Artifacts，本團隊自建的專輯掛名庫（1,916 張），本研究唯一的獨立外部對照。<br><span class="src">源頭：Cheng, Chang, Yang &amp; Su, “Digital Existence as Ontological Intervention: Backstage Networks in Postwar Taiwanese Popular Music,” ISMIR 2026（已錄取，待出版）；本研究的用法在海報第 1 格 c，對接程式 <code>link_sna.py</code>（專案內部）。</span></dd>
+<dt>他述／自述</dt><dd>一條關係邊的講述者是不是邊的端點：不是就是他述。他述是本研究的主要材料，因為未受訪者的生命過程只能從別人口中重建。<br><span class="src">源頭：ICCCM 2026 摘要承諾的 epistemic-status marker；判準是 <code>build_network.py</code> 的 <code>provenance()</code>（原文貼在 <a href="../notes/idohl/07-method-comparison.html">方法對照 4.5</a>）；為什麼他述是主要材料見 <a href="../notes/idohl/06-contributions.html">貢獻</a>。</span></dd>
+<dt>差異類型</dt><dd>方法對照總表的一欄，回答「差在哪一段」：提示詞（模型被問什麼、答案的形狀）、管線設計（哪一步由誰做、順序、迴圈）、邏輯判斷（程式規則的判準）、資料與表徵（出處粒度、單位、本體）、釋出（授權、可重現）。<br><span class="src">源頭：<a href="../notes/idohl/07-method-comparison.html">方法對照</a> 第 1 節的定義表；流程圖中欄逐列標出。</span></dd>
 </dl>
 
 <!-- ============================================================ -->
@@ -136,6 +139,7 @@ ol.chapters .q{grid-area:q;color:var(--line);font-size:.93rem}
 <li><span class="yr">2026-10-13</span>GitHub 複查、工具清單與關聯性報告（05）、單頁 HTML 報告並上站；同日追加方法對照與時間處理。</li>
 <li class="key"><span class="yr">2026-10-13 之二</span>系列改版：單頁拆成六頁，本頁改為導讀；工作日誌留在本頁最末，首頁列每個工作天的連結。</li>
 <li class="key"><span class="yr">2026-10-13 之三</span>加第 6 頁「承諾與交付」：UKRI GtR 成果登錄對照 GitHub 實況；GtR 原始紀錄存成 JSON 進專案。</li>
+<li class="key"><span class="yr">2026-10-13 之四</span>方法對照改版：總表加「差異類型」欄、兩條管線並排的流程圖、逐面向貼提示詞原文與程式原文；本頁名詞表每條加源頭連結。</li>
 </ul>
 
 <!-- ============================================================ -->
@@ -152,6 +156,7 @@ ol.chapters .q{grid-area:q;color:var(--line);font-size:.93rem}
 <li><strong>追問</strong>：方法差異（以 ICCCM 海報為準）與對方的時間處理。NKOS 投影片 PDF 文字層只抽得出 997 字元，改逐頁讀圖；DH2026 摘要讀過。結論：時間只到研究問題層，無工具、無表徵。</li>
 <li><strong>系列改版</strong>：單頁太雜，拆成導讀（本頁）＋ 1 側寫 ＋ 2 貢獻 ＋ 3 方法對照 ＋ 4 時間 ＋ 5 可借與待辦 ＋ 附錄；05 瘦身成工具清單。<code>build.py</code> 再改兩處：筆記與側寫互連、首頁掃 <code>h3.log</code> 列每個工作天。marp 投影片那步卡住五分鐘，來源未變，略過。</li>
 <li><strong>追問二</strong>：「承諾卻沒做到的，論文裡沒有其他線索嗎」。查 UKRI GtR 成果登錄（5 軟體、8 資料庫與模型、1 研究材料、關鍵發現）、Zotero 群組 70 筆、ORCID 與 OpenAlex、UCL Discovery 可下載的 23 頁投影片、兩場 YouTube 演講字幕。寫成第 6 頁「承諾與交付」；發現 <code>medorah</code> 是舊帳號名，已更正。</li>
+<li><strong>追問三</strong>：名詞表要連到源頭；方法對照要用表格明確指出差異落在提示詞、管線設計還是邏輯判斷，並附程式碼或流程圖。做法：總表加「差異類型」欄（五個值，第 1 節定義）；寫 <code>sources/fig_pipelines.py</code> 產生十列的雙欄流程圖（模型紅、程式藍、人灰，推定的標虛線）嵌進頁面；逐面向貼本研究的話術原文（圈字題、選擇題、共指）與程式原文（來歷、證據等級、可信層表、參數快照），對方的提示詞未公開，從 JSON 欄位反推並標「推定」。名詞表加一條「差異類型」。</li>
 <li><strong>沒做的</strong>：四件純程式工作沒有動；沒有聯繫對方。</li>
 </ul>
 

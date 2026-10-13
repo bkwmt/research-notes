@@ -112,126 +112,659 @@ footer .foot{margin:0 0 .4em}
 </div></header>
 <main class="wrap">
 <p class="series"><strong>IDOHL 系列</strong>：<a href="../../profiles/idohl-contribution-and-today-2026-10-13.html">導讀</a> · <a href="../../profiles/idohl-lab-profile-2026-10-05.html">1 側寫</a> · <a href="../../notes/idohl/06-contributions.html">2 貢獻</a> · <strong>3 方法對照</strong> · <a href="../../notes/idohl/08-time.html">4 時間</a> · <a href="../../notes/idohl/09-actions.html">5 可借與待辦</a> · <a href="../../notes/idohl/10-promises-vs-delivery.html">6 承諾與交付</a> · 附錄：<a href="../../notes/idohl/05-tools-relevance.html">工具清單</a>、原始調查 <a href="../../notes/idohl/01-team-history.html">01</a>、<a href="../../notes/idohl/02-three-projects.html">02</a>、<a href="../../notes/idohl/03-open-source-code.html">03</a>、<a href="../../notes/idohl/04-publications-related-work.html">04</a></p>
-<p>查證日期：2026-10-13。對方的材料是 NKOS 2026 投影片（22 頁）、DH2026 摘要、釋出的本體與示範資料；本研究的材料是 ICCCM 2026 海報文案正本 <code>poster/copy.yaml</code> 與兩分鐘講稿 <code>poster/talk_2min.md</code>（專案內部檔案）。
-這一頁把先前散在四處的對照（<a href="../../notes/vlachidis_medorah-ontology-memory-recollection.html">vlachidis 簡報筆記</a> §8、<a href="../../notes/idohl/03-open-source-code.html">03</a> §5.8 與 §6.8、10-05 側寫第 8 節、10-13 報告）<strong>併成一份逐面向的對照</strong>。</p>
+<p>查證日期：2026-10-13（之四改版：加總表的「差異類型」欄、兩條管線並排的流程圖、逐面向的提示詞原文與虛擬碼）。對方的材料是 NKOS 2026 投影片（22 頁）、DH2026 摘要、釋出的本體與示範 JSON、Preprocessing 與 Clustering 的 Python 腳本；本研究的材料是 ICCCM 2026 海報文案正本 <code>poster/copy.yaml</code>、兩分鐘講稿 <code>poster/talk_2min.md</code>，以及 <code>local_llm/experiments/</code> 底下的程式檔（專案內部檔案，本頁直接引用其中的話術與判準）。</p>
 <hr>
 <h2 id="1">1. 怎麼讀</h2>
-<p>每個面向三行：對方、本研究、判斷。「判斷」只有四個值：</p>
+<p><strong>判斷</strong>只有四個值：</p>
 <ul>
 <li><strong>可借</strong>：想法可以重寫進本專案的程式（對方零 LICENSE，一律重寫不取用）。</li>
 <li><strong>先例</strong>：設計方向相同，寫作時可引為同行做法。</li>
 <li><strong>對照</strong>：寫作時當差異點，用對方的公開紀錄逐條證明。</li>
 <li><strong>無關</strong>：對本專案沒有影響。</li>
 </ul>
-<p>判斷後面括號裡是證據，寫到頁碼、檔名或鍵名，讓讀者能自己回去看。對方的投影片頁碼指 NKOS 2026 PDF；本研究的「第 n 格」指海報文案正本的格號。</p>
+<p><strong>差異類型</strong>回答「差在哪一段」，只有五個值：</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>差異類型</th>
+<th>問的是</th>
+<th>怎麼看出來</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提示詞</td>
+<td>模型被問什麼、答案是什麼形狀（自由寫、選編號、圈原文）</td>
+<td>本研究貼程式裡的話術原文；對方提示詞未公開，從輸出欄位反推，標「推定」</td>
+</tr>
+<tr>
+<td>管線設計</td>
+<td>哪一步由誰做（模型、程式、人）、順序、有沒有迴圈</td>
+<td>第 3 節的流程圖</td>
+</tr>
+<tr>
+<td>邏輯判斷</td>
+<td>程式規則的判準，逐筆可覆核的那種</td>
+<td>本研究貼程式原文或虛擬碼；對方只有欄位的值域與投影片的一句話</td>
+</tr>
+<tr>
+<td>資料與表徵</td>
+<td>輸入資料與產出物的形狀：出處粒度、單位、本體</td>
+<td>JSON 欄位、TTL、海報格</td>
+</tr>
+<tr>
+<td>釋出</td>
+<td>授權、可重現、中間產物</td>
+<td>儲存庫檔案樹、release</td>
+</tr>
+</tbody>
+</table></div>
+<p>證據寫到頁碼、檔名或鍵名。對方的投影片頁碼指 NKOS 2026 PDF；本研究的「第 n 格」指海報文案正本的格號，程式檔指 <code>local_llm/experiments/</code>。對方的抽取程式封在 NarraGraph 二進位檔裡，凡是「程式裡怎麼做」的問題只能答「未載明」；本頁所有標「推定」的句子都是從輸出欄位反推，不是看到程式。</p>
 <hr>
-<h2 id="2">2. 逐面向對照</h2>
-<p>每個面向三行：對方、本研究、判斷（判斷後面括號是證據）。</p>
-<h3 id="21">2.1 起點</h3>
-<ul>
-<li><strong>MeDoraH</strong>：逐字稿切塊直接送模型；實體、關係、型別全由模型產生（schema-free 第一趟）</li>
-<li><strong>本研究</strong>：5,335 筆人工標注實體，管線從名冊出發；模型只找「表達關係的那幾個字」（ORSE）</li>
-<li><strong>判斷</strong>：對照（證據：投影片第 12 頁；海報第 1 格 b、第 3 格第一步）</li>
-</ul>
-<h3 id="22">2.2 模型的角色</h3>
-<ul>
-<li><strong>MeDoraH</strong>：生成式：寫出 canonical name、型別、關係標籤、知態四欄、理由</li>
-<li><strong>本研究</strong>：選擇題：型別七選一、句界切點、代稱選編號、關係選原文字；模型不寫字</li>
-<li><strong>判斷</strong>：對照（本研究的方法主張）（證據：<code>Test_OntologyPopulation.json</code> 欄位；海報第 3 格標題與原則框）</li>
-</ul>
-<h3 id="23">2.3 用字與出處</h3>
-<ul>
-<li><strong>MeDoraH</strong>：證據句保留（句 id、evidence_text）；合併檔退回話輪層；<strong>無時間碼</strong></li>
-<li><strong>本研究</strong>：逐字稿的字、逐字元驗證、每行追得回時間碼；字元座標可回溯</li>
-<li><strong>判斷</strong>：對照（證據：<code>Combined_Interviews.json</code> 無 evidence_sources；海報第 3 格原則「The words stay the transcript's」）</li>
-</ul>
-<h3 id="24">2.4 共指</h3>
-<ul>
-<li><strong>MeDoraH</strong>：模型把「我」改寫成人名（主詞代名詞 0 筆）；工具未載明</li>
-<li><strong>本研究</strong>：只對映不改寫；程式定案 776、其餘 20,537 由模型在短名單裡選編號；主角線分 person 與 speaker</li>
-<li><strong>判斷</strong>：對照（證據：<code>Test_ButtomUp_Extraction.json</code> 統計；海報第 3 格第三步）</li>
-</ul>
-<h3 id="25">2.5 他述</h3>
-<ul>
-<li><strong>MeDoraH</strong>：存在（合併檔 42.8% PERSON 主詞非講述者）但無欄位、非分析對象；前處理排除引述與轉述</li>
-<li><strong>本研究</strong>：主要材料；邊帶「來歷」欄（他述／自述）由程式判定；許石卷由子女與朋友講述</li>
-<li><strong>判斷</strong>：對照（與硬約束 1 正面衝突）（證據：<a href="../../notes/idohl/03-open-source-code.html">03</a> §5.5.2；<a href="../../notes/vlachidis_medorah-ontology-memory-recollection.html">vlachidis</a> §8(5)；海報第 4 格）</li>
-</ul>
-<h3 id="26">2.6 分類與綱要</h3>
-<ul>
-<li><strong>MeDoraH</strong>：模型自由命名（單卷 160 型別、436 關係標籤），人收斂成 22 類；綱要由抽取結果回頭修（hermeneutic loop）</li>
-<li><strong>本研究</strong>：程式查表（<code>life_nodes.py</code> 六類動詞表），模型不命名；綱要固定</li>
-<li><strong>判斷</strong>：對照；另有一處先例：11 種關係模式「粗層保召回、細層靠動詞表」的兩層結構（證據：投影片第 14、16 頁；TTL 的 11 種模式；WORKLOG 2026-09-10）</li>
-</ul>
-<h3 id="27">2.7 品味與評價</h3>
-<ul>
-<li><strong>MeDoraH</strong>：述詞聚類裡「信念與評價」自成一群</li>
-<li><strong>本研究</strong>：六類之一「品味與依附」；但 28 個動詞有 20 個從未出現在跨距</li>
-<li><strong>判斷</strong>：先例（goût 獨立成類的旁證）（證據：<a href="../../notes/vlachidis_medorah-ontology-memory-recollection.html">vlachidis</a> §8(4)；<code>orse_label/report.md</code>）</li>
-</ul>
-<h3 id="28">2.8 人在迴圈的位置</h3>
-<ul>
-<li><strong>MeDoraH</strong>：事後：研究者在工作台 accept、reject、split、merge</li>
-<li><strong>本研究</strong>：事前：研究者設計每一題的選項；「每一步研究者都在」</li>
-<li><strong>判斷</strong>：對照（證據：投影片第 13、16 頁；海報第 0 格 APPROACH）</li>
-</ul>
-<h3 id="29">2.9 模型與部署</h3>
-<ul>
-<li><strong>MeDoraH</strong>：model-agnostic：Gemini 2.5 Pro、claude-opus-4-8、Gemma 3、Qwen 3；NarraGraph 有本機 LLM 面板</li>
-<li><strong>本研究</strong>：全部本機：Gemma-4-26B-A4B-TAIDE-zhTW 萃取、Hermes-4-70B 查核（查核尚未跑過語料）</li>
-<li><strong>判斷</strong>：對照；對方也支援本機，on-device 不能寫成獨家（證據：投影片第 10、12 頁；release v0.3.4；海報第 3 格設備行）</li>
-</ul>
-<h3 id="210">2.10 信心</h3>
-<ul>
-<li><strong>MeDoraH</strong>：三組態投票（程式訊號）＋ certainty_level 由模型判（講述者的確定度）；Reference 層 0.97 來源未明</li>
-<li><strong>本研究</strong>：程式化訊號（共識／減票共識／單次支持、逐字驗證、五訊號）；絕不叫模型自評</li>
-<li><strong>判斷</strong>：先例（投票同構）＋對照（模型判 certainty 不借）（證據：投影片第 10 頁；WORKLOG 2026-09-06 證據等級）</li>
-</ul>
-<h3 id="211">2.11 單位與矛盾</h3>
-<ul>
-<li><strong>MeDoraH</strong>：受訪者與敘事單元；Divergence 把矛盾證詞建成一級物件、不裁決</li>
-<li><strong>本研究</strong>：人物（含未受訪者）；講述者與被講述者兩欄；衝突不合併（<code>persons.jsonl</code> 的 <code>_衝突</code>）</li>
-<li><strong>判斷</strong>：對照（單位）＋先例（Divergence）（證據：投影片第 11 頁；海報第 0 格問題；<code>output/experiments/dates/</code>）</li>
-</ul>
-<h3 id="212">2.12 外部對照</h3>
-<ul>
-<li><strong>MeDoraH</strong>：Wikidata Q 編號（35.7% 節點）</li>
-<li><strong>本研究</strong>：PASMA 專輯掛名庫（1,916 張，同領域獨立檔案）與北流人物頁（同機構編纂）</li>
-<li><strong>判斷</strong>：對照（證據：投影片第 19 頁；海報第 1 格 c）</li>
-</ul>
-<h3 id="213">2.13 評估</h3>
-<ul>
-<li><strong>MeDoraH</strong>：1,429 筆人工回讀：91.3% warranted、8.5% over-specified、2 筆 unsupported；無 recall、無 gold standard</li>
-<li><strong>本研究</strong>：無 gold standard（紅線 1）；實體層對名冊；關係層免標準答案訊號與異源查核（可信度分層）；「A floor, not a total」；每個數字由 <code>check_numbers.py</code> 從落檔重算</li>
-<li><strong>判斷</strong>：對照（不能反過來拿對方當支持證據）（證據：投影片第 20 頁；海報頁尾素材出處）</li>
-</ul>
-<h3 id="214">2.14 可重現</h3>
-<ul>
-<li><strong>MeDoraH</strong>：二進位檔；九個 tag 同一 commit；提示詞、參數未公開；中間產物只有示範 JSON</li>
-<li><strong>本研究</strong>：每次呼叫的 <code>calls.jsonl</code> 正本進 git，衍生物可重算；批次由使用者親跑</li>
-<li><strong>判斷</strong>：對照（證據：<a href="../../notes/idohl/03-open-source-code.html">03</a> §5.3；CLAUDE.md 紅線 4）</li>
-</ul>
-<h3 id="215">2.15 授權與釋出</h3>
-<ul>
-<li><strong>MeDoraH</strong>：六個儲存庫零 LICENSE；資料可讀、不可合法重用</li>
-<li><strong>本研究</strong>：程式與語料未公開；對外只放筆記（research-notes）</li>
-<li><strong>判斷</strong>：對照（任何借用都是重寫）（證據：<a href="../../notes/idohl/05-tools-relevance.html">05</a>）</li>
-</ul>
-<h3 id="216">2.16 時間</h3>
-<ul>
-<li><strong>MeDoraH</strong>：temporal 欄位是記憶距離；TemporalEntity 只掛具名事件；無年份推算</li>
-<li><strong>本研究</strong>：三條定年規則、可信層 A 到 F、27.7% 可定年；相對詞只記不算</li>
-<li><strong>判斷</strong>：本研究領先；先後關係兩邊都沒做（證據：見 <a href="../../notes/idohl/08-time.html">08 時間專題</a>）</li>
-</ul>
+<h2 id="2">2. 總表</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>面向</th>
+<th>差異類型</th>
+<th>MeDoraH</th>
+<th>本研究</th>
+<th>判斷</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>起點</td>
+<td>管線設計</td>
+<td>逐字稿切塊直接送模型，實體、型別、關係全由模型產生</td>
+<td>5,335 筆人工標注實體先定位，模型只找「表達關係的那幾個字」</td>
+<td>對照</td>
+</tr>
+<tr>
+<td>2</td>
+<td>模型的角色</td>
+<td>提示詞</td>
+<td>生成式：寫 canonical_name、型別、關係標籤、知態四欄、理由</td>
+<td>選擇題：型別七選一、句界切點、代稱選編號、關係圈原文；不寫字</td>
+<td>對照</td>
+</tr>
+<tr>
+<td>3</td>
+<td>用字與出處</td>
+<td>邏輯判斷</td>
+<td>證據句由模型抄錄，句 id 由模型填；有沒有程式比對未載明；無時間碼</td>
+<td>逐字命中與模糊對齊分開計，跨距一律是原文字元，座標對回時間碼</td>
+<td>對照</td>
+</tr>
+<tr>
+<td>4</td>
+<td>共指</td>
+<td>提示詞＋邏輯判斷</td>
+<td>模型在抽取時把「I」改寫成人名（推定）</td>
+<td>敬稱短稱由規則定案 776；其餘 20,537 模型在名單裡選編號，不改寫原文</td>
+<td>對照</td>
+</tr>
+<tr>
+<td>5</td>
+<td>他述</td>
+<td>邏輯判斷</td>
+<td>存在（42.8%）但無欄位；attribution_type 由模型填；前處理排除引述與轉述</td>
+<td>主要材料；來歷由程式判定：講述者是不是邊的端點</td>
+<td>對照</td>
+</tr>
+<tr>
+<td>6</td>
+<td>分類與綱要</td>
+<td>管線設計</td>
+<td>模型自由命名 → 人收斂 160 → 22 → 述詞分群 → 修綱要重抽</td>
+<td>六類動詞表查表；模型的命名留存不用；綱要固定</td>
+<td>對照（兩層結構是先例）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>品味與評價</td>
+<td>資料與表徵</td>
+<td>述詞聚類裡「信念與評價」自成一群</td>
+<td>六類之一「品味與依附」，28 個動詞有 20 個從未出現在跨距</td>
+<td>先例</td>
+</tr>
+<tr>
+<td>8</td>
+<td>人在迴圈</td>
+<td>管線設計</td>
+<td>事後：工作台 accept、reject、split、merge</td>
+<td>事前：研究者設計每一題的選項；批次親跑</td>
+<td>對照</td>
+</tr>
+<tr>
+<td>9</td>
+<td>模型與部署</td>
+<td>其他（部署）</td>
+<td>model-agnostic，雲端為主也支援本機</td>
+<td>全部本機：Gemma-4-26B-A4B-TAIDE-zhTW 萃取、Hermes-4-70B 查核</td>
+<td>對照，但 on-device 不是獨家</td>
+</tr>
+<tr>
+<td>10</td>
+<td>信心</td>
+<td>邏輯判斷</td>
+<td>三組態投票（程式訊號）＋ certainty_level 由模型判</td>
+<td>證據等級、逐字驗證、五訊號，全部程式推導；不問模型</td>
+<td>先例＋對照</td>
+</tr>
+<tr>
+<td>11</td>
+<td>單位與矛盾</td>
+<td>資料與表徵</td>
+<td>受訪者與敘事單元；Divergence 保留矛盾不裁決</td>
+<td>人物（含未受訪者）；衝突不合併</td>
+<td>對照＋先例</td>
+</tr>
+<tr>
+<td>12</td>
+<td>外部對照</td>
+<td>資料與表徵</td>
+<td>Wikidata Q 編號（35.7% 節點）</td>
+<td>PASMA 專輯掛名庫、北流人物頁</td>
+<td>對照</td>
+</tr>
+<tr>
+<td>13</td>
+<td>評估</td>
+<td>邏輯判斷</td>
+<td>1,429 筆人工回讀 91.3% warranted；無 recall、無 gold standard</td>
+<td>無 gold standard（紅線 1）；實體層對名冊；關係層免標準答案訊號</td>
+<td>對照</td>
+</tr>
+<tr>
+<td>14</td>
+<td>可重現</td>
+<td>釋出</td>
+<td>二進位檔；提示詞、參數、投票紀錄未公開</td>
+<td>每次呼叫的 <code>calls.jsonl</code> 正本進 git，衍生物可重算</td>
+<td>對照</td>
+</tr>
+<tr>
+<td>15</td>
+<td>授權與釋出</td>
+<td>釋出</td>
+<td>六個儲存庫零 LICENSE</td>
+<td>程式與語料未公開，只放筆記</td>
+<td>對照</td>
+</tr>
+<tr>
+<td>16</td>
+<td>時間</td>
+<td>邏輯判斷</td>
+<td>temporal_grounding 是記憶距離；無年份推算</td>
+<td>三條定年規則、可信層 A 到 F，27.7% 可定年</td>
+<td>本研究領先；先後關係兩邊都沒做</td>
+</tr>
+</tbody>
+</table></div>
+<p>十六個面向裡，差異落在<strong>提示詞</strong>的三個（2、4、5 的一半）、<strong>管線設計</strong>的四個（1、6、8、9）、<strong>邏輯判斷</strong>的五個（3、5、10、13、16）、<strong>資料與表徵</strong>的三個（7、11、12）、<strong>釋出</strong>的兩個（14、15）。以我的判斷，真正的方法分歧在「邏輯判斷」那五個：對方把判斷交給模型再用人回讀，本研究把判斷寫成程式規則再讓模型在規則留下的選項裡選。提示詞的差異是這個分歧的表面。</p>
 <hr>
-<h2 id="3">3. 三點判斷</h2>
+<h2 id="3">3. 兩條管線並排</h2>
+<p>每一列是一個可比較的階段。方框顏色是「這一步由誰做」：模型紅、程式藍、人灰虛線；對方那邊凡是從輸出反推的標「推定」。左側紅色虛線是對方的綱要修訂迴圈（投影片第 21 頁「extraction as evaluation of the schema」）。圖由 <code>sources/fig_pipelines.py</code> 產生，內容改那支程式。</p>
+<!-- fig:pipelines -->
+<figure class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 770" width="100%" font-family="PingFang TC, Noto Sans TC, Heiti TC, system-ui, sans-serif" role="img" aria-label="MeDoraH 與本研究兩條管線的逐階段對照">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#849BB7"/></marker><marker id="arr_acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9B2744"/></marker></defs>
+<rect x="0" y="0" width="1000" height="770" fill="#fff"/>
+<text x="30" y="26" font-size="13" font-weight="600" fill="#24344C">誰做這一步</text>
+<rect x="126" y="15" width="26" height="15" rx="4" fill="#F7E4E9" stroke="#9B2744" stroke-width="1.4"/>
+<text x="158" y="27" font-size="12" fill="#24344C">模型</text>
+<rect x="206" y="15" width="26" height="15" rx="4" fill="#E4EBF4" stroke="#3E5A7D" stroke-width="1.4"/>
+<text x="238" y="27" font-size="12" fill="#24344C">程式</text>
+<rect x="286" y="15" width="26" height="15" rx="4" fill="#F4F6F9" stroke="#849BB7" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="318" y="27" font-size="12" fill="#24344C">人</text>
+<rect x="366" y="15" width="26" height="15" rx="4" fill="#fff" stroke="#9B2744" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="398" y="27" font-size="12" fill="#24344C">推定（由輸出欄位反推，程式封在二進位檔）</text>
+<text x="220.0" y="60" font-size="14" font-weight="700" text-anchor="middle" fill="#3E5A7D">MeDoraH（NKOS 2026 投影片第 12、13、16 頁；示範 JSON）</text>
+<text x="495.0" y="60" font-size="12" font-weight="600" text-anchor="middle" fill="#849BB7">差異類型</text>
+<text x="770.0" y="60" font-size="14" font-weight="700" text-anchor="middle" fill="#3E5A7D">本研究（ICCCM 2026 海報第 3 格；程式檔）</text>
+<rect x="30" y="84" width="380" height="52" rx="6" fill="#E4EBF4" stroke="#3E5A7D" stroke-width="1.4"/>
+<text x="39" y="106" font-size="12.5" fill="#24344C">話輪切分 → 正規式切句 → 「前一對＋當前對」</text>
+<text x="39" y="123" font-size="12.5" fill="#24344C">句 id「話輪-句」；原始逐字稿無時間碼</text>
+<rect x="371.52" y="76" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#3E5A7D" stroke-width="1"/>
+<text x="387.76" y="88" font-size="10.5" text-anchor="middle" fill="#3E5A7D">程式</text>
+<rect x="580" y="84" width="380" height="52" rx="6" fill="#E4EBF4" stroke="#3E5A7D" stroke-width="1.4"/>
+<text x="589" y="106" font-size="12.5" fill="#24344C">build_trunks：段落、講述者、字元座標</text>
+<text x="589" y="123" font-size="12.5" fill="#24344C">每個字元都對得回 SRT 時間碼</text>
+<rect x="921.52" y="76" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#3E5A7D" stroke-width="1"/>
+<text x="937.76" y="88" font-size="10.5" text-anchor="middle" fill="#3E5A7D">程式</text>
+<text x="495.0" y="104.0" font-size="12.5" font-weight="700" text-anchor="middle" fill="#24344C">1　前處理</text>
+<rect x="430" y="112.0" width="130" height="18" rx="9" fill="#F1F4F8" stroke="#849BB7" stroke-width="1"/>
+<text x="495.0" y="125.0" font-size="11" text-anchor="middle" fill="#3E5A7D">資料與表徵</text>
+<line x1="220.0" y1="136" x2="220.0" y2="152" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="770.0" y1="136" x2="770.0" y2="152" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<rect x="30" y="152" width="380" height="35" rx="6" fill="#E4EBF4" stroke="#3E5A7D" stroke-width="1.4"/>
+<text x="39" y="174" font-size="12.5" fill="#24344C">正規式切句（transform_utterance_to_sentences.py）</text>
+<rect x="371.52" y="144" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#3E5A7D" stroke-width="1"/>
+<text x="387.76" y="156" font-size="10.5" text-anchor="middle" fill="#3E5A7D">程式</text>
+<rect x="580" y="152" width="380" height="52" rx="6" fill="#F7E4E9" stroke="#9B2744" stroke-width="1.4"/>
+<text x="589" y="174" font-size="12.5" fill="#24344C">模型標句界，重複三次投票</text>
+<text x="589" y="191" font-size="12.5" fill="#24344C">程式用原文的字元切；證據等級 共識／減票／單次</text>
+<rect x="921.52" y="144" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#9B2744" stroke-width="1"/>
+<text x="937.76" y="156" font-size="10.5" text-anchor="middle" fill="#9B2744">模型</text>
+<text x="495.0" y="172.0" font-size="12.5" font-weight="700" text-anchor="middle" fill="#24344C">2　斷句</text>
+<rect x="430" y="180.0" width="130" height="18" rx="9" fill="#F1F4F8" stroke="#849BB7" stroke-width="1"/>
+<text x="495.0" y="193.0" font-size="11" text-anchor="middle" fill="#3E5A7D">管線設計</text>
+<line x1="220.0" y1="204" x2="220.0" y2="220" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="770.0" y1="204" x2="770.0" y2="220" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<rect x="30" y="220" width="380" height="52" rx="6" fill="#F7E4E9" stroke="#9B2744" stroke-width="1.4"/>
+<text x="39" y="242" font-size="12.5" fill="#24344C">Pass 1 open：實體、型別、關係、證據句全由模型寫</text>
+<text x="39" y="259" font-size="12.5" fill="#24344C">單卷 160 種型別、436 種關係標籤</text>
+<rect x="371.52" y="212" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#9B2744" stroke-width="1"/>
+<text x="387.76" y="224" font-size="10.5" text-anchor="middle" fill="#9B2744">模型</text>
+<rect x="580" y="220" width="380" height="52" rx="6" fill="#E4EBF4" stroke="#3E5A7D" stroke-width="1.4"/>
+<text x="589" y="242" font-size="12.5" fill="#24344C">人工名冊 5,335 筆 → 提及層定位（含人工標注）</text>
+<text x="589" y="259" font-size="12.5" fill="#24344C">規則判不出型別的 1,819 筆：模型七選一</text>
+<rect x="921.52" y="212" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#3E5A7D" stroke-width="1"/>
+<text x="937.76" y="224" font-size="10.5" text-anchor="middle" fill="#3E5A7D">程式</text>
+<text x="495.0" y="240.0" font-size="12.5" font-weight="700" text-anchor="middle" fill="#24344C">3　實體</text>
+<rect x="430" y="248.0" width="130" height="18" rx="9" fill="#F1F4F8" stroke="#849BB7" stroke-width="1"/>
+<text x="495.0" y="261.0" font-size="11" text-anchor="middle" fill="#3E5A7D">提示詞</text>
+<line x1="220.0" y1="272" x2="220.0" y2="288" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="770.0" y1="272" x2="770.0" y2="288" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<rect x="30" y="288" width="380" height="52" rx="6" fill="#F7E4E9" stroke="#9B2744" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="39" y="310" font-size="12.5" fill="#24344C">抽取時把「I」改寫成 canonical_name</text>
+<text x="39" y="327" font-size="12.5" fill="#24344C">（主詞代名詞 0 筆，由輸出反推）</text>
+<rect x="334.8" y="280" width="69.19999999999999" height="16" rx="8" fill="#fff" stroke="#9B2744" stroke-width="1"/>
+<text x="369.4" y="292" font-size="10.5" text-anchor="middle" fill="#9B2744">模型・推定</text>
+<rect x="580" y="288" width="380" height="52" rx="6" fill="#E4EBF4" stroke="#3E5A7D" stroke-width="1.4"/>
+<text x="589" y="310" font-size="12.5" fill="#24344C">敬稱、短稱由規則定案 776</text>
+<text x="589" y="327" font-size="12.5" fill="#24344C">其餘 20,537：模型在程式給的名單裡選編號</text>
+<rect x="921.52" y="280" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#3E5A7D" stroke-width="1"/>
+<text x="937.76" y="292" font-size="10.5" text-anchor="middle" fill="#3E5A7D">程式</text>
+<text x="495.0" y="308.0" font-size="12.5" font-weight="700" text-anchor="middle" fill="#24344C">4　共指</text>
+<rect x="430" y="316.0" width="130" height="18" rx="9" fill="#F1F4F8" stroke="#849BB7" stroke-width="1"/>
+<text x="495.0" y="329.0" font-size="11" text-anchor="middle" fill="#3E5A7D">提示詞＋邏輯判斷</text>
+<line x1="220.0" y1="340" x2="220.0" y2="356" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="770.0" y1="340" x2="770.0" y2="356" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<rect x="30" y="356" width="380" height="52" rx="6" fill="#F7E4E9" stroke="#9B2744" stroke-width="1.4"/>
+<text x="39" y="378" font-size="12.5" fill="#24344C">Pass 2 schema-guided：映射本體、知態四欄、理由</text>
+<text x="39" y="395" font-size="12.5" fill="#24344C">Pass 3 RQ-driven：針對研究問題再抽一趟</text>
+<rect x="371.52" y="348" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#9B2744" stroke-width="1"/>
+<text x="387.76" y="360" font-size="10.5" text-anchor="middle" fill="#9B2744">模型</text>
+<rect x="580" y="356" width="380" height="52" rx="6" fill="#F7E4E9" stroke="#9B2744" stroke-width="1.4"/>
+<text x="589" y="378" font-size="12.5" fill="#24344C">程式枚舉同段共現的候選對</text>
+<text x="589" y="395" font-size="12.5" fill="#24344C">模型只圈「表達關係的那幾個字」或選選項編號</text>
+<rect x="921.52" y="348" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#9B2744" stroke-width="1"/>
+<text x="937.76" y="360" font-size="10.5" text-anchor="middle" fill="#9B2744">模型</text>
+<text x="495.0" y="376.0" font-size="12.5" font-weight="700" text-anchor="middle" fill="#24344C">5　關係</text>
+<rect x="430" y="384.0" width="130" height="18" rx="9" fill="#F1F4F8" stroke="#849BB7" stroke-width="1"/>
+<text x="495.0" y="397.0" font-size="11" text-anchor="middle" fill="#3E5A7D">提示詞</text>
+<line x1="220.0" y1="408" x2="220.0" y2="424" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="770.0" y1="408" x2="770.0" y2="424" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<rect x="30" y="424" width="380" height="52" rx="6" fill="#F7E4E9" stroke="#9B2744" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="39" y="446" font-size="12.5" fill="#24344C">consolidator ＋ 三組態投票：0 of 3 refute → confirmed</text>
+<text x="39" y="463" font-size="12.5" fill="#24344C">程式或模型做、怎麼計票：未載明</text>
+<rect x="334.8" y="416" width="69.19999999999999" height="16" rx="8" fill="#fff" stroke="#9B2744" stroke-width="1"/>
+<text x="369.4" y="428" font-size="10.5" text-anchor="middle" fill="#9B2744">模型・推定</text>
+<rect x="580" y="424" width="380" height="52" rx="6" fill="#E4EBF4" stroke="#3E5A7D" stroke-width="1.4"/>
+<text x="589" y="446" font-size="12.5" fill="#24344C">_verbatim：逐字命中，落空才模糊對齊，兩者分開計</text>
+<text x="589" y="463" font-size="12.5" fill="#24344C">跨距 1–30 字；字元座標 → 時間碼</text>
+<rect x="921.52" y="416" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#3E5A7D" stroke-width="1"/>
+<text x="937.76" y="428" font-size="10.5" text-anchor="middle" fill="#3E5A7D">程式</text>
+<text x="495.0" y="444.0" font-size="12.5" font-weight="700" text-anchor="middle" fill="#24344C">6　驗證</text>
+<rect x="430" y="452.0" width="130" height="18" rx="9" fill="#F1F4F8" stroke="#849BB7" stroke-width="1"/>
+<text x="495.0" y="465.0" font-size="11" text-anchor="middle" fill="#3E5A7D">邏輯判斷</text>
+<line x1="220.0" y1="476" x2="220.0" y2="492" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="770.0" y1="476" x2="770.0" y2="492" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<rect x="30" y="492" width="380" height="52" rx="6" fill="#F4F6F9" stroke="#849BB7" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="39" y="514" font-size="12.5" fill="#24344C">人工把 160 型別收斂成 22 類</text>
+<text x="39" y="531" font-size="12.5" fill="#24344C">SpanBERT → UMAP → HDBSCAN 述詞分群，WordNet 命名</text>
+<rect x="383.76" y="484" width="20.240000000000002" height="16" rx="8" fill="#fff" stroke="#849BB7" stroke-width="1"/>
+<text x="393.88" y="496" font-size="10.5" text-anchor="middle" fill="#849BB7">人</text>
+<rect x="580" y="492" width="380" height="52" rx="6" fill="#E4EBF4" stroke="#3E5A7D" stroke-width="1.4"/>
+<text x="589" y="514" font-size="12.5" fill="#24344C">life_nodes 六類動詞表查表</text>
+<text x="589" y="531" font-size="12.5" fill="#24344C">模型第四欄的自由命名留存、不參與任何決定</text>
+<rect x="921.52" y="484" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#3E5A7D" stroke-width="1"/>
+<text x="937.76" y="496" font-size="10.5" text-anchor="middle" fill="#3E5A7D">程式</text>
+<text x="495.0" y="512.0" font-size="12.5" font-weight="700" text-anchor="middle" fill="#24344C">7　分類</text>
+<rect x="430" y="520.0" width="130" height="18" rx="9" fill="#F1F4F8" stroke="#849BB7" stroke-width="1"/>
+<text x="495.0" y="533.0" font-size="11" text-anchor="middle" fill="#3E5A7D">管線設計</text>
+<line x1="220.0" y1="544" x2="220.0" y2="560" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="770.0" y1="544" x2="770.0" y2="560" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<rect x="30" y="560" width="380" height="52" rx="6" fill="#F7E4E9" stroke="#9B2744" stroke-width="1.4"/>
+<text x="39" y="582" font-size="12.5" fill="#24344C">attribution_type、certainty_level、</text>
+<text x="39" y="599" font-size="12.5" fill="#24344C">temporal_grounding（記憶距離）由模型填</text>
+<rect x="371.52" y="552" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#9B2744" stroke-width="1"/>
+<text x="387.76" y="564" font-size="10.5" text-anchor="middle" fill="#9B2744">模型</text>
+<rect x="580" y="560" width="380" height="52" rx="6" fill="#E4EBF4" stroke="#3E5A7D" stroke-width="1.4"/>
+<text x="589" y="582" font-size="12.5" fill="#24344C">來歷：講述者是否為邊的端點 → 自述／他述</text>
+<text x="589" y="599" font-size="12.5" fill="#24344C">年份：三條規則、可信層 A 到 F，不呼叫模型</text>
+<rect x="921.52" y="552" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#3E5A7D" stroke-width="1"/>
+<text x="937.76" y="564" font-size="10.5" text-anchor="middle" fill="#3E5A7D">程式</text>
+<text x="495.0" y="580.0" font-size="12.5" font-weight="700" text-anchor="middle" fill="#24344C">8　來歷與時間</text>
+<rect x="430" y="588.0" width="130" height="18" rx="9" fill="#F1F4F8" stroke="#849BB7" stroke-width="1"/>
+<text x="495.0" y="601.0" font-size="11" text-anchor="middle" fill="#3E5A7D">邏輯判斷</text>
+<line x1="220.0" y1="612" x2="220.0" y2="628" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="770.0" y1="612" x2="770.0" y2="628" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<rect x="30" y="628" width="380" height="52" rx="6" fill="#F4F6F9" stroke="#849BB7" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="39" y="650" font-size="12.5" fill="#24344C">事後：工作台 accept／reject／split／merge</text>
+<text x="39" y="667" font-size="12.5" fill="#24344C">修綱要後回到 Pass 2 重抽（hermeneutic loop）</text>
+<rect x="383.76" y="620" width="20.240000000000002" height="16" rx="8" fill="#fff" stroke="#849BB7" stroke-width="1"/>
+<text x="393.88" y="632" font-size="10.5" text-anchor="middle" fill="#849BB7">人</text>
+<rect x="580" y="628" width="380" height="52" rx="6" fill="#F4F6F9" stroke="#849BB7" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="589" y="650" font-size="12.5" fill="#24344C">事前：研究者設計每一題的選項與話術</text>
+<text x="589" y="667" font-size="12.5" fill="#24344C">批次由研究者親跑；名冊只在評估時進場</text>
+<rect x="933.76" y="620" width="20.240000000000002" height="16" rx="8" fill="#fff" stroke="#849BB7" stroke-width="1"/>
+<text x="943.88" y="632" font-size="10.5" text-anchor="middle" fill="#849BB7">人</text>
+<text x="495.0" y="648.0" font-size="12.5" font-weight="700" text-anchor="middle" fill="#24344C">9　人在迴圈</text>
+<rect x="430" y="656.0" width="130" height="18" rx="9" fill="#F1F4F8" stroke="#849BB7" stroke-width="1"/>
+<text x="495.0" y="669.0" font-size="11" text-anchor="middle" fill="#3E5A7D">管線設計</text>
+<line x1="220.0" y1="680" x2="220.0" y2="696" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="770.0" y1="680" x2="770.0" y2="696" stroke="#849BB7" stroke-width="1.2" marker-end="url(#arr)"/>
+<rect x="30" y="696" width="380" height="52" rx="6" fill="#E4EBF4" stroke="#3E5A7D" stroke-width="1.4"/>
+<text x="39" y="718" font-size="12.5" fill="#24344C">NarraGraph：網絡、SPARQL、Wikidata Q（35.7% 節點）</text>
+<text x="39" y="735" font-size="12.5" fill="#24344C">1,429 筆人工回讀：91.3% warranted</text>
+<rect x="371.52" y="688" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#3E5A7D" stroke-width="1"/>
+<text x="387.76" y="700" font-size="10.5" text-anchor="middle" fill="#3E5A7D">程式</text>
+<rect x="580" y="696" width="380" height="52" rx="6" fill="#E4EBF4" stroke="#3E5A7D" stroke-width="1.4"/>
+<text x="589" y="718" font-size="12.5" fill="#24344C">build_network：有向網絡，邊帶出處、來歷、年代</text>
+<text x="589" y="735" font-size="12.5" fill="#24344C">對照 PASMA 專輯掛名庫與北流人物頁</text>
+<rect x="921.52" y="688" width="32.480000000000004" height="16" rx="8" fill="#fff" stroke="#3E5A7D" stroke-width="1"/>
+<text x="937.76" y="700" font-size="10.5" text-anchor="middle" fill="#3E5A7D">程式</text>
+<text x="495.0" y="716.0" font-size="12.5" font-weight="700" text-anchor="middle" fill="#24344C">10　輸出</text>
+<rect x="430" y="724.0" width="130" height="18" rx="9" fill="#F1F4F8" stroke="#849BB7" stroke-width="1"/>
+<text x="495.0" y="737.0" font-size="11" text-anchor="middle" fill="#3E5A7D">資料與表徵</text>
+<path d="M 30 654.0 H 18 V 382.0 H 28" fill="none" stroke="#9B2744" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arr_acc)"/>
+<text x="15" y="518.0" font-size="10.5" fill="#9B2744" text-anchor="middle" transform="rotate(-90 15 518.0)">修綱要後重抽</text>
+</svg>
+</figure>
+<!-- /fig:pipelines -->
+
+<p>讀圖的三個重點：</p>
+<ol>
+<li><strong>模型碰到資料的次數。</strong> 對方四次（實體、共指、關係、驗證的 consolidator），每一次都在寫字；本研究三次（句界、共指、關係），每一次都在選。</li>
+<li><strong>人站的位置。</strong> 對方在輸出端（工作台回讀、修綱要），本研究在輸入端（設計選項與話術）。兩邊都是人在迴圈，位置相反。</li>
+<li><strong>程式做的事不同。</strong> 對方的程式在前後兩端（切句、分群、網絡分析）；本研究的程式夾在每一次模型呼叫的前後（枚舉候選、逐字驗證、查表、定年）。</li>
+</ol>
+<hr>
+<h2 id="4">4. 逐面向：差異落在哪一段</h2>
+<p>每個面向：差異類型、對方、本研究、判斷（括號裡是證據），有程式可貼的就貼程式。</p>
+<h3 id="41">4.1 起點</h3>
+<p>差異類型：<strong>管線設計</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：逐字稿切成「前一對＋當前對」的話輪對送模型，實體、型別、關係由模型一次產生（schema-free 第一趟）。</li>
+<li><strong>本研究</strong>：管線從人工名冊出發，程式先把 5,335 筆實體定位到句子，模型只在已定位的兩端之間找關係。</li>
+<li><strong>判斷</strong>：對照（證據：投影片第 12 頁；<code>generate_previous_current_pairs.py</code>；海報第 1 格 b、第 3 格第一步；<code>mention_layer.py</code>）。</li>
+</ul>
+<pre><code class="language-text"># MeDoraH（投影片第 12 頁；Preprocessing 的兩支 .py）
+for pair in previous_current_pairs(transcript):        # 訪問者一句＋受訪者一句，附前一對
+    claims += LLM_pass1(pair)                          # 實體、型別、關係、證據句全由模型寫
+
+# 本研究（海報第 3 格第一步、第三步；mention_layer.py、orse_exp.py）
+roster = load(&quot;entity_stage1_final.csv&quot;)              # 5,335 筆人工標注實體（含人工標注）
+for sentence in sentences:                            # 13,142 句，每句帶時間碼與講述者
+    mentions += locate(roster, sentence)              # 程式定位，不問模型
+pairs = cooccurring(mentions, within=&quot;trunk&quot;)          # 候選對由程式枚舉
+spans = LLM_orse(pairs, text)                         # 模型只圈「表達關係的字」
+</code></pre>
+<h3 id="42">4.2 模型的角色</h3>
+<p>差異類型：<strong>提示詞</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：生成式。一筆輸出要模型填十幾個欄位，含 canonical_name、本體類別、關係的 surface_form 與 property、知態四欄、理由。</li>
+<li><strong>本研究</strong>：選擇題。一行四欄，三欄受限（組號、原文連續字、該組裡的一個名字），第四欄自由但不參與任何程式決定。</li>
+<li><strong>判斷</strong>：對照，這是本研究的方法主張（證據：<code>Test_OntologyPopulation.json</code> 欄位；<code>orse_exp.py</code> 第 2 區；海報第 3 格標題與原則框）。</li>
+</ul>
+<p>對方的提示詞未公開。下面是 <code>Test_OntologyPopulation.json</code> 一筆的欄位骨架，等於模型被要求填的表（值域取自 304 筆的實際分布）：</p>
+<pre><code class="language-text"># MeDoraH（推定：由 Test_OntologyPopulation.json 的欄位反推，提示詞本身未公開）
+{
+  &quot;subject&quot;:  {&quot;canonical_name&quot;: &lt;模型寫&gt;, &quot;ontology_mapping&quot;: {&quot;mapping_status&quot;: mapped|unmapped|uncertain, &quot;class&quot;: &lt;本體類別&gt;}},
+  &quot;relation&quot;: {&quot;surface_form&quot;: &lt;模型寫&gt;, &quot;ontology_mapping&quot;: {&quot;mapping_status&quot;: …, &quot;property&quot;: &lt;本體屬性 或 &lt;自創角括號&gt;&gt;}, &quot;is_negated&quot;: bool},
+  &quot;object&quot;:   {同 subject},
+  &quot;epistemic_stance&quot;: {&quot;claim_type&quot;: [direct_experience|general_knowledge|evaluative_judgment|inference|hearsay|hypothetical],
+                       &quot;certainty_level&quot;: certain|probable|uncertain,
+                       &quot;temporal_grounding&quot;: distant_memory|synchronous|historical_reconstruction|recent_memory,
+                       &quot;attribution_type&quot;: general_attribution|direct_quote|indirect_report|空},
+  &quot;reasons&quot;:  {&quot;sub_obj_classes&quot;: &lt;自由文字&gt;, &quot;relation&quot;: &lt;自由文字&gt;, &quot;epistemic_stance&quot;: &lt;自由文字&gt;},
+  &quot;provenance&quot;: {&quot;evidence_sentence_ids&quot;: [&quot;2-2&quot;], &quot;evidence_text&quot;: &lt;模型抄的整句&gt;}
+}
+</code></pre>
+<p>本研究的圈字題話術原文（<code>orse_exp.py</code>，規則走 system、材料走 user）：</p>
+<pre><code class="language-text">RULE = &quot;&quot;&quot;下面這段話裡，我列出幾組人或事物。每一組，原文裡有哪幾個字說出了他們的關係？
+只能用這段話裡連續的幾個字，不要改寫、不要用你自己的話。
+原文沒有說出關係的，寫「沒說」。
+一行一組，格式「編號｜關係的字｜誰是主動方｜這是什麼關係」。
+第三欄只能填那一組裡的一個名字。第四欄用你自己的話，最多六個字。
+請使用台灣的繁體中文。&quot;&quot;&quot;
+
+MATERIAL = &quot;&quot;&quot;這段話是{speaker}在說，這一卷訪談的主題人物是{topic}。
+要看的組合：
+{pairs}
+原文：
+{text}&quot;&quot;&quot;
+</code></pre>
+<p>圈字題逐字命中只有 18.4%，所以另有一版把答案空間再縮小：程式先從論元附近切出候選跨距，模型只回編號（<code>orse_choice_exp.py</code>）：</p>
+<pre><code class="language-text">RULE = &quot;&quot;&quot;下面這段話裡，我列出幾組人或事物。每一組後面有幾個從原文抄下來的選項。
+每一組回答兩件事：哪一個選項是原文用來說出他們關係的字？兩個人裡誰是主動的那一方？
+一行一組，格式「組號｜選項編號｜主動方」。
+主動方寫 1 或 2：1＝前面那個，2＝後面那個。分不出來寫 0。
+選項裡都沒有對的，選項編號寫 0。原文根本沒說他們的關係，選項編號寫 X。
+不要寫別的字。&quot;&quot;&quot;
+</code></pre>
+<p>兩邊提示詞的差異可以壓成一句：對方要模型<strong>產生</strong>一筆有十幾個欄位的紀錄，本研究要模型在程式準備好的材料上<strong>指認</strong>一個位置或一個編號。後者的答案程式驗得動（組號在 0 到 n、主動方是 1 或 2、字串必須是原文連續字），前者只能人回讀。</p>
+<h3 id="43">4.3 用字與出處</h3>
+<p>差異類型：<strong>邏輯判斷</strong>（兼資料與表徵）。</p>
+<ul>
+<li><strong>MeDoraH</strong>：證據句保留在 evidence_text，句 id 在 evidence_sources；304 筆與 655 筆都 100% 帶句 id。但證據句是模型抄的，有沒有程式比對過原文未載明；合併檔退回話輪層；原始逐字稿無時間碼。</li>
+<li><strong>本研究</strong>：模型的答案對齊回原文，取它涵蓋的原文區間當跨距；跨距永遠是原文的字，字元座標對回 SRT 時間碼。逐字命中與模糊對齊分開統計，不混算。</li>
+<li><strong>判斷</strong>：對照（證據：<code>Combined_Interviews.json</code> 無 evidence_sources；<a href="../../notes/idohl/03-open-source-code.html">03</a> §5.5.2；<code>_verbatim.py</code>、<code>orse_exp.py</code> 的 FUZZY 三個參數；海報第 3 格原則「The words stay the transcript's」）。</li>
+</ul>
+<pre><code class="language-text"># 本研究（_verbatim.py 的規則＋ orse_exp.py 的參數；虛擬碼）
+def take_span(answer, text):
+    a       = norm_verbatim(answer)         # NFKC、刪句讀、留成對符號「」〈〉《》
+    t, idx  = norm_with_map(text)           # 同樣正規化，另留「正規化後第 i 字來自原文第幾字」
+    hit = exact_locate(a, t)                # 逐字命中
+    if hit is None and FUZZY_ALIGN:
+        hit = fuzzy_align(a, t, min_ratio=0.6, max_stretch=2.5)   # 落檔標「模糊對齊」，分開統計
+    if hit is None or not (1 &lt;= len(hit) &lt;= 30):
+        return None                         # 落空：記錄，不補救
+    start, end = idx[hit.start], idx[hit.end - 1] + 1
+    return text[start:end], (start, end), timecode_at(start)      # 用原文的字；座標 → 時間碼
+
+# MeDoraH：evidence_text 由模型抄錄、evidence_sentence_ids 由模型填；比對程式未載明
+</code></pre>
+<h3 id="44">4.4 共指</h3>
+<p>差異類型：<strong>提示詞＋邏輯判斷</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：655 筆的主詞沒有任何代名詞，可知模型在抽取時已把「I」改寫成 Judy Malloy（推定）。改寫發生在哪一趟、用什麼規則，未載明。</li>
+<li><strong>本研究</strong>：程式先定案（姓＋敬稱在卷內唯一者 776 筆），其餘 20,537 個代稱由模型在程式給的短名單裡挑一個名字；代稱用編號寫進原文（<code>【1他】</code>），定位、出處、驗證全歸程式。主角線分開 person（主題人物）與 speaker（講述者）。</li>
+<li><strong>判斷</strong>：對照（證據：<code>Test_ButtomUp_Extraction.json</code> 統計；海報第 3 格第三步；<code>coref_exp.py</code>）。</li>
+</ul>
+<pre><code class="language-text">RULE = &quot;&quot;&quot;下面這段話裡，方括號標出來的每一個代稱，指的是哪一個人？
+從我給你的名單裡挑一個，把那個名字原封不動寫下來。
+名單裡沒有的、指的不是人的、或這段話沒有說清楚的，都寫「沒說」。
+不要寫「他」「她」「他們」這些代稱本身，那不是答案。
+一行一個，格式「編號｜名字」。
+請使用台灣的繁體中文。&quot;&quot;&quot;
+
+MATERIAL = &quot;&quot;&quot;這段話是{speaker}在說，這一卷訪談的主題人物是{topic}。
+可以挑的名單：{candidates}
+{memory}
+{text}&quot;&quot;&quot;
+</code></pre>
+<p>材料裡給「主題人物」是量出來的：送模型的第三人稱有 87.4% 候選池裡沒有主題人物，而口述歷史的「他」大量就是指訪談對象。對方把共指藏在抽取裡，這類量化就做不出來。</p>
+<h3 id="45">4.5 他述</h3>
+<p>差異類型：<strong>邏輯判斷</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：合併檔 42.8% 的 PERSON 主詞不是講述者，但沒有欄位標記、不是分析對象；attribution_type 由模型填（general_attribution 140、direct_quote 55、indirect_report 11、空值 98）；前處理排除引述與轉述。</li>
+<li><strong>本研究</strong>：他述是主要材料。來歷由程式判定，判準只有一條。</li>
+<li><strong>判斷</strong>：對照，與硬約束 1 正面衝突（證據：<a href="../../notes/idohl/03-open-source-code.html">03</a> §5.5.2；<a href="../../notes/vlachidis_medorah-ontology-memory-recollection.html">vlachidis</a> §8(5)；海報第 4 格；<code>build_network.py</code>）。</li>
+</ul>
+<pre><code class="language-python"># 本研究（build_network.py 原文）
+def provenance(speaker, a: str, b: str) -&gt; str:
+    &quot;&quot;&quot;來歷（epistemic status）：這段話的說話者是不是關係的當事人。
+    由程式判定，不問模型（紅線第 2 條）。判準只有一條，可逐筆覆核：
+    講述者逐字等於兩端之一 → 自述；否則 → 他述。講述者不明時標「不確定」，不猜。&quot;&quot;&quot;
+    if not speaker:
+        return &quot;不確定&quot;
+    if speaker == a or speaker == b:
+        return &quot;自述&quot;
+    return &quot;他述&quot;
+</code></pre>
+<p>對方的 attribution_type 詞表可以借（direct_quote、indirect_report、general_attribution 分得開），做法不借：那四欄是模型填的，本研究的來歷是程式掃的。</p>
+<h3 id="46">4.6 分類與綱要</h3>
+<p>差異類型：<strong>管線設計</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：模型自由命名（單卷 160 型別、436 關係標籤）→ 人收斂成 22 類 → 述詞以 SpanBERT 嵌入、UMAP 降維、HDBSCAN 分群、WordNet 上位詞命名 → 修綱要 → 回到第二趟重抽（hermeneutic loop）。</li>
+<li><strong>本研究</strong>：程式查六類動詞表，模型第四欄的命名留存但不參與決定；綱要固定；另有事後歸納的動詞詞根與手寫表比一致性。</li>
+<li><strong>判斷</strong>：對照；另有一處先例：11 種關係模式「粗層保召回、細層靠動詞表」的兩層結構（證據：投影片第 13、14、16 頁；<code>Clustering/*.py</code> 的參數；TTL 的 11 種模式；<code>life_nodes.py</code>、<code>orse_label_exp.py</code>）。</li>
+</ul>
+<pre><code class="language-text"># MeDoraH（投影片第 13、14、16 頁；Clustering 腳本的實際參數）
+types    = free_names(pass1_output)                       # 160 型別、436 標籤
+classes  = human_collapse(types)                          # 22 類：7 頂層＋15 子類
+emb      = SpanBERT(predicates)                           # checkpoint 未載明；產生嵌入的套件不在儲存庫
+low      = UMAP(emb, n_neighbors=100, n_components=50, min_dist=0.1, metric=&quot;cosine&quot;)
+clusters = HDBSCAN(low, min_cluster_size=70, min_samples=35)   # 或在目標群數區間內網格搜尋
+names    = wordnet_hypernym(clusters)                     # 不叫模型命名
+schema   = revise(schema, clusters)  →  重跑 pass2        # 迴圈
+
+# 本研究（life_nodes.py、orse_label_exp.py）
+TABLE = life_nodes.json          # 六類動詞表＝種子（研究者的概念工作）∪ 搭配（語料 lift，零標注）
+for span in spans:
+    verbs    = CKIP(span).verbs
+    標法_程式 = {cls for v in verbs for cls in TABLE.get(v, ())}   # 一個動詞可落多類，不先中先得
+    標法_模型 = span.第四欄                                       # 留存，不參與任何決定
+    標法_歸納 = stem(verbs)                                       # 事後歸納；與手寫表 homogeneity 0.859
+# 綱要不回頭改；手寫 193 個動詞裡 56 個從未出現在跨距，這個數字留著當方法的邊界
+</code></pre>
+<h3 id="47">4.7 品味與評價</h3>
+<p>差異類型：<strong>資料與表徵</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：述詞聚類裡「信念與評價」自成一群。</li>
+<li><strong>本研究</strong>：六類之一「品味與依附」，但 28 個動詞有 20 個從未出現在跨距；品味不長在兩點跨距上。</li>
+<li><strong>判斷</strong>：先例，goût 獨立成類的旁證（證據：<a href="../../notes/vlachidis_medorah-ontology-memory-recollection.html">vlachidis</a> §8(4)；<code>orse_label/report.md</code>）。</li>
+</ul>
+<h3 id="48">4.8 人在迴圈的位置</h3>
+<p>差異類型：<strong>管線設計</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：事後。研究者在工作台 accept、reject、split、merge，再把結果拿去修綱要。</li>
+<li><strong>本研究</strong>：事前。研究者設計每一題的選項與話術，批次親跑；人工名冊只在評估時進場。</li>
+<li><strong>判斷</strong>：對照（證據：投影片第 13、16 頁；海報第 0 格 APPROACH；流程圖第 9 列）。</li>
+</ul>
+<h3 id="49">4.9 模型與部署</h3>
+<p>差異類型：<strong>其他（部署）</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：model-agnostic：Gemini 2.5 Pro、claude-opus-4-8、Gemma 3、Qwen 3；NarraGraph 有本機 LLM 面板與反向代理端點。</li>
+<li><strong>本研究</strong>：全部本機：Gemma-4-26B-A4B-TAIDE-zhTW 萃取（temperature 0.1）、Hermes-4-70B 異源查核（尚未跑過語料）。</li>
+<li><strong>判斷</strong>：對照；對方也支援本機，on-device 不能寫成獨家（證據：投影片第 10、12 頁；release v0.3.4；海報第 3 格設備行；<code>orse_exp.py</code> 第 1 區）。</li>
+</ul>
+<h3 id="410">4.10 信心</h3>
+<p>差異類型：<strong>邏輯判斷</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：抽取信心來自三組態投票（第 10 頁「confirmed — 0 of 3 refute votes」，程式訊號，計票規則未載明）；certainty_level 由模型判（講述者的確定度）；Reference 層的 0.97 來源未明。</li>
+<li><strong>本研究</strong>：證據等級與切點支持度由程式從重複呼叫推導；跨距逐字驗證；五訊號設計。絕不叫模型自評。</li>
+<li><strong>判斷</strong>：先例（投票同構）＋對照（模型判 certainty 不借）（證據：投影片第 10 頁；<code>check_segment.py</code>；WORKLOG 2026-09-06）。</li>
+</ul>
+<pre><code class="language-text"># MeDoraH（投影片第 10、12 頁；推定）
+votes  = [LLM_extract(chunk, cfg) for cfg in (open, schema_guided, rq_driven)]
+status = &quot;confirmed&quot; if refutes(votes) == 0 else …        # 計票細節未載明
+claim.certainty_level = &lt;模型填：certain|probable|uncertain&gt;  # 講述者的確定度，不是抽取信心
+</code></pre>
+<pre><code class="language-python"># 本研究（check_segment.py 原文；斷句的證據等級，n_reps＝這一句得到的重複支持數）
+if s_[&quot;cut_source&quot;].startswith(&quot;程式&quot;):
+    s_[&quot;evidence&quot;] = &quot;程式強制&quot;
+elif len(sents) &lt;= 1:
+    s_[&quot;evidence&quot;] = &quot;未斷句&quot;
+elif n_reps == n_reps_all:
+    s_[&quot;evidence&quot;] = &quot;共識&quot;
+elif n_reps &gt;= 2:
+    s_[&quot;evidence&quot;] = &quot;減票共識&quot;
+else:
+    s_[&quot;evidence&quot;] = &quot;單次支持&quot;
+# cut_support 取兩端切點得票的較小值：一句話的可信度取決於較弱的那一端
+</code></pre>
+<h3 id="411">4.11 單位與矛盾</h3>
+<p>差異類型：<strong>資料與表徵</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：單位是受訪者與敘事單元；Divergence 把兩位講述者對同一事實的不同說法建成一級物件，由歷史學者標型別、不裁決。</li>
+<li><strong>本研究</strong>：單位是人物（含未受訪者）；講述者與被講述者兩欄；人物登錄簿衝突不合併（<code>persons.jsonl</code> 的 <code>_衝突</code>）。</li>
+<li><strong>判斷</strong>：對照（單位）＋先例（Divergence）（證據：投影片第 11 頁；海報第 0 格問題；<code>output/experiments/dates/</code>）。</li>
+</ul>
+<h3 id="412">4.12 外部對照</h3>
+<p>差異類型：<strong>資料與表徵</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：Wikidata Q 編號，35.7% 節點掛上。</li>
+<li><strong>本研究</strong>：PASMA 專輯掛名庫（1,916 張，同領域獨立檔案）與北流人物頁（同機構編纂，held-out）。</li>
+<li><strong>判斷</strong>：對照（證據：投影片第 19 頁；海報第 1 格 c）。</li>
+</ul>
+<h3 id="413">4.13 評估</h3>
+<p>差異類型：<strong>邏輯判斷</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：1,429 筆人工回讀：91.3% warranted、8.5% over-specified、2 筆 unsupported；precision 性質，無 recall、無 gold standard；回讀者人數與一致性未載明。</li>
+<li><strong>本研究</strong>：無 gold standard（紅線 1）；實體層對名冊比對；關係層用免標準答案訊號與異源查核，報成可信度分層不是 precision；「A floor, not a total」；每個數字由 <code>check_numbers.py</code> 從落檔重算。</li>
+<li><strong>判斷</strong>：對照，不能反過來拿對方的 91.3% 當本研究的支持證據（證據：投影片第 20 頁；海報頁尾素材出處）。</li>
+</ul>
+<h3 id="414">4.14 可重現</h3>
+<p>差異類型：<strong>釋出</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：二進位檔；九個 tag 同一 commit；提示詞、參數、投票紀錄未公開；中間產物只有示範 JSON。</li>
+<li><strong>本研究</strong>：每次呼叫的 <code>calls.jsonl</code> 正本進 git（送出去與收回來的話、參數快照），衍生物可重算；批次由使用者親跑。</li>
+<li><strong>判斷</strong>：對照（證據：<a href="../../notes/idohl/03-open-source-code.html">03</a> §5.3；CLAUDE.md 紅線 4；<code>orse_exp.py</code> 的 <code>params_snapshot()</code>）。</li>
+</ul>
+<pre><code class="language-python"># 本研究（orse_exp.py 原文）：跟著每一份產出落檔的參數快照
+def params_snapshot() -&gt; dict:
+    return {
+        &quot;at&quot;: now(), &quot;語料&quot;: SOURCE,
+        &quot;標注狀態&quot;: &quot;含人工標注（提及層用名冊、範圍用人工段落標記）&quot;,
+        &quot;提及變因&quot;: MENTION_VARIANT, &quot;共指變因&quot;: COREF_VARIANT,
+        &quot;共指模型層採用狀態&quot;: COREF_MODEL_OK,
+        &quot;型別&quot;: TYPES, &quot;require_person&quot;: REQUIRE_PERSON,
+        &quot;max_pair_dist&quot;: MAX_PAIR_DIST, &quot;max_pairs&quot;: MAX_PAIRS,
+        &quot;max_span_chars&quot;: MAX_SPAN_CHARS,
+        &quot;模型&quot;: {&quot;model&quot;: MODEL, &quot;temperature&quot;: TEMPERATURE,
+                 &quot;max_tokens&quot;: MAX_TOKENS, &quot;rule_in_system&quot;: RULE_IN_SYSTEM},
+        &quot;話術&quot;: {&quot;rule&quot;: RULE, &quot;material&quot;: MATERIAL},
+    }
+</code></pre>
+<h3 id="415">4.15 授權與釋出</h3>
+<p>差異類型：<strong>釋出</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：六個儲存庫零 LICENSE；資料可讀、不可合法重用。</li>
+<li><strong>本研究</strong>：程式與語料未公開；對外只放筆記（research-notes）。</li>
+<li><strong>判斷</strong>：對照，任何借用都是重寫（證據：<a href="../../notes/idohl/05-tools-relevance.html">05</a>）。</li>
+</ul>
+<h3 id="416">4.16 時間</h3>
+<p>差異類型：<strong>邏輯判斷</strong>。</p>
+<ul>
+<li><strong>MeDoraH</strong>：temporal_grounding 四值是記憶距離（distant_memory 187、synchronous 64、historical_reconstruction 39、recent_memory 14），由模型填；TemporalEntity 只掛具名事件；無年份推算。</li>
+<li><strong>本研究</strong>：三條定年規則（自報年份、歲數換算、段落繼承），可信層 A 到 F，13,142 句定年 3,635（27.7%）；相對詞只記不算。</li>
+<li><strong>判斷</strong>：本研究領先；先後關係（TLINK）兩邊都沒做（證據：<code>time_anchor.py</code> 第 1 區與可信層表；<a href="../../notes/idohl/08-time.html">08 時間專題</a>）。</li>
+</ul>
+<pre><code class="language-python"># 本研究（time_anchor.py 原文）：推算方式 → 可信層，查表不判斷
+TIER_ORDER = &quot;ABCDEF&quot;
+TIER_OF = {
+    &quot;直接_民國&quot;: &quot;A&quot;, &quot;直接_西元&quot;: &quot;A&quot;, &quot;直接_漢字年&quot;: &quot;A&quot;,
+    &quot;直接_年次&quot;: &quot;A&quot;, &quot;直接_年生&quot;: &quot;A&quot;,
+    &quot;直接_多年&quot;: &quot;B&quot;, &quot;區間_約&quot;: &quot;B&quot;, &quot;歲數＋錨點_語料&quot;: &quot;B&quot;,
+    &quot;歲數＋錨點_北流&quot;: &quot;C&quot;, &quot;區間_年代&quot;: &quot;C&quot;,
+    &quot;作品借年_單張&quot;: &quot;D&quot;,
+    &quot;區間_年代_歧義&quot;: &quot;E&quot;,
+    &quot;直接_裸民國&quot;: &quot;F&quot;,
+}
+# 繼承：同 trunk 內向前找最近的年份，距離 3 句內 D、更遠 E；只有向後才找到 F
+# 歲數換算的錨點若來自北流出生年而非語料本身，可信層降一級（downgrade）
+def downgrade(t: str) -&gt; str:
+    return TIER_ORDER[min(len(TIER_ORDER) - 1, TIER_ORDER.index(t) + 1)]
+</code></pre>
+<pre><code class="language-text"># MeDoraH（Test_OntologyPopulation.json 的值域）
+temporal_grounding ∈ {distant_memory, synchronous, historical_reconstruction, recent_memory}   # 由模型填；不是年份
+</code></pre>
+<hr>
+<h2 id="5">5. 三點判斷</h2>
 <ol>
 <li><strong>核心主張相反。</strong> 對方讓模型先讀、再用結果修綱要（投影片第 21 頁「extraction as evaluation of the schema」）；本研究把綱要固定成程式查表、只讓模型選。兩者都成立，但回答的問題不同：對方問「綱要該長什麼樣」，本研究問「沒有標準答案時，哪些判斷能交給模型而不失去可驗證性」。</li>
-<li><strong>交會點在動詞。</strong> 海報右下第二個未決事項「動詞決定箭頭，中文關係動詞如何分類（分群）」，正是對方方法的中心（predicate clustering → candidate templates to accept or reject，第 13 頁）。這是最值得互相參照的地方，也是 <a href="../../notes/idohl/09-actions.html">09</a> 第 ③ 件工作的由來。</li>
+<li><strong>交會點在動詞。</strong> 海報右下第二個未決事項「動詞決定箭頭，中文關係動詞如何分類（分群）」，正是對方方法的中心（predicate clustering → candidate templates to accept or reject，第 13 頁）。這是最值得互相參照的地方，也是 <a href="../../notes/idohl/09-actions.html">09</a> 第 ③ 件工作的由來；4.6 的參數（UMAP 50 維、HDBSCAN 70／35）是重寫時的起點。</li>
 <li><strong>投票同構，但多一層。</strong> 對方的三組態投票與本研究的證據等級是同一種程式化訊號，可引為同行做法；但對方另外讓模型判 certainty，本研究依紅線 2 不做。寫作時兩件事要分開講。</li>
 </ol>
 <hr>
-<h2 id="4">4. 與四條紅線的相容性</h2>
+<h2 id="6">6. 與五條紅線的相容性</h2>
 <div class="tablewrap"><table>
 <thead>
 <tr>
@@ -244,7 +777,7 @@ footer .foot{margin:0 0 .4em}
 <tr>
 <td>1 不做人工配對式 gold standard</td>
 <td>相容，理由不同</td>
-<td>對方是根本沒有評估，本研究是刻意選擇免標準答案訊號；不能混為一談</td>
+<td>對方是根本沒有評估基準，本研究是刻意選擇免標準答案訊號；不能混為一談</td>
 </tr>
 <tr>
 <td>2 不叫 LLM 自評信心</td>
@@ -269,13 +802,15 @@ footer .foot{margin:0 0 .4em}
 </tbody>
 </table></div>
 <hr>
-<h2 id="5">5. 來源</h2>
+<h2 id="7">7. 來源</h2>
 <ul>
 <li>NKOS 2026 投影片：<a href="https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf">https://nkos.dublincore.org/2026NKOSworkshop/NKOS2026_Zhang_Hermeneutic%20Ontology%20Engineering.pdf</a></li>
 <li>DH2026 摘要：<a href="https://zenodo.org/records/22115456">https://zenodo.org/records/22115456</a></li>
-<li>示範資料：<a href="https://github.com/articoder/MeDoraH_NLP">https://github.com/articoder/MeDoraH_NLP</a> （<code>Text Mining/LLM Hermeneutic Workbench/Examples/</code>）</li>
+<li>示範資料：<a href="https://github.com/articoder/MeDoraH_NLP">https://github.com/articoder/MeDoraH_NLP</a> （<code>Text Mining/LLM Hermeneutic Workbench/Examples/</code>）；欄位統計見 <a href="../../notes/idohl/03-open-source-code.html">03</a> §5.5.2</li>
+<li>前處理與分群腳本：<a href="https://github.com/articoder/MeDoraH_NLP/tree/main/Text%20Mining/Preprocessing">https://github.com/articoder/MeDoraH_NLP/tree/main/Text%20Mining/Preprocessing</a> ；<a href="https://github.com/articoder/MeDoraH_NLP/tree/main/Text%20Mining/Clustering">https://github.com/articoder/MeDoraH_NLP/tree/main/Text%20Mining/Clustering</a></li>
 <li>本體：<a href="https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl">https://raw.githubusercontent.com/articoder/MeDoraH_Ontology/main/Ontology/Ontology%20Prototype%20V0.2.ttl</a></li>
-<li>本研究：<code>poster/copy.yaml</code>、<code>poster/talk_2min.md</code>、<code>WORKLOG.md</code>（2026-09-06、09-10、09-15）、<code>.claude/memory/</code></li>
+<li>本研究（專案內部檔案）：<code>poster/copy.yaml</code>、<code>poster/talk_2min.md</code>；程式 <code>local_llm/experiments/</code> 的 <code>orse_exp.py</code>、<code>orse_choice_exp.py</code>、<code>coref_exp.py</code>、<code>entity_ctx_exp.py</code>、<code>_verbatim.py</code>、<code>check_segment.py</code>、<code>build_network.py</code>、<code>life_nodes.py</code>、<code>orse_label_exp.py</code>、<code>time_anchor.py</code>；<code>WORKLOG.md</code>（2026-09-06、09-09、09-10、09-15）</li>
+<li>流程圖：<code>refs/notes/idohl/sources/fig_pipelines.py</code>（產出 <code>fig_pipelines.svg</code> 並嵌入本頁）</li>
 </ul>
 <footer><p class="foot">來源 <code>extract_ohistory/refs/notes/idohl/07_方法對照.md</code>　分類 ④ 口述歷史與數位人文　問題 <a class="qtag main" href="../../index.html#q4" title="口述歷史與數位人文">④</a></p><p>筆記內容採 CC BY-NC 4.0；引用的論文、投影片原文與圖片之著作權屬原作者。文獻庫內每份 PDF 各依其自身授權轉載。　建置 2026-10-13。</p></footer>
 </main>
